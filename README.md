@@ -1,6 +1,6 @@
 # ✠ Lectionarium
 
-**The Mass and the Divine Office in every Catholic rite, for any day of the year.**
+**The Mass and the Divine Office for any day of the year: printed in full where the texts are free to print, guided by citation where they are not.**
 
 👉 **https://jcalepos146.github.io/LECTIONARIUM/**
 
@@ -26,6 +26,20 @@
   - Scripture readings in the Douay-Rheims and King James versions.
 - **Tools**: a presenter view for screen-sharing, a chat-script export for Discord or Minecraft (copy and paste), read-aloud, role views, posture cues and a printable booklet.
 - **Compare**: every lectionary side by side for the whole year, with feast precedence.
+
+## Text coverage
+
+Every rite is labelled in the app so you know before you open it what it prints.
+
+| Rite | Mass | Office |
+|---|---|---|
+| 1962, pre-1955, hybrid | **Complete text** | **Complete text** |
+| Monastic, Dominican | n/a | **Complete text** |
+| Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline) |
+| Novus Ordo / Liturgy of the Hours | *Guided*: readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal | *Guided*: psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary |
+| Byzantine | *Order and readings*: prayers from your service book | *Guided*: psalms and fixed prayers; hymns of the day from your books |
+
+The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 
 ## Hosting a session
 
