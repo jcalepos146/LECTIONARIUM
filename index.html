@@ -443,6 +443,7 @@ body.in-session .chirho{width:52px}
 body.in-session .fsctl{position:absolute;top:14px;right:66px;margin:0}
 @media (max-width:560px){ body.in-session .fsctl .lbl{display:none} }
 @media print{ .fsctl,.covline .cov{display:none!important} }
+#tradition-sources a{overflow-wrap:anywhere}
 #enter-sanctuary{margin-top:20px;padding:12px 24px;border:1px solid var(--gold);font:inherit;font-weight:700;background:var(--ink);color:var(--paper);cursor:pointer}
 body.san-open{overflow:hidden}
 #sanctuary{--san-bg:#121619;--san-panel:#1d2427;--san-text:#eee4ce;--san-muted:#bfb6a4;--san-gold:#c7a465;--san-scale:1;position:fixed;inset:0;z-index:10000;overflow:auto;background:radial-gradient(ellipse at top,#293033,var(--san-bg) 65%);color:var(--san-text);font:calc(22px * var(--san-scale))/1.5 Alegreya,Georgia,serif;color-scheme:dark}
@@ -451,7 +452,7 @@ body.san-open{overflow:hidden}
 #sanctuary *{box-sizing:border-box}
 #sanctuary button,#sanctuary input{font:inherit;color:inherit}
 #sanctuary button{cursor:pointer}
-#sanctuary button:focus-visible,#sanctuary input:focus-visible,#sanctuary a:focus-visible,#sanctuary select:focus-visible,#sanctuary summary:focus-visible{outline:3px solid #e9ba74;outline-offset:4px;box-shadow:0 0 0 7px #aa382b,0 0 30px #ad352a80}
+#sanctuary button:focus,#sanctuary input:focus,#sanctuary a:focus,#sanctuary select:focus,#sanctuary summary:focus{outline:3px solid #e9ba74;outline-offset:4px;box-shadow:0 0 0 7px #aa382b,0 0 30px #ad352a80}
 #sanctuary a{color:var(--san-gold);overflow-wrap:anywhere}
 #sanctuary h1{font-size:clamp(2rem,4vw,4.5rem);font-weight:500;line-height:1.15;margin:12px 0 24px;color:inherit}
 #sanctuary h2{font-size:1.3em;color:var(--san-gold);margin:0 0 18px;font-weight:500}
@@ -732,17 +733,79 @@ body.san-open{overflow:hidden}
 
 <!-- ============================================================ SOURCES -->
 <section class="view" id="sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
-  <section id="tradition-sources" aria-label="Tradition directory sources"></section>
+  <section id="tradition-sources" aria-label="Tradition directory sources"><h3>Tradition directory sources</h3>
+<p>See each directory entry for edition rights, territorial limits and source-review status.</p>
+<ul>
+<li><a href="https://bcp2019.anglicanchurch.net/" target="_blank" rel="noopener">https://bcp2019.anglicanchurch.net/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-assyrian-church-of-the-east/the-syro-malabar-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-assyrian-church-of-the-east/the-syro-malabar-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/churches-with-no-orthodox-counterpart/the-italo-albanian-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/churches-with-no-orthodox-counterpart/the-italo-albanian-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-assyrian-church-of-the-east/the-chaldean-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-assyrian-church-of-the-east/the-chaldean-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-armenian-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-armenian-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-coptic-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-coptic-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-eritrean-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-eritrean-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-ethiopian-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-ethiopian-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-syrian-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-syrian-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-syro-malankara-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-syro-malankara-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-bulgarian-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-bulgarian-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-melkite-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-melkite-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-romanian-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-romanian-catholic-church/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ruthenian-catholic-churches/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ruthenian-catholic-churches/</a></li>
+<li><a href="https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ukrainian-catholic-church/" target="_blank" rel="noopener">https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ukrainian-catholic-church/</a></li>
+<li><a href="https://els.org/" target="_blank" rel="noopener">https://els.org/</a></li>
+<li><a href="https://freechurch.org/" target="_blank" rel="noopener">https://freechurch.org/</a></li>
+<li><a href="https://github.com/DivinumOfficium/divinum-officium" target="_blank" rel="noopener">https://github.com/DivinumOfficium/divinum-officium</a></li>
+<li><a href="https://github.com/jcalepos146/LECTIONARIUM" target="_blank" rel="noopener">https://github.com/jcalepos146/LECTIONARIUM</a></li>
+<li><a href="https://justus.anglican.org/resources/bcp/Ireland.htm" target="_blank" rel="noopener">https://justus.anglican.org/resources/bcp/Ireland.htm</a></li>
+<li><a href="https://justus.anglican.org/resources/bcp/Scotland.htm" target="_blank" rel="noopener">https://justus.anglican.org/resources/bcp/Scotland.htm</a></li>
+<li><a href="https://justus.anglican.org/resources/bcp/bcp.htm" target="_blank" rel="noopener">https://justus.anglican.org/resources/bcp/bcp.htm</a></li>
+<li><a href="https://justus.anglican.org/resources/bcp/canada.htm" target="_blank" rel="noopener">https://justus.anglican.org/resources/bcp/canada.htm</a></li>
+<li><a href="https://justus.anglican.org/resources/bcp/england.htm" target="_blank" rel="noopener">https://justus.anglican.org/resources/bcp/england.htm</a></li>
+<li><a href="https://justus.anglican.org/resources/bcp/world.htm" target="_blank" rel="noopener">https://justus.anglican.org/resources/bcp/world.htm</a></li>
+<li><a href="https://opc.org/" target="_blank" rel="noopener">https://opc.org/</a></li>
+<li><a href="https://thenalc.org/" target="_blank" rel="noopener">https://thenalc.org/</a></li>
+<li><a href="https://wels.net/" target="_blank" rel="noopener">https://wels.net/</a></li>
+<li><a href="https://www.antiochian.org/" target="_blank" rel="noopener">https://www.antiochian.org/</a></li>
+<li><a href="https://www.canrc.org/" target="_blank" rel="noopener">https://www.canrc.org/</a></li>
+<li><a href="https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/book-common-prayer" target="_blank" rel="noopener">https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/book-common-prayer</a></li>
+<li><a href="https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship" target="_blank" rel="noopener">https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship</a></li>
+<li><a href="https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship/copyright" target="_blank" rel="noopener">https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship/copyright</a></li>
+<li><a href="https://www.elca.org/" target="_blank" rel="noopener">https://www.elca.org/</a></li>
+<li><a href="https://www.episcopalchurch.org/what-we-believe/book-common-prayer/" target="_blank" rel="noopener">https://www.episcopalchurch.org/what-we-believe/book-common-prayer/</a></li>
+<li><a href="https://www.frcna.org/" target="_blank" rel="noopener">https://www.frcna.org/</a></li>
+<li><a href="https://www.gergeminfo.nl/" target="_blank" rel="noopener">https://www.gergeminfo.nl/</a></li>
+<li><a href="https://www.goarch.org/" target="_blank" rel="noopener">https://www.goarch.org/</a></li>
+<li><a href="https://www.hrcna.org/" target="_blank" rel="noopener">https://www.hrcna.org/</a></li>
+<li><a href="https://www.lcms.org/" target="_blank" rel="noopener">https://www.lcms.org/</a></li>
+<li><a href="https://www.loc.gov/" target="_blank" rel="noopener">https://www.loc.gov/</a></li>
+<li><a href="https://www.nrcna.org/" target="_blank" rel="noopener">https://www.nrcna.org/</a></li>
+<li><a href="https://www.oca.org/questions/autocephaly" target="_blank" rel="noopener">https://www.oca.org/questions/autocephaly</a></li>
+<li><a href="https://www.oikoumene.org/church-families/orthodox-churches-eastern" target="_blank" rel="noopener">https://www.oikoumene.org/church-families/orthodox-churches-eastern</a></li>
+<li><a href="https://www.oikoumene.org/church-families/orthodox-churches-oriental" target="_blank" rel="noopener">https://www.oikoumene.org/church-families/orthodox-churches-oriental</a></li>
+<li><a href="https://www.patriarchate.org/" target="_blank" rel="noopener">https://www.patriarchate.org/</a></li>
+<li><a href="https://www.pcaac.org/" target="_blank" rel="noopener">https://www.pcaac.org/</a></li>
+<li><a href="https://www.pcusa.org/" target="_blank" rel="noopener">https://www.pcusa.org/</a></li>
+<li><a href="https://www.pncc.org/" target="_blank" rel="noopener">https://www.pncc.org/</a></li>
+<li><a href="https://www.rpcna.org/" target="_blank" rel="noopener">https://www.rpcna.org/</a></li>
+<li><a href="https://www.svenskakyrkan.se/" target="_blank" rel="noopener">https://www.svenskakyrkan.se/</a></li>
+<li><a href="https://www.synod.com/" target="_blank" rel="noopener">https://www.synod.com/</a></li>
+<li><a href="https://www.urcna.org/" target="_blank" rel="noopener">https://www.urcna.org/</a></li>
+<li><a href="https://www.utrechter-union.org/" target="_blank" rel="noopener">https://www.utrechter-union.org/</a></li>
+</ul>
+</section>
   <div class="prose">
     <p class="lede">What is printed and what is cited. Texts in the public domain or under an open licence are printed in full: Scripture in the Douay-Rheims, King James and Coverdale versions, the traditional Missal and Breviary in Latin and English, and the 1662 Book of Common Prayer. Texts still in copyright (the current Missal and Breviary translations, Divine Worship, the Byzantine service books) are cited, never reproduced; you can fill them in from your own book with <i>Add text</i>, which keeps them in your browser only. The comparison tabs give citations. The reading data was compiled programmatically and spot-checked.</p>
     <h3>Text coverage by rite</h3>
-    <table class="covtab"><thead><tr><th>Rite</th><th>Mass</th><th>Office</th></tr></thead><tbody>
+    <div class="tbl" tabindex="0" role="region" aria-label="Text coverage by rite"><table class="covtab"><thead><tr><th>Rite</th><th>Mass</th><th>Office</th></tr></thead><tbody>
       <tr><td>1962 and pre-1955 (and the hybrid)</td><td><span class="cov cov-full">Complete text</span></td><td><span class="cov cov-full">Complete text</span></td></tr>
       <tr><td>Monastic and Dominican</td><td>n/a</td><td><span class="cov cov-full">Complete text</span></td></tr>
       <tr><td>Ordinariate</td><td><span class="cov cov-guide">Guided text</span> 1662 texts, Canon and propers; Divine Worship's wording differs in places</td><td><span class="cov cov-full">Complete text</span> 1662 Mattins, Evensong, Compline; Prime in outline</td></tr>
       <tr><td>Novus Ordo / Liturgy of the Hours</td><td><span class="cov cov-guide">Guided text</span> readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal</td><td><span class="cov cov-guide">Guided text</span> psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary</td></tr>
       <tr><td>Byzantine</td><td><span class="cov cov-order">Order and readings</span> prayers from your service book</td><td><span class="cov cov-guide">Guided text</span> psalms and fixed prayers; hymns of the day from your books</td></tr>
-    </tbody></table>
+    </tbody></table></div>
     <h3>Reading data</h3>
     <ul class="src">
       <li>Pre-1955 and 1962: <a href="https://github.com/DivinumOfficium/divinum-officium" target="_blank" rel="noopener">Divinum Officium project</a>, missal files under its Divino Afflatu and 1960 rubrics, including the pre- and post-1955 Holy Week books.</li>
@@ -3711,7 +3774,7 @@ function sound(){if(!prefs.sound)return;try{audio=audio||new (window.AudioContex
 // Original geometric Christian symbols, never church insignia.
 const marks={catholic:'☧','eastern-orthodox':'✚',oriental:'✣','old-catholic':'⚓',anglican:'✥',lutheran:'✝',reformed:'☷'};
 let artSerial=0;
-function emblem(f){const pattern="san-art-"+(++artSerial);return `<svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><defs><pattern id="${pattern}" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(${f.length*3})"><path d="M0 12h24M12 0v24" fill="none" stroke="currentColor" opacity=".12"/></pattern></defs><rect width="320" height="180" fill="url(#${pattern})"/><circle cx="160" cy="90" r="57" fill="none" stroke="currentColor"/><circle cx="160" cy="90" r="50" fill="none" stroke="currentColor" opacity=".5"/><text x="160" y="112" font-family="serif" font-size="64" text-anchor="middle" fill="currentColor">${marks[f]||'✝'}</text></svg>`;}
+function emblem(f){const pattern="san-art-"+(++artSerial);return `<svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><defs><pattern id="${pattern}" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(${f.length*3})"><path d="M0 12h24M12 0v24" fill="none" stroke="currentColor" opacity=".12"/></pattern></defs><rect width="320" height="180" fill="url(#${pattern})"/><circle cx="160" cy="90" r="57" fill="none" stroke="currentColor"/><circle cx="160" cy="90" r="50" fill="none" stroke="currentColor" opacity=".5"/>${f==='reformed'?'<path d="M120 65 Q140 55 160 65 Q180 55 200 65 V118 Q180 108 160 118 Q140 108 120 118 Z M160 65 V118 M129 76 L151 76 M169 76 L191 76 M129 86 L151 86 M169 86 L191 86" fill="none" stroke="currentColor" stroke-width="3"/>':`<text x="160" y="112" font-family="serif" font-size="64" text-anchor="middle" fill="currentColor">${marks[f]||'✝'}</text>`}</svg>`;}
 function coverage(s){return window.LectApp.coverage(s.type,s.rite,s.hour);}
 function tile(id,title,subtitle='',family='catholic',chip='',action='route'){
  return `<button class="san-tile" data-${action}="${esc(id)}"><span class="san-art">${emblem(family)}${chip?`<span class="san-chip">${esc(chip)}</span>`:''}</span><span class="san-tile-title">${esc(title)}</span>${subtitle?`<span class="san-subtitle">${esc(subtitle)}</span>`:''}</button>`;
@@ -3733,7 +3796,6 @@ function move(direction){const list=controls(),cur=document.activeElement;if(!li
  const scored=list.filter(e=>e!==cur).map(el=>{const b=el.getBoundingClientRect(),dx=b.x+b.width/2-ax,dy=b.y+b.height/2-ay;const forward=direction==='down'?dy:direction==='up'?-dy:direction==='right'?dx:-dx;const side=Math.abs(direction==='down'||direction==='up'?dx:dy);return {el,forward,score:forward+side*2};}).filter(x=>x.forward>4).sort((a,b)=>a.score-b.score);
  focus(scored[0]?.el||list[(list.indexOf(cur)+(direction==='up'||direction==='left'?-1:1)+list.length)%list.length]);sound();}
 async function load(){if(catalog)return;if(!loading)loading=fetch('data/traditions.json').then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json();}).then(j=>{catalog=j;}).catch(e=>{loading=null;throw e;});return loading;}
-function sourceList(){const target=document.getElementById('tradition-sources');if(!target||!catalog)return;const urls=[...new Set(catalog.flatMap(n=>[...n.sources,...n.books.map(b=>b.source)]))].sort();target.innerHTML='<h3>Tradition directory sources</h3><p>Edition rights and current jurisdictions require a source audit before release. Directory entries show their review status.</p><ul>'+urls.map(u=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')+'</ul>';}
 async function home(){
  if(!days){try{const r=await fetch('days.json');if(!r.ok)throw Error();days=await r.json();}catch(e){days={};}}
  const iso=today(),d=days[iso];
@@ -3760,7 +3822,7 @@ async function render(){
  const serial=++routeSerial;
  const shell=body=>`<header class="san-toolbar"><button data-action="back" aria-label="Back">← Back</button><button data-route="#/sanctuary">Sanctuary</button><button data-route="#/search" aria-label="Search">Search /</button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Exit Sanctuary mode">Exit</button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
- try{await load();if(serial!==routeSerial)return;sourceList();let body;
+ try{await load();if(serial!==routeSerial)return;let body;
   if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/sanctuary')body=await home();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
   if(serial!==routeSerial)return;root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
   const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>(e.dataset.route||e.dataset.pray||e.id||e.dataset.action)===saved);
@@ -3772,11 +3834,12 @@ function launch(s,label,family){if(!s)return;const session={...s,iso:s.iso||toda
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
 root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else switch(b.dataset.action){case'back':back();break;case'exit':close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
-document.getElementById('enter-sanctuary').addEventListener('click',()=>{returnHash=location.hash||'#today';go('#/sanctuary');});
+document.getElementById('enter-sanctuary').addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
+document.getElementById('enter-sanctuary').addEventListener('click',e=>{if(e.detail===0)activeInput('keyboard');returnHash=location.hash||'#today';go('#/sanctuary');});
 window.addEventListener('keydown',e=>{
- if(e.altKey||e.ctrlKey||e.metaKey)return;
+ if(e.altKey||e.ctrlKey||e.metaKey||(e.repeat&&e.key.toLowerCase()==='s'))return;
  const edit=/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)||e.target.isContentEditable;
- if(!open){if(!edit&&e.key.toLowerCase()==='s'){e.preventDefault();returnHash=location.hash||'#today';go('#/sanctuary');}return;}
+ if(!open){if(!edit&&e.key.toLowerCase()==='s'){e.preventDefault();activeInput('keyboard');returnHash=location.hash||'#today';go('#/sanctuary');}return;}
  activeInput('keyboard');
  if(edit){if(e.target.id==='san-query'&&e.key==='ArrowDown'){e.preventDefault();focus(root.querySelector('#san-results button'));return;}if(e.key==='Escape'){e.preventDefault();back();}return;}
  if(e.key==='s'||e.key==='S'){e.preventDefault();close();}else if(e.key==='/'||e.key==='y'){e.preventDefault();go('#/search');}
@@ -3792,8 +3855,6 @@ function pollGamepad(now){if(!open)return;let pads=[];try{pads=navigator.getGame
 }
 window.addEventListener('lect-session',e=>{const s=e.detail;if(!s?.rite)return;const known=catalog?.find(n=>n.supported.some(v=>v.type===s.type&&v.rite===s.rite));const session={...s,label:known?.name||s.label||s.rite,family:known?.family||'catholic'};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);});
 window.addEventListener('hashchange',render);
-// Sources are also loaded on explicit request without opening the launcher.
-document.getElementById('tab-sources').addEventListener('click',()=>{load().then(sourceList).catch(()=>{document.getElementById('tradition-sources').textContent='Tradition sources unavailable. Open Sanctuary mode to retry.';});});
 window.LectSanctuary={open:()=>go('#/sanctuary'),close};
 if(isRoute(location.hash))render();
 })();

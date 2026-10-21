@@ -1,5 +1,5 @@
 """Browser acceptance tests. Run: python3 -m unittest discover -s tests -v"""
-import functools, http.server, json, os, pathlib, subprocess, tempfile, threading, unittest
+import datetime, functools, http.server, json, os, pathlib, subprocess, tempfile, threading, unittest
 from playwright.sync_api import sync_playwright
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
@@ -18,7 +18,7 @@ class SanctuaryTests(unittest.TestCase):
         self.context=self.browser.new_context(viewport={'width':1920,'height':1080})
         # External font/CDN failures are outside this local regression suite. No app/data mocks.
         self.context.route('https://**/*',lambda route: route.abort())
-        self.page=self.context.new_page();self.errors=[]
+        self.page=self.context.new_page();self.page.clock.install(time=datetime.datetime(2026,10,21,16,tzinfo=datetime.timezone.utc));self.errors=[]
         self.page.on('pageerror',lambda e:self.errors.append(str(e)))
         self.page.on('console',lambda m:self.errors.append(m.text) if m.type=='error' and 'Failed to load resource' not in m.text else None)
     def tearDown(self):
@@ -47,6 +47,7 @@ class SanctuaryTests(unittest.TestCase):
         self.page.go_forward();self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
         self.page.keyboard.press('/');q=self.page.locator('#san-query');q.wait_for();q.fill('1928 United States')
         self.assertIn('1 results',self.page.locator('#san-count').inner_text())
+        q.fill('Ukraine');self.page.locator('#san-results [data-route="#/t/catholic-ukrainian"]').wait_for()
         q.fill('not-a-tradition');self.assertIn('No matches',self.page.locator('#san-results').inner_text())
         self.page.keyboard.press('Escape');self.sanctuary().get_by_role('heading',name='Sanctuary',exact=True).wait_for()
     def test_nested_deep_link_and_correct_guide(self):
@@ -70,10 +71,24 @@ class SanctuaryTests(unittest.TestCase):
         def press(index):
             self.page.evaluate('(i)=>testPad.buttons[i].pressed=true',index);self.page.wait_for_timeout(90);self.page.evaluate('(i)=>testPad.buttons[i].pressed=false',index);self.page.wait_for_timeout(60)
         press(0);self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
-        press(13);self.assertIn('A Select',self.page.locator('.san-prompts').inner_text())
+        self.page.locator('[data-route="#/t/latin"]').click();self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for()
+        press(13);self.assertEqual(self.page.locator(':focus').evaluate('(e)=>getComputedStyle(e).outlineStyle'),'solid');self.assertIn('A Select',self.page.locator('.san-prompts').inner_text())
         press(9);self.sanctuary().get_by_role('heading',name='Sanctuary menu').wait_for();press(1)
-        self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for();press(3);self.page.locator('#san-query').wait_for()
+        self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for();press(3);self.page.locator('#san-query').wait_for()
         press(1);self.sanctuary().get_by_role('heading',name='Sanctuary',exact=True).wait_for()
+    def test_gamepad_stick_repeat_and_held_select(self):
+        self.page.add_init_script('''window.testPad={connected:true,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false}))};navigator.getGamepads=()=>[window.testPad];''')
+        self.open('#/sanctuary');self.page.locator('[data-route="#/t/roman-modern"]').wait_for()
+        self.page.clock.pause_at(datetime.datetime(2026,10,21,17,tzinfo=datetime.timezone.utc))
+        self.page.evaluate('testPad.axes[0]=1');self.page.clock.run_for(100)
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/divine-worship')
+        self.page.clock.run_for(140)
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/divine-worship')
+        self.page.clock.run_for(180)
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/roman-1962')
+        self.page.evaluate('testPad.axes[0]=0;testPad.buttons[0].pressed=true');self.page.clock.run_for(700)
+        self.sanctuary().get_by_role('heading',name='Roman Rite · 1962',exact=True).wait_for()
+        self.page.evaluate('testPad.buttons[0].pressed=false')
     def test_layouts_and_screenshots(self):
         output=pathlib.Path(os.environ.get('SCREENSHOT_DIR','/tmp/lectionarium-screenshots'));output.mkdir(parents=True,exist_ok=True)
         for width in [390,1920]:
@@ -103,6 +118,7 @@ class SanctuaryTests(unittest.TestCase):
     def test_sources_and_share_build(self):
         self.open('#/t/no-such-entry');self.sanctuary().get_by_role('heading',name='Entry not found',exact=True).wait_for()
         self.page.locator('[data-action="exit"]').click();self.page.locator('#tab-sources').click();self.page.get_by_role('heading',name='Tradition directory sources').wait_for()
+        self.page.set_viewport_size({'width':390,'height':844});self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth<=innerWidth'))
         catalog=json.loads((ROOT/'data/traditions.json').read_text());urls={u for n in catalog for u in n['sources']+[b['source'] for b in n['books']]}
         rendered=set(self.page.locator('#tradition-sources a').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'));self.assertEqual(urls,rendered)
         subprocess.run(['python3','tools/build_traditions.py','--check'],cwd=ROOT,check=True,capture_output=True)

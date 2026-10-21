@@ -71,7 +71,8 @@ opens text-size, theme, optional sound and exit controls. Sound starts off. Exit
 returns to the existing page; Pray now opens the existing guide.
 
 Routes: `#/sanctuary`, `#/t/catholic`, `#/t/catholic/latin`, and `#/search`.
-The catalog is fetched on entry (or when opening the Sources tab). Recent guides
+The catalog is fetched only on Sanctuary entry. Sources references are included
+in the generated HTML. Recent guides
 and Sanctuary preferences stay in localStorage; no account or analytics is used.
 Only entries with mapped guides offer Pray now. Byzantine Catholic mappings are
 explicitly practice guides using this site's Gregorian Pascha and Slavic reading
@@ -109,9 +110,9 @@ Conservative copyright labels mean “not cleared for reproduction here”, not 
 legal conclusion that every part is protected.
 
 Each catalog entry has a generated `t/<id>/index.html` with its own title,
-description, canonical URL and redirect. Seven original 1200×630 family cards are
-shared across entries to keep the complete project below the 512-file limit;
-they are generated from `tools/card.html`, with no church logos or insignia.
+description, canonical URL and redirect. Churches and traditions have individual 1200×630 cards; book editions inherit
+family artwork. The generator keeps the complete project below the 512-file limit.
+Cards use `tools/card.html`, with no church logos or insignia.
 
 New Anglican, Lutheran and Reformed service texts (Part C of the feature request)
 follow release of the launcher and reviewed directory. They are not implemented

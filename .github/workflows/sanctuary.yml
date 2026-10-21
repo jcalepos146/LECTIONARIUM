@@ -1,0 +1,42 @@
+name: Sanctuary acceptance
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python3 -m pip install -r requirements-dev.txt
+      - run: python3 -m playwright install --with-deps chromium
+      - name: Select installed Chromium
+        run: |
+          python3 - <<'PY'
+          import os
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              with open(os.environ['GITHUB_ENV'], 'a') as f:
+                  f.write('PLAYWRIGHT_CHROMIUM=' + p.chromium.executable_path + '\n')
+          PY
+      - name: Check source and generated files
+        run: |
+          for source in src/*.js; do node --check "$source"; done
+          python3 src/assemble.py
+          git diff --exit-code -- index.html
+          python3 tools/build_traditions.py --check
+      - run: python3 -m unittest discover -s tests -v
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sanctuary-screenshots
+          path: /tmp/lectionarium-screenshots

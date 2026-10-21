@@ -27,7 +27,7 @@
     "family": "catholic",
     "parent": "catholic",
     "kind": "church",
-    "self_description": "The Latin Church is the largest church within the Catholic Church. Its liturgical heritage includes the Roman Rite and other rites and uses.",
+    "self_description": "The Latin Church is one of the churches within the Catholic Church. Its liturgical heritage includes the Roman Rite and other rites and uses.",
     "also_called": [],
     "regions": [],
     "calendar": "gregorian",
@@ -129,7 +129,9 @@
     "kind": "church",
     "self_description": "Albanian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Albania"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -173,7 +175,9 @@
     "kind": "church",
     "self_description": "Belarusian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Belarus"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -217,7 +221,9 @@
     "kind": "church",
     "self_description": "Bulgarian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Bulgaria"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -264,7 +270,9 @@
       "Križevci",
       "Croatian Greek Catholic"
     ],
-    "regions": [],
+    "regions": [
+      "Croatia"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -308,7 +316,9 @@
     "kind": "church",
     "self_description": "Greek Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Greece"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -352,7 +362,9 @@
     "kind": "church",
     "self_description": "Hungarian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Hungary"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -395,7 +407,9 @@
     "kind": "church",
     "self_description": "Italo-Albanian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Italy"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -439,7 +453,9 @@
     "kind": "church",
     "self_description": "Macedonian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "North Macedonia"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -483,7 +499,10 @@
     "kind": "church",
     "self_description": "Melkite Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Syria",
+      "Lebanon"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -527,7 +546,9 @@
     "kind": "church",
     "self_description": "Romanian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Romania"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -571,7 +592,9 @@
     "kind": "church",
     "self_description": "Russian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Russia"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -618,7 +641,10 @@
       "Byzantine Catholic",
       "Ruthenian Greek Catholic"
     ],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Ukraine"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -662,7 +688,9 @@
     "kind": "church",
     "self_description": "Slovak Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Slovakia"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -705,7 +733,9 @@
     "kind": "church",
     "self_description": "Ukrainian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Ukraine"
+    ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
     "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
@@ -749,7 +779,9 @@
     "kind": "church",
     "self_description": "Coptic Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Egypt"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -772,7 +804,9 @@
     "kind": "church",
     "self_description": "Ethiopian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Ethiopia"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -795,7 +829,9 @@
     "kind": "church",
     "self_description": "Eritrean Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Eritrea"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -818,7 +854,10 @@
     "kind": "church",
     "self_description": "Syriac Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Syria",
+      "Iraq"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -841,7 +880,9 @@
     "kind": "church",
     "self_description": "Maronite Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Lebanon"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -864,7 +905,9 @@
     "kind": "church",
     "self_description": "Syro-Malankara Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "India"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -887,7 +930,9 @@
     "kind": "church",
     "self_description": "Chaldean Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Iraq"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -910,7 +955,9 @@
     "kind": "church",
     "self_description": "Syro-Malabar Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "India"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -933,7 +980,10 @@
     "kind": "church",
     "self_description": "Armenian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Armenia",
+      "Lebanon"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1370,7 +1420,9 @@
     "kind": "church",
     "self_description": "Constantinople is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Turkey"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1394,7 +1446,9 @@
     "kind": "church",
     "self_description": "Alexandria is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Egypt"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1418,7 +1472,10 @@
     "kind": "church",
     "self_description": "Antioch is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Syria",
+      "Lebanon"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1442,7 +1499,10 @@
     "kind": "church",
     "self_description": "Jerusalem is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Israel",
+      "Palestine"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1466,7 +1526,9 @@
     "kind": "church",
     "self_description": "Russia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Russia"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1490,7 +1552,9 @@
     "kind": "church",
     "self_description": "Serbia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Serbia"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1514,7 +1578,9 @@
     "kind": "church",
     "self_description": "Romania is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Romania"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1538,7 +1604,9 @@
     "kind": "church",
     "self_description": "Bulgaria is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Bulgaria"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1562,7 +1630,9 @@
     "kind": "church",
     "self_description": "Georgia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Georgia"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1586,7 +1656,9 @@
     "kind": "church",
     "self_description": "Cyprus is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Cyprus"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1610,7 +1682,9 @@
     "kind": "church",
     "self_description": "Greece is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Greece"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1634,7 +1708,9 @@
     "kind": "church",
     "self_description": "Albania is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Albania"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1658,7 +1734,9 @@
     "kind": "church",
     "self_description": "Poland is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Poland"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1682,7 +1760,10 @@
     "kind": "church",
     "self_description": "Czech Lands and Slovakia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Czech Republic",
+      "Slovakia"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1706,7 +1787,9 @@
     "kind": "church",
     "self_description": "Orthodox Church of Ukraine is included in this Eastern Orthodox directory. The Ecumenical Patriarchate granted a tomos of autocephaly in 2019; recognition is not universal among Orthodox churches.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Ukraine"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1892,7 +1975,9 @@
     "kind": "church",
     "self_description": "Coptic Orthodox Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Egypt"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1913,7 +1998,9 @@
     "kind": "church",
     "self_description": "Syriac Orthodox Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Syria"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1934,7 +2021,9 @@
     "kind": "church",
     "self_description": "Armenian Apostolic Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Armenia"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1955,7 +2044,9 @@
     "kind": "church",
     "self_description": "Ethiopian Orthodox Tewahedo Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Ethiopia"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1976,7 +2067,9 @@
     "kind": "church",
     "self_description": "Eritrean Orthodox Tewahedo Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Eritrea"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -1997,7 +2090,9 @@
     "kind": "church",
     "self_description": "Malankara Orthodox Syrian Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "India"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -2020,7 +2115,9 @@
     "also_called": [
       "East Syriac"
     ],
-    "regions": [],
+    "regions": [
+      "Iraq"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -2041,7 +2138,9 @@
     "kind": "church",
     "self_description": "Ancient Church of the East preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Iraq"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -2105,7 +2204,10 @@
     "also_called": [
       "PNCC"
     ],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3144,7 +3246,9 @@
     "kind": "book-edition",
     "self_description": "Church of Sweden · historic orders is listed as a liturgical resource. Rights are assessed for an exact edition, not inferred from a tradition’s age.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Sweden"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3195,7 +3299,10 @@
     "also_called": [
       "NRC"
     ],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3215,7 +3322,10 @@
     "kind": "church",
     "self_description": "Heritage Reformed Congregations belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3235,7 +3345,10 @@
     "kind": "church",
     "self_description": "Free Reformed Churches belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3255,7 +3368,9 @@
     "kind": "church",
     "self_description": "Gereformeerde Gemeenten belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Netherlands"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3275,7 +3390,9 @@
     "kind": "church",
     "self_description": "Canadian Reformed Churches belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3297,7 +3414,10 @@
     "also_called": [
       "URCNA"
     ],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3319,7 +3439,10 @@
     "also_called": [
       "PCA"
     ],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3341,7 +3464,9 @@
     "also_called": [
       "OPC"
     ],
-    "regions": [],
+    "regions": [
+      "United States"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3364,7 +3489,9 @@
       "PC(USA)",
       "PCUSA"
     ],
-    "regions": [],
+    "regions": [
+      "United States"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3384,7 +3511,10 @@
     "kind": "church",
     "self_description": "Free Church of Scotland belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "Scotland",
+      "United Kingdom"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
@@ -3404,7 +3534,10 @@
     "kind": "church",
     "self_description": "Reformed Presbyterian Church of North America belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
     "also_called": [],
-    "regions": [],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",

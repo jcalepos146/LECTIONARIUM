@@ -1,3 +1,4 @@
+#tradition-sources a{overflow-wrap:anywhere}
 #enter-sanctuary{margin-top:20px;padding:12px 24px;border:1px solid var(--gold);font:inherit;font-weight:700;background:var(--ink);color:var(--paper);cursor:pointer}
 body.san-open{overflow:hidden}
 #sanctuary{--san-bg:#121619;--san-panel:#1d2427;--san-text:#eee4ce;--san-muted:#bfb6a4;--san-gold:#c7a465;--san-scale:1;position:fixed;inset:0;z-index:10000;overflow:auto;background:radial-gradient(ellipse at top,#293033,var(--san-bg) 65%);color:var(--san-text);font:calc(22px * var(--san-scale))/1.5 Alegreya,Georgia,serif;color-scheme:dark}
@@ -6,7 +7,7 @@ body.san-open{overflow:hidden}
 #sanctuary *{box-sizing:border-box}
 #sanctuary button,#sanctuary input{font:inherit;color:inherit}
 #sanctuary button{cursor:pointer}
-#sanctuary button:focus-visible,#sanctuary input:focus-visible,#sanctuary a:focus-visible,#sanctuary select:focus-visible,#sanctuary summary:focus-visible{outline:3px solid #e9ba74;outline-offset:4px;box-shadow:0 0 0 7px #aa382b,0 0 30px #ad352a80}
+#sanctuary button:focus,#sanctuary input:focus,#sanctuary a:focus,#sanctuary select:focus,#sanctuary summary:focus{outline:3px solid #e9ba74;outline-offset:4px;box-shadow:0 0 0 7px #aa382b,0 0 30px #ad352a80}
 #sanctuary a{color:var(--san-gold);overflow-wrap:anywhere}
 #sanctuary h1{font-size:clamp(2rem,4vw,4.5rem);font-weight:500;line-height:1.15;margin:12px 0 24px;color:inherit}
 #sanctuary h2{font-size:1.3em;color:var(--san-gold);margin:0 0 18px;font-weight:500}

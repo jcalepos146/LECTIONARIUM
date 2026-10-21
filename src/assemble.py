@@ -10,7 +10,7 @@ REPO = "https://github.com/jcalepos146/LECTIONARIUM"
 def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False):
     d1='<script type="application/json" id="lect-data">'+open("pagedata.json").read().strip()+'</script>'
     d2='<script type="application/json" id="lect-extra">'+open("extradata.json").read().strip()+'</script>'
-    parts=[open(head).read().rstrip("\n").replace("</style>", open("sanctuary.css").read()+"\n</style>"), open("page_body.html").read().rstrip("\n"), d1, d2]
+    parts=[open(head).read().rstrip("\n").replace("</style>", open("sanctuary.css").read()+"\n</style>"), open("page_body.html").read().rstrip("\n").replace('<section id="tradition-sources" aria-label="Tradition directory sources"></section>', '<section id="tradition-sources" aria-label="Tradition directory sources">'+open("tradition_sources.html").read()+"</section>"), d1, d2]
     for f in ("page_script.js","music.js",mass)+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"sanctuary.js"):
         parts.append("<script>\n"+open(f).read().rstrip("\n")+"\n</script>")
     return "\n".join(parts)+"\n"

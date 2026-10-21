@@ -52,7 +52,8 @@ Offline scripts that produced the data. `office_gen.py` runs the Divinum Officiu
 `src/sanctuary.js` is assembled after `today.js`; `src/sanctuary.css` is included
 inside the existing style block. `data/traditions.json` is a lazy array of catalog
 records, including parent/family IDs, source URLs, edition rights notes and an
-explicit source-review status. Null calendars mean locality-dependent or not yet
+explicit source-review status. `src/tradition_sources.html` is generated from catalog
+URLs and inlined at assembly so opening Sources does not fetch the catalog. Null calendars mean locality-dependent or not yet
 verified; they must never be silently treated as Gregorian.
 
 The launcher is an accessible modal layer over the existing `.wrap`. The normal
@@ -72,9 +73,9 @@ prompts reflect the latest input. WebAudio sounds are opt-in. Reduced-motion
 preferences disable tile transitions. Theme and text size are local to Sanctuary.
 
 `tools/build_traditions.py` validates parent links, guide mappings and URLs, emits
-share stubs and captures original family artwork using the vellum/penwork from
+share stubs and captures original church and tradition artwork using the vellum/penwork from
 `tools/card.html`. `--check` verifies exact stub contents, PNG dimensions and the
-512-file project budget. Family artwork is shared intentionally; source claims
+512-file project budget. Book editions inherit family artwork; source claims
 require human review even if the generator and browser tests pass.
 
 `tests/test_sanctuary.py` covers lazy loading, routes/history, hierarchy, focus,
