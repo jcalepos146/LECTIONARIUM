@@ -57,7 +57,7 @@ function choiceBtn(group,id,title,desc,on,extra){ return `<button type="button" 
 const COV_LABEL={full:"Complete text",guide:"Guided text",order:"Order and readings"};
 function coverage(type,rite,hour){
   if(type==="mass"){
-    if(/^(m|p|h)$/.test(rite)) return ["full","Every prayer and reading is printed, in Latin and English."];
+    if(/^(m|p|h)$/.test(rite)) return ["full","The complete historical text is available in Latin and English. Lay study keeps priest-only passages as references and veils the words of consecration."];
     if(rite==="o") return ["guide","The Prayer Book texts, the Canon and the propers of the day are printed. Divine Worship's own wording differs in places: follow your Missal there."];
     if(rite==="n") return ["guide","The readings and the Latin Ordinary, with a traditional English beside it, are printed. The collects, preface, Eucharistic Prayer and the current English wording come from your missal: press Add text to fill them in."];
     if(rite==="b") return ["order","The order, postures and readings are given. The prayers of the Liturgy come from your service book: press Add text to fill them in."];
@@ -76,7 +76,7 @@ function renderAsk(){
   if(S.type){ const list=S.type==="mass"?MASS_RITES:OFFICE_RITES; riteHTML=list.map(r=>choiceBtn("rite",r.id,r.name,r.d,S.rite===r.id,covBadge(coverage(S.type,r.id,"vespers")))).join(""); }
   const riteOK = S.type && (S.type==="mass"?MASS_RITES:OFFICE_RITES).some(r=>r.id===S.rite);
   if(S.type==="office" && riteOK){ const sug=suggestHour(S.rite); hourHTML=hoursFor(S.rite).map(([id,n])=>choiceBtn("hour",id,n,id===sug?"Suggested for now":"",S.hour===id)).join(""); }
-  const TIMED=["timed","Timed session","Fit to a set length, from 15 minutes up · for online or role-play sessions"];
+  const TIMED=["timed","Timed session","Fit to a set length, from 15 minutes up · for study sessions"];
   const LENGTHS=S.rite==="b"?[["full","Full Liturgy","As usually served"],TIMED]:[["said","Said","Spoken, no music · shortest"],["sung","Sung, simple","Hymns and a chant Ordinary"],["chant","Full chant","Gregorian propers and Ordinary · longest"],TIMED];
   let lenHTML=""; if(S.type==="mass"&&riteOK){ let st={}; try{ st=JSON.parse(localStorage.getItem("lect-mass-"+S.rite)||"null")||{}; }catch(e){}
     if(!S.len||!LENGTHS.some(x=>x[0]===S.len)) S.len=st.target?"timed":(S.rite==="b"?"full":(st.preset&&st.preset!=="custom"?st.preset:"sung"));
@@ -429,6 +429,7 @@ const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr"};
 async function renderSession(){
   await daysReady;
   const iso=S.date||todayISO();
+  window.dispatchEvent(new CustomEvent("lect-session",{detail:{type:S.type,rite:S.rite,hour:S.hour,iso,label:(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite)?.name}}));
   const crumbs=[S.type==="mass"?"Mass":"Divine Office", (S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
   const day=DAYS[iso];
@@ -575,6 +576,7 @@ function render(){
   if(S.view==="ask") renderAsk(); else renderSession();
 }
 window.LectApp={
+  coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
   /* open the session a live host is running */
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }

@@ -20,12 +20,13 @@ let PANEL="";                                          // open panel: live | scr
 
 /* ---------------------------------------------------------------- mount */
 function mount(el, m){
-  M=m; EL=el;
+  speakStop(); M=m; EL=el;
+  if(window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()&&VIEW.role==='cel'){VIEW.role="";VIEW.only=false;ls.set("lect-view",VIEW);}
   const key=[m.ctx.rite,m.ctx.hour||"",m.ctx.iso].join("|");
   if(RUN.key!==key){ stopTimer(); RUN={key,on:false,acc:0,t0:0,h:null,cur:-1,active:false}; }
   RUN.cur=-1;
   const speakOK="speechSynthesis" in window && typeof SpeechSynthesisUtterance!=="undefined";
-  const roleOpts=Object.entries(m.roles).map(([k,v])=>`<option value="${k}"${VIEW.role===k?" selected":""}>${esc(v)}</option>`).join("");
+  const roleOpts=Object.entries(m.roles).filter(([k])=>k!=="cel"||!window.LectParticipation.catholicMass(m)||window.LectParticipation.isPriest()).map(([k,v])=>`<option value="${k}"${VIEW.role===k?" selected":""}>${esc(v)}</option>`).join("");
   el.querySelector(".tools-timer").innerHTML=timerHTML();
   el.querySelector(".tools-bar").innerHTML=`
     <div class="tbar" role="toolbar" aria-label="Session tools">
@@ -41,7 +42,7 @@ function mount(el, m){
     </div>
     <div class="tpanel" id="tPanel"${PANEL?"":" hidden"}></div>`;
   applyView();
-  el.querySelector("#tRole").addEventListener("change",e=>{ VIEW.role=e.target.value; if(!VIEW.role) VIEW.only=false; ls.set("lect-view",VIEW); el.querySelector("#tOnly").disabled=!VIEW.role; el.querySelector("#tOnly").checked=VIEW.only; applyView(); presence(); if(PANEL==="script") renderPanel(); });
+  el.querySelector("#tRole").addEventListener("change",e=>{ VIEW.role=e.target.value; if(VIEW.role==="cel"&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()){VIEW.role="";e.target.value="";} if(!VIEW.role) VIEW.only=false; ls.set("lect-view",VIEW); el.querySelector("#tOnly").disabled=!VIEW.role; el.querySelector("#tOnly").checked=VIEW.only; applyView(); presence(); if(PANEL==="script") renderPanel(); });
   el.querySelector("#tOnly").addEventListener("change",e=>{ VIEW.only=e.target.checked; ls.set("lect-view",VIEW); applyView(); });
   el.querySelectorAll("[data-panel]").forEach(b=>b.addEventListener("click",()=>{ PANEL=PANEL===b.dataset.panel?"":b.dataset.panel; el.querySelectorAll("[data-panel]").forEach(x=>x.setAttribute("aria-expanded",String(PANEL===x.dataset.panel))); renderPanel(); }));
   el.querySelector("#tPrint").addEventListener("click",printNow);
@@ -164,6 +165,7 @@ function applyRemote(d, fromMount){
   if(!d||typeof d!=="object") return;
   const run=(d.run&&typeof d.run==="object")?{on:!!d.run.on,acc:+d.run.acc||0,startedAt:+d.run.startedAt||0,active:!!d.run.active}:{on:false,acc:0,startedAt:0,active:false};
   const safe={type:d.type==="office"?"office":"mass", rite:String(d.rite||"").slice(0,12), hour:d.hour?String(d.hour).slice(0,12):null, iso:/^\d{4}-\d{2}-\d{2}$/.test(d.iso)?d.iso:null, opts:(d.opts&&typeof d.opts==="object")?d.opts:{}, run};
+  if(safe.type==="mass")safe.opts={...safe.opts,veil:!window.LectParticipation.isPriest()};
   safe.cast=(d.cast&&typeof d.cast==="object")?d.cast:{};
   safe.play=(d.play&&typeof d.play==="object")?{i:+d.play.i|0,on:!!d.play.on,ts:+d.play.ts||0}:null;
   safe.line=Number.isInteger(d.line)?d.line:-1;
@@ -178,7 +180,7 @@ function applyCast(){
   if(LIVE.mode!=="follow"||!LIVE.myPeer||!LIVE.doc) return;
   const r=LIVE.doc.cast[LIVE.myPeer]; const key=LIVE.myPeer+":"+(r||"");
   if(r===undefined||key===LIVE.castSeen) return;
-  LIVE.castSeen=key; const role=M&&(r===""||M.roles[r])?r:null; if(role===null) return;
+  LIVE.castSeen=key; if(r==="cel"&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()){ LIVE.msg="Priest-only parts cannot be assigned in lay study."; renderPanel(); return; } const role=M&&(r===""||M.roles[r])?r:null; if(role===null) return;
   VIEW.role=role; if(!role) VIEW.only=false; ls.set("lect-view",VIEW);
   const sel=EL&&EL.querySelector("#tRole"); if(sel) sel.value=role; const only=EL&&EL.querySelector("#tOnly"); if(only){ only.disabled=!role; only.checked=VIEW.only; }
   applyView(); presence();
@@ -210,7 +212,7 @@ async function joinRoom(){
     r.onPeers(ch=>{ LIVE.peers=ch.peers.length; LIVE.peerList=ch.peers.filter(p=>p.kind==="viewer"); const me=ch.peers.find(p=>p.sameTab); if(me&&me.peer!==LIVE.myPeer){ LIVE.myPeer=me.peer; applyCast(); } if(LIVE.mode==="host"){ const t=EL&&EL.querySelector(".tlive"); if(t) t.textContent=`Live · ${LIVE.code.toUpperCase()}${LIVE.peers>1?` · ${LIVE.peers-1} following`:""}`; } if(PANEL==="live") renderPanel(); }, ()=>{});
     presence(); }catch(e){}
 }
-function presence(){ try{ if(LIVE.room) LIVE.room.presence({role:VIEW.role||"", host:LIVE.mode==="host", name:String(LIVE.me.name||"").slice(0,40), ready:!!LIVE.me.ready}); }catch(e){} }
+function presence(){ try{ if(LIVE.room) LIVE.room.presence({role:VIEW.role||"", host:LIVE.mode==="host", name:String(LIVE.me.name||"").slice(0,40), ready:!!LIVE.me.ready,priest:window.LectParticipation.isPriest()}); }catch(e){} }
 function leaveRoom(){ try{ if(LIVE.room) LIVE.room.leave(); }catch(e){} LIVE.room=null; LIVE.peers=0; }
 function liveOpts(){ return LIVE.mode==="follow"&&LIVE.doc?LIVE.doc.opts:null; }
 function refreshBar(){ const b=EL&&EL.querySelector('[data-panel="live"]'); if(b) b.textContent=LIVE.mode==="host"?"Live · hosting":LIVE.mode==="follow"?"Live · following":"Live session"; }
@@ -229,10 +231,13 @@ function textOf(node){
   c.querySelectorAll("sup, .mctl, button, select, label.tp, .sp").forEach(x=>x.remove());
   return c.textContent.replace(/\s+/g," ").replace(/\s([,.;:!?])/g,"$1").trim();
 }
-function extract(lang){
+function extract(lang,spoken=false){
   const out=[], body=EL.querySelector(".mbody"); if(!body) return out;
+  const reserved=(node,role)=>window.LectParticipation.catholicMass(M)&&window.LectParticipation.priestOnly(node,role)&&(spoken||!window.LectParticipation.isPriest());
   const walk=(node,role)=>{
+    if(reserved(node,role))return;
     for(const el of node.children){
+      if(reserved(el,role))continue;
       if(el.matches("[lang=la]")&&lang==="en"&&el.parentElement.classList.contains("two")) continue;
       if(el.matches("[lang=en]")&&lang==="la"&&el.parentElement.classList.contains("two")) continue;
       if(el.matches("h3")) continue;
@@ -312,7 +317,7 @@ function voiceFor(lang){
 }
 function speakStart(lang){
   speakStop();
-  const items=extract(lang).filter(it=>it.k==="line"||it.k==="cite"||it.k==="h");
+  const items=extract(lang,true).filter(it=>it.k==="line"||it.k==="cite"||it.k==="h");
   let start=0; const e=RUN.cur>=0?RUN.cur:-1;
   if(e>=0){ const sec=EL.querySelector(`#mp-${e}`); const k=items.findIndex(it=>it.el===sec); if(k>=0) start=k; }
   SPEAK={...SPEAK,on:true,paused:false,items,i:start,lang};
@@ -376,6 +381,7 @@ ol.order{padding-left:1.3em}.homily{border:1px dashed #999;padding:6px 10px;bord
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(head?head.textContent:"Lectionarium")}</title><style>${css}</style></head><body><main>
 <h1>${esc(head?head.textContent:"")}</h1><p class="meta">${esc([date&&date.textContent,crumbs&&crumbs.textContent,sub&&sub.textContent].filter(Boolean).join(" · "))}</p>
 ${role?`<p class="legend">Highlighted: the ${esc(role.toLowerCase())}'s parts.</p>`:""}
+${window.LectParticipation.catholicMass(M)?'<p class="legend">Study reference. Priest-only prayers are not lay assigned parts; this booklet does not authorize a celebration.</p>':""}
 ${body.innerHTML}
 <p class="meta" style="margin-top:28px">Made with Lectionarium. Texts: Divinum Officium (MIT), Douay-Rheims and King James Bibles, the 1662 Book of Common Prayer; chant from GregoBase (CC0); hymns from the Open Hymnal (public domain). Consult the approved liturgical books for celebration.</p>
 </main></body></html>`;
@@ -499,11 +505,11 @@ function livePanel(){
   const check=`<details class="lvcheck"${CHECK.length?" open":""}><summary>Check the connection</summary><div class="trow2"><button type="button" class="tbtn ghost" id="lvCheck">Run check</button></div>${CHECK.length?`<ul class="checks">${CHECK.map(c=>`<li class="${c.ok?"ok":"bad"}"><b>${c.ok?"OK":"Problem"}</b> ${esc(c.t)}</li>`).join("")}</ul>`:""}</details>`;
   if(LIVE.mode==="host"){
     const others=LIVE.peerList.filter(p=>!p.sameTab), ready=others.filter(p=>p.presence&&p.presence.ready).length;
-    const roleSel=(peer,cur)=>`<select data-cast="${esc(peer)}" aria-label="Part"><option value="">Everyone</option>${Object.entries(M.roles).map(([k,v])=>`<option value="${k}"${cur===k?" selected":""}>${esc(v)}</option>`).join("")}</select>`;
+    const roleSel=(peer,cur,priest)=>`<select data-cast="${esc(peer)}" aria-label="Part"><option value="">Everyone</option>${Object.entries(M.roles).filter(([k])=>k!=="cel"||!window.LectParticipation.catholicMass(M)||priest===true).map(([k,v])=>`<option value="${k}"${cur===k?" selected":""}>${esc(v)}</option>`).join("")}</select>`;
     return `<h4 class="tph">Hosting a live session</h4>
     <p class="livecode" aria-label="Session code">${esc(LIVE.code.toUpperCase())}</p>
     <p>Anyone who can open this page joins with that code: Pray today → Join a live session. They see this ${esc(M.noun)}, your length and music settings, and the part you are on. Move everyone along with the timer and the ‹ › buttons; music you play here plays for everyone who turned sound on.</p>
-    ${others.length?`<table class="cast"><thead><tr><th>Who</th><th>Ready</th><th>Part</th></tr></thead><tbody>${others.map(p=>{ const pr=p.presence||{}; return `<tr><td class="who"></td><td>${pr.ready?"✓":"…"}</td><td>${roleSel(p.peer,LIVE.cast[p.peer]!==undefined?LIVE.cast[p.peer]:(pr.role||""))}</td></tr>`; }).join("")}</tbody></table><p class="note">${ready} of ${others.length} ready.</p>`:`<p class="note">Nobody has joined yet. ${P2P?"Send people this page's link and the code; they open the page, choose Live session and enter the code. Keep this tab open: the session runs from your browser.":"Followers must be signed in to Claude; people outside your organization need the page shared with them."}</p>`}
+    ${others.length?`<table class="cast"><thead><tr><th>Who</th><th>Ready</th><th>Part</th></tr></thead><tbody>${others.map(p=>{ const pr=p.presence||{}; return `<tr><td class="who"></td><td>${pr.ready?"✓":"…"}</td><td>${roleSel(p.peer,LIVE.cast[p.peer]!==undefined?LIVE.cast[p.peer]:(pr.role||""),pr.priest)}</td></tr>`; }).join("")}</tbody></table><p class="note">${ready} of ${others.length} ready.</p>`:`<p class="note">Nobody has joined yet. ${P2P?"Send people this page's link and the code; they open the page, choose Live session and enter the code. Keep this tab open: the session runs from your browser.":"Followers must be signed in to Claude; people outside your organization need the page shared with them."}</p>`}
     <div class="trow2"><button type="button" class="tbtn" id="lvCopy">Copy invite</button><button type="button" class="tbtn ghost" id="lvEnd">End session</button></div>${msg}${check}`;
   }
   if(LIVE.mode==="follow") return `<h4 class="tph">Following live session ${esc((LIVE.code||"").toUpperCase())}</h4>
@@ -571,6 +577,7 @@ function wirePanel(p){
   }
 }
 
+window.addEventListener("lect-participation",()=>{speakStop();if(PRES.open)presentClose();LIVE.castSeen="";if(M&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()&&VIEW.role==="cel"){VIEW.role="";VIEW.only=false;ls.set("lect-view",VIEW);}presence();});
 window.addEventListener("beforeunload",()=>{ try{ speechSynthesis.cancel(); }catch(e){} });
 window.LectTools={mount, join, liveOpts, leave, saveFile};
 })();

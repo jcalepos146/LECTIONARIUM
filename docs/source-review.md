@@ -1,0 +1,109 @@
+# Tradition directory review, 21 October 2026
+
+The directory distinguishes sourced identities and relationships from uncleared
+service-book rights and uncomputed local calendars. It is not a legal clearance.
+A later read-only audit reached 67 of 73 URLs; the primary Tomos timed out on
+that rerun after previously being read successfully.
+This is a reachability result, not certification of the claims or rights.
+
+Content actually inspected:
+
+- CNEWA's *Eastern Christian Churches* introduction and table of contents:
+  https://cnewa.org/eastern-christian-churches/introduction/ . Specific Eastern
+  Catholic entries now link to the relevant chapters where available. This is a
+  historical survey; do not infer present recognition from its old classifications.
+- WCC's Eastern Orthodox family page lists the fourteen historical autocephalous
+  churches. https://www.oikoumene.org/church-families/orthodox-churches-eastern .
+  OCA's autocephaly Q&A landing page labels its material as a 1970 publication:
+  https://www.oca.org/questions/autocephaly . Neither alone establishes current
+  recognition of the OCA or the Orthodox Church of Ukraine.
+- WCC's Oriental Orthodox page is at
+  https://www.oikoumene.org/church-families/orthodox-churches-oriental .
+- The Society of Archbishop Justus' England, Scotland, Ireland, US and Canada
+  catalogs identify the historical editions. In particular, the Scottish 1764
+  item is a Communion Office, not a full standalone Prayer Book. India's 1960
+  item is a supplement to the Indian Prayer Book.
+- The ACNA 2019 official landing page directs reuse to Anglican House's
+  permissions policies. No ACNA text has been reproduced.
+- The Union of Utrecht home and About pages describe a union of national Old
+  Catholic churches and an episcopal-synodical structure. National membership
+  still needs its own current review.
+- The former `unionofscranton.org` domain now serves unrelated contractor reviews.
+  It has been removed. Use PNCC official sources, not that domain, for further
+  verification.
+
+Persistent access failures in the audit: `thenalc.org`, `www.goarch.org`, `www.hrcna.org`,
+`www.pncc.org`, and `www.rpcna.org`. These returned HTTP 403 or a proxy denial.
+Domain requirements were saved in the environment draft. Apply relevant network
+settings before retrying; a draft save alone is not runtime validation.
+
+For further text imports: inspect authoritative copyright notices for each exact
+edition and territory. Keep recognition statements attributed to their sources
+and Utrecht membership tied to the current directory. Entries retain local
+practice and edition limits rather than treating identity review as permission
+to copy service books.
+No text is reproduced merely because a seed record says public domain.
+
+The uploaded *Divine Liturgies Public Domain Companion* was read as source
+material. Its introduction identifies Hapgood's 1906 *Service Book* and states
+that its selection is not exhaustive. Extracted OCR has substantial errors and
+parallel alternatives. It has not been inserted into the Byzantine guide or used
+to claim complete coverage. That requires transcription against the facsimiles,
+separation of Chrysostom/Basil alternatives and audit of all variable propers.
+
+Follow-up checks:
+
+- OCA's current World Churches directory was read on 21 October 2026:
+  https://www.oca.org/directories/world-churches . It lists the Macedonian Orthodox
+  Church–Ohrid Archbishopric among autocephalous churches. The new entry attributes
+  that listing specifically to the OCA; it does not assert universal recognition.
+- The Ecumenical Patriarchate's primary Tomos dated 6 January 2019 was read:
+  https://ec-patr.org/en/06/01/15/32/patriarchal-and-synodal-tomos-for-the-bestowal-of-the-ecclesiastical-status-of-autocephaly-to-the-orthodox-church-in-ukraine/ .
+  The Orthodox Church of Ukraine and the Church of Ukraine under Metropolitan
+  Onufry listed by the OCA are distinct bodies; the directory does not conflate them.
+- Internet Archive metadata for `cu31924029363128` confirms Hapgood's title and
+  publication year 1906. Historical study editions are labeled separately from
+  modern authorized local books. Exact transcription is still unreviewed.
+- Historical English Prayer Book editions through 1662 and the Scottish 1637
+  edition are indexed with their original Julian calendar. Later reformed 1662
+  calendars are distinguished in the notes.
+- A later PNCC request passed the initial proxy connection but failed upstream
+  TLS verification. Verification was kept enabled; no content was accepted from
+  that failed request.
+
+Additional content reviewed on 21 October 2026:
+
+- The official Union member page lists the six independent churches in the
+  Netherlands, Germany, Switzerland, Austria, the Czech Republic and Poland.
+  https://www.utrechter-union.org/organisation/mitgliedskirchen/
+  The separate dependent communities are described as such, not silently counted
+  as independent members. The Polish Catholic Church differs from the PNCC.
+- The Nordic Catholic Church quotes the Union of Scranton statutes, including
+  the PNCC relationship and its separation from Utrecht:
+  https://nordiccatholic.com/union-of-scranton/
+- The OCA North American directory identifies GOARCH, Antiochian and ROCOR:
+  https://www.oca.org/directories/na-churches . It does not establish a common
+  calendar or clear any translation.
+- The historical Catholic Encyclopedia article “Rites” documents Ambrosian,
+  Mozarabic and the named religious-order uses:
+  https://www.newadvent.org/cathen/13064b.htm . Its historical classifications do
+  not establish current permissions; those entries no longer assume a calendar.
+- Internet Archive search catalog records identify the 1888 Common Service,
+  1912 Psalter with responsive readings and 1906 Book of Common Worship. Exact
+  records replace generic library home-page links. Transcriptions and later
+  arrangements remain separate review questions.
+
+The official LCMS, WELS, ELS, ELCA, FRCNA, Gergeminfo, Canadian Reformed,
+URCNA, PCA, OPC, PC(USA) and Free Church of Scotland pages were read to check
+identity. That check does not infer which edition a local congregation uses.
+Paul VI’s 1969 *Missale Romanum* and Benedict XVI’s *Anglicanorum coetibus*
+(article III) provide specific Latin sources in place of a generic Eastern
+church survey. The Church of England’s copyright notice explicitly identifies
+Crown rights in the 1662 BCP; the Canadian church’s own page links its 1962 PDF.
+The 1941 Lutheran Hymnal catalog record is restricted and has no blanket reuse
+licence established here, so no text is imported.
+
+Exact historical catalog records now also identify the 1562 Genevan psalter,
+1650 Scottish metrical psalter and Westminster Directory’s 1644–45 printing.
+The Dort entry distinguishes a later 1856 English liturgy from the original
+1619 Dutch forms; modern English translations remain separately uncleared.

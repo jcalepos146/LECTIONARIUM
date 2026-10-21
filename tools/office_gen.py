@@ -5,14 +5,20 @@ stand-in) renders the hour in Latin and English; this script turns each two-colu
 HTML and stores the rows in a de-duplicated string table.
 
   python3 office_gen.py gen  <version-key> <start> <end> [chant]   -> cache/<key>[-chant]/<iso>.json
-  python3 office_gen.py pack <version-key> [chant]                 -> office/<key>[-chant]/...
+  python3 office_gen.py unpack <version-key>                     -> recover all published caches
+  python3 office_gen.py pack <version-key> [shard_kb]             -> breviary/<key>/...
+
+LECTIONARIUM_DO selects the engine checkout; LECTIONARIUM_OFFICE_WORK selects a
+scratch directory (default: tools). LECTIONARIUM_OFFICE_WORKERS bounds generation concurrency.
 """
-import os, re, sys, json, gzip, html, subprocess, datetime as dt
+import os, re, sys, json, gzip, html, subprocess, tempfile, shutil, datetime as dt
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DO = os.path.join(HERE, "do", "web", "cgi-bin", "horas", "officium.pl")
-STUB = os.path.join(HERE, "..", "tools2", "perlstub")
+DO_ROOT = os.environ.get("LECTIONARIUM_DO", os.path.join(HERE, "do"))
+DO = os.path.join(DO_ROOT, "web", "cgi-bin", "horas", "officium.pl")
+WORK = os.environ.get("LECTIONARIUM_OFFICE_WORK", HERE)
+STUB = os.path.join(HERE, "perlstub")
 VERSIONS = {"br62": "Rubrics 1960 - 1960", "br55": "Divino Afflatu - 1954", "mon": "Monastic - 1963", "op": "Ordo Praedicatorum - 1962"}
 HOURS = ["Matutinum", "Laudes", "Prima", "Tertia", "Sexta", "Nona", "Vespera", "Completorium"]
 
@@ -22,7 +28,7 @@ def run(version, iso, hour, chant=False):
     q = {"command": "pray" + hour, "date1": f"{m}-{d}-{y}", "version": version, "lang2": "English", "content": "1"}
     if chant: q["lang1"] = "Latin-gabc"
     env = dict(os.environ, QUERY_STRING="&".join(f"{k}={v.replace(' ', '%20')}" for k, v in q.items()))
-    r = subprocess.run(["perl", "-I", STUB, DO], env=env, capture_output=True, timeout=120)
+    r = subprocess.run(["perl", "-I", STUB, DO], env=env, capture_output=True, timeout=120, check=True)
     return r.stdout.decode("utf-8", "replace")
 
 
@@ -81,7 +87,7 @@ def parse(page):
 
 
 def gen(key, start, end, chant=False):
-    ver = VERSIONS[key]; out = os.path.join(HERE, "cache", key + ("-chant" if chant else "")); os.makedirs(out, exist_ok=True)
+    ver = VERSIONS[key]; out = os.path.join(WORK, "cache", key + ("-chant" if chant else "")); os.makedirs(out, exist_ok=True)
     d0, d1 = dt.date.fromisoformat(start), dt.date.fromisoformat(end)
     dates = [(d0 + dt.timedelta(i)).isoformat() for i in range((d1 - d0).days + 1)]
     dates = [x for x in dates if not os.path.exists(os.path.join(out, x + ".json.gz"))]
@@ -89,14 +95,15 @@ def gen(key, start, end, chant=False):
     def one(iso):
         res = {}
         for h in hours:
-            try: res[h] = parse(run(ver, iso, h, chant))
-            except Exception as e: res[h] = {"t": "", "rows": [], "err": str(e)[:200]}
+            res[h] = parse(run(ver, iso, h, chant))
+            if not res[h]["rows"] or not res[h]["t"]:
+                raise RuntimeError(f"Empty Office output: {iso} {h}; cache not written")
         tmp = os.path.join(out, iso + ".part")
         with gzip.open(tmp, "wt", encoding="utf-8") as fh:
             json.dump(res, fh, ensure_ascii=False, separators=(",", ":"))
         os.replace(tmp, os.path.join(out, iso + ".json.gz"))
         return iso
-    with ThreadPoolExecutor(max_workers=2) as ex:
+    with ThreadPoolExecutor(max_workers=max(1, int(os.environ.get("LECTIONARIUM_OFFICE_WORKERS", "2")))) as ex:
         for i, iso in enumerate(ex.map(one, dates)):
             if i % 50 == 0: print(key, iso, flush=True)
 
@@ -122,7 +129,7 @@ def fix_cell(c):
 
 def retitle(key):
     """Fill titles left blank by the first title pattern (feast days print a second line under the title)."""
-    src = os.path.join(HERE, "cache", key); ver = VERSIONS[key]
+    src = os.path.join(WORK, "cache", key); ver = VERSIONS[key]
     def one(f):
         p = os.path.join(src, f)
         try:
@@ -140,16 +147,18 @@ def retitle(key):
             with gzip.open(p + ".tmp", "wt", encoding="utf-8") as fh: json.dump(J, fh, ensure_ascii=False, separators=(",", ":"))
             os.replace(p + ".tmp", p)
         return n
-    with ThreadPoolExecutor(max_workers=2) as ex: print(key, "titles filled:", sum(ex.map(one, sorted(x for x in os.listdir(src) if x.endswith(".json.gz")))))
+    with ThreadPoolExecutor(max_workers=max(1, int(os.environ.get("LECTIONARIUM_OFFICE_WORKERS", "2")))) as ex: print(key, "titles filled:", sum(ex.map(one, sorted(x for x in os.listdir(src) if x.endswith(".json.gz")))))
 
 
 def pack(key, shard_kb=1500):
     """One version's text and chant runs -> line table, row table (both sharded) and a day index per month.
     Lines and rows are numbered in order of first appearance, so a month's new material sits in a few shards."""
-    srcs = [("", os.path.join(HERE, "cache", key))]
-    if os.path.isdir(os.path.join(HERE, "cache", key + "-chant")): srcs.append(("c:", os.path.join(HERE, "cache", key + "-chant")))
-    dst = os.path.join(HERE, "breviary", key); os.makedirs(dst, exist_ok=True)
-    for f in os.listdir(dst): os.remove(os.path.join(dst, f))
+    srcs = [("", os.path.join(WORK, "cache", key))]
+    if os.path.isdir(os.path.join(WORK, "cache", key + "-chant")): srcs.append(("c:", os.path.join(WORK, "cache", key + "-chant")))
+    if key not in VERSIONS or shard_kb <= 0: raise ValueError("Invalid version or shard size")
+    final_dst = os.path.join(WORK, "breviary", key)
+    os.makedirs(os.path.dirname(final_dst), exist_ok=True)
+    dst = tempfile.mkdtemp(prefix="." + key + "-pack-", dir=os.path.dirname(final_dst))
     lines, lid, rows, rid, months = [], {}, [], {}, {}
     def L(x):
         if x not in lid: lid[x] = len(lines); lines.append(x)
@@ -167,7 +176,8 @@ def pack(key, shard_kb=1500):
             if not os.path.exists(p): continue
             try:
                 with gzip.open(p, "rt", encoding="utf-8") as fh: J = json.load(fh)
-            except Exception: continue          # still being written
+            except Exception as e:
+                raise RuntimeError(f"Invalid generation cache: {p}") from e
             for h, v in J.items():
                 day[pre + h] = [v["t"], [R(a, b) for a, b in v["rows"]]]
         months.setdefault(iso[:4], {})[iso] = day        # one day index per year keeps the file count low
@@ -186,14 +196,106 @@ def pack(key, shard_kb=1500):
     for yr, d in months.items():
         json.dump(d, open(os.path.join(dst, f"y-{yr}.json"), "w"), ensure_ascii=False, separators=(",", ":"))
     json.dump(man, open(os.path.join(dst, "manifest.json"), "w"), separators=(",", ":"))
+    backup = final_dst + ".previous"
+    if os.path.exists(backup): raise RuntimeError("Preserved previous build exists: " + backup)
+    if os.path.isdir(final_dst):
+        if any(not re.fullmatch(r"(manifest|[lr]-[0-9]{3}|y-[0-9]{4})\.json", f) for f in os.listdir(final_dst)):
+            raise RuntimeError("Output contains unrecognized files; refusing to replace it")
+        os.replace(final_dst, backup)
+    try: os.replace(dst, final_dst)
+    except Exception:
+        if os.path.exists(backup): os.replace(backup, final_dst)
+        raise
+    if os.path.exists(backup): shutil.rmtree(backup)
+    dst = final_dst
     tot = sum(os.path.getsize(os.path.join(dst, f)) for f in os.listdir(dst))
     print(key, len(lines), "lines", len(rows), "rows", len(man["lines"]), "+", len(man["rows"]), "shards", len(months), "years;", tot // 1024 // 1024, "MB in", len(os.listdir(dst)), "files")
 
 
+def rechunk(key, shard_kb):
+    """Consolidate published shards without changing any line/row/day IDs or text.
+    Output goes to WORK/breviary/key and must not already exist. Validate with
+    check_office.py --baseline before replacing the published directory.
+    """
+    from pathlib import Path
+    if key not in VERSIONS or shard_kb <= 0: raise ValueError("Invalid version or shard size")
+    src = Path(HERE).parent / "breviary" / key
+    dst = Path(WORK) / "breviary" / key
+    if dst.exists(): raise ValueError("Output already exists: " + str(dst))
+    man = json.loads((src / "manifest.json").read_text())
+    tables = {}
+    for prefix, name in [("l", "lines"), ("r", "rows")]:
+        items = []
+        for i, (start, count) in enumerate(man[name]):
+            chunk = json.loads((src / f"{prefix}-{i:03d}.json").read_text())
+            if len(items) != start or chunk["start"] != start or len(chunk["v"]) != count:
+                raise ValueError("Invalid shard offsets")
+            items.extend(chunk["v"])
+        tables[prefix] = items
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    stage = Path(tempfile.mkdtemp(prefix="." + key + "-rechunk-", dir=dst.parent))
+    for prefix, name in [("l", "lines"), ("r", "rows")]:
+        chunks=[];cur=[];size=0;start=0
+        for item in tables[prefix]:
+            encoded=json.dumps(item,ensure_ascii=False,separators=(",", ":"))
+            if cur and size + len(encoded.encode()) > shard_kb*1024:
+                chunks.append((start,cur));start+=len(cur);cur=[];size=0
+            cur.append(item);size+=len(encoded.encode())+1
+        if cur: chunks.append((start,cur))
+        man[name]=[[start,len(chunk)] for start,chunk in chunks]
+        for i,(start,chunk) in enumerate(chunks):
+            (stage/f"{prefix}-{i:03d}.json").write_text(json.dumps({"start":start,"v":chunk},ensure_ascii=False,separators=(",", ":")))
+    for year in man["years"]: shutil.copy2(src/f"y-{year}.json",stage/f"y-{year}.json")
+    (stage/"manifest.json").write_text(json.dumps(man,separators=(",", ":")))
+    os.replace(stage,dst)
+    print(key,"rechunked without changing IDs:",len(man["lines"]),"line shards,",len(man["rows"]),"row shards")
+
+
+def unpack(key):
+    """Recover every existing text/chant day from published shards before extending.
+    Never overwrite an existing generation cache. This preserves prior years and
+    makes extending a packed-only checkout safe and repeatable.
+    """
+    import pathlib
+    if key not in VERSIONS: raise ValueError("Invalid version")
+    src = pathlib.Path(HERE).parent / "breviary" / key
+    man = json.loads((src / "manifest.json").read_text())
+    def table(prefix, shards):
+        result = []
+        for i, (start, size) in enumerate(shards):
+            j = json.loads((src / f"{prefix}-{i:03d}.json").read_text())
+            if j["start"] != start or len(result) != start or len(j["v"]) != size:
+                raise ValueError("Invalid shard offsets")
+            result.extend(j["v"])
+        return result
+    lines = table("l", man["lines"]); rows = table("r", man["rows"])
+    count = 0
+    for year in man["years"]:
+        for iso, day in json.loads((src / f"y-{year}.json").read_text()).items():
+            for chant, suffix in [(False, ""), (True, "-chant")]:
+                hours = {}
+                for hour, (title, indices) in day.items():
+                    if hour.startswith("c:") != chant: continue
+                    hours[hour.removeprefix("c:")] = {"t": title, "rows": [
+                        ["".join(lines[k] for k in rows[i][0]), "".join(lines[k] for k in rows[i][1])] for i in indices]}
+                if not hours: continue
+                dst = pathlib.Path(WORK) / "cache" / (key + suffix) / (iso + ".json.gz")
+                if dst.exists(): continue
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                tmp = dst.with_suffix(".part")
+                with gzip.open(tmp, "wt", encoding="utf-8") as f:
+                    json.dump(hours, f, ensure_ascii=False, separators=(",", ":"))
+                os.replace(tmp, dst)
+                count += 1
+    print(key, count, "cached days recovered without replacing existing files")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1]
-    if cmd == "gen": gen(sys.argv[2], sys.argv[3], sys.argv[4], len(sys.argv) > 5 and sys.argv[5] == "chant")
-    elif cmd == "pack": pack(sys.argv[2])
+    if cmd == "rechunk": rechunk(sys.argv[2], int(sys.argv[3]))
+    elif cmd == "unpack": unpack(sys.argv[2])
+    elif cmd == "gen": gen(sys.argv[2], sys.argv[3], sys.argv[4], len(sys.argv) > 5 and sys.argv[5] == "chant")
+    elif cmd == "pack": pack(sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else 1500)
     elif cmd == "retitle": retitle(sys.argv[2])
     elif cmd == "one":
         p = parse(run(VERSIONS[sys.argv[2]], sys.argv[3], sys.argv[4], len(sys.argv) > 5))

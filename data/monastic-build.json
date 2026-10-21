@@ -1,0 +1,27 @@
+{
+  "source": "https://github.com/DivinumOfficium/divinum-officium",
+  "commit": "df1ebc65f16f3b9026c4cae43fa8c0c1ba7cfded",
+  "version": "Monastic - 1963",
+  "generated_chant_dates": [
+    "2027-02-14",
+    "2030-11-30"
+  ],
+  "preserved_dates": [
+    "2025-11-30",
+    "2030-11-30"
+  ],
+  "baseline_commit": "6ab705c767bed98ed1b3a4ac1321da030dc8d5d9",
+  "commands": [
+    "python3 tools/office_gen.py unpack mon",
+    "python3 tools/office_gen.py gen mon 2027-02-14 2030-11-30 chant",
+    "python3 tools/office_gen.py pack mon 2000",
+    "python3 tools/check_office.py \"$LECTIONARIUM_OFFICE_WORK/breviary/mon\" --baseline breviary/mon --chant-through 2030-11-30"
+  ],
+  "environment": {
+    "LECTIONARIUM_DO": "path to source checkout at the recorded commit",
+    "LECTIONARIUM_OFFICE_WORK": "scratch directory outside the checkout",
+    "LECTIONARIUM_OFFICE_WORKERS": "4"
+  },
+  "validation": "Every original title and rendered text/chant cell preserved across 1827 days. All seven chant-mode hours present for every date; 75 source Triduum little-hour records have no GABC notation. Matins remains text-only.",
+  "license": "MIT License\n\nCopyright (c) 2026 Divinum Officium\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+}

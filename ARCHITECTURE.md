@@ -46,3 +46,83 @@ Offline scripts that produced the data. `office_gen.py` runs the Divinum Officiu
 - **Roles.** Text elements carry `data-r` = `cel`, `srv`, `lec`, `ppl` or `all`; the role views, chat script and read-aloud depend on it.
 - **Timing.** Builders return sections with `min` (minutes); `mass.js` fits sessions to a target length.
 - **Two hosts.** The same code runs on GitHub Pages and inside a Claude artifact (which provides `window.claude` for live sessions); nothing may assume one or the other.
+
+## Sanctuary launcher
+
+`src/sanctuary.js` is assembled after `today.js`; `src/sanctuary.css` is included
+inside the existing style block. `data/traditions.json` is a lazy array of catalog
+records, including parent/family IDs, source URLs, edition rights notes and an
+explicit source-review status. `src/tradition_sources.html` is generated from catalog
+URLs and inlined at assembly so opening Sources does not fetch the catalog. Null calendars mean locality-dependent or not yet
+verified; they must never be silently treated as Gregorian.
+
+The launcher is an accessible modal layer over the existing `.wrap`. The normal
+page becomes inert while open. It restores focus and scroll on exit. The old tab
+router ignores slash-prefixed routes so hash history belongs to Sanctuary until
+exit. The launcher owns home, hierarchical detail and search screens; it never
+renders a service. `LectApp.follow()` remains the service handoff and
+`LectApp.coverage()` exposes the existing coverage labels without duplicating
+coverage policy. Existing guide controls, roles, music and live-session code are
+reused unchanged.
+
+Keyboard navigation uses horizontal shelf wrapping and geometric movement
+between rows; focus scrolls into view and Tab remains in the modal. Gamepad polling
+uses `requestAnimationFrame`, dead zones, an initial 360 ms hold delay and 140 ms
+directional repeats. Action buttons require release between selections. Input
+prompts reflect the latest input. WebAudio sounds are opt-in. Reduced-motion
+preferences disable tile transitions. Theme and text size are local to Sanctuary.
+
+`tools/build_traditions.py` validates parent links, guide mappings and URLs, emits
+share stubs and captures original church and tradition artwork using the vellum/penwork from
+`tools/card.html`. `--check` verifies exact stub contents, PNG dimensions and the
+512-file project budget. Book editions inherit family artwork; source claims
+require human review even if the generator and browser tests pass.
+
+`tests/test_sanctuary.py` covers lazy loading, routes/history, hierarchy, focus,
+controller input, search, guide handoff, recent guides, Sources aggregation,
+Add text, live-session controls, Breviary text loading, build reproducibility,
+and screenshots at 390/1920 px under light/dark system preferences. External
+network services are excluded. A pinned local PeerJS server and client exercise
+a real two-browser host/join, readiness, roles and position exchange in CI.
+Managed Chromium installations that block direct WebRTC skip this regression
+with an explicit policy reason; other local failures remain failures. The read-only
+`tools/audit_tradition_sources.py` reports source reachability for the outstanding
+editorial audit without asserting that reachable content confirms each claim.
+
+## Monastic chant extension
+
+`data/monastic-build.json` records the Divinum Officium revision and MIT notice.
+`office_gen.py unpack` reconstructs the full text/chant caches from published
+shards; extending only missing dates therefore preserves prior data. `pack mon
+2000` stages approximately 2 MB shards and swaps the output directory only after
+writing it. `LECTIONARIUM_DO`, `LECTIONARIUM_OFFICE_WORK` and
+`LECTIONARIUM_OFFICE_WORKERS` select the engine, scratch directory and concurrency.
+`tools/check_office.py` checks shard references, all eight text hours and seven
+chant-mode hours through the requested date. `--baseline` compares every original
+title and rendered cell, independently of reindexed shard positions. The known
+unnotated Triduum little hours still require complete hour records; other missing
+notation fails validation.
+
+`office_gen.py rechunk <key> <kilobytes>` consolidates an existing pack without
+renumbering text or row IDs; its output must be validated with `--baseline`
+before replacement. The br55/br62 packs use 4 MB shards to leave room for the
+individual catalog share pages within the 512-file site limit.
+
+## Local participation mode
+
+`src/participation.js` is loaded before Mass/session tools. It owns the local
+sessionStorage choice between lay study and a self-declared ordained-priest
+mode. The host’s options never supply that choice. Mass rendering derives
+`veil` locally; received live options are normalized before comparison so a
+host’s priest mode cannot override a lay follower or cause redraw loops.
+
+Reserved Eucharistic sections, priest-role paragraphs and their user-pasted
+texts carry `data-priest-only`. The shared extraction path filters these for
+lay chat/presenter output and for all read-aloud output. Whole traditional
+Canons are collapsed as study references. Public responses remain separate
+where role markup distinguishes them. Local role selection, peer assignment
+options and received assignments enforce the same priest-mode condition;
+only a recipient’s own choice enables a celebrant role. Office officiant
+roles remain available, with the canonical obligation/approved-book limits
+explained separately in Sources. Mode changes stop queued speech and clear
+an inappropriate celebrant selection.

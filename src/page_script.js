@@ -349,7 +349,7 @@ document.querySelectorAll("#filterSeg button").forEach(b=>b.addEventListener("cl
 let qt; $("#q").addEventListener("input",e=>{ clearTimeout(qt); qt=setTimeout(()=>{ state.q=e.target.value; render(); },120); });
 
 const TABS=["today","compare","lectionaries","hybrid","changes","office","sources"];
-function show(id){ if(!TABS.includes(id)) id="today";
+function show(id){ if(id.startsWith("/")) return; if(!TABS.includes(id)) id="today";
   TABS.forEach(t=>{ document.getElementById(t).hidden = t!==id; document.getElementById("tab-"+t).setAttribute("aria-selected", t===id?"true":"false"); });
   try{ history.replaceState(null,"","#"+id); }catch(e){}
 }
