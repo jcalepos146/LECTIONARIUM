@@ -1,7 +1,16 @@
 {
   "reviewed": "2026-10-21",
   "about": "Where the texts still missing from each rite can come from, in the order they should be imported. A source listed here is a lead, not a clearance: check the exact scan, edition and territory before extracting, as docs/source-review.md requires. Run `python3 tools/text_sources.py --audit` to re-check every Internet Archive identifier.",
-  "order": ["catholic", "anglican", "eastern-orthodox", "oriental", "lutheran", "reformed", "old-catholic"],
+  "order": [
+    "catholic",
+    "anglican",
+    "eastern-orthodox",
+    "oriental",
+    "lutheran",
+    "reformed",
+    "methodist",
+    "old-catholic"
+  ],
   "rights": {
     "pd": "Published before 1931: public domain in the United States. Print after checking the scan matches the edition named.",
     "pd-reprint": "A later facsimile or reprint of a pre-1931 text. The text is public domain; transcribe from it but cite the original edition.",
@@ -11,130 +20,570 @@
     "check-uraa": "Foreign publication 1931 or later. May have had its US copyright restored; treat as protected unless the source-country term had expired by 1996.",
     "permission": "In copyright. Cite and cue it; reproduce only with written permission from the holder named in the note.",
     "reference": "Study or calendar reference only. Not a text to print.",
-    "crown-uk": "Public domain outside the United Kingdom; Crown rights in the UK (existing project policy for the 1662 Prayer Book)."
+    "crown-uk": "Public domain outside the United Kingdom; Crown rights in the UK (existing project policy for the 1662 Prayer Book).",
+    "policy": "In copyright, but the holder publishes the text free and its policy allows some reproduction without asking (terms in the note). Check that the terms cover this site before printing; otherwise treat as permission."
   },
   "gaps": [
     {
       "id": "roman-modern-mass",
       "family": "catholic",
       "priority": 1,
-      "catalog": ["roman-modern"],
+      "catalog": [
+        "roman-modern"
+      ],
       "rite": "n",
       "service": "Mass",
       "now": "guide",
-      "missing": ["entrance and communion antiphons", "collect", "prayer over the offerings", "prefaces", "Eucharistic Prayers II-IV", "prayer after communion", "English Order of Mass"],
+      "missing": [
+        "entrance and communion antiphons",
+        "collect",
+        "prayer over the offerings",
+        "prefaces",
+        "Eucharistic Prayers II-IV",
+        "prayer after communion",
+        "English Order of Mass"
+      ],
       "plan": "No public-domain English exists for the 1970/2002 Missal. Three steps reach the most text: (1) print the Graduale Romanum Introit and Communion, which the GIRM allows in place of the Missal antiphons, from GregoBase (CC0) using the Ordo cantus Missae assignments; (2) map each oration to its ancient source and print the public-domain Latin with a public-domain English where one exists; (3) offer the Roman Canon (already printed) as the default Eucharistic Prayer. Collects composed after 1965, the new prefaces and Eucharistic Prayers II-IV stay cued unless ICEL (English) or the Libreria Editrice Vaticana (Latin) grants permission.",
       "sources": [
-        {"ia": "ordocantusmissae0000cath", "title": "Ordo cantus Missae", "year": 1972, "lang": "la", "fills": ["which chant Introit and Communion belong to each day"], "rights": "reference", "note": "Assignments are facts; the chants themselves come from GregoBase. Controlled-lending scan; the 1988 editio altera is item OCMissae."},
-        {"url": "https://gregobase.selapa.net/", "title": "GregoBase chant database", "lang": "la", "fills": ["Introit", "Communion", "Gradual", "Alleluia texts with notation"], "rights": "open", "note": "CC0, already the project's chant source."},
-        {"ia": "gelasiansacrame00gelagoog", "title": "The Gelasian Sacramentary (ed. H. A. Wilson)", "year": 1894, "lang": "la", "fills": ["ancient sources of collects, prayers over the offerings and after communion"], "rights": "pd"},
-        {"ia": "gregoriansacrame00cath", "title": "The Gregorian Sacramentary under Charles the Great (ed. H. A. Wilson)", "year": 1915, "lang": "la", "fills": ["ancient sources of orations and prefaces"], "rights": "pd"},
-        {"ia": "sacramentariuml00feltgoog", "title": "Sacramentarium Leonianum (ed. C. L. Feltoe)", "year": 1896, "lang": "la", "fills": ["ancient sources of orations and prefaces"], "rights": "pd"},
-        {"ia": "ancientcollects00briggoog", "title": "Ancient Collects and Other Prayers (W. Bright)", "year": 1862, "lang": "en", "fills": ["public-domain English for many of the ancient orations"], "rights": "pd"},
-        {"ia": "missale-romanum-pauli-pp-vi-1970-concilii-vaticno-ii", "title": "Missale Romanum (Paul VI)", "year": 1970, "lang": "la", "fills": ["the official Latin of every proper, for collation"], "rights": "permission", "note": "Libreria Editrice Vaticana. Use to identify which ancient prayer each oration reproduces; do not copy new compositions."},
-        {"url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoN.txt", "title": "Divinum Officium, Ordo Missae (Latin)", "lang": "la", "fills": ["Latin Order of Mass with rubrics"], "rights": "open", "note": "MIT. The English file beside it (English/Ordo/OrdoN.txt) is the 2010 ICEL translation and is not covered by the MIT licence; do not import it."}
+        {
+          "ia": "ordocantusmissae0000cath",
+          "title": "Ordo cantus Missae",
+          "year": 1972,
+          "lang": "la",
+          "fills": [
+            "which chant Introit and Communion belong to each day"
+          ],
+          "rights": "reference",
+          "note": "Assignments are facts; the chants themselves come from GregoBase. Controlled-lending scan; the 1988 editio altera is item OCMissae."
+        },
+        {
+          "url": "https://gregobase.selapa.net/",
+          "title": "GregoBase chant database",
+          "lang": "la",
+          "fills": [
+            "Introit",
+            "Communion",
+            "Gradual",
+            "Alleluia texts with notation"
+          ],
+          "rights": "open",
+          "note": "CC0, already the project's chant source."
+        },
+        {
+          "ia": "gelasiansacrame00gelagoog",
+          "title": "The Gelasian Sacramentary (ed. H. A. Wilson)",
+          "year": 1894,
+          "lang": "la",
+          "fills": [
+            "ancient sources of collects, prayers over the offerings and after communion"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "gregoriansacrame00cath",
+          "title": "The Gregorian Sacramentary under Charles the Great (ed. H. A. Wilson)",
+          "year": 1915,
+          "lang": "la",
+          "fills": [
+            "ancient sources of orations and prefaces"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "sacramentariuml00feltgoog",
+          "title": "Sacramentarium Leonianum (ed. C. L. Feltoe)",
+          "year": 1896,
+          "lang": "la",
+          "fills": [
+            "ancient sources of orations and prefaces"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "ancientcollects00briggoog",
+          "title": "Ancient Collects and Other Prayers (W. Bright)",
+          "year": 1862,
+          "lang": "en",
+          "fills": [
+            "public-domain English for many of the ancient orations"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "missale-romanum-pauli-pp-vi-1970-concilii-vaticno-ii",
+          "title": "Missale Romanum (Paul VI)",
+          "year": 1970,
+          "lang": "la",
+          "fills": [
+            "the official Latin of every proper, for collation"
+          ],
+          "rights": "permission",
+          "note": "Libreria Editrice Vaticana. Use to identify which ancient prayer each oration reproduces; do not copy new compositions."
+        },
+        {
+          "url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoN.txt",
+          "title": "Divinum Officium, Ordo Missae (Latin)",
+          "lang": "la",
+          "fills": [
+            "Latin Order of Mass with rubrics"
+          ],
+          "rights": "open",
+          "note": "MIT. The English file beside it (English/Ordo/OrdoN.txt) is the 2010 ICEL translation and is not covered by the MIT licence; do not import it."
+        }
       ],
-      "blockers": ["English collects, prefaces and Eucharistic Prayers II-IV: ICEL permission (icelweb.org)", "Latin new compositions: Libreria Editrice Vaticana permission"]
+      "blockers": [
+        "English collects, prefaces and Eucharistic Prayers II-IV: ICEL permission (icelweb.org)",
+        "Latin new compositions: Libreria Editrice Vaticana permission"
+      ]
     },
     {
       "id": "liturgy-of-the-hours",
       "family": "catholic",
       "priority": 2,
-      "catalog": ["roman-modern"],
+      "catalog": [
+        "roman-modern"
+      ],
       "rite": "loth",
       "service": "Office",
       "now": "guide",
-      "missing": ["hymns", "antiphons", "responsories", "Office of Readings second readings", "intercessions", "concluding prayers"],
+      "missing": [
+        "hymns",
+        "antiphons",
+        "responsories",
+        "Office of Readings second readings",
+        "intercessions",
+        "concluding prayers"
+      ],
       "plan": "Most of the Office is older than its 1971 edition. Hymns: the Latin originals are public domain (Divinum Officium's breviary hymns, noting where the 1971 hymnal restored pre-1632 wording), with English from the English Hymnal and The Hymner. Second readings in the Office of Readings are patristic: print them from the Schaff Ante-Nicene and Nicene Fathers on CCEL once the two-year and one-year cycles are tabulated (the tables are facts). Concluding prayers are the Missal collects, so they follow the Mass plan. Antiphons and responsories are mostly Scripture and can be shown as the verse in Douay-Rheims, labelled as such. Intercessions are modern compositions and stay cued.",
       "sources": [
-        {"url": "https://github.com/DivinumOfficium/divinum-officium", "title": "Divinum Officium breviary data", "lang": "la", "fills": ["Latin hymn texts"], "rights": "open", "note": "MIT; already the source of the traditional breviaries."},
-        {"ia": "theenglishhymnal00milfuoft", "title": "The English Hymnal", "year": 1906, "lang": "en", "fills": ["English translations of the Office hymns"], "rights": "pd"},
-        {"ia": "TheHymner1905", "title": "The Hymner (translations of the Sarum breviary hymns)", "year": 1905, "lang": "en", "fills": ["English translations of the Office hymns"], "rights": "pd"},
-        {"ia": "hymnsancientand01unkngoog", "title": "Hymns Ancient and Modern", "year": 1904, "lang": "en", "fills": ["English translations of the Office hymns"], "rights": "pd"},
-        {"url": "https://www.ccel.org/fathers.html", "title": "Ante-Nicene and Nicene and Post-Nicene Fathers (Schaff)", "lang": "en", "fills": ["Office of Readings patristic readings"], "rights": "pd", "note": "1885-1900 translations. Wording differs from the breviary's own; label the translator."},
-        {"ia": "te-decet-hymnus-1984", "title": "Te decet hymnus (A. Lentini): the Liturgia Horarum hymnal with sources", "year": 1984, "lang": "la", "fills": ["which hymn is sung when, and the source of each text"], "rights": "reference"},
-        {"ia": "liturgia-horarum-textus-inserendi-2005", "title": "Liturgia Horarum, textus inserendi", "year": 2005, "lang": "la", "fills": ["collation of later additions"], "rights": "permission", "note": "Libreria Editrice Vaticana. Reference for tables only."}
+        {
+          "url": "https://github.com/DivinumOfficium/divinum-officium",
+          "title": "Divinum Officium breviary data",
+          "lang": "la",
+          "fills": [
+            "Latin hymn texts"
+          ],
+          "rights": "open",
+          "note": "MIT; already the source of the traditional breviaries."
+        },
+        {
+          "ia": "theenglishhymnal00milfuoft",
+          "title": "The English Hymnal",
+          "year": 1906,
+          "lang": "en",
+          "fills": [
+            "English translations of the Office hymns"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "TheHymner1905",
+          "title": "The Hymner (translations of the Sarum breviary hymns)",
+          "year": 1905,
+          "lang": "en",
+          "fills": [
+            "English translations of the Office hymns"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "hymnsancientand01unkngoog",
+          "title": "Hymns Ancient and Modern",
+          "year": 1904,
+          "lang": "en",
+          "fills": [
+            "English translations of the Office hymns"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://www.ccel.org/fathers.html",
+          "title": "Ante-Nicene and Nicene and Post-Nicene Fathers (Schaff)",
+          "lang": "en",
+          "fills": [
+            "Office of Readings patristic readings"
+          ],
+          "rights": "pd",
+          "note": "1885-1900 translations. Wording differs from the breviary's own; label the translator."
+        },
+        {
+          "ia": "te-decet-hymnus-1984",
+          "title": "Te decet hymnus (A. Lentini): the Liturgia Horarum hymnal with sources",
+          "year": 1984,
+          "lang": "la",
+          "fills": [
+            "which hymn is sung when, and the source of each text"
+          ],
+          "rights": "reference"
+        },
+        {
+          "ia": "liturgia-horarum-textus-inserendi-2005",
+          "title": "Liturgia Horarum, textus inserendi",
+          "year": 2005,
+          "lang": "la",
+          "fills": [
+            "collation of later additions"
+          ],
+          "rights": "permission",
+          "note": "Libreria Editrice Vaticana. Reference for tables only."
+        }
       ],
-      "blockers": ["English antiphons, responsories, intercessions and prayers: ICEL permission", "Latin new compositions: Libreria Editrice Vaticana permission"]
+      "blockers": [
+        "English antiphons, responsories, intercessions and prayers: ICEL permission",
+        "Latin new compositions: Libreria Editrice Vaticana permission"
+      ]
     },
     {
       "id": "divine-worship-mass",
       "family": "catholic",
       "priority": 3,
-      "catalog": ["divine-worship"],
+      "catalog": [
+        "divine-worship"
+      ],
       "rite": "o",
       "service": "Mass",
       "now": "guide",
-      "missing": ["Divine Worship collects, secrets and post-communions (now filled from the 1962 English)", "proper prefaces", "offertory and communion sentences"],
+      "missing": [
+        "Divine Worship collects, secrets and post-communions (now filled from the 1962 English)",
+        "proper prefaces",
+        "offertory and communion sentences"
+      ],
       "plan": "Divine Worship's propers descend from the Anglican Missal tradition. Replace the 1962 English fallback with the 1921 Anglican Missal, which prints the whole year in Prayer Book English, and the 1928 American collects where Divine Worship uses them. Mark the result 'Anglican Missal wording' rather than claiming Divine Worship's text.",
       "sources": [
-        {"ia": "anglicanmissal00churuoft", "title": "The Anglican Missal", "year": 1921, "lang": "en", "fills": ["full propers for the year in traditional English", "prefaces", "Ordinary"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm", "title": "Book of Common Prayer, USA 1928 (Society of Archbishop Justus transcription)", "year": 1928, "lang": "en", "fills": ["collects Divine Worship takes from the 1928 book"], "rights": "pd"},
-        {"ia": "sarummissalinen00unkngoog", "title": "The Sarum Missal in English (A. H. Pearson)", "year": 1884, "lang": "en", "fills": ["sequences and English-use propers"], "rights": "pd"},
-        {"ia": "cu31924092460033", "title": "The Sarum Missal in English (F. E. Warren), part 1", "year": 1911, "lang": "en", "fills": ["sequences and English-use propers"], "rights": "pd"},
-        {"ia": "americanmissalbe0000unse", "title": "The American Missal", "year": 1931, "lang": "en", "fills": ["American-use propers"], "rights": "check-renewal", "note": "Controlled-lending scan."},
-        {"ia": "englishmissalfor0000vari", "title": "The English Missal for the Laity", "year": 1933, "lang": "en", "fills": ["English Missal wording"], "rights": "check-uraa", "note": "British 1933 edition; look for the 1912 first edition by W. Knott instead."}
+        {
+          "ia": "anglicanmissal00churuoft",
+          "title": "The Anglican Missal",
+          "year": 1921,
+          "lang": "en",
+          "fills": [
+            "full propers for the year in traditional English",
+            "prefaces",
+            "Ordinary"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm",
+          "title": "Book of Common Prayer, USA 1928 (Society of Archbishop Justus transcription)",
+          "year": 1928,
+          "lang": "en",
+          "fills": [
+            "collects Divine Worship takes from the 1928 book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "sarummissalinen00unkngoog",
+          "title": "The Sarum Missal in English (A. H. Pearson)",
+          "year": 1884,
+          "lang": "en",
+          "fills": [
+            "sequences and English-use propers"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "cu31924092460033",
+          "title": "The Sarum Missal in English (F. E. Warren), part 1",
+          "year": 1911,
+          "lang": "en",
+          "fills": [
+            "sequences and English-use propers"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "americanmissalbe0000unse",
+          "title": "The American Missal",
+          "year": 1931,
+          "lang": "en",
+          "fills": [
+            "American-use propers"
+          ],
+          "rights": "check-renewal",
+          "note": "Controlled-lending scan."
+        },
+        {
+          "ia": "englishmissalfor0000vari",
+          "title": "The English Missal for the Laity",
+          "year": 1933,
+          "lang": "en",
+          "fills": [
+            "English Missal wording"
+          ],
+          "rights": "check-uraa",
+          "note": "British 1933 edition; look for the 1912 first edition by W. Knott instead."
+        }
       ],
-      "blockers": ["Divine Worship: The Missal (2015) itself: permission from the Congregation for Divine Worship via the Ordinariates"]
+      "blockers": [
+        "Divine Worship: The Missal (2015) itself: permission from the Congregation for Divine Worship via the Ordinariates"
+      ]
     },
     {
       "id": "divine-worship-office",
       "family": "catholic",
       "priority": 4,
-      "catalog": ["divine-worship"],
+      "catalog": [
+        "divine-worship"
+      ],
       "rite": "dwdo",
       "service": "Office",
       "now": "full (Prime in outline)",
-      "missing": ["Prime", "Terce, Sext and None", "office hymns"],
+      "missing": [
+        "Prime",
+        "Terce, Sext and None",
+        "office hymns"
+      ],
       "plan": "The Day Hours of the Church of England supplies the little hours in Prayer Book English with the Coverdale psalter already in the project.",
       "sources": [
-        {"ia": "thedayhours00unknuoft", "title": "The Day-Hours of the Church of England", "year": 1877, "lang": "en", "fills": ["Prime", "Terce", "Sext", "None", "office hymns"], "rights": "pd"},
-        {"ia": "dayhourschurche00unkngoog", "title": "The Day-Hours of the Church of England (first edition)", "year": 1858, "lang": "en", "fills": ["collation"], "rights": "pd"},
-        {"ia": "monasticdiurnalo0000epis", "title": "The Monastic Diurnal (Episcopal)", "year": 1932, "lang": "en", "fills": ["little hours in English"], "rights": "check-renewal", "note": "Controlled-lending scan."}
+        {
+          "ia": "thedayhours00unknuoft",
+          "title": "The Day-Hours of the Church of England",
+          "year": 1877,
+          "lang": "en",
+          "fills": [
+            "Prime",
+            "Terce",
+            "Sext",
+            "None",
+            "office hymns"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "dayhourschurche00unkngoog",
+          "title": "The Day-Hours of the Church of England (first edition)",
+          "year": 1858,
+          "lang": "en",
+          "fills": [
+            "collation"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "monasticdiurnalo0000epis",
+          "title": "The Monastic Diurnal (Episcopal)",
+          "year": 1932,
+          "lang": "en",
+          "fills": [
+            "little hours in English"
+          ],
+          "rights": "check-renewal",
+          "note": "Controlled-lending scan."
+        }
       ],
-      "blockers": ["Divine Worship: Daily Office (2020/21): permission"]
+      "blockers": [
+        "Divine Worship: Daily Office (2020/21): permission"
+      ]
     },
     {
       "id": "byzantine-catholic",
       "family": "catholic",
       "priority": 5,
-      "catalog": ["byzantine-catholic", "catholic-ukrainian", "catholic-ruthenian", "catholic-melkite"],
+      "catalog": [
+        "byzantine-catholic",
+        "catholic-ukrainian",
+        "catholic-ruthenian",
+        "catholic-melkite"
+      ],
       "rite": "b, byz",
       "service": "Divine Liturgy and Office",
       "now": "order (Liturgy), guide (Office)",
-      "missing": ["prayers of the Divine Liturgy", "troparia and kontakia of the day", "Sunday resurrection hymns in eight tones", "Menaion propers", "Triodion and Pentecostarion propers"],
+      "missing": [
+        "prayers of the Divine Liturgy",
+        "troparia and kontakia of the day",
+        "Sunday resurrection hymns in eight tones",
+        "Menaion propers",
+        "Triodion and Pentecostarion propers"
+      ],
       "plan": "Transcribe Hapgood (1906) for the fixed Liturgy and Vespers/Matins prayers, separating Chrysostom and Basil (docs/source-review.md notes the companion's OCR is unreliable). Add the Sunday Octoechos and the General and Ferial Menaia from Orloff. For Triodion, Pentecostarion and the monthly Menaion, no complete public-domain English exists: print the Greek or Church Slavonic originals and cue the English. These are Greco-Russian texts; Ruthenian and Ukrainian recensions differ in places and must say so.",
       "sources": [
-        {"ia": "cu31924029363128", "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church (I. F. Hapgood)", "year": 1906, "lang": "en", "fills": ["Divine Liturgies of Chrysostom, Basil and the Presanctified", "Vespers", "Matins", "occasional services"], "rights": "pd"},
-        {"ia": "divineliturgyofh00orthuoft", "title": "The Divine Liturgy of the Holy Orthodox Catholic Apostolic Graeco-Russian Church (P. Kuvochinsky)", "year": 1909, "lang": "en", "fills": ["second witness for the Liturgy"], "rights": "pd"},
-        {"url": "https://www.ponomar.net/data/octoechos_orloff.pdf", "title": "The Octoechos: Sunday services in eight tones (N. Orloff)", "year": 1898, "lang": "en", "fills": ["Sunday resurrection troparia, kontakia and stichera"], "rights": "pd"},
-        {"url": "https://www.ponomar.net/data/orloff_general_menaion.pdf", "title": "The General Menaion (N. Orloff)", "year": 1899, "lang": "en", "fills": ["common services for classes of saints"], "rights": "pd", "note": "A 1969 facsimile is on the Internet Archive as generalmenaionor0000orth."},
-        {"ia": "ferialmenaionorb0000orth", "title": "The Ferial Menaion: services for the twelve great feasts (N. Orloff)", "year": 1900, "lang": "en", "fills": ["great-feast propers"], "rights": "pd-reprint", "note": "1969 facsimile of the 1900 edition; controlled lending."},
-        {"ia": "officesfromserv00unkngoog", "title": "Offices from the Service-Books of the Holy Eastern Church (R. F. Littledale)", "year": 1863, "lang": "en", "fills": ["selected Triodion and Menaion offices"], "rights": "pd"},
-        {"ia": "hymnseasternchu01nealgoog", "title": "Hymns of the Eastern Church (J. M. Neale)", "year": 1862, "lang": "en", "fills": ["selected hymns in verse"], "rights": "pd"},
-        {"ia": "parakltiktoiokt00churgoog", "title": "Parakletike (Great Octoechos), Greek", "year": 1858, "lang": "grc", "fills": ["complete weekday and Sunday tone propers"], "rights": "pd"},
-        {"ia": "menaiatouolouen00churgoog", "title": "Menaia of the whole year, Greek", "year": 1888, "lang": "grc", "fills": ["monthly Menaion"], "rights": "pd"},
-        {"ia": "triodion-katanyktikon-periechon-hapasan-1", "title": "Triodion katanyktikon, Greek", "year": 1876, "lang": "grc", "fills": ["Lenten Triodion"], "rights": "pd"},
-        {"ia": "hrologiontomega00koutgoog", "title": "Horologion to mega, Greek", "year": 1838, "lang": "grc", "fills": ["Horologion"], "rights": "pd"},
-        {"ia": "sluzhebnyiaminei01orthuoft", "title": "Sluzhebnyia minei (September-November), Church Slavonic", "year": 1886, "lang": "cu", "fills": ["Slavonic Menaion"], "rights": "pd"},
-        {"url": "https://github.com/typiconman/Ponomar", "title": "Ponomar project (calendar, menologion and service data)", "lang": "en, cu, el", "fills": ["menologion and service-assembly rules"], "rights": "open", "note": "GPL-3.0. Check the provenance of each text file: the repository and ponomar.net also carry modern translations that are not theirs to license."}
+        {
+          "ia": "cu31924029363128",
+          "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church (I. F. Hapgood)",
+          "year": 1906,
+          "lang": "en",
+          "fills": [
+            "Divine Liturgies of Chrysostom, Basil and the Presanctified",
+            "Vespers",
+            "Matins",
+            "occasional services"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "divineliturgyofh00orthuoft",
+          "title": "The Divine Liturgy of the Holy Orthodox Catholic Apostolic Graeco-Russian Church (P. Kuvochinsky)",
+          "year": 1909,
+          "lang": "en",
+          "fills": [
+            "second witness for the Liturgy"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://www.ponomar.net/data/octoechos_orloff.pdf",
+          "title": "The Octoechos: Sunday services in eight tones (N. Orloff)",
+          "year": 1898,
+          "lang": "en",
+          "fills": [
+            "Sunday resurrection troparia, kontakia and stichera"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://www.ponomar.net/data/orloff_general_menaion.pdf",
+          "title": "The General Menaion (N. Orloff)",
+          "year": 1899,
+          "lang": "en",
+          "fills": [
+            "common services for classes of saints"
+          ],
+          "rights": "pd",
+          "note": "A 1969 facsimile is on the Internet Archive as generalmenaionor0000orth."
+        },
+        {
+          "ia": "ferialmenaionorb0000orth",
+          "title": "The Ferial Menaion: services for the twelve great feasts (N. Orloff)",
+          "year": 1900,
+          "lang": "en",
+          "fills": [
+            "great-feast propers"
+          ],
+          "rights": "pd-reprint",
+          "note": "1969 facsimile of the 1900 edition; controlled lending."
+        },
+        {
+          "ia": "officesfromserv00unkngoog",
+          "title": "Offices from the Service-Books of the Holy Eastern Church (R. F. Littledale)",
+          "year": 1863,
+          "lang": "en",
+          "fills": [
+            "selected Triodion and Menaion offices"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "hymnseasternchu01nealgoog",
+          "title": "Hymns of the Eastern Church (J. M. Neale)",
+          "year": 1862,
+          "lang": "en",
+          "fills": [
+            "selected hymns in verse"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "parakltiktoiokt00churgoog",
+          "title": "Parakletike (Great Octoechos), Greek",
+          "year": 1858,
+          "lang": "grc",
+          "fills": [
+            "complete weekday and Sunday tone propers"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "menaiatouolouen00churgoog",
+          "title": "Menaia of the whole year, Greek",
+          "year": 1888,
+          "lang": "grc",
+          "fills": [
+            "monthly Menaion"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "triodion-katanyktikon-periechon-hapasan-1",
+          "title": "Triodion katanyktikon, Greek",
+          "year": 1876,
+          "lang": "grc",
+          "fills": [
+            "Lenten Triodion"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "hrologiontomega00koutgoog",
+          "title": "Horologion to mega, Greek",
+          "year": 1838,
+          "lang": "grc",
+          "fills": [
+            "Horologion"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "sluzhebnyiaminei01orthuoft",
+          "title": "Sluzhebnyia minei (September-November), Church Slavonic",
+          "year": 1886,
+          "lang": "cu",
+          "fills": [
+            "Slavonic Menaion"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://github.com/typiconman/Ponomar",
+          "title": "Ponomar project (calendar, menologion and service data)",
+          "lang": "en, cu, el",
+          "fills": [
+            "menologion and service-assembly rules"
+          ],
+          "rights": "open",
+          "note": "GPL-3.0. Check the provenance of each text file: the repository and ponomar.net also carry modern translations that are not theirs to license."
+        }
       ],
-      "blockers": ["Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and current UGCC books: permission from the issuing eparchies"]
+      "blockers": [
+        "Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and current UGCC books: permission from the issuing eparchies"
+      ]
     },
     {
       "id": "dominican-mass",
       "family": "catholic",
       "priority": 6,
-      "catalog": ["dominican"],
+      "catalog": [
+        "dominican"
+      ],
       "rite": "new: Dominican Mass",
       "service": "Mass",
       "now": "none (Office complete)",
-      "missing": ["Dominican Ordinary", "Dominican propers and calendar"],
+      "missing": [
+        "Dominican Ordinary",
+        "Dominican propers and calendar"
+      ],
       "plan": "Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican calendar, so a Dominican Mass guide can reuse the existing 1962 propers plus the Order's own feasts from the 1933 Missal.",
       "sources": [
-        {"url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoOP.txt", "title": "Divinum Officium, Dominican Ordo Missae (Latin and English)", "lang": "la, en", "fills": ["Dominican Ordinary"], "rights": "open", "note": "MIT. Check the English file's translation source before import."},
-        {"ia": "missalesordinisp00unse", "title": "Missale S. Ordinis Praedicatorum", "year": 1933, "lang": "la", "fills": ["Dominican propers"], "rights": "ancient"},
-        {"ia": "historyofdominic00bonn", "title": "A History of the Dominican Liturgy (W. R. Bonniwell)", "year": 1944, "lang": "en", "fills": ["rubrics and differences from the Roman rite"], "rights": "reference"}
+        {
+          "url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoOP.txt",
+          "title": "Divinum Officium, Dominican Ordo Missae (Latin and English)",
+          "lang": "la, en",
+          "fills": [
+            "Dominican Ordinary"
+          ],
+          "rights": "open",
+          "note": "MIT. Check the English file's translation source before import."
+        },
+        {
+          "ia": "missalesordinisp00unse",
+          "title": "Missale S. Ordinis Praedicatorum",
+          "year": 1933,
+          "lang": "la",
+          "fills": [
+            "Dominican propers"
+          ],
+          "rights": "ancient"
+        },
+        {
+          "ia": "historyofdominic00bonn",
+          "title": "A History of the Dominican Liturgy (W. R. Bonniwell)",
+          "year": 1944,
+          "lang": "en",
+          "fills": [
+            "rubrics and differences from the Roman rite"
+          ],
+          "rights": "reference"
+        }
       ],
       "blockers": []
     },
@@ -142,344 +591,1860 @@
       "id": "ambrosian",
       "family": "catholic",
       "priority": 7,
-      "catalog": ["ambrosian"],
+      "catalog": [
+        "ambrosian"
+      ],
       "rite": "new",
       "service": "Mass and Office",
       "now": "none",
-      "missing": ["Ambrosian Ordinary", "Ambrosian propers", "Ambrosian calendar (six-week Advent)", "Ambrosian lectionary", "Ambrosian Office"],
+      "missing": [
+        "Ambrosian Ordinary",
+        "Ambrosian propers",
+        "Ambrosian calendar (six-week Advent)",
+        "Ambrosian lectionary",
+        "Ambrosian Office"
+      ],
       "plan": "Start with the Mass: Latin Ordinary from Divinum Officium and the 1909 English Ordinary and Canon. Propers and lectionary come from the 1904 Manuale Ambrosianum (medieval) and the 1712 Missal, labelled as the pre-1976 use. The current 1976/1981 Missal and 2008 lectionary are in copyright. The Ambrosian calendar needs its own computation before any day is mapped.",
       "sources": [
-        {"url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoA.txt", "title": "Divinum Officium, Ambrosian Ordo Missae", "lang": "la", "fills": ["Latin Ordinary"], "rights": "open", "note": "MIT. Its English counterpart uses modern ICEL-style responses; check before import."},
-        {"ia": "ambrosianliturgy00cathuoft", "title": "The Ambrosian Liturgy: the Ordinary and Canon of the Mass", "year": 1909, "lang": "la, en", "fills": ["English Ordinary and Canon"], "rights": "pd"},
-        {"ia": "manualeambrosian02cath", "title": "Manuale Ambrosianum (ed. M. Magistretti), part 2", "year": 1904, "lang": "la", "fills": ["propers and Office for the year", "lectionary"], "rights": "pd"},
-        {"ia": "manualeambrosian03cath", "title": "Manuale Ambrosianum (ed. M. Magistretti), part 3", "year": 1904, "lang": "la", "fills": ["propers and Office for the year"], "rights": "pd"},
-        {"ia": "10869665bsb", "title": "Missale Ambrosianum", "year": 1712, "lang": "la", "fills": ["Tridentine-era Ambrosian propers"], "rights": "pd"},
-        {"ia": "bub_gb_5NAEsu90rB0C", "title": "Manuale sive Breviarium iuxta ritum Ambrosianae ecclesiae", "year": 1549, "lang": "la", "fills": ["Ambrosian Office"], "rights": "pd"},
-        {"ia": "MA1981", "title": "Missale Ambrosianum", "year": 1981, "lang": "la", "fills": ["current use, for collation"], "rights": "permission", "note": "Archdiocese of Milan."}
+        {
+          "url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoA.txt",
+          "title": "Divinum Officium, Ambrosian Ordo Missae",
+          "lang": "la",
+          "fills": [
+            "Latin Ordinary"
+          ],
+          "rights": "open",
+          "note": "MIT. Its English counterpart uses modern ICEL-style responses; check before import."
+        },
+        {
+          "ia": "ambrosianliturgy00cathuoft",
+          "title": "The Ambrosian Liturgy: the Ordinary and Canon of the Mass",
+          "year": 1909,
+          "lang": "la, en",
+          "fills": [
+            "English Ordinary and Canon"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "manualeambrosian02cath",
+          "title": "Manuale Ambrosianum (ed. M. Magistretti), part 2",
+          "year": 1904,
+          "lang": "la",
+          "fills": [
+            "propers and Office for the year",
+            "lectionary"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "manualeambrosian03cath",
+          "title": "Manuale Ambrosianum (ed. M. Magistretti), part 3",
+          "year": 1904,
+          "lang": "la",
+          "fills": [
+            "propers and Office for the year"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "10869665bsb",
+          "title": "Missale Ambrosianum",
+          "year": 1712,
+          "lang": "la",
+          "fills": [
+            "Tridentine-era Ambrosian propers"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bub_gb_5NAEsu90rB0C",
+          "title": "Manuale sive Breviarium iuxta ritum Ambrosianae ecclesiae",
+          "year": 1549,
+          "lang": "la",
+          "fills": [
+            "Ambrosian Office"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "MA1981",
+          "title": "Missale Ambrosianum",
+          "year": 1981,
+          "lang": "la",
+          "fills": [
+            "current use, for collation"
+          ],
+          "rights": "permission",
+          "note": "Archdiocese of Milan."
+        }
       ],
-      "blockers": ["current Ambrosian Missal and Lectionary: Archdiocese of Milan permission"]
+      "blockers": [
+        "current Ambrosian Missal and Lectionary: Archdiocese of Milan permission"
+      ]
     },
     {
       "id": "mozarabic",
       "family": "catholic",
       "priority": 8,
-      "catalog": ["mozarabic"],
+      "catalog": [
+        "mozarabic"
+      ],
       "rite": "new",
       "service": "Mass and Office",
       "now": "none",
-      "missing": ["Mozarabic Ordinary", "propers", "lectionary", "Office"],
+      "missing": [
+        "Mozarabic Ordinary",
+        "propers",
+        "lectionary",
+        "Office"
+      ],
       "plan": "The 1500 Cisneros books reprinted in Migne (Patrologia Latina 85-86) give the Missale mixtum and Breviarium gothicum complete; the Liber comicus gives the old lectionary. The restored Missale Hispano-Mozarabicum (1991-94) differs and is in copyright, so label the guide 'Cisneros use'.",
       "sources": [
-        {"url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoM.txt", "title": "Divinum Officium, Mozarabic Ordo Missae", "lang": "la", "fills": ["Latin Ordinary"], "rights": "open", "note": "MIT; check the English file before import."},
-        {"ia": "liturgiamozarab00churgoog", "title": "Liturgia Mozarabica (Migne PL 85): Missale mixtum", "year": 1862, "lang": "la", "fills": ["Mass propers for the year"], "rights": "pd"},
-        {"ia": "liturgiamozarab01churgoog", "title": "Liturgia Mozarabica (Migne PL 86): Breviarium gothicum", "year": 1862, "lang": "la", "fills": ["Office"], "rights": "pd"},
-        {"ia": "missalemixtumse00leslgoog", "title": "Missale mixtum (ed. A. Lesley)", "year": 1755, "lang": "la", "fills": ["collation"], "rights": "pd"},
-        {"ia": "libercomicussive00moriuoft", "title": "Liber comicus (ed. G. Morin)", "year": 1893, "lang": "la", "fills": ["Mozarabic lectionary"], "rights": "pd"},
-        {"ia": "lelibermozarabic06cath", "title": "Le Liber mozarabicus sacramentorum (ed. M. Férotin)", "year": 1912, "lang": "la", "fills": ["earlier sacramentary"], "rights": "pd"}
+        {
+          "url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoM.txt",
+          "title": "Divinum Officium, Mozarabic Ordo Missae",
+          "lang": "la",
+          "fills": [
+            "Latin Ordinary"
+          ],
+          "rights": "open",
+          "note": "MIT; check the English file before import."
+        },
+        {
+          "ia": "liturgiamozarab00churgoog",
+          "title": "Liturgia Mozarabica (Migne PL 85): Missale mixtum",
+          "year": 1862,
+          "lang": "la",
+          "fills": [
+            "Mass propers for the year"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgiamozarab01churgoog",
+          "title": "Liturgia Mozarabica (Migne PL 86): Breviarium gothicum",
+          "year": 1862,
+          "lang": "la",
+          "fills": [
+            "Office"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "missalemixtumse00leslgoog",
+          "title": "Missale mixtum (ed. A. Lesley)",
+          "year": 1755,
+          "lang": "la",
+          "fills": [
+            "collation"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "libercomicussive00moriuoft",
+          "title": "Liber comicus (ed. G. Morin)",
+          "year": 1893,
+          "lang": "la",
+          "fills": [
+            "Mozarabic lectionary"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "lelibermozarabic06cath",
+          "title": "Le Liber mozarabicus sacramentorum (ed. M. Férotin)",
+          "year": 1912,
+          "lang": "la",
+          "fills": [
+            "earlier sacramentary"
+          ],
+          "rights": "pd"
+        }
       ],
-      "blockers": ["Missale Hispano-Mozarabicum (1991-94): Archdiocese of Toledo permission"]
+      "blockers": [
+        "Missale Hispano-Mozarabicum (1991-94): Archdiocese of Toledo permission"
+      ]
     },
     {
       "id": "braga",
       "family": "catholic",
       "priority": 9,
-      "catalog": ["braga"],
+      "catalog": [
+        "braga"
+      ],
       "rite": "new",
       "service": "Mass",
       "now": "none",
-      "missing": ["Braga Ordinary and propers", "Braga breviary"],
+      "missing": [
+        "Braga Ordinary and propers",
+        "Braga breviary"
+      ],
       "plan": "The 1924 Missale Bracarense is public domain in the US and covers the Mass. No Braga breviary scan was found yet.",
       "sources": [
-        {"ia": "missale-bracarense-1924", "title": "Missale Bracarense", "year": 1924, "lang": "la", "fills": ["Ordinary and propers"], "rights": "pd"},
-        {"ia": "cerimonial-da-missa-cantada-segundo-o-rito-bracarense-1931", "title": "Cerimonial da Missa Cantada segundo o Rito Bracarense", "year": 1931, "lang": "pt", "fills": ["ceremonial"], "rights": "reference"},
-        {"ia": "oritobracarense00serr", "title": "O rito bracarense (D. Serrano)", "year": 1906, "lang": "pt", "fills": ["history and differences"], "rights": "reference"}
+        {
+          "ia": "missale-bracarense-1924",
+          "title": "Missale Bracarense",
+          "year": 1924,
+          "lang": "la",
+          "fills": [
+            "Ordinary and propers"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "cerimonial-da-missa-cantada-segundo-o-rito-bracarense-1931",
+          "title": "Cerimonial da Missa Cantada segundo o Rito Bracarense",
+          "year": 1931,
+          "lang": "pt",
+          "fills": [
+            "ceremonial"
+          ],
+          "rights": "reference"
+        },
+        {
+          "ia": "oritobracarense00serr",
+          "title": "O rito bracarense (D. Serrano)",
+          "year": 1906,
+          "lang": "pt",
+          "fills": [
+            "history and differences"
+          ],
+          "rights": "reference"
+        }
       ],
-      "blockers": ["Braga breviary: not located"]
+      "blockers": [
+        "Braga breviary: not located"
+      ]
     },
     {
       "id": "religious-order-uses",
       "family": "catholic",
       "priority": 10,
-      "catalog": ["carthusian", "premonstratensian", "carmelite"],
+      "catalog": [
+        "carthusian",
+        "premonstratensian",
+        "carmelite"
+      ],
       "rite": "new",
       "service": "Mass and Office",
       "now": "none",
-      "missing": ["Carthusian Mass and Office", "Premonstratensian Mass and Office", "Carmelite Mass and Office"],
+      "missing": [
+        "Carthusian Mass and Office",
+        "Premonstratensian Mass and Office",
+        "Carmelite Mass and Office"
+      ],
       "plan": "Each order's pre-1931 books give a historical use. Later editions (1930s-1950s) are foreign publications that may have restored US copyright; use them only for ancient texts.",
       "sources": [
-        {"ia": "breviariumsacri00cartgoog", "title": "Breviarium sacri Ordinis Cartusiensis", "year": 1717, "lang": "la", "fills": ["Carthusian Office"], "rights": "pd"},
-        {"ia": "missale-carthusiense", "title": "Missale Carthusiense", "year": 1620, "lang": "la", "fills": ["Carthusian Mass"], "rights": "pd"},
-        {"ia": "missale-praemonstratense-1936", "title": "Missale Praemonstratense", "year": 1936, "lang": "la", "fills": ["Premonstratensian Mass"], "rights": "check-uraa"},
-        {"ia": "ordinariuspraemo00unse", "title": "Ordinarius Praemonstratensis", "year": 1485, "lang": "la", "fills": ["Premonstratensian rubrics"], "rights": "pd"},
-        {"ia": "bub_gb_PUEgJFAvalgC", "title": "Missale fratrum Carmelitarum", "year": 1621, "lang": "la", "fills": ["Carmelite Mass"], "rights": "pd"},
-        {"ia": "kingarchdalepremonstratensianriteocr", "title": "Archdale King, the Premonstratensian rite", "lang": "en", "fills": ["history and differences"], "rights": "reference"}
+        {
+          "ia": "breviariumsacri00cartgoog",
+          "title": "Breviarium sacri Ordinis Cartusiensis",
+          "year": 1717,
+          "lang": "la",
+          "fills": [
+            "Carthusian Office"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "missale-carthusiense",
+          "title": "Missale Carthusiense",
+          "year": 1620,
+          "lang": "la",
+          "fills": [
+            "Carthusian Mass"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "missale-praemonstratense-1936",
+          "title": "Missale Praemonstratense",
+          "year": 1936,
+          "lang": "la",
+          "fills": [
+            "Premonstratensian Mass"
+          ],
+          "rights": "check-uraa"
+        },
+        {
+          "ia": "ordinariuspraemo00unse",
+          "title": "Ordinarius Praemonstratensis",
+          "year": 1485,
+          "lang": "la",
+          "fills": [
+            "Premonstratensian rubrics"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bub_gb_PUEgJFAvalgC",
+          "title": "Missale fratrum Carmelitarum",
+          "year": 1621,
+          "lang": "la",
+          "fills": [
+            "Carmelite Mass"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "kingarchdalepremonstratensianriteocr",
+          "title": "Archdale King, the Premonstratensian rite",
+          "lang": "en",
+          "fills": [
+            "history and differences"
+          ],
+          "rights": "reference"
+        }
       ],
-      "blockers": ["Premonstratensian and Carmelite breviaries: not located", "modern Carthusian books: not public"]
+      "blockers": [
+        "Premonstratensian and Carmelite breviaries: not located",
+        "modern Carthusian books: not public"
+      ]
     },
     {
       "id": "zaire-use",
       "family": "catholic",
       "priority": 11,
-      "catalog": ["zaire"],
+      "catalog": [
+        "zaire"
+      ],
       "rite": "new",
       "service": "Mass",
       "now": "none",
-      "missing": ["Missel romain pour les diocèses du Zaïre (1988)"],
+      "missing": [
+        "Missel romain pour les diocèses du Zaïre (1988)"
+      ],
       "plan": "No public-domain text exists. Offer the Novus Ordo readings with an order-of-service outline and cue the Missel.",
       "sources": [],
-      "blockers": ["Missel romain pour les diocèses du Zaïre: permission from the Episcopal Conference of the Democratic Republic of the Congo"]
+      "blockers": [
+        "Missel romain pour les diocèses du Zaïre: permission from the Episcopal Conference of the Democratic Republic of the Congo"
+      ]
     },
     {
       "id": "alexandrian-catholic",
       "family": "catholic",
       "priority": 12,
-      "catalog": ["alexandrian-catholic", "catholic-coptic", "catholic-ethiopian", "catholic-eritrean"],
+      "catalog": [
+        "alexandrian-catholic",
+        "catholic-coptic",
+        "catholic-ethiopian",
+        "catholic-eritrean"
+      ],
       "rite": "new",
       "service": "Liturgy",
       "now": "none",
-      "missing": ["Coptic Liturgy of St Basil", "Ethiopic Liturgy", "Agpeya (hours)", "Katameros (lectionary)"],
+      "missing": [
+        "Coptic Liturgy of St Basil",
+        "Ethiopic Liturgy",
+        "Agpeya (hours)",
+        "Katameros (lectionary)"
+      ],
       "plan": "Brightman gives the Coptic and Ethiopic liturgies in English; Bute's Coptic Morning Service adds the rest of the Sunday office. The hours and the Katameros have not been found in a public-domain English edition.",
       "sources": [
-        {"ia": "liturgieseastern01unknuoft", "title": "Liturgies Eastern and Western, vol. 1 (F. E. Brightman)", "year": 1896, "lang": "en", "fills": ["Coptic Liturgy of St Mark/Cyril and St Basil", "Abyssinian (Ethiopic) Liturgy", "Syrian St James", "Armenian", "Nestorian (East Syrian) Liturgy", "Byzantine"], "rights": "pd"},
-        {"ia": "copticmorningser00coptuoft", "title": "The Coptic Morning Service for the Lord's Day (Marquess of Bute)", "year": 1908, "lang": "en", "fills": ["Coptic Sunday Liturgy and morning office"], "rights": "pd"},
-        {"ia": "divineliturgysa00malagoog", "title": "The Divine Liturgy of St Mark the Evangelist (S. C. Malan)", "year": 1872, "lang": "en", "fills": ["Coptic liturgy"], "rights": "pd", "note": "No OCR text on this item; transcribe from the page images."},
-        {"ia": "ethiopicliturgyi00mercuoft", "title": "The Ethiopic Liturgy (S. A. B. Mercer)", "year": 1915, "lang": "en", "fills": ["Ethiopic liturgy and anaphoras"], "rights": "pd"},
-        {"ia": "anaphorasofethio0000yait", "title": "The Anaphoras of the Ethiopic Liturgy", "year": 1928, "lang": "en", "fills": ["Ethiopic anaphoras"], "rights": "pd", "note": "Controlled-lending scan; confirm the 1928 date on the title page."}
+        {
+          "ia": "liturgieseastern01unknuoft",
+          "title": "Liturgies Eastern and Western, vol. 1 (F. E. Brightman)",
+          "year": 1896,
+          "lang": "en",
+          "fills": [
+            "Coptic Liturgy of St Mark/Cyril and St Basil",
+            "Abyssinian (Ethiopic) Liturgy",
+            "Syrian St James",
+            "Armenian",
+            "Nestorian (East Syrian) Liturgy",
+            "Byzantine"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "copticmorningser00coptuoft",
+          "title": "The Coptic Morning Service for the Lord's Day (Marquess of Bute)",
+          "year": 1908,
+          "lang": "en",
+          "fills": [
+            "Coptic Sunday Liturgy and morning office"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "divineliturgysa00malagoog",
+          "title": "The Divine Liturgy of St Mark the Evangelist (S. C. Malan)",
+          "year": 1872,
+          "lang": "en",
+          "fills": [
+            "Coptic liturgy"
+          ],
+          "rights": "pd",
+          "note": "No OCR text on this item; transcribe from the page images."
+        },
+        {
+          "ia": "ethiopicliturgyi00mercuoft",
+          "title": "The Ethiopic Liturgy (S. A. B. Mercer)",
+          "year": 1915,
+          "lang": "en",
+          "fills": [
+            "Ethiopic liturgy and anaphoras"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "anaphorasofethio0000yait",
+          "title": "The Anaphoras of the Ethiopic Liturgy",
+          "year": 1928,
+          "lang": "en",
+          "fills": [
+            "Ethiopic anaphoras"
+          ],
+          "rights": "pd",
+          "note": "Controlled-lending scan; confirm the 1928 date on the title page."
+        }
       ],
-      "blockers": ["Agpeya in public-domain English: not located", "Katameros (Coptic lectionary) data: not located"]
+      "blockers": [
+        "Agpeya in public-domain English: not located",
+        "Katameros (Coptic lectionary) data: not located"
+      ]
     },
     {
       "id": "west-syriac-catholic",
       "family": "catholic",
       "priority": 13,
-      "catalog": ["west-syriac-catholic", "catholic-syriac", "catholic-maronite", "catholic-syro-malankara"],
+      "catalog": [
+        "west-syriac-catholic",
+        "catholic-syriac",
+        "catholic-maronite",
+        "catholic-syro-malankara"
+      ],
       "rite": "new",
       "service": "Qurbono and Office",
       "now": "none",
-      "missing": ["Liturgy of St James (West Syriac)", "Maronite Qurbono", "Shehimo (weekday office)", "lectionary"],
+      "missing": [
+        "Liturgy of St James (West Syriac)",
+        "Maronite Qurbono",
+        "Shehimo (weekday office)",
+        "lectionary"
+      ],
       "plan": "Brightman covers St James in English. The weekday office survives in Syriac editions; no public-domain English Shehimo was found.",
       "sources": [
-        {"ia": "liturgieseastern01unknuoft", "title": "Liturgies Eastern and Western (Brightman)", "year": 1896, "lang": "en", "fills": ["Syriac Liturgy of St James"], "rights": "pd"},
-        {"ia": "breviariumjuxta00churgoog", "title": "Breviarium juxta ritum Ecclesiae Antiochenae Syrorum", "year": 1886, "lang": "syr", "fills": ["Syriac Catholic office"], "rights": "pd"},
-        {"ia": "bub_gb_1N9NaygppuoC", "title": "Officium feriale juxta ritum Ecclesiae Syrorum Maronitarum", "year": 1731, "lang": "syr", "fills": ["Maronite weekday office"], "rights": "pd"},
-        {"ia": "bub_gb_5Eqy8WGF9aQC", "title": "Missale Chaldaicum iuxta ritum ecclesiae nationis Maronitarum", "year": 1594, "lang": "syr", "fills": ["Maronite Qurbono"], "rights": "pd"},
-        {"ia": "twocommentarieso00conn", "title": "Two Commentaries on the Jacobite Liturgy (R. H. Connolly)", "year": 1913, "lang": "en", "fills": ["structure"], "rights": "reference"}
+        {
+          "ia": "liturgieseastern01unknuoft",
+          "title": "Liturgies Eastern and Western (Brightman)",
+          "year": 1896,
+          "lang": "en",
+          "fills": [
+            "Syriac Liturgy of St James"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "breviariumjuxta00churgoog",
+          "title": "Breviarium juxta ritum Ecclesiae Antiochenae Syrorum",
+          "year": 1886,
+          "lang": "syr",
+          "fills": [
+            "Syriac Catholic office"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bub_gb_1N9NaygppuoC",
+          "title": "Officium feriale juxta ritum Ecclesiae Syrorum Maronitarum",
+          "year": 1731,
+          "lang": "syr",
+          "fills": [
+            "Maronite weekday office"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bub_gb_5Eqy8WGF9aQC",
+          "title": "Missale Chaldaicum iuxta ritum ecclesiae nationis Maronitarum",
+          "year": 1594,
+          "lang": "syr",
+          "fills": [
+            "Maronite Qurbono"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "twocommentarieso00conn",
+          "title": "Two Commentaries on the Jacobite Liturgy (R. H. Connolly)",
+          "year": 1913,
+          "lang": "en",
+          "fills": [
+            "structure"
+          ],
+          "rights": "reference"
+        }
       ],
-      "blockers": ["Shehimo in public-domain English: not located"]
+      "blockers": [
+        "Shehimo in public-domain English: not located"
+      ]
     },
     {
       "id": "east-syriac-catholic",
       "family": "catholic",
       "priority": 14,
-      "catalog": ["east-syriac-catholic", "catholic-chaldean", "catholic-syro-malabar"],
+      "catalog": [
+        "east-syriac-catholic",
+        "catholic-chaldean",
+        "catholic-syro-malabar"
+      ],
       "rite": "new",
       "service": "Qurbana and Office",
       "now": "none",
-      "missing": ["Qurbana of Addai and Mari", "daily office", "lectionary"],
+      "missing": [
+        "Qurbana of Addai and Mari",
+        "daily office",
+        "lectionary"
+      ],
       "plan": "This tradition is the best served: Maclean (1894) translates the daily offices with their lectionary, and the 1893 English Liturgy of Addai and Mari covers the Qurbana.",
       "sources": [
-        {"ia": "eastsyriandailyo00macluoft", "title": "East Syrian Daily Offices (A. J. Maclean)", "year": 1894, "lang": "en", "fills": ["evening, night and morning offices", "lectionary tables"], "rights": "pd"},
-        {"ia": "LiturgyAdai", "title": "The Liturgy of the Holy Apostles Adai and Mari", "year": 1893, "lang": "en", "fills": ["Qurbana with the three anaphoras"], "rights": "pd"},
-        {"ia": "BreviariumChaldaicum", "title": "Breviarium Chaldaicum (P. Bedjan), 3 vols., Paris and Leipzig", "year": 1886, "lang": "syr", "fills": ["Syriac office for the year"], "rights": "pd", "note": "Archive metadata says 1867; its description gives 1886-87."},
-        {"ia": "bub_gb_PSttGL9Rf08C", "title": "Missale Chaldaicum", "year": 1767, "lang": "syr", "fills": ["Chaldean Mass"], "rights": "pd"},
-        {"ia": "nestorianstheirr02badg", "title": "The Nestorians and Their Rituals, vol. 2 (G. P. Badger)", "year": 1852, "lang": "en", "fills": ["sacraments and liturgy"], "rights": "pd"}
+        {
+          "ia": "eastsyriandailyo00macluoft",
+          "title": "East Syrian Daily Offices (A. J. Maclean)",
+          "year": 1894,
+          "lang": "en",
+          "fills": [
+            "evening, night and morning offices",
+            "lectionary tables"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "LiturgyAdai",
+          "title": "The Liturgy of the Holy Apostles Adai and Mari",
+          "year": 1893,
+          "lang": "en",
+          "fills": [
+            "Qurbana with the three anaphoras"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "BreviariumChaldaicum",
+          "title": "Breviarium Chaldaicum (P. Bedjan), 3 vols., Paris and Leipzig",
+          "year": 1886,
+          "lang": "syr",
+          "fills": [
+            "Syriac office for the year"
+          ],
+          "rights": "pd",
+          "note": "Archive metadata says 1867; its description gives 1886-87."
+        },
+        {
+          "ia": "bub_gb_PSttGL9Rf08C",
+          "title": "Missale Chaldaicum",
+          "year": 1767,
+          "lang": "syr",
+          "fills": [
+            "Chaldean Mass"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "nestorianstheirr02badg",
+          "title": "The Nestorians and Their Rituals, vol. 2 (G. P. Badger)",
+          "year": 1852,
+          "lang": "en",
+          "fills": [
+            "sacraments and liturgy"
+          ],
+          "rights": "pd"
+        }
       ],
-      "blockers": ["Syro-Malabar Raza (1986) and current Chaldean books: permission"]
+      "blockers": [
+        "Syro-Malabar Raza (1986) and current Chaldean books: permission"
+      ]
     },
     {
       "id": "armenian-catholic",
       "family": "catholic",
       "priority": 15,
-      "catalog": ["catholic-armenian"],
+      "catalog": [
+        "catholic-armenian"
+      ],
       "rite": "new",
       "service": "Badarak and Office",
       "now": "none",
-      "missing": ["Divine Liturgy (Badarak)", "Book of Hours", "lectionary"],
+      "missing": [
+        "Divine Liturgy (Badarak)",
+        "Book of Hours",
+        "lectionary"
+      ],
       "plan": "The 1862 English translation was made for Armenian Catholics and is the natural base; Conybeare adds the breviary rites and the old Jerusalem lectionary.",
       "sources": [
-        {"ia": "TheArmenianLiturgy", "title": "The Armenian Liturgy, translated into English", "year": 1862, "lang": "en", "fills": ["Divine Liturgy"], "rights": "pd"},
-        {"ia": "liturgyholyapos00asdvgoog", "title": "Liturgy of the Holy Apostolic Church of Armenia (S. C. Malan)", "year": 1887, "lang": "en", "fills": ["Divine Liturgy"], "rights": "pd"},
-        {"ia": "ritualearmenorum00cony", "title": "Rituale Armenorum (F. C. Conybeare)", "year": 1905, "lang": "en", "fills": ["sacraments", "breviary rites", "old Armenian lectionary"], "rights": "pd"}
+        {
+          "ia": "TheArmenianLiturgy",
+          "title": "The Armenian Liturgy, translated into English",
+          "year": 1862,
+          "lang": "en",
+          "fills": [
+            "Divine Liturgy"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgyholyapos00asdvgoog",
+          "title": "Liturgy of the Holy Apostolic Church of Armenia (S. C. Malan)",
+          "year": 1887,
+          "lang": "en",
+          "fills": [
+            "Divine Liturgy"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "ritualearmenorum00cony",
+          "title": "Rituale Armenorum (F. C. Conybeare)",
+          "year": 1905,
+          "lang": "en",
+          "fills": [
+            "sacraments",
+            "breviary rites",
+            "old Armenian lectionary"
+          ],
+          "rights": "pd"
+        }
       ],
-      "blockers": ["Armenian Book of Hours in public-domain English: not located"]
+      "blockers": [
+        "Armenian Book of Hours in public-domain English: not located"
+      ]
     },
     {
       "id": "anglican-prayer-books",
       "family": "anglican",
       "priority": 16,
-      "catalog": ["anglican-1549-england", "anglican-1552-england", "anglican-1559-england", "anglican-1604-england", "anglican-1662-england", "anglican-1928-england", "anglican-1637-scotland", "anglican-1764-scotland", "anglican-1929-scotland", "anglican-1789-us", "anglican-1892-us", "anglican-1928-us", "anglican-1979-us", "anglican-1918-canada", "anglican-1878-ireland", "anglican-1926-ireland"],
+      "catalog": [
+        "anglican-1549-england",
+        "anglican-1552-england",
+        "anglican-1559-england",
+        "anglican-1604-england",
+        "anglican-1662-england",
+        "anglican-1928-england",
+        "anglican-1637-scotland",
+        "anglican-1764-scotland",
+        "anglican-1929-scotland",
+        "anglican-1789-us",
+        "anglican-1892-us",
+        "anglican-1928-us",
+        "anglican-1979-us",
+        "anglican-1918-canada",
+        "anglican-1878-ireland",
+        "anglican-1926-ireland"
+      ],
       "rite": "new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders",
       "service": "Daily Office and Holy Communion",
       "now": "none (1662 Office only, inside the Ordinariate)",
-      "missing": ["each book's Communion order", "Office variants", "collects", "lectionary tables", "calendars"],
+      "missing": [
+        "each book's Communion order",
+        "Office variants",
+        "collects",
+        "lectionary tables",
+        "calendars"
+      ],
       "plan": "The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.",
       "sources": [
-        {"url": "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm", "title": "USA 1928", "year": 1928, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/formatted_1979.htm", "title": "USA 1979", "year": 1979, "lang": "en", "fills": ["complete book"], "rights": "pd", "note": "Widely treated as uncopyrighted (no copyright notice; Wikimedia Commons hosts it as such). Confirm the absence of a notice in a 1979 printing before import."},
-        {"url": "https://justus.anglican.org/resources/bcp/1892/BCP_1892.htm", "title": "USA 1892", "year": 1892, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/1789/BCP_1789.htm", "title": "USA 1789", "year": 1789, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/1662/1662.html", "title": "England 1662", "year": 1662, "lang": "en", "fills": ["Holy Communion and the rest of the book"], "rights": "crown-uk"},
-        {"url": "https://justus.anglican.org/resources/bcp/CofE1928/CofE1928.htm", "title": "England 1928 (proposed)", "year": 1928, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/1559/BCP_1559.htm", "title": "England 1559", "year": 1559, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/1552/BCP_1552.htm", "title": "England 1552", "year": 1552, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/1549/BCP_1549.htm", "title": "England 1549", "year": 1549, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/Scotland/BCP_1637.htm", "title": "Scotland 1637", "year": 1637, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/Scotland/Scottish_BCP1929.pdf", "title": "Scotland 1929", "year": 1929, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/Canada/1918.htm", "title": "Canada 1918", "year": 1918, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"url": "http://books.google.com/books?id=_cMUAAAAQAAJ", "title": "Ireland 1878", "year": 1878, "lang": "en", "fills": ["complete book"], "rights": "pd"},
-        {"ia": "firstprayerbooko00oxfouoft", "title": "The First Prayer-Book of Edward VI compared with the successive revisions", "year": 1877, "lang": "en", "fills": ["scan to check the 1549-1662 transcriptions"], "rights": "pd"},
-        {"ia": "bookommray00epis", "title": "Book of Common Prayer, USA (first printing of the 1789 book, Hall & Sellers)", "year": 1790, "lang": "en", "fills": ["scan to check 1789 transcription"], "rights": "pd"},
-        {"ia": "bookcommonpraye00conggoog", "title": "Book of Common Prayer, USA", "year": 1892, "lang": "en", "fills": ["scan to check 1892 transcription"], "rights": "pd"},
-        {"ia": "bookofcommonpray0000vari_p2b8", "title": "Book of Common Prayer, Canada", "year": 1918, "lang": "en", "fills": ["scan to check 1918 transcription"], "rights": "pd"}
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm",
+          "title": "USA 1928",
+          "year": 1928,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/formatted_1979.htm",
+          "title": "USA 1979",
+          "year": 1979,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd",
+          "note": "The official 2016 printing (below) has no copyright notice anywhere in its 999 pages; use it to check this transcription."
+        },
+        {
+          "url": "https://www.episcopalcommonprayer.org/uploads/1/2/9/8/129843103/bcp_2020.pdf",
+          "title": "The Book of Common Prayer (1979), official PDF of the Standard Book, certified 2016 (in use: The Episcopal Church)",
+          "year": 1979,
+          "lang": "en",
+          "format": "pdf",
+          "fills": [
+            "complete book",
+            "Revised Common Lectionary tables"
+          ],
+          "rights": "pd",
+          "note": "No copyright notice in the whole PDF (checked 2026-10-21). The RCL tables it now includes are the Consultation on Common Texts' and carry their own terms."
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1892/BCP_1892.htm",
+          "title": "USA 1892",
+          "year": 1892,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1789/BCP_1789.htm",
+          "title": "USA 1789",
+          "year": 1789,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1662/1662.html",
+          "title": "England 1662",
+          "year": 1662,
+          "lang": "en",
+          "fills": [
+            "Holy Communion and the rest of the book"
+          ],
+          "rights": "crown-uk"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/CofE1928/CofE1928.htm",
+          "title": "England 1928 (proposed)",
+          "year": 1928,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1559/BCP_1559.htm",
+          "title": "England 1559",
+          "year": 1559,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1552/BCP_1552.htm",
+          "title": "England 1552",
+          "year": 1552,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1549/BCP_1549.htm",
+          "title": "England 1549",
+          "year": 1549,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/Scotland/BCP_1637.htm",
+          "title": "Scotland 1637",
+          "year": 1637,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/Scotland/Scottish_BCP1929.pdf",
+          "title": "Scotland 1929",
+          "year": 1929,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/Canada/1918.htm",
+          "title": "Canada 1918",
+          "year": 1918,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "http://books.google.com/books?id=_cMUAAAAQAAJ",
+          "title": "Ireland 1878",
+          "year": 1878,
+          "lang": "en",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "firstprayerbooko00oxfouoft",
+          "title": "The First Prayer-Book of Edward VI compared with the successive revisions",
+          "year": 1877,
+          "lang": "en",
+          "fills": [
+            "scan to check the 1549-1662 transcriptions"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bookommray00epis",
+          "title": "Book of Common Prayer, USA (first printing of the 1789 book, Hall & Sellers)",
+          "year": 1790,
+          "lang": "en",
+          "fills": [
+            "scan to check 1789 transcription"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bookcommonpraye00conggoog",
+          "title": "Book of Common Prayer, USA",
+          "year": 1892,
+          "lang": "en",
+          "fills": [
+            "scan to check 1892 transcription"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bookofcommonpray0000vari_p2b8",
+          "title": "Book of Common Prayer, Canada",
+          "year": 1918,
+          "lang": "en",
+          "fills": [
+            "scan to check 1918 transcription"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://www.gutenberg.org/ebooks/29622",
+          "title": "The Book of Common Prayer and the Scottish Liturgy (Episcopal Church in Scotland), Project Gutenberg",
+          "year": 1912,
+          "lang": "en",
+          "format": "epub, html, txt",
+          "fills": [
+            "Scottish book and the Scottish Communion Office as typed text"
+          ],
+          "rights": "pd",
+          "note": "Gutenberg marks it public domain in the USA; confirm the edition year against the text."
+        },
+        {
+          "ia": "bookofcommonpray00refo",
+          "title": "The Book of Common Prayer of the Reformed Episcopal Church",
+          "year": 1874,
+          "lang": "en",
+          "fills": [
+            "Reformed Episcopal book (historical; the REC now uses a later book)"
+          ],
+          "rights": "pd"
+        }
       ],
-      "blockers": ["Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement, ACNA 2019, Common Worship: in copyright; each church's permissions policy applies"]
+      "blockers": [
+        "Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books"
+      ]
     },
     {
       "id": "anglo-catholic-missals",
       "family": "anglican",
       "priority": 17,
-      "catalog": ["anglican-missal", "english-missal"],
+      "catalog": [
+        "anglican-missal",
+        "english-missal"
+      ],
       "rite": "new",
       "service": "Mass",
       "now": "none",
-      "missing": ["Anglican Missal Mass", "English Missal Mass"],
+      "missing": [
+        "Anglican Missal Mass",
+        "English Missal Mass"
+      ],
       "plan": "The 1921 Anglican Missal is public domain and also serves the Ordinariate gap above. The English Missal needs its 1912 first edition; later editions are British and may be restored in the US.",
       "sources": [
-        {"ia": "anglicanmissal00churuoft", "title": "The Anglican Missal", "year": 1921, "lang": "en", "fills": ["complete Missal"], "rights": "pd"},
-        {"ia": "englishmissalfor0000vari", "title": "The English Missal for the Laity", "year": 1933, "lang": "en", "fills": ["English Missal wording"], "rights": "check-uraa"},
-        {"ia": "bwb_Y0-CAO-217", "title": "The People's Anglican Missal in the American Edition", "year": 1946, "lang": "en", "fills": ["American edition"], "rights": "check-renewal"},
-        {"ia": "englishgradual0000unse", "title": "The English Gradual", "year": 1933, "lang": "en", "fills": ["English plainsong propers"], "rights": "check-uraa"}
+        {
+          "ia": "anglicanmissal00churuoft",
+          "title": "The Anglican Missal",
+          "year": 1921,
+          "lang": "en",
+          "fills": [
+            "complete Missal"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "englishmissalfor0000vari",
+          "title": "The English Missal for the Laity",
+          "year": 1933,
+          "lang": "en",
+          "fills": [
+            "English Missal wording"
+          ],
+          "rights": "check-uraa"
+        },
+        {
+          "ia": "bwb_Y0-CAO-217",
+          "title": "The People's Anglican Missal in the American Edition",
+          "year": 1946,
+          "lang": "en",
+          "fills": [
+            "American edition"
+          ],
+          "rights": "check-renewal"
+        },
+        {
+          "ia": "englishgradual0000unse",
+          "title": "The English Gradual",
+          "year": 1933,
+          "lang": "en",
+          "fills": [
+            "English plainsong propers"
+          ],
+          "rights": "check-uraa"
+        }
       ],
-      "blockers": ["English Missal 1912 first edition: not located on the Internet Archive"]
+      "blockers": [
+        "English Missal 1912 first edition: not located on the Internet Archive"
+      ]
     },
     {
       "id": "anglican-music-and-psalter",
       "family": "anglican",
       "priority": 18,
-      "catalog": ["anglican"],
+      "catalog": [
+        "anglican"
+      ],
       "rite": "all Anglican builders",
       "service": "Music",
       "now": "partial (hymns.json)",
-      "missing": ["office hymns", "pointed psalter", "Merbecke"],
+      "missing": [
+        "office hymns",
+        "pointed psalter",
+        "Merbecke"
+      ],
       "plan": "Extend hymns.json from the English Hymnal and Hymns Ancient and Modern; point the Coverdale psalter from the 1902 Manual of Plainsong.",
       "sources": [
-        {"ia": "theenglishhymnal00milfuoft", "title": "The English Hymnal, with tunes", "year": 1906, "lang": "en", "fills": ["hymns and office hymns"], "rights": "pd"},
-        {"ia": "hymnsancientand01unkngoog", "title": "Hymns Ancient and Modern", "year": 1904, "lang": "en", "fills": ["hymns"], "rights": "pd"},
-        {"ia": "manualofplainson00brig", "title": "A Manual of Plainsong (Briggs and Frere)", "year": 1902, "lang": "en", "fills": ["canticles and psalter pointed to Gregorian tones"], "rights": "pd"},
-        {"url": "https://justus.anglican.org/resources/bcp/Merbecke/Merbecke.htm", "title": "Merbecke, The Book of Common Prayer Noted (1550)", "year": 1550, "lang": "en", "fills": ["Merbecke settings"], "rights": "pd"}
+        {
+          "ia": "theenglishhymnal00milfuoft",
+          "title": "The English Hymnal, with tunes",
+          "year": 1906,
+          "lang": "en",
+          "fills": [
+            "hymns and office hymns"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "hymnsancientand01unkngoog",
+          "title": "Hymns Ancient and Modern",
+          "year": 1904,
+          "lang": "en",
+          "fills": [
+            "hymns"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "manualofplainson00brig",
+          "title": "A Manual of Plainsong (Briggs and Frere)",
+          "year": 1902,
+          "lang": "en",
+          "fills": [
+            "canticles and psalter pointed to Gregorian tones"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://justus.anglican.org/resources/bcp/Merbecke/Merbecke.htm",
+          "title": "Merbecke, The Book of Common Prayer Noted (1550)",
+          "year": 1550,
+          "lang": "en",
+          "fills": [
+            "Merbecke settings"
+          ],
+          "rights": "pd"
+        }
       ],
-      "blockers": ["The Hymnal 1940 and 1982: Church Publishing, in copyright"]
+      "blockers": [
+        "The Hymnal 1940 and 1982: Church Publishing, in copyright"
+      ]
+    },
+    {
+      "id": "anglican-current-books",
+      "family": "anglican",
+      "priority": 19,
+      "catalog": [
+        "acna-2019",
+        "common-worship",
+        "anglican"
+      ],
+      "rite": "new: cited guides, or full text where a policy allows",
+      "service": "Daily Office and Holy Communion",
+      "now": "none",
+      "missing": [
+        "ACNA 2019",
+        "Common Worship",
+        "Book of Alternative Services",
+        "A New Zealand Prayer Book",
+        "Church in Wales 2004 Eucharist"
+      ],
+      "plan": "These books are in copyright but free to download, and several churches publish reuse policies. Common Worship is the strongest case: the Church of England allows its online texts to be reproduced on another non-commercial website if unaltered and acknowledged. ACNA allows liturgies in worship bulletins and short quotations (up to 2,500 words or 10%). New Zealand and Canada allow parish copies only. Build cited guides for all of them, print Common Worship under its web terms once someone confirms they cover an app, and ask the other holders.",
+      "sources": [
+        {
+          "url": "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship",
+          "title": "Common Worship texts online (in use: Church of England)",
+          "year": 2000,
+          "lang": "en",
+          "format": "html, pdf",
+          "fills": [
+            "Holy Communion Orders One and Two",
+            "Daily Prayer",
+            "collects",
+            "lectionary"
+          ],
+          "rights": "policy",
+          "note": "churchofengland.org/copyright: may be reproduced on another website for non-commercial purposes, unaltered and with the acknowledgement set out in A Brief Guide to Liturgical Copyright (4th ed., 2024)."
+        },
+        {
+          "url": "https://bcp2019.anglicanchurch.net/wp-content/uploads/2022/10/BCP-2019-MASTER-5th-PRINTING-05022022-3.pdf",
+          "title": "The Book of Common Prayer (2019), official PDF, 5th printing (in use: Anglican Church in North America)",
+          "year": 2019,
+          "lang": "en",
+          "format": "pdf",
+          "fills": [
+            "complete book",
+            "New Coverdale Psalter"
+          ],
+          "rights": "policy",
+          "note": "Copyright ACNA. Churches may put liturgies in worship bulletins; other uses up to 2,500 words or 10% without asking (anglicanhousepublishers.org/permissions). A complete app needs permission: permissions@anglicanhouse.org."
+        },
+        {
+          "url": "https://www.anglican.ca/wp-content/uploads/BAS.pdf",
+          "title": "The Book of Alternative Services, official PDF (in use: Anglican Church of Canada)",
+          "year": 1985,
+          "lang": "en",
+          "format": "pdf",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "policy",
+          "note": "Free use is limited to dioceses, parishes and bodies within the Anglican Church of Canada under its licence agreement."
+        },
+        {
+          "url": "http://www.liturgy.co.nz/resources/NZPBHKMA/A_New_Zealand_Prayer_Book.epub",
+          "title": "A New Zealand Prayer Book / He Karakia Mihinare o Aotearoa, EPUB (in use: Anglican Church in Aotearoa, New Zealand and Polynesia)",
+          "year": 1989,
+          "lang": "en, mi",
+          "format": "epub",
+          "fills": [
+            "complete book"
+          ],
+          "rights": "policy",
+          "note": "Single-occasion parish copies only, unedited and acknowledged (Copyright Rules, liturgy.co.nz/PDF/CopyrightRules.pdf). Anything else needs the General Secretary's written permission."
+        },
+        {
+          "url": "https://www.churchinwales.org.uk/documents/5236/2336_-_HE04_CiW_-_English.pdf",
+          "title": "An Order for the Holy Eucharist 2004, official PDF (in use: Church in Wales)",
+          "year": 2004,
+          "lang": "en",
+          "format": "pdf, docx",
+          "fills": [
+            "Church in Wales Eucharist"
+          ],
+          "rights": "permission",
+          "note": "Copyright the Representative Body of the Church in Wales."
+        },
+        {
+          "url": "https://www.broughtonpublishing.com.au/copyright/",
+          "title": "A Prayer Book for Australia: licence terms (in use: Anglican Church of Australia)",
+          "year": 1995,
+          "lang": "en",
+          "format": "print only",
+          "fills": [
+            "terms only"
+          ],
+          "rights": "reference",
+          "note": "Parish reproduction is free since 2019, but no part may be posted online without Broughton Publishing's permission."
+        }
+      ],
+      "blockers": [
+        "Church of Ireland 2004: its site refused automated access; check by hand",
+        "Scottish Episcopal Church current liturgies: download page not located",
+        "written permission from ACNA, Canada, New Zealand and Wales for an app"
+      ]
     },
     {
       "id": "orthodox-byzantine",
       "family": "eastern-orthodox",
-      "priority": 19,
-      "catalog": ["eastern-orthodox", "orthodox-constantinople", "orthodox-russia", "orthodox-oca", "goarch", "antiochian-america", "rocor", "old-calendarists"],
+      "priority": 20,
+      "catalog": [
+        "eastern-orthodox",
+        "orthodox-constantinople",
+        "orthodox-russia",
+        "orthodox-oca",
+        "goarch",
+        "antiochian-america",
+        "rocor",
+        "old-calendarists"
+      ],
       "rite": "b, byz (shared with Byzantine Catholic)",
       "service": "Divine Liturgy and Office",
       "now": "order / guide",
-      "missing": ["as for Byzantine Catholic", "Book of Needs", "Julian-calendar day mapping for Old Calendarists and Russian use"],
+      "missing": [
+        "as for Byzantine Catholic",
+        "Book of Needs",
+        "Julian-calendar day mapping for Old Calendarists and Russian use"
+      ],
       "plan": "Everything in the Byzantine Catholic plan applies. Add Shann's Book of Needs for occasional services. The orthocal port already computes Julian dates; expose it.",
       "sources": [
-        {"url": "https://www.ponomar.net/data/trebnik_shann.pdf", "title": "Book of Needs (G. V. Shann)", "year": 1894, "lang": "en", "fills": ["occasional services"], "rights": "pd"},
-        {"ia": "cu31924029363128", "title": "Hapgood Service Book", "year": 1906, "lang": "en", "fills": ["see Byzantine Catholic"], "rights": "pd"},
-        {"ia": "typikontstou00orth", "title": "Typikon of the Great Church (G. Violakis)", "year": 1900, "lang": "grc", "fills": ["Greek ordo rules"], "rights": "pd", "note": "Archive metadata gives 1900; confirm the edition year on the title page."}
+        {
+          "url": "https://www.ponomar.net/data/trebnik_shann.pdf",
+          "title": "Book of Needs (G. V. Shann)",
+          "year": 1894,
+          "lang": "en",
+          "fills": [
+            "occasional services"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://www.gutenberg.org/ebooks/71513",
+          "title": "Book of Needs of the Holy Orthodox Church (G. V. Shann), Project Gutenberg",
+          "year": 1894,
+          "lang": "en",
+          "format": "epub, html, txt",
+          "fills": [
+            "occasional services as typed text"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "cu31924029363128",
+          "title": "Hapgood Service Book",
+          "year": 1906,
+          "lang": "en",
+          "fills": [
+            "see Byzantine Catholic"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "typikontstou00orth",
+          "title": "Typikon of the Great Church (G. Violakis)",
+          "year": 1900,
+          "lang": "grc",
+          "fills": [
+            "Greek ordo rules"
+          ],
+          "rights": "pd",
+          "note": "Archive metadata gives 1900; confirm the edition year on the title page."
+        }
       ],
-      "blockers": ["Lenten Triodion and Festal Menaion (Mother Mary and Ware), HTM Pentecostarion, Lambertsen Menaion, Ephrem Lash: in copyright; ask each translator or publisher"]
+      "blockers": [
+        "Lenten Triodion and Festal Menaion (Mother Mary and Ware), HTM Pentecostarion, Lambertsen Menaion, Ephrem Lash: in copyright; ask each translator or publisher"
+      ]
     },
     {
       "id": "western-rite-orthodox",
       "family": "eastern-orthodox",
-      "priority": 20,
-      "catalog": ["western-rite-orthodox"],
+      "priority": 21,
+      "catalog": [
+        "western-rite-orthodox"
+      ],
       "rite": "new",
       "service": "Mass",
       "now": "none",
-      "missing": ["Liturgy of St Gregory", "Liturgy of St Tikhon"],
+      "missing": [
+        "Liturgy of St Gregory",
+        "Liturgy of St Tikhon"
+      ],
       "plan": "The St Tikhon liturgy is an adaptation of the 1928 American Prayer Book and the St Gregory liturgy of the Tridentine Mass; build from the US 1928 and 1962 texts already planned, labelled as their sources, not as the Antiochian service book.",
       "sources": [
-        {"url": "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm", "title": "USA 1928 Book of Common Prayer", "year": 1928, "lang": "en", "fills": ["base of the St Tikhon liturgy"], "rights": "pd"}
+        {
+          "url": "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm",
+          "title": "USA 1928 Book of Common Prayer",
+          "year": 1928,
+          "lang": "en",
+          "fills": [
+            "base of the St Tikhon liturgy"
+          ],
+          "rights": "pd"
+        }
       ],
-      "blockers": ["St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese permission"]
+      "blockers": [
+        "St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese permission"
+      ]
     },
     {
       "id": "oriental-orthodox",
       "family": "oriental",
-      "priority": 21,
-      "catalog": ["oriental-orthodox", "oriental-coptic", "oriental-syriac", "oriental-armenian", "oriental-ethiopian", "oriental-eritrean", "oriental-malankara", "oriental-assyrian", "oriental-ancient"],
+      "priority": 22,
+      "catalog": [
+        "oriental-orthodox",
+        "oriental-coptic",
+        "oriental-syriac",
+        "oriental-armenian",
+        "oriental-ethiopian",
+        "oriental-eritrean",
+        "oriental-malankara",
+        "oriental-assyrian",
+        "oriental-ancient"
+      ],
       "rite": "new (shared builders with the Eastern Catholic churches of the same tradition)",
       "service": "Liturgy and Office",
       "now": "none",
-      "missing": ["liturgies", "hours", "lectionaries", "calendars (Coptic, Ethiopian, Armenian)"],
+      "missing": [
+        "liturgies",
+        "hours",
+        "lectionaries",
+        "calendars (Coptic, Ethiopian, Armenian)"
+      ],
       "plan": "Reuse the Alexandrian, West Syriac, East Syriac and Armenian sources above; Orthodox and Catholic forms differ mainly in commemorations and the filioque. The Assyrian Church of the East also uses the Urmia Takhsa.",
       "sources": [
-        {"ia": "liturgieseastern01unknuoft", "title": "Liturgies Eastern and Western (Brightman)", "year": 1896, "lang": "en", "fills": ["Coptic, Ethiopic, Syrian, Armenian, East Syrian liturgies"], "rights": "pd"},
-        {"ia": "eastsyriandailyo00macluoft", "title": "East Syrian Daily Offices (Maclean)", "year": 1894, "lang": "en", "fills": ["Assyrian and Ancient Church of the East hours"], "rights": "pd"},
-        {"ia": "liturgiasanctoru0000anon", "title": "Liturgia Sanctorum Apostolorum Adaei et Maris (Urmia)", "year": 1890, "lang": "syr", "fills": ["Takhsa"], "rights": "pd"},
-        {"ia": "ritualearmenorum00cony", "title": "Rituale Armenorum (Conybeare)", "year": 1905, "lang": "en", "fills": ["Armenian rites and lectionary"], "rights": "pd"},
-        {"ia": "copticmorningser00coptuoft", "title": "Coptic Morning Service (Bute)", "year": 1908, "lang": "en", "fills": ["Coptic liturgy"], "rights": "pd"},
-        {"ia": "ethiopicliturgyi00mercuoft", "title": "The Ethiopic Liturgy (Mercer)", "year": 1915, "lang": "en", "fills": ["Ethiopian and Eritrean liturgy"], "rights": "pd"},
-        {"ia": "serviceforconsec00hornuoft", "title": "The Service for the Consecration of a Church according to the Coptic Rite (G. Horner)", "year": 1902, "lang": "en", "fills": ["Coptic rubrics and hymn structure"], "rights": "reference"}
+        {
+          "ia": "liturgieseastern01unknuoft",
+          "title": "Liturgies Eastern and Western (Brightman)",
+          "year": 1896,
+          "lang": "en",
+          "fills": [
+            "Coptic, Ethiopic, Syrian, Armenian, East Syrian liturgies"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "eastsyriandailyo00macluoft",
+          "title": "East Syrian Daily Offices (Maclean)",
+          "year": 1894,
+          "lang": "en",
+          "fills": [
+            "Assyrian and Ancient Church of the East hours"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgiasanctoru0000anon",
+          "title": "Liturgia Sanctorum Apostolorum Adaei et Maris (Urmia)",
+          "year": 1890,
+          "lang": "syr",
+          "fills": [
+            "Takhsa"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "ritualearmenorum00cony",
+          "title": "Rituale Armenorum (Conybeare)",
+          "year": 1905,
+          "lang": "en",
+          "fills": [
+            "Armenian rites and lectionary"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "copticmorningser00coptuoft",
+          "title": "Coptic Morning Service (Bute)",
+          "year": 1908,
+          "lang": "en",
+          "fills": [
+            "Coptic liturgy"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "ethiopicliturgyi00mercuoft",
+          "title": "The Ethiopic Liturgy (Mercer)",
+          "year": 1915,
+          "lang": "en",
+          "fills": [
+            "Ethiopian and Eritrean liturgy"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "serviceforconsec00hornuoft",
+          "title": "The Service for the Consecration of a Church according to the Coptic Rite (G. Horner)",
+          "year": 1902,
+          "lang": "en",
+          "fills": [
+            "Coptic rubrics and hymn structure"
+          ],
+          "rights": "reference"
+        }
       ],
-      "blockers": ["Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located", "Hudra (1960s Trichur edition): check before use"]
+      "blockers": [
+        "Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located",
+        "Hudra (1960s Trichur edition): check before use"
+      ]
     },
     {
       "id": "lutheran",
       "family": "lutheran",
-      "priority": 22,
-      "catalog": ["lutheran", "common-service", "swedish-orders", "lcms", "wels", "els", "elca", "nalc"],
+      "priority": 23,
+      "catalog": [
+        "lutheran",
+        "common-service",
+        "swedish-orders",
+        "lcms",
+        "wels",
+        "els",
+        "elca",
+        "nalc"
+      ],
       "rite": "new",
       "service": "Divine Service and Matins/Vespers",
       "now": "none",
-      "missing": ["Common Service order", "introits, collects and graduals", "historic one-year lectionary", "Swedish High Mass"],
-      "plan": "The Common Service (1888) as printed in the Church Book and the 1917 Common Service Book is the ancestor of TLH, SBH, LBW and LSB page 15; it gives a complete historic Lutheran Divine Service with propers and the one-year lectionary. Add the Missouri Synod's 1917 English Liturgy and Agenda and the 1921 Swedish rite. LSB, ELW, TLH and SBH stay cued.",
-      "sources": [
-        {"ia": "commonserviceb00unknuoft", "title": "Common Service Book of the Lutheran Church", "year": 1918, "lang": "en", "fills": ["Common Service", "Matins", "Vespers", "introits, collects, graduals", "one-year lectionary"], "rights": "pd"},
-        {"ia": "churchbookforthe00unknuoft", "title": "Church Book for the Use of Evangelical Lutheran Congregations", "year": 1893, "lang": "en", "fills": ["Common Service in its 1888 form"], "rights": "pd"},
-        {"ia": "liturgyagenda00luth", "title": "Liturgy and Agenda (Missouri Synod)", "year": 1918, "lang": "en", "fills": ["Missouri Synod English orders"], "rights": "pd"},
-        {"ia": "kirchenagendefurevang.luth.gemeinden1902", "title": "Kirchen-Agende für Evang.-Luth. Gemeinden", "year": 1902, "lang": "de", "fills": ["German Missouri Synod orders"], "rights": "pd"},
-        {"ia": "liturgyforchrist00lhew", "title": "Liturgy for Christian Congregations of the Lutheran Faith (W. Löhe)", "year": 1902, "lang": "en", "fills": ["Löhe's orders"], "rights": "pd"},
-        {"ia": "swedishritetrans00sven", "title": "The Swedish Rite: a translation of Handbok för svenska kyrkan (E. E. Yelverton)", "year": 1921, "lang": "en", "fills": ["Church of Sweden High Mass and offices"], "rights": "pd"},
-        {"ia": "khb-1894", "title": "Kyrkohandbok", "year": 1894, "lang": "sv", "fills": ["Swedish original"], "rights": "pd"},
-        {"ia": "evangelicalluthe09evan", "title": "Evangelical Lutheran Hymn-Book (Missouri Synod)", "year": 1909, "lang": "en", "fills": ["hymns"], "rights": "pd"}
+      "missing": [
+        "Common Service order",
+        "introits, collects and graduals",
+        "historic one-year lectionary",
+        "Swedish High Mass",
+        "current Nordic service books"
       ],
-      "blockers": ["Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright", "The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked"]
+      "plan": "The Common Service (1888) as printed in the Church Book and the 1917 Common Service Book is the ancestor of TLH, SBH, LBW and LSB page 15; it gives a complete historic Lutheran Divine Service with propers and the one-year lectionary. Add the Missouri Synod's 1917 English Liturgy and Agenda and the 1921 Swedish rite. LSB, ELW, TLH and SBH stay cued. Typed public-domain transcriptions already exist: A Collection of Prayers has the whole Common Service Book (1917-18) as Word and PDF files, and Project Gutenberg has the 1912 Missouri Synod hymn-book. The Church of Sweden's current handbook is a free PDF but its copyright page forbids copying without permission.",
+      "sources": [
+        {
+          "ia": "commonserviceb00unknuoft",
+          "title": "Common Service Book of the Lutheran Church",
+          "year": 1918,
+          "lang": "en",
+          "fills": [
+            "Common Service",
+            "Matins",
+            "Vespers",
+            "introits, collects, graduals",
+            "one-year lectionary"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://acollectionofprayers.com/2017/01/01/common-service-book-of-the-lutheran-church/",
+          "title": "Common Service Book (1917-18) typed in Word and PDF: The Service, Matins, Vespers, introits, collects, graduals, litany, suffrages, occasional services",
+          "year": 1918,
+          "lang": "en",
+          "format": "docx, pdf",
+          "fills": [
+            "complete Common Service Book as editable text"
+          ],
+          "rights": "pd",
+          "note": "Use the files marked 'common-service-book' (unaltered). The site's 'contemporary English' adaptations are CC BY-NC-ND and must not be used."
+        },
+        {
+          "url": "https://www.gutenberg.org/ebooks/76498",
+          "title": "Evangelical Lutheran Hymn-Book, abridged (Missouri Synod), Project Gutenberg",
+          "year": 1912,
+          "lang": "en",
+          "format": "epub, html, txt",
+          "fills": [
+            "hymns",
+            "Order of Morning Service"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://ctsfw.edu/etext/hymnals/tlh/tlh.zip",
+          "title": "The Lutheran Hymnal (1941): all public-domain hymn texts (Project Wittenberg, Concordia Theological Seminary)",
+          "year": 1941,
+          "lang": "en",
+          "format": "zip of txt",
+          "fills": [
+            "TLH hymns whose texts are public domain"
+          ],
+          "rights": "pd",
+          "note": "Only the hymns the seminary marks as public domain; the TLH liturgy pages are not included."
+        },
+        {
+          "ia": "churchserviceboo00evan",
+          "title": "Church Service Book and Ministerial Acts (Augustana Synod)",
+          "year": 1928,
+          "lang": "en",
+          "fills": [
+            "Swedish-American Lutheran services"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "lutheranhymnary00synogoog",
+          "title": "The Lutheran Hymnary (Norwegian Synod and others; ancestor of ELS use)",
+          "year": 1913,
+          "lang": "en",
+          "fills": [
+            "Norwegian-American liturgy and hymns"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://www.svenskakyrkan.se/default.aspx?id=2373422",
+          "title": "Kyrkohandbok för Svenska kyrkan, del I, official PDF (in use: Church of Sweden)",
+          "year": 2017,
+          "lang": "sv",
+          "format": "pdf",
+          "fills": [
+            "current Swedish High Mass and services"
+          ],
+          "rights": "permission",
+          "note": "svenskakyrkan.se/kyrkohandboken/upphovsratt: copyright the Church of Sweden; no copying without permission."
+        },
+        {
+          "url": "https://evl.fi/plus/seurakuntaelama/jumalanpalvelus-ja-hengellisyys/jumalanpalveluselama/erikielisia-jumalanpalveluskaavoja/liturgical-resources-in-english/",
+          "title": "Evangelical Lutheran Church of Finland: liturgical resources in English (PDF and Word)",
+          "year": 2025,
+          "lang": "en",
+          "format": "pdf, docx",
+          "fills": [
+            "baptism, wedding, funeral and blessing orders"
+          ],
+          "rights": "permission",
+          "note": "No reuse terms found on the page."
+        },
+        {
+          "ia": "churchbookforthe00unknuoft",
+          "title": "Church Book for the Use of Evangelical Lutheran Congregations",
+          "year": 1893,
+          "lang": "en",
+          "fills": [
+            "Common Service in its 1888 form"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgyagenda00luth",
+          "title": "Liturgy and Agenda (Missouri Synod)",
+          "year": 1918,
+          "lang": "en",
+          "fills": [
+            "Missouri Synod English orders"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "kirchenagendefurevang.luth.gemeinden1902",
+          "title": "Kirchen-Agende für Evang.-Luth. Gemeinden",
+          "year": 1902,
+          "lang": "de",
+          "fills": [
+            "German Missouri Synod orders"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgyforchrist00lhew",
+          "title": "Liturgy for Christian Congregations of the Lutheran Faith (W. Löhe)",
+          "year": 1902,
+          "lang": "en",
+          "fills": [
+            "Löhe's orders"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "swedishritetrans00sven",
+          "title": "The Swedish Rite: a translation of Handbok för svenska kyrkan (E. E. Yelverton)",
+          "year": 1921,
+          "lang": "en",
+          "fills": [
+            "Church of Sweden High Mass and offices"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "khb-1894",
+          "title": "Kyrkohandbok",
+          "year": 1894,
+          "lang": "sv",
+          "fills": [
+            "Swedish original"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "evangelicalluthe09evan",
+          "title": "Evangelical Lutheran Hymn-Book (Missouri Synod)",
+          "year": 1909,
+          "lang": "en",
+          "fills": [
+            "hymns"
+          ],
+          "rights": "pd"
+        }
+      ],
+      "blockers": [
+        "Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright",
+        "The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked"
+      ]
     },
     {
       "id": "reformed",
       "family": "reformed",
-      "priority": 23,
-      "catalog": ["reformed", "dort-forms", "genevan-psalter", "psalter-1912", "westminster", "scottish-psalter", "bcw-1906", "nrc", "heritage-reformed", "free-reformed", "gereformeerde-gemeenten", "canadian-reformed", "urcna", "pca", "opc", "pcusa", "free-church-scotland", "reformed-presbyterian"],
+      "priority": 24,
+      "catalog": [
+        "reformed",
+        "dort-forms",
+        "genevan-psalter",
+        "psalter-1912",
+        "westminster",
+        "scottish-psalter",
+        "bcw-1906",
+        "nrc",
+        "heritage-reformed",
+        "free-reformed",
+        "gereformeerde-gemeenten",
+        "canadian-reformed",
+        "urcna",
+        "pca",
+        "opc",
+        "pcusa",
+        "free-church-scotland",
+        "reformed-presbyterian"
+      ],
       "rite": "new",
       "service": "Lord's Day worship and forms",
       "now": "none",
-      "missing": ["Dort liturgical forms in English", "metrical psalters", "Westminster Directory", "Book of Common Worship"],
-      "plan": "Reformed worship is mostly an order plus psalms: build a Lord's Day order from the Directory or the 1906 Book of Common Worship and draw psalms from the 1650 Scottish Psalter, the 1912 Psalter and the Genevan psalms. The English Dort forms come from the 19th-century Reformed Dutch printings.",
-      "sources": [
-        {"ia": "psahc00refo", "title": "The Psalms and Hymns, with the Catechism, Confession, Canons of Dort and Liturgy (Reformed Protestant Dutch Church)", "year": 1854, "lang": "en", "fills": ["Dort liturgical forms in English"], "rights": "pd"},
-        {"ia": "psalmsofdavidinm00chur", "title": "The Psalms of David in Metre (Scottish Psalter)", "year": 1814, "lang": "en", "fills": ["1650 Scottish metrical psalter"], "rights": "pd"},
-        {"ia": "psalterwithresp00usgoog", "title": "The Psalter, with Responsive Readings", "year": 1912, "lang": "en", "fills": ["1912 Psalter"], "rights": "pd"},
-        {"ia": "lespseaumesdedav00maro", "title": "Les Pseaumes de David mis en rime françoise (Marot and Bèze)", "year": 1660, "lang": "fr", "fills": ["Genevan psalter texts"], "rights": "pd"},
-        {"ia": "directoryforpubl00west", "title": "The Directory for the Publick Worship of God", "year": 1880, "lang": "en", "fills": ["Westminster Directory"], "rights": "pd"},
-        {"ia": "bookofcommonwors00pres", "title": "The Book of Common Worship (PCUSA)", "year": 1906, "lang": "en", "fills": ["Presbyterian orders and prayers"], "rights": "pd"},
-        {"ia": "bookofcommonorde00churuoft", "title": "The Book of Common Order (John Knox's Liturgy)", "year": 1873, "lang": "en", "fills": ["Scottish Reformation order"], "rights": "pd"},
-        {"ia": "euchologionbooko00chur", "title": "Euchologion: a Book of Common Order (Church Service Society)", "year": 1877, "lang": "en", "fills": ["Scottish Presbyterian forms"], "rights": "pd"},
-        {"url": "https://hymnary.org/", "title": "Hymnary.org", "lang": "en", "fills": ["psalm and hymn texts with tune indexes"], "rights": "reference", "note": "Check the status of each text it hosts."}
+      "missing": [
+        "Dort liturgical forms in English",
+        "metrical psalters",
+        "Westminster Directory",
+        "Book of Common Worship",
+        "Reformed Church in America liturgy",
+        "Reformed Church in the United States orders",
+        "current denominational forms"
       ],
-      "blockers": ["Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright"]
+      "plan": "Reformed worship is mostly an order plus psalms: build a Lord's Day order from the Directory or the 1906 Book of Common Worship and draw psalms from the 1650 Scottish Psalter, the 1912 Psalter and the Genevan psalms. The English Dort forms come from the 19th-century Reformed Dutch printings. Several bodies publish their current forms free on the web (URCNA, CRCNA) or their Directory for Worship as a free PDF (OPC, PCA), but none states a reuse licence; cite them and ask.",
+      "sources": [
+        {
+          "ia": "psahc00refo",
+          "title": "The Psalms and Hymns, with the Catechism, Confession, Canons of Dort and Liturgy (Reformed Protestant Dutch Church)",
+          "year": 1854,
+          "lang": "en",
+          "fills": [
+            "Dort liturgical forms in English"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgyofreform00refo",
+          "title": "The Liturgy of the Reformed Church in America, for use in public worship",
+          "year": 1882,
+          "lang": "en",
+          "fills": [
+            "RCA orders and Dort-derived forms"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgyofreforme1907refo",
+          "title": "The Liturgy of the Reformed Church in America, with the Psalter for responsive reading",
+          "year": 1907,
+          "lang": "en",
+          "fills": [
+            "RCA orders and Dort-derived forms"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "anorderworshipf00statgoog",
+          "title": "An Order of Worship for the Reformed Church (Mercersburg liturgy, RCUS)",
+          "year": 1884,
+          "lang": "en",
+          "fills": [
+            "German Reformed (Mercersburg) orders"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "rcus-directory-worship-1905",
+          "title": "Directory of Worship for the Reformed Church in the United States",
+          "year": 1905,
+          "lang": "en",
+          "fills": [
+            "RCUS orders (the RCUS still exists)"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "psalterhymnalpsa00unit",
+          "title": "The Psalter Hymnal (United Presbyterian Church of North America)",
+          "year": 1927,
+          "lang": "en",
+          "fills": [
+            "metrical psalms"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "psalmsofdavidinm00chur",
+          "title": "The Psalms of David in Metre (Scottish Psalter)",
+          "year": 1814,
+          "lang": "en",
+          "fills": [
+            "1650 Scottish metrical psalter"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "psalterwithresp00usgoog",
+          "title": "The Psalter, with Responsive Readings",
+          "year": 1912,
+          "lang": "en",
+          "fills": [
+            "1912 Psalter"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "lespseaumesdedav00maro",
+          "title": "Les Pseaumes de David mis en rime françoise (Marot and Bèze)",
+          "year": 1660,
+          "lang": "fr",
+          "fills": [
+            "Genevan psalter texts"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "directoryforpubl00west",
+          "title": "The Directory for the Publick Worship of God",
+          "year": 1880,
+          "lang": "en",
+          "fills": [
+            "Westminster Directory"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bookofcommonwors00pres",
+          "title": "The Book of Common Worship (PCUSA)",
+          "year": 1906,
+          "lang": "en",
+          "fills": [
+            "Presbyterian orders and prayers"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bookofcommonorde00churuoft",
+          "title": "The Book of Common Order (John Knox's Liturgy)",
+          "year": 1873,
+          "lang": "en",
+          "fills": [
+            "Scottish Reformation order"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "euchologionbooko00chur",
+          "title": "Euchologion: a Book of Common Order (Church Service Society)",
+          "year": 1877,
+          "lang": "en",
+          "fills": [
+            "Scottish Presbyterian forms"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://hymnary.org/",
+          "title": "Hymnary.org",
+          "lang": "en",
+          "fills": [
+            "psalm and hymn texts with tune indexes"
+          ],
+          "rights": "reference",
+          "note": "Check the status of each text it hosts."
+        },
+        {
+          "url": "https://www.urcna.org/liturgical-forms",
+          "title": "URCNA liturgical forms, two forms each for baptism, profession, Lord's Supper, discipline, ordination and marriage (in use)",
+          "lang": "en",
+          "format": "html",
+          "fills": [
+            "current Reformed forms"
+          ],
+          "rights": "permission",
+          "note": "No reuse statement on the pages. Form 1 versions follow the historic Dort forms, which are public domain in their 19th-century English."
+        },
+        {
+          "url": "https://www.crcna.org/resources/church-resources/liturgical-forms",
+          "title": "Christian Reformed Church liturgical forms (in use)",
+          "lang": "en",
+          "format": "html",
+          "fills": [
+            "current CRC forms"
+          ],
+          "rights": "permission"
+        },
+        {
+          "url": "http://opc.org/BCO/BCO_2025.pdf",
+          "title": "OPC Book of Church Order 2025, including the Directory for the Public Worship of God (in use)",
+          "year": 2025,
+          "lang": "en",
+          "format": "pdf",
+          "fills": [
+            "OPC order of worship"
+          ],
+          "rights": "permission",
+          "note": "No copyright statement found in the PDF; ask the OPC before reproducing."
+        },
+        {
+          "url": "https://www.pcaac.org/wp-content/uploads/2026/07/BCO_2026.pdf",
+          "title": "PCA Book of Church Order 2026, including the Directory for Worship (in use)",
+          "year": 2026,
+          "lang": "en",
+          "format": "pdf",
+          "fills": [
+            "PCA order of worship"
+          ],
+          "rights": "permission",
+          "note": "Copyright the PCA Stated Clerk; no reproduction without written permission, including for AI models."
+        }
+      ],
+      "blockers": [
+        "Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright"
+      ]
+    },
+    {
+      "id": "methodist-moravian-and-others",
+      "family": "methodist",
+      "priority": 25,
+      "catalog": [],
+      "rite": "new (no catalog entries yet; add them in data/traditions.json first)",
+      "service": "Lord's Supper, Morning Prayer and occasional services",
+      "now": "none",
+      "missing": [
+        "Wesley's Sunday Service",
+        "Methodist ritual",
+        "Moravian liturgies",
+        "Congregational orders",
+        "Holiness church rituals"
+      ],
+      "plan": "Wesley's 1784 Sunday Service is the root of Methodist liturgy and public domain; the 1908 Methodist Episcopal Ritual and the 1920 Moravian Hymnal and Liturgies cover the 20th-century forms. Current Free Methodist and Nazarene books are free PDFs whose rituals are in copyright. These families are not in the Sanctuary catalog yet, so add them there before building guides.",
+      "sources": [
+        {
+          "ia": "amernorfm00wesl",
+          "title": "The Sunday Service of the Methodists in North America (John Wesley)",
+          "year": 1784,
+          "lang": "en",
+          "fills": [
+            "Morning Prayer, Lord's Supper, baptism, ordinal, collects and lessons"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "ritualofmethodis01meth",
+          "title": "Ritual of the Methodist Episcopal Church",
+          "year": 1908,
+          "lang": "en",
+          "fills": [
+            "Lord's Supper and occasional services"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "methodisthymnalo00meth",
+          "title": "The Methodist Hymnal (Methodist Episcopal Church and Methodist Episcopal Church, South)",
+          "year": 1905,
+          "lang": "en",
+          "fills": [
+            "hymns and orders of worship"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "hymnalliturgieso00mora",
+          "title": "Hymnal and Liturgies of the Moravian Church (Unitas Fratrum), American province",
+          "year": 1920,
+          "lang": "en",
+          "fills": [
+            "Moravian liturgies, litanies and lovefeast"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "liturgyandhymns00unknuoft",
+          "title": "Liturgy and Hymns of the Moravian Church (British province)",
+          "year": 1908,
+          "lang": "en",
+          "fills": [
+            "British Moravian liturgies"
+          ],
+          "rights": "pd"
+        },
+        {
+          "ia": "bookofchurchserv00nati",
+          "title": "Book of Church Services (National Council of the Congregational Churches)",
+          "year": 1922,
+          "lang": "en",
+          "fills": [
+            "Congregational orders"
+          ],
+          "rights": "pd"
+        },
+        {
+          "url": "https://fmcusa.org/wp-content/uploads/2023-Book-of-Discipline-Interactive-PDF-FINAL.pdf",
+          "title": "Free Methodist Church USA, 2023 Book of Discipline, official PDF, including the rituals (in use)",
+          "year": 2023,
+          "lang": "en",
+          "format": "pdf",
+          "fills": [
+            "current Free Methodist rituals"
+          ],
+          "rights": "permission",
+          "note": "Copyright 2024 Free Methodist Church USA."
+        },
+        {
+          "url": "https://nazarene.org/manual/",
+          "title": "Church of the Nazarene Manual 2023, official PDF including the ritual (in use)",
+          "year": 2023,
+          "lang": "en",
+          "format": "pdf",
+          "fills": [
+            "current Nazarene ritual"
+          ],
+          "rights": "permission",
+          "note": "Read the site's terms of use before quoting."
+        }
+      ],
+      "blockers": [
+        "United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright",
+        "no catalog entries for these families yet"
+      ]
     },
     {
       "id": "old-catholic",
       "family": "old-catholic",
-      "priority": 24,
-      "catalog": ["old-catholic", "union-utrecht", "pncc", "utrecht-netherlands", "utrecht-germany", "utrecht-switzerland", "utrecht-austria", "utrecht-czechia", "utrecht-poland"],
+      "priority": 26,
+      "catalog": [
+        "old-catholic",
+        "union-utrecht",
+        "pncc",
+        "utrecht-netherlands",
+        "utrecht-germany",
+        "utrecht-switzerland",
+        "utrecht-austria",
+        "utrecht-czechia",
+        "utrecht-poland"
+      ],
       "rite": "new",
       "service": "Mass",
       "now": "none",
-      "missing": ["vernacular Old Catholic Mass books", "PNCC liturgy"],
+      "missing": [
+        "vernacular Old Catholic Mass books",
+        "PNCC liturgy"
+      ],
       "plan": "Not yet located. The 19th-century German Old Catholic altar books and the early PNCC liturgy are the likely public-domain bases; search national library catalogues (Deutsche Digitale Bibliothek, Polona) next.",
       "sources": [],
-      "blockers": ["no candidate source found yet"]
+      "blockers": [
+        "no candidate source found yet"
+      ]
     }
   ]
 }

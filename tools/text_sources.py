@@ -24,8 +24,8 @@ DOC = ROOT / "docs" / "text-sources.md"
 UA = {"User-Agent": "Lectionarium source audit (+https://github.com/jcalepos146/LECTIONARIUM)"}
 
 GAP_KEYS = {"id", "family", "priority", "catalog", "rite", "service", "now", "missing", "plan", "sources", "blockers"}
-SRC_KEYS = {"ia", "url", "title", "year", "lang", "fills", "rights", "note"}
-PRINTABLE = {"pd", "pd-reprint", "ancient", "open", "crown-uk"}
+SRC_KEYS = {"ia", "url", "title", "year", "lang", "format", "fills", "rights", "note"}
+PRINTABLE = {"pd", "pd-reprint", "ancient", "open", "crown-uk"}  # "policy" depends on its terms
 
 
 def load():
@@ -139,7 +139,8 @@ def link(s):
 def render(plan):
     fam = {"catholic": "Catholic", "anglican": "Anglican", "eastern-orthodox": "Eastern Orthodox",
            "oriental": "Oriental Orthodox and Church of the East", "lutheran": "Lutheran",
-           "reformed": "Reformed", "old-catholic": "Old Catholic"}
+           "reformed": "Reformed", "methodist": "Methodist, Moravian and other Protestant",
+           "old-catholic": "Old Catholic"}
     out = ["# Text sources still to import", "",
            "*Generated from `data/text-sources.json` by `python3 tools/text_sources.py --md`. Edit the JSON, not this file.*", "",
            plan["about"], "",
@@ -147,10 +148,11 @@ def render(plan):
            + ", ".join(fam[f] for f in plan["order"]) + ".", "",
            "## Rights labels", ""]
     out += [f"- **{k}**: {v}" for k, v in plan["rights"].items()]
-    out += ["", "## Summary", "", "| # | Gap | Now | Printable leads | Blocked on |", "|---|---|---|---|---|"]
+    out += ["", "## Summary", "", "| # | Gap | Now | Printable leads | Under a reuse policy | Blocked on |", "|---|---|---|---|---|---|"]
     for g in plan["gaps"]:
         n = sum(1 for s in g["sources"] if s["rights"] in PRINTABLE)
-        out.append(f"| {g['priority']} | [{g['id']}](#{g['id']}) | {g['now']} | {n} | {'; '.join(g['blockers']) or 'nothing'} |")
+        pol = sum(1 for s in g["sources"] if s["rights"] == "policy")
+        out.append(f"| {g['priority']} | [{g['id']}](#{g['id']}) | {g['now']} | {n} | {pol} | {'; '.join(g['blockers']) or 'nothing'} |")
     current = None
     for g in plan["gaps"]:
         if g["family"] != current:
@@ -160,10 +162,11 @@ def render(plan):
                 f"Catalog: {', '.join('`' + c + '`' for c in g['catalog'])} · rite `{g['rite']}` · {g['service']} · now **{g['now']}**", "",
                 "Missing: " + "; ".join(g["missing"]) + ".", "", g["plan"], ""]
         if g["sources"]:
-            out += ["| Source | Year | Lang | Fills | Rights |", "|---|---|---|---|---|"]
+            out += ["| Source | Year | Lang | Format | Fills | Rights |", "|---|---|---|---|---|---|"]
             for s in g["sources"]:
                 t = s["title"] + (f" — {s['note']}" if s.get("note") else "")
-                out.append(f"| {t} ({link(s)}) | {s.get('year', '')} | {s['lang']} | {'; '.join(s['fills'])} | {s['rights']} |")
+                fmt = s.get("format", "scan" if s.get("ia") else "")
+                out.append(f"| {t} ({link(s)}) | {s.get('year', '')} | {s['lang']} | {fmt} | {'; '.join(s['fills'])} | {s['rights']} |")
         if g["blockers"]:
             out += ["", "Blocked: " + "; ".join(g["blockers"]) + "."]
     return "\n".join(out).replace("|  |", "| |") + "\n"
