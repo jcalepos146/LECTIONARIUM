@@ -395,6 +395,25 @@ html.presenting body{overflow:hidden}
 .sn{background:var(--lapis)!important;box-shadow:0 0 0 2px var(--gold)}
 .tb-main{font-family:var(--f-display)}
 .tb-date{font-family:var(--f-uncial);letter-spacing:.04em;text-transform:none}
+
+/* your texts: the user's own copy of a copyrighted text, shown in place of the cue */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cue-t{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.mt-btn{font:inherit;font-family:var(--f-sc);letter-spacing:.04em;font-size:.8rem;color:var(--lapis);background:none;border:1px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer;margin-left:auto}
+.mt-btn:hover{background:var(--leaf)}
+.mytext{border-left:3px solid var(--gold);background:var(--leaf);padding:6px 12px 2px;margin:4px 0 10px;border-radius:0 6px 6px 0}
+.mytext p{margin:0 0 6px;line-height:1.55}
+.mt-lbl{display:block;font-family:var(--f-sc);letter-spacing:.05em;font-size:.76rem;color:var(--gold);margin-bottom:2px}
+.mt-edit{display:grid;gap:8px;background:var(--leaf);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;margin:4px 0 12px}
+.mt-edit textarea{font:inherit;width:100%;min-height:8em;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:8px}
+.mt-row{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.mt-scope{border:0;padding:0;margin:0;display:flex;gap:12px}
+.mt-bar{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:.88rem;color:var(--muted);border:1px dashed var(--rule);border-radius:8px;padding:6px 10px;margin:0 0 14px}
+.mt-bar b{color:var(--ink);font-family:var(--f-sc);letter-spacing:.04em}
+.mt-bar .tbtn{padding:3px 10px;font-size:.84rem}
+.mt-imp{cursor:pointer}
+.mt-help{flex-basis:100%} .mt-help summary{cursor:pointer;color:var(--lapis);font-size:.84rem}
+@media print{ .mt-btn,.mt-bar,.mt-edit{display:none!important} .mytext{border:0;background:none;padding:0} .mt-lbl{display:none} }
 </style>
 </head>
 <body>
@@ -660,6 +679,9 @@ html.presenting body{overflow:hidden}
       <li><a href="https://en.wikipedia.org/wiki/Catholic_order_liturgical_rite" target="_blank" rel="noopener">Catholic order liturgical rites</a> (Wikipedia)</li>
       <li>Traditional Breviary hours (1962, pre-1955, Monastic, Dominican), full Latin and English text and Gregorian chant: generated with the <a href="https://github.com/DivinumOfficium/divinum-officium" target="_blank" rel="noopener">Divinum Officium</a> program from its own data (MIT licence), one run per day and hour. Chant notation is not available there for the Dominican form.</li>
       <li>Ordinariate Mattins, Evensong and Compline: the Coverdale psalter, the orders of Morning and Evening Prayer and the Sunday and holy-day collects of the 1662 <i>Book of Common Prayer</i>, taken from the Penguin Classics edition (2012). The 1662 text is out of copyright, though the Crown holds perpetual rights in it in the United Kingdom. The edition's introduction and notes are not used. The prayers for the Sovereign and the Royal Family are left out.</li>
+      <li>Liturgy of the Hours psalmody: the four-week psalter after Felix Just, <a href="https://catholic-resources.org/LoH/Psalter-Index.html" target="_blank" rel="noopener">Psalter index</a>, with the psalms and canticles in the Douay-Rheims. Byzantine hours: the psalms in the Douay-Rheims (Septuagint numbering), the Phos hilaron in John Keble's translation (1834), and the Trisagion prayers, Creed, Great Doxology and other fixed prayers in traditional public-domain English.</li>
+      <li>Novus Ordo Ordinary: the Latin texts that are ancient (Kyrie, Gloria, Credo, Sanctus, Pater noster, Agnus Dei and the dialogues) with a traditional public-domain English beside them. Ordinariate propers: the 1662 collect of the Sunday, and the introit, offertory, secret, preface and postcommunion of the Roman Missal (1962) in English for the same day.</li>
+      <li><b>Your texts.</b> Texts still in copyright (the current Missal and Breviary translations, Divine Worship, Byzantine Daily Worship, the newer Latin prayers) are named, not printed. Press <i>Add text</i> beside any of them to type or paste the text from your own book: it is kept in your browser only and shown in its place from then on. Export and Import move your collection to another device.</li>
       <li>Order of the Byzantine Liturgies (St John Chrysostom, St Basil, Presanctified) checked against J. Raya and J. de Vinck, <i>Byzantine Daily Worship</i> (Alleluia Press, 1969). The book is in copyright, so none of its text is reproduced here.</li>
     </ul>
     <h3>Known limits</h3>
@@ -669,9 +691,11 @@ html.presenting body{overflow:hidden}
       <li>In Compare the year, every column applies feast precedence for the major fixed feasts (transfers, feasts replacing Sundays, Byzantine feasts kept with the Sunday). The traditional columns keep a displaced Sunday as its own row, marked as commemorated; the Pray today guide applies the full 1962 and pre-1955 rules to every day.</li>
       <li>The Novus Ordo guide follows the General Roman Calendar with the proper calendar of the United States, including obligatory and optional memorials; other countries' calendars differ.</li>
       <li>The daily guide covers 30 November 2025 to 30 November 2030.</li>
+      <li>The Liturgy of the Hours psalmody follows the four-week psalter; solemnities, feasts and the Easter Octave have proper psalms, which are not substituted. The Douay-Rheims wording differs from the Grail and Abbey Psalms of the official books.</li>
+      <li>The Byzantine Divine Liturgy itself is given as an order with the readings: its full text needs a public-domain source (such as Hapgood's <i>Service Book</i>, 1906) that has not yet been added.</li>
       <li>Divine Worship: Daily Office adapts the 1662 orders in places (the suffrages, the prayers after the collects, some proper collects); the 1662 text is given, so follow the Divine Worship book where it differs. Its lessons are cued, not printed.</li>
       <li>The Hybrid tab describes the weekday plan; the day-by-day hybrid weekday readings are in the Pray today guide.</li>
-      <li>Postures follow common United States customs and vary by parish and country. Office hour lengths are counted from the full text where it is given (the traditional Breviary and the 1662 offices) and estimated from the order of each hour elsewhere, since the Liturgy of the Hours and Divine Worship texts are not reproduced.</li>
+      <li>Postures follow common United States customs and vary by parish and country. Office hour lengths are counted from the full text where it is given and estimated from the order of each hour elsewhere.</li>
       <li>Session lengths are estimates: spoken text at about 140 words a minute, chant and hymns from their notation, fixed allowances for silent prayers and Communion. Timed (shortened) sessions are for practice, rehearsal and role-play; they are not a liturgical form.</li>
     </ul>
   </div>
@@ -1689,6 +1713,25 @@ const LAT={
   ite:"Ite, missa est. ℟. Deo grátias.",
   lord:"Our Father, who art in heaven, hallowed be thy name; thy kingdom come, thy will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
 };
+/* traditional English of the same ancient texts (public domain); the Missal's current English is ICEL's */
+const ENG={
+  sign:"In the name of the Father, and of the Son, ✠ and of the Holy Ghost. ℟. Amen.",
+  greet:"The Lord be with you. ℟. And with thy spirit.",
+  kyrie:"Lord, have mercy. ℟. Lord, have mercy. Christ, have mercy. ℟. Christ, have mercy. Lord, have mercy. ℟. Lord, have mercy.",
+  gloria:"Glory to God in the highest, and on earth peace to men of good will. We praise thee; we bless thee; we adore thee; we glorify thee; we give thee thanks for thy great glory, O Lord God, heavenly King, God the Father almighty. O Lord Jesus Christ, the only-begotten Son; O Lord God, Lamb of God, Son of the Father, who takest away the sins of the world, have mercy on us; who takest away the sins of the world, receive our prayer; who sittest at the right hand of the Father, have mercy on us. For thou alone art holy; thou alone art the Lord; thou alone, O Jesus Christ, art most high, together with the Holy Ghost, in the glory of God the Father. Amen.",
+  credo:"I believe in one God, the Father almighty, maker of heaven and earth, and of all things visible and invisible. And in one Lord Jesus Christ, the only-begotten Son of God, born of the Father before all ages; God of God, Light of Light, true God of true God; begotten, not made; consubstantial with the Father, by whom all things were made. Who for us men and for our salvation came down from heaven, and became incarnate by the Holy Ghost of the Virgin Mary, and was made man. He was crucified also for us, suffered under Pontius Pilate, and was buried. And the third day he rose again according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and he shall come again with glory to judge the living and the dead, of whose kingdom there shall be no end. And in the Holy Ghost, the Lord and giver of life, who proceedeth from the Father and the Son; who together with the Father and the Son is adored and glorified; who spoke by the prophets. And one, holy, catholic and apostolic Church. I confess one baptism for the remission of sins. And I look for the resurrection of the dead, and the life of the world to come. Amen.",
+  sursum:"The Lord be with you. ℟. And with thy spirit. Lift up your hearts. ℟. We have lifted them up to the Lord. Let us give thanks to the Lord our God. ℟. It is meet and just.",
+  sanctus:"Holy, holy, holy, Lord God of hosts. Heaven and earth are full of thy glory. Hosanna in the highest. Blessed is he that cometh in the name of the Lord. Hosanna in the highest.",
+  pater:"Our Father, who art in heaven, hallowed be thy name; thy kingdom come; thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.",
+  pax:"The peace of the Lord be always with you. ℟. And with thy spirit.",
+  agnus:"Lamb of God, who takest away the sins of the world, have mercy on us. Lamb of God, who takest away the sins of the world, have mercy on us. Lamb of God, who takest away the sins of the world, grant us peace.",
+  ecce:"Behold the Lamb of God, behold him who taketh away the sins of the world. Blessed are they who are called to the supper of the Lamb. ℟. Lord, I am not worthy that thou shouldst enter under my roof; but only say the word, and my soul shall be healed.",
+  bless:"The Lord be with you. ℟. And with thy spirit. May almighty God bless you, the Father, and the Son, ✠ and the Holy Ghost. ℟. Amen.",
+  ite:"Go, the Mass is ended. ℟. Thanks be to God.",
+};
+/* Latin with the traditional English beside it */
+function bil(k,cls,role,la){ const L=para(la||LAT[k],cls||"lat",role), E=ENG[k]?para(ENG[k],"",role):""; return E?`<div class="txt two"><div lang="la">${L}</div><div lang="en">${E}</div></div>`:L; }
+const ICEL="The Roman Missal's current English (ICEL) differs from the traditional translation beside the Latin";
 const fmtTxt=t=>esc(t).replace(/✠/g,'<span class="cross">✠</span>');
 /* Splits a text at each ℟.: the response (its first sentence) is the people's, the rest the speaker's. */
 function para(t,cls,role){
@@ -1711,13 +1754,13 @@ async function buildNO(ctx, opts){
   // Introductory rites
   let h=pos([["stand","from the entrance through the Collect"],["cross","at the opening sign of the cross"]]), t=0;
   const ent=hymnSlot(H,iso,"entrance",s,opts,"Entrance hymn"); h+=ent.html||cue(`Entrance Antiphon: read it from today's Mass propers in the ${HM}.`); t+=ent.sec||(AB>=3?20:40);
-  h+=`<h4 class="sub2">Sign of the Cross and Greeting</h4>`+para(LAT.sign)+para(LAT.greet)+cue(`English: ${HM}, Order of Mass, Introductory Rites.`); t+=AB>=3?30:50;
+  h+=`<h4 class="sub2">Sign of the Cross and Greeting</h4>`+bil("sign","")+bil("greet","")+cue(`${ICEL}: ${HM}, Order of Mass, Introductory Rites.`); t+=AB>=3?30:50;
   if(opts.asperges&&sun&&sung){ h+=`<h4 class="sub2">Rite of Sprinkling (in place of the Penitential Act)</h4>`+ch(paschal?"Vidi aquam":"Asperges me",paschal?C.common.vidi:C.common.asperges); t+=chs(paschal?C.common.vidi:C.common.asperges)+60; }
   else if(AB>=3){ h+=`<h4 class="sub2">Penitential Act</h4>`+cue(`Brief form: a moment of silence, then the Kyrie (${HM}, Order of Mass).`); t+=15; }
   else { h+=`<h4 class="sub2">Penitential Act</h4>`+pos([["strike","at through my fault"]])+cue(`I confess to almighty God… (${HM}, Order of Mass).`); t+=60; }
-  h+=`<h4 class="sub2">Kyrie</h4>`+para(LAT.kyrie); if(sung){ const k=ord("Kyrie",`Kyrie ${mass}`); h+=k.html; t+=k.sec; } else t+=20;
+  h+=`<h4 class="sub2">Kyrie</h4>`+bil("kyrie",""); if(sung){ const k=ord("Kyrie",`Kyrie ${mass}`); h+=k.html; t+=k.sec; } else t+=20;
   if(gl&&AB>=3) h+=abr("the Gloria");
-  else if(gl){ h+=`<h4 class="sub2">Gloria</h4>`+para(LAT.gloria,"lat","all")+cue(`English text: ${HM}, Order of Mass.`); if(sung){ const g=ord("Gloria","Gloria"); h+=g.html; t+=g.sec; } else t+=60; }
+  else if(gl){ h+=`<h4 class="sub2">Gloria</h4>`+bil("gloria","lat","all")+cue(`${ICEL}: ${HM}, Order of Mass.`); if(sung){ const g=ord("Gloria","Gloria"); h+=g.html; t+=g.sec; } else t+=60; }
   h+=`<h4 class="sub2">Collect</h4>`+cue(`Let us pray… then the Collect of the day, from the ${HM} propers.`); t+=40;
   out.push(sec("Introductory Rites",t/60,h));
   // Word
@@ -1742,30 +1785,30 @@ async function buildNO(ctx, opts){
   }
   if(NOdrop.length) h=abr(NOdrop)+h;
   if(cr&&AB>=2) h+=abr("the Profession of Faith");
-  else if(cr){ h+=`<h4 class="sub2">Profession of Faith</h4>`+pos([["stand"],["bow","at and by the Holy Spirit was incarnate (genuflect at Christmas and the Annunciation)"]])+para(LAT.credo,"lat","all")+cue(`English: the Nicene Creed (or Apostles' Creed) in the ${HM}.`); if(sung){ const id=C.credo[opts.credo||"III"]; if(id){ h+=ch(`Credo ${opts.credo||"III"}`,id); t+=chs(id); } } else t+=90; }
+  else if(cr){ h+=`<h4 class="sub2">Profession of Faith</h4>`+pos([["stand"],["bow","at and by the Holy Spirit was incarnate (genuflect at Christmas and the Annunciation)"]])+bil("credo","lat","all")+cue(`${ICEL}: the Nicene Creed (or Apostles' Creed) in the ${HM}.`); if(sung){ const id=C.credo[opts.credo||"III"]; if(id){ h+=ch(`Credo ${opts.credo||"III"}`,id); t+=chs(id); } } else t+=90; }
   if(opts.up){ h+=`<h4 class="sub2">Universal Prayer</h4>`+cue("Intentions for the Church, the world, the suffering, and the local community, each answered: Lord, hear our prayer."); t+=150; }
   out.push(sec("Liturgy of the Word",t/60,h));
   // Eucharist
   h=""; t=0;
   const off=hymnSlot(H,iso,"offertory",s,opts,"Offertory hymn"); h+=`<h4 class="sub2">Preparation of the Gifts</h4>`+pos([["sit"],["stand","at Pray, brethren"]])+(off.html||cue(AB>=2?"The gifts are placed on the altar in silence.":"The gifts are brought forward; the priest's prayers may be said aloud with the response: Blessed be God for ever."))+cue(`Pray, brethren… and the Prayer over the Offerings: ${HM}.`); t+=(off.sec||(AB>=3?20:AB>=2?30:90))+(AB>=3?30:AB>=2?40:60);
-  h+=`<h4 class="sub2">Preface Dialogue</h4>`+para(LAT.sursum)+(sung?ch("Preface dialogue",C.common.pref_sol,"Solemn tone · GregoBase (CC0)"):"")+cue(`Preface of the day: ${HM}.`); t+=sung?120:AB>=3?50:75;
-  h+=`<h4 class="sub2">Sanctus</h4>`+para(LAT.sanctus,"","all")+pos([["kneel","after the Sanctus until after the Great Amen (USA)"],["bell","at the epiclesis and at each elevation, where customary"]]); if(sung){ const k=ord("Sanctus",`Sanctus ${mass}`); h+=k.html; t+=k.sec; } else t+=25;
+  h+=`<h4 class="sub2">Preface Dialogue</h4>`+bil("sursum","")+(sung?ch("Preface dialogue",C.common.pref_sol,"Solemn tone · GregoBase (CC0)"):"")+cue(`Preface of the day: ${HM}.`); t+=sung?120:AB>=3?50:75;
+  h+=`<h4 class="sub2">Sanctus</h4>`+bil("sanctus","","all")+pos([["kneel","after the Sanctus until after the Great Amen (USA)"],["bell","at the epiclesis and at each elevation, where customary"]]); if(sung){ const k=ord("Sanctus",`Sanctus ${mass}`); h+=k.html; t+=k.sec; } else t+=25;
   const EPT={I:8,II:AB>=3?2.5:3.5,III:5,IV:7};
   h+=`<h4 class="sub2">Eucharistic Prayer ${esc(opts.ep||"II")}</h4>`+cue(`Eucharistic Prayer ${opts.ep||"II"}: ${HM}, Order of Mass. Kneel from after the Sanctus until after the Great Amen (in the United States).`)+(opts.veil?cue(VEIL):"");
   h+=`<h4 class="sub2">Mystery of Faith</h4>`+para("Mortem tuam annuntiámus, Dómine, et tuam resurrectiónem confitémur, donec vénias.","","ppl")+(sung?ch("Mortem tuam",C.common.mortem):"")+cue(`English forms: ${HM}.`)+`<h4 class="sub2">Doxology and Great Amen</h4>`+para("Per ipsum, et cum ipso, et in ipso… ℟. Amen."); t+=(EPT[opts.ep||"II"]||4)*60+40;
   out.push(sec("Liturgy of the Eucharist",t/60,h));
   // Communion
   h=""; t=0;
-  h+=`<h4 class="sub2">The Lord's Prayer</h4>`+pos([["stand","for the Lord's Prayer and the Sign of Peace"]])+para(LAT.pater,"lat","all")+para(LAT.lord,"","all")+(sung?ch("Pater noster",C.common.pater):"")+cue(`Embolism and doxology (For the kingdom…): ${HM}.`); t+=sung?120:60;
-  h+=`<h4 class="sub2">Sign of Peace</h4>`+para("Pax Dómini sit semper vobíscum. ℟. Et cum spíritu tuo.")+(sung?ch("Pax Domini",C.common.paxdomini):""); t+=AB>=3?15:40;
-  h+=`<h4 class="sub2">Lamb of God</h4>`+para(LAT.agnus,"","all")+pos([["kneel","after the Lamb of God (USA)"],["strike","where customary, at Lord, I am not worthy"]]); if(sung){ const a=ord("Agnus",`Agnus Dei ${mass}`); h+=a.html; t+=a.sec; } else t+=25;
-  h+=`<h4 class="sub2">Invitation to Communion</h4>`+para(LAT.ecce)+cue(`English: ${HM}.`); t+=30;
+  h+=`<h4 class="sub2">The Lord's Prayer</h4>`+pos([["stand","for the Lord's Prayer and the Sign of Peace"]])+bil("pater","lat","all")+(sung?ch("Pater noster",C.common.pater):"")+cue(`Embolism and doxology (For the kingdom…): ${HM}.`); t+=sung?120:60;
+  h+=`<h4 class="sub2">Sign of Peace</h4>`+bil("pax","","cel","Pax Dómini sit semper vobíscum. ℟. Et cum spíritu tuo.")+(sung?ch("Pax Domini",C.common.paxdomini):""); t+=AB>=3?15:40;
+  h+=`<h4 class="sub2">Lamb of God</h4>`+bil("agnus","","all")+pos([["kneel","after the Lamb of God (USA)"],["strike","where customary, at Lord, I am not worthy"]]); if(sung){ const a=ord("Agnus",`Agnus Dei ${mass}`); h+=a.html; t+=a.sec; } else t+=25;
+  h+=`<h4 class="sub2">Invitation to Communion</h4>`+bil("ecce","")+cue(`${ICEL}: ${HM}.`); t+=30;
   const com=hymnSlot(H,iso,"communion",s,opts,"Communion hymn"); h+=`<h4 class="sub2">Communion</h4>`+pos([["bow","before receiving"],["sit","or kneel after Communion"]])+cue(`Communion Antiphon: ${HM} propers.`)+com.html+`<div class="homily" data-r="all"><span class="lbl">Distribution of Communion</span> ≈ ${opts.communion} min</div>`; t+=Math.max(com.sec,opts.communion*60);
   h+=`<h4 class="sub2">Prayer after Communion</h4>`+pos([["stand"]])+cue(`From the ${HM} propers.`); t+=AB>=3?30:45;
   out.push(sec("Communion Rite",t/60,h));
   // Conclusion
   h=""; t=0;
-  h+=pos([["cross","at the blessing"]])+para(LAT.bless)+para(paschal&&(Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY)<=7||/Pentecost/.test(r.t))?"Ite, missa est, allelúia, allelúia. ℟. Deo grátias, allelúia, allelúia.":LAT.ite)+cue(`English blessing and dismissal: ${HM}.`);
+  h+=pos([["cross","at the blessing"]])+bil("bless","")+bil("ite","","cel",paschal&&(Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY)<=7||/Pentecost/.test(r.t))?"Ite, missa est, allelúia, allelúia. ℟. Deo grátias, allelúia, allelúia.":LAT.ite)+cue(`${ICEL}: ${HM}.`);
   if(sung){ const ids=(C.kyriale[mass]||{}).ids||{}; const id=ids.Ite||C.common.ite_no; h+=ch("Ite, missa est",id); t+=chs(id); } t+=40;
   const rec=hymnSlot(H,iso,"recessional",s,opts,"Recessional hymn"); h+=rec.html; t+=rec.sec;
   if(opts.marian){ const ma=marian(iso,C); if(ma){ h+=CW(ma.name,ma.gabc,"Seasonal Marian antiphon · GregoBase (CC0)"); t+=M().chantSeconds(ma.gabc); } }
@@ -1792,21 +1835,31 @@ const BCP={
   blessing:"The peace of God, which passeth all understanding, keep your hearts and minds in the knowledge and love of God, and of his Son Jesus Christ our Lord: And the blessing of God Almighty, the Father, the Son, and the Holy Ghost, be amongst you and remain with you always. Amen.",
 };
 async function buildOrd(ctx, opts){
-  const {iso,day}=ctx; const [C,H,O]=await Promise.all([J("chant.json"),J("hymns.json"),J("ordo.json")]);
-  const r=day.o; const s=season(iso,day); const sun=toDate(iso).getUTCDay()===0; const sung=opts.ordinary==="sung"; const mass=opts.mass||defaultMass(iso,day,"o");
+  const {iso,day}=ctx; const [C,H,O,PR,BO]=await Promise.all([J("chant.json"),J("hymns.json"),J("ordo.json"),J("propers-1962.json"),J("bcp-office.json").catch(()=>({collects:{}}))]);
+  const r=day.o;
+  /* the propers in public-domain English: the 1662 collect of the Sunday, and the rest from the Roman Missal (1962) for this day */
+  const tm=day.m||{}, P62=PR.map[`1962|${tm.path}|${tm.feria?1:0}`]; const PP=P62!=null?PR.data[P62]:null;
+  const PRE={prayers:O.English.prayers};
+  const en=(n,role)=>{ const p=PP&&PP.parts[n]; if(!p||!p[1]) return ""; ROLE=role||"cel"; const h=`<div class="txt one">${[].concat(p[1]).join("\n").split("\n").map(l=>lineHTML(l,PRE,"en")).join("")}</div>`; ROLE="cel"; return h; };
+  const from62=`<p class="note">From the Roman Missal (1962) in English for this day; ${"Divine Worship: The Missal"} has its own wording and may appoint a different proper.</p>`;
+  const bcpCol=r.bcp&&BO.collects&&BO.collects[r.bcp]; const s=season(iso,day); const sun=toDate(iso).getUTCDay()===0; const sung=opts.ordinary==="sung"; const mass=opts.mass||defaultMass(iso,day,"o");
   const gl=hasGloriaNO(iso,day), cr=hasCreedNO(iso,day);
   const DW="Divine Worship: The Missal"; const AB=opts.abridge||0;
   const out=[]; const ch=(t,id,meta)=>C.chants[id]?CW(t,C.chants[id].g,meta||"GregoBase (CC0)"):"";
   const ord=(part,title)=>{ const g=ordinaryChant(C,mass,part)||(part==="Gloria"?ordinaryChant(C,"VIII","Gloria"):null); return g?{html:CW(title,g,`Latin chant, Mass ${mass} · GregoBase (CC0)`),sec:M().chantSeconds(g)}:{html:"",sec:0}; };
   let h=pos([["stand","for the entrance, the Gloria and the Collect"]])+cue("Postures follow common Ordinariate custom; follow your parish."),t=0;
-  const ent=hymnSlot(H,iso,"entrance",s,opts,"Entrance hymn"); h+=ent.html||cue(`Introit: ${DW}, proper of the day.`); t+=ent.sec||(AB>=3?20:40);
+  const ent=hymnSlot(H,iso,"entrance",s,opts,"Entrance hymn"); h+=ent.html||(en("Introitus","ppl")?`<h4 class="sub2">Introit</h4>`+en("Introitus","ppl")+from62:cue(`Introit: ${DW}, proper of the day.`)); t+=ent.sec||(AB>=3?20:40);
   if(AB<3){ h+=`<h4 class="sub2">Collect for Purity</h4>`+para(BCP.purity); t+=30; }
   if(AB<1){ h+=`<h4 class="sub2">Summary of the Law</h4>`+para(BCP.law)+para("Lord, have mercy upon us, and write both these thy laws in our hearts, we beseech thee."); t+=60; }
   h+=abr([AB>=3?"the Collect for Purity":"",AB>=1?"the Summary of the Law":""]);
   h+=`<h4 class="sub2">Kyrie</h4>`+para("Lord, have mercy upon us. Christ, have mercy upon us. Lord, have mercy upon us.","","all"); if(sung){ const k=ord("Kyrie",`Kyrie ${mass}`); h+=k.html; t+=k.sec; } else t+=20;
   if(gl&&AB>=3) h+=abr("the Gloria in excelsis");
   else if(gl){ h+=`<h4 class="sub2">Gloria in excelsis</h4>`+para(BCP.gloria,"","all"); if(sung){ const g=ord("Gloria","Gloria (Latin)"); h+=g.html; t+=g.sec; } else t+=60; }
-  h+=`<h4 class="sub2">Collect of the Day</h4>`+cue(`The Lord be with you… Let us pray. The Collect: ${DW}${(r.s||"").startsWith("Divine Worship")?`, ${r.s.replace("Divine Worship: ","")}`:""}.`); t+=40;
+  h+=`<h4 class="sub2">Collect of the Day</h4>`+para("The Lord be with you. ℟. And with thy spirit. Let us pray.");
+  if(bcpCol) h+=`<p class="cite">${esc(r.bcp.toLowerCase().replace(/(^|\s)\S/g,c=>c.toUpperCase()))} · Book of Common Prayer (1662)</p>`+para(bcpCol.replace(/\s*Amen\.?\s*$/,"")+" ℟. Amen.");
+  else if(en("Oratio")) h+=en("Oratio")+from62;
+  else h+=cue(`The Collect: ${DW}.`);
+  h+=cue(`On feasts and in some seasons ${DW} appoints its own collect.`); t+=40;
   out.push(sec("Introductory Rites",t/60,h));
   h=pos([["sit","for the lessons"]]); t=0;
   const ODrop=[];
@@ -1827,8 +1880,8 @@ async function buildOrd(ctx, opts){
   h+=abr([AB>=2?"the Invitation to confession":"",AB>=3?"the General Confession said silently":"",AB>=1?"the Comfortable Words":""]);
   out.push(sec("Liturgy of the Word",t/60,h));
   h=""; t=0;
-  const off=hymnSlot(H,iso,"offertory",s,opts,"Offertory hymn"); h+=`<h4 class="sub2">Offertory</h4>`+pos([["sit"]])+(off.html||cue(`Offertory sentence: ${DW}.`))+cue(`Pray, brethren… and the Prayer over the Offerings: ${DW}.`); t+=(off.sec||(AB>=3?20:AB>=2?40:90))+(AB>=3?30:60);
-  h+=`<h4 class="sub2">Sursum corda</h4>`+pos([["stand"]])+para(BCP.sursum)+cue(`Proper Preface: ${DW}.`)+`<h4 class="sub2">Sanctus and Benedictus</h4>`+para(BCP.sanctus,"","all")+pos([["kneel","from the Sanctus through Communion"],["bell","at the Sanctus and at each elevation"]]); if(sung){ const k=ord("Sanctus",`Sanctus ${mass} (Latin)`); h+=k.html; t+=k.sec; } t+=AB>=3?60:90;
+  const off=hymnSlot(H,iso,"offertory",s,opts,"Offertory hymn"); h+=`<h4 class="sub2">Offertory</h4>`+pos([["sit"]])+(off.html||(en("Offertorium","ppl")?`<p class="cite">Offertory</p>`+en("Offertorium","ppl"):cue(`Offertory sentence: ${DW}.`)))+para("Pray, brethren, that my sacrifice and yours may be acceptable to God the Father almighty. ℟. May the Lord receive the sacrifice at thy hands, to the praise and glory of his Name, to our benefit and that of all his holy Church.")+(en("Secreta")?`<p class="cite">Prayer over the Offerings</p>`+en("Secreta")+from62:cue(`Prayer over the Offerings: ${DW}.`)); t+=(off.sec||(AB>=3?20:AB>=2?40:90))+(AB>=3?30:60);
+  h+=`<h4 class="sub2">Sursum corda</h4>`+pos([["stand"]])+para(BCP.sursum)+(()=>{ const sun=toDate(iso).getUTCDay()===0, paschal=PASCHAL(iso); const pk=(PP&&PP.pref)||(sun?"Trinitate":paschal?"Pasch":s==="lent"?"Quad":s==="christmas"?"Nat":s==="epiphany"?"Epi":"Communis"); const pe=(O.English.pref[pk]||O.English.pref.Communis||""); if(!pe) return cue(`Proper Preface: ${DW}.`); ROLE="cel"; const x=`<p class="cite">Preface: ${esc(pk)}</p><div class="txt one">${pe.split("\n").filter(l=>!/^(Sanctus|v\. Holy)/.test(l)).map(l=>lineHTML(l,PRE,"en")).join("")}</div>`+from62; return x; })()+`<h4 class="sub2">Sanctus and Benedictus</h4>`+para(BCP.sanctus,"","all")+pos([["kneel","from the Sanctus through Communion"],["bell","at the Sanctus and at each elevation"]]); if(sung){ const k=ord("Sanctus",`Sanctus ${mass} (Latin)`); h+=k.html; t+=k.sec; } t+=AB>=3?60:90;
   const canonL=(O.English.ordo.find(x=>x.h==="Canon")||{items:[]}).items.filter((it,j)=>!(AB>=2&&TRAD_DROP["Canon#1"][2].includes(j)));
   const canonH=canonL.map(it=>opts.veil&&/!!!\s*FOR THIS IS/.test(it)?cue(`The words of consecration over the ${/MY BODY/.test(it)?"Host":"Chalice"} are not voiced (role-play setting). The celebrant genuflects, elevates, and genuflects again.`):it.split("\n").map(l=>lineHTML(l,{prayers:O.English.prayers},"en")).join("")).join("");
   h+=`<h4 class="sub2">Roman Canon${AB>=2?" (core)":""}</h4>`+`<details class="canon"><summary>Show the Canon (traditional English${AB>=2?"; core only":""})</summary><div class="txt one">${canonH}</div></details>`+(AB>=2?abr("the Canon's intercessions; the institution narrative and doxology are kept"):"")+cue(`${DW} prints the Roman Canon in its own traditional-language translation; this text is the older English version of the same prayer. Eucharistic Prayer II may be used on weekdays.`); t+=AB>=3?3*60:AB>=2?4*60:8*60;
@@ -1837,8 +1890,8 @@ async function buildOrd(ctx, opts){
   h+=`<h4 class="sub2">The Lord's Prayer</h4>`+para(BCP.lord,"","all")+`<h4 class="sub2">Peace</h4>`+para("The peace of the Lord be always with you. ℟. And with thy spirit.")+`<h4 class="sub2">Agnus Dei</h4>`+para(BCP.agnus,"","all"); if(sung){ const a=ord("Agnus",`Agnus Dei ${mass} (Latin)`); h+=a.html; t+=a.sec; } t+=AB>=3?90:120;
   h+=`<h4 class="sub2">Prayer of Humble Access</h4>`+para(BCP.access,"","all")+`<h4 class="sub2">Invitation</h4>`+para("Behold the Lamb of God, behold him that taketh away the sins of the world. ℟. Lord, I am not worthy that thou shouldest come under my roof, but speak the word only, and my soul shall be healed."); t+=90;
   const com=hymnSlot(H,iso,"communion",s,opts,"Communion hymn"); h+=`<h4 class="sub2">Communion</h4>`+pos([["kneel","at the altar rail, where that is the custom"]])+com.html+`<div class="homily" data-r="all"><span class="lbl">Distribution of Communion</span> ≈ ${opts.communion} min</div>`; t+=Math.max(com.sec,opts.communion*60);
-  if(AB>=2){ h+=`<h4 class="sub2">Post-Communion</h4>`+cue(`Post-Communion prayer: ${DW}.`)+abr("the Prayer of Thanksgiving"); t+=30; }
-  else { h+=`<h4 class="sub2">Post-Communion and Thanksgiving</h4>`+cue(`Post-Communion prayer: ${DW}.`)+para(BCP.thanks); t+=90; }
+  if(AB>=2){ h+=`<h4 class="sub2">Post-Communion</h4>`+(en("Postcommunio")||cue(`Post-Communion prayer: ${DW}.`))+abr("the Prayer of Thanksgiving"); t+=30; }
+  else { h+=`<h4 class="sub2">Post-Communion and Thanksgiving</h4>`+(en("Postcommunio")?en("Postcommunio")+from62:cue(`Post-Communion prayer: ${DW}.`))+para(BCP.thanks); t+=90; }
   out.push(sec("Communion",t/60,h));
   h=""; t=0;
   h+=`<h4 class="sub2">Blessing</h4>`+pos([["kneel"],["cross"]])+para(BCP.blessing)+`<h4 class="sub2">Dismissal</h4>`+para("Go in peace. ℟. Thanks be to God."); t+=60;
@@ -2141,6 +2194,7 @@ async function render(el, ctx){
     el.querySelector(".mtotal").innerHTML=`<div class="tophead"><span class="tt">About ${Math.max(1,Math.round(tot))} minute${Math.round(tot)===1?"":"s"}</span>${status}<span class="tools-timer"></span></div>
       <ol class="runsheet">${parts.map((p,i)=>`<li data-i="${i}"${(p.min||0)<0.1?" hidden":""}><time>${mmss(starts[i])}</time> <a href="#mp-${i}">${esc(p.title)}</a> <b>${(p.min||0)<0.5?"&lt;1":Math.round(p.min)}′</b></li>`).join("")}</ol>${changes}<div class="tools-bar"></div>`;
     el.querySelector(".mbody").innerHTML=parts.map((p,i)=>p.html.replace('<section class="mpart','<section id="mp-'+i+'" data-i="'+i+'" class="mpart')).join("");
+    if(window.LectTexts) window.LectTexts.decorate(el.querySelector(".mbody"),ctx,()=>draw());
     if(window.LectTools) window.LectTools.mount(el,{parts:parts.map(p=>({title:p.title,min:p.min})),starts,total:at,ctx,opts:clone(opts),noun,isOffice,rite:ctx.rite,following,
       roles:isOffice?{cel:"Officiant",lec:"Reader",ppl:"All"}:{cel:"Celebrant",srv:rite==="b"?"Deacon":"Server",lec:"Lector",ppl:"Congregation"}});
     if(following) return;
@@ -2867,7 +2921,97 @@ function wirePanel(p){
 }
 
 window.addEventListener("beforeunload",()=>{ try{ speechSynthesis.cancel(); }catch(e){} });
-window.LectTools={mount, join, liveOpts, leave};
+window.LectTools={mount, join, liveOpts, leave, saveFile};
+})();
+</script>
+<script>
+/* ================================================================ YOUR TEXTS
+   Where a text is copyrighted the guide prints a cue ("Collect of the day: Heritage Missal"). Here the
+   user can type or paste that text from their own book once; it is kept in this browser only and shown
+   in place from then on: for every day (the Ordinary) or for this day (a proper). Export and import as a
+   file move a collection between devices. Nothing is sent anywhere, and live sessions do not share it. */
+(function(){
+"use strict";
+const KEY="lect-mytexts";
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function load(){ try{ const v=JSON.parse(localStorage.getItem(KEY)||"{}"); return v&&typeof v==="object"?v:{}; }catch(e){ return {}; } }
+function save(db){ try{ localStorage.setItem(KEY,JSON.stringify(db)); return true; }catch(e){ return false; } }
+
+/* which cues stand in for a text (as opposed to a plain instruction) */
+const TEXTY=/Heritage Missal|Divine Worship|propers?\b|Collect|Preface|Prayer|Antiphon|[Vv]erse|Eucharistic|Creed|English|not reproduced|Psalm|psalm|stichera|troparion|Troparion|Apolytikion|[Ll]itan|Intercession|[Rr]eading|Responsory|[Cc]anticle|Doxology|[Bb]lessing|[Dd]ismissal|commemoration|[Kk]ontakion|Phos|Lauds|Aposticha|versicle|Into (thy|your) hands|Prokeimenon|Alleluia|Introit|Offertory|Hymn|hymn|Vouchsafe|Embolism|forms|Penitential|I confess|Gospel/;
+const NOT=/^(Postures follow|Brief form|The words of|Some of the data|Procession with palms|The gifts are|Intentions for the Church|Read on Sundays|From Pascha)/;
+/* propers change with the day; the Ordinary does not */
+const DAYLY=/of the day|propers?\b|Collect|Prayer over|Post-?Communion|Preface of the day|Proper Preface|Antiphon|Verse before|readings for the day|stichera|troparion|Troparion|Apolytikion|[Kk]ontakion|Aposticha|commemoration|Intercession|Prokeimenon|Alleluia with|Introit|Offertory sentence|paremias|of the tone|[Rr]eading|Responsory|Hymn\b|hymn\b|Lenten acclamation|Gospel/;
+const norm=t=>String(t).replace(/\s+/g," ").replace(/\d{4}-\d{2}-\d{2}/g,"").trim().slice(0,160);
+
+let CTX=null;
+function baseKey(cueText){ return [CTX.rite, CTX.hour||"", norm(cueText)].join("|"); }
+function find(db, cueText){ const b=baseKey(cueText); return db[b+"|"+CTX.iso]?{k:b+"|"+CTX.iso,day:true,...db[b+"|"+CTX.iso]}:db[b]?{k:b,day:false,...db[b]}:null; }
+
+/* a typed text becomes paragraphs; lines starting V./℣. or R./℟. are versicle and response */
+function toHTML(t, role){
+  return String(t).split(/\n\s*\n|\r\n\s*\r\n/).map(par=>{
+    const lines=par.split(/\n/).map(l=>l.trim()).filter(Boolean); if(!lines.length) return "";
+    if(lines.some(l=>/^(V|R|℣|℟)\.\s/.test(l))) return lines.map(l=>{ const m=/^(V|R|℣|℟)\.\s+(.*)$/.exec(l);
+      if(!m) return `<p data-r="${role}">${esc(l)}</p>`; const resp=m[1]==="R"||m[1]==="℟";
+      return `<p data-r="${resp?"ppl":role}"><span class="sp">${resp?"℟.":"℣."}</span> ${esc(m[2])}</p>`; }).join("");
+    return `<p data-r="${role}">${lines.map(esc).join("<br>")}</p>`;
+  }).join("");
+}
+const ROLES_MASS=[["all","Everyone"],["cel","Celebrant"],["srv","Server or deacon"],["lec","Lector"],["ppl","Congregation"]];
+const ROLES_OFF=[["all","All"],["cel","Officiant"],["lec","Reader"]];
+function guessRole(t){ return /Collect|Prayer over|Post-?Communion|Preface|Eucharistic|[Bb]lessing|Embolism|Pray, brethren|Prayer after|[Pp]riest/.test(t)?"cel":/[Rr]eading|Lesson|Epistle/.test(t)?"lec":"all"; }
+
+function editor(cueEl, cueText, cur){
+  const roles=CTX.office?ROLES_OFF:ROLES_MASS, day=cur?cur.day:DAYLY.test(cueText);
+  const f=document.createElement("form"); f.className="mt-edit";
+  f.innerHTML=`<label class="lbl" for="mtT">Text from your book</label>
+    <textarea id="mtT" rows="6" placeholder="Type or paste the text. A blank line starts a new paragraph; start a line with V. or R. for versicle and response.">${esc(cur?cur.t:"")}</textarea>
+    <div class="mt-row"><label>Said by <select name="r">${roles.map(([k,v])=>`<option value="${k}"${(cur?cur.r:guessRole(cueText))===k?" selected":""}>${v}</option>`).join("")}</select></label>
+    <fieldset class="mt-scope"><legend class="sr-only">Use it</legend><label><input type="radio" name="s" value="day"${day?" checked":""}> This day only</label><label><input type="radio" name="s" value="all"${day?"":" checked"}> Every day</label></fieldset></div>
+    <div class="mt-row"><button type="submit" class="tbtn">Save</button><button type="button" class="tbtn ghost" data-a="cancel">Cancel</button>${cur?`<button type="button" class="tbtn ghost" data-a="del">Remove</button>`:""}</div>
+    <p class="note">Saved in this browser only. Use Export below to copy your texts to another device.</p>`;
+  cueEl.after(f); f.querySelector("textarea").focus();
+  const close=()=>{ f.remove(); };
+  f.addEventListener("submit",e=>{ e.preventDefault(); const t=f.querySelector("textarea").value.trim(); const db=load(); const b=baseKey(cueText);
+    delete db[b]; delete db[b+"|"+CTX.iso];
+    if(t) db[f.s.value==="day"?b+"|"+CTX.iso:b]={t,r:f.r.value,ts:Date.now()};
+    if(!save(db)){ alertNote(f,"This browser would not save it (storage is full or blocked)."); return; }
+    close(); redraw(); });
+  f.querySelector('[data-a="cancel"]').addEventListener("click",close);
+  const del=f.querySelector('[data-a="del"]'); if(del) del.addEventListener("click",()=>{ const db=load(); delete db[cur.k]; save(db); close(); redraw(); });
+}
+function alertNote(f,msg){ let n=f.querySelector(".mt-err"); if(!n){ n=document.createElement("p"); n.className="note mt-err"; f.appendChild(n); } n.textContent=msg; }
+let REDRAW=null; function redraw(){ if(REDRAW) REDRAW(); }
+
+function decorate(body, ctx, redrawFn){
+  CTX={rite:ctx.office?("office-"+ctx.office.rite):ctx.rite, hour:ctx.office?ctx.office.hour:"", iso:ctx.iso, office:!!ctx.office};
+  REDRAW=redrawFn; const db=load(); let n=0, filled=0;
+  body.querySelectorAll(".cue").forEach(cueEl=>{
+    const text=cueEl.textContent.trim(); if(!TEXTY.test(text)||NOT.test(text)) return; n++;
+    const cur=find(db,text);
+    cueEl.classList.add("cue-t");
+    const btn=document.createElement("button"); btn.type="button"; btn.className="mt-btn"; btn.textContent=cur?"Edit your text":"Add text";
+    btn.setAttribute("aria-label",(cur?"Edit your text for: ":"Add your text for: ")+text.slice(0,80));
+    btn.addEventListener("click",()=>{ const open=cueEl.nextElementSibling; if(open&&open.classList.contains("mt-edit")){ open.remove(); return; } editor(cueEl,text,cur); });
+    cueEl.appendChild(btn);
+    if(cur){ filled++; const d=document.createElement("div"); d.className="mytext"; d.innerHTML=`<span class="mt-lbl">From your book${cur.day?" · this day":""}</span>`+toHTML(cur.t,cur.r||"all"); cueEl.after(d); }
+  });
+  if(n){ const total=Object.keys(db).length; const bar=document.createElement("div"); bar.className="mt-bar";
+    bar.innerHTML=`<span><b>Your texts</b> · ${filled} of ${n} cues here filled from your book · ${total} saved in all</span>
+      <button type="button" class="tbtn ghost" data-a="exp">Export</button><label class="tbtn ghost mt-imp">Import<input type="file" accept=".json,application/json" hidden></label>
+      <details class="mt-help"><summary>What is this?</summary><p class="note">Some texts (the modern Missal and Breviary translations, Divine Worship, Byzantine Daily Worship) are copyrighted, so the guide names them instead of printing them. Press <b>Add text</b> beside any of those notes to type or paste the text from your own book. It is kept in this browser and shown in its place from then on, for every day or just this day.</p></details>`;
+    body.prepend(bar);
+    bar.querySelector('[data-a="exp"]').addEventListener("click",async()=>{ const data=JSON.stringify({lectionarium:"texts",v:1,texts:load()},null,1);
+      const r=window.LectTools&&window.LectTools.saveFile?await window.LectTools.saveFile("lectionarium-my-texts.json",data):null;
+      if(!r){ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:"application/json"})); a.download="lectionarium-my-texts.json"; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); } });
+    bar.querySelector(".mt-imp input").addEventListener("change",async e=>{ const f=e.target.files&&e.target.files[0]; if(!f) return;
+      try{ const j=JSON.parse(await f.text()); const t=j&&j.texts; if(!t||typeof t!=="object") throw 0; const db=load(); let k=0;
+        for(const [key,v] of Object.entries(t)){ if(typeof key==="string"&&key.length<400&&v&&typeof v.t==="string"&&v.t.length<20000){ db[key]={t:v.t,r:/^(all|cel|srv|lec|ppl)$/.test(v.r)?v.r:"all",ts:+v.ts||Date.now()}; k++; } }
+        save(db); redraw(); }catch(err){ const s=bar.querySelector("span"); if(s) s.textContent="That file is not a Lectionarium texts export."; } });
+  }
+}
+window.LectTexts={decorate, count:()=>Object.keys(load()).length};
 })();
 </script>
 <script>
@@ -3108,19 +3252,100 @@ function eothinon(iso){
   const n=Math.round((d-allSaints)/DAY/7); return (n%11)+1;
 }
 
+
+/* ---------------------------------------------------------------- Liturgy of the Hours: the four-week psalter
+   Hebrew numbering, as in the Liturgy of the Hours (checked against Felix Just's psalter index). Per week, per day
+   (Sun..Sat): or = Office of Readings ("x|y": Ordinary Time | other seasons), la = Morning Prayer, dp = Daytime Prayer,
+   ve = Evening Prayer (Evening Prayer II on Sunday), e1 = Evening Prayer I of Sunday (said on Saturday evening). */
+const LP={
+ 1:[{or:"Ps 1;Ps 2;Ps 3",la:"Ps 63:2-9;Dan 3:57-88, 56;Ps 149",dp:"Ps 118",ve:"Ps 110:1-5, 7;Ps 114;Rev 19:1-7",e1:"Ps 141:1-9;Ps 142;Phil 2:6-11"},
+    {or:"Ps 6;Ps 9:2-21",la:"Ps 5:2-10, 12-13;1 Chr 29:10-13;Ps 29",dp:"Ps 19:8-15;Ps 7",ve:"Ps 11;Ps 15;Eph 1:3-10"},
+    {or:"Ps 10;Ps 12",la:"Ps 24;Tob 13:1-8;Ps 33",dp:"Ps 119:1-8;Ps 13;Ps 14",ve:"Ps 20;Ps 21:2-8, 14;Rev 4:11;Rev 5:9-10, 12"},
+    {or:"Ps 18:2-30",la:"Ps 36;Jdt 16:2-3, 13-15;Ps 47",dp:"Ps 119:9-16;Ps 17",ve:"Ps 27;Col 1:12-20"},
+    {or:"Ps 18:31-51",la:"Ps 57;Jer 31:10-14;Ps 48",dp:"Ps 119:17-24;Ps 25",ve:"Ps 30;Ps 32;Rev 11:17-18;Rev 12:10-12"},
+    {or:"Ps 35:1-2, 3, 9-19, 22-23, 27-28",la:"Ps 51;Isa 45:15-25;Ps 100",dp:"Ps 119:25-32;Ps 26;Ps 28:1-3, 6-9",ve:"Ps 41;Ps 46;Rev 15:3-4"},
+    {or:"Ps 131;Ps 132|Ps 105",la:"Ps 119:145-152;Exod 15:1-4, 8-13, 17-18;Ps 117",dp:"Ps 119:33-40;Ps 34"}],
+ 2:[{or:"Ps 104",la:"Ps 118;Dan 3:52-57;Ps 150",dp:"Ps 23;Ps 76",ve:"Ps 110:1-5, 7;Ps 115;Rev 19:1-7",e1:"Ps 119:105-112;Ps 16;Phil 2:6-11"},
+    {or:"Ps 31:2-17, 20-25",la:"Ps 42;Sir 36:1-5, 10-13;Ps 19:2-7",dp:"Ps 119:41-48;Ps 40:2-14, 17-18",ve:"Ps 45;Eph 1:3-10"},
+    {or:"Ps 37",la:"Ps 43;Isa 38:10-14, 17-20;Ps 65",dp:"Ps 119:49-56;Ps 53;Ps 54:3-6, 8-9",ve:"Ps 49;Rev 4:11;Rev 5:9-10, 12"},
+    {or:"Ps 39;Ps 52",la:"Ps 77;1 Sam 2:1-10;Ps 97",dp:"Ps 119:57-64;Ps 55:2-15, 17-24",ve:"Ps 62;Ps 67;Col 1:12-20"},
+    {or:"Ps 44",la:"Ps 80;Isa 12:1-6;Ps 81",dp:"Ps 119:65-72;Ps 56:2-7, 9-14;Ps 57",ve:"Ps 72;Rev 11:17-18;Rev 12:10-12"},
+    {or:"Ps 38",la:"Ps 51;Hab 3:2-4, 13, 15-19;Ps 147:12-20",dp:"Ps 119:73-80;Ps 59:2-5, 10-11, 17-18;Ps 60",ve:"Ps 116:1-9;Ps 121;Rev 15:3-4"},
+    {or:"Ps 136|Ps 106",la:"Ps 92;Deut 32:1-12;Ps 8",dp:"Ps 119:81-88;Ps 61;Ps 64"}],
+ 3:[{or:"Ps 145",la:"Ps 93;Dan 3:57-88, 56;Ps 148",dp:"Ps 118",ve:"Ps 110:1-5, 7;Ps 111;Rev 19:1-7",e1:"Ps 113;Ps 116:10-19;Phil 2:6-11"},
+    {or:"Ps 50",la:"Ps 84;Isa 2:2-5;Ps 96",dp:"Ps 119:89-96;Ps 71",ve:"Ps 123;Ps 124;Eph 1:3-10"},
+    {or:"Ps 68",la:"Ps 85;Isa 26:1-4, 7-9, 12;Ps 67",dp:"Ps 119:97-104;Ps 74",ve:"Ps 125;Ps 131;Rev 4:11;Rev 5:9-10, 12"},
+    {or:"Ps 89:2-38",la:"Ps 86;Isa 33:13-16;Ps 98",dp:"Ps 119:105-112;Ps 70;Ps 75",ve:"Ps 126;Ps 127;Col 1:12-20"},
+    {or:"Ps 89:39-53;Ps 90",la:"Ps 87;Isa 40:10-17;Ps 99",dp:"Ps 119:113-120;Ps 79:1-5, 8-11, 13;Ps 80",ve:"Ps 132;Rev 11:17-18;Rev 12:10-12"},
+    {or:"Ps 69:2-22, 30-37",la:"Ps 51;Jer 14:17-21;Ps 100",dp:"Ps 22",ve:"Ps 135;Rev 15:3-4"},
+    {or:"Ps 107",la:"Ps 119:145-152;Wis 9:1-6, 9-11;Ps 117",dp:"Ps 119:121-128;Ps 34"}],
+ 4:[{or:"Ps 24;Ps 66",la:"Ps 118;Dan 3:52-57;Ps 150",dp:"Ps 23;Ps 76",ve:"Ps 110:1-5, 7;Ps 112;Rev 19:1-7",e1:"Ps 122;Ps 130;Phil 2:6-11"},
+    {or:"Ps 73",la:"Ps 90;Isa 42:10-16;Ps 135:1-12",dp:"Ps 119:129-136;Ps 82;Ps 120",ve:"Ps 136;Eph 1:3-10"},
+    {or:"Ps 102",la:"Ps 101;Dan 3:26-27, 29, 34-41;Ps 144:1-10",dp:"Ps 119:137-144;Ps 88",ve:"Ps 137:1-6;Ps 138;Rev 4:11;Rev 5:9-10, 12"},
+    {or:"Ps 103",la:"Ps 108;Isa 61:10-62:5;Ps 146",dp:"Ps 119:145-152;Ps 94",ve:"Ps 139:1-18, 23-24;Col 1:12-20"},
+    {or:"Ps 44",la:"Ps 143:1-11;Isa 66:10-14;Ps 147:1-11",dp:"Ps 119:153-160;Ps 128;Ps 129",ve:"Ps 144;Rev 11:17-18;Rev 12:10-12"},
+    {or:"Ps 55:2-15, 17-24|Ps 78:1-39",la:"Ps 51;Tob 13:8-11, 13-15;Ps 147:12-20",dp:"Ps 119:161-168;Ps 133;Ps 140:1-9, 13-14",ve:"Ps 145;Rev 15:3-4"},
+    {or:"Ps 50|Ps 78:40-72",la:"Ps 92;Ezek 36:24-28;Ps 8",dp:"Ps 119:169-176;Ps 45"}]};
+/* Night Prayer keeps a one-week cycle; Saturday's is after Evening Prayer I of Sunday */
+const LP_NIGHT=["Ps 91","Ps 86","Ps 143:1-11","Ps 31:1-6;Ps 130","Ps 16","Ps 88","Ps 4;Ps 134"];
+const CANT_NAME={Dan:"Daniel",Exod:"Exodus",Deut:"Deuteronomy","1 Chr":"1 Chronicles","1 Sam":"1 Samuel",Tob:"Tobit",Jdt:"Judith",Sir:"Sirach",Wis:"Wisdom",Isa:"Isaiah",Jer:"Jeremiah",Ezek:"Ezekiel",Hab:"Habakkuk",Phil:"Philippians",Eph:"Ephesians",Col:"Colossians",Rev:"Revelation","1 Pet":"1 Peter"};
+function lothPsalms(iso, H, day){
+  const d=toDate(iso), dow=d.getUTCDay(), t=(day.n&&day.n.t)||"", seasonal=/Advent|Christmas|Lent|Easter|Holy Week|Palm Sunday|Octave|Epiphany/.test(t), lent=/Lent|Holy Week|Palm Sunday/.test(t);
+  const wn=x=>({I:1,II:2,III:3,IV:4})[psalterWeek(x)]||1, w=wn(iso), D=LP[w][dow];
+  let list;
+  if(H==="compline") list=LP_NIGHT[dow];
+  else if(H==="vespers"&&dow===6) list=LP[wn(addDays(iso,1))][0].e1;
+  else if(H==="vespers") list=D.ve;
+  else if(H==="lauds") list=D.la;
+  else if(H==="or"){ const [ot,alt]=D.or.split("|"); list=seasonal&&alt?alt:ot; }
+  else list=D.dp;
+  if(!list) return [];
+  let cits=list.split(";");
+  if(lent) cits=cits.map(c=>c==="Rev 19:1-7"?"1 Pet 2:21-24":c);
+  // a canticle cited in two parts (Rev 4:11; 5:9-10, 12) is one canticle
+  const out=[]; cits.forEach(c=>{ const prev=out[out.length-1]; const bk=c.replace(/\s+\d.*$/,"");
+    if(prev&&bk!=="Ps"&&prev.bk===bk&&bk!=="Dan") prev.c+="; "+c.replace(/^.*?\s(?=\d+:)/,""); else out.push({bk,c}); });
+  return out.map(({bk,c})=>{
+    if(bk==="Ps"){ const m=/^Ps (\d+)/.exec(c), n=+m[1], v=toVulgate("Ps",n,1)[1]; return {lab:`Psalm ${n}${v!==n?` (${v})`:""}${/:/.test(c)?c.replace(/^Ps \d+/,""):""}`, cit:c}; }
+    return {lab:`Canticle · ${CANT_NAME[bk]||bk} ${c.replace(/^.*?\s(?=\d)/,"")}`, cit:c};
+  });
+}
+
+/* ---------------------------------------------------------------- Byzantine fixed texts (traditional English, public domain) */
+const BYZ_TX={
+ tris:[["cel","Blessed is our God, always, now and ever, and unto ages of ages."],["ppl","Amen."],
+   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times)"],
+   ["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
+   ["all","O most holy Trinity, have mercy on us. O Lord, cleanse us from our sins. O Master, pardon our transgressions. O Holy One, visit and heal our infirmities, for thy name's sake."],
+   ["all","Lord, have mercy. (Three times)"],["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
+   ["all","Our Father, who art in heaven, hallowed be thy name; thy kingdom come; thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil."],
+   ["cel","For thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages."],["ppl","Amen."]],
+ creed:[["all","I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible. And in one Lord Jesus Christ, the Son of God, the only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father, by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified for us under Pontius Pilate, and suffered, and was buried; and rose again on the third day according to the Scriptures; and ascended into heaven, and sits at the right hand of the Father; and he shall come again with glory to judge the living and the dead; whose kingdom shall have no end. And in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father; who with the Father and the Son together is worshipped and glorified; who spoke by the prophets. In one holy, catholic and apostolic Church. I confess one baptism for the remission of sins. I look for the resurrection of the dead, and the life of the world to come. Amen."]],
+ phos:[["all","Hail, gladdening Light, of his pure glory poured, who is the immortal Father, heavenly, blest, holiest of holies, Jesus Christ our Lord! Now we are come to the sun's hour of rest; the lights of evening round us shine; we hymn the Father, Son, and Holy Spirit divine. Worthiest art thou at all times to be sung with undefiled tongue, Son of our God, giver of life, alone: therefore in all the world thy glories, Lord, they own."]],
+ vouch:[["all","Vouchsafe, O Lord, to keep us this evening without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. Blessed art thou, O Master; make me to understand thy statutes. Blessed art thou, O Holy One; enlighten me with thy statutes. Thy mercy, O Lord, endures for ever; despise not the works of thy hands. To thee belongs praise, to thee belongs song, to thee belongs glory, to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."]],
+ godlord:[["cel","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","O give thanks unto the Lord, for he is good: for his mercy endureth for ever."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","All nations compassed me about: but in the name of the Lord will I destroy them."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","This is the Lord's doing, and it is marvellous in our eyes."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."]],
+ fhp:[["cel","O Christ, the true Light, who enlightenest and sanctifiest every man that cometh into the world: let the light of thy countenance be signed upon us, that in it we may behold the light unapproachable; and direct our steps in the doing of thy commandments; through the intercessions of thy most pure Mother, and of all thy saints."],["ppl","Amen."]],
+ doxo:[["cel","Glory to thee who hast shown us the light!"],["all","Glory to God in the highest, and on earth peace, good will towards men. We praise thee, we bless thee, we worship thee, we glorify thee, we give thanks to thee for thy great glory. O Lord, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ, and the Holy Spirit. O Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; thou that takest away the sins of the world, receive our prayer; thou that sittest at the right hand of the Father, have mercy on us. For thou only art holy, thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen."],
+   ["all","Every day will I bless thee, and praise thy name for ever, and for ever and ever. Vouchsafe, O Lord, to keep us this day without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. (Three times) Lord, thou hast been our refuge from generation to generation. I said: Lord, have mercy on me; heal my soul, for I have sinned against thee. Lord, I flee unto thee; teach me to do thy will, for thou art my God. For with thee is the fountain of life; in thy light shall we see light. Continue thy mercy unto them that know thee."],
+   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Holy Immortal, have mercy on us. Holy God, Holy Mighty, Holy Immortal, have mercy on us."]],
+};
+const byzTx=k=>`<div class="txt one">${BYZ_TX[k].map(([r,t])=>`<p data-r="${r}">${esc(t).replace(/\((Three times)\)/g,'<i class="rubi">($1)</i>')}</p>`).join("")}</div>`;
+/* psalms of the Byzantine hours, numbered as in the Septuagint (= the Douay-Rheims) */
+const BYZ_PS={vespers:{lic:[140,141,129,116]},compline:{ps:[50,69,142]},midnight:{ps:[50,118]},orthros:{six:[3,37,62,87,102,142],lauds:[148,149,150]},
+  first:{ps:[5,89,100]},third:{ps:[16,24,50]},sixth:{ps:[53,54,90]},ninth:{ps:[83,84,85]}};
 /* ---------------------------------------------------------------- hour orders */
 const ORDER={
  loth:{
-  or:["Introductory verse (or the Invitatory, if this is the first hour of the day)","Hymn","Psalmody: three psalms or sections, each with antiphon","Verse","@first|First reading: Scripture, with responsory","Second reading: Fathers or saints, with responsory","Te Deum (Sundays outside Lent, solemnities, feasts)","Concluding prayer","Acclamation"],
-  lauds:["Invitatory or introductory verse","Hymn","Psalmody: morning psalm, Old Testament canticle, psalm of praise","Short reading","Responsory","@bened|Gospel canticle: Benedictus (Luke 1:68-79)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
-  terce:["Introductory verse","Hymn","Psalmody: three psalms or sections (current or complementary psalmody)","Short reading","Verse","Concluding prayer","Acclamation"],
-  vespers:["Introductory verse","Hymn","Psalmody: two psalms and a New Testament canticle","Short reading","Responsory","@magn|Gospel canticle: Magnificat (Luke 1:46-55)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
-  compline:["Introductory verse","Examination of conscience and act of penitence","Hymn","Psalmody","Short reading","Responsory: Into your hands, Lord","@nunc|Gospel canticle: Nunc dimittis (Luke 2:29-32)","Concluding prayer","Blessing","Antiphon to the Blessed Virgin Mary"]},
+  or:["Introductory verse (or the Invitatory, if this is the first hour of the day)","Hymn","@psalms|Psalmody: three psalms or sections, each with antiphon","Verse","@first|First reading: Scripture, with responsory","Second reading: Fathers or saints, with responsory","Te Deum (Sundays outside Lent, solemnities, feasts)","Concluding prayer","Acclamation"],
+  lauds:["@invit|Invitatory (Psalm 95) or introductory verse","Hymn","@psalms|Psalmody: morning psalm, Old Testament canticle, psalm of praise","Short reading","Responsory","@bened|Gospel canticle: Benedictus (Luke 1:68-79)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
+  terce:["Introductory verse","Hymn","@psalms|Psalmody: three psalms or sections (current psalmody)","Short reading","Verse","Concluding prayer","Acclamation"],
+  vespers:["Introductory verse","Hymn","@psalms|Psalmody: two psalms and a New Testament canticle","Short reading","Responsory","@magn|Gospel canticle: Magnificat (Luke 1:46-55)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
+  compline:["Introductory verse","Examination of conscience and act of penitence","Hymn","@psalms|Psalmody","Short reading","Responsory: Into your hands, Lord","@nunc|Gospel canticle: Nunc dimittis (Luke 2:29-32)","Concluding prayer","Blessing","Antiphon to the Blessed Virgin Mary"]},
  dwdo:{
   mattins:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@venite|Venite (Psalm 95), or the Easter Anthems in Eastertide","@psalms|The psalms appointed for the morning of this day of the month","First Lesson (Old Testament)","Te Deum laudamus, or Benedicite","Second Lesson (New Testament)","@bened|Benedictus (Luke 1:68-79)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Grace","Prayers and thanksgivings; the Grace"],
   prime:["Short form: opening versicles","Hymn","Psalm(s)","Short reading","Prayer"],
   evensong:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@psalms|The psalms appointed for the evening of this day of the month","First Lesson (Old Testament)","@magn|Magnificat (Luke 1:46-55)","Second Lesson (New Testament)","@nunc|Nunc dimittis (Luke 2:29-32)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Aid against all Perils","Anthem; prayers and thanksgivings; the Grace"],
-  compline:["Opening sentence and confession","@psalms|Psalms (4, 31:1-6, 91, 134)","Short reading","Responsory: Into thy hands, O Lord","@nunc|Nunc dimittis","Prayers","Blessing"]},
+  compline:["Opening sentence and confession","@psalms|Psalms (4, 31:1-6, 91, 134)","Short reading","@resp|Responsory: Into thy hands, O Lord","@nunc|Nunc dimittis","Prayers","Blessing"]},
  br:{
   matins:["Pater, Ave, Credo; Domine labia mea","Invitatory (Psalm 94 Vulgate)","Hymn","Nocturns: psalms with antiphons; three lessons per nocturn (one nocturn on ferias)","Responsories","Te Deum (Sundays and feasts outside penitential seasons)"],
   lauds:["Deus in adjutorium","Five psalms (the fourth an Old Testament canticle) with antiphons","Chapter","Hymn and versicle","@bened|Benedictus with antiphon","Collect; commemorations","Marian antiphon if the last hour said in choir"],
@@ -3129,14 +3354,14 @@ const ORDER={
   vespers:["Deus in adjutorium","Five psalms with antiphons","Chapter","Hymn and versicle","@magn|Magnificat with antiphon","Collect; commemorations"],
   compline:["Jube domne benedicere; short lesson (1 Pet 5:8-9)","Confiteor","Converte nos; Deus in adjutorium","Psalms under one antiphon","Hymn Te lucis ante terminum","@nunc|Chapter, short responsory, Nunc dimittis","Prayer Visita quaesumus","Blessing; seasonal Marian antiphon"]},
  byz:{
-  vespers:["@ps104|Opening blessing; Psalm 103 (104)","Great Litany","Kathisma of the Psalter","Lord, I have cried (Pss 140, 141, 129, 116) with stichera of the tone and the Menaion","Entrance; Phos hilaron (O Joyful Light)","Prokeimenon; Old Testament readings (paremias) on feasts","Litanies; Vouchsafe, O Lord","Aposticha","@nunc|Song of Simeon (Luke 2:29-32); Trisagion prayers","Apolytikion (troparion of the day); dismissal"],
-  compline:["Small Compline: Psalms 50, 69, 142","Doxology; Creed","Canon (if appointed)","Trisagion prayers","Kontakion of the day","Prayers; dismissal"],
-  midnight:["Psalm 50 and Psalm 118 (119)","Creed","Trisagion prayers","Troparia and prayers","Dismissal"],
-  orthros:["Royal beginning; Six Psalms (3, 37, 62, 87, 102, 142)","Great Litany; God is the Lord with the troparia","Kathismata of the Psalter","@eoth|On Sundays: Evlogitaria; Resurrection Gospel (eothinon)","@ps50|Psalm 50; canon","Magnificat with the Magnificat refrain (9th ode)","Lauds (Pss 148-150) with stichera; Great Doxology","Litanies; Aposticha; dismissal"],
-  first:["Psalms 5, 89, 100","Troparion and kontakion of the day","Trisagion prayers","Prayer of the First Hour (O Christ, the true Light)"],
-  third:["Psalms 16, 24, 50","Troparion and kontakion of the day","Trisagion prayers","Prayer of the hour"],
-  sixth:["Psalms 53, 54, 90","Troparion and kontakion of the day","Trisagion prayers","Prayer of the hour"],
-  ninth:["Psalms 83, 84, 85","Troparion and kontakion of the day","Trisagion prayers","Prayer of the hour"]},
+  vespers:["@ps104|Opening blessing; Psalm 103 (104)","Great Litany","Kathisma of the Psalter","@lic|Lord, I have cried (Pss 140, 141, 129, 116) with stichera of the tone and the Menaion","@phos|Entrance; Phos hilaron (O Joyful Light)","Prokeimenon; Old Testament readings (paremias) on feasts","@vouch|Litanies; Vouchsafe, O Lord","Aposticha","@nunc|Song of Simeon (Luke 2:29-32)","@tris|Trisagion prayers","Apolytikion (troparion of the day); dismissal"],
+  compline:["@ps|Small Compline: Psalms 50, 69, 142","@creed|Doxology; Creed","Canon (if appointed)","@tris|Trisagion prayers","Kontakion of the day","Prayers; dismissal"],
+  midnight:["@ps|Psalm 50 and Psalm 118 (119)","@creed|Creed","@tris|Trisagion prayers","Troparia and prayers","Dismissal"],
+  orthros:["@six|Royal beginning; Six Psalms (3, 37, 62, 87, 102, 142)","@godlord|Great Litany; God is the Lord with the troparia","Kathismata of the Psalter","@eoth|On Sundays: Evlogitaria; Resurrection Gospel (eothinon)","@ps50|Psalm 50; canon","@magn|Magnificat with the Magnificat refrain (9th ode)","@lauds|Lauds (Pss 148-150) with stichera; Great Doxology","Litanies; Aposticha; dismissal"],
+  first:["@ps|Psalms 5, 89, 100","Troparion and kontakion of the day","@tris|Trisagion prayers","@fhp|Prayer of the First Hour (O Christ, the true Light)"],
+  third:["@ps|Psalms 16, 24, 50","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
+  sixth:["@ps|Psalms 53, 54, 90","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
+  ninth:["@ps|Psalms 83, 84, 85","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"]},
 };
 ORDER.loth.sext=ORDER.loth.terce; ORDER.loth.none=ORDER.loth.terce;
 ORDER.br.sext=ORDER.br.terce; ORDER.br.none=ORDER.br.terce;
@@ -3256,7 +3481,9 @@ async function officeBody(iso, day){
   const ord = R==="loth"?ORDER.loth[H]: R==="dwdo"?ORDER.dwdo[H]: R==="byz"?ORDER.byz[H]: ORDER.br[H];
   if(R==="loth"){
     h+=`<h2 class="dayname">${esc(day.n.t)}</h2><p class="daysub">Psalter Week ${psalterWeek(iso)} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The official English texts of the Liturgy of the Hours are copyrighted, so the psalms, hymns and prayers are not reproduced here. <a href="https://universalis.com/${iso.replace(/-/g,"")}/${UNIV_HOUR[H]}.htm" target="_blank" rel="noopener">Open today's ${esc(hourName)} at Universalis</a>. The Scripture canticles below are in the Douay-Rheims.</p>`;
+    h+=`<p class="callout">The psalms and canticles of the four-week psalter are given in full in the Douay-Rheims, a public-domain translation from the Latin (the Liturgy of the Hours uses the Grail or Abbey Psalms, so the wording differs, and the psalms keep their Latin numbering in brackets). The hymns, antiphons, intercessions and prayers of the official books are copyrighted: press <b>Add text</b> beside any of them to fill it in from your own breviary, or <a href="https://universalis.com/${iso.replace(/-/g,"")}/${UNIV_HOUR[H]}.htm" target="_blank" rel="noopener">open today's ${esc(hourName)} at Universalis</a>. Solemnities and feasts have proper psalms.</p>`;
+    { let x=""; for(const ps of lothPsalms(iso,H,day)) x+=await blk(ps.lab,ps.cit,"dr"); slots.psalms=x||`<p class="note">No psalmody is listed for this hour.</p>`; }
+    if(H==="lauds"||H==="or") slots.invit=`<details class="canon"><summary>Invitatory: Psalm 95 (94), if this is the first hour of the day</summary>${await blk("Psalm 95 (94)","Ps 95","dr")}</details>`;
     slots.bened=await blk("Benedictus","Luke 1:68-79","dr"); slots.magn=await blk("Magnificat","Luke 1:46-55","dr"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","dr");
     if(H==="or"){ let LOH={}; try{ LOH=JSON.parse(document.getElementById("lect-extra").textContent).LOH; }catch(e){}
       const c=day.nk && LOH[day.nk];
@@ -3278,13 +3505,19 @@ async function officeBody(iso, day){
     }
     h+=`<p class="callout">The psalms are given from the Coverdale psalter of the 1662 Book of Common Prayer. Take the other texts from your book.</p>`;
     if(H==="compline"){ let x=""; for(const p of ["Ps 4","Ps 31:1-6","Ps 91","Ps 134"]) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); slots.psalms=x; }
+    slots.resp=`<div class="txt one"><p data-r="cel">Into thy hands, O Lord, I commend my spirit.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p><p data-r="cel">For thou hast redeemed me, O Lord, thou God of truth.</p><p data-r="ppl"><span class="sp">℟.</span> I commend my spirit.</p><p data-r="cel">Glory be to the Father, and to the Son, and to the Holy Ghost.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p></div>`;
     slots.venite = d.getUTCDate()===19 ? `<p class="note">Psalm 95 falls in today's course, so the Jubilate (Psalm 100) replaces it.</p>`+await blk("Jubilate","Ps 100","cv") : await blk("Venite","Ps 95","cv");
     slots.bened=await blk("Benedictus","Luke 1:68-79","kj"); slots.magn=await blk("Magnificat","Luke 1:46-55","kj"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","kj");
   } else if(R==="byz"){
     const tone=byzTone(iso), eo=eothinon(iso), b=day.b;
     h+=`<h2 class="dayname">${esc(b?b.t:"Weekday")}</h2><p class="daysub">${tone?`Tone ${tone} of the Octoechos`:"Paschal or Holy Week propers"} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The hymnody varies between churches and translations; take it from your Horologion, Octoechos and Menaion. The Scripture below is in the Douay-Rheims (psalms numbered as in the Septuagint).</p>`;
+    h+=`<p class="callout">The psalms are given in full in the Douay-Rheims, numbered as in the Septuagint, with the fixed prayers in traditional English. The hymnody of the day (stichera, troparia, kontakia, canons) varies between churches and translations: press <b>Add text</b> to fill it in from your Horologion, Octoechos and Menaion.</p>`;
     slots.ps104=await blk("Psalm 103 (104)","Ps 104","dr"); slots.nunc=await blk("Song of Simeon","Luke 2:29-32","dr"); slots.ps50=await blk("Psalm 50 (51)","Ps 51","dr");
+    { const P=BYZ_PS[H]||{}; for(const [slot,list] of Object.entries(P)){ let x=""; for(const n of list) x+=await readingBlock(`Psalm ${n}`,"Ps "+n,"v","dr"); slots[slot]=x; } }
+    slots.godlord=byzTx("godlord")+`<p class="note">Then the troparia of the day (Add text to fill them in from your Octoechos and Menaion).</p>`; slots.fhp=byzTx("fhp");
+    if(H==="orthros") slots.magn=await blk("Magnificat","Luke 1:46-55","dr")+`<p class="note">Between the verses: More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, who without corruption gavest birth to God the Word, true Theotokos, we magnify thee.</p>`;
+    slots.tris=byzTx("tris"); slots.creed=byzTx("creed"); slots.phos=byzTx("phos")+`<p class="note">Phos hilaron in John Keble's translation (1834).</p>`; slots.vouch=byzTx("vouch");
+    if(H==="orthros") slots.lauds=(slots.lauds||"")+`<h4 class="sub2">The Great Doxology</h4>`+byzTx("doxo");
     slots.eoth = eo ? await blk(`Resurrection Gospel · Eothinon ${eo}`,EOTHINA[eo],"dr") : `<p class="note">${dow===0?"From Pascha to Pentecost the Sunday Gospels are proper to the Pentecostarion.":"Read on Sundays only."}</p>`;
   } else {
     const full=await doHour(R,H,iso);

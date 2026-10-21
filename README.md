@@ -15,8 +15,13 @@
 - **Any length**: fit a service to anything from 15 minutes up to full length. The guide trims step by step and shows what was cut.
 - **Live group sessions**: a host shares a code, and everyone else follows the same day, settings and position. The host can assign parts (celebrant, server, lector, people), see who is ready, and start music for everyone. Sessions run browser to browser, with no account needed.
 - **Music**: Gregorian propers and Ordinary in chant notation with playback, plus hymns.
+- **Your texts**: wherever a text is still copyrighted, press **Add text** and type or paste it from your own missal or breviary. It's kept in your browser and shown in place from then on, and you can export or import your collection.
 - **Full texts where they are free to use**:
   - The traditional Breviary in Latin and English.
+  - The psalms and canticles of the Liturgy of the Hours (four-week psalter).
+  - The psalms and fixed prayers of the Byzantine hours.
+  - The Ordinariate Mass propers.
+  - The Novus Ordo Ordinary in Latin, with traditional English.
   - Mattins and Evensong from the 1662 Book of Common Prayer, with the Coverdale psalter.
   - Scripture readings in the Douay-Rheims and King James versions.
 - **Tools**: a presenter view for screen-sharing, a chat-script export for Discord or Minecraft (copy and paste), read-aloud, role views, posture cues and a printable booklet.
