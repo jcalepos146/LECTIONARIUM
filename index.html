@@ -443,6 +443,53 @@ body.in-session .chirho{width:52px}
 body.in-session .fsctl{position:absolute;top:14px;right:66px;margin:0}
 @media (max-width:560px){ body.in-session .fsctl .lbl{display:none} }
 @media print{ .fsctl,.covline .cov{display:none!important} }
+#enter-sanctuary{margin-top:20px;padding:12px 24px;border:1px solid var(--gold);font:inherit;font-weight:700;background:var(--ink);color:var(--paper);cursor:pointer}
+body.san-open{overflow:hidden}
+#sanctuary{--san-bg:#121619;--san-panel:#1d2427;--san-text:#eee4ce;--san-muted:#bfb6a4;--san-gold:#c7a465;--san-scale:1;position:fixed;inset:0;z-index:10000;overflow:auto;background:radial-gradient(ellipse at top,#293033,var(--san-bg) 65%);color:var(--san-text);font:calc(22px * var(--san-scale))/1.5 Alegreya,Georgia,serif;color-scheme:dark}
+#sanctuary[hidden]{display:none}
+#sanctuary[data-theme=vellum]{--san-bg:#ede1c7;--san-panel:#f5ebd6;--san-text:#2a2018;--san-muted:#665748;--san-gold:#806022;background:var(--san-bg);color-scheme:light}
+#sanctuary *{box-sizing:border-box}
+#sanctuary button,#sanctuary input{font:inherit;color:inherit}
+#sanctuary button{cursor:pointer}
+#sanctuary button:focus-visible,#sanctuary input:focus-visible,#sanctuary a:focus-visible,#sanctuary select:focus-visible,#sanctuary summary:focus-visible{outline:3px solid #e9ba74;outline-offset:4px;box-shadow:0 0 0 7px #aa382b,0 0 30px #ad352a80}
+#sanctuary a{color:var(--san-gold);overflow-wrap:anywhere}
+#sanctuary h1{font-size:clamp(2rem,4vw,4.5rem);font-weight:500;line-height:1.15;margin:12px 0 24px;color:inherit}
+#sanctuary h2{font-size:1.3em;color:var(--san-gold);margin:0 0 18px;font-weight:500}
+.san-toolbar{position:sticky;top:0;z-index:3;display:flex;gap:12px;padding:18px 4vw;background:var(--san-bg);border-bottom:1px solid var(--san-gold);flex-wrap:wrap}
+.san-toolbar button,.san-settings button,#sanctuary [data-action=retry]{background:var(--san-panel);border:1px solid var(--san-gold);padding:8px 18px;border-radius:3px}
+.san-toolbar button:nth-child(2){margin-right:auto}
+.san-content{padding:34px 5vw 100px;max-width:2200px;margin:auto;min-height:75vh}
+.san-eyebrow{text-transform:uppercase;letter-spacing:.13em;color:var(--san-gold);font-size:.8em}
+.san-lede{max-width:900px;color:var(--san-muted);font-size:1.15em}
+.san-shelf{margin:40px 0}
+.san-row{display:flex;overflow-x:auto;gap:22px;padding:12px 10px 22px;margin:0 -10px;scroll-padding:16px;scroll-snap-type:x proximity}
+.san-tile{flex:0 0 clamp(270px,23vw,440px);width:clamp(270px,23vw,440px);display:flex;flex-direction:column;align-items:stretch;text-align:left;border:1px solid #88754f;background:var(--san-panel);color:inherit;padding:0;border-radius:4px;overflow:hidden;scroll-snap-align:start;transition:transform .15s,box-shadow .15s}
+.san-tile:hover{transform:translateY(-3px);border-color:var(--san-gold)}
+.san-art{aspect-ratio:16/9;display:block;position:relative;color:var(--san-gold);background:linear-gradient(135deg,#243439,#192026)}
+.san-art svg{width:100%;height:100%;display:block}
+.san-art .san-chip{position:absolute;bottom:9px;right:9px;background:#171e20;color:#f1debc;border-color:#998258;font-size:16px}
+.san-tile-title{padding:16px 18px 6px;font-size:1.1em;line-height:1.25;font-weight:600}
+.san-subtitle{display:block;padding:0 18px 18px;color:var(--san-muted);font-size:.9em}
+.san-muted{color:var(--san-muted)}
+.san-chip{display:inline-block;font-size:.78em;padding:3px 9px;border:1px solid var(--san-gold);border-radius:3px;vertical-align:middle;line-height:1.3}
+.san-hero{display:flex;align-items:center;gap:45px;margin-bottom:35px}
+.san-hero>div{width:260px;flex-shrink:0;color:var(--san-gold)}
+.san-hero svg{width:100%}
+.san-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;border-top:1px solid var(--san-gold);padding-top:25px}
+.san-facts dt{font-size:.8em;text-transform:uppercase;color:var(--san-gold);letter-spacing:.1em}
+.san-facts dd{margin:12px 0;overflow-wrap:anywhere}
+.san-facts p{margin:10px 0}.san-facts small{display:block;font-size:.86em;color:var(--san-muted);margin-top:10px}
+.san-coming{border-left:3px solid var(--san-gold);padding:15px 25px;margin:35px 0}
+.san-prompts{position:sticky;bottom:0;z-index:2;padding:12px 5vw;background:var(--san-bg);border-top:1px solid var(--san-gold);font-size:18px;color:var(--san-muted)}
+.san-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:25px;padding:10px 0}
+.san-grid .san-tile{width:100%;min-width:0}
+#san-query{display:block;background:var(--san-panel);border:1px solid var(--san-gold);width:100%;max-width:850px;padding:14px 18px;margin:15px 0}
+.san-settings{display:flex;flex-direction:column;max-width:650px;gap:22px}
+#sanctuary details{margin:35px 0}#sanctuary summary{cursor:pointer;color:var(--san-gold)}
+@media(min-width:1800px){#sanctuary{font-size:calc(26px * var(--san-scale))}}
+@media(max-width:600px){.san-toolbar{gap:9px;padding:12px 16px}.san-toolbar button{padding:7px 10px;font-size:18px}.san-toolbar button:nth-child(2){margin-right:0}.san-content{padding:22px 22px 60px}.san-hero{display:block}.san-hero>div{width:160px}.san-facts{grid-template-columns:1fr}.san-prompts{font-size:16px}.san-grid{grid-template-columns:1fr}.san-tile{flex-basis:280px;width:280px}}
+@media(prefers-reduced-motion:reduce){#sanctuary *,#sanctuary *::before,#sanctuary *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
 </style>
 </head>
 <body>
@@ -454,6 +501,7 @@ body.in-session .fsctl{position:absolute;top:14px;right:66px;margin:0}
     <p class="dek">Pray the Mass or the Office for any day in the Catholic rites, printed in full wherever the texts are free to print and guided by citation where they are not, and compare every lectionary side by side.</p>
     <ul class="feats" aria-label="Features"><li>Every Catholic rite, its text coverage marked</li><li>15 minutes to full length</li><li>Live group sessions with parts</li><li>Gregorian chant and hymns</li><li>Full Breviary in Latin and English</li></ul>
   </div><svg class="chirho" viewBox="0 0 120 120" role="img" aria-label="Chi-Rho with Alpha and Omega"><circle class="disc" cx="60" cy="60" r="54"/><circle cx="60" cy="60" r="55" fill="none" style="stroke:var(--gold)" stroke-width="3.2"/><circle cx="60" cy="60" r="49.5" fill="none" style="stroke:var(--gold)" stroke-width="1.2"/><circle cx="112.30" cy="60.00" r="1.3" style="fill:var(--rubric)"/><circle cx="105.29" cy="86.15" r="1.3" style="fill:var(--rubric)"/><circle cx="86.15" cy="105.29" r="1.3" style="fill:var(--rubric)"/><circle cx="60.00" cy="112.30" r="1.3" style="fill:var(--rubric)"/><circle cx="33.85" cy="105.29" r="1.3" style="fill:var(--rubric)"/><circle cx="14.71" cy="86.15" r="1.3" style="fill:var(--rubric)"/><circle cx="7.70" cy="60.00" r="1.3" style="fill:var(--rubric)"/><circle cx="14.71" cy="33.85" r="1.3" style="fill:var(--rubric)"/><circle cx="33.85" cy="14.71" r="1.3" style="fill:var(--rubric)"/><circle cx="60.00" cy="7.70" r="1.3" style="fill:var(--rubric)"/><circle cx="86.15" cy="14.71" r="1.3" style="fill:var(--rubric)"/><circle cx="105.29" cy="33.85" r="1.3" style="fill:var(--rubric)"/><g style="stroke:var(--lapis)" stroke-width="9" stroke-linecap="butt"><line x1="33" y1="40" x2="87" y2="94"/><line x1="87" y1="40" x2="33" y2="94"/></g><line x1="26.5" y1="46.5" x2="39.5" y2="33.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="80.5" y1="100.5" x2="93.5" y2="87.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="80.5" y1="33.5" x2="93.5" y2="46.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="26.5" y1="87.5" x2="39.5" y2="100.5" style="stroke:var(--lapis)" stroke-width="3"/><path d="M60 16 V104" style="stroke:var(--rubric)" stroke-width="9" fill="none"/><path d="M60 20.5 H66 A14.5 14.5 0 0 1 66 49.5 H60" style="stroke:var(--rubric)" stroke-width="8" fill="none"/><line x1="53" y1="104" x2="67" y2="104" style="stroke:var(--rubric)" stroke-width="3"/><text x="26" y="75" font-family="Uncial Antiqua, serif" font-size="17" style="fill:var(--gold)" text-anchor="middle">A</text><text x="94" y="75" font-family="Uncial Antiqua, serif" font-size="17" style="fill:var(--gold)" text-anchor="middle">ω</text></svg></div>
+  <button type="button" id="enter-sanctuary">Enter Sanctuary mode <kbd>S</kbd></button>
   <div class="fsctl" role="group" aria-label="Text size"><span class="lbl">Text</span><button type="button" data-fs="-1" aria-label="Smaller text">A−</button><button type="button" data-fs="0" aria-label="Default text size">A</button><button type="button" data-fs="1" aria-label="Larger text">A+</button></div>
 </header>
 
@@ -684,6 +732,7 @@ body.in-session .fsctl{position:absolute;top:14px;right:66px;margin:0}
 
 <!-- ============================================================ SOURCES -->
 <section class="view" id="sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
+  <section id="tradition-sources" aria-label="Tradition directory sources"></section>
   <div class="prose">
     <p class="lede">What is printed and what is cited. Texts in the public domain or under an open licence are printed in full: Scripture in the Douay-Rheims, King James and Coverdale versions, the traditional Missal and Breviary in Latin and English, and the 1662 Book of Common Prayer. Texts still in copyright (the current Missal and Breviary translations, Divine Worship, the Byzantine service books) are cited, never reproduced; you can fill them in from your own book with <i>Add text</i>, which keeps them in your browser only. The comparison tabs give citations. The reading data was compiled programmatically and spot-checked.</p>
     <h3>Text coverage by rite</h3>
@@ -1095,7 +1144,7 @@ document.querySelectorAll("#filterSeg button").forEach(b=>b.addEventListener("cl
 let qt; $("#q").addEventListener("input",e=>{ clearTimeout(qt); qt=setTimeout(()=>{ state.q=e.target.value; render(); },120); });
 
 const TABS=["today","compare","lectionaries","hybrid","changes","office","sources"];
-function show(id){ if(!TABS.includes(id)) id="today";
+function show(id){ if(id.startsWith("/")) return; if(!TABS.includes(id)) id="today";
   TABS.forEach(t=>{ document.getElementById(t).hidden = t!==id; document.getElementById("tab-"+t).setAttribute("aria-selected", t===id?"true":"false"); });
   try{ history.replaceState(null,"","#"+id); }catch(e){}
 }
@@ -3484,6 +3533,7 @@ const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr"};
 async function renderSession(){
   await daysReady;
   const iso=S.date||todayISO();
+  window.dispatchEvent(new CustomEvent("lect-session",{detail:{type:S.type,rite:S.rite,hour:S.hour,iso,label:(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite)?.name}}));
   const crumbs=[S.type==="mass"?"Mass":"Divine Office", (S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
   const day=DAYS[iso];
@@ -3630,11 +3680,122 @@ function render(){
   if(S.view==="ask") renderAsk(); else renderSession();
 }
 window.LectApp={
+  coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
   /* open the session a live host is running */
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
 };
 loadPrefs(); S.date=todayISO(); render();
+})();
+</script>
+<script>
+/* Sanctuary is a lazy catalog and input layer; service rendering stays in LectApp. */
+(function(){
+"use strict";
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback;}catch(e){return fallback;}};
+const write=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch(e){}};
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+let catalog,loading,days,open=false,returnHash='#today',returnScroll=0,returnFocus,routeSerial=0,input='keyboard',menu=false;
+let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio;
+let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});
+let recent=read('lect-sanctuary-recent',[]);if(!Array.isArray(recent))recent=[];
+const root=document.createElement('section');root.id='sanctuary';root.hidden=true;root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Sanctuary mode');document.body.append(root);
+const isRoute=h=>/^#\/(sanctuary|t(?:\/|$)|search(?:\/|$))/.test(h);
+returnHash=isRoute(location.hash)?'#today':location.hash||'#today';
+const glyphs={keyboard:'↑ ↓ ← → Move · Enter Select · Esc Back · / Search · S Exit',gamepad:'✚ / Left stick Move · A Select · B Back · Y Search · Start Menu',touch:'Tap a tile to explore · Back to return',mouse:'Click a tile to explore · Back to return'};
+function prompts(){const p=root.querySelector('.san-prompts');if(p)p.textContent=glyphs[input];}
+function activeInput(value){if(input!==value){input=value;prompts();}}
+function applyPrefs(){root.dataset.theme=prefs.theme;root.style.setProperty('--san-scale',String(prefs.size));write('lect-sanctuary-prefs',prefs);}
+function sound(){if(!prefs.sound)return;try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=380;g.gain.setValueAtTime(.025,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.07);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.07);}catch(e){}}
+// Original geometric Christian symbols, never church insignia.
+const marks={catholic:'☧','eastern-orthodox':'✚',oriental:'✣','old-catholic':'⚓',anglican:'✥',lutheran:'✝',reformed:'☷'};
+let artSerial=0;
+function emblem(f){const pattern="san-art-"+(++artSerial);return `<svg viewBox="0 0 320 180" aria-hidden="true" focusable="false"><defs><pattern id="${pattern}" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(${f.length*3})"><path d="M0 12h24M12 0v24" fill="none" stroke="currentColor" opacity=".12"/></pattern></defs><rect width="320" height="180" fill="url(#${pattern})"/><circle cx="160" cy="90" r="57" fill="none" stroke="currentColor"/><circle cx="160" cy="90" r="50" fill="none" stroke="currentColor" opacity=".5"/><text x="160" y="112" font-family="serif" font-size="64" text-anchor="middle" fill="currentColor">${marks[f]||'✝'}</text></svg>`;}
+function coverage(s){return window.LectApp.coverage(s.type,s.rite,s.hour);}
+function tile(id,title,subtitle='',family='catholic',chip='',action='route'){
+ return `<button class="san-tile" data-${action}="${esc(id)}"><span class="san-art">${emblem(family)}${chip?`<span class="san-chip">${esc(chip)}</span>`:''}</span><span class="san-tile-title">${esc(title)}</span>${subtitle?`<span class="san-subtitle">${esc(subtitle)}</span>`:''}</button>`;
+}
+function nodeTile(n,subtitle){return tile('#/t/'+n.id,n.name,subtitle??n.kind,n.family,n.supported.length?'Guides available':'Explore');}
+function shelf(title,tiles,empty=''){return `<section class="san-shelf"><h2>${esc(title)}</h2>${tiles?`<div class="san-row" aria-label="${esc(title)}">${tiles}</div>`:`<p class="san-muted">${esc(empty)}</p>`}</section>`;}
+function parentOf(n){return n&&n.parent?catalog.find(x=>x.id===n.parent):null;}
+function go(hash){if(location.hash===hash)render();else location.hash=hash;}
+function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search')go('#/sanctuary');else close();}
+function close(hash=returnHash){go(isRoute(hash)?'#today':hash||'#today');}
+function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();gameFrame=requestAnimationFrame(pollGamepad);}
+function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
+function saveFocus(){const el=document.activeElement;if(root.contains(el))focusByRoute.set(previousRoute,el.dataset.route||el.dataset.pray||el.id||el.dataset.action);}
+function focus(el){if(!el)return;el.focus({preventScroll:true});el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});}
+function controls(){return [...root.querySelectorAll('button:not([disabled]),input,a[href],select,summary')].filter(e=>e.getClientRects().length);}
+function move(direction){const list=controls(),cur=document.activeElement;if(!list.length)return;if(!list.includes(cur)){focus(list[0]);return;}
+ const row=cur.closest('.san-row');if(row&&(direction==='left'||direction==='right')){const siblings=[...row.querySelectorAll('button')];const i=siblings.indexOf(cur);focus(siblings[(i+(direction==='left'?-1:1)+siblings.length)%siblings.length]);sound();return;}
+ const a=cur.getBoundingClientRect(),ax=a.x+a.width/2,ay=a.y+a.height/2;
+ const scored=list.filter(e=>e!==cur).map(el=>{const b=el.getBoundingClientRect(),dx=b.x+b.width/2-ax,dy=b.y+b.height/2-ay;const forward=direction==='down'?dy:direction==='up'?-dy:direction==='right'?dx:-dx;const side=Math.abs(direction==='down'||direction==='up'?dx:dy);return {el,forward,score:forward+side*2};}).filter(x=>x.forward>4).sort((a,b)=>a.score-b.score);
+ focus(scored[0]?.el||list[(list.indexOf(cur)+(direction==='up'||direction==='left'?-1:1)+list.length)%list.length]);sound();}
+async function load(){if(catalog)return;if(!loading)loading=fetch('data/traditions.json').then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json();}).then(j=>{catalog=j;}).catch(e=>{loading=null;throw e;});return loading;}
+function sourceList(){const target=document.getElementById('tradition-sources');if(!target||!catalog)return;const urls=[...new Set(catalog.flatMap(n=>[...n.sources,...n.books.map(b=>b.source)]))].sort();target.innerHTML='<h3>Tradition directory sources</h3><p>Edition rights and current jurisdictions require a source audit before release. Directory entries show their review status.</p><ul>'+urls.map(u=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')+'</ul>';}
+async function home(){
+ if(!days){try{const r=await fetch('days.json');if(!r.ok)throw Error();days=await r.json();}catch(e){days={};}}
+ const iso=today(),d=days[iso];
+ const dayTiles=['roman-modern','divine-worship','roman-1962','roman-pre55','hybrid-proposal','catholic-ruthenian'].map(id=>catalog.find(n=>n.id===id)).filter(Boolean).map(n=>{const rite=n.supported[0].rite;const v=d?.[rite];const label=typeof v==='string'?v:Array.isArray(v)?v.filter(x=>typeof x==='string').join(' · '):v?.name||v?.title||v?.t||'';return nodeTile(n,label|| (d?'Open the guide for today’s readings':'Date outside the supported calendar'));}).join('');
+ return `<p class="san-eyebrow">A place to begin</p><h1>Sanctuary</h1><p class="san-lede">Explore traditions, find a book, and return to prayer.</p>`+
+ shelf('Continue',recent.slice(0,8).map((r,i)=>tile(String(i),r.label,`${r.iso} · ${r.hour||'Mass'}`,r.family||'catholic',coverage(r),'resume')).join(''),'Your recent guides will appear here, stored only in this browser.')+
+ shelf('Today · '+iso,dayTiles)+shelf('Traditions',catalog.filter(n=>!n.parent).map(n=>nodeTile(n)).join(''))+
+ shelf('Explore',tile('#/search','All churches and books','Search names, places, and editions','anglican'));
+}
+function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=parentOf(n);
+ return `<p class="san-eyebrow">${esc(n.kind)}${parent?' · '+esc(parent.name):''}</p><div class="san-hero"><div>${emblem(n.family)}</div><section><h1>${esc(n.name)}</h1><p class="san-lede">${esc(n.self_description)}</p></section></div>
+ <dl class="san-facts"><div><dt>Calendar</dt><dd>${esc(n.calendar||'Varies by locality')}<p>${esc(n.calendar_note)}</p></dd></div><div><dt>Lectionary</dt><dd>${esc(n.lectionary)}</dd></div><div><dt>Books</dt><dd>${n.books.length?n.books.map(b=>`<p><a href="${esc(b.source)}" target="_blank" rel="noopener">${esc(b.title)}${b.year?' · '+b.year:''}</a> <span class="san-chip">${esc(b.status)}</span><small>${esc(b.rights_note)}</small></p>`).join(''):'See the sources for local books; no edition asserted here.'}</dd></div></dl>
+ ${children.length?shelf('Churches, uses and books',children.map(c=>nodeTile(c)).join('')):''}
+ ${n.supported.length?shelf('Pray now',n.supported.map((s,i)=>tile(n.id+':'+i,s.label,`${s.type==='office'?s.hour:'Mass'} · ${today()}`,n.family,coverage(s),'pray')).join('')):!children.length?`<section class="san-coming"><h2>Coming later</h2><p>No service guide is mapped to this entry yet.</p><p>${esc(n.pd_texts_available.join(' · ')||'An edition with verified public-domain or open-licence texts, a sourced calendar and a lectionary would make a guide possible.')}</p></section>`:''}
+ <details><summary>Sources and rights review</summary><p>${esc(n.source_review)}</p><ul>${n.sources.map(u=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul></details>`;
+}
+function results(q){const words=q.toLocaleLowerCase().split(/\s+/).filter(Boolean);return catalog.filter(n=>words.every(w=>[n.name,...n.also_called,...n.regions,...n.books.map(b=>b.title)].join(' ').toLocaleLowerCase().includes(w)));}
+function search(){return `<h1>All churches and books</h1><label for="san-query">Search names, alternative names, books or countries</label><input id="san-query" type="search" autocomplete="off" placeholder="Try 1928, Ruthenian, or Scotland"><p id="san-count" role="status"></p><div id="san-results" class="san-grid"></div>`;}
+function updateSearch(q){const found=results(q);root.querySelector('#san-count').textContent=`${found.length} results`;root.querySelector('#san-results').innerHTML=found.map(n=>nodeTile(n)).join('')||'<p>No matches. Try another name or year.</p>';}
+function menuHTML(){return `<h1>Sanctuary menu</h1><div class="san-settings"><button data-action="size">Text size · ${Math.round(prefs.size*100)}%</button><button data-action="theme">Theme · ${esc(prefs.theme)}</button><button data-action="sound">Sound · ${prefs.sound?'on':'off'}</button><button data-action="dismiss">Return to browsing</button><button data-action="exit">Exit Sanctuary mode</button></div>`;}
+async function render(){
+ if(!isRoute(location.hash)){leave();return;}
+ const hash=location.hash;if(!open)enter();saveFocus();previousRoute=hash;
+ const serial=++routeSerial;
+ const shell=body=>`<header class="san-toolbar"><button data-action="back" aria-label="Back">← Back</button><button data-route="#/sanctuary">Sanctuary</button><button data-route="#/search" aria-label="Search">Search /</button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Exit Sanctuary mode">Exit</button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
+ root.innerHTML=shell('<p role="status">Opening the library…</p>');
+ try{await load();if(serial!==routeSerial)return;sourceList();let body;
+  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/sanctuary')body=await home();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
+  if(serial!==routeSerial)return;root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
+  const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>(e.dataset.route||e.dataset.pray||e.id||e.dataset.action)===saved);
+  if(!saved)root.scrollTop=0;
+  focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
+ }catch(e){if(serial!==routeSerial)return;root.innerHTML=shell('<h1>The library could not load</h1><p>Check your connection and try again.</p><button data-action="retry">Try again</button>');focus(root.querySelector('[data-action="retry"]'));}
+}
+function launch(s,label,family){if(!s)return;const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
+root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
+root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else switch(b.dataset.action){case'back':back();break;case'exit':close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
+root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
+document.getElementById('enter-sanctuary').addEventListener('click',()=>{returnHash=location.hash||'#today';go('#/sanctuary');});
+window.addEventListener('keydown',e=>{
+ if(e.altKey||e.ctrlKey||e.metaKey)return;
+ const edit=/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)||e.target.isContentEditable;
+ if(!open){if(!edit&&e.key.toLowerCase()==='s'){e.preventDefault();returnHash=location.hash||'#today';go('#/sanctuary');}return;}
+ activeInput('keyboard');
+ if(edit){if(e.target.id==='san-query'&&e.key==='ArrowDown'){e.preventDefault();focus(root.querySelector('#san-results button'));return;}if(e.key==='Escape'){e.preventDefault();back();}return;}
+ if(e.key==='s'||e.key==='S'){e.preventDefault();close();}else if(e.key==='/'||e.key==='y'){e.preventDefault();go('#/search');}
+ else if(e.key==='Escape'||e.key==='Backspace'){e.preventDefault();back();}
+ else if(e.key.startsWith('Arrow')){e.preventDefault();move(e.key.slice(5).toLowerCase());}
+ else if(e.key==='Enter'&&e.target===root){e.preventDefault();controls()[0]?.click();}
+ else if(e.key==='Tab'){const list=controls(),i=list.indexOf(document.activeElement);if((e.shiftKey&&i<=0)||(!e.shiftKey&&i===list.length-1)){e.preventDefault();focus(e.shiftKey?list.at(-1):list[0]);}}
+});
+function pollGamepad(now){if(!open)return;let pads=[];try{pads=navigator.getGamepads?.()||[];}catch(e){}const pad=[...pads].find(p=>p&&p.connected!==false);let action='';if(pad){const pressed=i=>pad.buttons[i]?.pressed;
+ action=pressed(0)?'select':pressed(1)?'back':pressed(3)?'search':pressed(9)?'menu':pressed(12)||pad.axes[1]<-.55?'up':pressed(13)||pad.axes[1]>.55?'down':pressed(14)||pad.axes[0]<-.55?'left':pressed(15)||pad.axes[0]>.55?'right':'';
+ if(action){activeInput('gamepad');const directional=['up','down','left','right'].includes(action);if(action!==lastGameAction||(directional&&now>=gameRepeatAt)){const changed=action!==lastGameAction;gameRepeatAt=now+(changed?360:140);if(directional)move(action);else if(action==='select')document.activeElement?.click();else if(action==='back')back();else if(action==='search')go('#/search');else {menu=!menu;render();}}}}
+ lastGameAction=action;gameFrame=requestAnimationFrame(pollGamepad);
+}
+window.addEventListener('lect-session',e=>{const s=e.detail;if(!s?.rite)return;const known=catalog?.find(n=>n.supported.some(v=>v.type===s.type&&v.rite===s.rite));const session={...s,label:known?.name||s.label||s.rite,family:known?.family||'catholic'};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);});
+window.addEventListener('hashchange',render);
+// Sources are also loaded on explicit request without opening the launcher.
+document.getElementById('tab-sources').addEventListener('click',()=>{load().then(sourceList).catch(()=>{document.getElementById('tradition-sources').textContent='Tradition sources unavailable. Open Sanctuary mode to retry.';});});
+window.LectSanctuary={open:()=>go('#/sanctuary'),close};
+if(isRoute(location.hash))render();
 })();
 </script>
 </body>

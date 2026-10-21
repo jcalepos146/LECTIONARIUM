@@ -1,0 +1,2 @@
+# Optional browser acceptance tests and share-card generator; site itself needs no packages.
+playwright==1.62.0

@@ -61,3 +61,66 @@ Sessions connect browsers directly (WebRTC through the free PeerJS signalling se
 The full list is on the site's **Sources** tab.
 
 *Lectionarium is a study and practice aid. For celebration, consult the approved liturgical books.*
+
+## Sanctuary mode (development branch)
+
+Choose **Enter Sanctuary mode** or press **S** outside a text field. Browse the
+night-time library with mouse, touch, arrow keys and Enter, or a gamepad. Escape /
+Backspace or gamepad B returns to the parent; `/` or gamepad Y opens Search. Start
+opens text-size, theme, optional sound and exit controls. Sound starts off. Exit
+returns to the existing page; Pray now opens the existing guide.
+
+Routes: `#/sanctuary`, `#/t/catholic`, `#/t/catholic/latin`, and `#/search`.
+The catalog is fetched on entry (or when opening the Sources tab). Recent guides
+and Sanctuary preferences stay in localStorage; no account or analytics is used.
+Only entries with mapped guides offer Pray now. Byzantine Catholic mappings are
+explicitly practice guides using this site's Gregorian Pascha and Slavic reading
+order, not a claim to compute every local church calendar.
+
+### Develop and check
+
+```sh
+python3 -m http.server 8000
+python3 src/assemble.py
+# Browser tooling only, preferably inside a virtual environment:
+python3 -m pip install -r requirements-dev.txt
+# Supply Chromium at /usr/bin/chromium, or set PLAYWRIGHT_CHROMIUM.
+python3 tools/build_traditions.py
+python3 tools/build_traditions.py --check
+python3 -m unittest discover -s tests -v
+```
+
+Tests start an isolated local server. They exercise actual checked-in data and
+local guides, with external CDN/font requests blocked for reproducibility.
+They do not validate real PeerJS signalling, WebRTC traversal or CDN availability.
+Screenshots go to `/tmp/lectionarium-screenshots` (override `SCREENSHOT_DIR`).
+
+### Release status and follow-up
+
+The 130-entry directory is a **seed catalog pending current-source review**.
+Every entry carries source URLs and an explicit review status. Official source
+sites were blocked by onboarding network policy; reachability alone, when
+restored, will not establish that a claim or copyright assessment is correct.
+Run `python3 tools/audit_tradition_sources.py` after applying the source-domain
+allowlist, then review claims against the actual pages before release. In
+particular, review disputed autocephaly, local calendar variants, Prayer Book
+territorial rights and the exact editions of historical hymnals and translations.
+Conservative copyright labels mean “not cleared for reproduction here”, not a
+legal conclusion that every part is protected.
+
+Each catalog entry has a generated `t/<id>/index.html` with its own title,
+description, canonical URL and redirect. Seven original 1200×630 family cards are
+shared across entries to keep the complete project below the 512-file limit;
+they are generated from `tools/card.html`, with no church logos or insignia.
+
+New Anglican, Lutheran and Reformed service texts (Part C of the feature request)
+follow release of the launcher and reviewed directory. They are not implemented
+in this change. The attached *Divine Liturgies Public Domain Companion* identifies
+Hapgood (1906) as its historical source, but its own introduction says the
+anthology is not complete. Byzantine builders therefore retain their honest
+**Order and readings** coverage; no modern copyrighted translation has been
+imported. Extending monastic chant coverage also remains a separate data build:
+the repository has packed output but no original generation cache, and its
+current generator references a missing `tools2/perlstub` path. Repacking only new
+dates would discard the existing text and chant indexes. Recover or reconstruct
+the complete cache and validate the engine before replacing packed output.

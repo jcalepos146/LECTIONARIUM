@@ -1,0 +1,3605 @@
+[
+  {
+    "id": "catholic",
+    "name": "Catholic",
+    "family": "catholic",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "The Catholic Church comprises the Latin Church and Eastern Catholic churches. They preserve distinct liturgical, spiritual and canonical traditions in communion with the Bishop of Rome.",
+    "also_called": [
+      "Roman Catholic"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "latin",
+    "name": "Latin Church",
+    "family": "catholic",
+    "parent": "catholic",
+    "kind": "church",
+    "self_description": "The Latin Church is the largest church within the Catholic Church. Its liturgical heritage includes the Roman Rite and other rites and uses.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "byzantine-catholic",
+    "name": "Byzantine",
+    "family": "catholic",
+    "parent": "catholic",
+    "kind": "rite",
+    "self_description": "This shelf groups Eastern Catholic churches of the Byzantine liturgical tradition. Local calendars and editions are not interchangeable.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "alexandrian-catholic",
+    "name": "Alexandrian",
+    "family": "catholic",
+    "parent": "catholic",
+    "kind": "rite",
+    "self_description": "This shelf groups Eastern Catholic churches of the Alexandrian liturgical tradition. Local calendars and editions are not interchangeable.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "west-syriac-catholic",
+    "name": "West Syriac",
+    "family": "catholic",
+    "parent": "catholic",
+    "kind": "rite",
+    "self_description": "This shelf groups Eastern Catholic churches of the West Syriac liturgical tradition. Local calendars and editions are not interchangeable.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "east-syriac-catholic",
+    "name": "East Syriac",
+    "family": "catholic",
+    "parent": "catholic",
+    "kind": "rite",
+    "self_description": "This shelf groups Eastern Catholic churches of the East Syriac liturgical tradition. Local calendars and editions are not interchangeable.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-albanian",
+    "name": "Albanian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Albanian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-belarusian",
+    "name": "Belarusian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Belarusian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-bulgarian",
+    "name": "Bulgarian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Bulgarian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-bulgarian-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-krizevci",
+    "name": "Croatian / Križevci Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Croatian / Križevci Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [
+      "Križevci",
+      "Croatian Greek Catholic"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-greek",
+    "name": "Greek Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Greek Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-hungarian",
+    "name": "Hungarian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Hungarian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-italo-albanian",
+    "name": "Italo-Albanian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Italo-Albanian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/churches-with-no-orthodox-counterpart/the-italo-albanian-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-macedonian",
+    "name": "Macedonian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Macedonian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-melkite",
+    "name": "Melkite Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Melkite Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-melkite-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-romanian",
+    "name": "Romanian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Romanian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-romanian-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-russian",
+    "name": "Russian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Russian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-ruthenian",
+    "name": "Ruthenian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Ruthenian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [
+      "Byzantine Catholic",
+      "Ruthenian Greek Catholic"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ruthenian-catholic-churches/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-slovak",
+    "name": "Slovak Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Slovak Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-ukrainian",
+    "name": "Ukrainian Catholic Church",
+    "family": "catholic",
+    "parent": "byzantine-catholic",
+    "kind": "church",
+    "self_description": "Ukrainian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
+    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "books": [
+      {
+        "title": "Divine Liturgy and Horologion (local edition)",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "No modern translation reproduced. Historical Hapgood text is a separate source, not a local authorized edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "b",
+        "hour": null,
+        "label": "Byzantine practice guide"
+      },
+      {
+        "type": "office",
+        "rite": "byz",
+        "hour": "vespers",
+        "label": "Byzantine Vespers"
+      }
+    ],
+    "pd_texts_available": [
+      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ukrainian-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-coptic",
+    "name": "Coptic Catholic Church",
+    "family": "catholic",
+    "parent": "alexandrian-catholic",
+    "kind": "church",
+    "self_description": "Coptic Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-coptic-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-ethiopian",
+    "name": "Ethiopian Catholic Church",
+    "family": "catholic",
+    "parent": "alexandrian-catholic",
+    "kind": "church",
+    "self_description": "Ethiopian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-ethiopian-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-eritrean",
+    "name": "Eritrean Catholic Church",
+    "family": "catholic",
+    "parent": "alexandrian-catholic",
+    "kind": "church",
+    "self_description": "Eritrean Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-eritrean-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-syriac",
+    "name": "Syriac Catholic Church",
+    "family": "catholic",
+    "parent": "west-syriac-catholic",
+    "kind": "church",
+    "self_description": "Syriac Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-syrian-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-maronite",
+    "name": "Maronite Catholic Church",
+    "family": "catholic",
+    "parent": "west-syriac-catholic",
+    "kind": "church",
+    "self_description": "Maronite Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-syro-malankara",
+    "name": "Syro-Malankara Catholic Church",
+    "family": "catholic",
+    "parent": "west-syriac-catholic",
+    "kind": "church",
+    "self_description": "Syro-Malankara Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-syro-malankara-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-chaldean",
+    "name": "Chaldean Catholic Church",
+    "family": "catholic",
+    "parent": "east-syriac-catholic",
+    "kind": "church",
+    "self_description": "Chaldean Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-assyrian-church-of-the-east/the-chaldean-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-syro-malabar",
+    "name": "Syro-Malabar Catholic Church",
+    "family": "catholic",
+    "parent": "east-syriac-catholic",
+    "kind": "church",
+    "self_description": "Syro-Malabar Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Historical editions require source and edition verification before use."
+    ],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-assyrian-church-of-the-east/the-syro-malabar-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "catholic-armenian",
+    "name": "Armenian Catholic Church",
+    "family": "catholic",
+    "parent": "catholic",
+    "kind": "church",
+    "self_description": "Armenian Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-armenian-catholic-church/",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "roman-modern",
+    "name": "Roman Rite · post-conciliar",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Roman Rite · post-conciliar is presented as a distinct book or use within the Latin liturgical heritage. This launcher opens Lectionarium’s existing guide and retains its text-coverage limits.",
+    "also_called": [
+      "Novus Ordo",
+      "Ordinary Form"
+    ],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Roman Missal",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "Cited only; copyrighted current translations are not reproduced."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "n",
+        "hour": null,
+        "label": "Mass"
+      },
+      {
+        "type": "office",
+        "rite": "loth",
+        "hour": "vespers",
+        "label": "Evening Office"
+      }
+    ],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "roman-1962",
+    "name": "Roman Rite · 1962",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Roman Rite · 1962 is presented as a distinct book or use within the Latin liturgical heritage. This launcher opens Lectionarium’s existing guide and retains its text-coverage limits.",
+    "also_called": [
+      "Tridentine",
+      "Traditional Latin Mass",
+      "TLM"
+    ],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Missale Romanum",
+        "year": 1962,
+        "status": "open-licence",
+        "source": "https://github.com/DivinumOfficium/divinum-officium",
+        "rights_note": "Historical Latin and translated data from Divinum Officium are MIT licensed; modern editions and translations have separate rights."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "m",
+        "hour": null,
+        "label": "Mass"
+      },
+      {
+        "type": "office",
+        "rite": "br62",
+        "hour": "vespers",
+        "label": "Evening Office"
+      }
+    ],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "roman-pre55",
+    "name": "Roman Rite · pre-1955",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Roman Rite · pre-1955 is presented as a distinct book or use within the Latin liturgical heritage. This launcher opens Lectionarium’s existing guide and retains its text-coverage limits.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Missale Romanum",
+        "year": null,
+        "status": "open-licence",
+        "source": "https://github.com/DivinumOfficium/divinum-officium",
+        "rights_note": "Historical Latin and translated data from Divinum Officium are MIT licensed; modern editions and translations have separate rights."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "p",
+        "hour": null,
+        "label": "Mass"
+      },
+      {
+        "type": "office",
+        "rite": "br55",
+        "hour": "vespers",
+        "label": "Evening Office"
+      }
+    ],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "divine-worship",
+    "name": "Divine Worship · Ordinariates",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Divine Worship · Ordinariates is presented as a distinct book or use within the Latin liturgical heritage. This launcher opens Lectionarium’s existing guide and retains its text-coverage limits.",
+    "also_called": [
+      "Ordinariate",
+      "Anglican Use"
+    ],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Divine Worship",
+        "year": null,
+        "status": "copyright",
+        "source": "https://cnewa.org/eastern-christian-churches/",
+        "rights_note": "Cited only; copyrighted current translations are not reproduced."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "o",
+        "hour": null,
+        "label": "Mass"
+      },
+      {
+        "type": "office",
+        "rite": "dwdo",
+        "hour": "evensong",
+        "label": "Evening Office"
+      }
+    ],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "ambrosian",
+    "name": "Ambrosian Rite",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Ambrosian Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "mozarabic",
+    "name": "Hispano-Mozarabic Rite",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Hispano-Mozarabic Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "braga",
+    "name": "Use of Braga",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Use of Braga belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "carthusian",
+    "name": "Carthusian Rite",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Carthusian Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "dominican",
+    "name": "Dominican Rite",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Dominican Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [
+      {
+        "type": "office",
+        "rite": "op",
+        "hour": "vespers",
+        "label": "Dominican Vespers"
+      }
+    ],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "premonstratensian",
+    "name": "Premonstratensian Use",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Premonstratensian Use belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "carmelite",
+    "name": "Historic Carmelite Rite",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Historic Carmelite Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "zaire",
+    "name": "Zaire Use",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "Zaire Use belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "monastic",
+    "name": "Benedictine Office",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "The Benedictine Office follows a monastic psalter and calendar. This guide uses the repository’s generated monastic Breviary.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [
+      {
+        "type": "office",
+        "rite": "mon",
+        "hour": "vespers",
+        "label": "Monastic Vespers"
+      }
+    ],
+    "pd_texts_available": [],
+    "sources": [
+      "https://github.com/DivinumOfficium/divinum-officium"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "hybrid-proposal",
+    "name": "Lectionarium hybrid proposal",
+    "family": "catholic",
+    "parent": "latin",
+    "kind": "use",
+    "self_description": "An experimental order proposed by this site, combining a traditional structure with additional Scripture. It is a study proposal, not an authorized liturgical book.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "h",
+        "hour": null,
+        "label": "Hybrid Mass"
+      }
+    ],
+    "pd_texts_available": [],
+    "sources": [
+      "https://github.com/jcalepos146/LECTIONARIUM"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "eastern-orthodox",
+    "name": "Eastern Orthodox",
+    "family": "eastern-orthodox",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "Eastern Orthodox churches share the Byzantine liturgical heritage. Recognition of autocephaly and jurisdictional relationships must be read in the context of the issuing church.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "orthodox-constantinople",
+    "name": "Constantinople",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Constantinople is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-alexandria",
+    "name": "Alexandria",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Alexandria is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-antioch",
+    "name": "Antioch",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Antioch is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-jerusalem",
+    "name": "Jerusalem",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Jerusalem is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-russia",
+    "name": "Russia",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Russia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-serbia",
+    "name": "Serbia",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Serbia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-romania",
+    "name": "Romania",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Romania is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-bulgaria",
+    "name": "Bulgaria",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Bulgaria is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-georgia",
+    "name": "Georgia",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Georgia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-cyprus",
+    "name": "Cyprus",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Cyprus is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-greece",
+    "name": "Greece",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Greece is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-albania",
+    "name": "Albania",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Albania is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-poland",
+    "name": "Poland",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Poland is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-czech-slovak",
+    "name": "Czech Lands and Slovakia",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Czech Lands and Slovakia is included in this Eastern Orthodox directory. Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "Listed here among the autocephalous Eastern Orthodox churches; consult church sources for present relationships.",
+    "source_review": "WCC Eastern Orthodox family description reviewed 2026-10-21 for listed historical autocephalous churches. Current jurisdictional relationships and calendars require local sources."
+  },
+  {
+    "id": "orthodox-ukraine",
+    "name": "Orthodox Church of Ukraine",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Orthodox Church of Ukraine is included in this Eastern Orthodox directory. The Ecumenical Patriarchate granted a tomos of autocephaly in 2019; recognition is not universal among Orthodox churches.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly",
+      "https://www.patriarchate.org/"
+    ],
+    "recognition_note": "The Ecumenical Patriarchate granted a tomos of autocephaly in 2019; recognition is not universal among Orthodox churches.",
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "orthodox-oca",
+    "name": "Orthodox Church in America",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "church",
+    "self_description": "Orthodox Church in America is included in this Eastern Orthodox directory. The Moscow Patriarchate granted autocephaly in 1970; recognition is not universal among Orthodox churches.",
+    "also_called": [
+      "OCA"
+    ],
+    "regions": [
+      "United States",
+      "Canada",
+      "Mexico"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): historical English, not a current local edition."
+    ],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
+      "https://www.oca.org/questions/autocephaly"
+    ],
+    "recognition_note": "The Moscow Patriarchate granted autocephaly in 1970; recognition is not universal among Orthodox churches.",
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "goarch",
+    "name": "Greek Orthodox Archdiocese of America",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "jurisdiction",
+    "self_description": "Greek Orthodox Archdiocese of America is a jurisdiction serving communities in the Americas and beyond. Use its own directory for current diocesan and parish information.",
+    "also_called": [
+      "GOARCH"
+    ],
+    "regions": [
+      "Americas"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.goarch.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "antiochian-america",
+    "name": "Antiochian Orthodox Christian Archdiocese of North America",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "jurisdiction",
+    "self_description": "Antiochian Orthodox Christian Archdiocese of North America is a jurisdiction serving communities in the Americas and beyond. Use its own directory for current diocesan and parish information.",
+    "also_called": [],
+    "regions": [
+      "Americas"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.antiochian.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "rocor",
+    "name": "Russian Orthodox Church Outside of Russia",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "jurisdiction",
+    "self_description": "Russian Orthodox Church Outside of Russia is a jurisdiction serving communities in the Americas and beyond. Use its own directory for current diocesan and parish information.",
+    "also_called": [
+      "ROCOR"
+    ],
+    "regions": [
+      "Americas"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.synod.com/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "western-rite-orthodox",
+    "name": "Western Rite Orthodoxy",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "use",
+    "self_description": "Some Orthodox jurisdictions provide for Western Rite communities. Authorized service books and practices depend on the overseeing jurisdiction.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.antiochian.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "old-calendarists",
+    "name": "Old Calendarist communities",
+    "family": "eastern-orthodox",
+    "parent": "eastern-orthodox",
+    "kind": "jurisdiction",
+    "self_description": "Old Calendarist is a collective description for distinct communities, not a single church. Their relationships and recognition differ; the term alone does not establish jurisdiction.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "julian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-eastern"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-orthodox",
+    "name": "Oriental Orthodox & Church of the East",
+    "family": "oriental",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "This browsing shelf includes the Oriental Orthodox family and, separately, churches of the East Syriac tradition. Grouping them here does not imply that they form one communion.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental",
+      "https://cnewa.org/eastern-christian-churches/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-coptic",
+    "name": "Coptic Orthodox Church",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Coptic Orthodox Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-syriac",
+    "name": "Syriac Orthodox Church",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Syriac Orthodox Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-armenian",
+    "name": "Armenian Apostolic Church",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Armenian Apostolic Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-ethiopian",
+    "name": "Ethiopian Orthodox Tewahedo Church",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Ethiopian Orthodox Tewahedo Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-eritrean",
+    "name": "Eritrean Orthodox Tewahedo Church",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Eritrean Orthodox Tewahedo Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-malankara",
+    "name": "Malankara Orthodox Syrian Church",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Malankara Orthodox Syrian Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-assyrian",
+    "name": "Assyrian Church of the East",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Assyrian Church of the East preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [
+      "East Syriac"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "oriental-ancient",
+    "name": "Ancient Church of the East",
+    "family": "oriental",
+    "parent": "oriental-orthodox",
+    "kind": "church",
+    "self_description": "Ancient Church of the East preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "old-catholic",
+    "name": "Old Catholic",
+    "family": "old-catholic",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "Old Catholic churches have distinct histories, jurisdictions and liturgical books. The Union of Utrecht and Union of Scranton are separate unions.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/",
+      "https://www.pncc.org/"
+    ],
+    "source_review": "Union of Utrecht home page reviewed 2026-10-21. PNCC/Union of Scranton relationships still need current official verification; the former unionofscranton.org domain now hosts unrelated content and is excluded."
+  },
+  {
+    "id": "union-utrecht",
+    "name": "Union of Utrecht churches",
+    "family": "old-catholic",
+    "parent": "old-catholic",
+    "kind": "jurisdiction",
+    "self_description": "The Union of Utrecht links its member Old Catholic churches. Consult its current member directory for national churches and relationships.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/"
+    ],
+    "source_review": "Official Union of Utrecht home page reviewed 2026-10-21; national member details still require review."
+  },
+  {
+    "id": "pncc",
+    "name": "Polish National Catholic Church · Union of Scranton",
+    "family": "old-catholic",
+    "parent": "old-catholic",
+    "kind": "church",
+    "self_description": "The Polish National Catholic Church is associated with the Union of Scranton. Its authorized service books govern local worship.",
+    "also_called": [
+      "PNCC"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.pncc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican",
+    "name": "Anglican Prayer Books",
+    "family": "anglican",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "Prayer Books record Anglican worship in particular places and editions. Historical texts and present authorized books must be distinguished, including territorial copyright restrictions.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/book-common-prayer"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1549-england",
+    "name": "Book of Common Prayer · England 1549",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1549 Prayer Book associated with England. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "England"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · England 1549",
+        "year": 1549,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/england.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1549 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/england.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1552-england",
+    "name": "Book of Common Prayer · England 1552",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1552 Prayer Book associated with England. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "England"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · England 1552",
+        "year": 1552,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/england.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1552 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/england.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1559-england",
+    "name": "Book of Common Prayer · England 1559",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1559 Prayer Book associated with England. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "England"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · England 1559",
+        "year": 1559,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/england.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1559 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/england.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1604-england",
+    "name": "Book of Common Prayer · England 1604",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1604 Prayer Book associated with England. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "England"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · England 1604",
+        "year": 1604,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/england.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1604 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/england.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1662-england",
+    "name": "Book of Common Prayer · England 1662",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1662 Prayer Book associated with England. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "England"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · England 1662",
+        "year": 1662,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/england.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1662 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/england.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1928-england",
+    "name": "Book of Common Prayer · England 1928 (proposed)",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1928 Prayer Book associated with England. The 1928 English book was proposed, not the statutory replacement for 1662.",
+    "also_called": [],
+    "regions": [
+      "England"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · England 1928 (proposed)",
+        "year": 1928,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/england.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1928 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/england.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1637-scotland",
+    "name": "Book of Common Prayer · Scotland 1637",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1637 Prayer Book associated with Scotland. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "Scotland"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · Scotland 1637",
+        "year": 1637,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/Scotland.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1637 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/Scotland.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1764-scotland",
+    "name": "Scottish Communion Office · 1764",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "The 1764 Scottish Communion Office is a Eucharistic order in the Scottish Episcopal tradition. It is not a complete standalone Book of Common Prayer.",
+    "also_called": [],
+    "regions": [
+      "Scotland"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Scottish Communion Office",
+        "year": 1764,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/Scotland.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1764 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/Scotland.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Edition identified in the Society of Archbishop Justus Scottish catalog, reviewed 2026-10-21. Exact scan, transcription and territorial rights still need review."
+  },
+  {
+    "id": "anglican-1929-scotland",
+    "name": "Book of Common Prayer · Scotland 1929",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1929 Prayer Book associated with Scotland. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "Scotland"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · Scotland 1929",
+        "year": 1929,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/Scotland.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1929 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/Scotland.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1789-us",
+    "name": "Book of Common Prayer · United States 1789",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1789 Prayer Book associated with United States. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "United States"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · United States 1789",
+        "year": 1789,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/bcp.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1789 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/bcp.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://www.episcopalchurch.org/what-we-believe/book-common-prayer/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1892-us",
+    "name": "Book of Common Prayer · United States 1892",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1892 Prayer Book associated with United States. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "United States"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · United States 1892",
+        "year": 1892,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/bcp.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1892 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/bcp.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://www.episcopalchurch.org/what-we-believe/book-common-prayer/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1928-us",
+    "name": "Book of Common Prayer · United States 1928",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1928 Prayer Book associated with United States. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [
+      "American Prayer Book 1928"
+    ],
+    "regions": [
+      "United States"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · United States 1928",
+        "year": 1928,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/bcp.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1928 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/bcp.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://www.episcopalchurch.org/what-we-believe/book-common-prayer/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1979-us",
+    "name": "Book of Common Prayer · United States 1979",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1979 Prayer Book associated with United States. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "United States"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · United States 1979",
+        "year": 1979,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/bcp.htm",
+        "rights_note": "Text of the US Book of Common Prayer; exclude separately copyrighted music and supplementary material."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1979 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/bcp.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://www.episcopalchurch.org/what-we-believe/book-common-prayer/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1918-canada",
+    "name": "Book of Common Prayer · Canada 1918",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1918 Prayer Book associated with Canada. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "Canada"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · Canada 1918",
+        "year": 1918,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/canada.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1918 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/canada.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1962-canada",
+    "name": "Book of Common Prayer · Canada 1962",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1962 Prayer Book associated with Canada. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "Canada"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · Canada 1962",
+        "year": 1962,
+        "status": "copyright",
+        "source": "https://justus.anglican.org/resources/bcp/canada.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/canada.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1878-ireland",
+    "name": "Book of Common Prayer · Ireland 1878",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1878 Prayer Book associated with Ireland. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "Ireland"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · Ireland 1878",
+        "year": 1878,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/Ireland.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1878 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/Ireland.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1926-ireland",
+    "name": "Book of Common Prayer · Ireland 1926",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1926 Prayer Book associated with Ireland. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "Ireland"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · Ireland 1926",
+        "year": 1926,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/Ireland.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "1926 edition: verify the exact scan and territory before extraction."
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/Ireland.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-2004-ireland",
+    "name": "Book of Common Prayer · Ireland 2004",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 2004 Prayer Book associated with Ireland. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "Ireland"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · Ireland 2004",
+        "year": 2004,
+        "status": "copyright",
+        "source": "https://justus.anglican.org/resources/bcp/Ireland.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/Ireland.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1954-south-africa",
+    "name": "Book of Common Prayer · South Africa 1954",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1954 Prayer Book associated with South Africa. Its texts and calendar should be read in the context of that edition.",
+    "also_called": [],
+    "regions": [
+      "South Africa"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Prayer · South Africa 1954",
+        "year": 1954,
+        "status": "copyright",
+        "source": "https://justus.anglican.org/resources/bcp/world.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-1960-india",
+    "name": "Supplement to the Indian Book of Common Prayer · 1960",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "This entry identifies the 1960 supplement to the Indian Book of Common Prayer. Its contents should be distinguished from the base Prayer Book and other Indian Communion orders.",
+    "also_called": [],
+    "regions": [
+      "India"
+    ],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Supplement to the Indian Book of Common Prayer",
+        "year": 1960,
+        "status": "copyright",
+        "source": "https://justus.anglican.org/resources/bcp/world.htm",
+        "rights_note": "Historical edition only; later editorial additions, typography and music require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "acna-2019",
+    "name": "ACNA Book of Common Prayer",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "ACNA Book of Common Prayer is a distinct liturgical publication. Edition-specific rights and authorization must be checked before reproducing its text.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "ACNA Book of Common Prayer",
+        "year": 2019,
+        "status": "copyright",
+        "source": "https://bcp2019.anglicanchurch.net/",
+        "rights_note": "Cited conservatively pending verification of the exact edition and its permissions."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://bcp2019.anglicanchurch.net/"
+    ],
+    "source_review": "Official 2019 Prayer Book landing page reviewed 2026-10-21; it directs reuse to Anglican House permissions. No text reproduced."
+  },
+  {
+    "id": "common-worship",
+    "name": "Common Worship",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "Common Worship is a distinct liturgical publication. Edition-specific rights and authorization must be checked before reproducing its text.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Common Worship",
+        "year": 2000,
+        "status": "copyright",
+        "source": "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship",
+        "rights_note": "Cited conservatively pending verification of the exact edition and its permissions."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship",
+      "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship/copyright"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "anglican-missal",
+    "name": "Anglican Missal",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "Anglican Missal is a distinct liturgical publication. Edition-specific rights and authorization must be checked before reproducing its text.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Anglican Missal",
+        "year": 1921,
+        "status": "copyright",
+        "source": "https://justus.anglican.org/resources/bcp/world.htm",
+        "rights_note": "Cited conservatively pending verification of the exact edition and its permissions."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "english-missal",
+    "name": "English Missal",
+    "family": "anglican",
+    "parent": "anglican",
+    "kind": "book-edition",
+    "self_description": "English Missal is a distinct liturgical publication. Edition-specific rights and authorization must be checked before reproducing its text.",
+    "also_called": [],
+    "regions": [],
+    "calendar": "gregorian",
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "English Missal",
+        "year": 1912,
+        "status": "copyright",
+        "source": "https://justus.anglican.org/resources/bcp/world.htm",
+        "rights_note": "Cited conservatively pending verification of the exact edition and its permissions."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "lutheran",
+    "name": "Lutheran",
+    "family": "lutheran",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "Lutheran churches use a range of service books and hymnals. A shared historical order does not make every modern edition or translation public domain.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.lcms.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "lcms",
+    "name": "Lutheran Church—Missouri Synod",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "church",
+    "self_description": "Lutheran Church—Missouri Synod is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "also_called": [
+      "LCMS"
+    ],
+    "regions": [
+      "United States"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.lcms.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "wels",
+    "name": "Wisconsin Evangelical Lutheran Synod",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "church",
+    "self_description": "Wisconsin Evangelical Lutheran Synod is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "also_called": [
+      "WELS"
+    ],
+    "regions": [
+      "United States"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://wels.net/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "els",
+    "name": "Evangelical Lutheran Synod",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "church",
+    "self_description": "Evangelical Lutheran Synod is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "also_called": [
+      "ELS"
+    ],
+    "regions": [
+      "United States"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://els.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "elca",
+    "name": "Evangelical Lutheran Church in America",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "church",
+    "self_description": "Evangelical Lutheran Church in America is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "also_called": [
+      "ELCA"
+    ],
+    "regions": [
+      "United States"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.elca.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "nalc",
+    "name": "North American Lutheran Church",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "church",
+    "self_description": "North American Lutheran Church is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "also_called": [
+      "NALC"
+    ],
+    "regions": [
+      "United States",
+      "Canada"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://thenalc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "lsb",
+    "name": "Lutheran Service Book",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "book-edition",
+    "self_description": "Lutheran Service Book is listed as a liturgical resource. Rights are assessed for an exact edition, not inferred from a tradition’s age.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Lutheran Service Book",
+        "year": 2006,
+        "status": "copyright",
+        "source": "https://www.lcms.org/",
+        "rights_note": "Cited only; not reproduced."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.lcms.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "tlh",
+    "name": "The Lutheran Hymnal",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "book-edition",
+    "self_description": "The Lutheran Hymnal is listed as a liturgical resource. Rights are assessed for an exact edition, not inferred from a tradition’s age.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "The Lutheran Hymnal",
+        "year": 1941,
+        "status": "copyright",
+        "source": "https://www.lcms.org/",
+        "rights_note": "No blanket public-domain claim: verify renewal, individual texts, tunes and arrangements."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.lcms.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "common-service",
+    "name": "Common Service",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "book-edition",
+    "self_description": "Common Service is listed as a liturgical resource. Rights are assessed for an exact edition, not inferred from a tradition’s age.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Common Service",
+        "year": 1888,
+        "status": "public-domain",
+        "source": "https://justus.anglican.org/resources/bcp/world.htm",
+        "rights_note": "Historical 1888 order only; modern hymnals have separate rights."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Common Service"
+    ],
+    "sources": [
+      "https://justus.anglican.org/resources/bcp/world.htm"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "swedish-orders",
+    "name": "Church of Sweden · historic orders",
+    "family": "lutheran",
+    "parent": "lutheran",
+    "kind": "book-edition",
+    "self_description": "Church of Sweden · historic orders is listed as a liturgical resource. Rights are assessed for an exact edition, not inferred from a tradition’s age.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Church of Sweden · historic orders",
+        "year": null,
+        "status": "copyright",
+        "source": "https://www.svenskakyrkan.se/",
+        "rights_note": "Exact historical edition must be verified; current handbook is not reproduced."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.svenskakyrkan.se/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "reformed",
+    "name": "Reformed & Presbyterian",
+    "family": "reformed",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "Reformed and Presbyterian churches preserve forms, directories and psalters from several national traditions. Historical source texts are distinguished here from modern editions and authorized local practice.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://opc.org/",
+      "https://www.canrc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "nrc",
+    "name": "Netherlands Reformed Congregations",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Netherlands Reformed Congregations belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [
+      "NRC"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.nrcna.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "heritage-reformed",
+    "name": "Heritage Reformed Congregations",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Heritage Reformed Congregations belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.hrcna.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "free-reformed",
+    "name": "Free Reformed Churches",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Free Reformed Churches belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.frcna.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "gereformeerde-gemeenten",
+    "name": "Gereformeerde Gemeenten",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Gereformeerde Gemeenten belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.gergeminfo.nl/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "canadian-reformed",
+    "name": "Canadian Reformed Churches",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Canadian Reformed Churches belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.canrc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "urcna",
+    "name": "United Reformed Churches in North America",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "United Reformed Churches in North America belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [
+      "URCNA"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.urcna.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "pca",
+    "name": "Presbyterian Church in America",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Presbyterian Church in America belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [
+      "PCA"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.pcaac.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "opc",
+    "name": "Orthodox Presbyterian Church",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Orthodox Presbyterian Church belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [
+      "OPC"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://opc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "pcusa",
+    "name": "Presbyterian Church (U.S.A.)",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Presbyterian Church (U.S.A.) belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [
+      "PC(USA)",
+      "PCUSA"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.pcusa.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "free-church-scotland",
+    "name": "Free Church of Scotland",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Free Church of Scotland belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://freechurch.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "reformed-presbyterian",
+    "name": "Reformed Presbyterian Church of North America",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "church",
+    "self_description": "Reformed Presbyterian Church of North America belongs to the Reformed or Presbyterian tradition. Use its own worship resources to identify its forms, psalmody and present practice.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.rpcna.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "dort-forms",
+    "name": "Liturgical Forms of Dort",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "book-edition",
+    "self_description": "Liturgical Forms of Dort is a historical resource in this directory. The entry describes the original edition, with modern translation and musical rights assessed separately.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Liturgical Forms of Dort",
+        "year": 1619,
+        "status": "public-domain",
+        "source": "https://www.loc.gov/",
+        "rights_note": "Historical texts only; modern English translations may be copyrighted."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Liturgical Forms of Dort"
+    ],
+    "sources": [
+      "https://www.loc.gov/",
+      "https://opc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "genevan-psalter",
+    "name": "Genevan Psalter",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "book-edition",
+    "self_description": "Genevan Psalter is a historical resource in this directory. The entry describes the original edition, with modern translation and musical rights assessed separately.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Genevan Psalter",
+        "year": 1562,
+        "status": "public-domain",
+        "source": "https://www.loc.gov/",
+        "rights_note": "Historical melodies and original texts; modern harmonizations and translations require separate review."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Genevan Psalter"
+    ],
+    "sources": [
+      "https://www.loc.gov/",
+      "https://opc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "psalter-1912",
+    "name": "The Psalter",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "book-edition",
+    "self_description": "The Psalter is a historical resource in this directory. The entry describes the original edition, with modern translation and musical rights assessed separately.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "The Psalter",
+        "year": 1912,
+        "status": "public-domain",
+        "source": "https://www.loc.gov/",
+        "rights_note": "Historical US edition only; individual items and later editions must be reviewed."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "The Psalter"
+    ],
+    "sources": [
+      "https://www.loc.gov/",
+      "https://opc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "westminster",
+    "name": "Westminster Directory for Public Worship",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "book-edition",
+    "self_description": "Westminster Directory for Public Worship is a historical resource in this directory. The entry describes the original edition, with modern translation and musical rights assessed separately.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Westminster Directory for Public Worship",
+        "year": 1645,
+        "status": "public-domain",
+        "source": "https://www.loc.gov/",
+        "rights_note": "Historical text; modern editorial additions excluded."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Westminster Directory for Public Worship"
+    ],
+    "sources": [
+      "https://www.loc.gov/",
+      "https://opc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "scottish-psalter",
+    "name": "Scottish Metrical Psalter",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "book-edition",
+    "self_description": "Scottish Metrical Psalter is a historical resource in this directory. The entry describes the original edition, with modern translation and musical rights assessed separately.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Scottish Metrical Psalter",
+        "year": 1650,
+        "status": "public-domain",
+        "source": "https://www.loc.gov/",
+        "rights_note": "Historical text; later musical settings excluded."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Scottish Metrical Psalter"
+    ],
+    "sources": [
+      "https://www.loc.gov/",
+      "https://opc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  },
+  {
+    "id": "bcw-1906",
+    "name": "Book of Common Worship",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "book-edition",
+    "self_description": "Book of Common Worship is a historical resource in this directory. The entry describes the original edition, with modern translation and musical rights assessed separately.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Book of Common Worship",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://www.loc.gov/",
+        "rights_note": "Historical US edition only; not a modern Book of Common Worship."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Book of Common Worship"
+    ],
+    "sources": [
+      "https://www.loc.gov/",
+      "https://opc.org/"
+    ],
+    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+  }
+]

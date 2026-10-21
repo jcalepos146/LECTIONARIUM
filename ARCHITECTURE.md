@@ -46,3 +46,41 @@ Offline scripts that produced the data. `office_gen.py` runs the Divinum Officiu
 - **Roles.** Text elements carry `data-r` = `cel`, `srv`, `lec`, `ppl` or `all`; the role views, chat script and read-aloud depend on it.
 - **Timing.** Builders return sections with `min` (minutes); `mass.js` fits sessions to a target length.
 - **Two hosts.** The same code runs on GitHub Pages and inside a Claude artifact (which provides `window.claude` for live sessions); nothing may assume one or the other.
+
+## Sanctuary launcher
+
+`src/sanctuary.js` is assembled after `today.js`; `src/sanctuary.css` is included
+inside the existing style block. `data/traditions.json` is a lazy array of catalog
+records, including parent/family IDs, source URLs, edition rights notes and an
+explicit source-review status. Null calendars mean locality-dependent or not yet
+verified; they must never be silently treated as Gregorian.
+
+The launcher is an accessible modal layer over the existing `.wrap`. The normal
+page becomes inert while open. It restores focus and scroll on exit. The old tab
+router ignores slash-prefixed routes so hash history belongs to Sanctuary until
+exit. The launcher owns home, hierarchical detail and search screens; it never
+renders a service. `LectApp.follow()` remains the service handoff and
+`LectApp.coverage()` exposes the existing coverage labels without duplicating
+coverage policy. Existing guide controls, roles, music and live-session code are
+reused unchanged.
+
+Keyboard navigation uses horizontal shelf wrapping and geometric movement
+between rows; focus scrolls into view and Tab remains in the modal. Gamepad polling
+uses `requestAnimationFrame`, dead zones, an initial 360 ms hold delay and 140 ms
+directional repeats. Action buttons require release between selections. Input
+prompts reflect the latest input. WebAudio sounds are opt-in. Reduced-motion
+preferences disable tile transitions. Theme and text size are local to Sanctuary.
+
+`tools/build_traditions.py` validates parent links, guide mappings and URLs, emits
+share stubs and captures original family artwork using the vellum/penwork from
+`tools/card.html`. `--check` verifies exact stub contents, PNG dimensions and the
+512-file project budget. Family artwork is shared intentionally; source claims
+require human review even if the generator and browser tests pass.
+
+`tests/test_sanctuary.py` covers lazy loading, routes/history, hierarchy, focus,
+controller input, search, guide handoff, recent guides, Sources aggregation,
+Add text, live-session controls, Breviary text loading, build reproducibility,
+and screenshots at 390/1920 px under light/dark system preferences. External
+network services are excluded, not mocked as successful. The read-only
+`tools/audit_tradition_sources.py` reports source reachability for the outstanding
+editorial audit without asserting that reachable content confirms each claim.
