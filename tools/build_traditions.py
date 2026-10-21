@@ -75,7 +75,7 @@ def card(family, name):
     return template
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--family',choices=list(MARKS),help='Recapture artwork for one family');parser.add_argument('--metadata-only',action='store_true',help='Refresh stubs and source references without recapturing PNGs');parser.add_argument('--check',action='store_true',help='Validate catalog, stubs, card dimensions and file budget without writing');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--entry',help='Recapture artwork for one entry ID');parser.add_argument('--family',choices=list(MARKS),help='Recapture artwork for one family');parser.add_argument('--metadata-only',action='store_true',help='Refresh stubs and source references without recapturing PNGs');parser.add_argument('--check',action='store_true',help='Validate catalog, stubs, card dimensions and file budget without writing');args=parser.parse_args()
     rows=entries()
     if args.check:
         assert (ROOT/'src/tradition_sources.html').read_text()==sources_html(rows), 'Regenerate tradition source references'
@@ -101,7 +101,7 @@ def main():
         browser=p.chromium.launch(executable_path=os.environ.get('PLAYWRIGHT_CHROMIUM','/usr/bin/chromium'),args=['--no-sandbox'])
         page=browser.new_page(viewport={'width':1200,'height':630},device_scale_factor=1)
         for n in rows:
-            if n['kind']=='book-edition' or (args.family and n['family']!=args.family): continue
+            if n['kind']=='book-edition' or (args.family and n['family']!=args.family) or (args.entry and n['id']!=args.entry): continue
             page.set_content(card(n['family'],n['name']))
             page.screenshot(path=str(ROOT/'t/cards'/f"{n['id']}.png"))
         browser.close()

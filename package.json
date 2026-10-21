@@ -1,0 +1,6 @@
+{
+  "name": "lectionarium-browser-tests",
+  "private": true,
+  "scripts": {"test": "python3 -m unittest discover -s tests -v"},
+  "devDependencies": {"peer": "1.0.2", "peerjs": "1.5.4"}
+}

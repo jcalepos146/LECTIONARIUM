@@ -82,6 +82,23 @@ require human review even if the generator and browser tests pass.
 controller input, search, guide handoff, recent guides, Sources aggregation,
 Add text, live-session controls, Breviary text loading, build reproducibility,
 and screenshots at 390/1920 px under light/dark system preferences. External
-network services are excluded, not mocked as successful. The read-only
+network services are excluded. A pinned local PeerJS server and client exercise
+a real two-browser host/join, readiness, roles and position exchange in CI.
+Managed Chromium installations that block direct WebRTC skip this regression
+with an explicit policy reason; other local failures remain failures. The read-only
 `tools/audit_tradition_sources.py` reports source reachability for the outstanding
 editorial audit without asserting that reachable content confirms each claim.
+
+## Monastic chant extension
+
+`data/monastic-build.json` records the Divinum Officium revision and MIT notice.
+`office_gen.py unpack` reconstructs the full text/chant caches from published
+shards; extending only missing dates therefore preserves prior data. `pack mon
+2000` stages approximately 2 MB shards and swaps the output directory only after
+writing it. `LECTIONARIUM_DO`, `LECTIONARIUM_OFFICE_WORK` and
+`LECTIONARIUM_OFFICE_WORKERS` select the engine, scratch directory and concurrency.
+`tools/check_office.py` checks shard references, all eight text hours and seven
+chant-mode hours through the requested date. `--baseline` compares every original
+title and rendered cell, independently of reindexed shard positions. The known
+unnotated Triduum little hours still require complete hour records; other missing
+notation fails validation.

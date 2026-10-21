@@ -47,3 +47,23 @@ that its selection is not exhaustive. Extracted OCR has substantial errors and
 parallel alternatives. It has not been inserted into the Byzantine guide or used
 to claim complete coverage. That requires transcription against the facsimiles,
 separation of Chrysostom/Basil alternatives and audit of all variable propers.
+
+Follow-up checks:
+
+- OCA's current World Churches directory was read on 21 October 2026:
+  https://www.oca.org/directories/world-churches . It lists the Macedonian Orthodox
+  Church–Ohrid Archbishopric among autocephalous churches. The new entry attributes
+  that listing specifically to the OCA; it does not assert universal recognition.
+- The Ecumenical Patriarchate's primary Tomos dated 6 January 2019 was read:
+  https://ec-patr.org/en/06/01/15/32/patriarchal-and-synodal-tomos-for-the-bestowal-of-the-ecclesiastical-status-of-autocephaly-to-the-orthodox-church-in-ukraine/ .
+  The Orthodox Church of Ukraine and the Church of Ukraine under Metropolitan
+  Onufry listed by the OCA are distinct bodies; the directory does not conflate them.
+- Internet Archive metadata for `cu31924029363128` confirms Hapgood's title and
+  publication year 1906. Historical study editions are labeled separately from
+  modern authorized local books. Exact transcription is still unreviewed.
+- Historical English Prayer Book editions through 1662 and the Scottish 1637
+  edition are indexed with their original Julian calendar. Later reformed 1662
+  calendars are distinguished in the notes.
+- A later PNCC request passed the initial proxy connection but failed upstream
+  TLS verification. Verification was kept enabled; no content was accepted from
+  that failed request.

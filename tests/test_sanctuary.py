@@ -1,5 +1,5 @@
 """Browser acceptance tests. Run: python3 -m unittest discover -s tests -v"""
-import datetime, functools, http.server, json, os, pathlib, subprocess, tempfile, threading, unittest
+import datetime, functools, http.server, socket, time, urllib.request, json, os, pathlib, subprocess, tempfile, threading, unittest
 from playwright.sync_api import sync_playwright
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
@@ -115,6 +115,77 @@ class SanctuaryTests(unittest.TestCase):
         self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for()
         self.page.keyboard.press('Escape');self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
         self.page.keyboard.press('Backspace');self.sanctuary().get_by_role('heading',name='Sanctuary',exact=True).wait_for()
+    def test_real_local_webrtc_host_join_and_sanctuary(self):
+        # Respect managed browser policy; CI runs the real connection on standard Chromium.
+        for policy_dir in [pathlib.Path('/etc/chromium/policies/managed'),pathlib.Path('/etc/opt/chrome/policies/managed')]:
+            for policy in policy_dir.glob('*.json'):
+                if json.loads(policy.read_text()).get('WebRtcIPHandling')=='disable_non_proxied_udp':
+                    self.skipTest('Managed Chromium policy blocks direct WebRTC; exercised in GitHub CI')
+        client=ROOT/'node_modules/peerjs/dist/peerjs.min.js'
+        self.assertTrue(client.is_file(),'Run npm ci to install the pinned local PeerJS test tools')
+        with socket.socket() as sock:
+            sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
+        log=tempfile.TemporaryFile(mode='w+')
+        server=subprocess.Popen(['node','-e',f"require('peer').PeerServer({{host:'127.0.0.1',port:{port},path:'/'}})"],cwd=ROOT,stdout=log,stderr=log)
+        follower_context=None;follower=None
+        trace=';window.testPeers=[];const BasePeer=window.Peer;window.Peer=class extends BasePeer{constructor(...a){super(...a);window.testPeers.push(this);}};'
+        script=client.read_text()+trace
+        try:
+            ready=False
+            for _ in range(50):
+                try:
+                    with urllib.request.urlopen(f'http://127.0.0.1:{port}/peerjs/id',timeout=.3) as r:ready=r.status==200
+                    if ready:break
+                except OSError:time.sleep(.1)
+            if not ready:
+                log.seek(0);self.fail('Local PeerJS server failed: '+log.read())
+            options={'host':'127.0.0.1','port':port,'path':'/','secure':False,'config':{'iceServers':[]}}
+            init='window.LECT_PEER_OPTS='+json.dumps(options)+';'
+            endpoint='https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js'
+            self.context.route(endpoint,lambda route:route.fulfill(body=script,content_type='application/javascript'))
+            self.page.add_init_script(init);self.open();self.page.get_by_role('button',name="Pray today's Mass",exact=True).click()
+            self.page.get_by_role('button',name='Live session',exact=True).click();self.page.locator('#lvHost').click()
+            self.page.locator('.livecode').wait_for();code=self.page.locator('.livecode').inner_text()
+            follower_context=self.browser.new_context(viewport={'width':1920,'height':1080})
+            follower_context.route('https://**/*',lambda route:route.abort())
+            follower_context.route(endpoint,lambda route:route.fulfill(body=script,content_type='application/javascript'))
+            follower_context.add_init_script(init)
+            follower=follower_context.new_page();follower.clock.install(time=datetime.datetime(2026,10,21,16,tzinfo=datetime.timezone.utc))
+            follower.on('pageerror',lambda e:self.errors.append('Follower: '+str(e)))
+            follower.goto(self.url);follower.locator('#joinCode').fill(code);follower.locator('#joinForm button').click()
+            follower.wait_for_function("LectApp.current().rite==='n' && document.querySelector('#tFollow')")
+            follower.locator('[data-panel="live"]').click();follower.locator('#lvReady').wait_for()
+            self.page.locator('#enter-sanctuary').click();self.sanctuary().get_by_role('heading',name='Sanctuary',exact=True).wait_for()
+            follower.locator('#lvReady').check();self.page.keyboard.press('s')
+            self.page.get_by_text('1 of 1 ready.',exact=True).wait_for()
+            self.page.locator('.cast select').select_option('lec');follower.wait_for_function("document.querySelector('#tRole').value==='lec'")
+            self.page.locator('#tNext').click();follower.wait_for_function("document.querySelector('.runsheet li.now')?.textContent.includes('Liturgy of the Word')")
+            self.page.locator('#lvEnd').click();follower.wait_for_function("!document.querySelector('#tFollow')")
+        except Exception:
+            for label,page in [('host',self.page),('follower',follower)]:
+                if page:
+                    print(label,page.evaluate('''({peers:(window.testPeers||[]).map(p=>({id:p.id,open:p.open,connections:Object.values(p.connections).flat().map(c=>({open:c.open,ice:c.peerConnection?.iceConnectionState,signaling:c.peerConnection?.signalingState,gathering:c.peerConnection?.iceGatheringState,candidates:(c.peerConnection?.localDescription?.sdp?.match(/a=candidate/g)||[]).length,remote:!!c.peerConnection?.remoteDescription}))})),message:document.querySelector('#joinMsg')?.textContent})'''),flush=True)
+            raise
+        finally:
+            if follower_context:follower_context.close()
+            # Close the host before stopping its signalling server.
+            self.page.close()
+            server.terminate()
+            try:server.wait(timeout=5)
+            except subprocess.TimeoutExpired:server.kill();server.wait()
+            log.close()
+    def test_guide_launch_from_scrolled_sources(self):
+        self.open('#sources');self.page.evaluate('scrollTo(0,1200)')
+        self.assertGreater(self.page.evaluate('scrollY'),0)
+        self.page.keyboard.press('s');self.page.locator('[data-route="#/t/roman-1962"]').wait_for()
+        self.page.locator('[data-route="#/t/roman-1962"]').click();self.page.locator('[data-pray="roman-1962:0"]').click()
+        self.page.wait_for_function("LectApp.current().rite==='m' && !document.body.classList.contains('san-open')")
+        self.page.wait_for_timeout(100);self.assertLess(self.page.evaluate('scrollY'),100)
+    def test_monastic_chant_at_end_of_supported_range(self):
+        self.open();self.page.evaluate("LectApp.follow({type:'office',rite:'mon',hour:'vespers',iso:'2030-11-30'})")
+        chant=self.page.locator('input[data-o="chant"]');chant.wait_for();chant.check()
+        self.page.wait_for_function("document.querySelectorAll('#session figure.chantfig .score svg').length>0")
+        self.assertGreater(len(self.page.locator('#session').inner_text()),3000)
     def test_sources_and_share_build(self):
         self.open('#/t/no-such-entry');self.sanctuary().get_by_role('heading',name='Entry not found',exact=True).wait_for()
         self.page.locator('[data-action="exit"]').click();self.page.locator('#tab-sources').click();self.page.get_by_role('heading',name='Tradition directory sources').wait_for()

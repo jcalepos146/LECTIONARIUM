@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: python3 -m pip install -r requirements-dev.txt
       - run: python3 -m playwright install --with-deps chromium
       - name: Select installed Chromium
@@ -34,6 +35,7 @@ jobs:
           python3 src/assemble.py
           git diff --exit-code -- index.html
           python3 tools/build_traditions.py --check
+          python3 tools/check_office.py breviary/mon --chant-through 2030-11-30
       - run: python3 -m unittest discover -s tests -v
       - uses: actions/upload-artifact@v4
         if: always()

@@ -85,6 +85,7 @@ python3 -m http.server 8000
 python3 src/assemble.py
 # Browser tooling only, preferably inside a virtual environment:
 python3 -m pip install -r requirements-dev.txt
+npm ci --ignore-scripts --no-audit --no-fund
 # Supply Chromium at /usr/bin/chromium, or set PLAYWRIGHT_CHROMIUM.
 python3 tools/build_traditions.py
 python3 tools/build_traditions.py --check
@@ -93,15 +94,19 @@ python3 -m unittest discover -s tests -v
 
 Tests start an isolated local server. They exercise actual checked-in data and
 local guides, with external CDN/font requests blocked for reproducibility.
-They do not validate real PeerJS signalling, WebRTC traversal or CDN availability.
+The live-session regression uses pinned local PeerJS client/server packages and
+two real browser contexts. It runs in CI; managed browsers that explicitly block
+direct WebRTC skip that test. Public signalling, NAT traversal and CDN availability
+remain outside this local suite. Node packages are development tools only.
 Screenshots go to `/tmp/lectionarium-screenshots` (override `SCREENSHOT_DIR`).
 
 ### Release status and follow-up
 
-The 130-entry directory is a **seed catalog pending current-source review**.
-Every entry carries source URLs and an explicit review status. Official source
-sites were blocked by onboarding network policy; reachability alone, when
-restored, will not establish that a claim or copyright assessment is correct.
+The 131-entry directory is a **seed catalog pending current-source review**.
+Every entry carries source URLs and an explicit review status. Some official source sites block automated access. Current OCA and Ecumenical
+Patriarchate sources have been reviewed; see `docs/source-review.md` for the
+remaining edition and jurisdiction checks. Reachability does not establish that
+a claim or copyright assessment is correct.
 Run `python3 tools/audit_tradition_sources.py` after applying the source-domain
 allowlist, then review claims against the actual pages before release. In
 particular, review disputed autocephaly, local calendar variants, Prayer Book
@@ -120,8 +125,28 @@ in this change. The attached *Divine Liturgies Public Domain Companion* identifi
 Hapgood (1906) as its historical source, but its own introduction says the
 anthology is not complete. Byzantine builders therefore retain their honest
 **Order and readings** coverage; no modern copyrighted translation has been
-imported. Extending monastic chant coverage also remains a separate data build:
-the repository has packed output but no original generation cache, and its
-current generator references a missing `tools2/perlstub` path. Repacking only new
-dates would discard the existing text and chant indexes. Recover or reconstruct
-the complete cache and validate the engine before replacing packed output.
+imported. Monastic chant is extended through 30 November 2030. The pack preserves every
+existing text and chant cell for all 1,827 supported days. All seven chant-mode
+hours are present; the source has no notation for 75 Triduum little-hour records,
+and Matins remains text-only.
+
+To reproduce the extension from the original packed data:
+
+```sh
+git clone https://github.com/DivinumOfficium/divinum-officium.git /tmp/lectionarium-do
+git -C /tmp/lectionarium-do checkout df1ebc65f16f3b9026c4cae43fa8c0c1ba7cfded
+export LECTIONARIUM_DO=/tmp/lectionarium-do
+export LECTIONARIUM_OFFICE_WORK=/tmp/lectionarium-office
+export LECTIONARIUM_OFFICE_WORKERS=4
+python3 tools/office_gen.py unpack mon
+python3 tools/office_gen.py gen mon 2027-02-14 2030-11-30 chant
+python3 tools/office_gen.py pack mon 2000
+python3 tools/check_office.py "$LECTIONARIUM_OFFICE_WORK/breviary/mon" --baseline breviary/mon --chant-through 2030-11-30
+# After validation, replace breviary/mon with the generated packed directory.
+```
+
+`unpack` recovers the complete published cache before extending it. On a checkout
+already containing the extension, generation has nothing to add. The source
+revision, original baseline, validation and full MIT notice are recorded in
+`data/monastic-build.json`. The generator fixes the Perl shim path, bounds worker
+count, rejects empty output and stages packed output before replacing it.

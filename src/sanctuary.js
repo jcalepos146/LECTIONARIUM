@@ -76,7 +76,7 @@ async function render(){
   focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
  }catch(e){if(serial!==routeSerial)return;root.innerHTML=shell('<h1>The library could not load</h1><p>Check your connection and try again.</p><button data-action="retry">Try again</button>');focus(root.querySelector('[data-action="retry"]'));}
 }
-function launch(s,label,family){if(!s)return;const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
+function launch(s,label,family){if(!s)return;const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);returnScroll=0;returnFocus=document.getElementById('tab-today');close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
 root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else switch(b.dataset.action){case'back':back();break;case'exit':close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
@@ -100,7 +100,7 @@ function pollGamepad(now){if(!open)return;let pads=[];try{pads=navigator.getGame
  lastGameAction=action;gameFrame=requestAnimationFrame(pollGamepad);
 }
 window.addEventListener('lect-session',e=>{const s=e.detail;if(!s?.rite)return;const known=catalog?.find(n=>n.supported.some(v=>v.type===s.type&&v.rite===s.rite));const session={...s,label:known?.name||s.label||s.rite,family:known?.family||'catholic'};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);});
-window.addEventListener('hashchange',render);
+window.addEventListener('hashchange',e=>{if(isRoute(location.hash)&&!open){try{const old=new URL(e.oldURL).hash;if(!isRoute(old))returnHash=old||'#today';}catch(err){}}render();});
 window.LectSanctuary={open:()=>go('#/sanctuary'),close};
 if(isRoute(location.hash))render();
 })();

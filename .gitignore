@@ -1,3 +1,10 @@
 build/
 __pycache__/
 *.epub
+
+# Local upstream checkout and offline generation caches
+tools/do/
+tools/cache/
+tools/breviary/
+
+node_modules/
