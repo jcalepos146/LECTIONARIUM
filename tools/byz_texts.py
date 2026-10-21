@@ -22,7 +22,7 @@ SRC = ROOT / "tools" / "texts" / "hapgood-liturgy.txt"
 OUT = ROOT / "data" / "byz-liturgy.json"
 LEAF_TO_PAGE = -39          # scan leaf n119 is printed page 80 in item cu31924029363128
 WHO = {"P", "D", "C", "R", "L", "PD"}
-CONDS = {"chrys", "basil", "pascha", "departed", "russia"} | {f"tone{i}" for i in range(1, 9)}
+CONDS = {"chrys", "basil", "pascha", "departed", "russia", "feast", "illumination"} | {f"tone{i}" for i in range(1, 9)}
 
 
 def compile_text(text):

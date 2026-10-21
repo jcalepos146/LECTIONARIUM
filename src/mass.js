@@ -596,6 +596,7 @@ function byzRole(x){
 /* Full text of the Liturgies of St John Chrysostom and St Basil from Hapgood's Service Book (1906, public
    domain), compiled by tools/byz_texts.py into data/byz-liturgy.json. Parts map onto byzParts() by index. */
 const BYZ_PART={opening:0,antiphons:1,entrance:2,readings:3,litanies:4,faithful:4,cherubic:5,offering:5,creed:5,anaphora:6,prelord:7,communion:7,thanks:8,after:8};
+const BYZ_PRES={"pres-vespers":0,"pres-lic":1,"pres-readings":2,"pres-litanies":3,"pres-faithful":3,"pres-entrance":4,"pres-communion":5,"pres-dismissal":6};
 const BYZ_WHO={P:["cel","Priest"],D:["srv","Deacon"],C:["ppl","Choir"],R:["lec","Reader"],L:["all","All"],PD:["cel srv","Priest and Deacon"]};
 function byzToneOf(iso){
   const d=toDate(iso); let E=easterY(d.getUTCFullYear()); if(d<E) E=easterY(d.getUTCFullYear()-1);
@@ -605,14 +606,16 @@ function byzToneOf(iso){
 }
 function byzEnv(iso,kind){
   const d=toDate(iso), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY), sun=d.getUTCDay()===0, pascha=off>=0&&off<=38;
-  return {kind,pascha,departed:!sun&&!pascha,tone:sun?byzToneOf(iso):0,sun};
+  return {kind,pascha,departed:!sun&&!pascha,tone:sun?byzToneOf(iso):0,sun,illum:off>=-25&&off<=-4};
 }
-function byzOk(it,env){ return (it.if||[]).every(c=>c==="chrys"?env.kind==="chrys":c==="basil"?env.kind==="basil":c==="pascha"?env.pascha:c==="departed"?env.departed:/^tone\d$/.test(c)?env.tone===+c.slice(4):false); }
+function byzOk(it,env){ return (it.if||[]).every(c=>c==="chrys"?env.kind==="chrys":c==="basil"?env.kind==="basil":c==="pascha"?env.pascha:c==="departed"?env.departed:c==="feast"?env.feast:c==="illumination"?env.illum:/^tone\d$/.test(c)?env.tone===+c.slice(4):false); }
 async function byzFull(ctx,kind,veil,AB){
   let D; try{ D=await J("data/byz-liturgy.json"); }catch(e){ return null; }
-  const env=byzEnv(ctx.iso,kind), b=ctx.day.b, out=Array(9).fill("");
+  const env=byzEnv(ctx.iso,kind), b=ctx.day.b, out=Array(9).fill(""), MAP=kind==="pres"?BYZ_PRES:BYZ_PART;
+  const rd=b?b.r:[], vesp=rd.filter(x=>/^Vespers/.test(x[0]));
+  env.feast=rd.some(x=>/^Gospel/.test(x[0]));
   for(const part of D.parts){
-    const n=BYZ_PART[part.key]; if(n===undefined||(part.key==="after"&&AB>=1)) continue;
+    const n=MAP[part.key]; if(n===undefined||(part.key==="after"&&AB>=1)) continue;
     let h="", quiet=[];
     /* Prayers said quietly (with the rubrics between them) fold into one closed block. */
     const flush=()=>{ if(!quiet.length) return; const sp=quiet.filter(x=>x.t==="s"), who=sp.every(x=>x.w==="D")?"the deacon":sp.some(x=>x.w==="D")?"the priest and deacon":"the priest"; h+=`<details class="secret"><summary>Said quietly by ${who}</summary><div class="txt one">${quiet.map(x=>x.t==="r"?`<p class="rub">${inl(x.x)}</p>`:`<p data-r="${BYZ_WHO[x.w][0]}"><span class="sp">${BYZ_WHO[x.w][1]}.</span> ${inl(x.x)}</p>`).join("")}</div></details>`; quiet=[]; };
@@ -629,7 +632,11 @@ async function byzFull(ctx,kind,veil,AB){
         if(it.n==="troparia") h+=cue("Troparia and kontakia of the day: from the Octoechos, Menaion or Triodion (your church's books).");
         else if(it.n==="prokeimenon"&&!env.tone) h+=cue("Prokeimenon of the day (on weekdays and feasts it replaces the Sunday prokeimenon of the tone below).");
         else if(it.n==="alleluia") h+=cue("Alleluia with the verses of the tone or of the day.");
-        else if((it.n==="epistle"||it.n==="gospel")&&b){ const lab=it.n==="epistle"?"Apostol":"Gospel"; for(const x of b.r) if(x[0]===lab) h+=await RB(ctx,x[0],x[1],"n","dr",false); }
+        else if((it.n==="epistle"||it.n==="gospel")&&b){ const lab=it.n==="epistle"?"Apostol":"Gospel"; for(const x of b.r) if(x[0].split(" · ")[0]===lab) h+=await RB(ctx,x[0],x[1],"n","dr",false); }
+        else if(it.n==="genesis"||it.n==="proverbs"){ const x=vesp[it.n==="genesis"?0:1]; h+=x?await RB(ctx,x[0].replace(/^Vespers · /,""),x[1],"n","dr",false):cue(`The ${it.n==="genesis"?"first":"second"} Old Testament reading of the day (Genesis, or in Holy Week Exodus).`); }
+        else if(it.n==="psalm104") h+=cue("Psalm 103 (104), Bless the Lord, O my soul, read by the Reader.");
+        else if(it.n==="stichera"||it.n==="dogmatikon") h+=cue(it.n==="stichera"?"Stichera of the day from the Triodion and Menaion (your church's books).":"Theotokion (dogmatikon) in the tone of the week (your church's books).");
+        else if(/^prokeimenon\d$/.test(it.n)) h+=cue("Prokeimenon of the day from the Triodion.");
         else if(it.n==="gospel"&&!b) h+=cue("Today's Apostol and Gospel follow the weekday lectionary; see the Byzantine lectionary.");
         continue;
       }
@@ -647,8 +654,8 @@ async function buildByz(ctx, opts){
   const sun=toDate(iso).getUTCDay()===0;
   const L=byzLiturgy(iso); const kind=opts.byzlit&&opts.byzlit!=="auto"?opts.byzlit:(L.k==="none"?"chrys":L.k);
   const NAME={chrys:"The Divine Liturgy of St John Chrysostom",basil:"The Divine Liturgy of St Basil the Great",pres:"The Liturgy of the Presanctified Gifts"};
-  const FULL=kind!=="pres"&&AB<2?await byzFull(ctx,kind,!!opts.veil,AB):null;
-  let intro=cue(FULL?`${NAME[kind]}${L.why&&kind===L.k?`, as appointed for ${L.why}`:""}, in the English of Isabel Hapgood's Service Book (1906): the Russian (Greco-Russian) usage of that time, in public domain. Your church's current translation, commemorations and customs differ in places.`:`${NAME[kind]}${L.why&&kind===L.k?`, as appointed for ${L.why}`:""}. ${kind==="pres"?"The texts are not reproduced: use your church's Liturgikon or pew book.":"Shortened: the order is given in outline."} The order and today's Scripture are below.`);
+  const FULL=AB<2?await byzFull(ctx,kind,!!opts.veil,AB):null;
+  let intro=cue(FULL?`${NAME[kind]}${L.why&&kind===L.k?`, as appointed for ${L.why}`:""}, in the English of Isabel Hapgood's Service Book (1906): the Russian (Greco-Russian) usage of that time, in public domain. Your church's current translation, commemorations and customs differ in places.`:`${NAME[kind]}${L.why&&kind===L.k?`, as appointed for ${L.why}`:""}. Shortened: the order is given in outline, with today's Scripture.`);
   if(L.k==="none") intro+=cue(L.why+" The Liturgy is shown for practice.");
   if(L.note&&kind==="chrys") intro+=cue(L.note);
   if(kind==="pres") intro+=cue("The Presanctified is Vespers joined to Holy Communion from Gifts consecrated at the previous Sunday's Liturgy; there is no anaphora.");
