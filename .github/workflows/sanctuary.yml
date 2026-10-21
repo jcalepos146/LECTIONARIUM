@@ -35,6 +35,7 @@ jobs:
           python3 src/assemble.py
           git diff --exit-code -- index.html
           python3 tools/build_traditions.py --check
+          python3 tools/text_sources.py --md --check
           python3 tools/check_office.py breviary/mon --chant-through 2030-11-30
           python3 tools/check_office.py breviary/br55
           python3 tools/check_office.py breviary/br62
