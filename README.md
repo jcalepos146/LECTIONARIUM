@@ -102,7 +102,7 @@ Screenshots go to `/tmp/lectionarium-screenshots` (override `SCREENSHOT_DIR`).
 
 ### Release status and follow-up
 
-The 131-entry directory is a **seed catalog pending current-source review**.
+The 137-entry directory is a **seed catalog pending current-source review**.
 Every entry carries source URLs and an explicit review status. Some official source sites block automated access. Current OCA and Ecumenical
 Patriarchate sources have been reviewed; see `docs/source-review.md` for the
 remaining edition and jurisdiction checks. Reachability does not establish that
@@ -150,3 +150,10 @@ already containing the extension, generation has nothing to add. The source
 revision, original baseline, validation and full MIT notice are recorded in
 `data/monastic-build.json`. The generator fixes the Perl shim path, bounds worker
 count, rejects empty output and stages packed output before replacing it.
+
+To keep the site within 512 files, the existing br55 and br62 packs have been
+consolidated into 4 MB shards with `office_gen.py rechunk br55 4000` and
+`office_gen.py rechunk br62 4000` under a separate `LECTIONARIUM_OFFICE_WORK`.
+This operation preserves every line, row and day ID. Both packs passed full
+rendered-cell and title comparison against their original directories before
+replacement. It changes fetch sizes, not the liturgical content.

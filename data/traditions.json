@@ -1114,7 +1114,7 @@
         "title": "Roman Missal",
         "year": null,
         "status": "copyright",
-        "source": "https://cnewa.org/eastern-christian-churches/",
+        "source": "https://www.vatican.va/content/paul-vi/en/apost_constitutions/documents/hf_p-vi_apc_19690403_missale-romanum.html",
         "rights_note": "Cited only; copyrighted current translations are not reproduced."
       }
     ],
@@ -1134,9 +1134,9 @@
     ],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://www.vatican.va/content/paul-vi/en/apost_constitutions/documents/hf_p-vi_apc_19690403_missale-romanum.html"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Paul VI’s Missale Romanum constitution dated 1969-04-03 read 2026-10-21. It documents the revised missal; it does not grant reuse of current vernacular translations."
   },
   {
     "id": "roman-1962",
@@ -1264,9 +1264,10 @@
     ],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://www.vatican.va/content/benedict-xvi/en/apost_constitutions/documents/hf_ben-xvi_apc_20091104_anglicanorum-coetibus.html"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Anglicanorum coetibus, especially article III on authorized liturgical books, read 2026-10-21. Modern Divine Worship texts remain cited only; the app uses its existing historical practice guide."
   },
   {
     "id": "ambrosian",
@@ -1277,16 +1278,16 @@
     "self_description": "Ambrosian Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
     "also_called": [],
     "regions": [],
-    "calendar": "gregorian",
-    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "calendar": null,
+    "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://www.newadvent.org/cathen/13064b.htm"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Historical identity checked in the Catholic Encyclopedia article “Rites”, read 2026-10-21. This early twentieth-century account is not evidence of present permissions or a current local calendar."
   },
   {
     "id": "mozarabic",
@@ -1297,16 +1298,16 @@
     "self_description": "Hispano-Mozarabic Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
     "also_called": [],
     "regions": [],
-    "calendar": "gregorian",
-    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "calendar": null,
+    "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://www.newadvent.org/cathen/13064b.htm"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Historical identity checked in the Catholic Encyclopedia article “Rites”, read 2026-10-21. This early twentieth-century account is not evidence of present permissions or a current local calendar."
   },
   {
     "id": "braga",
@@ -1337,16 +1338,16 @@
     "self_description": "Carthusian Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
     "also_called": [],
     "regions": [],
-    "calendar": "gregorian",
-    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "calendar": null,
+    "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://www.newadvent.org/cathen/13064b.htm"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Historical identity checked in the Catholic Encyclopedia article “Rites”, read 2026-10-21. This early twentieth-century account is not evidence of present permissions or a current local calendar."
   },
   {
     "id": "dominican",
@@ -1357,8 +1358,8 @@
     "self_description": "Dominican Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
     "also_called": [],
     "regions": [],
-    "calendar": "gregorian",
-    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "calendar": null,
+    "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [
@@ -1371,9 +1372,9 @@
     ],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://www.newadvent.org/cathen/13064b.htm"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Historical identity checked in the Catholic Encyclopedia article “Rites”, read 2026-10-21. This early twentieth-century account is not evidence of present permissions or a current local calendar."
   },
   {
     "id": "premonstratensian",
@@ -1384,16 +1385,16 @@
     "self_description": "Premonstratensian Use belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
     "also_called": [],
     "regions": [],
-    "calendar": "gregorian",
-    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "calendar": null,
+    "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://www.newadvent.org/cathen/13064b.htm"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Historical identity checked in the Catholic Encyclopedia article “Rites”, read 2026-10-21. This early twentieth-century account is not evidence of present permissions or a current local calendar."
   },
   {
     "id": "carmelite",
@@ -1404,16 +1405,16 @@
     "self_description": "Historic Carmelite Rite belongs to the Latin Church’s liturgical heritage. Availability here concerns texts, not permission to celebrate a rite.",
     "also_called": [],
     "regions": [],
-    "calendar": "gregorian",
-    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "calendar": null,
+    "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://www.newadvent.org/cathen/13064b.htm"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Historical identity checked in the Catholic Encyclopedia article “Rites”, read 2026-10-21. This early twentieth-century account is not evidence of present permissions or a current local calendar."
   },
   {
     "id": "zaire",
@@ -2082,7 +2083,7 @@
     "family": "eastern-orthodox",
     "parent": "eastern-orthodox",
     "kind": "jurisdiction",
-    "self_description": "Greek Orthodox Archdiocese of America is a jurisdiction serving communities in the Americas and beyond. Use its own directory for current diocesan and parish information.",
+    "self_description": "Greek Orthodox Archdiocese of America is listed among Orthodox jurisdictions represented in North America by the Orthodox Church in America. Its own authorized books and local calendar govern worship.",
     "also_called": [
       "GOARCH"
     ],
@@ -2096,9 +2097,10 @@
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://www.goarch.org/"
+      "https://www.goarch.org/",
+      "https://www.oca.org/directories/na-churches"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "OCA’s current North American jurisdiction directory read 2026-10-21. It establishes the identity and presence of this jurisdiction; it does not clear a translation or establish a uniform local calendar."
   },
   {
     "id": "antiochian-america",
@@ -2106,7 +2108,7 @@
     "family": "eastern-orthodox",
     "parent": "eastern-orthodox",
     "kind": "jurisdiction",
-    "self_description": "Antiochian Orthodox Christian Archdiocese of North America is a jurisdiction serving communities in the Americas and beyond. Use its own directory for current diocesan and parish information.",
+    "self_description": "Antiochian Orthodox Christian Archdiocese of North America is listed among Orthodox jurisdictions represented in North America by the Orthodox Church in America. Its own authorized books and local calendar govern worship.",
     "also_called": [],
     "regions": [
       "Americas"
@@ -2118,9 +2120,10 @@
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://www.antiochian.org/"
+      "https://www.antiochian.org/",
+      "https://www.oca.org/directories/na-churches"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "OCA’s current North American jurisdiction directory read 2026-10-21. It establishes the identity and presence of this jurisdiction; it does not clear a translation or establish a uniform local calendar."
   },
   {
     "id": "rocor",
@@ -2128,7 +2131,7 @@
     "family": "eastern-orthodox",
     "parent": "eastern-orthodox",
     "kind": "jurisdiction",
-    "self_description": "Russian Orthodox Church Outside of Russia is a jurisdiction serving communities in the Americas and beyond. Use its own directory for current diocesan and parish information.",
+    "self_description": "Russian Orthodox Church Outside of Russia is listed among Orthodox jurisdictions represented in North America by the Orthodox Church in America. Its own authorized books and local calendar govern worship.",
     "also_called": [
       "ROCOR"
     ],
@@ -2142,9 +2145,10 @@
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://www.synod.com/"
+      "https://www.synod.com/",
+      "https://www.oca.org/directories/na-churches"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "OCA’s current North American jurisdiction directory read 2026-10-21. It establishes the identity and presence of this jurisdiction; it does not clear a translation or establish a uniform local calendar."
   },
   {
     "id": "western-rite-orthodox",
@@ -2410,9 +2414,10 @@
     "pd_texts_available": [],
     "sources": [
       "https://www.utrechter-union.org/",
-      "https://www.pncc.org/"
+      "https://www.pncc.org/",
+      "https://nordiccatholic.com/union-of-scranton/"
     ],
-    "source_review": "Union of Utrecht home page reviewed 2026-10-21. PNCC/Union of Scranton relationships still need current official verification; the former unionofscranton.org domain now hosts unrelated content and is excluded."
+    "source_review": "Official Union of Utrecht member directory and Nordic Catholic Church Union of Scranton page reviewed 2026-10-21. These are distinct unions; current bishops’ names are deliberately not copied."
   },
   {
     "id": "union-utrecht",
@@ -2420,7 +2425,7 @@
     "family": "old-catholic",
     "parent": "old-catholic",
     "kind": "jurisdiction",
-    "self_description": "The Union of Utrecht links its member Old Catholic churches. Consult its current member directory for national churches and relationships.",
+    "self_description": "The Union of Utrecht is a union of national Old Catholic churches. Its official directory distinguishes independent member churches from churches and communities under the jurisdiction of the International Old Catholic Bishops’ Conference.",
     "also_called": [],
     "regions": [],
     "calendar": null,
@@ -2430,9 +2435,10 @@
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://www.utrechter-union.org/"
+      "https://www.utrechter-union.org/",
+      "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
     ],
-    "source_review": "Official Union of Utrecht home page reviewed 2026-10-21; national member details still require review."
+    "source_review": "Official member directory read 2026-10-21. The six independent national churches are listed separately here; the directory also identifies dependent communities in Croatia, Slovakia and the Francophone mission. No universal calendar is inferred."
   },
   {
     "id": "pncc",
@@ -2455,9 +2461,10 @@
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://www.pncc.org/"
+      "https://www.pncc.org/",
+      "https://nordiccatholic.com/union-of-scranton/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Nordic Catholic Church’s official Union of Scranton page read 2026-10-21. Its quoted statutes identify the PNCC relationship and distinguish it from the Union of Utrecht. PNCC’s own website failed TLS verification; no current service-book text has been cleared."
   },
   {
     "id": "anglican",
@@ -2641,9 +2648,10 @@
     ],
     "sources": [
       "https://justus.anglican.org/resources/bcp/england.htm",
-      "https://justus.anglican.org/resources/bcp/world.htm"
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://www.churchofengland.org/copyright"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Church of England copyright statement read 2026-10-21: 1662 Prayer Book rights are vested in the Crown; modern Common Worship material has separate copyright and reproduction conditions. No modern text is copied."
   },
   {
     "id": "anglican-1928-england",
@@ -2866,7 +2874,7 @@
         "title": "Book of Common Prayer · United States 1928",
         "year": 1928,
         "status": "public-domain",
-        "source": "https://justus.anglican.org/resources/bcp/bcp.htm",
+        "source": "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review."
       }
     ],
@@ -2877,9 +2885,10 @@
     "sources": [
       "https://justus.anglican.org/resources/bcp/bcp.htm",
       "https://justus.anglican.org/resources/bcp/world.htm",
-      "https://www.episcopalchurch.org/what-we-believe/book-common-prayer/"
+      "https://www.episcopalchurch.org/what-we-believe/book-common-prayer/",
+      "https://justus.anglican.org/resources/bcp/1928/BCP_1928.htm"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Exact 1928 American Prayer Book catalog/transcription landing page read 2026-10-21. US public-domain status refers to the original 1928 edition; later additions and music require their own review."
   },
   {
     "id": "anglican-1979-us",
@@ -2975,9 +2984,10 @@
     "pd_texts_available": [],
     "sources": [
       "https://justus.anglican.org/resources/bcp/canada.htm",
-      "https://justus.anglican.org/resources/bcp/world.htm"
+      "https://justus.anglican.org/resources/bcp/world.htm",
+      "https://www.anglican.ca/about/liturgicaltexts/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Anglican Church of Canada’s official liturgical-texts page read 2026-10-21; it links the 1962 BCP PDF. Copyrighted edition is cited only."
   },
   {
     "id": "anglican-1878-ireland",
@@ -3191,9 +3201,10 @@
     "pd_texts_available": [],
     "sources": [
       "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship",
-      "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship/copyright"
+      "https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship/copyright",
+      "https://www.churchofengland.org/copyright"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Church of England copyright statement read 2026-10-21: 1662 Prayer Book rights are vested in the Crown; modern Common Worship material has separate copyright and reproduction conditions. No modern text is copied."
   },
   {
     "id": "anglican-missal",
@@ -3293,7 +3304,7 @@
     "sources": [
       "https://www.lcms.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "wels",
@@ -3317,7 +3328,7 @@
     "sources": [
       "https://wels.net/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "els",
@@ -3341,7 +3352,7 @@
     "sources": [
       "https://els.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "elca",
@@ -3365,7 +3376,7 @@
     "sources": [
       "https://www.elca.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "nalc",
@@ -3437,16 +3448,17 @@
         "title": "The Lutheran Hymnal",
         "year": 1941,
         "status": "copyright",
-        "source": "https://www.lcms.org/",
+        "source": "https://archive.org/details/lutheranhymnalev0000vari_g9j5",
         "rights_note": "No blanket public-domain claim: verify renewal, individual texts, tunes and arrangements."
       }
     ],
     "supported": [],
     "pd_texts_available": [],
     "sources": [
-      "https://www.lcms.org/"
+      "https://www.lcms.org/",
+      "https://archive.org/details/lutheranhymnalev0000vari_g9j5"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Internet Archive catalog confirms the 1941 Concordia edition. Access is restricted and no blanket reuse licence is established; the entry remains uncleared for reproduction, including individual hymns, tunes and arrangements."
   },
   {
     "id": "common-service",
@@ -3465,7 +3477,7 @@
         "title": "Common Service",
         "year": 1888,
         "status": "public-domain",
-        "source": "https://justus.anglican.org/resources/bcp/world.htm",
+        "source": "https://archive.org/details/commonservicefor0000unse",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical 1888 order only; modern hymnals have separate rights."
       }
     ],
@@ -3474,9 +3486,9 @@
       "Common Service"
     ],
     "sources": [
-      "https://justus.anglican.org/resources/bcp/world.htm"
+      "https://archive.org/details/commonservicefor0000unse"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-21. Public-domain designation is limited to the original US edition; this listing does not clear later arrangements, translations or editorial additions."
   },
   {
     "id": "swedish-orders",
@@ -3598,7 +3610,7 @@
     "sources": [
       "https://www.frcna.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "gereformeerde-gemeenten",
@@ -3620,7 +3632,7 @@
     "sources": [
       "https://www.gergeminfo.nl/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "canadian-reformed",
@@ -3642,7 +3654,7 @@
     "sources": [
       "https://www.canrc.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "urcna",
@@ -3667,7 +3679,7 @@
     "sources": [
       "https://www.urcna.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "pca",
@@ -3692,7 +3704,7 @@
     "sources": [
       "https://www.pcaac.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "opc",
@@ -3716,7 +3728,7 @@
     "sources": [
       "https://opc.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "pcusa",
@@ -3741,7 +3753,7 @@
     "sources": [
       "https://www.pcusa.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "free-church-scotland",
@@ -3764,7 +3776,7 @@
     "sources": [
       "https://freechurch.org/"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Identity checked against the church body’s official website on 2026-10-21. No current service text is reproduced and no single local calendar or hymnal is inferred from this identity."
   },
   {
     "id": "reformed-presbyterian",
@@ -3806,8 +3818,8 @@
         "title": "Liturgical Forms of Dort",
         "year": 1619,
         "status": "public-domain",
-        "source": "https://www.loc.gov/",
-        "rights_note": "Public-domain status here refers to the original edition in the United States. Historical texts only; modern English translations may be copyrighted."
+        "source": "https://archive.org/details/liturgyofreforme0000unse",
+        "rights_note": "Public-domain status here refers to the original edition in the United States. Historical texts only; modern English translations may be copyrighted. The linked 1856 Dutch Reformed liturgy is a later historical English source, not the 1619 Dutch printing."
       }
     ],
     "supported": [],
@@ -3815,10 +3827,9 @@
       "Liturgical Forms of Dort"
     ],
     "sources": [
-      "https://www.loc.gov/",
-      "https://opc.org/"
+      "https://archive.org/details/liturgyofreforme0000unse"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "A later historical English liturgy is identified by exact catalog record. The original Dutch forms and each later translation must be distinguished; no modern translation is reproduced."
   },
   {
     "id": "genevan-psalter",
@@ -3837,7 +3848,7 @@
         "title": "Genevan Psalter",
         "year": 1562,
         "status": "public-domain",
-        "source": "https://www.loc.gov/",
+        "source": "https://archive.org/details/case_minus_vm_2137_b58_1562",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical melodies and original texts; modern harmonizations and translations require separate review."
       }
     ],
@@ -3846,10 +3857,9 @@
       "Genevan Psalter"
     ],
     "sources": [
-      "https://www.loc.gov/",
-      "https://opc.org/"
+      "https://archive.org/details/case_minus_vm_2137_b58_1562"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Exact historical catalog record checked 2026-10-21. Rights designation applies to the original historical text in the United States, not modern translations, editorial additions or musical arrangements."
   },
   {
     "id": "psalter-1912",
@@ -3868,7 +3878,7 @@
         "title": "The Psalter",
         "year": 1912,
         "status": "public-domain",
-        "source": "https://www.loc.gov/",
+        "source": "https://archive.org/details/psalterwithrespo00unit",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical US edition only; individual items and later editions must be reviewed."
       }
     ],
@@ -3877,10 +3887,9 @@
       "The Psalter"
     ],
     "sources": [
-      "https://www.loc.gov/",
-      "https://opc.org/"
+      "https://archive.org/details/psalterwithrespo00unit"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-21. Public-domain designation is limited to the original US edition; this listing does not clear later arrangements, translations or editorial additions."
   },
   {
     "id": "westminster",
@@ -3899,8 +3908,8 @@
         "title": "Westminster Directory for Public Worship",
         "year": 1645,
         "status": "public-domain",
-        "source": "https://www.loc.gov/",
-        "rights_note": "Public-domain status here refers to the original edition in the United States. Historical text; modern editorial additions excluded."
+        "source": "https://archive.org/details/bim_early-english-books-1641-1700_a-directory-for-the-publ_1644-45",
+        "rights_note": "Public-domain status here refers to the original edition in the United States. Historical text; modern editorial additions excluded. The catalog’s 1644–45 date reflects the historical edition; it does not identify a modern Presbyterian directory."
       }
     ],
     "supported": [],
@@ -3908,10 +3917,9 @@
       "Westminster Directory for Public Worship"
     ],
     "sources": [
-      "https://www.loc.gov/",
-      "https://opc.org/"
+      "https://archive.org/details/bim_early-english-books-1641-1700_a-directory-for-the-publ_1644-45"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Exact historical catalog record checked 2026-10-21. Rights designation applies to the original historical text in the United States, not modern translations, editorial additions or musical arrangements."
   },
   {
     "id": "scottish-psalter",
@@ -3930,7 +3938,7 @@
         "title": "Scottish Metrical Psalter",
         "year": 1650,
         "status": "public-domain",
-        "source": "https://www.loc.gov/",
+        "source": "https://archive.org/details/bim_early-english-books-1641-1700_the-psalms-of-david-in-m_bible-english_1650",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical text; later musical settings excluded."
       }
     ],
@@ -3939,10 +3947,9 @@
       "Scottish Metrical Psalter"
     ],
     "sources": [
-      "https://www.loc.gov/",
-      "https://opc.org/"
+      "https://archive.org/details/bim_early-english-books-1641-1700_the-psalms-of-david-in-m_bible-english_1650"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Exact historical catalog record checked 2026-10-21. Rights designation applies to the original historical text in the United States, not modern translations, editorial additions or musical arrangements."
   },
   {
     "id": "bcw-1906",
@@ -3961,7 +3968,7 @@
         "title": "Book of Common Worship",
         "year": 1906,
         "status": "public-domain",
-        "source": "https://www.loc.gov/",
+        "source": "https://archive.org/details/bookofcommonwor00pres",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical US edition only; not a modern Book of Common Worship."
       }
     ],
@@ -3970,10 +3977,9 @@
       "Book of Common Worship"
     ],
     "sources": [
-      "https://www.loc.gov/",
-      "https://opc.org/"
+      "https://archive.org/details/bookofcommonwor00pres"
     ],
-    "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
+    "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-21. Public-domain designation is limited to the original US edition; this listing does not clear later arrangements, translations or editorial additions."
   },
   {
     "id": "orthodox-north-macedonia",
@@ -4010,5 +4016,149 @@
     ],
     "recognition_note": "Listed among autocephalous churches in the OCA’s current directory; this entry does not assert universal recognition.",
     "source_review": "OCA current World Churches directory reviewed 2026-10-21. This is the OCA’s listing, not a claim of universal recognition. Historical and local calendar details require their own sources."
+  },
+  {
+    "id": "utrecht-netherlands",
+    "name": "Old Catholic Church of the Netherlands",
+    "family": "old-catholic",
+    "parent": "union-utrecht",
+    "kind": "church",
+    "self_description": "Old Catholic Church of the Netherlands is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "also_called": [
+      "Oud-Katholieke Kerk van Nederland"
+    ],
+    "regions": [
+      "Netherlands"
+    ],
+    "calendar": null,
+    "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
+    "lectionary": "Consult the local authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
+    ],
+    "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
+  },
+  {
+    "id": "utrecht-germany",
+    "name": "Catholic Diocese of the Old Catholics in Germany",
+    "family": "old-catholic",
+    "parent": "union-utrecht",
+    "kind": "church",
+    "self_description": "Catholic Diocese of the Old Catholics in Germany is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "also_called": [
+      "Katholisches Bistum der Alt-Katholiken in Deutschland"
+    ],
+    "regions": [
+      "Germany"
+    ],
+    "calendar": null,
+    "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
+    "lectionary": "Consult the local authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
+    ],
+    "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
+  },
+  {
+    "id": "utrecht-switzerland",
+    "name": "Christian Catholic Church of Switzerland",
+    "family": "old-catholic",
+    "parent": "union-utrecht",
+    "kind": "church",
+    "self_description": "Christian Catholic Church of Switzerland is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "also_called": [
+      "Christkatholische Kirche der Schweiz"
+    ],
+    "regions": [
+      "Switzerland"
+    ],
+    "calendar": null,
+    "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
+    "lectionary": "Consult the local authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
+    ],
+    "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
+  },
+  {
+    "id": "utrecht-austria",
+    "name": "Old Catholic Church of Austria",
+    "family": "old-catholic",
+    "parent": "union-utrecht",
+    "kind": "church",
+    "self_description": "Old Catholic Church of Austria is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "also_called": [
+      "Altkatholische Kirche Österreichs"
+    ],
+    "regions": [
+      "Austria"
+    ],
+    "calendar": null,
+    "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
+    "lectionary": "Consult the local authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
+    ],
+    "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
+  },
+  {
+    "id": "utrecht-czechia",
+    "name": "Old Catholic Church in the Czech Republic",
+    "family": "old-catholic",
+    "parent": "union-utrecht",
+    "kind": "church",
+    "self_description": "Old Catholic Church in the Czech Republic is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "also_called": [
+      "Starokatolická církev v České republice"
+    ],
+    "regions": [
+      "Czech Republic"
+    ],
+    "calendar": null,
+    "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
+    "lectionary": "Consult the local authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
+    ],
+    "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
+  },
+  {
+    "id": "utrecht-poland",
+    "name": "Polish Catholic Church",
+    "family": "old-catholic",
+    "parent": "union-utrecht",
+    "kind": "church",
+    "self_description": "Polish Catholic Church is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship. This is distinct from the Polish National Catholic Church in North America.",
+    "also_called": [
+      "Kościół Polskokatolicki"
+    ],
+    "regions": [
+      "Poland"
+    ],
+    "calendar": null,
+    "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
+    "lectionary": "Consult the local authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
+    ],
+    "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
   }
 ]

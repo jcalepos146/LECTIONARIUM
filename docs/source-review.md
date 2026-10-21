@@ -36,9 +36,7 @@ Domain requirements were saved in the environment draft. Apply relevant network
 settings before retrying; a draft save alone is not runtime validation.
 
 Before merging: verify current recognition statements; inspect authoritative
-copyright notices for each exact edition and territory; replace generic library
-catalog attributions with exact records; expand Union of Utrecht members from its
-current directory. Entries explicitly retain review notes until that is done.
+copyright notices for each exact edition and territory; keep Union of Utrecht membership tied to its current directory. Entries explicitly retain review notes until that is done.
 No text is reproduced merely because a seed record says public domain.
 
 The uploaded *Divine Liturgies Public Domain Companion* was read as source
@@ -67,3 +65,40 @@ Follow-up checks:
 - A later PNCC request passed the initial proxy connection but failed upstream
   TLS verification. Verification was kept enabled; no content was accepted from
   that failed request.
+
+Additional content reviewed on 21 October 2026:
+
+- The official Union member page lists the six independent churches in the
+  Netherlands, Germany, Switzerland, Austria, the Czech Republic and Poland.
+  https://www.utrechter-union.org/organisation/mitgliedskirchen/
+  The separate dependent communities are described as such, not silently counted
+  as independent members. The Polish Catholic Church differs from the PNCC.
+- The Nordic Catholic Church quotes the Union of Scranton statutes, including
+  the PNCC relationship and its separation from Utrecht:
+  https://nordiccatholic.com/union-of-scranton/
+- The OCA North American directory identifies GOARCH, Antiochian and ROCOR:
+  https://www.oca.org/directories/na-churches . It does not establish a common
+  calendar or clear any translation.
+- The historical Catholic Encyclopedia article “Rites” documents Ambrosian,
+  Mozarabic and the named religious-order uses:
+  https://www.newadvent.org/cathen/13064b.htm . Its historical classifications do
+  not establish current permissions; those entries no longer assume a calendar.
+- Internet Archive search catalog records identify the 1888 Common Service,
+  1912 Psalter with responsive readings and 1906 Book of Common Worship. Exact
+  records replace generic library home-page links. Transcriptions and later
+  arrangements remain separate review questions.
+
+The official LCMS, WELS, ELS, ELCA, FRCNA, Gergeminfo, Canadian Reformed,
+URCNA, PCA, OPC, PC(USA) and Free Church of Scotland pages were read to check
+identity. That check does not infer which edition a local congregation uses.
+Paul VI’s 1969 *Missale Romanum* and Benedict XVI’s *Anglicanorum coetibus*
+(article III) provide specific Latin sources in place of a generic Eastern
+church survey. The Church of England’s copyright notice explicitly identifies
+Crown rights in the 1662 BCP; the Canadian church’s own page links its 1962 PDF.
+The 1941 Lutheran Hymnal catalog record is restricted and has no blanket reuse
+licence established here, so no text is imported.
+
+Exact historical catalog records now also identify the 1562 Genevan psalter,
+1650 Scottish metrical psalter and Westminster Directory’s 1644–45 printing.
+The Dort entry distinguishes a later 1856 English liturgy from the original
+1619 Dutch forms; modern English translations remain separately uncleared.

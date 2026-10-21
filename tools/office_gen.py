@@ -212,6 +212,45 @@ def pack(key, shard_kb=1500):
     print(key, len(lines), "lines", len(rows), "rows", len(man["lines"]), "+", len(man["rows"]), "shards", len(months), "years;", tot // 1024 // 1024, "MB in", len(os.listdir(dst)), "files")
 
 
+def rechunk(key, shard_kb):
+    """Consolidate published shards without changing any line/row/day IDs or text.
+    Output goes to WORK/breviary/key and must not already exist. Validate with
+    check_office.py --baseline before replacing the published directory.
+    """
+    from pathlib import Path
+    if key not in VERSIONS or shard_kb <= 0: raise ValueError("Invalid version or shard size")
+    src = Path(HERE).parent / "breviary" / key
+    dst = Path(WORK) / "breviary" / key
+    if dst.exists(): raise ValueError("Output already exists: " + str(dst))
+    man = json.loads((src / "manifest.json").read_text())
+    tables = {}
+    for prefix, name in [("l", "lines"), ("r", "rows")]:
+        items = []
+        for i, (start, count) in enumerate(man[name]):
+            chunk = json.loads((src / f"{prefix}-{i:03d}.json").read_text())
+            if len(items) != start or chunk["start"] != start or len(chunk["v"]) != count:
+                raise ValueError("Invalid shard offsets")
+            items.extend(chunk["v"])
+        tables[prefix] = items
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    stage = Path(tempfile.mkdtemp(prefix="." + key + "-rechunk-", dir=dst.parent))
+    for prefix, name in [("l", "lines"), ("r", "rows")]:
+        chunks=[];cur=[];size=0;start=0
+        for item in tables[prefix]:
+            encoded=json.dumps(item,ensure_ascii=False,separators=(",", ":"))
+            if cur and size + len(encoded.encode()) > shard_kb*1024:
+                chunks.append((start,cur));start+=len(cur);cur=[];size=0
+            cur.append(item);size+=len(encoded.encode())+1
+        if cur: chunks.append((start,cur))
+        man[name]=[[start,len(chunk)] for start,chunk in chunks]
+        for i,(start,chunk) in enumerate(chunks):
+            (stage/f"{prefix}-{i:03d}.json").write_text(json.dumps({"start":start,"v":chunk},ensure_ascii=False,separators=(",", ":")))
+    for year in man["years"]: shutil.copy2(src/f"y-{year}.json",stage/f"y-{year}.json")
+    (stage/"manifest.json").write_text(json.dumps(man,separators=(",", ":")))
+    os.replace(stage,dst)
+    print(key,"rechunked without changing IDs:",len(man["lines"]),"line shards,",len(man["rows"]),"row shards")
+
+
 def unpack(key):
     """Recover every existing text/chant day from published shards before extending.
     Never overwrite an existing generation cache. This preserves prior years and
@@ -253,7 +292,8 @@ def unpack(key):
 
 if __name__ == "__main__":
     cmd = sys.argv[1]
-    if cmd == "unpack": unpack(sys.argv[2])
+    if cmd == "rechunk": rechunk(sys.argv[2], int(sys.argv[3]))
+    elif cmd == "unpack": unpack(sys.argv[2])
     elif cmd == "gen": gen(sys.argv[2], sys.argv[3], sys.argv[4], len(sys.argv) > 5 and sys.argv[5] == "chant")
     elif cmd == "pack": pack(sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else 1500)
     elif cmd == "retitle": retitle(sys.argv[2])

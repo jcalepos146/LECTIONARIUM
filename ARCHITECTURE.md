@@ -102,3 +102,8 @@ chant-mode hours through the requested date. `--baseline` compares every origina
 title and rendered cell, independently of reindexed shard positions. The known
 unnotated Triduum little hours still require complete hour records; other missing
 notation fails validation.
+
+`office_gen.py rechunk <key> <kilobytes>` consolidates an existing pack without
+renumbering text or row IDs; its output must be validated with `--baseline`
+before replacement. The br55/br62 packs use 4 MB shards to leave room for the
+individual catalog share pages within the 512-file site limit.

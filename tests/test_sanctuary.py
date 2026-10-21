@@ -120,6 +120,7 @@ class SanctuaryTests(unittest.TestCase):
         for policy_dir in [pathlib.Path('/etc/chromium/policies/managed'),pathlib.Path('/etc/opt/chrome/policies/managed')]:
             for policy in policy_dir.glob('*.json'):
                 if json.loads(policy.read_text()).get('WebRtcIPHandling')=='disable_non_proxied_udp':
+                    if os.environ.get('CI'):self.fail('CI must exercise real WebRTC without a restrictive managed policy')
                     self.skipTest('Managed Chromium policy blocks direct WebRTC; exercised in GitHub CI')
         client=ROOT/'node_modules/peerjs/dist/peerjs.min.js'
         self.assertTrue(client.is_file(),'Run npm ci to install the pinned local PeerJS test tools')
