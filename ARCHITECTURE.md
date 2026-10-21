@@ -29,7 +29,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 | Path | Contents |
 |---|---|
 | `days.json` | One record per day, 2025-11-30 to 2030-11-30: celebrations and readings for every rite (keys `n` Novus Ordo, `o` Ordinariate, `m` 1962, `p` pre-1955, `h` hybrid, `b` Byzantine) |
-| `bible/dr`, `bible/kj`, `bible/cv` | Douay-Rheims, King James, Coverdale psalter, one JSON per book |
+| `bible/dr`, `bible/kj`, `bible/cv` | Douay-Rheims, King James, Coverdale psalter, several books per shard `s<N>.json` (`tools/shard_bible.py`; index in `src/today.js`) |
 | `propers-1962.json`, `propers-pre55.json`, `ordo.json` | Traditional Mass propers and Ordinary, Latin and English |
 | `chant.json`, `hymns.json` | Gregorian chant (GABC) and public-domain hymns |
 | `bcp-office.json` | 1662 Mattins, Evensong and collects |

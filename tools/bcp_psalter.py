@@ -1,4 +1,4 @@
-"""Coverdale psalter (1662 Book of Common Prayer text) from the uploaded EPUB -> site/bible/cv/Ps.json.
+"""Coverdale psalter (1662 Book of Common Prayer text) from the uploaded EPUB -> site/bible/cv/Ps.json; then run tools/shard_bible.py to pack it.
 Only the public-domain psalter text is taken; the edition's introduction and apparatus are not used."""
 import zipfile, re, html, glob, json, sys
 z = zipfile.ZipFile(sys.argv[1])
