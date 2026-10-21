@@ -1,7 +1,9 @@
 # Tradition directory review, 21 October 2026
 
-The directory is a seed, not a completed current-jurisdiction or legal audit.
-The read-only source audit reached 53 of 58 URLs after replacing stale links.
+The directory distinguishes sourced identities and relationships from uncleared
+service-book rights and uncomputed local calendars. It is not a legal clearance.
+A later read-only audit reached 67 of 73 URLs; the primary Tomos timed out on
+that rerun after previously being read successfully.
 This is a reachability result, not certification of the claims or rights.
 
 Content actually inspected:
@@ -30,13 +32,16 @@ Content actually inspected:
   It has been removed. Use PNCC official sources, not that domain, for further
   verification.
 
-Unreachable in the final audit: `thenalc.org`, `www.goarch.org`, `www.hrcna.org`,
+Persistent access failures in the audit: `thenalc.org`, `www.goarch.org`, `www.hrcna.org`,
 `www.pncc.org`, and `www.rpcna.org`. These returned HTTP 403 or a proxy denial.
 Domain requirements were saved in the environment draft. Apply relevant network
 settings before retrying; a draft save alone is not runtime validation.
 
-Before merging: verify current recognition statements; inspect authoritative
-copyright notices for each exact edition and territory; keep Union of Utrecht membership tied to its current directory. Entries explicitly retain review notes until that is done.
+For further text imports: inspect authoritative copyright notices for each exact
+edition and territory. Keep recognition statements attributed to their sources
+and Utrecht membership tied to the current directory. Entries retain local
+practice and edition limits rather than treating identity review as permission
+to copy service books.
 No text is reproduced merely because a seed record says public domain.
 
 The uploaded *Divine Liturgies Public Domain Companion* was read as source

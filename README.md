@@ -62,7 +62,7 @@ The full list is on the site's **Sources** tab.
 
 *Lectionarium is a study and practice aid. For celebration, consult the approved liturgical books.*
 
-## Sanctuary mode (development branch)
+## Sanctuary mode
 
 Choose **Enter Sanctuary mode** or press **S** outside a text field. Browse the
 night-time library with mouse, touch, arrow keys and Enter, or a gamepad. Escape /
@@ -102,15 +102,16 @@ Screenshots go to `/tmp/lectionarium-screenshots` (override `SCREENSHOT_DIR`).
 
 ### Release status and follow-up
 
-The 137-entry directory is a **seed catalog pending current-source review**.
+The 137-entry directory is a **sourced catalog with edition and local-practice limits**.
 Every entry carries source URLs and an explicit review status. Some official source sites block automated access. Current OCA and Ecumenical
 Patriarchate sources have been reviewed; see `docs/source-review.md` for the
 remaining edition and jurisdiction checks. Reachability does not establish that
 a claim or copyright assessment is correct.
-Run `python3 tools/audit_tradition_sources.py` after applying the source-domain
-allowlist, then review claims against the actual pages before release. In
-particular, review disputed autocephaly, local calendar variants, Prayer Book
-territorial rights and the exact editions of historical hymnals and translations.
+Run `python3 tools/audit_tradition_sources.py` to check reference reachability.
+Disputed autocephaly is attributed to the issuing church; local calendar variants
+are not inferred. Modern books without established reuse permission are named
+and cited, and exact historical editions and territorial limits are identified.
+Source review does not authorize reproduction of later translations or music.
 Conservative copyright labels mean “not cleared for reproduction here”, not a
 legal conclusion that every part is protected.
 
