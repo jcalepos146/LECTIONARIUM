@@ -107,3 +107,22 @@ notation fails validation.
 renumbering text or row IDs; its output must be validated with `--baseline`
 before replacement. The br55/br62 packs use 4 MB shards to leave room for the
 individual catalog share pages within the 512-file site limit.
+
+## Local participation mode
+
+`src/participation.js` is loaded before Mass/session tools. It owns the local
+sessionStorage choice between lay study and a self-declared ordained-priest
+mode. The host’s options never supply that choice. Mass rendering derives
+`veil` locally; received live options are normalized before comparison so a
+host’s priest mode cannot override a lay follower or cause redraw loops.
+
+Reserved Eucharistic sections, priest-role paragraphs and their user-pasted
+texts carry `data-priest-only`. The shared extraction path filters these for
+lay chat/presenter output and for all read-aloud output. Whole traditional
+Canons are collapsed as study references. Public responses remain separate
+where role markup distinguishes them. Local role selection, peer assignment
+options and received assignments enforce the same priest-mode condition;
+only a recipient’s own choice enables a celebrant role. Office officiant
+roles remain available, with the canonical obligation/approved-book limits
+explained separately in Sources. Mode changes stop queued speech and clear
+an inappropriate celebrant selection.

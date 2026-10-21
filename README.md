@@ -158,3 +158,21 @@ consolidated into 4 MB shards with `office_gen.py rechunk br55 4000` and
 This operation preserves every line, row and day ID. Both packs passed full
 rendered-cell and title comparison against their original directories before
 replacement. It changes fetch sizes, not the liturgical content.
+
+## Participation and canonical guidance
+
+Mass guides open in **Lay study**. **Ordained priest** mode is an explicit local
+choice saved only for that browser session. A host cannot change another
+participant’s mode. Lay study offers no celebrant assignment; priest-only
+passages remain study references and the institution words are veiled.
+Read-aloud omits priest-only Mass prayers in both modes. Chat scripts and
+presenter slides omit them in lay study, including pasted prayers inside a
+reserved section. Switching back to lay study clears a celebrant selection and
+stops speech. Ordination is self-declared; the app does not verify ordination,
+faculties or permission to celebrate.
+
+The Sources tab explains canons 900 §1, 907, 1379 §1 and 276 §2 and links the
+current Vatican text. These are Latin Code citations; Eastern Catholic use also
+requires its applicable law and approved books. A shortened or historical
+Office guide does not certify fulfillment of a cleric’s obligation to pray the
+proper approved Hours. Lay people are not assigned that clerical obligation.
