@@ -19,6 +19,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "tools" / "texts" / "hapgood-liturgy.txt"
+TONES = ROOT / "tools" / "texts" / "hapgood-tones.txt"
 OUT = ROOT / "data" / "byz-liturgy.json"
 LEAF_TO_PAGE = -39          # scan leaf n119 is printed page 80 in item cu31924029363128
 WHO = {"P", "D", "C", "R", "L", "PD"}
@@ -108,8 +109,33 @@ def compile_text(text):
     return parts, errors
 
 
+def compile_tones(text):
+    tones, cur, errors = {}, None, []
+    for n, line in enumerate(text.split("\n"), 1):
+        if not line or line.startswith("#") and not line.startswith("## ") or re.fullmatch(r"=\d+", line):
+            continue
+        m = re.fullmatch(r"## tone([1-8])", line)
+        if m:
+            cur = tones.setdefault(m.group(1), {"lic": []}); continue
+        m = re.fullmatch(r"(lic|dogmatikon|troparion|theotokion|kontakion): (.+)", line)
+        if not m or cur is None:
+            errors.append(f"tones line {n}: cannot parse"); continue
+        if m.group(1) == "lic":
+            cur["lic"].append(m.group(2))
+        else:
+            cur[m.group(1)] = m.group(2)
+    for k, t in tones.items():
+        if len(t["lic"]) != 3 or len(t) != 5:
+            errors.append(f"tone {k}: incomplete")
+    if len(tones) != 8:
+        errors.append("expected eight tones")
+    return tones, errors
+
+
 def main():
     parts, errors = compile_text(SRC.read_text(encoding="utf-8"))
+    tones, terr = compile_tones(TONES.read_text(encoding="utf-8"))
+    errors += terr
     for e in errors:
         print("ERROR", e)
     if errors:
@@ -119,6 +145,7 @@ def main():
         "url": "https://archive.org/details/cu31924029363128",
         "rights": "Public domain (published 1906).",
         "parts": parts,
+        "tones": tones,
     }
     out = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     keys = [p["key"] for p in parts]

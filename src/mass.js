@@ -598,11 +598,13 @@ function byzRole(x){
 const BYZ_PART={opening:0,antiphons:1,entrance:2,readings:3,litanies:4,faithful:4,cherubic:5,offering:5,creed:5,anaphora:6,prelord:7,communion:7,thanks:8,after:8};
 const BYZ_PRES={"pres-vespers":0,"pres-lic":1,"pres-readings":2,"pres-litanies":3,"pres-faithful":3,"pres-entrance":4,"pres-communion":5,"pres-dismissal":6};
 const BYZ_WHO={P:["cel","Priest"],D:["srv","Deacon"],C:["ppl","Choir"],R:["lec","Reader"],L:["all","All"],PD:["cel srv","Priest and Deacon"]};
+/* Same reckoning as byzTone() in today.js: Thomas Sunday begins Tone 1; Palm Sunday and Holy Week have none. */
 function byzToneOf(iso){
   const d=toDate(iso); let E=easterY(d.getUTCFullYear()); if(d<E) E=easterY(d.getUTCFullYear()-1);
   const sun=new Date(d.getTime()-d.getUTCDay()*DAY), thomas=new Date(E.getTime()+7*DAY);
-  if(sun<thomas) return 0;
-  return ((Math.round((sun-thomas)/DAY/7))%8)+1;
+  if(d<thomas) return 0;
+  const nextE=easterY(E.getUTCFullYear()+1); if(d>=new Date(nextE.getTime()-7*DAY)) return 0;
+  return ((Math.round((sun-thomas)/DAY/7))%8+8)%8+1;
 }
 function byzEnv(iso,kind){
   const d=toDate(iso), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY), sun=d.getUTCDay()===0, pascha=off>=0&&off<=38;
@@ -629,7 +631,11 @@ async function byzFull(ctx,kind,veil,AB){
       flush();
       if(it.t==="r"){ h+=`<p class="rub">${inl(it.x)}</p>`; continue; }
       if(it.t==="slot"){
-        if(it.n==="troparia") h+=cue("Troparia and kontakia of the day: from the Octoechos, Menaion or Triodion (your church's books).");
+        if(it.n==="troparia"){
+          const T=env.tone&&D.tones?D.tones[env.tone]:null;
+          if(T) h+=`<p class="rub">Troparion of the Resurrection, Tone ${env.tone}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(T.troparion)}</p>`+cue("Then the troparion of the temple and of the saint of the day, from your church's books.")+`<p class="rub">Kontakion of the Resurrection, Tone ${env.tone}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(T.kontakion)}</p>`+cue("Then the other kontakia of the day, ending with the kontakion of the Birth-giver of God.");
+          else h+=cue("Troparia and kontakia of the day: from the Octoechos, Menaion or Triodion (your church's books).");
+        }
         else if(it.n==="prokeimenon"&&!env.tone) h+=cue("Prokeimenon of the day (on weekdays and feasts it replaces the Sunday prokeimenon of the tone below).");
         else if(it.n==="alleluia") h+=cue("Alleluia with the verses of the tone or of the day.");
         else if((it.n==="epistle"||it.n==="gospel")&&b){ const lab=it.n==="epistle"?"Apostol":"Gospel"; for(const x of b.r) if(x[0].split(" · ")[0]===lab) h+=await RB(ctx,x[0],x[1],"n","dr",false); }

@@ -60,7 +60,7 @@ function coverage(type,rite,hour){
     if(/^(m|p|h)$/.test(rite)) return ["full","The complete historical text is available in Latin and English. Lay study keeps priest-only passages as references and veils the words of consecration."];
     if(rite==="o") return ["guide","The Prayer Book texts, the Canon and the propers of the day are printed. Divine Worship's own wording differs in places: follow your Missal there."];
     if(rite==="n") return ["guide","The readings and the Latin Ordinary, with a traditional English beside it, are printed. The collects, preface, Eucharistic Prayer and the current English wording come from your missal: press Add text to fill them in."];
-    if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings. The troparia, kontakia and stichera of the day come from your service books."];
+    if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
     if(/^(br62|br55|mon|op)$/.test(rite)) return ["full","Every part of the hour is printed, in Latin and English."];
     if(rite==="dwdo") return hour==="prime"?["guide","Prime is given in outline; take its texts from Divine Worship."]:["full","The 1662 Prayer Book text is printed in full, with the Coverdale psalms. Divine Worship adapts it in places."];
@@ -518,9 +518,18 @@ async function officeBody(iso, day){
     h+=`<p class="callout">The psalms are given in full in the Douay-Rheims, numbered as in the Septuagint, with the fixed prayers in traditional English. The hymnody of the day (stichera, troparia, kontakia, canons) varies between churches and translations: press <b>Add text</b> to fill it in from your Horologion, Octoechos and Menaion.</p>`;
     slots.ps104=await blk("Psalm 103 (104)","Ps 104","dr"); slots.nunc=await blk("Song of Simeon","Luke 2:29-32","dr"); slots.ps50=await blk("Psalm 50 (51)","Ps 51","dr");
     { const P=BYZ_PS[H]||{}; for(const [slot,list] of Object.entries(P)){ let x=""; for(const n of list) x+=await readingBlock(`Psalm ${n}`,"Ps "+n,"v","dr"); slots[slot]=x; } }
-    slots.godlord=byzTx("godlord")+`<p class="note">Then the troparia of the day (Add text to fill them in from your Octoechos and Menaion).</p>`; slots.fhp=byzTx("fhp");
+    /* Sunday tone hymns from Hapgood's Appendix A (1906, public domain); Saturday Vespers takes the coming Sunday's tone. */
+    const BZ=await fetch("data/byz-liturgy.json").then(r=>r.ok?r.json():null).catch(()=>null);
+    const sunTone=dow===0?tone:(dow===6&&H==="vespers")?byzTone(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)):null;
+    const TN=sunTone&&BZ&&BZ.tones?BZ.tones[sunTone]:null;
+    const hy=(lab,t)=>`<p class="rub">${esc(lab)}</p><p data-r="ppl">${esc(t)}</p>`;
+    const hapNote=`<p class="note">Sunday hymns of Tone ${sunTone}, from Isabel Hapgood's Service Book (1906).</p>`;
+    slots.godlord=byzTx("godlord")+(TN&&H==="orthros"?hy(`Troparion of the Resurrection, Tone ${sunTone} (twice)`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion)+hapNote:`<p class="note">Then the troparia of the day (Add text to fill them in from your Octoechos and Menaion).</p>`); slots.fhp=byzTx("fhp");
+    if(TN&&H==="vespers"){ slots.lic=(slots.lic||"")+`<h4 class="sub2">Stichera of the Resurrection, Tone ${sunTone}</h4>`+TN.lic.map(x=>`<p data-r="ppl">${esc(x)}</p>`).join("")+`<p class="note">Then the stichera of the Menaion. Glory… Both now…:</p>`+hy("Dogmatikon",TN.dogmatikon)+hapNote;
+      slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion</h4>`+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion); }
+    if(TN&&/^(first|third|sixth|ninth)$/.test(H)) slots.tris=(slots.tris||"")+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+hy(`Kontakion, Tone ${sunTone}`,TN.kontakion);
     if(H==="orthros") slots.magn=await blk("Magnificat","Luke 1:46-55","dr")+`<p class="note">Between the verses: More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, who without corruption gavest birth to God the Word, true Theotokos, we magnify thee.</p>`;
-    slots.tris=byzTx("tris"); slots.creed=byzTx("creed"); slots.phos=byzTx("phos")+`<p class="note">Phos hilaron in John Keble's translation (1834).</p>`; slots.vouch=byzTx("vouch");
+    slots.tris=byzTx("tris")+(slots.tris||""); slots.creed=byzTx("creed"); slots.phos=byzTx("phos")+`<p class="note">Phos hilaron in John Keble's translation (1834).</p>`; slots.vouch=byzTx("vouch");
     if(H==="orthros") slots.lauds=(slots.lauds||"")+`<h4 class="sub2">The Great Doxology</h4>`+byzTx("doxo");
     slots.eoth = eo ? await blk(`Resurrection Gospel · Eothinon ${eo}`,EOTHINA[eo],"dr") : `<p class="note">${dow===0?"From Pascha to Pentecost the Sunday Gospels are proper to the Pentecostarion.":"Read on Sundays only."}</p>`;
   } else {

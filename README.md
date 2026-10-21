@@ -38,7 +38,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Monastic, Dominican | n/a | **Complete text** |
 | Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline) |
 | Novus Ordo / Liturgy of the Hours | *Guided*: readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal | *Guided*: psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary |
-| Byzantine | *Guided*: Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906); hymns of the day from your books | *Guided*: psalms and fixed prayers; hymns of the day from your books |
+| Byzantine | *Guided*: Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906), with the Sunday Resurrection hymns of the tone; Menaion hymns from your books | *Guided*: psalms and fixed prayers; Saturday Vespers stichera, dogmatikon and Sunday troparia of the tone (Hapgood); Menaion hymns from your books |
 
 The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 
