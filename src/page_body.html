@@ -1,0 +1,295 @@
+<div class="wrap">
+<header class="top">
+  <div class="mast"><div class="mast-txt">
+    <p class="kicker">Missal<b>✠</b>Breviary<b>✠</b>Lectionary</p>
+    <h1 class="wordmark" aria-label="Lectionarium"><span class="ini" aria-hidden="true"><span>L</span></span><span aria-hidden="true">ectionarium</span></h1>
+    <p class="dek">Pray the Mass or the Office for any day in the Catholic rites, printed in full wherever the texts are free to print and guided by citation where they are not, and compare every lectionary side by side.</p>
+    <ul class="feats" aria-label="Features"><li>Every Catholic rite, its text coverage marked</li><li>15 minutes to full length</li><li>Live group sessions with parts</li><li>Gregorian chant and hymns</li><li>Full Breviary in Latin and English</li></ul>
+  </div><svg class="chirho" viewBox="0 0 120 120" role="img" aria-label="Chi-Rho with Alpha and Omega"><circle class="disc" cx="60" cy="60" r="54"/><circle cx="60" cy="60" r="55" fill="none" style="stroke:var(--gold)" stroke-width="3.2"/><circle cx="60" cy="60" r="49.5" fill="none" style="stroke:var(--gold)" stroke-width="1.2"/><circle cx="112.30" cy="60.00" r="1.3" style="fill:var(--rubric)"/><circle cx="105.29" cy="86.15" r="1.3" style="fill:var(--rubric)"/><circle cx="86.15" cy="105.29" r="1.3" style="fill:var(--rubric)"/><circle cx="60.00" cy="112.30" r="1.3" style="fill:var(--rubric)"/><circle cx="33.85" cy="105.29" r="1.3" style="fill:var(--rubric)"/><circle cx="14.71" cy="86.15" r="1.3" style="fill:var(--rubric)"/><circle cx="7.70" cy="60.00" r="1.3" style="fill:var(--rubric)"/><circle cx="14.71" cy="33.85" r="1.3" style="fill:var(--rubric)"/><circle cx="33.85" cy="14.71" r="1.3" style="fill:var(--rubric)"/><circle cx="60.00" cy="7.70" r="1.3" style="fill:var(--rubric)"/><circle cx="86.15" cy="14.71" r="1.3" style="fill:var(--rubric)"/><circle cx="105.29" cy="33.85" r="1.3" style="fill:var(--rubric)"/><g style="stroke:var(--lapis)" stroke-width="9" stroke-linecap="butt"><line x1="33" y1="40" x2="87" y2="94"/><line x1="87" y1="40" x2="33" y2="94"/></g><line x1="26.5" y1="46.5" x2="39.5" y2="33.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="80.5" y1="100.5" x2="93.5" y2="87.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="80.5" y1="33.5" x2="93.5" y2="46.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="26.5" y1="87.5" x2="39.5" y2="100.5" style="stroke:var(--lapis)" stroke-width="3"/><path d="M60 16 V104" style="stroke:var(--rubric)" stroke-width="9" fill="none"/><path d="M60 20.5 H66 A14.5 14.5 0 0 1 66 49.5 H60" style="stroke:var(--rubric)" stroke-width="8" fill="none"/><line x1="53" y1="104" x2="67" y2="104" style="stroke:var(--rubric)" stroke-width="3"/><text x="26" y="75" font-family="Uncial Antiqua, serif" font-size="17" style="fill:var(--gold)" text-anchor="middle">A</text><text x="94" y="75" font-family="Uncial Antiqua, serif" font-size="17" style="fill:var(--gold)" text-anchor="middle">ω</text></svg></div>
+  <div class="fsctl" role="group" aria-label="Text size"><span class="lbl">Text</span><button type="button" data-fs="-1" aria-label="Smaller text">A−</button><button type="button" data-fs="0" aria-label="Default text size">A</button><button type="button" data-fs="1" aria-label="Larger text">A+</button></div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" id="tab-today" aria-controls="today" aria-selected="true">Pray today</button>
+  <button role="tab" id="tab-compare" aria-controls="compare" aria-selected="false">Compare the year</button>
+  <button role="tab" id="tab-lectionaries" aria-controls="lectionaries" aria-selected="false">Every lectionary</button>
+  <button role="tab" id="tab-hybrid" aria-controls="hybrid" aria-selected="false">Hybrid proposal</button>
+  <button role="tab" id="tab-changes" aria-controls="changes" aria-selected="false">1955 vs 1962</button>
+  <button role="tab" id="tab-office" aria-controls="office" aria-selected="false">Divine Office</button>
+  <button role="tab" id="tab-sources" aria-controls="sources" aria-selected="false">Sources</button>
+</nav>
+
+<!-- ============================================================ TODAY -->
+<section class="view" id="today" role="tabpanel" aria-labelledby="tab-today">
+  <div id="tband"></div>
+  <div id="ask"></div>
+  <div id="session" hidden></div>
+</section>
+
+<!-- ============================================================ COMPARE -->
+<section class="view" id="compare" role="tabpanel" aria-labelledby="tab-compare" hidden>
+  <p class="lede"><span class="reftag">Reference · citations</span> Every Sunday, holy day and major feast of a liturgical year, dated, with what each lectionary appoints. Highlighted readings in the Hybrid column are the additions taken from the post-conciliar lectionary or restored from pre-1955 books. Under the Novus Ordo, <span class="ord"><b>Ordinariate</b></span> gives the Divine Worship name where it differs; the readings are the same. The Byzantine column shows the Apostol and Gospel that fall on the same date.</p>
+  <div class="controls">
+    <div class="field"><label for="yearSel">Liturgical year</label><select id="yearSel"></select></div>
+    <div class="field"><span class="lbl" id="showLbl">Show</span>
+      <div class="seg" role="group" aria-labelledby="showLbl" id="filterSeg">
+        <button type="button" data-f="all" aria-pressed="true">Everything</button>
+        <button type="button" data-f="sun" aria-pressed="false">Sundays</button>
+        <button type="button" data-f="feast" aria-pressed="false">Feasts &amp; Holy Week</button>
+        <button type="button" data-f="diff" aria-pressed="false">Pre-1955 ≠ 1962</button>
+      </div></div>
+    <div class="field"><label for="q">Find a passage or day</label><input type="search" id="q" placeholder="e.g. John 6, Lent, Isa 55"></div>
+  </div>
+  <p class="yearnote" id="yearNote"></p>
+  <div class="stats" id="stats" aria-live="polite"></div>
+  <div class="colhead" aria-hidden="true"><div>Date</div><div>Pre-1955</div><div>1962 Missal</div><div id="noHead">Novus Ordo</div><div>Hybrid</div><div>Byzantine</div></div>
+  <div id="rows"></div>
+  <p class="note" style="margin-top:12px">Dates follow the universal calendar. Many countries move Epiphany, Ascension and Corpus Christi to Sundays. Where a feast and a Sunday share a date, both are listed; which one is celebrated depends on each form's rules of precedence. St Joseph and the Annunciation are transferred when they fall in Holy Week or Easter Week. The Byzantine column uses the Gregorian Pascha (Melkite, Ruthenian in the Americas, Italo-Albanian and others). Churches that keep the Orthodox Paschalion, such as the Ukrainian Greek Catholic Church in Ukraine, often keep Pascha on a later date. Its Luke Gospels follow the Slavic order, which differs from the Greek order on three Sundays. Before the Triodion, some weeks are filled according to the local ordo; these are marked "back-fill".</p>
+</section>
+
+<!-- ============================================================ LECTIONARIES -->
+<section class="view" id="lectionaries" role="tabpanel" aria-labelledby="tab-lectionaries" hidden>
+  <p class="lede"><span class="reftag">Reference</span> The Catholic Church has 24 churches <i>sui iuris</i>: the Latin Church and 23 Eastern Catholic churches. Between them they use the lectionary systems below. Several Eastern churches share one liturgical tradition, so they are grouped by tradition.</p>
+
+  <div class="group"><h2>Latin Church · Roman Rite</h2><p>The three forms compared on the first tab, plus the Roman lectionary's adaptations.</p>
+  <div class="cards">
+    <article class="card"><h3>Ordo Lectionum Missae</h3><div class="who">Roman Missal of Paul VI (the "Novus Ordo"); worldwide ordinary form</div>
+      <dl><dt>Book</dt><dd>1st edition 1969; 2nd edition 1981. Translated nationally (e.g. NABRE in the USA; ESV-CE in England and Wales from Advent 2024).</dd>
+      <dt>Cycle</dt><dd>Sundays: three years (A Matthew, B Mark with John 6, C Luke). Weekdays: two years for the first reading (I/II), one year for the Gospel.</dd>
+      <dt>Readings</dt><dd>Sundays and solemnities: Old Testament (Acts in Eastertide), responsorial psalm, Apostle, Gospel. Weekdays: one reading, psalm, Gospel.</dd>
+      <dt>Notes</dt><dd>OT reading chosen to harmonize with the Gospel; semicontinuous Epistles and Gospels in Ordinary Time. Its structure later inspired the Protestant Revised Common Lectionary (1992).</dd>
+      <dt>Status</dt><dd><span class="status st-ok">In universal use</span></dd></dl></article>
+
+    <article class="card"><h3>Missale Romanum 1962</h3><div class="who">Usus antiquior; FSSP, Institute of Christ the King, SSPX (irregular status), diocesan Latin Masses</div>
+      <dl><dt>Book</dt><dd>Missal of John XXIII under the 1960 Code of Rubrics.</dd>
+      <dt>Cycle</dt><dd>One year. Weekdays outside Lent and Ember days repeat the Sunday Mass unless a feast is kept.</dd>
+      <dt>Readings</dt><dd>Epistle (sometimes an OT lesson) and Gospel. Proper readings every day of Lent; extra lessons on Ember days; four prophecies at the Easter Vigil.</dd>
+      <dt>Notes</dt><dd>Gradual, Alleluia and Tract are psalm chants rather than readings.</dd>
+      <dt>Status</dt><dd><span class="status st-lim">Restricted</span> <i>Traditionis custodes</i> (2021) requires the bishop's permission, and Rome's approval for parish churches. Cardinal Roche said in July 2026 that Leo XIV will not reverse it. Leo XIV's March 2026 letter to the French bishops asked for "generous inclusion" of attached faithful.</dd></dl></article>
+
+    <article class="card"><h3>Pre-1955 Roman Missal</h3><div class="who">Missal under the <i>Divino Afflatu</i> rubrics (1911–1954)</div>
+      <dl><dt>Book</dt><dd>Missale Romanum before Pius XII's Holy Week reform (1955) and the 1955 simplification of rubrics.</dd>
+      <dt>Cycle</dt><dd>One year, as 1962, with more vigils and octaves.</dd>
+      <dt>Readings</dt><dd>Same Sunday Epistles and Gospels as 1962. It differs in Holy Week (twelve Vigil prophecies, a lesson at the blessing of palms, full Passions), the Pentecost Vigil (six prophecies) and the proper Last Gospel of a displaced Sunday.</dd>
+      <dt>Status</dt><dd><span class="status st-out">No general permission</span> Used mainly by groups outside full communion (e.g. SSPV, CMRI) and by some independent chapels. Within the Church, pre-1955 Holy Week has appeared only by occasional special permission.</dd></dl></article>
+
+    <article class="card"><h3>Divine Worship: The Missal</h3><div class="who">Personal Ordinariates for former Anglicans (Our Lady of Walsingham, Chair of St Peter, Our Lady of the Southern Cross)</div>
+      <dl><dt>Book</dt><dd>Divine Worship: The Missal (2015).</dd>
+      <dt>Cycle</dt><dd>Roman three-year Sunday cycle, read in the RSV Second Catholic Edition.</dd>
+      <dt>Readings</dt><dd>As the Ordo Lectionum Missae.</dd>
+      <dt>Notes</dt><dd>Anglican-patrimony calendar: Sundays after Epiphany and after Trinity, the Septuagesima Sundays, Ember and Rogation days. The -gesima Sundays take Ordinary Time readings. The Compare tab shows these names under each Novus Ordo Sunday.</dd>
+      <dt>Status</dt><dd><span class="status st-ok">In use</span></dd></dl></article>
+
+    <article class="card"><h3>Roman Missal for the Dioceses of Zaire</h3><div class="who">"Zaire Use", Democratic Republic of the Congo</div>
+      <dl><dt>Book</dt><dd>Approved 1988; an inculturated Order of Mass.</dd>
+      <dt>Readings</dt><dd>Roman lectionary; readings come after the penitential rite and are followed by the homily and the creed.</dd>
+      <dt>Status</dt><dd><span class="status st-ok">In use</span></dd></dl></article>
+  </div></div>
+
+  <div class="group"><h2>Latin Church · other rites and uses</h2><p>Non-Roman Western rites still celebrated, each with its own reading system.</p>
+  <div class="cards">
+    <article class="card"><h3>Ambrosian Lectionary</h3><div class="who">Archdiocese of Milan and parts of Lombardy and Ticino</div>
+      <dl><dt>Book</dt><dd>Lezionario Ambrosiano: "per i tempi" promulgated 20 March 2008, in force from Advent 2008 (seven volumes); saints' lectionary 2010.</dd>
+      <dt>Cycle</dt><dd>Festive readings on a three-year cycle; separate weekday volumes.</dd>
+      <dt>Readings</dt><dd>Lettura (OT or non-Pauline apostolic text), psalm, Epistola (Pauline), Vangelo.</dd>
+      <dt>Notes</dt><dd>Six-week Advent from the Sunday after St Martin; Lent begins on a Sunday; Lenten Fridays are aliturgical; Saturday vigil Masses add a Resurrection Gospel; Sundays "after the Martyrdom of St John the Forerunner" (29 Aug).</dd>
+      <dt>Status</dt><dd><span class="status st-ok">In use</span></dd></dl></article>
+
+    <article class="card"><h3>Liber Commicus (Hispano-Mozarabic)</h3><div class="who">Mozarabic Chapel of Toledo Cathedral and Mozarabic parishes; occasionally elsewhere in Spain</div>
+      <dl><dt>Book</dt><dd>Restored Missale Hispano-Mozarabicum and lectionary (Liber Commicus) of the early 1990s, from the Visigothic-era tradition.</dd>
+      <dt>Readings</dt><dd>Prophecy (OT), Apostle, Gospel, with a chant (Psallendo) after the first reading.</dd>
+      <dt>Notes</dt><dd>Hispanic liturgical year with its own Advent and Lent; manuscript tradition dates from the 7th–9th centuries.</dd>
+      <dt>Status</dt><dd><span class="status st-ok">In use (local)</span></dd></dl></article>
+
+    <article class="card"><h3>Religious-order rites</h3><div class="who">Dominican, Carthusian, Carmelite, Premonstratensian, Cistercian</div>
+      <dl><dt>Readings</dt><dd>Historic one-year Epistle and Gospel systems close to the old Roman one, with their own calendars.</dd>
+      <dt>Status</dt><dd>The Dominican Rite is celebrated by Dominicans with permission and by the Fraternity of St Vincent Ferrer. The Carthusians use their own missal (revised 1981), with a further revision before their General Chapter in 2026. The Carmelite and Premonstratensian rites survive in a few communities. Most orders otherwise celebrate the Roman Rite with their own calendars.</dd></dl></article>
+
+    <article class="card"><h3>Rite of Braga</h3><div class="who">Archdiocese of Braga, Portugal</div>
+      <dl><dt>Readings</dt><dd>Historic one-year system close to the old Roman one.</dd>
+      <dt>Status</dt><dd><span class="status st-out">Rarely celebrated</span></dd></dl></article>
+  </div></div>
+
+  <div class="group"><h2>Eastern Catholic Churches</h2><p>These lectionaries are built around their own liturgical years, so none of them maps onto Roman Sundays. Summaries only; parish practice varies.</p>
+  <div class="cards">
+    <article class="card"><h3>Byzantine lectionary</h3><div class="who">Ukrainian, Ruthenian, Melkite, Romanian, Hungarian, Slovak, Italo-Albanian, Greek, Bulgarian, Križevci, Belarusian, Russian, Macedonian and Albanian Greek Catholics</div>
+      <dl><dt>Cycle</dt><dd>One year anchored to Pascha: John from Pascha to Pentecost, then Matthew, then Luke after the Elevation of the Cross (the "Lukan jump"), Mark on Lenten weekends. Fixed feasts take readings from the Menaion.</dd>
+      <dt>Readings</dt><dd>Apostol (Epistle or Acts) with prokeimenon, and Gospel. Old Testament readings (paremias) are read at Vespers, not at the Divine Liturgy.</dd>
+      <dt>Notes</dt><dd>Sundays are named for their Gospel: Publican and Pharisee, Prodigal Son, Zacchaeus, and others. The Compare tab gives its Sunday and great-feast readings for any year.</dd></dl></article>
+
+    <article class="card"><h3>Maronite lectionary</h3><div class="who">Maronite Church (West Syriac/Antiochene)</div>
+      <dl><dt>Book</dt><dd>Revised Qurbono 1992; Lectionary 1993.</dd>
+      <dt>Cycle</dt><dd>One year. Seasons: Consecration and Renewal of the Church · Glorious Birth · Epiphany (with the Commemorations of Priests, the Righteous and the Faithful Departed) · Great Lent (from Cana Sunday) · Resurrection · Pentecost · Glorious Cross.</dd>
+      <dt>Readings</dt><dd>Epistle (or Acts or Revelation) and Gospel. An Old Testament reading, discussed since the 2003–2006 Patriarchal Synod, has not been introduced.</dd></dl></article>
+
+    <article class="card"><h3>West Syriac lectionary</h3><div class="who">Syriac Catholic Church; Syro-Malankara Catholic Church</div>
+      <dl><dt>Cycle</dt><dd>Year opens with the Sundays of Consecration and Dedication of the Church (Qudosh Ito, Hudos Ito) in late October and November.</dd>
+      <dt>Readings</dt><dd>Traditionally Old Testament lessons, then Acts or a Catholic Epistle, a Pauline Epistle and the Gospel. Parishes often use a shortened set.</dd></dl></article>
+
+    <article class="card"><h3>East Syriac lectionary</h3><div class="who">Syro-Malabar Church; Chaldean Catholic Church</div>
+      <dl><dt>Cycle</dt><dd>Nine seasons: Annunciation (Subara), Nativity, Epiphany (Denha), Great Fast, Resurrection, Apostles, Summer (Qaita), Elijah–Cross–Moses, Dedication of the Church. The first and last seasons have four weeks; the others have seven symbolic weeks.</dd>
+      <dt>Readings</dt><dd>Old Testament readings (Law and Prophets), Epistle, and Gospel at the Holy Qurbana and Raza.</dd></dl></article>
+
+    <article class="card"><h3>Armenian lectionary</h3><div class="who">Armenian Catholic Church</div>
+      <dl><dt>Cycle</dt><dd>Armenian liturgical year, descended from the ancient lectionary of Jerusalem.</dd>
+      <dt>Readings</dt><dd>Old Testament prophecy (on many days), Epistle and Gospel, with psalm verses (saghmos).</dd></dl></article>
+
+    <article class="card"><h3>Katameros (Alexandrian)</h3><div class="who">Coptic Catholic Church</div>
+      <dl><dt>Cycle</dt><dd>Coptic year (from Nayrouz, September), with a separate Lenten and Paschal Katameros.</dd>
+      <dt>Readings</dt><dd>Pauline Epistle, Catholic Epistle, Acts (Praxis), psalm, Gospel.</dd></dl></article>
+
+    <article class="card"><h3>Ge'ez lectionary</h3><div class="who">Ethiopian and Eritrean Catholic Churches</div>
+      <dl><dt>Cycle</dt><dd>Ethiopian calendar, Alexandrian in origin.</dd>
+      <dt>Readings</dt><dd>Pauline Epistle, Catholic Epistle, Acts, psalm and Gospel.</dd></dl></article>
+  </div></div>
+</section>
+
+<!-- ============================================================ HYBRID -->
+<section class="view" id="hybrid" role="tabpanel" aria-labelledby="tab-hybrid" hidden>
+  <div class="prose">
+    <p class="lede"><span class="reftag">Reference · proposal</span> A proposal, not a liturgical book. It keeps the traditional calendar and its one-year Epistles and Gospels, and adds the wider Old Testament reading that the 1969 reform made possible. The added readings are taken from the post-conciliar lectionary, mostly where it already pairs them with the same Gospel. Where the pre-1955 books read more Scripture than 1962, their readings return.</p>
+    <h2>Principles</h2>
+    <ul class="rules">
+      <li><b>The traditional core stays.</b> The calendar (Septuagesima, Passiontide, the Pentecost octave, Ember days, Sundays after Pentecost) and every Sunday Epistle and Gospel stay exactly as in 1962. A congregation hears the same Gospel on the same Sunday every year, as Christians in the West did for more than a millennium.</li>
+      <li><b>Every Sunday gains a Prophecy.</b> An Old Testament reading is read before the Epistle, as in the Ambrosian and Mozarabic rites. It is chosen so that it explains the Gospel, and it is the reading the new lectionary itself pairs with that Gospel or its synoptic parallel wherever one exists.</li>
+      <li><b>Where a lesson already stands, the Apostle is added.</b> Feasts whose first reading is already from the Old Testament or Acts (Epiphany, Ascension, Pentecost, many saints' days) keep it and gain the new lectionary's New Testament reading.</li>
+      <li><b>Paschaltide reads Acts.</b> From Easter to Pentecost the added reading comes from Acts, following the new lectionary and the ancient practice described by St Augustine.</li>
+      <li><b>Holy Week and the vigils return to their pre-1955 fullness.</b> The twelve prophecies of the Easter Vigil, the six of the Pentecost Vigil, the lesson at the blessing of palms and the full Matthew Passion are restored. Good Friday adds the fourth Servant Song (Isa 52:13–53:12), which is missing from both older forms.</li>
+      <li><b>The psalm is sung, not read.</b> The Gradual, Alleluia and Tract remain the psalmody between readings; no responsorial psalm is added.</li>
+      <li><b>The proper Last Gospel returns.</b> When a feast displaces a Sunday, that Sunday's Gospel is read at the end of Mass, as before 1960, so no Sunday Gospel is lost in a given year.</li>
+    </ul>
+
+    <h2>Weekdays</h2>
+    <p>In 1962, most weekdays outside Lent repeat the previous Sunday's readings. The hybrid keeps every proper weekday Mass of the old missal and fills the rest from the new two-year weekday cycle.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Period</th><th>1962 weekdays</th><th>Hybrid weekdays</th></tr></thead>
+    <tbody>
+      <tr><td>Advent ferias</td><td>Repeat the Sunday; proper Ember Day Masses</td><td>New lectionary's Advent weekdays (the Isaiah course, then the 17–24 December Gospels); Ember days unchanged</td></tr>
+      <tr><td>Christmastide to the Holy Family</td><td>Octave days and feasts</td><td>Unchanged, plus 1 John on free days</td></tr>
+      <tr><td>Time after Epiphany</td><td>Repeat the Sunday</td><td>New lectionary, Ordinary Time weeks 1–5 (Year I or II), with Mark's Gospel in course</td></tr>
+      <tr><td>Septuagesima to Ash Wednesday</td><td>Repeat the Sunday</td><td>Continue the Ordinary Time course in violet</td></tr>
+      <tr><td>Lent and Passiontide</td><td>Proper readings every day</td><td>Unchanged; the old Lenten weekday lectionary is among the most ancient parts of the Roman Missal</td></tr>
+      <tr><td>Easter Octave and Pentecost Octave</td><td>Proper Masses each day</td><td>Unchanged</td></tr>
+      <tr><td>Paschaltide ferias</td><td>Repeat the Sunday</td><td>Acts in continuous course and John, from the new lectionary</td></tr>
+      <tr><td>Time after Pentecost</td><td>Repeat the Sunday; proper Ember Days in September</td><td>New lectionary Ordinary Time weeks, counted backward from the 24th Sunday after Pentecost; September Ember days unchanged</td></tr>
+      <tr><td>Third- and fourth-class saints</td><td>Proper or Common readings</td><td>Celebrant may keep the weekday course so the continuous reading is not broken</td></tr>
+    </tbody></table></div>
+
+  <div class="prose"><h2>Every addition, and where it comes from</h2>
+  <div class="legend"><span class="basis b-match">Same Gospel</span><span>the new lectionary pairs this reading with the same Gospel</span></div>
+  <div class="legend"><span class="basis b-parallel">Parallel</span><span>paired there with the synoptic parallel</span></div>
+  <div class="legend"><span class="basis b-chosen">Chosen</span><span>a pairing proposed here, from the new lectionary's readings</span></div>
+  <div class="legend"><span class="basis b-apostle">Apostle</span><span>an OT lesson already stands, so the New Testament reading is added</span></div>
+  <div class="legend"><span class="basis b-acts">Acts</span><span>Paschaltide reading from Acts</span></div></div>
+  <div class="tbl"><table id="hybridTable"><thead><tr><th>Day (traditional calendar)</th><th>Gospel</th><th>Added reading</th><th>Basis</th><th>Taken from</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<!-- ============================================================ CHANGES -->
+<section class="view" id="changes" role="tabpanel" aria-labelledby="tab-changes" hidden>
+  <div class="prose">
+    <p class="lede"><span class="reftag">Reference</span> The Sunday Epistles and Gospels are identical in the pre-1955 and 1962 missals. The differences lie in Holy Week, the vigils, the octaves and the rubrics that decide which readings are heard.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Day or rule</th><th>Pre-1955</th><th>1962</th></tr></thead>
+    <tbody>
+      <tr><td>Palm Sunday</td><td>Blessing of palms is a "dry Mass": lesson Exod 15:27–16:7, Gospel Matt 21:1–9. Passion Matt 26:1–27:66.</td><td>Blessing with Gospel Matt 21:1–9 only. Passion shortened to Matt 26:36–27:60.</td></tr>
+      <tr><td>Passions of Holy Week</td><td>Full Passions on Tuesday (Mark 14:1–15:46) and Wednesday (Luke 22:1–23:53).</td><td>Shortened (Mark 14:32–15:46; Luke 22:39–23:53).</td></tr>
+      <tr><td>Easter Vigil</td><td>Twelve prophecies, read on Holy Saturday morning.</td><td>Four prophecies (Gen 1, Exod 14, Isa 4, Deut 31), read at night.</td></tr>
+      <tr><td>Vigil of Pentecost</td><td>Six prophecies at the blessing of the font, then the Mass.</td><td>The Mass alone (Acts 19:1–8; John 14:15–21).</td></tr>
+      <tr><td>Vigils</td><td>Many vigils with proper readings, including Epiphany, the Immaculate Conception, All Saints and most apostles.</td><td>Those were suppressed in 1955. Christmas, the Ascension, Pentecost, the Assumption, St John the Baptist, Sts Peter and Paul and St Lawrence remain.</td></tr>
+      <tr><td>Octaves</td><td>Many octaves with octave-day Masses, among them Epiphany, the Ascension, Corpus Christi, the Sacred Heart, the Assumption, All Saints and the Immaculate Conception.</td><td>Only Christmas, Easter and Pentecost keep octaves.</td></tr>
+      <tr><td>Displaced Sundays</td><td>The Sunday Gospel is read as the Last Gospel when a feast takes the Sunday.</td><td>The proper Last Gospel was abolished in 1960; the displaced Sunday's Gospel is not heard.</td></tr>
+      <tr><td>Commemorations</td><td>Several commemorations allowed, each with its collects.</td><td>Limited to one in most cases. Affects prayers, not readings.</td></tr>
+    </tbody></table></div>
+  <p class="note">Weekday Passion citations are from the respective Holy Week books. On the first tab, the "Pre-1955 ≠ 1962" filter shows each day where the appointed readings differ.</p>
+</section>
+
+
+<!-- ============================================================ OFFICE -->
+<section class="view" id="office" role="tabpanel" aria-labelledby="tab-office" hidden>
+  <p class="lede"><span class="reftag">Reference · citations</span> The Divine Office in each tradition: how the psalms are distributed, which hours are kept, and how Scripture is read. Below the overview, the Sunday Scripture course of the Roman breviary is set against the Liturgy of the Hours for the year chosen on the Compare tab.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th>Office</th><th>Used by</th><th>Psalter</th><th>Hours</th><th>Scripture</th></tr></thead>
+    <tbody>
+      <tr><td><b>Liturgia Horarum</b> (1971; Latin 2nd ed. 1985)</td><td>Latin Church worldwide; with proper calendars and texts for most orders, including Dominicans and Franciscans</td><td>Four weeks. Pss 58, 83 and 109 and some cursing verses are omitted.</td><td>Office of Readings, Lauds, Daytime Prayer (one hour or Terce, Sext and None), Vespers, Compline</td><td>Office of Readings: a long biblical reading plus a patristic or saint's reading. One-year biblical cycle; the General Instruction also allows a two-year cycle.</td></tr>
+      <tr><td><b>Breviarium Romanum 1962</b></td><td>Communities using the 1962 books</td><td>One week (Pius X's 1911 arrangement); all 150 psalms</td><td>Matins (nine lessons on Sundays and feasts, three on ferias), Lauds, Prime, Terce, Sext, None, Vespers, Compline</td><td>First-nocturn lessons on a seasonal course. After the Pentecost series, Scripture runs by month from August to November: Wisdom books, then Job, Tobit, Judith and Esther, then Maccabees, then Ezekiel, Daniel and the Minor Prophets.</td></tr>
+      <tr><td><b>Pre-1955 Breviary</b> (<i>Divino Afflatu</i>)</td><td>Groups using the pre-1955 books</td><td>Same one-week psalter as 1962</td><td>Same hours, with more nine-lesson days (octaves, more feasts), the Preces and the Suffrage of the Saints</td><td>Same Scripture course. The "first Sunday" of a month is the Sunday nearest the 1st; in 1962 it is the first Sunday falling in the month. This shifts the August–November course by a week in some years.</td></tr>
+      <tr><td><b>Monastic Office</b> (Rule of St Benedict)</td><td>Benedictines, Cistercians and other monastic families</td><td>One week in the traditional Benedictine order. The 1977 <i>Thesaurus Liturgiae Horarum Monasticae</i> allows alternative distributions.</td><td>Vigils (twelve lessons on Sundays), Lauds, Prime, Terce, Sext, None, Vespers, Compline</td><td>Long Scripture lessons at Vigils, with a Gospel and Te Deum on Sundays</td></tr>
+      <tr><td><b>Liturgia delle Ore ambrosiana</b> (1983–85)</td><td>Archdiocese of Milan</td><td>Four weeks for the day hours (<i>Diurna Laus</i>, 1981)</td><td>Office of Readings, Lauds, Middle Hour, Vespers with the Lucernarium, Compline daily</td><td>Ambrosian Office of Readings</td></tr>
+      <tr><td><b>Divine Worship: Daily Office</b> (2021)</td><td>Personal Ordinariates (Commonwealth and North American editions)</td><td>Monthly: the psalms of each day of the month, as in the Book of Common Prayer (day 31 repeats day 30)</td><td>Mattins and Evensong; short forms of Prime and Compline; optional lesser hours</td><td>Lessons through the year at Mattins and Evensong. A two-year course for Sundays, Year I when most of the year falls in an odd-numbered year.</td></tr>
+      <tr><td><b>Byzantine Office</b> (Horologion, Octoechos, Menaion, Triodion, Pentecostarion)</td><td>The Byzantine Catholic Churches</td><td>Divided into 20 kathismata; the whole psalter every week, twice a week in Lent</td><td>Vespers, Compline, Midnight Office, Orthros (Matins), First, Third, Sixth and Ninth Hours</td><td>Old Testament readings (paremias) at Vespers of feasts; an eleven-week cycle of Resurrection Gospels at Sunday Orthros</td></tr>
+      <tr><td><b>Shehimo / Prayer of the Faithful</b></td><td>Syriac Catholic, Syro-Malankara and Maronite Churches</td><td>Selected psalms within each hour</td><td>Seven hours, among them Ramsho (evening), Lilyo (night), Sapro (morning) and the Third, Sixth and Ninth Hours</td><td>Few Scripture lessons; the hours are mostly hymnody</td></tr>
+      <tr><td><b>Hudra and Kaškul</b></td><td>Chaldean and Syro-Malabar Churches</td><td>The psalter is divided into weekly sections at the night office</td><td>Ramsha (evening), Lelya (night), Sapra (morning), with the minor hours in the reformed Syro-Malabar office</td><td>Seasonal propers from the Hudra for Sundays and feasts</td></tr>
+      <tr><td><b>Zhamagirk</b></td><td>Armenian Catholic Church</td><td>Psalms distributed among the hours</td><td>Nine hours: Night, Morning, Sunrise, Third, Sixth, Ninth, Evening, Peace, Rest</td><td>Lessons on feasts and fasts</td></tr>
+      <tr><td><b>Agpeya</b></td><td>Coptic Catholic Church</td><td>Twelve psalms in each hour, the same every day</td><td>Prime, Terce, Sext, None, Vespers, Compline, Midnight (three watches), and the Veil hour</td><td>A Gospel passage in every hour</td></tr>
+      <tr><td><b>Sa'atat</b> (Horologion) and Psalter of David</td><td>Ethiopian and Eritrean Catholic Churches</td><td>Psalter with the biblical canticles and Song of Songs</td><td>Canonical hours of the Ge'ez tradition</td><td>Lessons on feasts</td></tr>
+    </tbody></table></div>
+  <p class="note">Eastern rows are summaries; books and practice vary between churches and communities.</p>
+
+  <div class="prose"><h2>Sunday Scripture course: breviary and Liturgy of the Hours</h2>
+  <p id="officeNote">The first-nocturn lessons of Sunday Matins against the Sunday Office of Readings, for the year chosen on the Compare tab.</p></div>
+  <div class="office-grid head" aria-hidden="true"><div>Date</div><div>Pre-1955 Matins</div><div>1962 Matins</div><div id="lohHead">Liturgia Horarum</div></div>
+  <div id="officeRows"></div>
+</section>
+
+<!-- ============================================================ SOURCES -->
+<section class="view" id="sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
+  <div class="prose">
+    <p class="lede">What is printed and what is cited. Texts in the public domain or under an open licence are printed in full: Scripture in the Douay-Rheims, King James and Coverdale versions, the traditional Missal and Breviary in Latin and English, and the 1662 Book of Common Prayer. Texts still in copyright (the current Missal and Breviary translations, Divine Worship, the Byzantine service books) are cited, never reproduced; you can fill them in from your own book with <i>Add text</i>, which keeps them in your browser only. The comparison tabs give citations. The reading data was compiled programmatically and spot-checked.</p>
+    <h3>Text coverage by rite</h3>
+    <table class="covtab"><thead><tr><th>Rite</th><th>Mass</th><th>Office</th></tr></thead><tbody>
+      <tr><td>1962 and pre-1955 (and the hybrid)</td><td><span class="cov cov-full">Complete text</span></td><td><span class="cov cov-full">Complete text</span></td></tr>
+      <tr><td>Monastic and Dominican</td><td>n/a</td><td><span class="cov cov-full">Complete text</span></td></tr>
+      <tr><td>Ordinariate</td><td><span class="cov cov-guide">Guided text</span> 1662 texts, Canon and propers; Divine Worship's wording differs in places</td><td><span class="cov cov-full">Complete text</span> 1662 Mattins, Evensong, Compline; Prime in outline</td></tr>
+      <tr><td>Novus Ordo / Liturgy of the Hours</td><td><span class="cov cov-guide">Guided text</span> readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal</td><td><span class="cov cov-guide">Guided text</span> psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary</td></tr>
+      <tr><td>Byzantine</td><td><span class="cov cov-order">Order and readings</span> prayers from your service book</td><td><span class="cov cov-guide">Guided text</span> psalms and fixed prayers; hymns of the day from your books</td></tr>
+    </tbody></table>
+    <h3>Reading data</h3>
+    <ul class="src">
+      <li>Pre-1955 and 1962: <a href="https://github.com/DivinumOfficium/divinum-officium" target="_blank" rel="noopener">Divinum Officium project</a>, missal files under its Divino Afflatu and 1960 rubrics, including the pre- and post-1955 Holy Week books.</li>
+      <li>Post-conciliar Sundays and feasts: Felix Just, <a href="https://1981.catholic-resources.org/Lectionary/Index-Sundays.htm" target="_blank" rel="noopener">The Catholic Lectionary Website</a> (1998 USA Lectionary for Mass), via Stefan Avey's <a href="https://github.com/stefanavey/stefanavey.github.io/tree/master/_posts/catholic/plotBible" target="_blank" rel="noopener">scraped tables</a>. Solemnities checked against Just's <a href="https://1981.catholic-resources.org/Lectionary/1998USL-Solemnities.htm" target="_blank" rel="noopener">solemnities table</a>. Verse numbering follows the NAB.</li>
+    </ul>
+    <h3>Lectionary profiles and status</h3>
+    <ul class="src">
+      <li><a href="https://en.wikipedia.org/wiki/Ordo_Lectionum_Missae" target="_blank" rel="noopener">Ordo Lectionum Missae</a> (Wikipedia)</li>
+      <li><a href="https://www.ncronline.org/vatican/vatican-liturgy-chief-says-pope-leo-will-not-overturn-latin-mass-restrictions" target="_blank" rel="noopener">NCR: Vatican liturgy chief says Pope Leo will not overturn Latin Mass restrictions</a> (30 July 2026)</li>
+      <li><a href="https://www.americamagazine.org/news/2026/03/26/pope-leo-latin-mass-french-bishops-inclusion/" target="_blank" rel="noopener">America: Pope Leo calls for "generous inclusion"</a> (26 March 2026)</li>
+      <li><a href="https://www.chiesadimilano.it/servizioperlapastoraleliturgica/files/2017/05/01-relazione-magnoli__1.42967.pdf" target="_blank" rel="noopener">Diocese of Milan: the Ambrosian Lectionary</a> and <a href="https://newliturgicalmovement.org/2008/11/new-ambrosian-lectionary-and.html" target="_blank" rel="noopener">NLM on its 2008 introduction</a>; <a href="https://www.milanofree.it/tradizioni/storia/il-rito-ambrosiano-storia-origini-particolarita.html" target="_blank" rel="noopener">Ambrosian Advent and Lent</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Liber_Comicus" target="_blank" rel="noopener">Liber Comicus</a> (Wikipedia)</li>
+      <li><a href="https://praytellblog.com/index.php/2012/03/15/ordinariate-rsv-bible-calendar-with-gesima-days/" target="_blank" rel="noopener">Pray Tell: Ordinariate RSV and calendar</a></li>
+      <li><a href="https://olol.org.au/the-maronite-tradition/maronite-catholic-lectionary" target="_blank" rel="noopener">Our Lady of Lebanon: the Maronite Lectionary</a></li>
+      <li><a href="https://fsspx.news/en/news/learn-more-about-church-syro-malabar-rite-3-54468" target="_blank" rel="noopener">The Syro-Malabar liturgical year</a></li>
+      <li><a href="https://www.newliturgicalmovement.org/2026/02/on-new-revisions-to-carthusian-liturgy.html" target="_blank" rel="noopener">NLM: new revisions to the Carthusian liturgy</a> (Feb 2026)</li>
+      <li>Byzantine daily readings: the cycle logic (Lukan jump, floating Sundays, Theophany step-back) is a port of <a href="https://github.com/brianglass/orthocal" target="_blank" rel="noopener">orthocal</a> by Brian Glass (MIT licence) with its pericope tables, anchored to the Gregorian Pascha kept by Byzantine Catholics in North America and filtered to their calendar of saints.</li>
+      <li>Byzantine Sunday readings: <a href="https://byzcath.org/index.php/bible/byzantine-lectionary" target="_blank" rel="noopener">Lectionary of the Byzantine Church</a> (byzcath.org). Four obvious typos there were corrected to the standard citations. Gospel series: <a href="https://en.orthodoxwiki.org/Lectionary" target="_blank" rel="noopener">OrthodoxWiki, Lectionary</a>.</li>
+      <li>Breviary lessons: <a href="https://github.com/DivinumOfficium/divinum-officium" target="_blank" rel="noopener">Divinum Officium</a> breviary files, both rubrical forms. Liturgy of the Hours: Felix Just, <a href="https://church.catholic-resources.org/LoH/OfficeOfReadings-Biblical.html" target="_blank" rel="noopener">Office of Readings biblical index</a>.</li>
+      <li><a href="https://eastbourneordinariate.org.uk/divine-worship-daily-office-a-short-guide" target="_blank" rel="noopener">Divine Worship: Daily Office, a short guide</a>; <a href="https://chiesadimilano.it/servizioperlapastoraleliturgica/wp-content/uploads/sites/31/2018/12/02-relazione-valli.pdf" target="_blank" rel="noopener">Diocese of Milan on the Ambrosian Office</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Catholic_order_liturgical_rite" target="_blank" rel="noopener">Catholic order liturgical rites</a> (Wikipedia)</li>
+      <li>Traditional Breviary hours (1962, pre-1955, Monastic, Dominican), full Latin and English text and Gregorian chant: generated with the <a href="https://github.com/DivinumOfficium/divinum-officium" target="_blank" rel="noopener">Divinum Officium</a> program from its own data (MIT licence), one run per day and hour. Chant notation is not available there for the Dominican form.</li>
+      <li>Ordinariate Mattins, Evensong and Compline: the Coverdale psalter, the orders of Morning and Evening Prayer and the Sunday and holy-day collects of the 1662 <i>Book of Common Prayer</i>, taken from the Penguin Classics edition (2012). The 1662 text is out of copyright, though the Crown holds perpetual rights in it in the United Kingdom. The edition's introduction and notes are not used. The prayers for the Sovereign and the Royal Family are left out.</li>
+      <li>Liturgy of the Hours psalmody: the four-week psalter after Felix Just, <a href="https://catholic-resources.org/LoH/Psalter-Index.html" target="_blank" rel="noopener">Psalter index</a>, with the psalms and canticles in the Douay-Rheims. Byzantine hours: the psalms in the Douay-Rheims (Septuagint numbering), the Phos hilaron in John Keble's translation (1834), and the Trisagion prayers, Creed, Great Doxology and other fixed prayers in traditional public-domain English.</li>
+      <li>Novus Ordo Ordinary: the Latin texts that are ancient (Kyrie, Gloria, Credo, Sanctus, Pater noster, Agnus Dei and the dialogues) with a traditional public-domain English beside them. Ordinariate propers: the 1662 collect of the Sunday, and the introit, offertory, secret, preface and postcommunion of the Roman Missal (1962) in English for the same day.</li>
+      <li><b>Your texts.</b> Texts still in copyright (the current Missal and Breviary translations, Divine Worship, Byzantine Daily Worship, the newer Latin prayers) are named, not printed. Press <i>Add text</i> beside any of them to type or paste the text from your own book: it is kept in your browser only and shown in its place from then on. Export and Import move your collection to another device.</li>
+      <li>Order of the Byzantine Liturgies (St John Chrysostom, St Basil, Presanctified) checked against J. Raya and J. de Vinck, <i>Byzantine Daily Worship</i> (Alleluia Press, 1969). The book is in copyright, so none of its text is reproduced here.</li>
+    </ul>
+    <h3>Known limits</h3>
+    <ul class="src">
+      <li>The Byzantine column is tabulated. The other Eastern lectionaries are described only, because their years don't align with Roman Sundays.</li>
+      <li>Byzantine back-fill weeks before the Triodion, and the months when the breviary skips a week of its monthly course, are approximated; a printed ordo decides.</li>
+      <li>In Compare the year, every column applies feast precedence for the major fixed feasts (transfers, feasts replacing Sundays, Byzantine feasts kept with the Sunday). The traditional columns keep a displaced Sunday as its own row, marked as commemorated; the Pray today guide applies the full 1962 and pre-1955 rules to every day.</li>
+      <li>The Novus Ordo guide follows the General Roman Calendar with the proper calendar of the United States, including obligatory and optional memorials; other countries' calendars differ.</li>
+      <li>The daily guide covers 30 November 2025 to 30 November 2030.</li>
+      <li>The Liturgy of the Hours psalmody follows the four-week psalter; solemnities, feasts and the Easter Octave have proper psalms, which are not substituted. The Douay-Rheims wording differs from the Grail and Abbey Psalms of the official books.</li>
+      <li>The Byzantine Divine Liturgy itself is given as an order with the readings: its full text needs a public-domain source (such as Hapgood's <i>Service Book</i>, 1906) that has not yet been added.</li>
+      <li>Divine Worship: Daily Office adapts the 1662 orders in places (the suffrages, the prayers after the collects, some proper collects); the 1662 text is given, so follow the Divine Worship book where it differs. Its lessons are cued, not printed.</li>
+      <li>The Hybrid tab describes the weekday plan; the day-by-day hybrid weekday readings are in the Pray today guide.</li>
+      <li>Postures follow common United States customs and vary by parish and country. Office hour lengths are counted from the full text where it is given and estimated from the order of each hour elsewhere.</li>
+      <li>Session lengths are estimates: spoken text at about 140 words a minute, chant and hymns from their notation, fixed allowances for silent prayers and Communion. Timed (shortened) sessions are for practice, rehearsal and role-play; they are not a liturgical form.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>Lectionarium · public-domain texts in full, copyrighted texts cited · consult the approved liturgical books for celebration.</footer>
+</div>
