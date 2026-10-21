@@ -3389,9 +3389,9 @@ async function doTable(base, man, kind, ids){
 }
 async function doHour(R,H,iso){
   const key=DO_KEY[R], hour=DO_HOUR[H]; if(!key||!hour) return null;
-  const base=`office/${key}`;
+  const base=`breviary/${key}`;
   let man, month;
-  try{ man=await doJSON(`${base}/manifest.json`); if(!man.months.includes(iso.slice(0,7))) return null; month=await doJSON(`${base}/d-${iso.slice(0,7)}.json`); }catch(e){ return null; }
+  try{ man=await doJSON(`${base}/manifest.json`); if(!(man.years||[]).includes(iso.slice(0,4))) return null; month=await doJSON(`${base}/y-${iso.slice(0,4)}.json`); }catch(e){ return null; }
   const day=month[iso]; if(!day||!day[hour]) return null;
   const variants=[day[hour], day["c:"+hour]].filter(Boolean);
   const rowIds=[...new Set(variants.flatMap(v=>v[1]))];
