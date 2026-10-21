@@ -20,6 +20,7 @@
   - The traditional Breviary in Latin and English.
   - The psalms and canticles of the Liturgy of the Hours (four-week psalter).
   - The psalms and fixed prayers of the Byzantine hours.
+  - The Divine Liturgies of St John Chrysostom and St Basil (Hapgood, 1906).
   - The Ordinariate Mass propers.
   - The Novus Ordo Ordinary in Latin, with traditional English.
   - Mattins and Evensong from the 1662 Book of Common Prayer, with the Coverdale psalter.
@@ -37,7 +38,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Monastic, Dominican | n/a | **Complete text** |
 | Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline) |
 | Novus Ordo / Liturgy of the Hours | *Guided*: readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal | *Guided*: psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary |
-| Byzantine | *Order and readings*: prayers from your service book | *Guided*: psalms and fixed prayers; hymns of the day from your books |
+| Byzantine | *Guided*: Liturgies of St John Chrysostom and St Basil in full (Hapgood, 1906); troparia of the day and the Presanctified prayers from your books | *Guided*: psalms and fixed prayers; hymns of the day from your books |
 
 The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 
@@ -124,8 +125,9 @@ New Anglican, Lutheran and Reformed service texts (Part C of the feature request
 follow release of the launcher and reviewed directory. They are not implemented
 in this change. The attached *Divine Liturgies Public Domain Companion* identifies
 Hapgood (1906) as its historical source, but its own introduction says the
-anthology is not complete. Byzantine builders therefore retain their honest
-**Order and readings** coverage; no modern copyrighted translation has been
+anthology is not complete. The Liturgies of St John Chrysostom and St Basil are
+therefore transcribed directly from the 1906 page images (`tools/texts/hapgood-liturgy.txt`,
+compiled by `tools/byz_texts.py`); no modern copyrighted translation has been
 imported. Monastic chant is extended through 30 November 2030. The pack preserves every
 existing text and chant cell for all 1,827 supported days. All seven chant-mode
 hours are present; the source has no notation for 75 Triduum little-hour records,

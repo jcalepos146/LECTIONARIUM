@@ -60,7 +60,7 @@ function coverage(type,rite,hour){
     if(/^(m|p|h)$/.test(rite)) return ["full","The complete historical text is available in Latin and English. Lay study keeps priest-only passages as references and veils the words of consecration."];
     if(rite==="o") return ["guide","The Prayer Book texts, the Canon and the propers of the day are printed. Divine Worship's own wording differs in places: follow your Missal there."];
     if(rite==="n") return ["guide","The readings and the Latin Ordinary, with a traditional English beside it, are printed. The collects, preface, Eucharistic Prayer and the current English wording come from your missal: press Add text to fill them in."];
-    if(rite==="b") return ["order","The order, postures and readings are given. The prayers of the Liturgy come from your service book: press Add text to fill them in."];
+    if(rite==="b") return ["guide","The Liturgies of St John Chrysostom and St Basil are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings. The troparia and kontakia of the day, and the Presanctified Liturgy's prayers, come from your service books."];
   } else {
     if(/^(br62|br55|mon|op)$/.test(rite)) return ["full","Every part of the hour is printed, in Latin and English."];
     if(rite==="dwdo") return hour==="prime"?["guide","Prime is given in outline; take its texts from Divine Worship."]:["full","The 1662 Prayer Book text is printed in full, with the Coverdale psalms. Divine Worship adapts it in places."];
