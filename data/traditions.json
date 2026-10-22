@@ -1042,7 +1042,7 @@
     "family": "catholic",
     "parent": "east-syriac-catholic",
     "kind": "church",
-    "self_description": "Chaldean Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "self_description": "Chaldean Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here. The 1893 text is the Church of the East's; Chaldean books add the Words of Institution and change the commemorations.",
     "also_called": [],
     "regions": [
       "Iraq"
@@ -1050,14 +1050,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
+    "books": [
+      {
+        "title": "The Liturgy of the Holy Apostles Adai and Mari",
+        "year": 1893,
+        "status": "public-domain",
+        "source": "https://archive.org/details/LiturgyAdai",
+        "rights_note": "Translated for the Archbishop of Canterbury's Assyrian Mission, London 1893; published before 1929, public domain."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "adai",
+        "hour": null,
+        "label": "Holy Qurbana (Adai and Mari)"
+      }
+    ],
     "pd_texts_available": [
-      "Historical editions require source and edition verification before use."
+      "The Liturgy of Adai and Mari in the Assyrian Mission's English (1893): imported from the Internet Archive scan (LiturgyAdai), proofread by hand against the page images."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-assyrian-church-of-the-east/the-chaldean-catholic-church/",
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://archive.org/details/LiturgyAdai"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -2445,7 +2461,7 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Assyrian Church of the East preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "Assyrian Church of the East preserves its own liturgical tradition. The Liturgy of Adai and Mari is given here in a public-domain English translation of 1893; consult the Church's authorized books and calendar.",
     "also_called": [
       "East Syriac"
     ],
@@ -2455,12 +2471,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Liturgy of the Holy Apostles Adai and Mari",
+        "year": 1893,
+        "status": "public-domain",
+        "source": "https://archive.org/details/LiturgyAdai",
+        "rights_note": "Translated for the Archbishop of Canterbury's Assyrian Mission, London 1893; published before 1929, public domain."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "adai",
+        "hour": null,
+        "label": "Holy Qurbana (Adai and Mari)"
+      }
+    ],
+    "pd_texts_available": [
+      "The Liturgy of Adai and Mari in the Assyrian Mission's English (1893): imported from the Internet Archive scan (LiturgyAdai), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/",
-      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental",
+      "https://archive.org/details/LiturgyAdai"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -2470,7 +2504,7 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Ancient Church of the East preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "Ancient Church of the East preserves its own liturgical tradition. The Liturgy of Adai and Mari is given here in a public-domain English translation of 1893; consult the Church's authorized books and calendar.",
     "also_called": [],
     "regions": [
       "Iraq"
@@ -2478,12 +2512,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Liturgy of the Holy Apostles Adai and Mari",
+        "year": 1893,
+        "status": "public-domain",
+        "source": "https://archive.org/details/LiturgyAdai",
+        "rights_note": "Translated for the Archbishop of Canterbury's Assyrian Mission, London 1893; published before 1929, public domain."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "adai",
+        "hour": null,
+        "label": "Holy Qurbana (Adai and Mari)"
+      }
+    ],
+    "pd_texts_available": [
+      "The Liturgy of Adai and Mari in the Assyrian Mission's English (1893): imported from the Internet Archive scan (LiturgyAdai), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/",
-      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental",
+      "https://archive.org/details/LiturgyAdai"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
