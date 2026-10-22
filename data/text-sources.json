@@ -1230,9 +1230,8 @@
       ],
       "rite": "new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders",
       "service": "Daily Office and Holy Communion",
-      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); 1662 Office inside the Ordinariate",
+      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate",
       "missing": [
-        "1662 Holy Communion",
         "1928 lectionary tables",
         "1979 Daily Office Lectionary and the Revised Common Lectionary (the RCL is copyrighted)",
         "other national books"
@@ -1300,6 +1299,16 @@
           "lang": "en",
           "fills": [
             "Holy Communion and the rest of the book"
+          ],
+          "rights": "crown-uk"
+        },
+        {
+          "url": "https://www.eskimo.com/~lhowell/bcp1662/communion/index.html",
+          "title": "England 1662, HTML transcription (Lynda M. Howell)",
+          "year": 1662,
+          "lang": "en",
+          "fills": [
+            "Holy Communion; Collects, Epistles and Gospels (imported: tools/bcp1662.py)"
           ],
           "rights": "crown-uk"
         },

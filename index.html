@@ -798,6 +798,7 @@ body.san-open{overflow:hidden}
 <li><a href="https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship/copyright" target="_blank" rel="noopener">https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/common-worship/copyright</a></li>
 <li><a href="https://www.elca.org/" target="_blank" rel="noopener">https://www.elca.org/</a></li>
 <li><a href="https://www.episcopalchurch.org/what-we-believe/book-common-prayer/" target="_blank" rel="noopener">https://www.episcopalchurch.org/what-we-believe/book-common-prayer/</a></li>
+<li><a href="https://www.eskimo.com/~lhowell/bcp1662/communion/index.html" target="_blank" rel="noopener">https://www.eskimo.com/~lhowell/bcp1662/communion/index.html</a></li>
 <li><a href="https://www.frcna.org/" target="_blank" rel="noopener">https://www.frcna.org/</a></li>
 <li><a href="https://www.gergeminfo.nl/" target="_blank" rel="noopener">https://www.gergeminfo.nl/</a></li>
 <li><a href="https://www.goarch.org/" target="_blank" rel="noopener">https://www.goarch.org/</a></li>
@@ -1977,34 +1978,55 @@ function pbItem(it){
 }
 const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=Math.round((toDate(iso)-E)/DAY);
   if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
-async function buildPB(ctx,opts){
-  const B=await J("data/bcp1928.json"), iso=ctx.iso, day=ctx.day||{};
-  const pr=day.o&&day.o.bcp?B.propers[day.o.bcp]:null, set=pr?pr.sets[0]:null;
+/* Holy Week has no o.bcp in days.json: name its days by their distance from Easter, as the 1662 book heads them. */
+const PB_HOLYWEEK={"-6":"MONDAY BEFORE EASTER","-5":"TUESDAY BEFORE EASTER","-4":"WEDNESDAY BEFORE EASTER","-3":"THURSDAY BEFORE EASTER","-2":"GOOD FRIDAY","-1":"EASTER EVEN"};
+function pbPropers(B,iso,day){
+  const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
+  const k=PB_HOLYWEEK[off]&&B.propers[PB_HOLYWEEK[off]]?PB_HOLYWEEK[off]:(day.o&&day.o.bcp);
+  return k&&B.propers[k]?B.propers[k]:null;
+}
+/* The two English-language Prayer Book orders share one builder. Each book differs in where the collect, the
+   epistle and the gospel go into its Order, which steps a shortened session leaves out, and which are not said at
+   the celebration itself (the 1662 exhortations giving warning of a Communion). */
+const PB_BOOKS={
+  bcp28:{file:"data/bcp1928.json", decalogue:"The Decalogue", decalogueAbr:"the Decalogue (the Summary of the Law and the Kyrie are said instead)",
+    collectAt:/Collect of the Day/, epistleAt:null, gospelAt:/Glory be to thee, O Lord/, notSaid:[], prefaceHead:p=>p},
+  bcp62:{file:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments",
+    collectAt:/^Then shall be said the Collect of the Day/, epistleAt:/^The Epistle \(or,/, gospelAt:/^The holy Gospel is written/,
+    notSaid:["Exhortations","Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p}
+};
+async function buildPB(ctx,opts,book){
+  const C=PB_BOOKS[book||"bcp28"], B=await J(C.file), iso=ctx.iso, day=ctx.day||{};
+  const pr=pbPropers(B,iso,day), set=pr?pr.sets[0]:null, same=pr&&pr.same?B.propers[pr.same]:null;
+  const collect=set&&set.collect.length?set.collect:(same?same.sets[0].collect:[]);
   const AB=opts.abridge||0, out=[];
   const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
-  const pref=PB_PREFACE(season(iso,day),iso);
+  const pref=PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
+  const at=(its,re)=>re?its.findIndex(x=>re.test(x[1])):-1;
   for(const st of B.hc){
     let html="", secs=spoken(st.items)/2.4;
-    if(st.t==="The Decalogue"&&AB>=1){ out.push(sec(st.t,0,abr("the Decalogue (the Summary of the Law and the Kyrie are said instead)"))); continue; }
+    if(st.t===C.decalogue&&AB>=1){ out.push(sec(st.t,0,abr(C.decalogueAbr))); continue; }
+    if(C.notSaid.includes(st.t)){ out.push(sec(st.t,0,`<details class="canon"><summary>Not said at the celebration itself: shown for reference</summary><div class="txt one">${st.items.map(pbItem).join("")}</div></details>`)); continue; }
     if(st.t==="Proper Prefaces"){
-      const its=st.items, i0=its.findIndex(x=>x[0]==="h"&&x[1].replace(/\.$/,"").toLowerCase()===pref.toLowerCase());
+      const its=st.items, i0=pref?its.findIndex(x=>x[0]==="h"&&x[1].replace(/[.,]$/,"").toLowerCase().includes(prefH)):-1;
       let today="";
-      if(i0>=0){ let j=i0+1; const pick=[]; while(j<its.length&&its[j][0]!=="h"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(pref)}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
+      if(i0>=0){ let j=i0+1; const pick=[]; while(j<its.length&&its[j][0]!=="h"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(its[i0][1].replace(/[.,]$/,""))}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
       else { secs=0; today=`<p class="note">No proper preface today: the Sanctus follows the common preface directly.</p>`; }
       html=today+`<details class="canon"><summary>All the proper prefaces</summary>${its.map(pbItem).join("")}</details>`;
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
     }
     html=st.items.map(pbItem).join("");
     if(st.slot==="collect"){
-      const its=st.items, k=its.findIndex(x=>/Collect of the Day/.test(x[1]));
-      const coll=set&&set.collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}</p>`+set.collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
-      html=its.slice(0,k+1).map(pbItem).join("")+coll+(AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec"))+its.slice(k+1).map(pbItem).join("");
-      secs+=(set?set.collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
+      const its=st.items, k=at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
+      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
+      const ep=AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec");
+      html=its.slice(0,k+1).map(pbItem).join("")+coll+its.slice(k+1,ke+1).map(pbItem).join("")+ep+its.slice(ke+1).map(pbItem).join("");
+      secs+=(collect.length?collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
     }
     if(st.slot==="gospel"){
       const g=set&&(set.gospel||(pr.sets.find(x=>x.gospel)||{}).gospel);
-      const its=st.items, k=Math.max(0,its.findIndex(x=>/Glory be to thee, O Lord/.test(x[1])));
+      const its=st.items, k=Math.max(0,at(its,C.gospelAt));
       html=its.slice(0,k+1).map(pbItem).join("")+reading("Gospel",g,"cel")+its.slice(k+1).map(pbItem).join("");
       secs+=g?g.text.join(" ").split(/\s+/).length/2.6:120;
       if(pr&&pr.sets.length>1) html+=`<p class="note">This day has a second set of collect, epistle and gospel (for an early celebration) in the Prayer Book.</p>`;
@@ -2015,6 +2037,7 @@ async function buildPB(ctx,opts){
   }
   return out;
 }
+window.LectPB={propers:pbPropers};
 
 /* ---------------------------------------------------------------- 1979 Prayer Book (USA)
    data/bcp1979.json (tools/bcp1979.py). pb79Day(iso, collects) names the day's collect by the 1979 calendar. */
@@ -2467,7 +2490,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp79", byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp62"||rite==="bcp79", byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -2511,8 +2534,8 @@ function ladder(rite){
   if(rite==="bcp79") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["Prayers of the People: Form IV; Eucharistic Prayer A", o=>{ o.pop79="IV"; if(String(o.p79||"II-A").startsWith("II")) o.p79="II-A"; }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
-  if(rite==="bcp28") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
-    ["The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
+  if(rite==="bcp28"||rite==="bcp62") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    [rite==="bcp62"?"The Ten Commandments left out":"The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
     ["The Epistle left out", o=>{ o.abridge=3; },"ab"]];
   if(ORDO_ONLY[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
@@ -2630,7 +2653,7 @@ async function render(el, ctx){
     if(rite==="o") return buildOrd(ctx,o);
     if(rite==="b") return buildByz(ctx,o);
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
-    if(rite==="bcp28") return buildPB(ctx,o);
+    if(rite==="bcp28"||rite==="bcp62") return buildPB(ctx,o,rite);
     if(rite==="bcp79") return buildPB79(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";
@@ -3529,6 +3552,7 @@ const MASS_RITES=[
   {id:"d",name:"Dominican Mass",d:"Ordo Praedicatorum · the Ordinary in Latin and English",tr:"dr",ord:1},
   {id:"a",name:"Ambrosian Mass",d:"Rite of Milan · the Ordinary and Canon in Latin and English",tr:"dr",ord:1},
   {id:"z",name:"Mozarabic Mass",d:"Old Spanish rite · the Ordinary in English",tr:"dr",ord:1},
+  {id:"bcp62",name:"Holy Communion (1662 Prayer Book)",d:"Church of England · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
   {id:"bcp28",name:"Holy Communion (1928 Prayer Book)",d:"Episcopal Church (USA) · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
   {id:"bcp79",name:"Holy Eucharist (1979 Prayer Book)",d:"Episcopal Church · Rites One and Two, Prayers A to D, with the collect of the day",tr:"kj",ord:1},
 ];
@@ -3587,6 +3611,7 @@ function coverage(type,rite,hour){
     if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
     if(rite==="bcp79") return ["guide","The 1979 Holy Eucharist is printed in full (Rite One or Two, any of Eucharistic Prayers I, A, B, C or D, and the Prayers of the People), with the collect and proper preface of the day. Take the lessons from the Revised Common Lectionary, which is not reproduced."];
+    if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
@@ -4003,7 +4028,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp79:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp79:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -4020,6 +4045,11 @@ async function renderSession(){
   else if(S.type==="mass"&&S.rite==="bcp79"){
     const B=await fetch("data/bcp1979.json").then(r=>r.json()), D=window.LectPB79?window.LectPB79.day(iso,B.collects.c):null;
     body=`<h2 class="dayname">${esc(D?D.title:"")}</h2><p class="daysub">The Book of Common Prayer (1979)${D&&D.title!==D.season?` · ${esc(D.season)}`:""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (Episcopal Church, 1979), which is not under copyright, as presented by The Online Book of Common Prayer (bcponline.org). The lessons come from the Revised Common Lectionary, which is not reproduced here.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="bcp62"){
+    const B=await fetch("data/bcp1662.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day):(day.o&&day.o.bcp&&B.propers[day.o.bcp]);
+    const wk=pr&&toDate(iso).getUTCDay()&&!/BEFORE EASTER|FRIDAY|EVEN|WEEK|DAY$/i.test(pr.t.toUpperCase())&&/SUNDAY/i.test(pr.t);
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1662)${wk?" · the Sunday's collect, epistle and gospel serve the week":""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (1662), as transcribed by Lynda M. Howell (eskimo.com/~lhowell/bcp1662), with the 1662 wording of the opening rubrics restored from her notes on later changes. The epistles and gospels are the Prayer Book's own King James text. Within the United Kingdom the Prayer Book is Crown property, administered by the King's Printer.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="bcp28"){
     const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];

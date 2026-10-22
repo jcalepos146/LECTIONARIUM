@@ -38,7 +38,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 13 | [west-syriac-catholic](#west-syriac-catholic) | none | 4 | 0 | Shehimo in public-domain English: not located |
 | 14 | [east-syriac-catholic](#east-syriac-catholic) | none | 5 | 0 | Syro-Malabar Raza (1986) and current Chaldean books: permission |
 | 15 | [armenian-catholic](#armenian-catholic) | none | 3 | 0 | Armenian Book of Hours in public-domain English: not located |
-| 16 | [anglican-prayer-books](#anglican-prayer-books) | US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); 1662 Office inside the Ordinariate | 20 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
+| 16 | [anglican-prayer-books](#anglican-prayer-books) | US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate | 21 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
 | 17 | [anglo-catholic-missals](#anglo-catholic-missals) | none | 1 | 0 | English Missal 1912 first edition: not located on the Internet Archive |
 | 18 | [anglican-music-and-psalter](#anglican-music-and-psalter) | partial (hymns.json) | 4 | 0 | The Hymnal 1940 and 1982: Church Publishing, in copyright |
 | 19 | [anglican-current-books](#anglican-current-books) | none | 0 | 4 | Church of Ireland 2004: its site refused automated access; check by hand; Scottish Episcopal Church current liturgies: download page not located; written permission from ACNA, Canada, New Zealand and Wales for an app |
@@ -327,9 +327,9 @@ Blocked: Armenian Book of Hours in public-domain English: not located.
 
 ### 16. anglican-prayer-books
 
-Catalog: `anglican-1549-england`, `anglican-1552-england`, `anglican-1559-england`, `anglican-1604-england`, `anglican-1662-england`, `anglican-1928-england`, `anglican-1637-scotland`, `anglican-1764-scotland`, `anglican-1929-scotland`, `anglican-1789-us`, `anglican-1892-us`, `anglican-1928-us`, `anglican-1979-us`, `anglican-1918-canada`, `anglican-1878-ireland`, `anglican-1926-ireland` · rite `new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders` · Daily Office and Holy Communion · now **US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); 1662 Office inside the Ordinariate**
+Catalog: `anglican-1549-england`, `anglican-1552-england`, `anglican-1559-england`, `anglican-1604-england`, `anglican-1662-england`, `anglican-1928-england`, `anglican-1637-scotland`, `anglican-1764-scotland`, `anglican-1929-scotland`, `anglican-1789-us`, `anglican-1892-us`, `anglican-1928-us`, `anglican-1979-us`, `anglican-1918-canada`, `anglican-1878-ireland`, `anglican-1926-ireland` · rite `new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders` · Daily Office and Holy Communion · now **US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate**
 
-Missing: 1662 Holy Communion; 1928 lectionary tables; 1979 Daily Office Lectionary and the Revised Common Lectionary (the RCL is copyrighted); other national books.
+Missing: 1928 lectionary tables; 1979 Daily Office Lectionary and the Revised Common Lectionary (the RCL is copyrighted); other national books.
 
 The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.
 
@@ -341,6 +341,7 @@ The Society of Archbishop Justus has typed transcriptions of almost every histor
 | USA 1892 ([link](https://justus.anglican.org/resources/bcp/1892/BCP_1892.htm)) | 1892 | en | | complete book | pd |
 | USA 1789 ([link](https://justus.anglican.org/resources/bcp/1789/BCP_1789.htm)) | 1789 | en | | complete book | pd |
 | England 1662 ([link](https://justus.anglican.org/resources/bcp/1662/1662.html)) | 1662 | en | | Holy Communion and the rest of the book | crown-uk |
+| England 1662, HTML transcription (Lynda M. Howell) ([link](https://www.eskimo.com/~lhowell/bcp1662/communion/index.html)) | 1662 | en | | Holy Communion; Collects, Epistles and Gospels (imported: tools/bcp1662.py) | crown-uk |
 | England 1928 (proposed) ([link](https://justus.anglican.org/resources/bcp/CofE1928/CofE1928.htm)) | 1928 | en | | complete book | pd |
 | England 1559 ([link](https://justus.anglican.org/resources/bcp/1559/BCP_1559.htm)) | 1559 | en | | complete book | pd |
 | England 1552 ([link](https://justus.anglican.org/resources/bcp/1552/BCP_1552.htm)) | 1552 | en | | complete book | pd |

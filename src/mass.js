@@ -389,34 +389,55 @@ function pbItem(it){
 }
 const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=Math.round((toDate(iso)-E)/DAY);
   if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
-async function buildPB(ctx,opts){
-  const B=await J("data/bcp1928.json"), iso=ctx.iso, day=ctx.day||{};
-  const pr=day.o&&day.o.bcp?B.propers[day.o.bcp]:null, set=pr?pr.sets[0]:null;
+/* Holy Week has no o.bcp in days.json: name its days by their distance from Easter, as the 1662 book heads them. */
+const PB_HOLYWEEK={"-6":"MONDAY BEFORE EASTER","-5":"TUESDAY BEFORE EASTER","-4":"WEDNESDAY BEFORE EASTER","-3":"THURSDAY BEFORE EASTER","-2":"GOOD FRIDAY","-1":"EASTER EVEN"};
+function pbPropers(B,iso,day){
+  const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
+  const k=PB_HOLYWEEK[off]&&B.propers[PB_HOLYWEEK[off]]?PB_HOLYWEEK[off]:(day.o&&day.o.bcp);
+  return k&&B.propers[k]?B.propers[k]:null;
+}
+/* The two English-language Prayer Book orders share one builder. Each book differs in where the collect, the
+   epistle and the gospel go into its Order, which steps a shortened session leaves out, and which are not said at
+   the celebration itself (the 1662 exhortations giving warning of a Communion). */
+const PB_BOOKS={
+  bcp28:{file:"data/bcp1928.json", decalogue:"The Decalogue", decalogueAbr:"the Decalogue (the Summary of the Law and the Kyrie are said instead)",
+    collectAt:/Collect of the Day/, epistleAt:null, gospelAt:/Glory be to thee, O Lord/, notSaid:[], prefaceHead:p=>p},
+  bcp62:{file:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments",
+    collectAt:/^Then shall be said the Collect of the Day/, epistleAt:/^The Epistle \(or,/, gospelAt:/^The holy Gospel is written/,
+    notSaid:["Exhortations","Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p}
+};
+async function buildPB(ctx,opts,book){
+  const C=PB_BOOKS[book||"bcp28"], B=await J(C.file), iso=ctx.iso, day=ctx.day||{};
+  const pr=pbPropers(B,iso,day), set=pr?pr.sets[0]:null, same=pr&&pr.same?B.propers[pr.same]:null;
+  const collect=set&&set.collect.length?set.collect:(same?same.sets[0].collect:[]);
   const AB=opts.abridge||0, out=[];
   const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
-  const pref=PB_PREFACE(season(iso,day),iso);
+  const pref=PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
+  const at=(its,re)=>re?its.findIndex(x=>re.test(x[1])):-1;
   for(const st of B.hc){
     let html="", secs=spoken(st.items)/2.4;
-    if(st.t==="The Decalogue"&&AB>=1){ out.push(sec(st.t,0,abr("the Decalogue (the Summary of the Law and the Kyrie are said instead)"))); continue; }
+    if(st.t===C.decalogue&&AB>=1){ out.push(sec(st.t,0,abr(C.decalogueAbr))); continue; }
+    if(C.notSaid.includes(st.t)){ out.push(sec(st.t,0,`<details class="canon"><summary>Not said at the celebration itself: shown for reference</summary><div class="txt one">${st.items.map(pbItem).join("")}</div></details>`)); continue; }
     if(st.t==="Proper Prefaces"){
-      const its=st.items, i0=its.findIndex(x=>x[0]==="h"&&x[1].replace(/\.$/,"").toLowerCase()===pref.toLowerCase());
+      const its=st.items, i0=pref?its.findIndex(x=>x[0]==="h"&&x[1].replace(/[.,]$/,"").toLowerCase().includes(prefH)):-1;
       let today="";
-      if(i0>=0){ let j=i0+1; const pick=[]; while(j<its.length&&its[j][0]!=="h"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(pref)}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
+      if(i0>=0){ let j=i0+1; const pick=[]; while(j<its.length&&its[j][0]!=="h"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(its[i0][1].replace(/[.,]$/,""))}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
       else { secs=0; today=`<p class="note">No proper preface today: the Sanctus follows the common preface directly.</p>`; }
       html=today+`<details class="canon"><summary>All the proper prefaces</summary>${its.map(pbItem).join("")}</details>`;
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
     }
     html=st.items.map(pbItem).join("");
     if(st.slot==="collect"){
-      const its=st.items, k=its.findIndex(x=>/Collect of the Day/.test(x[1]));
-      const coll=set&&set.collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}</p>`+set.collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
-      html=its.slice(0,k+1).map(pbItem).join("")+coll+(AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec"))+its.slice(k+1).map(pbItem).join("");
-      secs+=(set?set.collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
+      const its=st.items, k=at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
+      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
+      const ep=AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec");
+      html=its.slice(0,k+1).map(pbItem).join("")+coll+its.slice(k+1,ke+1).map(pbItem).join("")+ep+its.slice(ke+1).map(pbItem).join("");
+      secs+=(collect.length?collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
     }
     if(st.slot==="gospel"){
       const g=set&&(set.gospel||(pr.sets.find(x=>x.gospel)||{}).gospel);
-      const its=st.items, k=Math.max(0,its.findIndex(x=>/Glory be to thee, O Lord/.test(x[1])));
+      const its=st.items, k=Math.max(0,at(its,C.gospelAt));
       html=its.slice(0,k+1).map(pbItem).join("")+reading("Gospel",g,"cel")+its.slice(k+1).map(pbItem).join("");
       secs+=g?g.text.join(" ").split(/\s+/).length/2.6:120;
       if(pr&&pr.sets.length>1) html+=`<p class="note">This day has a second set of collect, epistle and gospel (for an early celebration) in the Prayer Book.</p>`;
@@ -427,6 +448,7 @@ async function buildPB(ctx,opts){
   }
   return out;
 }
+window.LectPB={propers:pbPropers};
 
 /* ---------------------------------------------------------------- 1979 Prayer Book (USA)
    data/bcp1979.json (tools/bcp1979.py). pb79Day(iso, collects) names the day's collect by the 1979 calendar. */
@@ -879,7 +901,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp79", byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp62"||rite==="bcp79", byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -923,8 +945,8 @@ function ladder(rite){
   if(rite==="bcp79") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["Prayers of the People: Form IV; Eucharistic Prayer A", o=>{ o.pop79="IV"; if(String(o.p79||"II-A").startsWith("II")) o.p79="II-A"; }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
-  if(rite==="bcp28") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
-    ["The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
+  if(rite==="bcp28"||rite==="bcp62") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    [rite==="bcp62"?"The Ten Commandments left out":"The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
     ["The Epistle left out", o=>{ o.abridge=3; },"ab"]];
   if(ORDO_ONLY[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
@@ -1042,7 +1064,7 @@ async function render(el, ctx){
     if(rite==="o") return buildOrd(ctx,o);
     if(rite==="b") return buildByz(ctx,o);
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
-    if(rite==="bcp28") return buildPB(ctx,o);
+    if(rite==="bcp28"||rite==="bcp62") return buildPB(ctx,o,rite);
     if(rite==="bcp79") return buildPB79(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";

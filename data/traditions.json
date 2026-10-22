@@ -2662,14 +2662,22 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp62",
+        "hour": null,
+        "label": "Holy Communion"
+      }
+    ],
     "pd_texts_available": [
-      "1662 edition: verify the exact scan and territory before extraction."
+      "Holy Communion with the Collects, Epistles and Gospels: imported from Lynda M. Howell's transcription (eskimo.com/~lhowell/bcp1662), checked against her notes on later changes, with the 1662 wording of the opening rubrics restored."
     ],
     "sources": [
       "https://justus.anglican.org/resources/bcp/england.htm",
       "https://justus.anglican.org/resources/bcp/world.htm",
-      "https://www.churchofengland.org/copyright"
+      "https://www.churchofengland.org/copyright",
+      "https://www.eskimo.com/~lhowell/bcp1662/communion/index.html"
     ],
     "source_review": "Church of England copyright statement read 2026-10-21: 1662 Prayer Book rights are vested in the Crown; modern Common Worship material has separate copyright and reproduction conditions. No modern text is copied."
   },
