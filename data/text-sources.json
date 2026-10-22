@@ -1161,14 +1161,23 @@
       ],
       "rite": "new",
       "service": "Badarak and Office",
-      "now": "none",
+      "now": "The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm)",
       "missing": [
-        "Divine Liturgy (Badarak)",
         "Book of Hours",
         "lectionary"
       ],
       "plan": "The 1862 English translation was made for Armenian Catholics and is the natural base; Conybeare adds the breviary rites and the old Jerusalem lectionary.",
       "sources": [
+        {
+          "ia": "divineliturgyofh00arme",
+          "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia, translated by two Armenian priests (imported: tools/texts/order-armenian1908.txt)",
+          "year": 1908,
+          "lang": "en",
+          "fills": [
+            "Divine Liturgy"
+          ],
+          "rights": "pd"
+        },
         {
           "ia": "TheArmenianLiturgy",
           "title": "The Armenian Liturgy, translated into English",
@@ -1806,7 +1815,7 @@
       ],
       "rite": "new (shared builders with the Eastern Catholic churches of the same tradition)",
       "service": "Liturgy and Office",
-      "now": "none",
+      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm)",
       "missing": [
         "liturgies",
         "hours",

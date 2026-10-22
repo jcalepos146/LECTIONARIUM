@@ -37,14 +37,14 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 12 | [alexandrian-catholic](#alexandrian-catholic) | none | 5 | 0 | Agpeya in public-domain English: not located; Katameros (Coptic lectionary) data: not located |
 | 13 | [west-syriac-catholic](#west-syriac-catholic) | none | 4 | 0 | Shehimo in public-domain English: not located |
 | 14 | [east-syriac-catholic](#east-syriac-catholic) | none | 5 | 0 | Syro-Malabar Raza (1986) and current Chaldean books: permission |
-| 15 | [armenian-catholic](#armenian-catholic) | none | 3 | 0 | Armenian Book of Hours in public-domain English: not located |
+| 15 | [armenian-catholic](#armenian-catholic) | The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm) | 4 | 0 | Armenian Book of Hours in public-domain English: not located |
 | 16 | [anglican-prayer-books](#anglican-prayer-books) | US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate | 21 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
 | 17 | [anglo-catholic-missals](#anglo-catholic-missals) | none | 1 | 0 | English Missal 1912 first edition: not located on the Internet Archive |
 | 18 | [anglican-music-and-psalter](#anglican-music-and-psalter) | partial (hymns.json) | 4 | 0 | The Hymnal 1940 and 1982: Church Publishing, in copyright |
 | 19 | [anglican-current-books](#anglican-current-books) | none | 0 | 4 | Church of Ireland 2004: its site refused automated access; check by hand; Scottish Episcopal Church current liturgies: download page not located; written permission from ACNA, Canada, New Zealand and Wales for an app |
 | 20 | [orthodox-byzantine](#orthodox-byzantine) | order / guide | 4 | 0 | Lenten Triodion and Festal Menaion (Mother Mary and Ware), HTM Pentecostarion, Lambertsen Menaion, Ephrem Lash: in copyright; ask each translator or publisher |
 | 21 | [western-rite-orthodox](#western-rite-orthodox) | none | 1 | 0 | St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese permission |
-| 22 | [oriental-orthodox](#oriental-orthodox) | none | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
+| 22 | [oriental-orthodox](#oriental-orthodox) | Armenian: the Divine Liturgy in full (1908 English, rite arm) | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
 | 23 | [lutheran](#lutheran) | The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
 | 24 | [reformed](#reformed) | The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
 | 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; Moravian, Congregational and Holiness families are not in the catalog yet |
@@ -309,14 +309,15 @@ Blocked: Syro-Malabar Raza (1986) and current Chaldean books: permission.
 
 ### 15. armenian-catholic
 
-Catalog: `catholic-armenian` · rite `new` · Badarak and Office · now **none**
+Catalog: `catholic-armenian` · rite `new` · Badarak and Office · now **The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm)**
 
-Missing: Divine Liturgy (Badarak); Book of Hours; lectionary.
+Missing: Book of Hours; lectionary.
 
 The 1862 English translation was made for Armenian Catholics and is the natural base; Conybeare adds the breviary rites and the old Jerusalem lectionary.
 
 | Source | Year | Lang | Format | Fills | Rights |
 |---|---|---|---|---|---|
+| The Divine Liturgy of the Holy Apostolic Church of Armenia, translated by two Armenian priests (imported: tools/texts/order-armenian1908.txt) ([divineliturgyofh00arme](https://archive.org/details/divineliturgyofh00arme)) | 1908 | en | scan | Divine Liturgy | pd |
 | The Armenian Liturgy, translated into English ([TheArmenianLiturgy](https://archive.org/details/TheArmenianLiturgy)) | 1862 | en | scan | Divine Liturgy | pd |
 | Liturgy of the Holy Apostolic Church of Armenia (S. C. Malan) ([liturgyholyapos00asdvgoog](https://archive.org/details/liturgyholyapos00asdvgoog)) | 1887 | en | scan | Divine Liturgy | pd |
 | Rituale Armenorum (F. C. Conybeare) ([ritualearmenorum00cony](https://archive.org/details/ritualearmenorum00cony)) | 1905 | en | scan | sacraments; breviary rites; old Armenian lectionary | pd |
@@ -449,7 +450,7 @@ Blocked: St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese perm
 
 ### 22. oriental-orthodox
 
-Catalog: `oriental-orthodox`, `oriental-coptic`, `oriental-syriac`, `oriental-armenian`, `oriental-ethiopian`, `oriental-eritrean`, `oriental-malankara`, `oriental-assyrian`, `oriental-ancient` · rite `new (shared builders with the Eastern Catholic churches of the same tradition)` · Liturgy and Office · now **none**
+Catalog: `oriental-orthodox`, `oriental-coptic`, `oriental-syriac`, `oriental-armenian`, `oriental-ethiopian`, `oriental-eritrean`, `oriental-malankara`, `oriental-assyrian`, `oriental-ancient` · rite `new (shared builders with the Eastern Catholic churches of the same tradition)` · Liturgy and Office · now **Armenian: the Divine Liturgy in full (1908 English, rite arm)**
 
 Missing: liturgies; hours; lectionaries; calendars (Coptic, Ethiopian, Armenian).
 

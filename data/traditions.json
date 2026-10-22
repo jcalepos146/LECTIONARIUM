@@ -1085,12 +1085,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/divineliturgyofh00arme",
+        "rights_note": "English translation by two Armenian priests, London 1908; published before 1929, public domain in the United States."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "arm",
+        "hour": null,
+        "label": "Divine Liturgy (Badarak)"
+      }
+    ],
+    "pd_texts_available": [
+      "The Divine Liturgy in English (London, 1908): imported from the Internet Archive scan (divineliturgyofh00arme), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-armenian-catholic-church/",
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://archive.org/details/divineliturgyofh00arme"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -2291,12 +2309,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/divineliturgyofh00arme",
+        "rights_note": "English translation by two Armenian priests, London 1908; published before 1929, public domain in the United States."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "arm",
+        "hour": null,
+        "label": "Divine Liturgy (Badarak)"
+      }
+    ],
+    "pd_texts_available": [
+      "The Divine Liturgy in English (London, 1908): imported from the Internet Archive scan (divineliturgyofh00arme), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/",
-      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental",
+      "https://archive.org/details/divineliturgyofh00arme"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },

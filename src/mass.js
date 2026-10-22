@@ -582,6 +582,7 @@ window.LectCSB={day:csbDay};
 const ORDER_RITES={
   pres:{parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
   me08:{parts:o=>[["me1908-supper"]]},
+  arm:{parts:o=>[["armenian1908"]], optional:["The Vesting of the Priest","The Approach to the Altar"], optLabel:"The vesting and the prayers of approach left out"},
   rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true}
 };
 const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
@@ -595,7 +596,7 @@ function orderStep(st,opts){
     if(k==="slot"){
       if(t==="sermon"){ if(opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; extra+=opts.homily*60; } continue; }
       if(t==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; continue; }
-      const [lab0,min]=ORDER_SLOT[t], lab=it[2]||lab0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
+      const [lab0,min0]=ORDER_SLOT[t], lab=it[2]||lab0, min=t==="lessons"&&/^The Gospel/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
     }
     html+=pbItem(it);
     if(k==="v"&&!depth) words+=t.split(/\s+/).length;
@@ -611,6 +612,7 @@ async function buildOrders(ctx,opts,rite){
     for(const st of ord.steps){
       if(!on&&st.t===from) on=true;
       if(!on) continue;
+      if((opts.abridge||0)>=1&&R.optional&&R.optional.includes(st.t)){ out.push(sec(st.t,0,abr(st.t.toLowerCase()))); continue; }
       const [html,secs]=orderStep(st,opts);
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`));
       if(upto&&st.t===upto) break;
@@ -1119,7 +1121,8 @@ function ladder(rite){
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
   if(ORDER_RITES[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
-    ...(ORDER_RITES[rite].supper?[["Without the Lord's Supper", o=>{ o.supper="no"; }]]:[])];
+    ...(ORDER_RITES[rite].supper?[["Without the Lord's Supper", o=>{ o.supper="no"; }]]:[]),
+    ...(ORDER_RITES[rite].optional?[[ORDER_RITES[rite].optLabel, o=>{ o.abridge=1; },"ab"]]:[])];
   if(rite==="csb") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
     ["Without Holy Communion", o=>{ o.csbcomm="no"; }],

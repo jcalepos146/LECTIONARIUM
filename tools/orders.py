@@ -9,7 +9,9 @@ Each text file is one order (the file name after "order-" is its id). Markup, on
     text               said by the Minister
     + text             said by all
     - text             said by the People
-    Minister. text / People. text / Answer. text      versicles and responses
+    Minister. / People. / Answer. text                versicles and responses (shown as ℣. and ℟.)
+    Priest. / Deacon. / Choir. / Clergy. / Reader. / All. / Bishop. text   a speaker, named
+    {srv} text         a role without a label: cel (celebrant), srv (deacon, server), lec, ppl, all
     [or] Summary       alternatives, shown folded under Summary, until [/or]
     @name[: label]     a slot the site fills: hymn, psalter, lessons, sermon, offering, prayer, communion
     # ...              a comment (source notes)
@@ -25,7 +27,10 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "orders.json"
 SLOTS = {"hymn", "psalter", "lessons", "sermon", "offering", "prayer", "communion"}
-LABELS = {"Minister": ("cel", "℣."), "People": ("ppl", "℟."), "Answer": ("ppl", "℟.")}
+LABELS = {"Minister": ("cel", "℣."), "People": ("ppl", "℟."), "Answer": ("ppl", "℟."),
+          "Priest": ("cel", "Priest."), "Deacon": ("srv", "Deacon."), "Choir": ("ppl", "Choir."), "Clergy": ("cel srv", "Clergy."),
+          "Reader": ("lec", "Reader."), "All": ("all", "All."), "Bishop": ("cel", "Bishop.")}
+ROLES = {"cel", "srv", "ppl", "lec", "all"}
 
 
 def parse(path):
@@ -63,8 +68,11 @@ def parse(path):
         elif l.startswith("- "):
             it.append(["v", l[2:].strip(), "ppl"])
         else:
-            m = re.match(r"^(Minister|People|Answer)\.\s+(.*)$", l)
-            if m:
+            m = re.match(r"^(%s)\.\s+(.*)$" % "|".join(LABELS), l)
+            r = re.match(r"^\{([a-z ]+)\}\s+(.*)$", l)
+            if r and set(r.group(1).split()) <= ROLES:
+                it.append(["v", r.group(2), r.group(1)])
+            elif m:
                 role, lab = LABELS[m.group(1)]
                 it.append(["v", m.group(2), role, lab])
             else:
