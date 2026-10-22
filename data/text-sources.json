@@ -2316,13 +2316,18 @@
       "id": "methodist-moravian-and-others",
       "family": "methodist",
       "priority": 25,
-      "catalog": [],
-      "rite": "new (no catalog entries yet; add them in data/traditions.json first)",
+      "catalog": [
+        "methodist",
+        "united-methodist",
+        "sunday-service-1784",
+        "me-ritual-1908"
+      ],
+      "rite": "me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders); Wesley's Sunday Service next",
       "service": "Lord's Supper, Morning Prayer and occasional services",
-      "now": "none",
+      "now": "The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full",
       "missing": [
-        "Wesley's Sunday Service",
-        "Methodist ritual",
+        "Wesley's Sunday Service (1784): the long-s scan needs careful proofreading",
+        "the rest of the Methodist ritual (baptism, reception, matrimony, burial)",
         "Moravian liturgies",
         "Congregational orders",
         "Holiness church rituals"
@@ -2416,7 +2421,7 @@
       ],
       "blockers": [
         "United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright",
-        "no catalog entries for these families yet"
+        "Moravian, Congregational and Holiness families are not in the catalog yet"
       ]
     },
     {

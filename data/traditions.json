@@ -4263,5 +4263,120 @@
       "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
     ],
     "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
+  },
+  {
+    "id": "methodist",
+    "name": "Methodist & Wesleyan",
+    "family": "methodist",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "Methodist and Wesleyan churches descend from John Wesley's revival within the Church of England. Their historic liturgy is Wesley's Sunday Service (1784), an abridgement of the 1662 Prayer Book; modern service books and hymnals have their own rights.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.umc.org/",
+      "https://archive.org/details/amernorfm00wesl"
+    ],
+    "source_review": "Seed entry added 2026-10-22 with the first Methodist text on the site. Exact editions, territorial rights and current local practice still require editorial review."
+  },
+  {
+    "id": "united-methodist",
+    "name": "The United Methodist Church",
+    "family": "methodist",
+    "parent": "methodist",
+    "kind": "church",
+    "self_description": "The United Methodist Church is a Methodist church body. Consult its own worship resources for authorized local practice; its current Book of Worship and Hymnal are in copyright.",
+    "also_called": [
+      "UMC"
+    ],
+    "regions": [
+      "United States",
+      "Africa",
+      "Europe",
+      "Philippines"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.umc.org/"
+    ],
+    "source_review": "Identity checked against the church body’s official website on 2026-10-22. No current service text is reproduced."
+  },
+  {
+    "id": "sunday-service-1784",
+    "name": "The Sunday Service of the Methodists",
+    "family": "methodist",
+    "parent": "methodist",
+    "kind": "book-edition",
+    "self_description": "John Wesley's revision of the 1662 Book of Common Prayer for the Methodists in North America (1784): Morning and Evening Prayer, the Lord's Supper, the occasional services and the ordinal.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "The Sunday Service of the Methodists in North America",
+        "year": 1784,
+        "status": "public-domain",
+        "source": "https://archive.org/details/amernorfm00wesl",
+        "rights_note": "Published in 1784; public domain."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Complete book in the Internet Archive scan; its long-s typography needs careful proofreading before import."
+    ],
+    "sources": [
+      "https://archive.org/details/amernorfm00wesl"
+    ],
+    "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-22."
+  },
+  {
+    "id": "me-ritual-1908",
+    "name": "Ritual of the Methodist Episcopal Church",
+    "family": "methodist",
+    "parent": "methodist",
+    "kind": "book-edition",
+    "self_description": "The Ritual of the Methodist Episcopal Church (1908 edition): the sacraments and occasional services as the Methodist Episcopal Church used them, descended from Wesley's Sunday Service.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Ritual of the Methodist Episcopal Church",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/ritualofmethodis01meth",
+        "rights_note": "Published in the United States in 1908; public domain there."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "me08",
+        "hour": null,
+        "label": "The Lord's Supper"
+      }
+    ],
+    "pd_texts_available": [
+      "Order for the Administration of the Lord's Supper: imported from the Internet Archive scan (ritualofmethodis01meth), proofread by hand against the page images."
+    ],
+    "sources": [
+      "https://archive.org/details/ritualofmethodis01meth"
+    ],
+    "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-22."
   }
 ]

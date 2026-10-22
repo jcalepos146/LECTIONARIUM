@@ -581,6 +581,7 @@ window.LectCSB={day:csbDay};
    become timed cues, and alternatives fold away under their summary. */
 const ORDER_RITES={
   pres:{parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
+  me08:{parts:o=>[["me1908-supper"]]},
   rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true}
 };
 const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
@@ -1118,7 +1119,7 @@ function ladder(rite){
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
   if(ORDER_RITES[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
-    ["Without the Lord's Supper", o=>{ o.supper="no"; }]];
+    ...(ORDER_RITES[rite].supper?[["Without the Lord's Supper", o=>{ o.supper="no"; }]]:[])];
   if(rite==="csb") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
     ["Without Holy Communion", o=>{ o.csbcomm="no"; }],

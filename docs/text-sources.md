@@ -47,7 +47,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 22 | [oriental-orthodox](#oriental-orthodox) | none | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
 | 23 | [lutheran](#lutheran) | The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
 | 24 | [reformed](#reformed) | The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
-| 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | none | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; no catalog entries for these families yet |
+| 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; Moravian, Congregational and Holiness families are not in the catalog yet |
 | 26 | [old-catholic](#old-catholic) | none | 0 | 0 | no candidate source found yet |
 
 ## Catholic
@@ -534,9 +534,9 @@ Blocked: Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hym
 
 ### 25. methodist-moravian-and-others
 
-Catalog:  · rite `new (no catalog entries yet; add them in data/traditions.json first)` · Lord's Supper, Morning Prayer and occasional services · now **none**
+Catalog: `methodist`, `united-methodist`, `sunday-service-1784`, `me-ritual-1908` · rite `me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders); Wesley's Sunday Service next` · Lord's Supper, Morning Prayer and occasional services · now **The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full**
 
-Missing: Wesley's Sunday Service; Methodist ritual; Moravian liturgies; Congregational orders; Holiness church rituals.
+Missing: Wesley's Sunday Service (1784): the long-s scan needs careful proofreading; the rest of the Methodist ritual (baptism, reception, matrimony, burial); Moravian liturgies; Congregational orders; Holiness church rituals.
 
 Wesley's 1784 Sunday Service is the root of Methodist liturgy and public domain; the 1908 Methodist Episcopal Ritual and the 1920 Moravian Hymnal and Liturgies cover the 20th-century forms. Current Free Methodist and Nazarene books are free PDFs whose rituals are in copyright. These families are not in the Sanctuary catalog yet, so add them there before building guides.
 
@@ -551,7 +551,7 @@ Wesley's 1784 Sunday Service is the root of Methodist liturgy and public domain;
 | Free Methodist Church USA, 2023 Book of Discipline, official PDF, including the rituals (in use) — Copyright 2024 Free Methodist Church USA. ([link](https://fmcusa.org/wp-content/uploads/2023-Book-of-Discipline-Interactive-PDF-FINAL.pdf)) | 2023 | en | pdf | current Free Methodist rituals | permission |
 | Church of the Nazarene Manual 2023, official PDF including the ritual (in use) — Read the site's terms of use before quoting. ([link](https://nazarene.org/manual/)) | 2023 | en | pdf | current Nazarene ritual | permission |
 
-Blocked: United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; no catalog entries for these families yet.
+Blocked: United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; Moravian, Congregational and Holiness families are not in the catalog yet.
 
 ## Old Catholic
 

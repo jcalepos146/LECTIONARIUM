@@ -7,8 +7,8 @@ import argparse, html, json, os, pathlib, re
 from urllib.parse import urlparse
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = 'https://jcalepos146.github.io/LECTIONARIUM/'
-FAMILY_ROOTS={'catholic':'catholic','eastern-orthodox':'eastern-orthodox','oriental':'oriental-orthodox','old-catholic':'old-catholic','anglican':'anglican','lutheran':'lutheran','reformed':'reformed'}
-MARKS = {'catholic':'☧','eastern-orthodox':'✚','oriental':'✣','old-catholic':'⚓','anglican':'✥','lutheran':'✝','reformed':'☷'}
+FAMILY_ROOTS={'catholic':'catholic','eastern-orthodox':'eastern-orthodox','oriental':'oriental-orthodox','old-catholic':'old-catholic','anglican':'anglican','lutheran':'lutheran','reformed':'reformed','methodist':'methodist'}
+MARKS = {'catholic':'☧','eastern-orthodox':'✚','oriental':'✣','old-catholic':'⚓','anglican':'✥','lutheran':'✝','reformed':'☷','methodist':'✙'}
 
 def entries():
     rows = json.loads((ROOT/'data/traditions.json').read_text())
@@ -25,7 +25,7 @@ def entries():
         for b in n['books']:
             assert b['status'] in ['public-domain','open-licence','copyright']
         for s in n['supported']:
-            assert (s['type']=='mass' and s['rite'] in ['n','o','m','p','h','b','d','a','z','bcp28','bcp62','bcp79','csb','pres','rca']) or (s['type']=='office' and s['rite'] in ['loth','dwdo','br62','br55','mon','op','byz','bcp28','bcp79'])
+            assert (s['type']=='mass' and s['rite'] in ['n','o','m','p','h','b','d','a','z','bcp28','bcp62','bcp79','csb','pres','rca','me08']) or (s['type']=='office' and s['rite'] in ['loth','dwdo','br62','br55','mon','op','byz','bcp28','bcp79'])
         seen=set(); cur=n
         while cur['parent']:
             assert cur['id'] not in seen, 'Catalog parent cycle'
