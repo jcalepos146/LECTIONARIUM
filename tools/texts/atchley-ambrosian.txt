@@ -1,0 +1,527 @@
+# E. G. Cuthbert F. Atchley, The Ambrosian Liturgy: the Ordinary and Canon of the Mass
+# according to the rite of the Church of Milan (London: Cope and Fenwick, 1909), pp. 37-96.
+# Internet Archive item ambrosianliturgy00cathuoft; scan leaf = printed page + 3. Public domain.
+# Transcribed from the page images (the OCR was used only as a guide). Footnotes are omitted.
+#
+# Divinum Officium markup, so tools/do_ordo.py can parse it like an Ordo file:
+#   # Heading   a section, named as in Divinum Officium's Latin OrdoA.txt so the columns pair up
+#   !text       rubric          V. / R.   versicle and response          plain line: text said
+#   =LEAF       scan leaf of what follows (dropped by the parser)
+#   + text      continues the previous line (a sentence running over a page)
+
+=40
+!The priest being ready, with his ministers, the deacon, and the subdeacon, they proceed to mass in the following order. First goes the censer-collet with a smoking censer in his right hand, and another, with the ship and incense in his left. Then follow two taperer-collets with lighted tapers; next the subdeacon alone, the deacon alone, and lastly the celebrant alone, with covered head; the other ministers going before him with uncovered heads. On arriving at the lowest step before the altar, standing between the deacon on his right, and the subdeacon on his left, the priest signs himself with the sign of the Cross, saying with a clear voice:
+In the name of the Father, and of the Son, and of the Holy Ghost.
+=41
+!The ministers answer:
+Amen.
+!Then, with his hands joined before his breast, he begins the anthem:
+I will go unto the altar of God.
+!The ministers answer:
+Even unto God who is the joy of my youth.
+!Priest:
+O give thanks unto the Lord, for he is gracious.
+!Ministers:
+Because his mercy endureth for ever.
+!The same priest then, with hands joined and profoundly inclining, makes confession as follows:
+I confess unto God Almighty, to blessed Mary ever a Virgin, to blessed Michael the archangel, to blessed John the Baptist, to the holy apostles Peter and Paul, to blessed Ambrose the confessor, to all saints, and to you, brethren: that I have sinned exceedingly in thought, word, and deed, (here he thrice beats his breast, saying) by my fault, by my fault, by my grievous fault. Therefore I beg blessed Mary ever a Virgin, blessed Michael the archangel, blessed John the Baptist, the holy apostles Peter and Paul, blessed Ambrose the confessor, all saints, and you, brethren, to pray for me unto the Lord our God.
+=42
+!The ministers answer:
+Thanks be to God.
+Almighty God have mercy upon thee: and, having forgiven thee all thy sins, lead thee to life eternal.
+!The priest, raising himself, says:
+Amen.
+!Then the ministers repeat the confession. But where the Priest said to you, brethren, and you, brethren, they say: to thee, father, and thee, father.
+!At the end the priest says:
+Thanks be to God.
+!After which, standing with hands joined, as above, he says:
+Almighty God have mercy upon you: and, having forgiven you all your sins, lead you to life eternal.
+=43
+!The ministers answer:
+Amen.
+!Then he signs himself, standing as before, and says:
+The Almighty and merciful Lord grant us pardon, absolution, and remission of all our sins.
+!The ministers answer:
+Amen.
+!The priest again signs himself, standing in the same manner, and saying:
+V. Our help standeth in the name of the Lord.
+R. Who hath made heaven and earth.
+!Then, inclining, he says, with joined hands:
+V. Blessed be the name of the Lord.
+R. From this time forth for evermore.
+!Then, inclining as before, he says secretly:
+I beseech thee, most high God of Hosts, Holy Father, that I may be able to intercede for my sins, and to win pardon of sins for those standing by, and to present the peace-offerings of each.
+=44
+!He approaches the altar, and, inclining, says:
+We pray Thee, O Lord, by the merits of Thy saints (he makes the sign of the Cross in the midst of the altar, and kisses it, saying) whose relics are here, and of all saints, vouchsafe to pardon all my sins. Amen.
+!Then the celebrant puts incense into the censer, the deacon ministering to him with the ship, and the subdeacon with the censer. The deacon, therefore, offers him the ship, saying: Bless, reverend father, this incense. Then he, having thrice put incense into the censer, and replacing the spoon in the ship, makes the sign of the Cross over the incense in the censer, saying: Mayest thou be blessed by Him, in whose honour thou art about to be burnt. Then the deacon takes the censer from the subdeacon, and gives it to the priest, first kissing his right hand: and the priest censes the altar.
+!After which, the deacon receives the censer again from the celebrant, and censes him alone. And then the celebrant goes to the epistle corner of the altar, where, after signing himself with the sign of the Cross, he begins the Ingressa.
+!Meanwhile, at the entrance of the celebrant and his ministers, the Ingressa is sung by the choir.
+
+# Ingressa
+!!Ingressa on the feast of the Epiphany (Apoc. xxi, 23, 24)
+The city hath no need of the sun neither of the moon to shine on it: for the brightness of God doth
+=45
++ lighten it. And the nations shall walk in the light of it: and the kings of the earth offer up their brightness in it.
+!Having read the Ingressa, the celebrant, extending raising, and joining his hands, says:
+V. The Lord be with you.
+R. And with thy spirit.
+
+# Gloria
+!Afterwards, extending, and joining his hands, and inclining his head, he says (if it is to be said): Glory to God in the highest. As he says: we worship thee, and we give thanks unto thee, and Christ Jesus, and receive our humble prayer, he bows his head toward the Cross. And at the end, as he says: with the holy Spirit, he signs himself with the sign of the Cross.
+!The Priest:
+Glory to God in the highest.
+!The choir or the cantors continue:
+And on earth be peace towards men of goodwill. We praise Thee, we bless Thee, we worship Thee. We glorify Thee, we give thanks unto Thee for Thy great glory. O Lord God, Heavenly King, God the Father almighty. O Lord, the only-begotten Son, Christ Jesus. O Lord God, Lamb of God, Son of the Father. That takest away the world's sins, have mercy upon us. Thou that takest away the world's sins, receive our humble prayer. Thou that sittest at the Father's
+=46
++ right-hand, have mercy upon us. For Thou only art holy, Thou only art the Lord, Thou only art most high, O Christ Jesus, with the holy Spirit, in the glory of God the Father. Amen.
+Have mercy, O Lord. Have mercy, O Lord. Have mercy, O Lord.
+!Glory to God in the highest is not said throughout Lent. But after the above V. and R. the deacon says the following Preces, the choir making answer with, Lord, have mercy (Domine miserere); and at the end moreover thrice with, Have mercy, O Lord (Kyrie eleison).
+!!On the 1st, 3rd, and 5th Sundays (of Lent)
+V. Entreating for the gift of divine peace, and of pardon, with all our heart and with all our mind, we beseech Thee.
+R. Lord, have mercy.
+V. For thy holy catholic Church, here and scattered throughout the whole world, we beseech Thee.
+R. Lord, have mercy.
+V. For our Pope, N, and our Pontiff, N, and
+=47
++ all their clergy, and all priests and ministers, we beseech Thee.
+R. Lord, have mercy.
+V. For Thy servants, N, our Emperor, and N, the King, our Duke, and all their armies, we beseech Thee.
+R. Lord, have mercy.
+V. For the peace of the churches, the calling of the gentiles, and the quiet of the people, we beseech Thee.
+R. Lord, have mercy.
+V. For this city and its conversation, and for all that dwell therein, we beseech Thee.
+R. Lord, have mercy.
+V. For seasonable weather, and for the fruits and increase of the earth, we beseech Thee.
+R. Lord, have mercy.
+V. For virgins, widows, orphans, captives and penitents, we beseech Thee.
+R. Lord, have mercy.
+V. For all that travel by water or by land, for those in prisons, in bonds, condemned to the mines, or sent into exile, we beseech Thee.
+R. Lord, have mercy.
+=48
+V. For these who are afflicted with divers infirmities, and who are vexed with unclean spirits, we beseech Thee.
+R. Lord, have mercy.
+V. For these who in Thy holy Church distribute the fruits of mercy, we beseech Thee.
+R. Lord, have mercy.
+V. Hear us, O God, in all our prayers and supplications, we beseech Thee.
+R. Lord, have mercy.
+V. Let us all say.
+R. Lord, have mercy. Have mercy, O Lord. Have mercy, O Lord. Have mercy, O Lord.
+!!On the 2nd and 4th Sundays (of Lent)
+!They are not said on Palmsunday.
+V. Let us all say.
+R. Have mercy, O Lord.
+V. O Lord, almighty God of our fathers.
+R. Have mercy, O Lord.
+V. For Thy holy Catholic Church, that Thou mayest vouchsafe to preserve it.
+R. Have mercy, O Lord.
+=49
+V. For our Pope, N, and our Pontiff, N, and their priests.
+R. Have mercy, O Lord.
+V. For all bishops, the whole clergy, and the people.
+R. Have mercy, O Lord.
+V. For Thy servants, N. the Emperor, and N. the King, our Duke, and all their armies.
+R. Have mercy, O Lord.
+V. For this city, and all who dwell therein.
+R. Have mercy, O Lord.
+V. For seasonable weather, and for the increase of the earth.
+R. Have mercy, O Lord.
+V. Deliver us, Thou who didst deliver the children of Israel.
+R. Have mercy, O Lord.
+V. With a strong hand, and a mighty arm.
+R. Have mercy, O Lord.
+V. O Lord, arise, help us, and deliver us for thy Name's sake.
+R. Have mercy, O Lord. Have mercy, O Lord. Have mercy, O Lord.
+=50
+!Then the Priest says:
+V. The Lord be with you.
+!To which shall always be made answer:
+R. And with thy spirit.
+!After this he says the Prayer (or prayers) over the people, according as the order of the service requires.
+!!Prayer super populum on the feast of the Epiphany
+O God, who hast hallowed this day of election by the first-fruits of the Gentiles, and by the star of thy light hast plainly showed Thyself unto us: grant, we beseech Thee, that the new and marvellous brightness of the heavens may ever arise in our hearts; who livest and reignest with God the Father in the unity of the holy Spirit, God, for ever and ever.
+R. Amen.
+
+# Lectio (Prokeimenon).
+!Towards the end of the "prayer over the people," a reader, vested in a surplice, takes the book of the lessons in both hands, and carrying it before his breast goes to the ambo (or to the midst before the altar), and there standing with his face towards the altar, himself holding his book, sings the title of the lesson: then, bowing towards the celebrant, asks a blessing, saying in a subdued voice: Deign, sir, to bless, signing himself with the sign of the Cross. The celebrant blesses him, saying (if the lesson be from the Old Testament): May the prophetic lesson be to thee an instruction in salvation; but if it be from the New Testament: May the apostolic lesson be to thee an instruction in salvation. And then the lesson is read, the celebrant and his ministers sitting.
+=51
+!!The Prophetic Lesson for the feast of the Epiphany
+Isaiah lx, 1-6: Arise, shine, O Jerusalem; for thy light is come. . . . and they shall shew forth the praises of the Lord.
+!After the lesson is sung the Psalmellus, and while it is in singing the subdeacon goes to the ambo, a minister bearing the book of epistles before him.
+!!Psalmellus for the feast of the Epiphany (Ps. lxxi (72), vv. 18; 3-6)
+Blessed be the Lord God of Israel: who only doeth great wonders for ever.
+V. Let the mountains bring peace unto thy people.
+R. He shall abase the oppressor: and he shall endure with the sun, and before the moon, from one generation to another: and shall come down like the rain into a fleece of wool, and as the showers that drop upon the earth.
+=52
+!On arriving at the ambo (or the epistle corner of the altar, below the steps) the subdeacon, turning towards the altar, sings the title of the epistle. Then bowing profoundly towards the celebrant, he asks of him a blessing, saying silently: Deign, sir, to bless. The priest in like manner, standing up, and making the sign of the Cross with his right hand, answers: May the apostolic teaching fill thee with divine grace. After which the priest and deacon sit down, while the subdeacon reads the epistle.
+!!The Epistle for the feast of the Epiphany
+Titus ii, 11 - iii, 2: Dearly beloved, the grace of God our Saviour hath appeared to all men . . . showing meekness unto all men.
+!After the epistle is sung the Halleluyah and Verse, or the Cantus, according to the season.
+!!Halleluyah and Verse for the feast of the Epiphany (St. Matth. ii, 1, 2)
+Halleluyah, halleluyah. V. There came wise men from the East to Jerusalem, saying: Where is he that is born King of the Jews? Halleluyah.
+=53
+!!Cantus for the second Sunday in Lent (Ps. cxxiii (124), 1, 7, 8)
+If the Lord had not been on our side, now may Israel say: If the Lord had not been on our side.
+V. 1. Our soul is escaped out of the snare of the fowler: the snare is broken, and we are delivered.
+V. 2. Our help standeth in the Name of the Lord; who hath made heaven and earth.
+
+# Evangelium
+!This done, the deacon takes the gospels'-book, goes up to the midst of the altar, and setting the book down there, kneels on the topmost step, and says:
+O God almighty, who didst cleanse the lips of Isaiah the prophet with a live coal, cleanse my heart and my lips: so vouchsafe to cleanse me, of thy favouring mercy, that I may be able worthily to proclaim thy holy Gospel. Through Christ our Lord.
+!Then taking up the book, he goes to the place where the gospel is to be sung, either the ambo, or else the gospel corner of the altar below the steps. There proceed thither two collets, one carrying a smoking censer, and the other the ship; and two others each carrying a lighted candle; and then the subdeacon alone, and last of all the deacon. On his arrival there the deacon says:
+V. The Lord be with you.
+=54
+R. And with thy spirit.
+!The Deacon:
+The lesson of the Holy Gospel according to St. N.
+!Then, after making the sign of the Cross on the book, and on his forehead, mouth, and breast, he turns and bows toward the celebrant (who is standing by the midst of the altar turned towards the deacon) and says silently: Deign, sir, to bless. The celebrant, making the sign of the Cross clearly with his right hand, blesses him, saying silently: The Lord be in thy heart and on thy lips, that thou mayest worthily and duly proclaim his gospel: In the name of the Father, and of the Son, and of the Holy Spirit. The deacon then taking the censer, censes the book thrice; and after giving it back to him from whom he took it, reads the gospel.
+!On certain solemn feasts, before the V. The Lord be with you, there is sung an Anthem before the Gospel.
+!!The Anthems before the Gospel are:
+!On Christmas Day, at the third mass.
+Glory to God in the highest, and on the earth be peace. Halleluyah, Halleluyah, Halleluyah.
+=55
+!On the feast of the Epiphany.
+In Bethlehem of Judaea was the Saviour born. Herod was troubled: the whole world rejoiceth. John, bearing record by the river Jordan, saith: He that cometh after me is preferred before me.
+!On Easter Day.
+Praise ye the Lord from the heavens: praise him in the heights, ye angels of His; for to-day hath the Lord arisen, and redeemed His people. Halleluyah, Halleluyah.
+!!The Holy Gospel on the feast of the Epiphany
+St. Matt. ii, 1-12: Now when Jesus was born in Bethlehem . . . into their own country another way.
+!After the gospel the choir answer:
+Praise be to Thee, O Christ.
+!On the feast of the Epiphany only, immediately after the gospel, the deacon announces the day and the month on which Easter is to fall that year, as follows:
+Your charity should know, dearly beloved brethren, that, with the assent of God, and by the mercy of our Lord Jesus Christ, we shall keep the
+=56
++ Pascha of the Lord with joy on the ---- day of the month of ----.
+R. Thanks be to God.
+!If there is to be a sermon, it shall follow here, after the gospel: the deacon and subdeacon meanwhile sitting in the presbytery with the celebrant.
+
+# Antiphona post Evangelium
+!At the end of the gospel (or of the sermon if there be one) the priest returns to the midst of the altar, and continues the mass, saying:
+V. The Lord be with you.
+R. And with thy spirit. Have mercy, O Lord; have mercy, O Lord; have mercy, O Lord.
+!Then, with joined hands, he reads the Anthem after the Gospel, if it is to be read.
+!Meanwhile the deacon and subdeacon, together with the collets, having made the usual reverence in the midst before the altar, proceed to the sacristy, or to some other place appointed for it. There the deacon, first taking the burse with the corporas placed within it, carries it, with his hands raised up to his face, to the altar: and, having made the usual reverence before it, goes up to it, and taking the corporas out of the burse, spreads it in the midst of the altar, setting the burse on the altar in a
+=57
++ suitable place: then, having made again the usual reverence, he goes to his place at the right-hand corner of the altar, so that he may say there, at the proper time:
+Have ye peace!
+R. To Thee, O Lord.
+!The subdeacon follows afterwards, carrying the chalice with the paten, the host and the pall, covered with the ends of the Continentia, or veil hanging around his neck, and sets them on the altar towards the epistle end; at the same time a collet follows after the subdeacon with the bason, and cruets, one of water and the other of wine, covered with some decent veil; which he also sets down on the altar at the same end.
+!During this procession the choir sings the Anthem after the Gospel.
+!!Anthem after the Gospel on the feast of the Epiphany (St. Matt. ii, 1, 2)
+When Jesus was born in Bethlehem of Judaea; behold, there came wise men from the East to Jerusalem, saying: Where is he that is born King of the Jews? For we have seen his star, and are come to worship Him.
+!Then the priest says again:
+The Lord be with you.
+=58
+R. And with thy spirit.
+!And immediately he says the Prayer over the sindon, with extended hands.
+!!Prayer over the Sindon on the feast of the Epiphany
+Grant, we beseech thee, almighty God; that, as all nations come with gladness to worship Christ, born King and Lord; so also this glorious light may ever dwell in us; Through the same our Lord.
+!During the offering of the gifts the choir sing the offertory.
+!!Offertory for the feast of the Epiphany (Ps. lxxi (72), 7, 8)
+In his days shall righteousness flourish: and abundance of peace, so long as the moon be exalted.
+V. He shall have dominion also from sea unto sea: and from the river unto the ends of the earth.
+And abundance of peace, so long as the moon be exalted.
+!The Prayer over the sindon said, the deacon, taking the chalice from the hand of the subdeacon, places it on the altar on the epistle side, uncovers it, and gives
+=59
++ the paten with the host thereon to the celebrant: who offers it, saying:
+Receive, O most merciful Father, this holy bread; that it may become the Body of thine Only-begotten One, in the name of the Father, + and of the Son, and of the Holy Spirit. Amen.
+!Meanwhile, the deacon, having received the cruet of wine from the hand of the subdeacon, pours wine into the chalice, having previously wiped it out with the purificatory, saying: From the side of Christ there flowed forth blood. The subdeacon, meanwhile, carrying the cruet of water in his right hand, and holding it towards the celebrant, says: Bless, reverend father. And he, making the sign of the Cross towards it, says: And water likewise, in the name of the Father, + and of the Son, and of the Holy Spirit, Amen; and then the subdeacon pours a little water into the chalice. Then the deacon hands the chalice to the celebrant, and holding it by the foot together with the celebrant, at the same time says:
+Receive, O most merciful Father, this chalice, wine mingled with water; that it may become the Blood of thine only-begotten One, in the name of the Father, + and of the Son, and of the Holy Spirit. Amen.
+!Then the chalice being set down on the altar, he covers it with the pall; and then withdraws to the right corner
+=60
++ of the altar, the subdeacon in like manner going to the other corner.
+!In the metropolitan church of Milan, the celebrant having sung the Prayer over the sindon, goes down to the entrance to the presbytery or upper quire; the deacon being on one side of him, and the subdeacon on the other, and two collets with two silver vessels going before him. There the deacon and subdeacon, standing on either side, hold open a sindon before him, as he receives the offerings of bread and wine, which two old men of the School of St. Ambrose, accompanied by the rest of the old men of the same School, bring and offer. When the celebrant has arrived at the entrance of the quire, one of the two old men having made a reverence to the altar and to the celebrant, approaches him, bearing in his right hand three hosts, and in his left a silver vessel full of white wine. Then he says: Bless, reverend father; and the celebrant replies: The Lord bless thee, and this thy gift, in the name of the Father, + and of the Son, and of the Holy Spirit; and he answers: Amen. Then he makes the sign of the Cross over the gift, and offers the old man his maniple to kiss, and with his right hand takes the hosts from the old man's hand, and gives them to the subdeacon to be placed in the bowl. Meanwhile, the deacon takes the vessel of wine from the same old man's hand, and pours it into the other bowl. Then the offering of the other old man is received in the same manner. After this the celebrant goes down to the entrance of the senatorium or lower quire, and there he receives the offerings of the women,
+=61
++ presented by two old women of the same School. When he has received these offerings, the celebrant returns to the altar and continues the mass.
+!The chalice being set on the corporas and covered with the pall, the celebrant, profoundly inclining, with his hands joined and placed on the altar, says:
+Almighty, everlasting God, may this offering be pleasing and acceptable unto thee, which I, unworthy though I be, offer to thy tenderness, for myself, a miserable sinner, and for my countless offences; that thou mayest grant me pardon and remission of all my sins; and look not upon my iniquities, but let thy mercy alone be good to me, an unworthy man: through Christ our Lord.
+!Then standing, with his hands extended, he continues:
+And receive, O Holy Trinity, this offering which we offer to thee for the guiding and keeping and the unity of the Catholic Faith: and for the reverence also of blessed Mary who brought forth God, as well as of all thy saints: and for the health and safety of thy servants and handmaidens, and of all for whom we have undertaken to beg thy mercy, and whose alms we have received, and of all faithful Christians, both quick and dead; that, by thy compassion, they may
+=62
++ receive remission of all sin, and obtain the rewards of everlasting bliss, by continuing faithfully to praise thee, to the glory and honour of thy name, O God, most merciful Creator of things: (here he joins his hands) through Christ our Lord.
+!Then on Sundays, and solemn feasts of the Lord, and their vigils, and when the mass is of the saints (unless it be a votive one, however solemn), this prayer follows in like manner:
+Receive, O holy Trinity, this offering which we offer to thee as a memorial of the Passion, Resurrection, and Ascension of our Lord Jesus Christ, and in honour of all thy saints who have pleased thee since the world began: and of those whose festival is being kept this day, and of those whose names, and relics, are here; that it may be to them for honour, but to us for salvation; that all those may deign to intercede for us in heaven, whose memorial we make on earth. (here he joins his hands) Through the same Christ Our Lord.
+!Spreading his hands out over the offerings, he continues:
+And receive, O holy Trinity, this offering for my cleansing; that thou mayest make me clean and pure from every spot of sin, so that I may worthily minister unto thee, O God, and most merciful Lord.
+=63
+!He blesses the offerings, continuing:
+The blessing of God Almighty, the + Father, the + Son, and the holy + Spirit, descend abundantly on this our offering: and may this offering be acceptable unto thee, O holy Lord, Father almighty, everlasting God, most pitiful Creator of things.
+!Then the celebrant puts incense in the censer, the deacon ministering to him with the ship and the subdeacon with the censer, saying:
+By the intercession of blessed Michael the archangel, standing on the right-hand of the altar of incense, and of all his chosen ones, may the Lord vouchsafe to bless this incense, and to receive it for a sweet savour. Through Christ our Lord. Amen.
+!Then, taking the censer from the deacon, he censes the offerings, saying:
+May this incense, blessed by thee, ascend unto thee, O Lord; and may thy mercy come down upon us.
+!After this he censes the altar, saying:
+Let my prayer, O Lord, be set forth as incense in thy sight: and the lifting up of my hands as an evening sacrifice. Set a watch, O Lord, before my mouth,
+=64
++ and a door of surrounding before my lips; that my heart be not inclined to words of malice, to make excuses for the excuses in sins.
+!When he has made an end of censing the altar, he gives the censer back to the deacon, saying:
+Behold, the smell of the saints of God: is as the smell of a fruitful field which God hath blessed.
+
+# Credo
+!The deacon then censes the celebrant: and afterwards goes round, censing behind the altar, and coming to the gospel-corner makes the sign of the Cross over the corner of the altar in front with the censer, kisses the place, hands the censer to the subdeacon, and returns to his own place. Meanwhile, the celebrant reads the Offertory, and then extending and again joining his hands, says:
+V. The Lord be with you.
+R. And with thy spirit.
+!The priest then intones the creed of Constantinople: I believe in one God (which is then sung throughout by the choir or by the cantors, but not alternated with organ interludes): extending, raising and joining his hands as he does so. At the words: in one God: Jesus Christ: together is worshipped and glorified, he bows
+=65
++ his head; and when he comes to: and was incarnate, he genuflects as far as: Also he was crucified, and at: the life of the world to come, he signs himself with the sign of the Cross.
+I believe in one God,
+The Father almighty, Maker of heaven and earth, and of all things visible and invisible. And in one Lord, Jesus Christ, the only-begotten Son of God, begotten of his Father before all worlds: God of God, Light of Light, very God of very God. Begotten, not made; being of one substance with the Father, by whom were all things made. Who, for us men, and for our salvation, came down from heaven (here the Priest genuflects) and was incarnate by the Holy Spirit of the Virgin Mary, and was made man. (He rises, and continues.) Also he was crucified for us under Pontius Pilate, he suffered, and was buried. And the third day he rose again according to the Scriptures, and ascended into heaven; he sitteth at the Father's right hand, and shall come again with glory to judge the quick and the dead: whose kingdom shall have no end. And (I believe) in the Holy Spirit, the Lord, and the Life-giver: who proceedeth from the Father, and the Son: who with the Father and the Son together is worshipped and glorified: who spake by the prophets. And (I believe) one, holy, catholic, and apostolic Church: I acknowledge one baptism for the remission of sins. And I look for
+=66
++ the resurrection of the dead, and the life of the world to come. Amen.
+V. The Lord be with you.
+R. And with thy spirit.
+!Then, with hands extended, he reads the Prayer over the offerings.
+!!Prayer over the Offerings on the feast of the Epiphany
+We offer unto thee, O Lord, the sacrifice of praise, for the manifestation of our Lord Jesus Christ, and for the beginnings of our calling; renewing the sacrament of thy tenderness on this day's festival; and we beseech thee favourably to accept it: through the same Christ Jesus thy Son, our Lord, who liveth and reigneth with thee in the unity of the Holy Spirit, God, for ever and ever. Amen.
+!After: And was made man, the deacon rises and goes down into the quire before the midst of the altar, and receives the censer from the hands of the thurifer; and then turning towards the choir censes all standing there, beginning with the highest dignitary present: this done, he returns to the midst of the quire before the altar, and censes the subdeacon: after which he gives back the censer to the thurifer, and going to his own place is himself
+=67
++ censed by him there; and then he censes the people outside the screen of the quire.
+
+# Prefatio
+!At the end of the "prayer over the offerings," as he says: for ever and ever, the priest places his hands on the altar; then raises them a little towards his breast as he says: Lift up your hearts. Joining them he bows his head as he says: Let us give. Thence onward he separates them till the end of the preface, when he again joins them before his breast as he bows, saying: Holy, holy.
+V. The Lord be with you.
+R. And with thy spirit.
+V. Lift up your hearts.
+R. We lift them up unto the Lord.
+V. Let us give thanks to the Lord our God.
+R. It is meet and right so to do.
+!!Preface for the feast of the Epiphany (there is a proper preface for every mass in the Ambrosian rite)
+V. For it is truly meet and right, proper and healthful, that we should alway give thanks unto thee, here and everywhere, O holy Lord, Father almighty, everlasting God: Who in a voice of thunder from the heavens didst manifest thyself to us over Jordan's bed, that thou mightest point out the
+=68
++ heavenly Saviour, and show thyself to be the Father of the eternal Light; thou didst open the heavens, thou didst bless the air, thou didst cleanse the water; and by the Holy Spirit in the likeness of a dove thou didst proclaim thine only Son. To-day the waters receive thy blessing, and take away our curse: so as to exhibit to believers the cleansing of all sins, and to make them Sons of God by adoption unto life eternal. For they whom a carnal birth brought forth into life in this world, they whom Death had seized through their transgression; these eternal Life hath regained, and called back to the glory of the kingdom of heaven; through the same Christ our Lord, *through whom angels praise thy majesty, archangels do it reverence; Thrones, Dominions, Virtues, Principalities and Powers worship it. †Whom Cherubim and Seraphim with mutual exultation hymn together. With whom, we beseech thee, let our voices also be joined, in humble confession, saying:
+!!Some further examples of Prefaces
+!2nd Sunday in Advent.
+V. For it is truly meet and right, proper and healthful, that we should alway give thanks unto thee, here and everywhere, O holy Lord, Father almighty, everlasting God, through Christ our Lord, by whose Incarnation the world's salvation was accomplished, by whose Passion the redemption
+=69
++ of the children of men was procured. May he himself, we beseech thee, conduct us to the eternal reward, who redeemed us from the darkness of hell: and may he justify us at his second coming, who redeemed us in his first: that his exaltation may defend us from all evil, whose humiliation hath raised us to life: *through whom the angels praise thy Majesty, etc.
+!4th Sunday in Lent.
+V. For it is truly meet and right, proper and healthful, that we should give thanks unto thee, O Lord, that dwellest in the lofty citadel of the heavens, and should acknowledge thee with our whole mind. For by thee, when the world's blindness was taken away, the true Light shone out upon the weakly: since among the miracles of thy many powers, thou didst command a man, blind from birth, to see: in whom the human race, stained with original blindness of the mind, was typified, a figure of what was to be. For by that bathing-pool of Siloam, to which that blind man was sent, is signified none other than the sacred Font, where not merely bodily eyes but the whole man is made whole: through Christ our Lord, *through whom the angels praise thy Majesty, etc.
+!5th Sunday in Lent.
+V. For it is truly meet and right, proper and healthful, that we should always give thanks unto
+=70
++ Thee, here and everywhere, O holy Lord, Father almighty, everlasting God, through Christ our Lord: who by the matchless glory of Majesty hath wrought so many miracles on earth: amongst which, he delivered Lazarus, by the power of deepest pity, though he had been dead four days, from the bond of the grave. For already lay he at rest, subjected to most noisome foulness, buried in the black abyss of earth, bound in grave clothes. Whose previous decease, through the repose of death-sleep, the Lord presently disclosed to his disciples in clear words: and with tender regard reminding them of their friend, he hastened to the closed mouth of his cave: and then, while the Jewish multitude stood by, with tearful eyes he groaned and wept. O what a wondrous demonstration! that the Maker of the heavens should deign to weep before his servant's tomb! O how great and saving that mystery, which, by the resurrection of Lazarus, as a token, is prefigured! He, destroyed by the corruption of his body, through the power of the heavenly King at once arose to life. We, moreover, buried by the first man's fall, have been set free from Hell, and, coming to life again, are brought back to joys eternal, by the divine grace of Christ; whom the angels praise, archangels reverence; Thrones, Dominions, Virtues, Principalities and Powers worship. †Whom Cherubim, etc.
+=71
+!On Easter Day.
+V. For it is truly meet and right, proper and healthful, that we should give thanks to thee, O holy, almighty God, that we should render devout praises to thee, O glorious Father, Author and Maker of all things. For though thy Son, Christ Jesus, was the Lord of Majesty, yet to deliver the human race he vouchsafed to submit to the Cross: whom erstwhile Abraham foreshadowed in his son, whom Moses' followers prefigured in the spotless Lamb. For he it is whom the sacred trumpet of the prophets proclaimed: who bore the sins of all, and took away their iniquities. This is that Passover, ennobled by the blood of Christ, in which his faithful people rejoice with special devotion. O mystery full of grace! O ineffable sacrament of a gift divine! O festival, of all festivals worthy to be honoured! in which, to redeem his servants, he offered himself to be slain by mortal men. How blessed indeed that death, which untied the knots of death! Now at length the prince of Hell perceives that he is crushed: and we, having been led out of the stain of the Deep, give thanks for having mounted up to the heavenly kingdom. And therefore with angels and archangels, with Thrones and Dominions, and with the whole complement of the heavenly army, we sing a hymn to thy glory, evermore saying:
+=72
+!Whitsunday, at the mass for the newly-baptized, in the winter-church.
+V. For it is truly meet and right, proper and healthful, that we should always give thanks unto thee, here and everywhere, O holy Lord, Father almighty, everlasting God: for to-day we celebrate the coming of the Holy Spirit, who imparted to the princes of the new-born Church both the knowledge of the Godhead, and speech, since all nations were to be initiated into: he, the wonderful worker of unity in a diversity of gifts, and distributer of varied graces, the same is both the cause of the one Faith, and himself the treasurer of the tongues of the preachers: wherefore with entrancing gladness the whole wide world rejoices; and the heavenly Virtues join with the angelic Powers in singing with one accord a hymn to thy glory, unceasingly, evermore saying:
+!On the feast of St. Martin, 11 November.
+V. For it is truly meet and right, proper and healthful, that we should honour thee, O Lord, in the praises of thy blessed bishop and confessor Martin, Who, filled with the gift of thy Holy Spirit, was so found perfect in the very beginning of his faith, that he clothed Christ in the poor man, and with the garment which the needy one accepted, clad the Lord of the world. O happy bounty, which the Godhead
+=73
++ wrought! O glorious partition of the cloak, which clothed the soldier, and the King! Worthily didst thou bestow on him the rewards of confessing thee: worthily was the fierceness of the Arians made subject to him: worthily had he no fear of the torments of the persecutor, tranquilly sustained by so great a love of martyrdom. How great, think we, will be the glorification of his passion; when did there exist a part of a cloak so precious? And what shall he have received for the oblation of his whole body, who, for a petty piece of a garment, was vouchsafed to clothe God, and to see him? O the kindness of his soul, so meet to be imitated! O the power of his virtues, so meet to be reverenced! So performed he the office of a bishop that he undertook, that by the example of a laudable life, he enforced the observance of discipline. So bestowed he healing by his apostolic power on them that looked for it, that he made some whole by his prayers, others by his glance. This, O Lord, is thy power and glory, which the angels praise, archangels reverence: Thrones, Dominions, Virtues, Principalities, and Powers worship. †Whom Cherubim, etc.
+!On the feast of SS. Faustinus and Jovita MM, 4 January.
+V. For it is truly meet and right, proper and healthful, that we should alway give thanks to thee, here and everywhere, O holy Lord, Father almighty,
+=74
++ everlasting God; and that we should praise thee, O wondrous God, in thy saints: whom thou hast prepared for thine eternal glory before the foundation of the world; that by them, the tyrants having been subdued, thou mightest make known the light of thy truth to this world. And of their company are thy Martyrs, Faustinus, and Jovita: who flourished in the meadow of thy Church like roses and lilies. Whom in the battle of their confession the blood of thine only-begotten One besprinkled with a roseate hue: and for a reward of their passion clothed them in the snowy whiteness of the lilies. *Through whom angels praise thy Majesty, etc.
+!On the feast of SS. Protase and Gervase, 19 June.
+V. For it is truly meet and right, proper and healthful, that we should alway give thanks to thee, here and everywhere, O holy Lord, Father almighty, everlasting God: Who hast bestowed upon thy soldiers, that contend for the love of thy Name, the virtue of faith. Amongst whom thou hast vouchsafed to number also the loyal brethren, Protase and Gervase: for whom their father before them led the way, when he obtained the palm of martyrdom. These are they, who marked by the heavenly ensign, took the victorious arms of the Apostle; and being loosened from the bonds of the world, and overthrowing the army of vices drawn up against them by the Satanic enemy, free and unencumbered, have
+=75
++ followed Christ the Lord. O how happy that brotherhood, which, cleaving to the sacred words, could by no unclean touch be corrupted! O how glorious that opportunity of a contest, in which both are crowned together, whom the womb of one mother brought forth! For whose triumphs also the Church, that most fruitful mother, rejoices, who through blessed Ambrose was allowed to find such sons, who bestow on themselves the marks of virtues, and glory; through the same Christ our Lord, *through whom angels praise thy Majesty, etc.
+!The choir:
+Holy, holy, holy, Lord God of Hosts.
+The heavens and the earth are full of thy glory.
+Hosanna in the highest.
+Blessed, is he that cometh, in the name of the Lord. Hosanna in the highest.
+
+# Incipit Canon.
+!The priest extending, and slightly raising his hands, then joins them, and raising his eyes heavenwards and immediately lowering them, bows profoundly before the altar, saying secretly:
+Therefore we humbly pray and beseech thee, O most merciful Father, through our Lord Jesus Christ, thy Son (he makes the sign of the Cross in the midst of
+=76
++ the altar and kisses it there) to accept and bless (he signs thrice over the offerings) these + gifts, these + oblations, these holy and spotless + sacrifices, (extending his hands he continues) which, in the first place we offer unto thee for thy holy catholic Church, that thou wouldst be pleased to keep it in peace, to guard, unite, and govern it, throughout the whole world, together with thy servant N., our Pope, and N., our bishop, and N., our King, as well as all the orthodox, and them that hold the catholic and apostolic Faith.
+!On Easter Even the prayer continues as follows (after: these holy and spotless sacrifices):
+Truly holy, truly blessed is our Lord Jesus Christ, thy Son; Who, though he was the Lord of Majesty, came down from Heaven, and took upon him the form a servant who aforetime had perished, and deigned of his own free-will to suffer: that he might deliver him from death whom he himself had made. Wherefore we offer Thee this paschal sacrifice for these whom thou hast vouchsafed to regenerate of water and the Holy Spirit; giving them remission of all their sins, that thou mightest find them in Christ Jesus our Lord. For whom, O Lord, we pour forth our humble prayers, that thou mayest cause their names, together with those of thy servant N. our pope, and N. our bishop, and N. our Emperor, and N. the King our Duke, to be written in the Book of the Living. Through the same Christ our Lord.
+!Then the priest goes on to the Commemoration for the Living.
+!!The Commemoration for the Living
+Remember, O Lord, thy servants and handmaidens, N. and N. (with joined hands he prays for a short time for those whom he intends: then extending his hands he continues) and all here present, whose faith is evident, and devotion known unto thee: for whom
+=77
++ we are offering, or who offer to thee, this sacrifice of praise, for themselves and all their friends, for the redemption of their souls, for the hope of their salvation and their safety, and direct their prayers unto thee, the everlasting God, living and true.
+!!Propers within the Canon
+!On Christmas Day, and throughout the Octave.
+Joining in communion with, and celebrating (at the first mass) the most holy night, (but at the others) the most holy day, on which the undefiled maidenhood of blessed Mary brought forth into this world the Saviour: and also venerating the memory, first, of the same glorious and ever-virgin Mary, who brought forth the same our God and Lord Jesus Christ; *and also of thy blessed Apostles and Martyrs; (as further on).
+!On the Lord's Epiphany, and throughout the Octave.
+Joining in communion with, and celebrating the most holy day on which thine only begotten One, coeternal with thee in thy glory, visibly appeared in the bodily reality of our flesh; and also venerating the memory, first, of the glorious and ever-virgin Mary, who brought forth the same our God and Lord Jesus Christ: *and also of thy blessed apostles and martyrs; (as further on).
+=78
+!On Maundy Thursday.
+Joining in communion with, and celebrating the most holy day on which our Lord Jesus Christ was betrayed. Thou, O Lord, thou hast bidden us be partakers of thy Son, thou hast bidden us be sharers of thy kingdom, thou hast bidden us be inhabitants of Paradise, thou hast bidden us be companions of the angels; if we but keep with unharmed and inviolate faith the sacraments of the heavenly service. And what can we not hope for from thy mercy, who have received a reward so great that we are let offer thee such a sacrifice, namely, the Body and Blood of our Lord Jesus Christ? Of him who surrendered himself for the world's redemption to that tender and worshipful Passion: who, ordaining a form of sacrifice of eternal salvation, first offered himself as the victim, and first taught that he was to be offered. And also venerating the memory, first, of the glorious and ever-virgin Mary, who brought forth the same our God and Lord Jesus Christ; *and also of thy most blessed apostles and martyrs (as further on).
+!On Easter Day and throughout the Octave (also at the mass of Easter Even, but with the words: the most holy night, instead of: the most holy day).
+Joining in communion with, and celebrating the most holy day of the resurrection of our Lord Jesus
+=79
++ Christ, according to the flesh; and also venerating the memory, first, of the glorious and ever-virgin Mary, who brought forth the same our God and Lord, Jesus Christ: *and also of thy blessed apostles and martyrs; (as further on).
+!On the day of the Lord's Ascension.
+Joining in communion with, and celebrating the most holy day on which thine only begotten Son, our Lord, established on the right hand of thy glory our frail nature united to himself: and also venerating the memory, first, of the glorious and ever-virgin Mary, who brought forth the same our God and Lord, Jesus Christ: *and also of thy blessed apostles and martyrs; (as further on).
+!On Whitsunday, and throughout the Octave.
+Joining in communion with, and celebrating the most holy day of Pentecost, on which the holy Spirit was manifested to the Apostles by countless tongues: and also venerating the memory, first, of the glorious and ever-virgin Mary, who brought forth the same our God and Lord Jesus Christ: *and also of thy blessed apostles and martyrs; (as further on).
+=80
+!!The Common within the Canon
+Joining in communion with, and venerating the memory, first, of the glorious and ever-virgin Mary, who brought forth our God and Lord Jesus Christ;* and also of thy blessed apostles and martyrs, Peter and Paul, Andrew, James, John, Thomas, James, Philip, Bartholomew, Matthew, Simon, and Jude, Xystus, Lawrence, Hippolytus, Vincent, Cornelius, Cyprian, Clement, Chrysogonus, John, and Paul, Cosmas, and Damian, Apollinaris, Vitalis, Nazarius, and Celsus, Protasius, and Gervasius, Victor, Nabor, Felix, and Calimerius, and of all thy saints: by whose merits and prayers do thou grant that in all things we may be defended by the help of thy protection: (he joins his hands) through the same Christ our Lord. Amen.
+=81
+!!The Common within the Action
+!Said with his hands stretched out over the Offering.
+Graciously accept, O Lord, we beseech thee, this oblation of our service, as well as of the service of thy whole family;* and order our days in thy peace, and deliver us from everlasting damnation, and make us to be numbered in the flock of thy chosen ones; (he joins his hands) through Christ our Lord.
+!!Propers within the Action
+!On Maundy Thursday.
+Graciously look on this offering, we beseech thee, O Lord, which we offer thee because of the day of the Lord's supper, on which our Lord Jesus Christ thy Son ordained a rite of sacrificing in the New Testament, when he transformed the bread and wine which Melchisedech had offered as a priest, foreshadowing the mystery to come, into the celebration of the sacrament of his Body and Blood; that through many circling years we being safely preserved, might offer thee, O Lord, our gifts: *and order, etc. (as above).
+!Proper on Easter Day and Whitsunday, and throughout their Octaves.
+Graciously accept, O Lord we beseech thee, this
+=82
++ oblation of our service, as well as of the service of thy whole family, which we offer unto thee for these also, whom thou hast vouchsafed to regenerate with water and the Holy Spirit, and to grant them remission of all their sins;* and order (as above).
+And vouchsafe, we beseech thee, to make this oblation, which we offer to thy tender compassion, O thou God in all, (he signs thrice over the offerings) bles + sed, avail + able, val + id, reasonable, and acceptable, (he signs once over the host, and once over the chalice) that it may become to us the bo + dy and blo + od of thy dearly beloved Son, Jesus Christ our Lord.
+!With joined hands he goes to the epistle corner of the altar, where he washes his fingers, saying nothing, and dries them: then he returns to the midst of the altar, and says:
+Who, on the day before he suffered for our salvation, and that of all men, (he takes the host, and raises his eyes) he took bread, and lifted up his eyes to heaven, to thee, God, his almighty Father; giving thanks to thee (he blesses the host) he bles + sed it, break it, and gave it to his disciples, saying to them:
+!On Maundy Thursday is here interpolated (after: and that of all men): "That is, upon this day, reclining in the midst of his disciples."
+=83
+Take, and eat ye all of it (he says the words of consecration distinctly, secretly, and carefully)
+FOR THIS IS MY BODY.
+!He genuflects, rises, and elevates the host that it may be adored by the people: he replaces it on the corporas, and again genuflects. Then standing upright he uncovers the chalice, laying the pall upon the consecrated host, and continues:
+Likewise, after supper (he takes the chalice and raises his eyes) he took the cup, and lifted up his eyes to heaven, to Thee, God, his almighty Father: also giving thanks to thee (holding the chalice in his left hand, with the right he signs over it) he bles + sed it, and gave it to his disciples, saying to them: Take and drink ye all of it (holding the chalice in both hands, slightly raised, he pronounces the words of consecration)
+FOR THIS IS THE CHALICE OF MY BLOOD, OF THE NEW AND ETERNAL TESTAMENT, A MYSTERY OF FAITH: WHICH SHALL BE SHED FOR YOU AND FOR MANY FOR THE REMISSION OF SINS.
+!He sets down the chalice, and immediately rubs the tips of his fingers over it. Then he genuflects, rises, and shows it to the people, saying:
+Commanding also, and saying to them: As often as ye do these things, ye shall do them for my
+=84
++ memorial: ye shall preach my Death, ye shall proclaim my Resurrection, ye shall hope for my Advent, until I shall come again from the heavens to you.
+!He replaces the chalice, covers it, and again adores: then stretching out his arms in the fashion of a cross, he says:
+Wherefore, O Lord, we, thy servants, and also thy holy people, being mindful of the Passion of our Lord Jesus Christ, as well as of his wondrous Resurrection from hell, and also of his most glorious Ascension into the heavens (he joins his hands), offer unto thy excellent majesty of thine own presents and gifts (he signs thrice over the offerings together) a pure + sacrifice, a holy + sacrifice, a spotless + sacrifice, (then once over the host alone, and once over the chalice alone) this holy + bread of eternal life, and the chalice + of everlasting salvation.
+!Then extending his hands before his breast, he says:
+And vouchsafe to regard them with favourable and gracious countenance, and to accept them as thou didst deign to accept the gifts of thy righteous child Abel, and the sacrifice of our patriarch Abraham, and the holy sacrifice, the spotless offering, which Melchisedech thy high priest offered unto thee.
+=85
+!Then, joining his hands, and bowing profoundly, he says:
+We humbly beseech thee, almighty God, to command these things to be borne by the hands of thy holy angel to thy heavenly altar in the sight of thy awful Majesty, (he makes the sign of the Cross in the midst of the altar, and kisses it there), that so many of us as, from this partaking of the altar, (he makes the sign of the Cross once over the host, and once over the Chalice) shall receive the most holy bo + dy and blo + od of our Lord Jesus Christ, may be fulfilled (he signs himself) with all heavenly benediction and grace: through the same Christ our Lord. Amen.
+!!Commemoration for the Departed
+Remember, also, O Lord, thy servants and handmaidens who are gone before us with the sign of faith, and rest in the sleep of peace, N. and N.
+!He joins his hands, and prays for the Departed for whom he intends. Then, extending his hands, he says:
+To them, O Lord, and to all that repose in Christ, grant, we pray thee, a place of refreshment, light, and peace (he joins his hands and bows his head): through the same Christ our Lord. Amen.
+!He strikes his breast, and raising his voice a little, says:
+To us sinners, also, the least (the rest secretly) of
+=86
++ thy servants, who trust in the multitude of thy mercies, vouchsafe to grant some part and fellowship with thy holy apostles and martyrs, John, and John, Stephen, Andrew, Barnabas, Peter, Marcellinus, Agnes, Caecilia, Felicitas, Perpetua, Anastasia, Agatha, Euphemia, Lucia, Justina, Sabina, Thecla, Pelagia, and Catharine, and with all thy saints; into whose company, we beseech Thee, to admit us, not weighing our merits, but pardoning our offences; (he joins his hands) through Christ our Lord. By whom, O Lord, thou dost ever create all these good things, (he signs thrice over the host and chalice together, saying) dost hal + low, quick + en, bl + ess them, and plentifully bestow them
+=87
++ upon us thy servants, for the increase of faith, and the remission of all our sins.
+!On Maundy Thursday is now added (after: through Christ our Lord): "These things we do, these things we celebrate, keeping, O Lord, thy Commandments: and by this, which is the Lord's Body which we take for an imperishable communion, we proclaim the Lord's death. Thine, moreover, is it, Almighty Father, to send us now thine only-begotten Son, whom thou didst send of thine own freewill to us though we sought him not: who, whereas thou art thyself boundless and incalculable, didst beget of thyself God also boundless and incalculable; in order to give us now for salvation the Body of him by whose passion thou didst give redemption to the human race: through the same Christ our Lord. By whom, O Lord," etc.
+!He uncovers the chalice, and genuflects, saying:
+And there is to thee, God the Father almighty,
+!Then standing upright he takes the host in his right hand, and holding the chalice in his left makes the sign of the Cross thrice over the chalice with the host, from lip to lip, saying:
+Of + him, and through + him, and in + him, all honour, power, praise, and glory,
+!He holds the host in his left hand over the chalice, and taking the paten in his right between the fore and middle fingers, he signs thrice over the host and chalice together, saying:
+Sove + reignty, ever + lastingness, and + might, in the unity of the Holy Spirit,
+!Setting down the paten upon the foot of the chalice towards himself, he raises the host slightly, saying (with note):
+For infinite ages of ages.
+R. Amen.
+=88
+!Then he divides the host through the middle over the chalice, saying:
+Thy Body is broken, O Christ, thy chalice is blessed.
+!He lays the piece, which he holds in his right hand, on the paten: but he breaks a small fragment off the other piece, which he has in his left, saying:
+May thy Blood ever be to us for life, and the salvation of souls, O our God.
+!Then he lays the piece, which is in his left hand, on the paten: and making the sign of the Cross with the small fragment in his right hand over the chalice, he drops it into the chalice, saying:
+May the mingling + of the consecrated Body and Blood of our Lord Jesus Christ be of advantage to us who eat and partake thereof, for life, and everlasting joy.
+!He covers the chalice, genuflects, rises and says the Confractorium, or anthem sung at the Fraction by the choir.
+!!Confractorium for the feast of the Epiphany (St. John ii, 11)
+This beginning of miracles did Jesus in Cana of
+=89
++ Galilee: and manifested forth his glory to his disciples.
+!Then having said in a low voice: Let us pray, he continues in a high voice (i.e., with note) joining his hands and saying:
+Taught by thy saving precepts, and directed by the divine appointment, we are bold to say (then extending his hands he says the Lord's Prayer, bowing his head at the first petition), Our Father, which art in heaven; hallowed be thy name, thy kingdom come, thy will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive them that trespass against us. And lead us not into temptation.
+R. But deliver us from evil.
+!The priest says secretly:
+Amen.
+!On Maundy Thursday is said instead of: Taught by thy saving precepts: What we do, O Lord, is the command of Him in whose presence we now request thee; give to the sacrifice its author that faith in the same may be satiated in the sublimity of the mystery; so that as we maintain the truth of the heavenly sacrifice, we may partake of the truth of the Lord's Body and Blood, through the same Christ our Lord, saying, Our Father, etc. On Easter Day is said instead: Instructed by the divine teaching, and ordered by saving advice, we are bold to say, Our Father, etc.
+=90
+!Then, signing himself with the sign of the Cross, he continues with a raised voice (i.e., with note):
+Deliver us, we beseech thee, O Lord, from all evils past, present, and to come: and at the intercession for us of blessed Mary who brought forth God and our Lord, Jesus Christ; and of thy holy apostles Peter, and Paul, and Andrew; and of blessed Ambrose thy confessor, and bishop, together with all thy saints, favourably give peace in our days, that, assisted by the help of thy mercy, we may ever be both delivered from sin, and safe from all turmoil. Fulfil this, by him, with whom thou livest blessed, and reignest God, in the unity of the Holy Spirit, for ever and ever.
+R. Amen.
+!He signs himself, resting his left hand on the corporas, saying:
+The peace, and the fellowship of our Lord Jesus Christ be with you always.
+R. And with thy spirit.
+!Then the deacon adds:
+Offer ye yourselves the peace.
+R. Thanks be to God.
+=91
+!In masses for the departed: Offer ye yourselves the peace, and the prayer following: O Lord, Jesus Christ, who saidst to thine apostles, are omitted; and omitting also: Peace be with thee, the priest joins his hands and says in a loud voice in private masses, but in a subdued voice in solemn ones, bows and says:
+O Lamb of God, that takest away the world's sins, grant them rest.
+O Lamb of God, that takest away the world's sins, grant them rest.
+O Lamb of God, that takest away the world's sins, grant them everlasting rest, and a place of pardon with thy saints in glory.
+!And then he passes on to the last two prayers.
+!But in other masses, after: Offer ye yourselves the peace, the priest bows, and joining his hands, says the three prayers following in a subdued voice.
+!!Prayer
+O Lord Jesus Christ, who saidst to thine apostles: Peace I leave with you, my peace I give unto you; regard not my sins, but the faith of thy Church, and graciously vouchsafe to keep her in peace, to guard and rule her, according to thy will; who livest and reignest, God, for ever and ever. Amen.
+=92
+!Then, if the Peace is to be given, he first makes a cross in the midst of the altar, and kisses it there, and gives the Peace, saying:
+Peace be with thee.
+R. And with thy spirit.
+!!Prayer
+O holy Lord, Father almighty, everlasting God, grant me so to take the Body of Jesus Christ, thy Son, my Lord, that it may not be to me for judgment, but for the remission of all my sins. Who liveth and reigneth with thee, in the unity of the Holy Spirit, God for ever and ever. Amen.
+!!Prayer
+O Lord, Jesus Christ, Son of the living God, who, conformably to the Father's will, by the co-operation of the Holy Spirit, hast by thy death given life to the whole world; deliver me, I implore thee, by this thy most holy Body and Blood, from all iniquities and every ill; make me obedient to thy commandments, and let me not ever be separated from thee. Who, with the same God the Father and Holy Spirit, livest and reignest, God, for ever and ever. Amen.
+=93
+!Bowing and striking his breast he says thrice:
+O Lord, I am not worthy that thou shouldest enter under my roof; but speak the word only, and my soul shall be healed.
+!He genuflects, rises, and takes the two pieces of the host in his right hand, and the paten in his left, saying:
+What reward shall I give unto the Lord for all the benefits that he hath done unto me? I will receive the bread of heaven, and call upon the name of the Lord.
+!After which, signing himself with the host in his right hand, he says:
+The Body of our Lord Jesus Christ keep my soul unto everlasting life. Amen.
+!He receives both pieces of the host.
+!Then, joining his hands, he rests quietly a little while: after which he uncovers the chalice, genuflects, wipes the paten dry over it, saying in the mean time:
+What reward shall I give unto the Lord for all the benefits that he hath done unto me? I will receive the cup of salvation, and call upon the name of the
+=94
++ Lord: with praises will I call upon the Lord, and so shall I be saved from mine enemies.
+!He takes the chalice, and, making the sign of the Cross with it over himself, he says:
+Grant, I beg, O Lord, that the partaking of the Body and Blood of our Lord Jesus Christ may lead us on to everlasting life.
+!He drinks the Blood with the fragment (of the host in it). This being done, he communicates any that present themselves for communion, before he "purifies" himself.
+
+# Transitorium
+!During the communion the choir sing the Transitorium.
+!!Transitorium for the feast of the Epiphany
+To-day the Church is joined to her heavenly Bridegroom; for in Jordan hath he washed away her iniquities. The wise men hasten with a gift to the royal marriage: and, wine being made of water, the guests are gladdened. The soldier baptizes the King, the servant his Lord, John the Saviour. The water of Jordan was astonied; the dove beareth witness; the Father's voice was heard: This is my Son, in whom I am well pleased; hear ye him.
+=95
+!Afterwards the priest says:
+May we receive with a pure mind, O Lord, what we have taken with the mouth: that of the Body and Blood of our Lord Jesus Christ there may be made for us an everlasting healing.
+!Then he holds out the chalice to the deacon, who pours into it a little wine, with which he "purifies" himself. Then he washes his fingers in wine offered him by the deacon, and in water offered him by the subdeacon: and as he dries them in the purificatory he says:
+Make sure, O Lord, what thou hast worked in us: and give thy Church a lasting tranquillity and peace.
+!Then he takes the purification. Meanwhile a collet carries the massbook over to the epistle end of the altar: and the deacon goes to the midst of the altar, where he dries the chalice, and puts on its mouth the purificatory, the paten, and the little pall; covering it with the veil: then he folds the corporas and replaces it in the burse, and gives them to the subdeacon, girded about his shoulders with the oblong veil, to be carried back to the credence or to the sacristy or to some other place appointed for the purpose, as before: after this the deacon returns to his own place.
+
+# Postcommunio
+!The priest meanwhile reads the Transitorium at the epistle end of the altar, and then the Prayer after the Communion.
+=96
+!!Prayer after the Communion on the Feast of the Epiphany
+Prevent us, O Lord, we beseech thee, at all times and in all places with heavenly light: that we may both discern with clear glance the mystery of which thou hast willed us to be partakers, and with meet affection take it to ourselves. Through our Lord Jesus Christ, etc.
+!When he has read the prayer he says:
+V. The Lord be with you.
+R. And with thy spirit.
+Have mercy, O Lord: have mercy, O Lord: have mercy, O Lord.
+V. May God bless you, and hearken unto you.
+R. Amen.
+!Then the deacon says:
+Let us go forth with peace.
+R. In the name of Christ.
+V. Let us bless the Lord.
+R. Thanks be to God.
+=97
+!But in masses for the Departed, after the V. The Lord be with you, and the R. And with thy spirit (said without: Have mercy, etc.) the priest standing in the midst of the altar makes the sign of the Cross with his right hand, saying:
+V. Grant them, O Lord, eternal rest.
+R. And let perpetual light shine upon them.
+V. May their souls and those of all the faithful departed, by the mercy of God, rest in peace.
+R. Amen.
+!And after: May the homage, etc., the blessing is not given.
+!Then bowing profoundly before the midst of the altar he says, with hands joined:
+May the homage of our service be pleasing unto thee, O God, and may the sacrifice, which I, though unworthy, have offered up in the sight of thy Divine Majesty, be acceptable unto thee: may it, by thy mercy, be propitiatory both for me and for all for whom I have offered it. Through Christ our Lord. Amen.
+!He then makes a cross on the midst of the altar, kisses it there, and rising, stands facing the altar; and extending,
+=98
++ raising, and joining his hands, and bowing his head to the Cross, he says:
+May God almighty bless you.
+!Then turning to the people by the right blesses them once, saying:
+The Father, + and the Son, and the Holy Spirit.
+R. Amen.
+!Then at the gospel corner, having said with joined hands in a subdued voice:
+V. The Lord be with you.
+!Deacon:
+And with thy spirit.
+!He signs the book with his right thumb, and then they sign themselves on the forehead, mouth, and breast; and the priest says:
+The beginning of the holy Gospel according to John.
+!Deacon:
+Glory be to thee, O Lord.
+!And he continues reading, with joined hands.
+In the beginning was the Word. . . . but of God. And the Word (here they genuflect) was made
+=99
++ flesh, and dwelt among us, and we beheld his glory, the glory of the only-begotten of the Father, full of grace and truth.
+R. Thanks be to God.
+!Then they go down to the level of the quire, before the midst of the altar; and all making the customary reverences together, they depart in the same order as they entered, the priest saying in a subdued voice with his ministers the appointed psalms and prayers.

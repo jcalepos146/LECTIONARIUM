@@ -1,0 +1,1278 @@
+# Isabel Florence Hapgood, Service Book of the Holy Orthodox-Catholic Apostolic
+# (Greco-Russian) Church (Boston and New York: Houghton, Mifflin, 1906), pp. 80-146.
+# Internet Archive item cu31924029363128 (Cornell University Library copy).
+# Transcribed against the page images; "=NNN" lines give the scan leaf.
+#
+# Markup (compiled by tools/byz_texts.py):
+#   ## key | Title        start of a part of the service
+#   @ text                rubric (italic in the book)
+#   P: D: C: R: PD: L:    Priest, Deacon, Choir, Reader, Priest and Deacon, People/all
+#   P~: D~:               said secretly (in a low voice)
+#   P!:                   the words of institution (veiled in lay study)
+#   % reply | tail        response sung after each petition marked with a final ℟,
+#                         and the words the petition ends with when it ends in ":"
+#   {basil} ... {/basil}  only in the Liturgy of St Basil
+#   {chrys} ... {/chrys}  only in the Liturgy of St John Chrysostom
+#   {pascha} ... {/pascha} only at Eastertide
+#   > text                margin note in the book
+#   + text                continues the previous line across a page break
+#   * name                where the day's texts go (troparia, prokeimenon, epistle, alleluia, gospel)
+#   [text]                editorial insertion, not in the book
+#   {tone1} ... {/tone1}  only in that tone of the week (any {name} block is conditional)
+#   Bishop-only directions and prayers are left out.
+
+=119
+## opening | Opening and Great Litany
+D: Bless, Master.
+@ Priest (bestowing the blessing, in cross-form, with the book of the Gospels from the Altar):
+P: Blessed is the kingdom of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+{pascha}
+@ And if it be at Eastertide:
+C: Christ is risen from the dead, trampling down Death by death, and upon those in the tomb bestowing life.
+{/pascha}
+@ The Great Litany (Velíkaya Ekténiya).
+D: In peace let us pray to the Lord.
+C: Lord, have mercy.
+% Lord, have mercy. | let us pray to the Lord.
+D: For the peace that is from above, and for the salvation of our souls, let us pray to the Lord. ℟
+D: For the peace of the whole world; for the welfare of God's holy Churches, and for the union of them all: ℟
+D: For this holy Temple, and for those who with faith, devoutness, and in the fear of God have entered therein: ℟
+D: For our Holy Synod (or Patriarch); for our Bishop (or Archbishop, or Metropolitan), N.; for the honourable Presbytery, the Diaconate in Christ; for all the clergy and the laity: ℟
+@ Here follow petitions for the Ruler of the Land and for all the Authorities (Emperor, or King, and Reigning House, or President, according to the elements and nationalities of which the Parish is constituted).
+=120
+D: That he will aid them and subdue under their feet every foe and adversary: ℟
+D: For this city, for this holy Temple, and for every city and land, and for those who with faith dwell therein: ℟
+D: For healthful seasons; for abundance of the fruits of the earth, and for peaceful times: ℟
+D: For those who travel by sea or by land; for the sick and the suffering; for those who are in captivity, and for their salvation: ℟
+D: That he will deliver us from all tribulation, wrath, peril and necessity: ℟
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ Exclamation.
+P: For unto thee are due all glory, honour and worship, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ And the Deacon, having made a reverence, shall leave his place, and shall go and stand before the holy picture (ikóna) of Christ, holding his stole with three fingers of his right hand.
+## antiphons | Antiphons
+@ And the Priest saith, secretly, the Prayer of the First Antiphon.
+P~: O Lord our God, whose might is ineffable, whose glory is inconceivable, whose mercy is infinite, and whose love toward mankind is unutterable: Look down, O Master, in thy tender compassion, upon us and upon this holy Temple; and deal with us and with those people who here pray with us, according to the riches of thy mercies and thy bounties.
+@ Here shall be sung the First Antiphon, Psalm ciii. (or on the Great Feasts its appointed substitute).
+C: Bless the Lord, O my soul: Blessed art thou, O Lord. Bless the Lord, O my soul, and all that is within me bless his holy Name. Bless the Lord, O my soul, and forget not all his benefits. Who forgiveth all thy sin, and healeth all thine infirmities. The Lord is full of compassion and mercy, long-suffering and of great goodness. He will not alway be chiding, neither keepeth he his wrath forever. He hath not dealt with us after our sins, nor rewarded
+=121
++ us according to our iniquities. Bless the Lord, O my soul, and all that is within me bless his holy Name. Blessed art thou, O Lord.
+@ While the Priest saith, secretly, the Prayer of the Second Antiphon.
+P~: O Lord our God, save thy people, and bless thine heritage. Preserve the fulness of thy Church: sanctify those who love the beauty of thy house: glorify them by thy divine might in recompense; and forsake not us who put our trust in thee.
+@ And at the conclusion of the Antiphon, the Deacon shall come and stand again in his accustomed place, and shall say:
+@ The Little Litany (Málaya Ekténiya).
+D: Again, yet again, in peace let us pray to the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life, unto Christ our God.
+C: To thee, O Lord.
+@ Exclamation.
+P: For thine is the majesty, and thine are the kingdom and the power and the glory, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Deacon shall do as he hath done at the First Antiphon.
+@ Here shall be sung the Second Antiphon, Psalm cxlvi. (or on the Great Feasts its appointed substitute).
+C: Praise the Lord, O my soul: while I live, will I praise the Lord; yea, as long as I have any being, I will sing praises unto my God. Blessed is he that hath the God of Jacob for his help, and whose hope is in the Lord his God; who made the sea, and all that therein is; who keepeth his promise forever. Who helpeth them to right that suffer wrong; who feedeth the hungry. The Lord looseth men out of prison; the Lord giveth sight to the blind. The Lord helpeth them that are fallen; the Lord careth for the righteous. The Lord careth for the strangers; he defendeth the fatherless and widow: as for the way of the ungodly, he turneth it upside down. The Lord thy God, O Sion, shall be King forevermore.
+C: Glory to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+@ Here shall be sung the Anthem.
+C: O Only-begotten Son and Word of God! Thou who art immortal yet
+=122
++ didst deign for our salvation to become incarnate of the Holy Birth-giver of God and ever-virgin Mary; and without change of essence wast made man; who also wast crucified for us, O Christ our God, trampling down Death by death; who art one of the Holy Trinity, and art glorified together with the Father and the Holy Spirit: Save us.
+D: Again, yet again, in peace let us pray to the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ Meanwhile by the Priest is said, secretly, the Prayer of the Third Antiphon.
+P~: O thou, who hast given us grace at this time, with one accord, to make our common supplications unto thee; and dost promise that when two or three are gathered together in thy Name thou wilt grant their requests. Fulfil now, O Lord, the desires and petitions of thy servants as may be most expedient for them; granting them in this world knowledge of thy truth, and in the world to come, life everlasting.
+@ Exclamation.
+P: For thou art a good God, and lovest mankind, and unto thee we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Deacon then entereth the Sanctuary, and the Choir chanteth the Third Antiphon.
+C: In thy Kingdom remember us, O Lord, when thou comest into thy Kingdom. Blessed are the poor in spirit: for theirs is the kingdom of heaven. Blessed are they that mourn: for they shall be comforted. Blessed are the meek: for they shall inherit the earth. Blessed are they that do hunger and thirst after righteousness: for they shall be filled. Blessed are the merciful: for they shall obtain mercy. Blessed are the pure in heart: for they shall see God. Blessed are the
+=123
++ peacemakers: for they shall be called the children of God. Blessed are they which are persecuted for righteousness' sake: for theirs is the kingdom of heaven. Blessed are ye when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for my sake. Rejoice, and be exceeding glad; for great is your reward in heaven.
+## entrance | Little Entrance and Trisagion
+@ The Priest saith the Prayer of the Little Entrance while the last portion of the Beatitudes is being sung.
+P~: O Master, Lord our God, who hast appointed in heaven ranks and hosts of Angels and Archangels for the ministry of thy glory: Cause that with our entrance may enter also the holy Angels with us serving thee, and with us glorifying thy goodness. For unto thee are due all glory, honour and worship, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+@ Then the Priest, taking the book of the Holy Gospels from the Altar, giveth it to the Deacon; and preceded by a light, they both make the Lesser Entrance.
+@ The Deacon, taking his stand before the Holy Door, saith:
+D: Bless, Master, the Holy Entrance.
+P: Blessed is the Entrance of thy Holy Ones always, now, and ever, and unto ages of ages.
+C: Amen.
+@ Then the Deacon shall go to the Priest, and the Priest shall kiss the book of the Holy Gospels; and the Deacon shall come to the centre of the Holy Door, and there standing in front of the Priest, he shall elevate the Holy Gospels, and shall say, so that all may hear:
+D: Wisdom, O believers!
+@ Then shall they go to the Holy Altar; and the Deacon shall lay the Gospels on the Altar, and the Choir shall sing:
+C: O come, let us worship and fall down before Christ. Save, O Son of God, who didst rise again from the dead, us who sing unto thee: Alleluia.
+@ If it be a week day: … who art wonderful in the Saints. Or, at Feasts, the proper Refrain, from the Antiphon of the Feast.
+@ Then shall be sung the proper Hymn (Tropár) and Collect-Hymn (Kondák) for the Day.
+* troparia
+=124
+@ The Prayer of the Thrice-Holy. The Priest, secretly.
+P~: O holy God, who restest in the Saints; who art hymned by the Seraphim with a thrice-holy cry, and glorified by the Cherubim, and adored by every heavenly Power; who out of nothingness hast brought all things into being; who hast created man after thine own image and likeness, and hast adorned him with every gift of thine; who givest unto those that ask of thee wisdom and understanding; who despisest not the sinner, but hast appointed repentance unto salvation; and hast vouchsafed unto us, thy humble and unworthy servants here, at this hour, to stand before the glory of thy holy Altar, and to render unto thee that adoration and praise which are thy due: Do thou, the same Lord, accept from the mouths of us sinners, the Thrice-Holy song, and visit us with thy beneficence. Pardon us every transgression, whether voluntary or involuntary. Sanctify both our souls and bodies, and grant that we may serve thee in uprightness all the days of our life: through the intercessions of the holy Birth-giver of God, and of all the Saints of all the ages who have been well-pleasing unto thee.
+=125
+@ And when the Choir come to the last Hymn, the Deacon shall say to the Priest, as both bow their heads, and he holdeth his stole with three fingers:
+D: Bless, Master, the time of the Thrice-Holy.
+@ And the Priest shall bless him, with the sign of the cross, and shall say, aloud:
+P: For holy art thou, O our God, and unto thee we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever;
+@ And when the Hymn is finished, the Deacon shall come close to the Holy Door, and pointing with his stole, first to the holy picture of Christ, he shall say:
+D: O Lord, save the God-fearing, and hear us.
+@ Then shall he point, in like manner, to those who stand without, and shall say:
+D: Even unto ages of ages.
+C: Amen.
+@ And then the Choir:
+C: O Holy God, Holy Mighty, Holy Immortal One, have mercy upon us. (Five times.)
+@ At Christmas, the Epiphany, on the Eve of Palm Sunday, on Holy Saturday, during Eastertide and at Pentecost, in place of the Thrice-Holy shall be sung: As many as have been baptized into Christ have put on Christ. Alleluia.
+@ At the Feast of the Setting-up (Exaltation) of the Holy Cross; and at the third week of the Great Fast (Lent), when is the Feast of the Adoration of the Cross, in place of the Thrice-Holy there shall be sung: Thy Cross do we worship, O Master, and we glorify thy Resurrection.
+=126
+@ And the Deacon shall say to the Priest:
+D: Command, Master.
+@ Then shall they approach the Holy Throne, and as he approacheth, the Priest shall say:
+P: Blessed is he that cometh in the Name of the Lord.
+D: Bless, Master, the seat on high.
+P: Blessed art thou on the throne of glory of thy kingdom, who sittest on the Cherubim always, now, and ever, and unto ages of ages.
+@ The Priest doth not ascend the High Place, nor sit upon it, but taketh his seat beside it, to the south.
+## readings | Prokeimenon, Apostol and Gospel
+@ After the Thrice-Holy, the Deacon shall say:
+D: Let us attend.
+P: Peace be with you all.
+R: And with thy spirit.
+D: Wisdom!
+R: The Gradual (Prokímen), in the … Tone.
+* prokeimenon
+{tone1}
+R: Let thy mercy, O Lord, be upon us, as we have set our hope on thee.
+@ Verse:
+R: Rejoice in the Lord, O ye righteous: for it becometh the just to be thankful.
+{/tone1}
+{tone2}
+R: The Lord is my strength and my song, and is become my salvation.
+=127
+@ Verse:
+R: The Lord hath chastened and corrected me; but he hath not given me over unto death.
+{/tone2}
+{tone3}
+R: O sing praises, sing praises unto our God: O sing praises, sing praises unto our King.
+@ Verse:
+R: O clap your hands together, all ye people: O sing unto God with the voice of melody.
+{/tone3}
+{tone4}
+R: O Lord, how manifold are thy works: in wisdom hast thou made them all.
+@ Verse:
+R: Bless the Lord, O my soul: O Lord my God, thou art become exceeding glorious.
+{/tone4}
+{tone5}
+R: Thou shalt keep us, O Lord: thou shalt preserve us from this generation henceforth forever.
+@ Verse:
+R: Save me, O Lord, for there is not one godly man left.
+{/tone5}
+{tone6}
+R: O Lord, save thy people, and bless thine inheritance.
+@ Verse:
+R: Unto thee will I cry, O Lord my strength: keep thou not silence towards me.
+{/tone6}
+{tone7}
+R: The Lord shall give strength unto his people: the Lord shall give his people the blessing of peace.
+@ Verse:
+R: Bring unto the Lord, O ye sons of God, bring young rams unto the Lord.
+{/tone7}
+{tone8}
+R: Pray ye unto the Lord our God, and render thanks.
+@ Verse:
+R: In Jewry is God known, his Name is great in Israel.
+{/tone8}
+D: Wisdom!
+R: The Lesson from the Epistle of the holy Apostle (N. to the N.).
+D: Let us attend.
+@ The Reader then readeth the Epistle: Brethren …
+* epistle
+@ And while the Epistle is being read, the Deacon shall take the censer, and approaching the Priest shall receive his blessing, and shall cense the Holy Altar round about, and all the Sanctuary, and the Priest, and the People.
+@ And when the Epistle is finished, the Priest shall say:
+P: Peace be with thee.
+R: And with thy spirit.
+D: Wisdom!
+R: Alleluia.
+* alleluia
+@ The Prayer before the Gospel. The Priest, secretly.
+P~: Illumine our hearts, O God who lovest mankind, with the pure light of thy divine knowledge, and open the eyes of our under-
+=128
++ standing to the comprehension of the proclamation of thy Gospel. Implant in us, likewise, the fear of thy blessed commandments; that, trampling down all carnal desires, we may pursue a godly life, both thinking and performing such things as are well-pleasing unto thee. For thou art the light of our souls, and of our bodies, O Christ our God, and unto thee do we ascribe glory, together with thy Father who is from everlasting, and thy holy, and blessed, and life-giving Spirit, now, and ever, and unto ages of ages. Amen.
+> All this is omitted, if the Priest serve without a Deacon.
+@ Then the Deacon, having set the censer in its proper place, shall come to the Priest, and bowing his head, and holding his stole and the book of the Holy Gospels with the tips of his fingers, at the Holy Altar, shall say:
+D: Bless, Master, him who proclaimeth the good tidings of the holy Apostle and Evangelist, N.
+@ And the Bishop or the Priest, blessing him with the sign of the cross, shall say:
+P: May God, through the intercessions of the holy, glorious and all-laudable Apostle and Evangelist, N., grant utterance with great power unto thee, who proclaimest the good tidings; unto the fulfilment of the Gospel of his beloved Son, our Lord Jesus Christ.
+D: Amen.
+@ Then the Deacon doeth reverence to the book of the Holy Gospels, and taketh it, and goeth out through the Holy Door, preceded by a taper, and standeth on the tribune, or on the place prepared. And the Priest, standing before the Holy Altar, with his face to the west, proclaimeth:
+P: Wisdom, O believers! Let us listen to the Holy Gospel.
+@ The Bishop [or the Priest]:
+P: Peace be with you all.
+C: And with thy spirit.
+D: The Lesson from the Holy Gospel according to N.
+C: Glory to thee, O Lord; glory to thee.
+P: Let us attend.
+@ And the Deacon, or the Priest, if there be no Deacon, readeth the Gospel; and when he hath finished, the Priest shall say:
+* gospel
+P: Peace be unto thee, who hast announced the good tidings.
+C: Glory to thee, O Lord; glory to thee.
+@ Then the Deacon shall go to the Holy Door, and shall give the book of the Gospels to the Priest, who placeth it on the Altar, behind the corporal (antimíns).
+=129
+## litanies | Litanies after the Gospel
+@ And the Deacon, standing in his accustomed place, shall say:
+D: Let us all say, with all our soul and with all our mind let us say:
+C: Lord, have mercy.
+D: O Lord Almighty, the God of our fathers, we beseech thee, hearken, and have mercy.
+C: Lord, have mercy.
+D: Have mercy upon us, O God, according to thy great mercy, we beseech thee: hearken, and have mercy.
+C: Lord, have mercy. (Thrice.)
+@ Here follow petitions for the Ruler of the Land and for all the Authorities (Emperor, or King, and Reigning House, or President, according to the elements and nationalities of which the Parish is constituted).
+% Lord, have mercy. (Thrice.) |
+D: For our Holy Synod (or Patriarch); for our Bishop (or Archbishop, or Metropolitan), N.; for the honourable Presbytery, the Diaconate in Christ; for all the clergy and the laity. ℟
+D: Furthermore we pray for all their Christ-loving Army and Navy. ℟
+D: Furthermore we pray for our brethren the Priests; for ordained Monks, and for all our brotherhood in Christ. ℟
+D: Furthermore we pray for the blessed and ever-memorable most holy Orthodox Patriarchs, and God-fearing Tzars and Tzarítzas; and for the founders of this holy Temple; and for all our devout fathers and brethren, Orthodox believers, departed this life before us, who here and in all the world lie asleep in the Lord. ℟
+D: Furthermore we pray for those who bear fruit and do good works in this holy and all-honourable Temple; for those who labour in its service; for the singers; and for the people here present, who await in firm hope thy great and rich mercies. ℟
+@ The Prayer of the Litany of Fervent Supplication. The Priest, secretly.
+P~: O Lord our God, accept this, the fervent supplication of thy servants, and be gracious unto us, according to the multitude of thy mercy; and send down thy bounties upon us, and upon all thy people, who here await the rich mercy which is from thee.
+@ The corporal (antimíns) is now unfolded, except the upper edge.
+@ Exclamation.
+P: For thou art a merciful God, who lovest mankind, and unto thee we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+=130
+@ [The book next gives a prayer for the Emperor, said only in Russia; it is left out here.]
+{departed}
+@ And if there be offerings on behalf of the dead, the Deacon or the Priest shall say the following Litany:
+D: Have mercy upon us, O God, according to thy great mercy, we beseech thee: hearken, and have mercy.
+C: Lord, have mercy. (Thrice.)
+D: Furthermore we pray for the repose of the souls of the servants of God departed this life, NN.; and that thou wilt pardon all their sins, both voluntary and involuntary. ℟
+D: That the Lord God will establish their souls where the just repose. ℟
+D: The mercies of God, the kingdom of heaven, and the remission of our sins we entreat of Christ, our King Immortal and our God.
+C: Grant it, O Lord.
+D: Let us pray to the Lord.
+C: Lord, have mercy.
+@ The Priest, secretly.
+P~: O God of spirits, and of all flesh, who hast trampled down death, and overthrown the Devil, and given life unto thy world: Do thou, the same Lord, give rest to the souls of thy departed servants, NN., in a place of brightness, a place of verdure, a place of repose, whence all sickness, sorrow and sighing have fled away. Pardon every transgression which they have committed, whether by word, or deed, or thought. For thou art a good God, and lovest mankind; because there is no man who liveth and sinneth not; for thou only art without sin, and thy righteousness is to all eternity, and thy word is true.
+@ Exclamation.
+P: For thou art the Resurrection, and the Life, and the Repose of thy departed servants, NN., O Christ our God, and unto thee we ascribe glory, together with thy Father, who is from everlasting, and thine all-holy, and good, and life-giving Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+{/departed}
+=131
+@ The Litany of the Catechumens.
+D: Pray ye unto the Lord, ye Catechumens.
+C: Lord, have mercy.
+D: Ye faithful, pray ye unto the Lord for the Catechumens; that the Lord will have mercy upon them.
+C: Lord, have mercy.
+D: That he will teach them the word of truth.
+C: Lord, have mercy.
+D: That he will reveal to them the gospel of righteousness.
+C: Lord, have mercy.
+D: That he will unite them unto his Holy Catholic and Apostolic Church.
+C: Lord, have mercy.
+D: Save them, have mercy upon them, succour them, and keep them, O God, by thy grace.
+C: Lord, have mercy.
+D: Bow your heads unto the Lord, ye Catechumens.
+C: To thee, O Lord.
+@ The Prayer for the Catechumens. The Priest, secretly.
+{chrys}
+P~: O Lord our God, who dwellest on high, and dost regard the humble of heart; who hast sent forth as the salvation of the race of men thine Only-begotten Son and God, our Lord Jesus Christ: Look down upon thy servants the Catechumens, who have bowed their necks before thee. Grant unto them in due season the laver of regeneration, remission of sins, and the robe of incorruption. Unite them unto thy Holy Catholic and Apostolic Church, and number them with thy chosen flock.
+{/chrys}
+@ Here the last edge of the corporal is spread out.
+{basil}
+P~: O Lord our God, who dwellest in the heavens, and lookest down upon all thy works: Look upon thy servants, the Catechumens, who have bowed their necks before thee, and grant them the light yoke. Make them honourable members of thy holy Church; and vouchsafe unto them the laver of regeneration, the remission of sins, and the robe of incorruption, unto the knowledge of thee, our true God.
+{/basil}
+@ Exclamation.
+P: That with us they may magnify thine all-honourable and majestic Name, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Priest maketh the sign of the cross over the corporal with the sponge, which he then kisseth, and layeth on one side.
+D: Depart, all ye Catechumens, depart. Depart, all ye Catechumens: let no Catechumen remain: but let us who are in the faith again, yet again, in peace pray unto the Lord.
+C: Lord, have mercy.
+=132
+## faithful | Prayers of the Faithful
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+@ The First Prayer of the Faithful. The Priest, secretly.
+{chrys}
+P~: We give thanks unto thee, O Lord God of the Powers, who hast graciously vouchsafed unto us to stand now before thy holy Altar, and fall down in adoration before thy compassion toward our sins, and the errors of the people. Accept our supplications, O God; make us worthy to offer unto thee prayers and supplications, and unbloody sacrifices for all thy people. And enable us, whom thou hast appointed to this thy ministry, by the power of thy Holy Spirit, at all times, and in every place, blamelessly, without offence and in the witness of a pure conscience, to call upon thee; that hearing us thou mayest show mercy upon us, according to the plenitude of thy goodness.
+{/chrys}
+{basil}
+P~: Thou, O Lord, hast shown us this great mystery of salvation. Thou hast graciously permitted us, thy humble and unworthy servants, to be the ministrants of thy holy Altar. Do thou enable us with the power of thy Holy Spirit for this ministry; that, standing uncondemned before thy holy glory, we may offer unto thee an oblation of praise. For thou art he who worketh all things in all men. Grant, therefore, O Lord, that our sacrifice for our own sins, and for the errors of thy people, may be acceptable and well-pleasing in thy sight.
+{/basil}
+@ Exclamation.
+P: For unto thee are due all honour, glory and worship, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+D: Again, yet again, in peace let us pray to the Lord.
+C: Lord, have mercy.
+@ When the Priest serveth without a Deacon, the following part of this Litany is omitted as indicated.
+> Sometimes omitted.
+D: For the peace that is from above, and for the salvation of our souls, let us pray to the Lord.
+C: Lord, have mercy.
+=133
+D: For the peace of the whole world; for the welfare of God's holy Churches, and for the union of them all, let us pray to the Lord.
+C: Lord, have mercy.
+D: For this holy Temple, and for those who with faith, devoutness, and in the fear of God have entered therein, let us pray to the Lord.
+C: Lord, have mercy.
+D: That he will deliver us from all tribulation, wrath, peril and necessity, let us pray to the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+@ The Second Prayer of the Faithful. The Priest, secretly.
+{chrys}
+P~: Again and oftentimes we fall down before thee, and beseech thee, O Good One who lovest mankind, that, looking down upon our petition, thou wilt purify both our souls and bodies from all defilement of the flesh and of the Spirit; and grant that in blamelessness and without condemnation we may stand here before thy holy Altar. Grant also, O God, unto us and unto those who here with us make their supplications unto thee, prosperity of life and increase of faith, and of spiritual understanding. Grant that they may serve thee continually with love and fear, and that they may partake of thy Holy Mysteries in blamelessness of heart and without condemnation, and be deemed worthy of thy heavenly kingdom.
+{/chrys}
+{basil}
+P~: O God, who in mercy and bounties hast visited our lowliness; who hast set us, thy humble, and sinful, and unworthy servants before thy holy glory, to serve thy holy Altar: Strengthen us by the power of thy Holy Spirit for this ministry, and grant us utterance, in the opening of our lips, to invoke the grace of thy Holy Spirit upon the Gifts which we are about to set forth.
+{/basil}
+D: Wisdom!
+@ Then shall the Deacon enter through the north door.
+@ Exclamation.
+P: That being kept always by thy might, we may ascribe glory to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+## cherubic | Cherubic Hymn and Great Entrance
+@ The Cherubimic Hymn.
+C: Let us, the Cherubim mystically representing, and unto the Life-giving Trinity the thrice-holy chant intoning, all cares terrestrial now lay aside.
+@ (Here the Great Entrance, with the Holy Gifts, is made. And after it the Hymn is finished:)
+C: That we may raise on high the King of all, like conqueror on shield and spears, by the Angelic Hosts invisibly up-borne.
+@ The Prayer of the Cherubimic Hymn. The Priest, secretly.
+P~: No one who is in bondage unto carnal desires and sensual pleasures is worthy to approach, or to come near, or to serve thee, O King of Glory: For to serve thee is a great and terrible thing even to the Heavenly Powers. Nevertheless, through thine unutterable and boundless love toward mankind thou didst become man, yet without change, and without transmutation,
+=134
++ and art become our High Priest, and hast committed unto us the ministry of this unbloody Sacrifice, in that thou art Lord over all. For thou alone, O Lord our God, rulest over those in heaven and on earth; who art borne on the throne of the Cherubim; who art Lord of the Seraphim and King over Israel; who alone art holy and restest in the Saints. Therefore do I now make my entreaty unto thee, who alone art good and art ready to listen: Look down upon me, a sinner, and thine unprofitable servant, and cleanse my soul and my heart from an evil conscience; and by the might of thy Holy Spirit enable me, who am endued with the grace of the priesthood, to stand before this thy holy Altar, and perform the sacred Mystery of thy Holy and Pure Body and Precious Blood. For unto thee do I draw near, and bowing my neck I implore thee: turn not thy face from me, neither cast me out from among thy children; but graciously vouchsafe that I, a sinner and thine unworthy servant, may offer unto thee these Holy Gifts. For it is thou who offerest and art offered, who receivest and art thyself received, O Christ our God: and unto thee we ascribe glory, together with thy Father, who is from everlasting, and thine all-holy, and good, and life-giving Spirit, now, and ever, and unto ages of ages.
+@ Then the Deacon taketh the censer, and having received the Priest's blessing, he censeth the Holy Altar round about, and the Sanctuary, saying, secretly, to himself, Psalm li.: Have mercy upon me, O God, according to thy great goodness. Then the Priest and Deacon stand before the Altar, and make three reverences, saying:
+PD~: O God, cleanse thou me, a sinner.
+@ The Priest, elevating his hands, saith in a low voice: Let us, the Cherubim mystically representing … now lay aside. (Thrice.) Then each finisheth the Hymn: That we may raise on high … And they kiss the Altar, and go to the Chapel of Oblation, which the Priest censeth.
+@ Then shall the Deacon say to the Priest:
+D: Take up, Master.
+@ And the Priest, taking the air (vózdukh), shall lay it on the Deacon's left shoulder, and shall say:
+P: Lift up your hands unto the Holy Things, and bless the Lord.
+@ Then taking the holy paten (dískos), in like manner, he shall set it on the head of the Deacon, with all reverence, the Deacon holding the censer the while on one of his fingers. But the Priest himself shall take in his hand the holy chalice (potír), and they shall go forth through the north door, preceded by a taper, and shall stand facing the People.
+=135
+@ The Great Entrance (following the Russian Service Book).
+{russia}
+D: Our most God-fearing Sovereign, N., the Emperor of All the Russias, may the Lord God remember in his kingdom always, now, and ever, and unto ages of ages.
+P: And all the Reigning House (and the Ruler of the country), may the Lord God remember in his kingdom always, now, and ever, and unto ages of ages.
+D: The most Holy Synod of Russia, and our Archbishop, N., may the Lord God remember in his kingdom always, now, and ever, and unto ages of ages.
+{/russia}
+@ [The commemorations of the civil and church authorities follow local usage.]
+P: All you Orthodox Christians, may the Lord God remember in his kingdom always, now, and ever, and unto ages of ages.
+C: Amen.
+@ Then the Choir finisheth the Cherubimic Hymn:
+C: That we may raise on high the King of all, like conqueror on shield and spears, by the Angelic Hosts invisibly upborne.
+@ Then the Deacon shall enter in through the Holy Door, and shall take his stand on the right, and shall say to the Priest, as the latter entereth:
+D~: May the Lord God remember thy priesthood in his kingdom.
+@ And the Priest shall say to him:
+P~: May the Lord God remember thy diaconate in his kingdom always, now, and ever, and unto ages of ages.
+=136
+@ Then the Priest shall set the holy chalice upon the Holy Altar, to the right; taking the holy paten from the head of the Deacon, he shall place it also upon the Holy Altar, to the left, saying, secretly:
+P~: Noble Joseph, when he had taken thy pure Body from the tree, did wrap it in fine linen and spices, and sorrowing did lay it in a new sepulchre.
+P~: In the Grave with the body, but in Hell with the soul, in that thou art God; in Paradise with the thief, and on the throne with the Father and the Spirit, wast thou, O Christ, filling all things, in that thou art infinite.
+P~: How life-giving, how than Paradise more fair and, of a truth, more splendid than any king's chamber, O Christ, is shown forth thy tomb, the fountain of our resurrection.
+@ Then shall he take the veils from the holy paten and the holy chalice, and shall lay them on one side of the Holy Altar; and having taken the air from the Deacon's shoulder, and censed it, he shall cover therewith the Holy Gifts, and shall say:
+P~: Noble Joseph, when he had taken thy pure Body from the tree, did wrap it in fine linen and spices, and sorrowing did lay it in a new sepulchre.
+@ Then taking the censer from the hands of the Deacon, he shall thrice cense the Holy Gifts, saying:
+P~: Exalt thou Zion in thy favour, O Lord, and let the walls of Jerusalem be built. Then shalt thou be pleased with the sacrifice of righteousness, with sacrifices and burnt-offerings; then shall they offer young bullocks upon thine altar.
+@ Then he shall give the censer to the Deacon, and shall bow his head, saying:
+P~: Remember me, O brother, and fellow-minister.
+@ And the Deacon shall say to him:
+D~: May the Lord God remember thy priesthood in his kingdom.
+@ The Deacon also, bowing his head, and holding his stole with three fingers of his right hand, shall say to the Priest:
+D~: Pray for me, holy Master.
+=137
+P~: May the Holy Spirit come upon thee, and the power of the Most High overshadow thee.
+D~: May the Holy Spirit himself minister together with us, and with you, all the days of our life.
+@ And again:
+D~: Pray for me, holy Master.
+P~: May the Lord God remember you (thee) in his kingdom always, now, and ever, and unto ages of ages.
+## offering | Litany of the Offering
+D: Let us complete our prayer unto the Lord.
+C: Lord, have mercy.
+D: For these Holy Elements now spread forth, let us pray to the Lord.
+C: Lord, have mercy.
+D: For this holy Temple, and for all those who with faith, devoutness, and in the fear of God have entered therein, let us pray to the Lord.
+C: Lord, have mercy.
+D: That he will deliver us from all tribulation, wrath, peril and necessity, let us pray to the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: A day all-perfect, holy, peaceful and sinless, let us beseech of the Lord.
+=138
+C: Grant it, O Lord.
+D: An Angel of Peace, the faithful guide and guardian both of our souls and bodies, let us beseech of the Lord.
+C: Grant it, O Lord.
+D: The pardon and remission of our sins and transgressions, let us beseech of the Lord.
+C: Grant it, O Lord.
+D: All things which are profitable to our souls and bodies, and peace to the world, let us beseech of the Lord.
+C: Grant it, O Lord.
+D: That we may pass the residue of our life in peace and penitence, let us beseech of the Lord.
+C: Grant it, O Lord.
+D: A Christian ending to our life, painless, blameless, peaceful; and a good defence before the dread Judgment Seat of Christ, let us beseech of the Lord.
+C: Grant it, O Lord.
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ Meanwhile the Bishop, or Priest, saith secretly the Prayer of the Offering.
+{chrys}
+P~: O Lord God Almighty, who alone art holy; who acceptest the sacrifice of praise from those who call upon thee with their whole heart: Accept also the prayer of us sinners, and bear it to thy holy Altar; and enable us to offer unto thee gifts and spiritual sacrifices for our sins and for the errors which thy people have committed through ignorance. And graciously grant us to obtain grace in thy sight, that our sacrifice may be acceptable unto thee; and that the good spirit of thy grace may rest upon us, and upon these Holy Gifts, now offered up unto thee, and upon all thy people.
+{/chrys}
+{basil}
+P~: O Lord our God, who hast created us, and hast brought us into this life; who hast shown us the way of salvation, graciously bestowing upon us the revelation of heavenly Mysteries: Thou art he who hath appointed us to this ministry in the power of thy Holy Spirit. Graciously grant us, therefore, O Lord, to be servitors of thy new Covenant, ministers of thy Holy Mysteries. Accept us who draw near to thy holy Altar, according to the plenitude of thy mercy, that we may be worthy to offer unto thee this reasonable and unbloody sacrifice, for our own sins, and for the errors of thy people: which do thou accept upon thy holy, and heavenly, and supersensual Altar for the savour of a sweet odour. Send down upon us the grace of thy Holy Spirit. Look upon us, O God, and behold this our service, and accept it as thou didst accept the gifts of Abel, the sacrifices of Noah, the burnt-offerings of Abraham, the priestly offices of Moses and Aaron, the peace-offerings of Samuel. Even as thou didst accept at the hands of the holy Apostles this true ministry, so also do thou in thy beneficence, O Lord, accept from the hands of us sinners these gifts; that having been accounted worthy blamelessly to minister at thy holy Altar, we may receive the recompense of wise and faithful stewards, in the terrible day of thy just requiting.
+{/basil}
+@ Exclamation.
+P: Through the bounties of thine Only-begotten Son, with whom thou art glorified, together with the most holy, and good, and life-giving Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+## creed | Kiss of Peace and Creed
+P: Peace be with you all.
+C: And with thy spirit.
+D: Let us love one another, that with one accord we may confess:
+C: Father, Son, and Holy Spirit, the Trinity, one in Essence and undivided.
+@ The Priest shall do reverence, and shall say privately, within himself:
+P~: I will love thee, O Lord my strength; the Lord is my firm foundation, and my deliverer. (Thrice.)
+@ And he shall kiss the Holy Gifts, they being still covered; first the top of the holy paten, and likewise the top of the holy chalice, and the edge of the Holy Altar before him. If there be several Priests, they shall both kiss all the Holy Things, and each other on the shoulder.
+@ Then the Bishop or Priest shall say:
+P~: Christ is in the midst of us.
+@ And having been kissed on the shoulder and on the hand, he is answered:
+D~: He is and shall be.
+=139
+D: The Doors! The Doors! Wisdom! Let us attend.
+@ The Symbol of the Faith.
+L: I believe in one God the Father Almighty, Maker of heaven and earth, And of all things visible and invisible:
+L: And in one Lord Jesus Christ, the only-begotten Son of God, Begotten of his Father before all worlds; Light of Light, Very God of very God, Begotten, not made; Being of one Essence with the Father; By whom all things were made; Who, for us men, and for our salvation, came down from heaven, And was incarnate by the Holy Ghost of the Virgin Mary, And was made man. And was crucified also for us under Pontius Pilate, and suffered and was buried. And the third day he rose again, according to the Scriptures. And ascended into heaven. And sitteth on the right hand of the Father. And he shall come again with glory to judge both the quick and the dead; Whose kingdom shall have no end.
+L: And in the Holy Ghost, the Lord and Giver of Life, Who proceedeth from the Father, Who with the Father and the Son together is worshipped and glorified. Who spake by the Prophets. In one Holy Catholic and Apostolic Church. I acknowledge one Baptism for the remission of sins. I look for the Resurrection of the dead. And the Life of the world to come. Amen.
+@ [In the book the Choir sings the Creed; the People also repeat it.] The Priest shall fan the Holy Elements with the air. If several Priests take part in the service, they shall all fan the Holy Elements with the air, in like manner, and shall repeat, as do the People also, the Symbol of the Faith. Then the Priest shall take the air from the Holy Elements, and having kissed it, he shall lay it aside.
+## anaphora | Anaphora
+D: Let us stand aright, let us stand with fear, that we may offer in peace the Holy Oblation.
+C: A mercy of peace, a sacrifice of praise.
+=140
+P: The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Spirit, be with you all.
+C: And with thy spirit.
+@ Priest (pointing upward):
+P: Lift up your hearts.
+C: We lift them up unto the Lord.
+P: Let us give thanks unto the Lord.
+C: Meet and right is it that we should adore the Father, the Son, and the Holy Spirit, the Trinity, one in Essence and undivided.
+@ The Priest shall offer this Prayer, secretly.
+{chrys}
+P~: It is meet and right that we should laud thee, bless thee, praise thee, give thanks unto thee, and adore thee in all places of thy dominion: for thou art God ineffable, incomprehensible, invisible, inconceivable; thou art from everlasting and art changeless, thou, and thine Only-begotten Son, and thy Holy Spirit. Thou from nothingness hast called us into being; and when we had fallen away from thee, thou didst raise us up again; and thou hast not ceased to do all things until thou hadst brought us back to heaven, and hadst endowed us with thy kingdom which is to come. For all which things we give thanks unto thee, and thine Only-begotten Son, and thy Holy Spirit; for all the things whereof we know, and whereof we know not; for all thy benefits bestowed upon us, both manifest and unseen. And we render thanks unto thee for this ministry which thou dost deign to accept at our hands, although before thee stand thousands of Archangels and myriads of Angels, with the Cherubim, and Seraphim, six-winged, many-eyed, who soar aloft, borne on their pinions.
+{/chrys}
+{basil}
+P~: O thou who in verity existest, Master, Lord God, Father Almighty adorable: Meet is it, in truth, and just and befitting the majesty of thy holiness, that we should magnify thee, praise thee, bless thee, adore thee, give thanks unto thee and glorify thee, the only God which verily existeth, and offer unto thee, with contrite heart and humbleness of spirit, this our reasonable service: for it is thou who hast graciously bestowed upon us the knowledge of thy truth. And who hath power enough to express thy mighty acts, to make all thy praises to be heard, or to utter forth all thy wonders at all times, O Master.? O Sovereign Master of all things. Lord of heaven and earth, and of all created things both visible and invisible; who sittest on the throne of glory and beholdest the depths; who art from everlasting, invisible, inscrutable, ineffable, immutable, the Father of our Lord Jesus Christ, our great God and the Saviour, our hope, who is the image of thy goodness, the seal of equal type, in himself showing forth thee, the Father, the living Word, the true God, the Wisdom
+=141
++ before all the ages, the Life, the Sanctification, the Might, and the true Light, through whom, also, the Holy Spirit was manifested; the Spirit of Truth, the Gift of Adoption, the Earnest of an inheritance to come, the First-fruits of eternal good things, the life-giving Power, the Fountain of holiness; by whom enabled every creature endowed with reason and intelligence doth serve thee, and evermore doth send up unto thee an everlasting tribute of praise; for all things are thy servants. For Angels and Archangels, Thrones, Dominions, Principalities, Authorities, Powers, and the many-eyed Cherubim do laud thee. Before thee, round about, stand the Seraphim, having each six wings; for with twain do they cover their faces, and with twain their feet, and with twain do they fly, crying one to another continually, with never-ceasing praises.
+{/basil}
+@ Exclamation.
+P: Singing the triumphant song, crying, calling aloud, and saying:
+C: Holy, holy, holy, Lord of Sabaoth; heaven and earth are full of thy glory: Hosanna in the highest: Blessed is he that cometh in the Name of the Lord. Hosanna in the highest.
+@ The Deacon now taking the holy star-cover from the holy paten, shall make the sign of the cross above it, and shall kiss it, and lay it on one side. He shall then go and stand on the right of the Holy Altar.
+@ The Priest prayeth, secretly.
+{chrys}
+P~: And we also, O Lord who lovest mankind, in company with these blessed Powers do cry aloud and say: Holy art thou, and all-holy thou, and thine Only-begotten Son, and thy Holy Spirit; holy and all-holy and majestic is thy glory. Who hast so loved thy world that thou gavest thine Only-begotten Son, that whosoever believeth on him should not perish, but should have everlasting life; who, when he had come and had performed all the dispensation for us, in the night in which he was given up, — in the which, rather, he did give himself for the life of the world, —took bread in his holy and pure and sinless hands; and when he had given thanks, and blessed it, and so sanctified it, he gave it to his holy disciples and apostles, saying:
+{/chrys}
+{basil}
+P~: With these blessed Powers, O Master who lovest mankind, we sinners also do cry aloud and say: Holy art thou, of a truth, and all-holy, and there are no bounds to the majesty of thy holiness, and just art thou in all thy works; for in righteousness and true judgment hast thou ordered all things for us. When thou hadst created man, and hadst fashioned him from the dust of the earth, and hadst honoured him with thine own image, O God, thou didst set him in the midst of a Paradise of plenty, promising him life eternal and the enjoyment of everlasting good things in keeping thy commandments.
+=142
++ But when he disobeyed thee, the true God, who had created him, and was led astray by the guile of the serpent, and rendered subject to death through his own transgressions, thou didst banish him, in thy righteous judgment, O God, from Paradise into this present world, and didst turn him again to the earth from which he was taken, providing for him the salvation of regeneration, which is in thy Christ himself. For thou didst not turn thyself away forever from thy creature, whom thou hadst made, O Good One, neither didst thou forget the work of thy hands; but thou didst visit him in divers manners, through the tender compassion of thy mercy. Thou didst send forth Prophets; thou didst perform mighty works by thy Saints who, in every generation, were well-pleasing unto thee; thou didst speak to us by the mouths of thy servants the Prophets, who foretold unto us the salvation which was to come; thou didst give us the Law to aid us; thou didst appoint guardian Angels. And when the fulness of time was come, thou didst speak unto us by thy Son himself, by whom also thou madest the ages; who, being the Brightness of thy glory, and the Express Image of thy Person, and upholding all things by the word of his power, thought it no robbery to be equal to thee, the God and Father. But albeit he was God before all the ages, yet he appeared upon earth and dwelt among men; and was incarnate of a Holy Virgin, and did lay aside his godhead, taking on the form of a servant, and becoming conformed to the fashion of our lowliness, that he might make us conformable to the image of his glory. For as by man sin entered into the world, and by sin death, so it seemed good unto thine Only-begotten Son, who is in thy bosom, our God and Father, to be born of a woman, the holy Birth-giver of God and ever-virgin Mary; to be born under the Law, that he might condemn sin in the flesh; that they who were dead in Adam might be made alive in thy Christ. And becoming a dweller in this world, and giving commandments of salvation, he released us from the delusions of idols, and brought us unto a knowledge of thee, the true God and Father, having won us unto himself for a peculiar people, a royal priesthood, a holy nation; and having purified us with water, and sanctified us with his Holy Spirit, he gave himself a ransom to Death, whereby we were held, sold into bondage under sin. And having descended into Hell through the Cross, that he might fill all things with himself, he loosed the pains of death, and rose again from the dead on the third day, making a way for all flesh through the Resurrection from the dead—for it was not possible that the Author of Life should be holden of corruption — that he might be the first-fruits of those who have fallen asleep, the first-born from the dead; and he shall be all things, the first in,all things. And ascending into heaven, he sat down at the right hand of thy Majesty on high; and he shall come again to render unto every man
+=143
++ according to his works. And he hath left with us, as memorials of his saving Passion, these Things which we have spread forth according to his commandment. For when he was about to go forth to his voluntary, and ever-memorable, and life-creating death, in the night in which he gave himself for the life of the world, he took bread in his holy and stainless hands, and when he had shown it unto thee, his God and Father, he gave thanks, blessing it, sanctifying it, and breaking it, he gave it to his holy disciples and apostles, saying:
+{/basil}
+@ Exclamation.
+P!: Take, eat, this is my Body which is broken for you, for the remission of sins.
+@ As he saith this, the Deacon shall point out the holy paten to the Priest, holding his stole with three fingers of his right hand.
+{chrys}
+P~: And in like manner, after supper he took the cup, saying:
+{/chrys}
+@ As he saith this, the Deacon pointeth to the holy chalice.
+{basil}
+P~: In like manner, having taken the Cup of the fruit of the vine, and mingled it, given thanks, blessed it, and sanctified it,
+@ Exclamation.
+P: He gave it to his holy disciples and apostles, saying:
+{/basil}
+@ Exclamation.
+P!: Drink ye all of this: for this is my Blood of the New Testament, which is shed for you, and for many, for the remission of sins.
+@ The Priest, secretly.
+{chrys}
+P~: Bearing in remembrance, therefore, this commandment of salvation, and all those things which came to pass for us; the Cross, the Grave, the Resurrection on the third day, the Ascension into Heaven, the Sitting on the right hand, the Second and glorious Coming-again:
+{/chrys}
+{basil}
+P~: This do, in remembrance of me: for as often as ye shall eat this Bread and drink of this Cup ye do proclaim my death and confess my Resurrection.
+P~: Wherefore, we also, O Master, having in remembrance his redeeming Passion and life-giving Cross, his three days' Burial, and his Resurrection from the dead, his Ascension into Heaven, and his Sitting on the right hand of thee, the God and Father, and his glorious and terrible Coming-again:
+{/basil}
+=144
+@ Exclamation.
+P: Thine own, of thine own, we offer unto thee, in behalf of all, and for all.
+@ Here the Deacon, crossing his hands, shall lift up the holy paten and the holy chalice, and making with them the sign of the cross, he shall himself make a humble reverence.
+C: We praise thee, we bless thee, we give thanks unto thee, O Lord, and we pray unto thee, O our God.
+@ The Priest prayeth, secretly.
+{chrys}
+P~: Again we offer unto thee this reasonable and unbloody service. And we beseech and implore thee, and offer our supplications unto thee, that thou wilt send thy Holy Spirit upon us, and upon these Gifts here spread forth.
+{/chrys}
+{basil}
+P~: Wherefore, O all-holy Master, we also, thy sinful and unworthy servants, whom thou hast graciously permitted to minister at thy holy Altar, not through our own righteousness (for we have done no good deed on earth), but because of thy mercies and bounties, which thou hast richly poured out upon us, now have boldness to draw near unto this, thy holy Altar; and presenting unto thee the holy emblems of the sacred Body and Blood of thy Christ, we pray thee and implore thee, O Holy of Holies, by the favour of thy goodness, that thy Holy Spirit may descend upon us, and upon these Gifts here spread forth before thee, and bless them, and sanctify and manifest them.
+{/basil}
+@ Then the Deacon shall approach the Priest; and standing side by side, they shall both make three lowly reverences before the Holy Altar, praying silently thus:
+P~: O Lord, who at the Third Hour didst send down upon thine Apostles thy Holy Spirit: Take not the same from us, O Good One, but renew it in us who make our supplications unto thee.
+D~: Make me a clean heart, O God, and renew a right spirit within me.
+P~: O Lord, who at the Third Hour...
+D~: Cast me not away from thy presence, and take not thy Holy Spirit from me.
+P~: O Lord, who at the Third Hour...
+@ Then the Deacon, bowing his head and pointing with his stole to the Holy Bread, shall say:
+D~: Bless, Master, the Holy Bread.
+@ And the Priest, standing erect, shall sign the Holy Bread with the sign of the cross, and shall say:
+{chrys}
+P~: And make this bread the precious Body of thy Christ.
+{/chrys}
+=145
+{basil}
+P~: For this bread is in very truth the precious Body of our Lord, and God, and Saviour, Jesus Christ.
+{/basil}
+D~: Amen. Bless, Master, the holy chalice.
+@ And the Priest shall bless it, and shall say:
+{chrys}
+P~: And make that which is in this chalice the precious Blood of thy Christ.
+{/chrys}
+{basil}
+P~: For this chalice, in very truth the precious Blood of our Lord, and God, and Saviour, Jesus Christ (Deacon. Amen), which was poured out for the life of the world.
+{/basil}
+D~: Amen.
+@ And again, the Deacon, pointing to both the Holy Elements, shall say:
+D~: Master, bless both.
+@ And the Priest, blessing both, shall say:
+P~: Transmuting them by thy Holy Spirit.
+D~: Amen, amen, amen.
+@ And bowing his head to the Priest, the Deacon shall say:
+D~: Bear me in remembrance, holy Master.
+@ And the Priest shall say:
+P~: May the Lord God remember thee in his kingdom always, now and ever, and unto ages of ages.
+D~: Amen.
+=146
+@ The Priest prayeth.
+{chrys}
+P~: That to those who shall partake thereof they may be unto soberness of soul, unto the remission of sins, unto the fellowship of thy Holy Spirit, unto the fulfilling of the kingdom of Heaven, and unto boldness toward thee; and not unto judgment or unto condemnation.
+P~: And again we offer unto thee this our reasonable service, for all thy servants departed this life before us in the faith; for our ancestors, fathers, the Patriarchs, Prophets, Apostles, Preachers, Evangelists, Martyrs, Confessors, Ascetics; and for every righteous soul who hath died in the faith:
+{/chrys}
+{basil}
+P~: And unite all us who partake of the one Bread and the one Cup, one to another in the communion of the Holy Spirit; and grant that no one of us may partake of that holy Body and Blood of thy Christ unto judgment or unto condemnation; but that we may find mercy and grace, together with all the Saints who, in all the ages, have been acceptable unto thee, our ancestors, fathers, the Patriarchs, Apostles, Preachers, Evangelists, Martyrs, Confessors, Teachers; and with the spirits of just men made perfect in the faith:
+{/basil}
+@ And the Deacon shall cense the Holy Altar round about, and shall make mention of the living and of the dead.
+@ Then the Priest shall say, aloud:
+P: Especially our most holy, all-undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary:
+P~: And Saint John, the Prophet, Forerunner and Baptist; the holy, glorious and all-laudable Apostles; Saint N. (the Saint of the day), whose memory we commemorate; and all thy Saints: through whose prayers visit thou us, O God, and call to remembrance all those who have fallen asleep in the hope of Resurrection unto life eternal.
+@ (Here he maketh mention of the Names, in the order of their rank.)
+C: Meet is it, in truth, to bless thee, the Birth-giver of God, ever-blessed, and all-undefiled, and the Mother of our God. More honourable than the Cherubim, and beyond compare more glorious than the Seraphim,
+=147
++ thou who without defilement barest God the Word, true Birth-giver of God, we magnify thee.
+{chrys}
+P~: Furthermore we beseech thee, O Lord, that thou wilt call to remembrance all Bishoprics of Orthodox Christians, which rightly dispense the word of thy truth; all the Priesthood, the Diaconate in Christ, and every order of the Clergy.
+P~: Furthermore we offer unto thee this our reasonable worship on behalf of the whole universe; of the Holy Catholic and Apostolic Church; of those who continue in chastity and soberness of life; of our most God-fear-
++ ing Sovereign, N. (in Russia, the Emperor of All the Russias); and all the Reigning House, and all their Council and Army and Navy. Grant unto them, O Lord, a peaceful reign, and that we, through their tranquillity, may pass our time in rest and quietness, in all godliness and soberness of life.
+{/chrys}
+@ Or, at the different Feasts, there shall be sung the appointed Hymn to the Birth-giver of God.
+{basil}
+C: In thee rejoiceth, O thou who art full of Grace, every created being, the Hierarchy of the Angels, and all mankind, O Consecrated Temple and supersensual Paradise, Glory of Virgins, of whom God, who is our God before all the ages, was incarnate and became a little child. For he made of thy womb a throne, and thy belly did he make more spacious than the heavens. In thee doth all Creation rejoice, O thou who art full of Glory: Glory to thee.
+P~: And give them rest where the light of thy countenance shall visit them.
+P~: Have in remembrance, also, O Lord, we beseech thee, thy Holy Catholic and Apostolic Church, which is from end to end of the Universe; and give peace unto Her whom thou hast purchased with the precious Blood of thy Christ: and establish thou firmly this holy Temple, even unto the end of the world. Remember, O Lord, those who have offered unto thee these Gifts; and those for whom, and by whom, and in behalf of whom they have offered them.
+P~: Have in remembrance, O Lord, those who bear fruit and do good works in thy holy churches, and those who are mindful of the poor. Requite them with thy rich and heavenly gifts. Give them things heavenly for things earthly; things eternal for things temporal; things incorruptible for things corruptible.
+P~: Have in remembrance, O Lord, those who are in the deserts, and mountains, and caverns, and in the subterranean pits of the earth.
+P~: Have in remembrance, O Lord, all those who continue in virginity and godliness, and in asceticism and devoutness of life.
+P~: Have in remembrance, O Lord, our most God-fearing and Christ-loving Sovereign, N. (in Russia, the Emperor of All the Russias), to whom thou hast given the right to reign in the earth. Crown him with the armour of truth, with the panoply of contentment. Overshadow his head in the day of battle. Strengthen his arm, exalt his right hand; make mighty his kingdom; subdue under him all barbarous nations which seek wars; grant unto him peace profound and inviolate; inspire his heart with good deeds toward thy Church, and toward
+=148
++ all thy people; that through his serenity we may lead a quiet and tranquil life, in all godliness and soberness. Remember, also, O Lord, all the Reigning House.
+P~: Have in remembrance, O Lord, all Rulers and Authorities, as also our brethren who are in their Council; and all their Army and Navy. In their goodness, preserve thou the good, and through thine own goodness make thou the evil good.
+P~: Have in remembrance, O Lord, this congregation here present, and those who are absent for reasonable cause; and have mercy upon them and upon us, according to the multitude of thy mercies. Fill their treasuries with every good thing; maintain their marriage-bond in peace and concord; rear the infants; guide the young; support the aged; encourage the faint-hearted. Collect the scattered, and turn them from their wandering astray, and unite them to thy Holy Catholic and Apostolic Church. Set at liberty those who are vexed by unclean spirits; voyage with those who voyage, journey with those who journey; defend the widows; protect the orphans; free the captives; heal the sick. Have in remembrance those who are under trial, and in the mines, and in exile, and in bitter slavery, and in all affliction, distress and tribulation.
+P~: Have in remembrance, O God, all those who invoke thy great loving-kindness; those also who love us, and those who hate us, and those who have enjoined us, unworthy though we are, that we should pray for them; and all thy people, O Lord our God: And upon them all pour out thy rich mercy, granting unto all such of their petitions as are unto salvation. And those whom we, through ignorance, or forgetfulness, or the multitude of names, have not remembered, do thou thyself call to mind, O God, who knowest the age and the name of each, and knowest every man even from his mother's womb. For thou, O Lord, art the Helper of the helpless, the Hope of the hopeless, the Saviour of the storm-tossed, the Haven of the voyager, the Healer of the sick. Be thyself all things unto all men, O thou who knowest every man, his petition, his abode, and his need. Deliver, O Lord, this city, and every city and land from famine, plague, earthquake, flood, fire, sword, the invasion of enemies, and from civil war.
+{/basil}
+@ And when the Hymn is finished, the Priest shall say, aloud:
+P: Among the first have in remembrance, O Lord, the Most Holy Governing Synod (or Patriarch); and grant that they (or he) may rightly
+=149
++ dispense unto thy Church the word of thy truth, in peace, safety, health, honour and length of days.
+@ And the Choir singeth:
+C: And all the people.
+@ The Deacon then commemorateth the living, while the Priest prayeth, secretly.
+{chrys}
+P~: Have in remembrance, O Lord, this city in which- we dwell; and every city and country, and all those who with faith dwell therein. Have in remembrance, O Lord, all those who journey by sea or by land, all sick persons and sufferers and captives, and their salvation. Have in remembrance, O Lord, those who bear fruit and do good works in thy holy Churches, and those who are mindful of the poor; and send down thy grace upon us all.
+{/chrys}
+{basil}
+P~: Have in remembrance, O Lord, every Bishopric of the Orthodox which rightly administereth the word of thy truth.
+P~: Have in remembrance, also, O Lord, my unworthiness, according to the multitude of thy bounties; pardon me every transgression, whether voluntary or involuntary, and withhold not, because of my sins, the grace of thy Holy Spirit from the Gifts now spread forth unto thee.
+P~: Have in remembrance, O Lord, the Priesthood, as also the Diaconate in Christ, and all sacerdotal orders, and put not to confusion any one of us who stand about thy holy Altar. Visit us with thy loving-kindness, O Lord; manifest thyself unto us in thy rich bounties. Vouchsafe unto us temperate and healthful seasons. Give gentle showers upon the earth, unto fruitfulness. Bless the crown of the year of thy beneficence. Make schisms to cease in the Church. Quench the ragings of the nations; speedily destroy, by the might of thy Holy Spirit, all uprisings of heresies. Receive us all into thy kingdom, making us children of the light and of the day; and grant unto us thy peace, and thy love, O Lord our God; for all things hast thou given unto us.
+{/basil}
+=150
+@ Exclamation.
+P: And grant that with one mouth and one heart we may glorify and praise thine all-honourable and majestic Name, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ And turning to the People and blessing them, the Priest saith:
+P: And may the mercy of the great God, and of our Saviour Jesus Christ, be with you all.
+C: And with thy spirit.
+=150
+## prelord | Litany before the Lord's Prayer
+@ And the Deacon shall stand at his accustomed place, and shall say:
+% Lord, have mercy. | let us pray to the Lord.
+D: Calling to remembrance all the Saints, again, yet again, in peace let us pray to the Lord. ℟
+D: For the Precious Gifts which have been offered and sanctified, let us pray to the Lord. ℟
+D: That our God, who loveth mankind, will accept them upon his holy, and most heavenly, and supersensual Altar, for an odour of spiritual fragrance; and will send down upon us in return his divine grace and the gift of his Holy Spirit, let us pray to the Lord. ℟
+D: That he will deliver us from all tribulation, wrath, peril and necessity, let us pray to the Lord. ℟
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+% Grant it, O Lord. | let us beseech of the Lord.
+D: A day all-perfect, holy, peaceful and sinless, let us beseech of the Lord. ℟
+D: An Angel of Peace, the faithful guide and guardian both of our souls and bodies, let us beseech of the Lord. ℟
+D: The pardon and remission of our sins and transgressions, let us beseech of the Lord. ℟
+D: All things which are profitable to our souls, and peace to the world, let us beseech of the Lord. ℟
+=151
+D: That we may pass the residue of our life in peace and penitence, let us beseech of the Lord. ℟
+D: A Christian ending to our life, painless, blameless, peaceful; and a good defence before the dread Judgment Seat of Christ, let us beseech of the Lord. ℟
+D: Having made our petition for the unity of the faith, and the communion of the Holy Spirit, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ Meanwhile the Priest prayeth, secretly.
+{chrys}
+P~: Unto thee do we commit our whole life and hope, O Lord, who lovest mankind. And we entreat thee, and beseech thee, and implore thee: Vouchsafe that we may partake of thy heavenly and terrible Mysteries, of this sacred and spiritual food, with a pure conscience, unto the remission of our sins, unto the pardon of our transgressions, unto the communion of the Holy Spirit, unto inheritance of the kingdom of Heaven, and unto boldness toward thee; not unto judgment or condemnation.
+{/chrys}
+{basil}
+P~: O our God, the God of salvation, do thou teach us how we may worthily give thanks unto thee for thy benefits, which thou hast ever bestowed and yet dost bestow upon us. Do thou, O our God, who acceptest these Gifts, purify us from every defilement of flesh and spirit, and teach us to perfect holiness in thy fear; that we, receiving a portion of thy Holy Things in the witness of a pure conscience toward thee, may be made one with the holy Body and Blood of thy Christ; and that having received them worthily, we may have Christ abiding in our hearts, and may become a Temple of thy Holy Spirit.
+P~: Yea, O our God, cause also that none of us may be guilty of these thy terrible and heavenly Mysteries, or sick in soul or in body through an unworthy partaking of the same: but enable us, even unto our last breath, worthily to receive a portion of thy Holy Things, which is a support upon the road to life eternal, an acceptable defence at the dread Judgment Seat of thy Christ. That we also, together with all the Saints who, in all the ages, have been acceptable unto thee, may be made partakers of thine everlasting blessedness, which thou hast prepared for those who love thee, O Lord.
+{/basil}
+@ Exclamation.
+P: And vouchsafe, O Lord, that boldly and without condemnation we may call upon thee, God the heavenly Father, and say:
+@ Here the Deacon bindeth his stole about him in the form of a cross.
+@ The People:
+L: Our Father, who art in heaven, Hallowed be thy Name. Thy kingdom come. Thy will be done on earth, As it is in heaven. Give us this day our daily bread. And forgive us our trespasses, As we forgive those who trespass against us. And lead us not into temptation; But deliver us from the Evil One:
+@ Exclamation.
+P: For thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages. Choir. Amen.
+C: Amen.
+P: Peace be with you all.
+C: And with thy spirit.
+=152
+D: Let us bow our heads unto the Lord.
+C: To thee, O Lord.
+@ The Priest prayeth, secretly.
+{chrys}
+P~: We give thanks unto thee, O King invisible, who by thine illimitable power hast made all things, and by the plenitude of thy mercy hast called into being all things from nothingness. Do thou, the same Lord, look down from heaven upon those who have bowed their heads before thee; for they have not bowed down unto flesh and blood, but unto thee, the terrible God. Do thou, therefore, O Lord, render this oblation efficacious to us all, according to the individual need of each. Voyage with those who sail upon the seas; journey with those who travel on dry land. Heal the sick, O thou who art the healer of our souls and bodies.
+{/chrys}
+{basil}
+P~: O Master, Lord, the Father of bounties, and the God of all comfort, bless, sanctify, guard, strengthen, fortify those who have bowed their heads unto thee; withdraw them from every evil work; unite them to every good work; and graciously grant that, without condemnation, they may partake of these, thy pure and life-giving Mysteries, unto the remission of their sins, and unto the communion of the Holy Spirit.
+{/basil}
+@ Exclamation.
+P: Through the grace, and bounties, and love toward mankind of thine Only-begotten Son, with whom thou art blessed, together with thine all-holy, good and life-giving Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Priest prayeth, secretly:
+P~: Give heed from thy holy dwelling-place, and from the throne of glory of thy kingdom, and come and sanctify us, O Lord Jesus Christ our God, who sittest on high with the Father, and art invisibly here with us. And deign, with thine own mighty hand, to impart thine all-pure Body and most precious Blood unto us, and through us unto all the people.
+@ Then the Priest shall do homage, and the Deacon, standing before the Holy Door, shall repeat, secretly, thrice:
+D~: O God, cleanse thou me, a sinner.
+@ When the Deacon seeth the Priest stretch out his hand and touch the Holy Bread in the act of making the Holy Oblation, he shall say, loudly:
+D: Let us attend.
+@ Here the Holy Door is closed, and the curtain is drawn.
+=153
+## communion | Holy Things and Communion
+@ And the Priest, as he elevateth the Holy Bread, shall say:
+P: Holy things unto the Holy.
+C: One only is holy, one only is the Lord, Jesus Christ, in the glory of God the Father. Amen.
+@ And the Deacon shall enter the Sanctuary, and standing at the right hand of the Priest, who holdeth the Holy Bread, he shall say:
+D~: Break, Master, the Holy Bread.
+@ And the Priest, breaking it in four pieces, with all heedfulness and awe, shall say:
+P~: Broken and divided is the Lamb of God, which is broken, yet not disunited; which is ever eaten, yet never consumed, but sanctifieth those who partake thereof.
+@ Then shall the Choir chant the Anthem for the Day (or of the Saint, or of the Feast):
+C: Praise ye the Lord from heaven: praise him in the height. Alleluia.
+
+@ Concerning the Partition of the Holy Lamb. After dividing the Holy Lamb, the Priest must place the portions in the form of a cross upon the holy paten, with a profound reverence, such as he hath made before when censing. He shall lay the IHC at the upper part of the holy paten, which lieth towards the east. The XC shall he place in a line beneath it, on that side of the paten which lieth to the west; and the NI upon the north side, while the KA shall be opposite, upon the south side. The IHC portion is placed in the Chalice; with the XC portion the Priest communicateth himself and the Clergy who serve with him; with the NI and KA portions the people are communicated.
+=154
+@ When the portion IHC hath been removed, it shall be placed in the holy chalice. The portion XC shall be partaken of by the Clergy who take part in the Liturgy. The two other portions, namely, the NI and the KA, are broken for the communion of the laity. And from the portion which representeth the Holy Birth-giver of God, or from the particles representing the nine ranks of the Heavenly Hierarchy, which are upon the holy paten, shall no one be communicated: but only from the two portions of the Holy Lamb which remain shall the laity be communicated.
+@ Then the Deacon, pointing with his stole to the holy chalice, shall exclaim:
+D~: Fill, Master, the holy chalice.
+@ And the Priest, taking the portion IHC from the place where it lieth, shall make therewith the sign of the cross above the holy chalice, saying:
+P~: The fulness of the Holy Spirit.
+@ And shall place it in the holy chalice.
+D~: Amen.
+@ And taking the warm water, he shall say to the Priest:
+D~: Bless, Master, the warm water.
+@ And the Priest shall bless it, saying:
+P~: Blessed is the fervour of thy Saints always, now, and ever, and unto ages of ages. Amen.
+@ Then the Deacon shall pour into the holy chalice, in the form of a cross, what is required, saying:
+D~: The warmth of faith, full of the Holy Spirit. Amen.
+@ When the divine Blood of the Lord is mingled with the holy warm water, it must be done with heed, and in amount according to the number of those who desire to receive the Holy Sacrament.
+@ The Priest breaketh the portion XC into a number of pieces, corresponding to the number of Clergy who take part in the Liturgy. Then the Priest saith:
+P~: Deacon, draw near.
+@ And the Deacon shall approach, and shall make a devout reverence, entreating forgiveness; and having kissed the Altar, he shall say:
+D~: Lo, I draw near unto the King Immortal and to God.
+D~: Impart unto me, Master, the precious and holy Body of our Lord, and God, and Saviour, Jesus Christ.
+@ And the Priest shall give him a portion of the Holy Body, and shall say:
+P~: To N., Deacon, is imparted the
+=155
++ precious, and holy, and all-pure Body of our Lord, and God, and Saviour, Jesus Christ, unto the remission of his sins, and unto life everlasting.
+@ And the Deacon shall kiss the Priest's hand as he taketh the Holy Body, and shall withdraw behind the Holy Altar; and bowing his head over the Holy Altar, he shall pray like the Priest: I believe, O Lord, and I confess …
+@ All the Priests, in the order of their seniority, first make an obeisance to each other, and to the People; and having besought forgiveness: Forgive me, fathers and brethren: and kissed the side of the Altar, they say:
+P~: Lo, I draw near unto the King Immortal, and to God.
+P~: The precious and all-holy Body of our Lord, and God, and Saviour, Jesus Christ, is imparted to me, N., Priest, unto the remission of my sins, and unto life everlasting.
+@ Then each taketh a piece of the Holy Body, and bowing low over the Holy Altar, and gazing devoutly upon the Holy Body of Christ, they say privately, each to himself:
+P~: I believe, O Lord, and I confess, that thou art, in very truth, the Christ, the Son of the living God, who didst come into the world to save sinners, of whom I am chief. And I believe that this is, of a truth, thine all-pure Body, and that this is thine own precious Blood. Wherefore, I beseech thee, have mercy upon me, and forgive my transgressions.
+=156
++ whether voluntary or involuntary; whether of word or of deed; whether committed with knowledge or in ignorance. And vouchsafe that I may partake without condemnation of thine all-pure Mysteries, unto the remission of my sins, and unto life eternal.
+P~: Of thy Mystical Supper, O Son of God, accept me to-day as a communicant: for I will not speak of thy Mystery to thine enemies, neither, like Judas, will I give thee a kiss; but like the thief will I confess thee: Remember me, O Lord, in thy kingdom.
+P~: And let not this participation in thy Holy Mysteries be unto judgment upon me, or unto condemnation, O Lord, but unto the healing of soul and body.
+@ And so shall they partake of the Holy Body which they hold in their hands, with awe, and all godly fear.
+@ And when they have partaken thereof, the Priests partake, in due order, of the Holy Blood from the chalice, thrice, saying each time:
+P~: The precious and holy Blood of our Lord, and God, and Saviour, Jesus Christ, is imparted to me, the servant of God, Priest, N., unto the remission of my sins, and unto life everlasting.
+P~: In the Name of the Father, and of the Son, and of the Holy Spirit. Amen.
+@ Sometimes: O Holy God, Holy Mighty, Holy Immortal One, have mercy upon us.
+@ Then having wiped his mouth and the holy chalice with the veil, which he holdeth in his hand, the Priest shall say:
+P~: Lo, this hath touched my lips, and shall take away mine iniquities, and shall purge away my sins.
+@ Then the Senior Priest saith again:
+P~: Deacon, draw near.
+@ And the Deacon shall approach, and shall make one reverence, saying:
+D~: Lo, I draw near unto the King Immortal, and to God.
+=157
+@ And the Priest, giving him the chalice, shall say:
+P~: The servant of God, N., Deacon, partaketh of the precious and all-holy Blood of our Lord, and God, and Saviour, Jesus Christ, unto the remission of his sins, and unto life everlasting.
+@ And having communicated the Deacon, the Priest shall say:
+P~: Lo, this hath touched thy lips, and shall take away thine iniquities, and shall purge away thy sins.
+@ If there be any who desire to partake of the Holy Mysteries, the Priest shall divide the remaining portions, the NI and the KA, into small particles, sufficient for all, and place them in the chalice.
+@ Then the Deacon, setting the holy paten above the holy chalice, saith these Hymns of the Resurrection:
+D~: In that we have beheld the Resurrection of Christ, let us bow down before the holy Lord Jesus, the only sinless One. Thy Cross do we adore, O Christ, and thy holy Resurrection we laud and glorify: for thou art our God, and we know none other beside thee; we call upon thy Name. O come, all ye faithful, let us adore Christ's holy Resurrection. For lo, through the Cross is joy come into all the world. Ever blessing the Lord, let us sing his Resurrection: for in that he endured the Cross he hath destroyed Death by death.
+D~: Shine, shine, O new Jerusalem, for the glory of the Lord is risen upon thee! Shout now and be glad, O Zion! And do thou, O Pure One, Birth-giver of God, rejoice in the Rising-again of him whom thou didst bear.
+D~: O Christ, Passover great and most Holy! O Wisdom, Word, and Power of God! Vouchsafe that we may more perfectly partake of thee in the days which know no evening of thy kingdom.
+@ While with the sponge he wipeth all the particles into the chalice with all care and reverence, he saith:
+D~: Wash away, O Lord, the sins of all who are here commemorated, by thy precious Blood, through the prayers of thy Saints.
+@ And he shall cover the holy chalice with the veil; and in like manner he shall cover the holy paten with the star-cover and the veil. Then the Priest shall recite the Prayer of Thanksgiving, secretly.
+{chrys}
+P~: We give thanks unto thee, O Lord, who lovest mankind. Benefactor of our souls and bodies, for that thou hast vouchsafed this day to feed us with thy heavenly and immortal Mysteries. Guide our path aright; stablish us all in thy fear; guard our life; make sure our steps: through the prayers and supplications of the glorious Birth-giver of God and ever-virgin Mary, and of all thy Saints.
+{/chrys}
+{basil}
+P~: We give thanks unto thee, O Lord our God, for the participation
+=158
++ in thy holy, pure, immortal and heavenly Mysteries, which thou hast given unto us for the welfare and sanctification and healing of our souls and bodies. Do thou, the same Lord of all, grant that the communion of the holy Body and Blood of thy Christ may be for us unto faith which cannot be put to confusion, unto love unfeigned, unto increase of wisdom, unto the healing of soul and body, unto the turning aside of every adversary, unto the fulfilment of thy commandments, unto an acceptable defence at the dread Judgment Seat of thy Christ.
+{/basil}
+@ Then the Holy Door is opened, and the Deacon, making a reverence, shall approach the Holy Door; and he taketh from the Bishop or the Priest the holy chalice, and elevating it, he saith:
+D: In the fear of God and with faith draw near.
+C: Blessed is he that cometh in the Name of the Lord; God is the Lord and hath revealed himself unto us.
+{pascha}
+@ At Eastertide:
+C: Christ is risen from the dead, trampling down Death by death, and upon those in the tomb bestowing life.
+{/pascha}
+@ Those who desire to communicate shall then approach. They shall come singly, and shall do reverence, with all devoutness and awe, with their hands crossed on their breasts: and in this manner shall they receive the Holy Mysteries, after the Priest hath said aloud the Prayer:
+P: I believe, O Lord, and I confess, that thou art, in very truth, the Christ, the Son of the living God, who didst come into the world to save sinners, of whom I am chief. And I believe that this is, of a truth, thine all-pure Body, and that this is thine own precious Blood. Wherefore, I beseech thee, have mercy upon me, and forgive my transgressions, whether voluntary or involuntary; whether of word or of deed; whether committed with knowledge or in ignorance. And vouchsafe that I may partake without condemnation of thine all-pure Mysteries, unto the remission of my sins, and unto life eternal.
+P: Of thy Mystical Supper, O Son of God, accept me to-day as a communicant: for I will not speak of thy Mystery to thine enemies, neither, like Judas, will I give thee a kiss; but like the thief will I confess thee: Remember me, O Lord, in thy kingdom.
+P: And let not this participation in thy Holy Mysteries be unto judgment upon me, or unto condemnation, O Lord, but unto the healing of soul and body.
+@ [The book refers back to page 116 for this prayer; it is printed here in full.] And as he communicateth each one, the Priest shall say:
+P: The servant of God, N., partaketh of the precious and holy Body and Blood of our Lord, and God, and Saviour, Jesus Christ, unto the remission of his (or her) sins, and unto life everlasting.
+@ And as each person is communicated, the Choir singeth:
+C: Receive ye the Body of Christ; taste ye of the Fountain of Life.
+@ Then the communicant's mouth shall be wiped with the holy veil, and he shall kiss the holy chalice, and making a reverence, he shall go aside, where he is given the antidóron and the holy warm water.
+@ And when all have finished, the Choir singeth:
+C: Alleluia, alleluia, alleluia.
+## thanks | Thanksgiving and Dismissal
+@ And the Priest shall set the chalice on the Altar, and shall bless the People, saying:
+P: O God, save thy people, and bless thine inheritance.
+=159
+C: We have beheld the true Light; we have received the heavenly Spirit; we have found the true faith. Let us bow down in worship to the Trinity Undivided, for it hath saved us.
+{pascha}
+@ Or, at Eastertide:
+C: Christ is risen from the dead, trampling down Death by death, and upon those in the tomb bestowing life.
+{/pascha}
+@ Then the Priest and the Deacon shall turn to the Holy Altar; and the Priest shall cense it, saying thrice, to himself:
+P~: Be thou exalted in heaven, O God, and thy glory above all the earth.
+@ The Priest, taking the holy paten, shall then set it upon the head of the Deacon; and the Deacon, holding it reverently, shall go to the Table of Oblation, and set it down there.
+@ The Priest, having done reverence also, shall take the holy chalice; and turning to face the Holy Door, he shall look upon the People, while he saith, secretly:
+P~: Blessed is our God!
+@ Then, aloud:
+P: Always, now, and ever, and unto ages of ages.
+C: Amen.
+C: Let our mouths be filled with thy praise, O Lord, that we may extol thy glory, for that thou hast deigned to make us partakers of thy holy, divine, immortal and life-giving Mysteries. Establish us in thy Sanctification, that all the day long we may meditate upon thy righteousness. Alleluia, alleluia, alleluia.
+{pascha}
+C: Christ is risen from the dead, trampling down Death by death, and upon those in the tomb bestowing life.
+{/pascha}
+@ And the Deacon, coming forth through the north door, and standing in his accustomed place, saith:
+D: Having received the divine, holy, pure, immortal, heavenly, life-giving and terrible Mysteries of Christ, O believers, let us worthily give thanks unto the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Beseeching that this whole day may be perfect, holy, peaceful and sinless, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ Then the Priest, folding the corporal (antimíns), shall make over it, with the book of the Holy Gospels, the sign of the cross.
+@ Exclamation.
+P: For thou art our sanctification, and unto thee we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+=160
+C: Amen.
+P: Let us depart in peace.
+C: In the Name of the Lord.
+D: Let us pray to the Lord.
+C: Lord, have mercy.
+@ Then the Junior Priest cometh forth, and, standing at the foot of the Tribune, readeth the Prayer before the Tribune.
+P: O Lord, who blessest those who bless thee, and sanctifiest those who put their trust in thee: Save thy people and bless thine inheritance. Preserve the fulness of thy Church; sanctify those who love the beauty of thy house; glorify them in recompense with thy divine might, and forsake not us who set our hope on thee. Give peace to thy world, and to thy Churches, and to thy Priests: and (if in Russia, to our most God-fearing Sovereign, N., the Emperor of All the Russias), to the Army and Navy, and to all thy people. For every good gift and every perfect gift is from above, and cometh from thee, the Father of Lights. And unto thee we ascribe glory, and thanksgiving, and worship, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen. Blessed be the Name of the Lord henceforth and forever. (Thrice.)
+@ The Deacon shall stand at the right side of the image-screen (ikonostás), before the holy picture (ikóna) of our Lord Christ, holding his stole in his hand, and with bowed head, until the conclusion of the Prayer before the Tribune. And when this hath been said, the Priest shall enter through the Holy Door, and going to the Table of Oblation, he shall say, secretly, the following Prayer:
+P~: Thou who art the fulfilling of the Law and the Prophets, O Christ our God, and hast accomplished all the dispensation of the Father; Fill thou our hearts with joy and gladness always, now, and ever, and unto ages of ages.
+@ And the Deacon, entering through the north door, shall consume the Holy Gifts, with all reverence and awe.
+@ Reader: Psalm xxxiv.
+R: I will alway give thanks unto the Lord: Come, ye children, and hearken unto me: I will teach you the fear of the Lord. What man is he that lusteth to live, and would fain see good days.' Keep thy tongue from evil, and do good: seek peace, and ensue it. The eyes of the Lord are over the righteous, and his ears are open unto their prayers. The countenance of the Lord is against them that do evil, to root out the remembrance of them from the earth. The righteous cry, and the Lord heareth them, and delivereth them out of all their troubles. The Lord is nigh unto them that are of a contrite heart, and will save such as be of an humble spirit. Great are the troubles of the righteous, but the Lord delivereth him out of all. He keepeth all his bones, so that not one of them is broken. But misfortune
+=161
++ shall slay the ungodly, and they that hate the righteous shall be desolate. The Lord delivereth the -souls of his servants, and all they that put their trust in him shall not be destitute.
+{pascha}
+C: Christ is risen from the dead, trampling down Death by death, and upon those in the tomb bestowing life.
+{/pascha}
+@ When the Deacon hath consumed the Holy Elements, so that no smallest morsel of the broken Bread is allowed to fall or remain; and hath poured into the holy chalice of the water and the wine, and hath wiped away with the sponge all the moisture, he shall lay the holy vessels together, and set them in their accustomed place, saying: Lord, now lettest thou thy servant depart: …
+@ And when the Psalm hath been read, the Priest shall say:
+P: The blessing of the Lord, through his grace and love towards mankind, be upon you always, now, and ever, and unto ages of ages.
+C: Amen.
+P: Glory to thee, O Christ our God; glory to thee.
+C: Glory to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Lord, have mercy. (Thrice.) Master, bless.
+{pascha}
+C: Christ is risen from the dead, trampling down Death by death, and upon those in the tomb bestowing life.
+{/pascha}
+@ The Priest saith the Benediction. (For Benedictions at the Feasts, see the Special Services of the Feasts.)
+* dismissal
+P: May (Sunday: he who rose from the dead) Christ, our true God, through the prayers of his all-holy Mother (Wednesday and Friday: through the might of the precious and life-giving Cross), (Monday: through the intercessions of the honourable Bodiless Powers of Heaven), (Tuesday: of the honourable and glorious Prophet and Forerunner and Baptist, John), of the holy, glorious and all-laudable Apostles (Saturday: of the holy, glorious and right victorious Martyrs; of our reverend and God-bearing Fathers); (according to the Liturgy used: of our Father among the Saints, Basil the Great or John Chrysostom), (Thursday: of our Father among the Saints, Nicholas, Archbishop of Myra in Lycia, the Wonder-worker), of Saint N. (of the Temple), of Saint N. (of the day), of the holy and righteous Ancestors of God, Joachim and Anna, and of all the Saints, have mercy upon us and save us, for he is good and loveth mankind.
+C: Preserve, O Lord (if in Russia: our most God-fearing Sovereign, N., the Emperor of All the Russias; and all the Reigning House; the Most Holy Governing Synod), our Master, the Right Reverend N., Bishop of N., and all Orthodox Christians, for many years.
+=162
+## after | Prayers after Communion
+@ The Priest holdeth the cross for the People to kiss, and distributeth the antidóron, after which he withdraweth to the Sanctuary. [The book then gives these Prayers of Thanksgiving after Communion.]
+L: Glory to thee, O God. (Thrice.)
+L: I thank thee, O Lord my God, that thou hast not rejected me, a sinner, but hast deemed me worthy to become a partaker of thy Holy Things. I thank thee that thou hast graciously granted unto me, though unworthy, to receive thy pure and heavenly Gifts. But, O Master who lovest mankind, who for our sake didst die, and didst rise again, and hast graciously bestowed upon us these terrible and life-giving Mysteries, for the blessing and sanctification of our souls and bodies: Vouchsafe that they may be efficacious for me also unto the healing of my soul and body, unto the averting of everything contrary thereto; unto the enlightenment of the eyes of my heart; unto the peace of my spiritual powers; unto faith invincible; unto love unfeigned; unto the fulfilling of wisdom; unto the keeping of thy commandments; unto the increase of thy divine grace and the attainment of thy kingdom: that by thee preserved in thy holiness I may ever bear in mind thy grace, and live not unto myself, but unto thee, our Master and Benefactor. And so, this life ended in the hope of life everlasting, I may come unto that rest eternal, where the voice of those who keep high festival ceaseth never, and where endless is the sweetness of those who behold the beauty inexpressible of thy countenance. For thou art the true desire and the happiness unutterable of those who love thee, O Christ our God, and every created being shall laud thee unto ages of ages. Amen.
+@ A Prayer of St. Basil the Great.
+L: O Lord Christ, God, King of the Ages, and Maker of all men, I thank thee for all the good things which thou hast bestowed upon me, and for this Communion of thy most pure and life-giving Mysteries. Therefore I entreat thee, O Good One who lovest mankind, keep me in thy tabernacle and under the shadow of thy wings; and grant that, with a pure conscience, even unto my uttermost breath, I may worthily partake of thy Holy Things, unto the remission of my sins, and unto life eternal. For thou art the Bread of Life, the Fountain of all holiness, the Giver of good things; and unto thee we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+@ A Prayer of St. Simeon Metaphrastes.
+L: O thou who, of thine own good will, dost give me thy body as my food; thou who art a Fire consuming the unworthy: Consume me not, O my Creator. But enter thou rather into my members, into my whole being, all my joints, my reins, my heart. Consume thou the thorns of all mine iniquities. Cleanse my soul. Sanctify my thoughts. Make stable my knees, and my bones likewise. Enlighten my five simple
+=163
++ senses. Knit me wholly to the fear of thee. Ever cover me, guard me and keep me from every word and deed which may hurt the soul. Purify me and wash me clean, and bring me into concord. Adorn me, give me understanding and enlighten me. Manifest me as the dwelling of thy one Spirit, and in nowise as the dwelling of sin. That being made thy tabernacle through the reception of thy holy Communion every evil thing, every carnal passion may flee away from me. I offer unto thee as intercessors all the Saints, the Chieftains of the Bodiless Powers, thy Forerunner, the wise Apostles, and joined with them thy Mother pure and undefiled; whose prayers do thou accept, in thy tender loving-kindness, O my Christ, and make thy servant to be a child of the light. For thou art the only sanctification and splendour of our souls, O Good One, and unto thee, as God and Lord over all, do we, as it behooveth us, every day ascribe all glory.
+@ Another Prayer.
+L: May thy holy Body, O Lord Jesus Christ our God, profit me unto life eternal, and thy precious Blood unto the remission of my sins. May this Eucharist be unto me for joy, and health, and gladness, and render me, a sinner, worthy to stand at the right hand of thy glory in thy terrible and second Coming-again; through the intercessions of thine all-pure Mother, and of all the Saints.
+@ Another Prayer, to the Most Holy Birth-giver of God.
+L: O all-holy Lady, Birth-giver of our God, of my darkened soul the light, hope, shelter, refuge, the consolation and the joy: I thank thee that thou hast deemed me, all unworthy as I am, worthy to be a partaker of the pure Body and precious Blood of thy Son. O thou who didst bring forth the true Light, enlighten the intellectually-discerning eyes of my heart; O thou who didst bear the Fountain of Immortality, quicken thou me, who lie dead in sin. O compassionately loving Mother of the merciful God, have mercy upon me, and grant unto me repentance and contrition of heart, and humbleness of mind, and deliverance from bondage to evil thoughts. And vouchsafe that even unto my last breath I may, without condemnation, receive the sanctification of these Holy Mysteries, unto the healing of both soul and body. And grant me tears of penitence and of confession, that I may laud and glorify thee all the days of my life. For blessed art thou and all-glorified unto all the ages. Amen.
+L: Lord, now lettest thou thy servant depart in peace, according to thy word. For mine eyes have seen thy salvation, which thou hast prepared before the face of all people. To be a light to lighten the Gentiles, and to be the glory of thy people Israel.
+L: O Holy God, Holy Mighty, Holy Immortal One, have mercy upon us.
+L: Glory to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+=164
+L: O all-holy Trinity, have mercy upon us. O Lord, wash away our sins. O Master, pardon our transgressions. O Holy One, visit and heal our infirmities, for thy Name's sake.
+L: Our Father, who art in heaven, Hallowed be thy Name. Thy kingdom come. Thy will be done on earth, As it is in heaven. Give us this day our daily bread. And forgive us our trespasses, As we forgive those who trespass against us. And lead us not into temptation; But deliver us from the Evil One:
+L: For thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+{chrys}
+@ The Hymn (Tropár) of Dismissal, in Tone V.:
+L: The grace of thy lips, shining forth like a beacon-fire, hath illumined the universe, and hath bestowed upon the world the treasure of non-avariciousness, and hath shown us the height of humility. But as thou instructest us with thy words, O Father John Chrysostom, so also intercede thou with Christ our God, that our souls may be saved.
+L: Glory to the Father, and to the Son, and to the Holy Spirit.
+@ Collect-Hymn (Kondák), in Tone VI.:
+L: From heaven hast thou received grace divine, and with thy lips dost thou teach all men to adore the One God in three Persons. O John Chrysostom, all-blessed Saint, we rightly praise thee: for thou art our Teacher, in that thou dost reveal things divine.
+L: Now, and ever, and unto ages of ages. Amen.
+{/chrys}
+{basil}
+@ But if the Liturgy of St. Basil the Great hath been used, this Hymn (Tropár), in Tone I.:
+L: Thy voice is gone out into all the world, in that it hath received thy word, wherewith thou hast taught in manner well pleasing unto God, hast expounded the nature of existing things, and hast adorned the customs of mankind. O Royal Priesthood, Sainted Father, pray thou unto Christ our God that our souls may be saved.
+@ Collect-Hymn (Kondák), in Tone IV.:
+L: Thou hast shown thyself a foundation immovable of the Church, dispensing unto all men the dominion inviolate, sealing it with thy decrees, O Saint Basil, who wast manifested from heaven.
+{/basil}
+@ Hymn to the Holy Birth-giver of God (Bogoróditchen).
+L: O Protection of Christians that maketh not ashamed, O Mediatrix never-failing with the Creator: Despise not the sinners' voice of supplication; but in that thou art good, come speedily to the aid of us who faithfully call upon thee; make haste to our petition and further our prayer, O Birth-giver of God, who ever protectest them that do thee honour.
+=165
+@ The Priest and Deacon wash their hands at the appointed place; and having done reverence together, the Priest shall pronounce the Dismissal. And giving thanks unto God for all things, they shall say, also, the proper Hymn for the Day. Then: Lord, have mercy. (Twelve times.)
+L: More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, thou who without defilement barest God the Word, true Birth-giver of God, we magnify thee.
+L: Glory to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+
+# ======================================================================
+# THE DIVINE LITURGY OF THE PRESANCTIFIED (GIFTS), pp. 127-146.
+# Parts are keyed pres-*; the bishop's column is left out.
+=166
+## pres-prep | Preparation on the Sunday before
+@ During the Holy and Great Fast, when the Priest is to celebrate the Liturgy of the Presanctified, at the Office of Oblation on the Sunday preceding, after he hath cut the first altar-bread, and sacrificed and pierced it (as indicated in the Ritual of the preceding Liturgy), he cutteth the extra breads, saying over each one of them these words following:
+P~: In commemoration of our Lord, and God, and Saviour, Jesus Christ.
+P~: He was led as a lamb to the slaughter. And as a spotless lamb before its shearers is dumb, so opened he not his mouth.
+P~: Sacrificed is the Lamb of God, who taketh away the sins of the world, for the life of the world, and for its salvation.
+P~: One of the soldiers did pierce his side with a spear, and straightway there came forth blood and water. And he that saw it bare witness, and his witness is true.
+@ Then he poureth the wine and water into the holy chalice, saying the customary words; and covereth them with the holy veil, and censeth them, repeating the Prayer of Oblation. And then he beginneth the Divine Liturgy and celebrateth as usual.
+@ And when he is to sign the breads, at the invocation of the Holy Spirit, he saith: Make this bread the precious Body of thy Christ, in the singular, and he doth not speak of the breads in the plural. And when he maketh the oblation, he offereth them all together. And he breaketh only the first bread, and layeth the portion in the holy chalice, and poureth in the warm water as usual.
+@ Then, taking the holy spoon in his right hand, he dippeth it in the Holy Blood. With his left hand he taketh one of the breads, and toucheth it with the holy spoon, which hath been wetted with the Holy Blood, in the form of a cross, on the side whereon is depicted the cross, under the soft portion, and placeth it in the tabernacle.
+@ Then he doth the same with the other breads, and placeth them all in the tabernacle. Thereafter the Priest prayeth as usual, and communicateth as usual, and performeth the Divine Liturgy as usual.
+## pres-vespers | Vespers: Opening and Kathisma
+@ When a Priest is to celebrate the Liturgy of the Presanctified, after he hath read the Entrance Prayer, as in the ordinary Liturgy (except: Stretch forth thy hand, O Lord: at the end of the Hours and the Typical Psalms, and what is generally read before the Liturgy) he entereth the Chapel of Oblation, and vesteth himself, signing with the cross and kissing each vestment, but saying nothing as he doth so, except: Lord, have
+=167
++ mercy: over each of them. And the Deacon, taking the time from him, goeth and taketh his stand at his appointed place, and (the Holy Door being closed, and the curtain drawn aside), exclaimeth:
+D: Bless, Master.
+P: Blessed is the kingdom of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+R: O come, let us worship God our King. O come, let us worship and fall down before Christ, our King and our God. O come, let us worship and fall down before the Very Christ, our King and our God.
+@ Then the Preliminary Psalm, civ., is read. And in the mean while the Priest reciteth in front of the Holy Door the Prayers of Light (see Vespers); that is to say, the Vesper Prayers, beginning with the fourth Prayer; the first three being said later on, after the Litanies. (The Priest entereth the Sanctuary.)
+* psalm104
+@ And when the Psalm is finished, the Deacon saith the Great Litany.
+% Lord, have mercy. | let us pray to the Lord.
+D: In peace let us pray to the Lord.
+C: Lord, have mercy.
+D: For the peace that is from above, and for the salvation of our souls: ℟
+D: For the peace of the whole world; for the welfare of God's holy Churches, and for the union of them all: ℟
+D: For this holy Temple, and for all those who with faith, devoutness, and in the fear of God have entered therein: ℟
+D: For our Holy Synod (or Patriarch); for our Bishop (or Archbishop, or Metropolitan), N., for the honourable Presbytery, the Diaconate in Christ; for all the clergy and the laity: ℟
+@ Here follow petitions for the Ruler of the Land and for all the Authorities (Emperor, or King, and Reigning House, or President, according to the elements and nationalities of which the Parish is constituted).
+D: That he will aid them, and subdue under their feet every foe and adversary: ℟
+D: For this city, for this holy Temple, and
+=168
++ for every city and land, and for those who with faith dwell therein: ℟
+D: For healthful seasons; for abundance of the fruits of the earth, and for peaceful times: ℟
+D: For those who travel by sea or by land; for the sick and the suffering; for those who are in captivity, and for their salvation: ℟
+D: That he will deliver us from all tribulation, wrath, peril and necessity: ℟
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ And the Priest reciteth, secretly, the Prayer of the First Antiphon (The first of the Vesper Prayers).
+P~: O Lord, bountiful and compassionate, long-suffering and plenteous in mercy, give ear unto our prayer, and attend to the voice of our supplication. Work upon us a sign for good. Lead us in thy way, that we may walk in thy truth. Make glad our hearts, that we may fear thy holy Name. For thou art great, and doest wonders. Thou alone art God, and among all the gods there is none like unto thee, O Lord, mighty in mercy, gracious in strength, to aid, and to comfort and save all those who put their trust in thy holy Name.
+@ Exclamation.
+P: For unto thee are due all glory, honour and worship, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Reader then readeth the Eighteenth Selection of Psalms (Kafísma): First Antiphon (Psalms cxx., cxxiii.).
+@ The Priest unfoldeth the corporal (which lieth upon the Altar), and setteth the holy paten thereon. Then he openeth the tabernacle, and placeth the Presanctified Lamb upon the paten, making a lowly reverence.
+@ And the Priest reciteth, secretly, the Prayer of the Second Antiphon (the second Vesper Prayer).
+P~: O Lord, rebuke us not in thy displeasure, neither chasten us in thy wrath: but deal with us according to thy mercy, O Physician and Healer of our souls. Guide us unto the haven of thy will. Enlighten the eyes of our hearts to the knowledge of thy truth, and vouchsafe that the residue of this day and our whole life may be peaceful and without sin; through the intercessions of the holy Birth-giver of God, and of all the Saints.
+@ Psalm cxx.
+R: When I was in trouble, I called upon the Lord, and he heard me. Deliver my soul, O Lord, from lying lips, and from a deceitful tongue. What reward shall be given or done unto thee, thou false tongue? even mighty and sharp arrows, with hot burning coals. Woe is me, that I am constrained to dwell with Mesech, and to have my habitation among the tents of Kedar! My soul hath long dwelt among them that are en-
+=169
++ emies unto peace. I labour for peace; but when I speak unto them thereof, they make them ready to battle.
+@ Psalm cxxiii.
+R: Unto thee lift I up mine eyes, O thou that dwellest in the heavens. Behold, even as the eyes of servants look unto the hand of their masters, and as the eyes of a maiden unto the hand of her mistress, even so our eyes wait upon the Lord our God, until he have mercy upon us. Have mercy upon us, O Lord, have mercy upon us; for we are utterly despised. Our soul is filled with the scornful reproof of the wealthy; and with the despitefulness of the proud.
+D: Again, yet again, in peace let us pray to the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ Exclamation.
+P: For thine is the majesty, and thine are the kingdom and the power and the glory, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Reader continueth the Selection of Psalms: The Second Antiphon (Psalms cxxiv., cxxix.).
+@ The Priest, accompanied by the Deacon holding a taper, or alone, censeth the Altar.
+@ Then he saith, secretly, the Prayer of the Third Antiphon (the third Vesper Prayer).
+P~: O Lord our God, remember us sinners and thine unprofitable servants, when we call upon thy holy Name, and put us not to shame in our expectation of thy mercy: but grant us, O Lord, all our petitions which are unto salvation, and vouchsafe that we may love and fear thee with all our hearts, and do thy will in all things.
+@ Psalm cxxiv.
+R: If the Lord himself had not been on our side, now may Israel say; if the Lord himself had not been on our side, when men rose up against us; they had swallowed us up quick; when they were so wrathfully displeased at us. Yea, the waters had drowned us, and the stream had gone over our soul. The deep waters of the proud had gone even over our soul. But praised be the Lord, who hath not given us over for a prey unto their teeth. Our soul is escaped even as a bird out of the snare of the fowler; the snare is broken, and we are delivered.
+=170
+R: Our help standeth in the Name of the Lord, who hath made heaven and earth.
+@ Psalm cxxix.
+R: Many a time have they fought against me from my youth up, may Israel now say: yea, many a time have they vexed me from my youth up; but they have not prevailed against me. The plowers plowed upon my back, and made long furrows. But the righteous Lord hath hewn the snares of the ungodly in pieces. Let them be confounded and turned backward, as many as have evil will at Sion. Let them be even as the grass growing upon the house-tops, which withereth afore it be plucked up; whereof the mower filleth not his hand, neither he that bindeth up the sheaves his bosom. So that they who go by say not so much as, The Lord prosper you; we wish you good luck in the Name of the Lord.
+@ The Little Litany.
+D: Again, yet again, in peace let us pray to the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+P: For thou art our God, the God of mercy and salvation, and unto thee do we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ [Beside these, the book prints this exclamation at the end of the Prayer of the Third Antiphon:]
+P: For thou art a good God, and lovest mankind, and unto thee do we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Priest maketh three lowly reverences to the Holy Gifts, setteth the paten on his head, and beareth it to the Table of Oblation, preceded by the Deacon with the taper and censer. Then, on the Table of Oblation he poureth wine and water into the chalice, censeth the star-cover and the veil, and covereth therewith the paten and the chalice, saying the while:
+P~: Through the prayers of our holy Fathers, O Lord Jesus Christ our God, have mercy upon us.
+@ Then he goeth to the Altar, foldeth the corporal, and setteth the Gospels thereon.
+## pres-lic | Lord, I Have Cried and Entrance
+@ The Third Antiphon (Psalms cxli., cxlii., cxxx., cxvii.).
+C: Lord, I have cried unto thee, hear me. Hear me, O Lord. Lord, I have cried unto thee, hear me. Receive the voice of my prayer, when I call upon thee. Hear me, O Lord. Let my prayer be set forth in thy sight as the incense, and let the lifting up of my hands be an evening sacrifice.
+R: Set a watch, O Lord, before my mouth, and keep the door of my lips. O let
+=171
++ not mine heart be inclined to any evil thing; let me not be occupied in ungodly works with the men that work wickedness, lest I eat of such things as please them. Let the righteous rather smite me friendly, and reprove me. But let not their precious balms break my head; yea, I will pray yet against their wickedness. Let their judges be overthrown in stony places, that they may hear my words; for they are sweet. Our bones lie scattered before the pit, like as when one breaketh and heweth wood upon the earth. But mine eyes look unto thee, O Lord God; in thee is my trust; O cast not out my soul. Keep me from the snare that they have laid for me, and from the traps of the wicked doers. Let the ungodly fall into their own nets together, and let me ever escape them.
+@ Psalm cxlii.
+R: I cried unto the Lord with my voice; yea, even unto the Lord did I make my supplication. I poured out my complaints before him, and showed him of my trouble. When my spirit was in heaviness, thou knewest my path; in the way wherein I walked, have they privily laid a snare for me. I looked also upon my right hand, and saw there was no man that would know me. I had no place to flee unto, and no man cared for my soul. I cried unto thee, O Lord, and said, Thou art my hope, and my portion in the land of the living. Consider my complaint, for I am brought very low. O deliver me from my persecutors; for they are too strong for me. Bring my soul out of prison, that I may give thanks unto thy Name; which thing if thou wilt grant me, then shall the righteous resort unto my company.
+@ The Priest saith, secretly, the Prayer of the Entrance.
+P~: In the evening, and in the morning, and at noon-day we praise thee, we bless thee, we give thanks unto thee, and we pray unto thee, O Lord of all: Direct thou our prayer before thee as incense, and incline not our hearts unto words or thoughts of wickedness: but deliver us from all who seek after our souls. For unto thee, Lord, O Lord, lift we up our eyes, and in thee have we trusted. Put us not to shame, O our God. For unto thee are due all glory, honour and worship, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+@ [The book continues the Third Antiphon with Psalms cxxx. and cxvii., as at Vespers.] Then shall be sung Hymns to the Martyrs, and Hymns from the Triódion (the Hymns for the Great Fast), and from the Minéya.
+* stichera
+C: Glory to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+@ Then the Hymn to the Birth-giver of God (Bogoróditchen or Dogmátik), in the proper Tone.
+* dogmatikon
+=172
+@ The Holy Door is now opened, and the Entrance is made with the Censer. But when the Gospel is to be read (at the Feast Day of the Temple, or of a Saint), the Entrance is made with the Holy Gospels.
+@ When the Hymn to the Birth-giver of God is finished, the Deacon shall make with the censer the sign of the cross, as he standeth in the middle of the Holy Door, and shall enter the Sanctuary, and shall say, aloud:
+D: Wisdom, O believers!
+C: O gladsome radiance of the holy glory of the Father immortal, heavenly, holy, blessed, Jesus Christ! In that we now are come unto the setting of the sun, and behold the light of even, we hymn thee, Father, Son, and Holy Spirit, God. For meet is it that at all times thou shouldest be magnified by voices propitious, O Son of God, who bestowest life. For which cause all the world doth glorify thee.
+## pres-readings | Readings and Let My Prayer Arise
+@ The Priest and the Deacon now go to the High Place.
+D: Let us attend. Wisdom!
+P: Peace be unto all.
+R: And to thy spirit.
+D: Wisdom! Let us attend. The Gradual, in the … Tone.
+@ The Choir then singeth the Gradual (Prokímen) for the Day, thrice.
+* prokeimenon1
+D: Wisdom!
+R: The Lesson from Genesis.
+D: Let us attend!
+@ The Reader then readeth the Lesson, as appointed. (The Holy Door is closed.)
+* genesis
+@ When the Lesson from Genesis is finished, the Holy Door is opened. And the Reader saith, and the Choir repeateth, in the usual manner, the Second Gradual (Prokímen).
+* prokeimenon2
+D: Command!
+@ And the Priest taketh the candlestick with its taper, and the censer, in his hands, and standing before the Holy Altar, and making therewith the sign of the cross, he exclaimeth:
+P: Wisdom, O believers!
+@ Then, turning to the People, he saith:
+P: The light of Christ illumineth all men.
+@ And the People kneel.
+D: Wisdom! (The Holy Door is closed.)
+R: The Lesson from the Proverbs.
+D: Let us attend!
+=173
+@ Then the Reader readeth the appointed Lesson.
+* proverbs
+@ And when he hath finished, the Priest saith:
+P: Peace be unto thee.
+R: And to thy spirit.
+D: Wisdom! (The Holy Door is opened.)
+@ The Choir then chanteth:
+C: Let my prayer be set forth in thy sight as the incense, and let the lifting up of my hands be an evening sacrifice.
+C: O Lord, I have cried unto thee, hear me; give ear unto the voice of my petition, when I cry unto thee.
+C: Set a watch, O Lord, before my mouth, and a door of enclosure about my lips.
+C: Incline not my heart to the words of wickedness, to contrive excuses for sins.
+C: Let my prayer be set forth in thy sight as the incense. And let the lifting up of my hands be an evening sacrifice.
+@ When the Choir chanteth: Let my prayer (1-5), all who are present in the Temple, and they who are in the Sanctuary, kneel and pray. And the Priest taketh the censer and censeth before the Holy Altar (verses 1-3); and before the Table of Oblation (verse 4). And during verse 5 he putteth aside the censer, and kneeleth and prayeth.
+@ Priest: The Prayer of St. Ephraim the Syrian.
+P: O Lord and Master of my life, grant not unto me a spirit of slothfulness, of discouragement, of lust of power, of vain babbling. (Reverence.)
+P: But vouchsafe unto thy servant the spirit of continence, of meekness, of patience, and of love. (Reverence.)
+P: Yea, O Lord and King, grant that I may perceive my own transgressions, and judge not my brother. For blessed art thou unto ages of ages. Amen. (Reverence.)
+{feast}
+@ If it be the Feast of a Saint, or of the Temple, then the Priest or the Deacon saith:
+D: Let us attend!
+P: Peace be with you all.
+C: And with thy spirit.
+D: Wisdom!
+R: The Gradual, in the … Tone.
+@ Then the Reader readeth the appointed Gradual (Prokímen), and the Choir singeth it, in the usual manner.
+D: Wisdom!
+R: The Lesson from the holy Apostle, N. (to the Romans; or to the Corinthians; or otherwise, as appointed).
+D: Let us attend!
+* epistle
+@ And when it is finished, the Priest saith:
+P: Peace be unto thee.
+R: And to thy spirit.
+=174
+D: Wisdom!
+C: Alleluia.
+@ And the Priest saith, secretly, the Prayer before the Gospel.
+P~: Illumine our hearts, O God who lovest mankind, with the pure light of thy divine knowledge, and open the eyes of our understanding to the comprehension of the proclamation of thy Gospel. Implant in us, likewise, the fear of thy blessed commandments; that, trampling down all carnal desires, we may pursue a godly life, both thinking and performing such things as are well pleasing unto thee. For thou art the light of our souls and of our bodies, O Christ our God, and unto thee do we ascribe glory, together with thy Father, who is from everlasting, and thy holy, and blessed, and life-giving Spirit, now, and ever, and unto ages of ages. Amen.
+P: Wisdom, O believers! Let us listen to the Holy Gospel. Peace be with you all.
+L: And with thy spirit.
+D: The Lesson from the Holy Gospel according to N.
+C: Glory to thee, O Lord; glory to thee.
+@ The Deacon then readeth the Gospel. And when it is finished:
+* gospel
+P: Peace be with thee, who hast announced the good tidings.
+C: Glory to thee, O Lord; glory to thee.
+{/feast}
+## pres-litanies | Litanies
+@ The Litany of Fervent Petition.
+D: Let us all say, with all our soul and with all our mind, let us say,
+C: Lord, have mercy.
+D: O Lord Almighty, the God of our fathers, we beseech thee; hearken, and have mercy.
+C: Lord, have mercy.
+% Lord, have mercy. (Thrice.) |
+D: Have mercy upon us, O God, according to thy great mercy, we beseech thee, hearken and have mercy. ℟
+D: Again we pray for (the Ruler of the Land, Emperor, or King, and Reigning House, or President, according to the elements and nationalities of which the Parish is constituted); for his might, victory, maintenance, peace, health, salvation; and that the Lord our God will abundantly aid and prosper them in all things, and subdue under their feet every foe and adversary. ℟
+@ Here the Priest unfoldeth the corporal, except the upper edge.
+D: Again we pray for our Holy Synod (or Patriarch); for our Bishop (or Archbishop, or Metropolitan), N., and for all our brethren in Christ. ℟
+D: Furthermore we pray for all their Christ-loving Army and Navy. ℟
+@ And the Priest saith, secretly, the Prayer of the Litany of Fervent Petition.
+P~: O Lord our God, accept this, the fervent supplication of thy servants, and be gracious unto us, according to the multitude of thy mercy. And send down thy bounties upon us, and upon all thy people, who here await the rich mercy which is from thee.
+=175
+D: Furthermore we pray for our brethren the Priests; for ordained Monks; and for all our brotherhood in Christ. ℟
+D: Furthermore we pray for the blessed and ever-memorable most holy Orthodox Patriarchs, and God-fearing Tzars and Tzarítzas; and for the founders of this holy Temple; and for all our devout fathers and brethren, Orthodox believers, departed this life before us, who here and in all the world lie asleep in the Lord. ℟
+D: Furthermore we pray for those who bear fruit and do good works in this holy and all-honourable Temple; for those who labour in its service; for the singers; and for the people here present who await in firm hope thy great and rich mercies. ℟
+@ Exclamation.
+P: For thou art a merciful God, who lovest mankind, and unto thee do we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Litany of the Catechumens.
+% Lord, have mercy. |
+D: Pray ye unto the Lord, ye Catechumens.
+C: Lord, have mercy.
+D: Ye faithful, pray ye unto the Lord for the Catechumens, that the Lord will have mercy upon them. ℟
+D: That he will teach them the word of truth. ℟
+D: That he will reveal to them the Gospel of righteousness. ℟
+@ (Here the Priest unfoldeth the last edge of the corporal.)
+D: That he will unite them unto his Holy Catholic and Apostolic Church. ℟
+D: Save them, have mercy upon them, succour them, and keep them, O God, by thy grace. ℟
+D: Bow your heads unto the Lord, ye Catechumens.
+C: To thee, O Lord.
+@ The Priest saith, secretly, the Prayer for the Catechumens.
+P~: O God, our God, the Creator and Maker of all things; who willest that all men should be saved, and should come unto the knowledge of the truth: Look upon thy servants the Catechumens, and deliver them from their ancient errors, and from the wiles of the adversary. And call them unto life eternal, illumining their souls and bodies, and numbering them with thy reason-endowed flock, which is called by thy holy Name. Amen.
+@ Exclamation.
+P: That with us they may magnify thine all-honourable and majestic Name, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+=176
+@ (The Priest maketh the sign of the cross over the corporal with the sponge, which he then kisseth and layeth on one side.)
+{illumination}
+@ Then the following Exhortation to the Catechumens is said; but only from Wednesday of the Fourth Week of the Great Fast until the end of the Fast.
+D: As many as are Catechumens, depart. Catechumens, depart. Ye who are ready for Illumination, depart. Pray, ye who are preparing for Illumination (Baptism).
+C: Lord, have mercy.
+D: Ye faithful, for these who are preparing for holy Illumination, and for their salvation, let us pray to the Lord.
+C: Lord, have mercy.
+D: That the Lord our God will stablish and strengthen them. ℟
+D: That he will illumine them with the light of wisdom and of piety. ℟
+D: That he will vouchsafe unto them, in his own good time, the laver of regeneration, the remission of sins, and the garment of incorruption. ℟
+D: That he will beget them with water and the Spirit. ℟
+D: That he will grant unto them the perfection of the faith. ℟
+D: That he will number them with his holy and chosen flock. ℟
+D: Save them, have mercy upon them, succour them, and keep them, O God, by thy grace. ℟
+D: Ye who are ready for Illumination, bow your heads unto the Lord.
+C: To thee, O Lord.
+@ The Priest saith, secretly, the Prayer for those who are preparing for Illumination.
+P~: Show the light of thy countenance, O God, upon those who are preparing for holy Illumination, and who desire to put away the defilement of sin. Enlighten their understanding. Establish them in the faith. Strengthen them in hope. Perfect them in love. Make them honourable members of Christ, who gave himself a ransom for our souls.
+@ Exclamation.
+P: For thou art our illumination, and unto thee do we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+D: As many as are preparing for Illumination, depart. Depart, ye who are preparing for Illumination.
+{/illumination}
+=177
+## pres-faithful | Prayers of the Faithful
+D: Catechumens, depart. Let none of the Catechumens remain; but let us who are in the faith again, yet again, in peace pray unto the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+@ The Priest saith, secretly, the First Prayer of the Faithful.
+P~: O God, great and worthy to be praised, who through the life-giving death of thy Christ hast translated us from corruption to incorruption: Deliver thou all our senses from death-dealing carnal desires, setting over them as a good ruler the understanding that is in us. Let our eye have no part in any evil sight; let our hearing be inaccessible to all idle words; and let our tongue be purged from unseemly speech. Purify our lips which praise thee, O Lord. Make our hands to abstain from evil deeds, and to work only such things as are acceptable unto thee, establishing all our members and our minds by thy grace.
+D: Wisdom!
+@ Exclamation.
+P: For unto thee are due all glory, honour and worship, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+% Lord, have mercy. | let us pray to the Lord.
+D: Again, yet again, in peace let us pray to the Lord. ℟
+@ If there be no Deacon, the following Litany is omitted.
+D: For the peace that is from above, and for the salvation of our souls: ℟
+D: For the peace of the whole world; for the welfare of God's holy Churches, and for the union of them all: ℟
+D: For this holy Temple, and for those who with faith, devoutness, and in the fear of God have entered therein: ℟
+D: That he will deliver us from all tribulation, wrath, peril and necessity: ℟
+@ The Priest saith, secretly, the Second Prayer of the Faithful.
+P~: O Master, holy and exceeding good, we beseech thee, who art rich in mercy, that thou wilt show compassion on us sinners, and render us worthy to receive thine Only-begotten Son and our God, the King of glory. For behold, his most pure Body and his life-giving Blood, entering at this present hour, are about to be spread forth upon this mystical Altar, invisibly escorted by a great multitude of the Heavenly Host. Enable us to partake of them in blamelessness; that, the eyes of our understanding being enlightened thereby, we may become children of the light and of the day.
+=178
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Wisdom!
+@ Exclamation.
+P: Through the gift of thy Christ, with whom thou art blessed, together with thy most holy, and good, and life-giving Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+## pres-entrance | Great Entrance
+@ (Here the Holy Door is opened.) In place of the Cherubimic Hymn there shall now be sung:
+C: Now the Powers of Heaven with us invisibly do minister. For lo! the King of Glory entereth now. Behold the Mystical Sacrifice, all accomplished, is ushered in.
+@ And while this is being sung the Deacon entereth the Sanctuary through the north door, and censeth the Holy Altar and the holy oblation and the Priest. And they stand there, saying:
+PD~: Now the Powers of Heaven …
+@ And having made three lowly reverences, they go to the Chapel of Oblation; and the Priest bringeth the Holy Gifts, as usual, after he hath made three lowly reverences before the Table of Oblation, saying:
+PD~: O God, cleanse thou me, a sinner.
+@ (Here the Great Entrance is made.) While the Divine Mysteries are being borne in solemn silence from the Chapel of Oblation to the Altar, all the People and the Singers, kneeling humbly, render divine reverence to Christ our God, who is in the Holy Mysteries; for they are presanctified. After the Holy Gifts have been brought to the Altar, all stand, and the Singers finish the Hymn, as indicated:
+C: Let us with faith and love draw near, that we may become partakers of life everlasting. Alleluia, alleluia, alleluia.
+@ After the Holy Gifts have been placed on the Altar, the Priest taketh the veil from the Holy Gifts and the air from the shoulder of the Deacon, approacheth the air to the censer, and covereth therewith with fragrance the Holy Gifts.
+=179
+@ Then the Priest saith, aloud, the Prayer of St. Ephraim the Syrian; and maketh the prescribed reverences, the People kneeling with him.
+P: O Lord and Master of my life, grant not unto me a spirit of slothfulness, of discouragement, of lust of power, of vain babbling. (Reverence.)
+P: But vouchsafe unto thy servant the spirit of continence, of meekness, of patience, and of love. (Reverence.)
+P: Yea, O Lord and King, grant that I may perceive my own transgressions, and judge not my brother. For blessed art thou unto ages of ages. Amen. (Reverence.)
+@ Here the Holy Door is closed, and the curtain is drawn halfway.
+## pres-communion | Communion
+@ Then the Deacon goeth to his accustomed place, and saith:
+% Lord, have mercy. | let us pray to the Lord.
+D: Let us complete our evening prayer unto the Lord.
+C: Lord, have mercy.
+D: For the Precious Gifts spread forth and sanctified: ℟
+D: That our God, who loveth mankind, accepting them upon his holy and most heavenly and supersensual Altar, in the odour of a spiritual sweet savour, will send down upon us in return his divine grace and the gift of the Holy Spirit: ℟
+D: That he will deliver us from all tribulation, wrath, peril and necessity: ℟
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+@ The Priest prayeth, secretly.
+P~: O God of ineffable and invisible Mysteries, with whom are the hidden treasures of wisdom and knowledge, who hast revealed unto us the service of this Ministry, and hast appointed unto us sinners, through thy great love towards mankind, to offer unto thee gifts and sacrifices for our sins, and for the errors of thy people: Do thou, the same Invisible King, who doest things great and inscrutable, glorious and marvellous, which cannot be numbered, look upon us, thine unworthy servants who stand at this Holy
+=180
++ Altar as at the Cherubimic throne, upon which lieth thine Only-begotten Son and our God, in the dread Mysteries spread forth thereon; and having delivered us and all thy faithful people from every impurity, hallow all our souls and bodies with the sanctification which cannot be taken away. That partaking with a pure conscience, with faces unashamed, with hearts illumined, of these divine, consecrated Gifts, and being quickened through them, we may be united unto thy Christ himself, our true God, who hath said: Whoso eateth my flesh and drinketh my blood abideth in me and I in him; that thy Word, O Lord, making its abode in us and accompanying our path, we may become the temple of thine all-holy and adorable Spirit, redeemed from every wile of the Devil, wrought either by deed or word or thought; and may obtain the good things promised unto us, with all thy Saints, who in all the ages have been acceptable in thy sight.
+% Grant it, O Lord. | let us beseech of the Lord.
+D: An evening all perfect, holy, peaceful and sinless: ℟
+D: An Angel of Peace, the faithful guide and guardian both of our souls and bodies: ℟
+D: The pardon and remission of our sins and transgressions: ℟
+D: All things which are profitable to our souls and bodies, and peace to the world: ℟
+D: That we may pass the residue of our life in peace and penitence: ℟
+D: A Christian ending to our life, painless, blameless, peaceful; and a good defence before the dread Judgment Seat of Christ: ℟
+D: Calling to remembrance our most holy, undefiled, most blessed and glorious Lady, the Birth-giver of God and ever-virgin Mary, with all the Saints, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ Exclamation.
+P: And vouchsafe, O Lord, that with boldness, and without condemnation, we may dare to call upon thee, the God of heaven and our Father, and say:
+L: Our Father, who art in heaven, Hallowed be thy Name. Thy kingdom come. Thy will be done on earth, As it is in heaven. Give us this day our daily bread. And forgive us our trespasses, As we forgive those who trespass against us. And lead us not into temptation; But deliver us from the Evil One:
+P: For thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+P: Peace be with you.
+=181
+C: And with thy spirit.
+P: Bow your heads unto the Lord.
+C: To thee, O Lord.
+@ The Priest, bowing his head, prayeth secretly.
+P~: O God, who alone art good and of tender compassion; who dwellest on high and regardest the humble of heart: Look with the eye of thy tender loving-kindness upon all thy people, and preserve them. And graciously enable us all to partake without condemnation of these thy life-giving Mysteries: for unto thee have we bowed our heads, in the hope of thy rich mercies.
+@ Exclamation.
+P: Through the grace, and bounties, and love towards mankind of thine Only-begotten Son, with whom thou art blessed, together with thine all-holy, and good, and life-giving Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+@ The Priest, secretly.
+P~: Attend, O Lord Jesus Christ our God, from thy holy dwelling-place, and from the throne of glory of thy kingdom; and come and cleanse us, O thou who sittest on high with the Father, and art here invisibly present with us: and graciously vouchsafe, by thy mighty hand, to impart unto us thy most holy Body, and thy most precious Blood, and by us to all thy people.
+@ And after the Prayer, the Priest and Deacon make three reverences, saying:
+PD~: O God, cleanse thou me, a sinner.
+@ Then the Priest, the Holy Gifts being still covered, laying on his hand doth touch the life-giving Bread with great reverence and fear. And the Deacon saith:
+D: Let us attend.
+@ The Priest exclaimeth:
+P: The Presanctified Holy Things to the holy.
+C: One only is holy, one only is the Lord, Jesus Christ, in the glory of God the Father. Amen.
+@ (The rest of the curtain is now drawn.) And when the Priest hath said: The Presanctified Holy Things to the holy: he layeth aside the holy veil, and the Deacon entereth the holy Sanctuary; and standing near the Priest, he saith:
+D~: Break, Master, the holy Bread.
+@ And the Priest, with great heedfulness, breaketh it into four pieces, saying:
+P~: Broken and divided is the Lamb of God, which is broken, yet not disunited; ever eaten, yet never consumed, but sanctifieth those who partake thereof.
+=182
+@ And he layeth a portion on the paten, saying nothing: and the Deacon poureth the warm water into the chalice, saying nothing. And he standeth a little apart. Then the Priest saith:
+P~: Deacon, draw near.
+@ And the Deacon, approaching, maketh a devout reverence, asking forgiveness, and saith:
+D~: Lo, I draw near unto the King immortal, and to God.
+D~: Impart unto me, Master, the precious and holy Body of our Lord, and God, and Saviour, Jesus Christ.
+@ And the Priest, taking a portion of the Holy Mysteries, giveth it to the Deacon, saying:
+P~: To N., Deacon, is imparted the precious, and holy, and all-pure Body and Blood of our Lord, and God, and Saviour, Jesus Christ, unto the remission of his sins, and unto life everlasting.
+@ And the Deacon, having kissed the Priest's hand, shall withdraw, and stand behind the Holy Altar; and bowing his head, he shall pray, like the Priest, I believe, O Lord, and I confess … And the Priest also, taking in the same manner a portion of the Holy Mysteries, saith:
+P~: The precious and all-holy Body and Blood of our Lord, and God, and Saviour, Jesus Christ, is imparted to me, N., Priest, unto the remission of my sins, and unto life everlasting.
+@ And bowing his head, he prayeth, saying:
+P~: I believe, O Lord, and I confess, that thou art, in very truth, the Christ the Son of the living God, who didst come into the world to save sinners, of whom I am chief. And I believe that this is, of a truth, thine all-pure Body, and that this is thine own precious Blood. Wherefore I beseech thee, have mercy upon me, and forgive my transgressions, whether voluntary or involuntary; whether of word or of deed; whether committed with knowledge or in ignorance. And vouchsafe that I may partake without condemnation of thine all-pure Mysteries, unto the remission of my sins, and unto life eternal.
+P~: Of thy Mystical Supper, O Son of God, accept me to-day as a communicant: for I will not speak of thy Mystery to thine enemies, neither like Judas will I give thee a kiss; but like the thief will I confess thee: Remember me, O Lord, in thy kingdom. And let not this participation in thy Holy Mysteries be unto judgment upon me, or unto condemnation, O Lord, but unto the healing of soul and body.
+@ Choir: The Short Canon (Communion Hymn).
+C: O taste, and see how good the Lord is. Alleluia, alleluia, alleluia.
+@ And in this manner they partake of the Holy Mysteries, with awe and all godly fear.
+=183
+@ Then he taketh the holy chalice with the veil in both hands, and drinketh from it, saying nothing; and wipeth his mouth and the holy chalice with the veil which is in his hands, setteth it on the Holy Altar, and saith, secretly, the Prayer of Thanksgiving:
+P~: We give thanks unto thee, O God, the Saviour of all men, for all the good things which thou hast vouchsafed unto us, and for the Communion of the holy Body and Blood of thy Christ. And we beseech thee, O Lord, who lovest mankind, to keep us under the shelter of thy wings. And grant that, even to our last breath, we may worthily partake of thy Holy Things, unto the illumination of soul and body, and unto the inheritance of the kingdom of heaven.
+@ The Deacon doth not drink from the chalice at this time, but after the Prayer before the Tribune, and after the remaining particles of the Holy Mysteries have been consumed. (But if the Priest celebrate alone, without a Deacon, he, also, doth not drink from the chalice after his Communion, but after the Liturgy is finished, and after the Holy Mysteries have been consumed. For if the wine be sanctified by placing in it the particles, yet hath it not been transmuted into the Divine Blood, seeing that the words of consecration are not recited over it in this service, as they are in the Liturgies of Basil the Great and John Chrysostom.) And the Deacon, taking the holy paten, approacheth it to the holy chalice, and putteth in the Holy Gifts, saying nothing. And having made three reverences, he draweth aside the curtain, and openeth the Holy Door.
+@ But if there be Communicants from the People, the Deacon, having covered the Holy Things as usual, and drawn aside the curtain, and opened the Holy Door, taketh the sacred chalice from the hands of the Priest or the Bishop, and saith:
+D: In the fear of God, and with faith, draw near.
+@ And the Communion is administered as usual. (As a rule, infants are not admitted to this Communion.)
+C: I will bless the Lord at all times.
+## pres-dismissal | Dismissal
+@ Exclamation.
+P: O God, save thy people, and bless thine heritage.
+C: His praise shall continually be in my mouth. Taste ye the heavenly Bread and the Cup of Life, and see how good the Lord is. Alleluia, alleluia, alleluia.
+@ And when he hath censed the Holy Things, he giveth the censer to the Deacon. And taking the holy paten, he setteth it on the head of the Deacon. And the Deacon, taking it with all reverence, gazeth out through the Holy Door, but doth not say anything; and he goeth to the Chapel of Oblation, and there setteth it down. Then the Priest taketh the holy chalice, and turning towards the Holy Door, he looketh forth upon the People, saying, secretly:
+P~: Blessed is our God.
+@ And aloud:
+P: Always, now, and ever, and unto ages of ages.
+=184
+@ And he beareth the Holy Things to the Chapel of Oblation.
+C: Amen.
+C: Let our mouths be filled with thy praise, O Lord, that we may extol thy glory: for that thou hast deigned to make us partakers of thy holy, divine, immortal and life-giving Mysteries. Establish us in thy Sanctification, that all the day long we may meditate upon thy righteousness. Alleluia, alleluia, alleluia.
+D: Having received the divine, holy, pure, immortal, heavenly, life-giving and terrible Mysteries of Christ, O believers, let us worthily give thanks unto the Lord.
+C: Lord, have mercy.
+D: Succour us, save us, have mercy upon us, and keep us, O God, by thy grace.
+C: Lord, have mercy.
+D: Having besought an evening all-perfect, holy, peaceful and sinless, let us commend ourselves, and each other, and all our life unto Christ our God.
+C: To thee, O Lord.
+@ (Here the corporal is folded, and the book of the Holy Gospels is set upon it.)
+@ Exclamation.
+P: For thou art our sanctification, and unto thee we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages.
+C: Amen.
+P: Let us depart in peace.
+C: In the Name of the Lord.
+D: Let us pray to the Lord.
+C: Lord, have mercy.
+@ The Prayer before the Tribune is then said, aloud:
+P: O Almighty Lord, who hast made all created things in wisdom, and by thine inexpressible Providence and great goodness hast brought us to these all-holy days, for the purification of body and soul, for the controlling of carnal passions, and for the hope of the Resurrection; who, during the forty days didst give into the hand of thy servant Moses the Tables of the Law, in characters divinely traced by thee: Enable us also, O Good One, to fight the good fight; to accomplish the course of the Fast; to preserve inviolate the faith; to crush under foot the heads of invisible serpents; to be accounted victors over sin; and uncondemned to attain unto and adore the holy Resurrection. For blessed and glorified is thine all-honourable and majestic Name, of the Father, and of the Son, and of the Holy Spirit, now, and ever, and unto ages of ages.
+=185
+C: Amen. Blessed be the Name of the Lord henceforth and for ever. (Thrice.)
+@ The Priest, secretly:
+P~: O Lord our God, who hast brought us to these all-holy days, and hast made us partakers of thy terrible Mysteries: Unite us to thy rational flock, and make us heirs of thy kingdom, now, and ever, and unto ages of ages. Amen.
+@ And Psalm xxxiv.: I will alway give thanks … [The book refers back to page 121; it is printed here in full.]
+R: I will alway give thanks unto the Lord: Come, ye children, and hearken unto me: I will teach you the fear of the Lord. What man is he that lusteth to live, and would fain see good days.' Keep thy tongue from evil, and do good: seek peace, and ensue it. The eyes of the Lord are over the righteous, and his ears are open unto their prayers. The countenance of the Lord is against them that do evil, to root out the remembrance of them from the earth. The righteous cry, and the Lord heareth them, and delivereth them out of all their troubles. The Lord is nigh unto them that are of a contrite heart, and will save such as be of an humble spirit. Great are the troubles of the righteous, but the Lord delivereth him out of all. He keepeth all his bones, so that not one of them is broken. But misfortune shall slay the ungodly, and they that hate the righteous shall be desolate. The Lord delivereth the -souls of his servants, and all they that put their trust in him shall not be destitute.
+@ Then the Priest cometh forth, and standing in his accustomed place, he saith:
+P: The blessing of the Lord, through his grace and love towards mankind, be upon you always, now, and ever, and unto ages of ages.
+C: Amen.
+@ Then he bestoweth the Benediction.
+P: May Christ our true God, through the prayers of his all-holy Mother; of the holy, glorious and all-laudable Apostles; and of Saint N. (the Saint of the day); and of our father in the Saints, Gregory Homiliastes, and of all the Saints, have mercy upon us and save us, for he is good and loveth mankind.
+@ After this Final Benediction, the rest of the ceremony followeth as at the ordinary Liturgy; except that instead of the Hymns there used, the Hymn here following is read:
+@ Hymn in Tone IV.
+L: That which constituteth the verity of things revealeth thee as a Rule of the faith, a Pattern of meekness and a Preceptor of continence to thy flock: wherefore thou, through humility, didst win exaltation, and by poverty didst win wealth. O Father Gregory, sainted Leader, pray thou unto Christ our God, that he will save our souls.
+L: Glory to the Father, and to the Son, and to the Holy Spirit, now, and ever, and unto ages of ages. Amen.
+@ Hymn to the Holy Birth-giver of God.
+L: O Protection of Christians that maketh not ashamed, O Mediatrix never-failing with the Creator: Despise not the sinners' voice of supplication; but in that thou art good, come speedily to the aid of us who faithfully call upon thee; make haste to our petition and further our prayer, O Birth-giver of God, who ever protectest them that do thee honour.

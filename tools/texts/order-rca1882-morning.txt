@@ -1,0 +1,73 @@
+# The Liturgy of the Reformed Church in America, for use in public worship (New York: Board of Publication of
+# the Reformed Church in America, 1882), pp. 11-16: Order of Public Worship, Lord's Day Morning. Public domain
+# (published in the United States, 1882). Transcribed from the Internet Archive scan (liturgyofreform00refo);
+# OCR proofread by hand, uncertain readings checked against the page images. Markup: see tools/orders.py.
+title: Order of Public Worship, Lord's Day Morning
+book: The Liturgy of the Reformed Church in America (1882)
+
+= Invocation
+## I. Invocation
+¶ It is recommended that the Invocation be concluded with the Lord's Prayer, and that the People unite audibly in the Lord's Prayer whenever used, and in the Amen at the close of every prayer in Public Worship.
+@prayer: The Invocation, in the Minister's own words
++ Our Father who art in heaven, Hallowed be Thy Name: Thy kingdom come; Thy will be done in earth, as it is in heaven: Give us this day our daily bread: and forgive us our debts, as we forgive our debtors; And lead us not into temptation, but deliver us from evil: for Thine is the kingdom, and the Power, and the Glory, for ever. Amen.
+
+= Salutation
+## II. Salutation
+Grace be unto you, and peace, from God our Father, and from the Lord Jesus Christ. (1 Cor. i: 3.)
+[or] The other Salutations
+Grace, mercy, and peace, from God the Father, and Christ Jesus our Lord. (2 Tim. i: 2.)
+Grace and peace be multiplied unto you, through the knowledge of God, and of Jesus our Lord. (2 Peter i: 2.)
+May God, Who commanded the light to shine out of darkness, shine in your hearts, to give the light of the knowledge of the glory of God, in the face of Jesus Christ. (2 Cor. iv: 6.)
+[/or]
+
+= The Ten Commandments
+## III. Reading of Scripture
+## 1. The Ten Commandments
+Hear the law of God as it is written in the 20th chapter of the Book of Exodus.
+And God spake all these words, saying, I am the Lord thy God, which have brought thee out of the land of Egypt, out of the house of bondage.
+I. Thou shalt have no other gods before Me.
+II. Thou shalt not make unto thee any graven image, or any likeness of anything that is in heaven above, or that is in the earth beneath, or that is in the water under the earth: thou shalt not bow down thyself to them, nor serve them: for I the Lord thy God am a jealous God, visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate Me; and showing mercy unto thousands of them that love Me, and keep My commandments.
+III. Thou shalt not take the Name of the Lord thy God in vain; for the Lord will not hold him guiltless that taketh His Name in vain.
+IV. Remember the Sabbath day to keep it holy. Six days shalt thou labor, and do all thy work: but the seventh day is the Sabbath of the Lord thy God: in it thou shalt not do any work, thou, nor thy son, nor thy daughter, thy man-servant, nor thy maid-servant, nor thy cattle, nor thy stranger that is within thy gates: for in six days the Lord made heaven and earth, the sea, and all that in them is, and rested the seventh day; wherefore the Lord blessed the Sabbath day, and hallowed it.
+V. Honor thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.
+VI. Thou shalt not kill.
+VII. Thou shalt not commit adultery.
+VIII. Thou shalt not steal.
+IX. Thou shalt not bear false witness against thy neighbor.
+X. Thou shalt not covet thy neighbor's house, thou shalt not covet thy neighbor's wife, nor his man-servant, nor his maid-servant, nor his ox, nor his ass, nor anything that is thy neighbor's.
+Hear also the Summary of the Law by our Lord Jesus Christ, as it is written in the Gospel according to Matthew, xxii: 37-40.
+Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. This is the first and great commandment. And the second is like unto it, Thou shalt love thy neighbor as thyself. On these two commandments hang all the law and the prophets.
+¶ After the reading of the Law a suitable Response may be sung.
+
+= The Scripture Lessons
+## 2. Reading of Scripture Lessons
+¶ If desired, one of the Lessons may consist of a portion from the Psalms, read responsively by the Minister and People.
+@lessons
+¶ After either or both of the Lessons, a Gloria or Chant may be sung.
+
+= Singing and Prayer
+## IV. Singing
+@hymn
+## V. Prayer
+¶ This will ordinarily be free. But if desirable, the Litany, which is a literal translation from the Reformer Bucer's "Reformation of Doctrine and Worship," or any of the Prayers for Special Occasions, which will be found on pages 22-55, may be used.
+@prayer: The Prayer, ordinarily free
+## VI. Singing
+@hymn
+
+= Sermon and Prayer
+## VII. Sermon
+@sermon
+## VIII. Prayer
+@prayer: The Prayer after the Sermon
+## IX. Offerings to the Lord
+¶ The Offerings are sometimes presented either before or after the Hymn preceding the Sermon.
+@offering
+
+= Singing and Benediction
+## X. Singing
+@hymn
+## XI. Benediction
+The grace of the Lord Jesus Christ, and the love of God, and the communion of the Holy Ghost, be with you all. Amen. (2 Cor. xiii: 14.)
+[or] Or this
+Now the God of peace, that brought again from the dead our Lord Jesus, that Great Shepherd of the sheep, through the blood of the everlasting Covenant, make you perfect in every good work to do His will, working in you that which is well pleasing in His sight, through Jesus Christ: to Whom be glory for ever and ever. Amen. (Hebrews xiii: 20, 21.)
+[/or]

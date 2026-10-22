@@ -20,6 +20,7 @@
   - The traditional Breviary in Latin and English.
   - The psalms and canticles of the Liturgy of the Hours (four-week psalter).
   - The psalms and fixed prayers of the Byzantine hours.
+  - The Divine Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts (Hapgood, 1906).
   - The Ordinariate Mass propers.
   - The Novus Ordo Ordinary in Latin, with traditional English.
   - Mattins and Evensong from the 1662 Book of Common Prayer, with the Coverdale psalter.
@@ -34,10 +35,22 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Rite | Mass | Office |
 |---|---|---|
 | 1962, pre-1955, hybrid | **Complete text** | **Complete text** |
-| Monastic, Dominican | n/a | **Complete text** |
-| Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline) |
+| Monastic | n/a | **Complete text** |
+| Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline; Prime, Terce, Sext and None from the Day-Hours, 1877) |
 | Novus Ordo / Liturgy of the Hours | *Guided*: readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal | *Guided*: psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary |
-| Byzantine | *Order and readings*: prayers from your service book | *Guided*: psalms and fixed prayers; hymns of the day from your books |
+| Byzantine | *Guided*: Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906), with the Sunday Resurrection hymns of the tone; Menaion hymns from your books | *Guided*: psalms and fixed prayers; Saturday Vespers stichera, dogmatikon and Sunday troparia of the tone (Hapgood); Menaion hymns from your books |
+| Dominican | *Order*: the Ordinary in Latin and English (Divinum Officium); propers from your Missal | **Complete text** (Divinum Officium, 1962) |
+| Ambrosian | *Order*: the Ordinary and Canon in Latin (Divinum Officium) and English (Atchley, 1909), with the Epiphany propers and sample prefaces; propers and Milanese calendar from your Missal | Not yet |
+| Mozarabic | *Order*: the Ordinary in English, after the Missale mixtum (Divinum Officium); propers from your Missal | Not yet |
+| Reformed: Presbyterian Book of Common Worship (1906) | **Complete text**: the Lord's Day Morning Service, with the Order for the Lord's Supper when celebrated | Not yet |
+| Reformed: Reformed Church in America Liturgy (1882) | **Complete text**: the Order of Public Worship, with the Lord's Supper in the Form of Dort | Not yet |
+| Coptic Liturgy of St Basil (Coptic Orthodox; Coptic Catholic) | *Guided*: the Liturgy in full in the Marquis of Bute's English (1882, reissued 1908), with the incense, the litanies, the priest's private prayers and Bute's notes on Catholic and Orthodox use; lessons from the Katameros are cued | Not yet |
+| Armenian Divine Liturgy (Armenian Apostolic; Armenian Catholic) | *Guided*: the Divine Liturgy in full in the English of 1908, with the vesting, litanies and the priest's private prayers; lessons from the Armenian lectionary are cued | Not yet |
+| Methodist: Ritual of the Methodist Episcopal Church (1908) | **Complete text**: the Order for the Administration of the Lord's Supper | Not yet |
+| Lutheran: Common Service Book (1917-19) | **Complete text**: The Service with the Introit, Collect, Epistle, Gradual and Gospel of the day (lessons the book only cites come from the King James Version) | Not yet |
+| Prayer Book 1662 (England) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | See Ordinariate: 1662 Mattins and Evensong |
+| Prayer Book 1928 (USA) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | **Complete text**: Morning and Evening Prayer, Coverdale psalms of the day; lessons from your lectionary |
+| Prayer Book 1979 (USA) | *Guided*: the Holy Eucharist in full (Rite One or Two, Prayers I and A to D, Prayers of the People), collect and preface of the day; lessons from the RCL | **Complete text**: Morning and Evening Prayer (Rites One and Two), Noonday, Compline, with the 1979 Psalter |
 
 The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 
@@ -52,6 +65,7 @@ Sessions connect browsers directly (WebRTC through the free PeerJS signalling se
 ## Sources and licences
 
 - **Traditional Breviary and Missal texts**: generated with the [Divinum Officium](https://github.com/DivinumOfficium/divinum-officium) program from its data (MIT licence).
+- **Little hours (Ordinariate)**: *The Day-Hours of the Church of England* (London: Masters, 1877), public domain, transcribed from the Internet Archive scan and checked page by page.
 - **Byzantine daily readings**: a port of [orthocal](https://github.com/brianglass/orthocal) by Brian Glass (MIT licence).
 - **Book of Common Prayer (1662)**: public domain, except in the United Kingdom, where the Crown holds perpetual rights.
 - **Scripture**: Douay-Rheims (public domain) and King James Version (public domain, except Crown rights in the UK).
@@ -124,8 +138,9 @@ New Anglican, Lutheran and Reformed service texts (Part C of the feature request
 follow release of the launcher and reviewed directory. They are not implemented
 in this change. The attached *Divine Liturgies Public Domain Companion* identifies
 Hapgood (1906) as its historical source, but its own introduction says the
-anthology is not complete. Byzantine builders therefore retain their honest
-**Order and readings** coverage; no modern copyrighted translation has been
+anthology is not complete. The Liturgies of St John Chrysostom, St Basil and the Presanctified are
+therefore transcribed directly from the 1906 page images (`tools/texts/hapgood-liturgy.txt`,
+compiled by `tools/byz_texts.py`); no modern copyrighted translation has been
 imported. Monastic chant is extended through 30 November 2030. The pack preserves every
 existing text and chant cell for all 1,827 supported days. All seven chant-mode
 hours are present; the source has no notation for 75 Triduum little-hour records,

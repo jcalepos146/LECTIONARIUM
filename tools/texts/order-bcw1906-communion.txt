@@ -1,0 +1,69 @@
+# The Book of Common Worship (Presbyterian Church in the U.S.A., Philadelphia, 1906), pp. 34-39:
+# The Order for the Celebration of the Communion or Sacrament of the Lord's Supper. Public domain in the
+# United States (published 1906). Transcribed from the Internet Archive scan (bookofcommonwors00pres): OCR
+# proofread by hand, uncertain readings checked against the page images. Markup as in order-bcw1906-morning.txt.
+title: The Order for the Celebration of the Communion or Sacrament of the Lord's Supper
+book: The Book of Common Worship (Presbyterian Church in the U.S.A., 1906)
+
+= The Invitation
+¶ The Communion, or Supper of the Lord, is to be celebrated frequently; but how often, may be determined by the Minister and Eldership of each congregation, as they may judge most for edification. — Directory for Worship, Chap. ix, § 1.
+¶ It is proper that public notice should be given to the congregation, at least the Lord's Day before the administration of the ordinance, and that, either then or on some day of the week, the people be instructed in its nature, and a due preparation for it; that all may come in a suitable manner to this holy feast. — Directory for Worship, Chap. ix, § 3.
+¶ When the time is come for administration, the Minister shall say,
+Dearly beloved, as we draw near to the Lord's Supper to celebrate the Holy Communion of the Body and Blood of Christ, we are gratefully to remember that our Lord instituted this Sacrament to be observed in His Church unto the end of the world: for the perpetual remembrance of the sacrifice of Himself in His death, the sealing all benefits thereof unto true believers, their spiritual nourishment and growth in Him, their further engagement in and to all duties which they owe unto Him; and to be a bond and pledge of their union with Him and with each other as members of His mystical body.
+Let us consider earnestly our great need of having our comfort and strength so renewed in this our earthly pilgrimage and warfare; and especially how necessary it is that we come unto the Lord's Table with knowledge, faith, repentance, love, and with hearts hungering and thirsting after Christ. Not unto those who live willingly in transgression and offenses, holding fellowship with hatred, malice, or impurity; nor unto those who cherish pride and self-righteousness in their hearts, trusting secretly in their own works and merits, are these benefits of Christ offered. But all that are truly sorry for their sins and would be delivered from the burden of them, all that humbly put their trust in Christ, and desire His grace that they may lead a holy life, are invited and encouraged in His Name to come to this Sacrament. Let us therefore so come that we may find refreshing and rest unto our souls.
+¶ Then let the People stand up and sing
+## A Hymn
+@hymn
+¶ If it be more convenient in any church, this Hymn may be omitted.
+
+= The Words of Institution
+¶ The Table, on which the elements are placed, being decently covered, the bread in convenient dishes, and the wine in cups, and the Communicants orderly and gravely sitting around the Table, (or in their seats before it) in the presence of the Minister, he shall say,
+Beloved in the Lord, attend to the Words of the Institution of the Holy Supper of our Lord Jesus Christ, as they are delivered by the Apostle Paul: "I have received of the Lord that which also I delivered unto you, That the Lord Jesus the same night in which He was betrayed took bread; and when He had given thanks, He brake it, and said, Take, eat: this is My body, which is broken for you: this do in remembrance of Me. After the same manner also He took the cup, when He had supped, saying, This cup is the New Testament in My blood: this do ye, as oft as ye drink it, in remembrance of Me. For as often as ye eat this bread, and drink this cup, ye do show the Lord's death till He come." And now, in His Name, I take these elements
+¶ Here the Minister may lay his hand upon the plate and the cup
+to be set apart by prayer and thanksgiving to the holy use for which He has appointed them.
+
+= Prayer, Sursum corda and Sanctus
+¶ Then the Minister shall say,
+Let us pray.
+¶ If so desired, these Prayers and Thanksgivings may be offered in the form following; the People reverently bowing down:
+O God, who by the blood of Thy dear Son hast consecrated for us a new and a living way into the holiest of all; Cleanse our minds, we beseech Thee, by the inspiration of Thy Holy Spirit, that, drawing near unto Thee with a pure heart and undefiled conscience, we may receive these Thy gifts without sin, and worthily magnify Thy holy Name; through Jesus Christ our Lord. Amen.
+¶ Then the People, still bowing down, shall make these responses:
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Lift up your hearts.
+People. We lift them up unto the Lord.
+Minister. Let us give thanks unto the Lord our God.
+People. It is meet and right so to do.
+¶ Then the Minister, proceeding, shall say,
+It is very meet, right, and our bounden duty, that we should, at all times and in all places, give thanks unto Thee, O Lord, Holy Father, Almighty and Eternal God, for all Thy bounties known and unknown; but chiefly are we bound to praise Thee that Thou hast ransomed us from eternal death, and given us the joyful hope of everlasting life through Jesus Christ Thy Son, whom Thou didst send into the world to suffer death upon the cross for our redemption. Thee, God the Father Everlasting: Thee, Only Begotten Son: Thee, Holy Spirit, the Comforter: Holy, Blessed and Glorious Trinity: we confess and praise with heart and mouth; saying, with angels and archangels, and all the company of Heaven,
+¶ Here let the People, still bowing down, join aloud, singing or saying,
++ Holy, Holy, Holy, Lord God of Hosts; Heaven and earth are full of the majesty of Thy glory. Hosanna in the highest. Blessed is He that cometh in the Name of the Lord. Hosanna in the highest.
+
+= The Prayer of Consecration
+¶ Then the Minister shall proceed, saying,
+Almighty God, the Father of our Lord Jesus Christ, whose once offering up of Himself, by Himself, upon the cross, once for all, we commemorate before Thee; We beseech Thee to accept this our spiritual oblation of all possible praise for the same. And here we offer and present, O Lord, ourselves, our souls and bodies, to be a reasonable, holy, and living sacrifice, acceptable unto Thee through Jesus Christ Thy Son:
+And we most humbly beseech Thee, Father of all mercies and God of all comfort, to vouchsafe Thy gracious presence, and the effectual working of Thy Spirit in us, and so to sanctify these elements both of Bread and Wine, and to bless Thine own Ordinance; that we may receive by faith Christ crucified for us, and so feed upon Him, that He may be one with us and we with Him; that He may live in us, and we in Him who hath loved us, and given Himself for us:
+Even Jesus Christ our Lord; to whom, with Thee and the Holy Ghost, be praise and power, might, majesty, and dominion, both now and evermore. Amen.
+
+= The Breaking of the Bread and the Communion
+¶ The Bread and Wine being thus set apart by Prayer and Thanksgiving, the Minister is to take the Bread, and break it, in view of the People, saying,
+Our Lord Jesus Christ, on the same night in which He was betrayed, having taken Bread, and blessed and broken it, gave it to His disciples; as I, ministering in His Name, give this Bread unto you; saying, Take, eat: this is My Body, which is broken for you; this do in remembrance of Me.
+¶ Then the Minister, who is also himself to communicate, is to give the Bread to the Elders to be distributed.
+¶ After having given the Bread, he shall take the Cup and say,
+After the same manner our Saviour also took the Cup; and having given thanks, as hath been done in His Name, He gave it to His disciples, saying, This Cup is the New Testament in My Blood, which is shed for many for the remission of sins: drink ye all of it.
+¶ Then the Minister, who is also to partake of the Cup, shall give it to the Elders to be administered.
+@communion
+
+= Thanksgiving, Hymn and Benediction
+¶ After all have communicated, the Minister shall say,
+Let us pray.
+Almighty and ever-living God, we most heartily thank Thee for Thy rich mercy and invaluable goodness, vouchsafed to us in this sacred Communion, wherein we have assurance that we are very members of the mystical body of Thy Son, and heirs through hope of Thine everlasting kingdom. And, as we have been made partakers of Christ, so enable us to hold fast that which we have received, that no man may take our crown. Help us, we beseech Thee, to bear about with us continually the dying of the Lord Jesus, that the life also of Jesus may be made manifest in our mortal body; and grant that we may remain alway in the holy fellowship of all faithful people, with whom in the unity of the Spirit, we now make our intercessions unto Thee:
+O Lord, save Thy people and bless Thine inheritance: feed them also, and lift them up for ever. Remember, O Lord, Thy congregation, which Thou hast purchased of old: pour out Thy Spirit as floods upon the dry ground, and refresh Thy waiting heritage. Let Thy priests be clothed with righteousness, and let Thy saints shout for joy. Show Thy mercy also unto them that are afar off, and gather all the lost sheep into Thy fold; for the sake of Jesus Christ our Lord. Amen.
+Most merciful God, we bless Thy holy Name for all Thy servants who have kept the faith, and, having accomplished their warfare, are at rest with Thee. We pray Thee to enable us so to follow their good example, that we with them may finally be partakers of Thy heavenly kingdom, and, at the glorious appearing of our Saviour Jesus Christ, may behold Him with unveiled face, being changed into His likeness; when He shall present us, with all His Church, faultless before the presence of His glory with exceeding joy. Hear us, O heavenly Father, for His sake: to whom, with Thee and the Holy Ghost, be glory for ever and ever. Amen.
+¶ Then the People shall rise and sing
+## A Hymn
+@hymn
+¶ Then, the People reverently bowing down, the Minister shall pronounce
+## The Benediction
+Now the God of peace, that brought again from the dead our Lord Jesus, that great Shepherd of the sheep, through the blood of the everlasting covenant, make you perfect in every good work to do His will, working in you that which is well-pleasing in His sight, through Jesus Christ; to whom be glory for ever and ever. Amen.
+¶ After the Benediction it is fitting that the Communicants remain in silent prayer, beseeching God that none may leave His Table without a blessing.
