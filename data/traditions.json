@@ -875,7 +875,7 @@
     "family": "catholic",
     "parent": "alexandrian-catholic",
     "kind": "church",
-    "self_description": "Coptic Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "self_description": "Coptic Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here. Bute's 1882 translation follows the Coptic Missal printed at Rome and notes Catholic use.",
     "also_called": [],
     "regions": [
       "Egypt"
@@ -883,14 +883,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
+    "books": [
+      {
+        "title": "The Coptic Morning Service for the Lord's Day",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/copticmorningser00coptuoft",
+        "rights_note": "Translated into English by John, Marquis of Bute (d. 1900); first published 1882, reissued London 1908. Public domain."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "copt",
+        "hour": null,
+        "label": "Liturgy of St Basil"
+      }
+    ],
     "pd_texts_available": [
-      "Historical editions require source and edition verification before use."
+      "The Liturgy of St Basil in the Marquis of Bute's English (1882, reissued 1908): imported from the Internet Archive scan (copticmorningser00coptuoft), proofread by hand against the page images."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-coptic-catholic-church/",
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://archive.org/details/copticmorningser00coptuoft"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -2255,7 +2271,7 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Coptic Orthodox Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "Coptic Orthodox Church preserves its own liturgical tradition. The Liturgy of St Basil is given here in a public-domain English translation of 1882; consult the Church's authorized books and calendar.",
     "also_called": [],
     "regions": [
       "Egypt"
@@ -2263,12 +2279,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Coptic Morning Service for the Lord's Day",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/copticmorningser00coptuoft",
+        "rights_note": "Translated into English by John, Marquis of Bute (d. 1900); first published 1882, reissued London 1908. Public domain."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "copt",
+        "hour": null,
+        "label": "Liturgy of St Basil"
+      }
+    ],
+    "pd_texts_available": [
+      "The Liturgy of St Basil in the Marquis of Bute's English (1882, reissued 1908): imported from the Internet Archive scan (copticmorningser00coptuoft), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/",
-      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental",
+      "https://archive.org/details/copticmorningser00coptuoft"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },

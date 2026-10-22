@@ -926,12 +926,13 @@
         "catholic-ethiopian",
         "catholic-eritrean"
       ],
-      "rite": "new",
+      "rite": "copt (new builders for the rest)",
       "service": "Liturgy",
-      "now": "none",
+      "now": "The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt)",
       "missing": [
-        "Coptic Liturgy of St Basil",
         "Ethiopic Liturgy",
+        "Coptic Liturgies of St Gregory and St Cyril",
+        "Coptic Morning Incense office",
         "Agpeya (hours)",
         "Katameros (lectionary)"
       ],
@@ -954,7 +955,7 @@
         },
         {
           "ia": "copticmorningser00coptuoft",
-          "title": "The Coptic Morning Service for the Lord's Day (Marquess of Bute)",
+          "title": "The Coptic Morning Service for the Lord's Day (Marquess of Bute) (Liturgy imported: tools/texts/order-coptic1908.txt)",
           "year": 1908,
           "lang": "en",
           "fills": [
@@ -1815,7 +1816,7 @@
       ],
       "rite": "new (shared builders with the Eastern Catholic churches of the same tradition)",
       "service": "Liturgy and Office",
-      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm)",
+      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt)",
       "missing": [
         "liturgies",
         "hours",
@@ -1866,7 +1867,7 @@
         },
         {
           "ia": "copticmorningser00coptuoft",
-          "title": "Coptic Morning Service (Bute)",
+          "title": "Coptic Morning Service (Bute) (Liturgy imported)",
           "year": 1908,
           "lang": "en",
           "fills": [

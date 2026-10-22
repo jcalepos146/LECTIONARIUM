@@ -44,6 +44,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Mozarabic | *Order*: the Ordinary in English, after the Missale mixtum (Divinum Officium); propers from your Missal | Not yet |
 | Reformed: Presbyterian Book of Common Worship (1906) | **Complete text**: the Lord's Day Morning Service, with the Order for the Lord's Supper when celebrated | Not yet |
 | Reformed: Reformed Church in America Liturgy (1882) | **Complete text**: the Order of Public Worship, with the Lord's Supper in the Form of Dort | Not yet |
+| Coptic Liturgy of St Basil (Coptic Orthodox; Coptic Catholic) | *Guided*: the Liturgy in full in the Marquis of Bute's English (1882, reissued 1908), with the incense, the litanies, the priest's private prayers and Bute's notes on Catholic and Orthodox use; lessons from the Katameros are cued | Not yet |
 | Armenian Divine Liturgy (Armenian Apostolic; Armenian Catholic) | *Guided*: the Divine Liturgy in full in the English of 1908, with the vesting, litanies and the priest's private prayers; lessons from the Armenian lectionary are cued | Not yet |
 | Methodist: Ritual of the Methodist Episcopal Church (1908) | **Complete text**: the Order for the Administration of the Lord's Supper | Not yet |
 | Lutheran: Common Service Book (1917-19) | **Complete text**: The Service with the Introit, Collect, Epistle, Gradual and Gospel of the day (lessons the book only cites come from the King James Version) | Not yet |

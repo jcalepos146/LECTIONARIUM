@@ -34,7 +34,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 9 | [braga](#braga) | none | 1 | 0 | Braga breviary: not located |
 | 10 | [religious-order-uses](#religious-order-uses) | none | 4 | 0 | Premonstratensian and Carmelite breviaries: not located; modern Carthusian books: not public |
 | 11 | [zaire-use](#zaire-use) | none | 0 | 0 | Missel romain pour les diocèses du Zaïre: permission from the Episcopal Conference of the Democratic Republic of the Congo |
-| 12 | [alexandrian-catholic](#alexandrian-catholic) | none | 5 | 0 | Agpeya in public-domain English: not located; Katameros (Coptic lectionary) data: not located |
+| 12 | [alexandrian-catholic](#alexandrian-catholic) | The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt) | 5 | 0 | Agpeya in public-domain English: not located; Katameros (Coptic lectionary) data: not located |
 | 13 | [west-syriac-catholic](#west-syriac-catholic) | none | 4 | 0 | Shehimo in public-domain English: not located |
 | 14 | [east-syriac-catholic](#east-syriac-catholic) | none | 5 | 0 | Syro-Malabar Raza (1986) and current Chaldean books: permission |
 | 15 | [armenian-catholic](#armenian-catholic) | The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm) | 4 | 0 | Armenian Book of Hours in public-domain English: not located |
@@ -44,7 +44,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 19 | [anglican-current-books](#anglican-current-books) | none | 0 | 4 | Church of Ireland 2004: its site refused automated access; check by hand; Scottish Episcopal Church current liturgies: download page not located; written permission from ACNA, Canada, New Zealand and Wales for an app |
 | 20 | [orthodox-byzantine](#orthodox-byzantine) | order / guide | 4 | 0 | Lenten Triodion and Festal Menaion (Mother Mary and Ware), HTM Pentecostarion, Lambertsen Menaion, Ephrem Lash: in copyright; ask each translator or publisher |
 | 21 | [western-rite-orthodox](#western-rite-orthodox) | none | 1 | 0 | St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese permission |
-| 22 | [oriental-orthodox](#oriental-orthodox) | Armenian: the Divine Liturgy in full (1908 English, rite arm) | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
+| 22 | [oriental-orthodox](#oriental-orthodox) | Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt) | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
 | 23 | [lutheran](#lutheran) | The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
 | 24 | [reformed](#reformed) | The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
 | 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; Moravian, Congregational and Holiness families are not in the catalog yet |
@@ -255,16 +255,16 @@ Blocked: Missel romain pour les diocèses du Zaïre: permission from the Episcop
 
 ### 12. alexandrian-catholic
 
-Catalog: `alexandrian-catholic`, `catholic-coptic`, `catholic-ethiopian`, `catholic-eritrean` · rite `new` · Liturgy · now **none**
+Catalog: `alexandrian-catholic`, `catholic-coptic`, `catholic-ethiopian`, `catholic-eritrean` · rite `copt (new builders for the rest)` · Liturgy · now **The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt)**
 
-Missing: Coptic Liturgy of St Basil; Ethiopic Liturgy; Agpeya (hours); Katameros (lectionary).
+Missing: Ethiopic Liturgy; Coptic Liturgies of St Gregory and St Cyril; Coptic Morning Incense office; Agpeya (hours); Katameros (lectionary).
 
 Brightman gives the Coptic and Ethiopic liturgies in English; Bute's Coptic Morning Service adds the rest of the Sunday office. The hours and the Katameros have not been found in a public-domain English edition.
 
 | Source | Year | Lang | Format | Fills | Rights |
 |---|---|---|---|---|---|
 | Liturgies Eastern and Western, vol. 1 (F. E. Brightman) ([liturgieseastern01unknuoft](https://archive.org/details/liturgieseastern01unknuoft)) | 1896 | en | scan | Coptic Liturgy of St Mark/Cyril and St Basil; Abyssinian (Ethiopic) Liturgy; Syrian St James; Armenian; Nestorian (East Syrian) Liturgy; Byzantine | pd |
-| The Coptic Morning Service for the Lord's Day (Marquess of Bute) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic Sunday Liturgy and morning office | pd |
+| The Coptic Morning Service for the Lord's Day (Marquess of Bute) (Liturgy imported: tools/texts/order-coptic1908.txt) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic Sunday Liturgy and morning office | pd |
 | The Divine Liturgy of St Mark the Evangelist (S. C. Malan) — No OCR text on this item; transcribe from the page images. ([divineliturgysa00malagoog](https://archive.org/details/divineliturgysa00malagoog)) | 1872 | en | scan | Coptic liturgy | pd |
 | The Ethiopic Liturgy (S. A. B. Mercer) ([ethiopicliturgyi00mercuoft](https://archive.org/details/ethiopicliturgyi00mercuoft)) | 1915 | en | scan | Ethiopic liturgy and anaphoras | pd |
 | The Anaphoras of the Ethiopic Liturgy — Controlled-lending scan; confirm the 1928 date on the title page. ([anaphorasofethio0000yait](https://archive.org/details/anaphorasofethio0000yait)) | 1928 | en | scan | Ethiopic anaphoras | pd |
@@ -450,7 +450,7 @@ Blocked: St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese perm
 
 ### 22. oriental-orthodox
 
-Catalog: `oriental-orthodox`, `oriental-coptic`, `oriental-syriac`, `oriental-armenian`, `oriental-ethiopian`, `oriental-eritrean`, `oriental-malankara`, `oriental-assyrian`, `oriental-ancient` · rite `new (shared builders with the Eastern Catholic churches of the same tradition)` · Liturgy and Office · now **Armenian: the Divine Liturgy in full (1908 English, rite arm)**
+Catalog: `oriental-orthodox`, `oriental-coptic`, `oriental-syriac`, `oriental-armenian`, `oriental-ethiopian`, `oriental-eritrean`, `oriental-malankara`, `oriental-assyrian`, `oriental-ancient` · rite `new (shared builders with the Eastern Catholic churches of the same tradition)` · Liturgy and Office · now **Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt)**
 
 Missing: liturgies; hours; lectionaries; calendars (Coptic, Ethiopian, Armenian).
 
@@ -462,7 +462,7 @@ Reuse the Alexandrian, West Syriac, East Syriac and Armenian sources above; Orth
 | East Syrian Daily Offices (Maclean) ([eastsyriandailyo00macluoft](https://archive.org/details/eastsyriandailyo00macluoft)) | 1894 | en | scan | Assyrian and Ancient Church of the East hours | pd |
 | Liturgia Sanctorum Apostolorum Adaei et Maris (Urmia) ([liturgiasanctoru0000anon](https://archive.org/details/liturgiasanctoru0000anon)) | 1890 | syr | scan | Takhsa | pd |
 | Rituale Armenorum (Conybeare) ([ritualearmenorum00cony](https://archive.org/details/ritualearmenorum00cony)) | 1905 | en | scan | Armenian rites and lectionary | pd |
-| Coptic Morning Service (Bute) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic liturgy | pd |
+| Coptic Morning Service (Bute) (Liturgy imported) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic liturgy | pd |
 | The Ethiopic Liturgy (Mercer) ([ethiopicliturgyi00mercuoft](https://archive.org/details/ethiopicliturgyi00mercuoft)) | 1915 | en | scan | Ethiopian and Eritrean liturgy | pd |
 | The Service for the Consecration of a Church according to the Coptic Rite (G. Horner) ([serviceforconsec00hornuoft](https://archive.org/details/serviceforconsec00hornuoft)) | 1902 | en | scan | Coptic rubrics and hymn structure | reference |
 
