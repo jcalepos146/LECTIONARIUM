@@ -1,0 +1,559 @@
+# The Day-Hours of the Church of England, newly revised (London: Masters, 1877),
+# the Psalter section, pp. 145 and 161-184. Internet Archive item thedayhours00unknuoft;
+# scan leaf = printed page + 27. Page-checked against the scans.
+#
+# Markup (compiled by tools/dayhours.py into data/dayhours.json):
+#   ### hour            begins an hour (prime terce sext none) or "preces" (the Week-day Prayers, p. 145)
+#   ## Title            begins a step of the hour
+#   =LEAF               scan leaf of what follows
+#   @ text              rubric          V: versicle      R: response
+#   A: antiphon         H: hymn line (H/ = new stanza)
+#   C: chapter or other text read by one voice      O: prayer said by the officiant
+#   L: said by all      S: verse of a canticle printed in full (the Quicunque)
+#   * ps REF            a psalm from the Coverdale psalter, ending with the Gloria
+#   * preces|collect|lords-prayer|creed|lent-ps    filled in by the page
+#   {cond} ... {/cond}  sun wkd sept nosept septE noseptE easter noeaster advent lent passion ord penit
+#     sept = Septuagesima to Wednesday in Holy Week; septE = Septuagesima to Easter Eve;
+#     easter = Easter Day to Trinity; ord = outside Advent, Lent and Passiontide;
+#     penit = weekdays from Ash Wednesday to Easter Eve.
+
+### prime
+## Opening
+=188
+V: O God, make speed to save us.
+R: O Lord, make haste to help us.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost;
+R: As it was in the beginning, is now, and ever shall be : world without end. Amen.
+{nosept}
+L: Alleluia.
+{/nosept}
+{sept}
+L: Praise to Thee, O Lord, we sing, Of Glory the Eternal King.
+{/sept}
+## Hymn
+@ Hymn. Jam lucis orto sidere.
+H: Now that the daylight fills the sky,
+H: We lift our hearts to God on high,
+H: That He, in all we do or say,
+H: Would keep us free from harm to-day;
+H/
+H: Would guard our hearts and tongues from strife:
+H: From anger's din would hide our life:
+H: From all ill sights would turn our eyes:
+H: Would close our ears from vanities:
+H/
+H: Would keep our inmost conscience pure:
+H: Our souls from folly would secure:
+H: Would bid us check the pride of sense
+H: With due and holy abstinence.
+H/
+H: So we, when this new day is gone,
+H: And night in turn is drawing on,
+H: With conscience by the world unstained
+H: Shall praise His Name for victory gained.
+H/
+H: All laud to God the Father be;
+H: All praise, Eternal Son, to Thee;
+H: All praise for ever, as is meet,
+H: To God the Holy Paraclete. Amen.
+## Psalms
+{sun}
+{nosept}
+A: Alleluia.
+{/nosept}
+{sept}
+@ The antiphon is given in the Proper Services for the day.
+{/sept}
+* ps Ps 54
+{noseptE}
+* ps Ps 118
+{/noseptE}
+{septE}
+@ From Septuagesima Sunday to Easter, instead of Psalm 118 is said Psalm 93.
+* ps Ps 93
+{/septE}
+=190
+* ps Ps 119:1-16
+* ps Ps 119:17-32
+=191
+{nosept}
+A: Alleluia.
+{/nosept}
+{/sun}
+{wkd}
+=193
+{ord}
+A: Blessed are those that walk.
+{/ord}
+{advent}
+A: Come and deliver.
+{/advent}
+{lent}
+A: As I live.
+{/lent}
+{passion}
+A: The ungodly are minded.
+{/passion}
+* ps Ps 54
+@ On each day of the week, except Saturday, is said one of the following Psalms; but on Saturday is here begun immediately Psalm 119.
+* day-ps
+* ps Ps 119:1-16
+* ps Ps 119:17-32
+=198
+{ord}
+A: Blessed are those that walk : in the law of the Lord.
+{/ord}
+{advent}
+A: Come and deliver : us, O our God.
+{/advent}
+{lent}
+A: As I live : saith the Lord God, I have no pleasure in the death of the wicked; but that the wicked turn from his way, and live.
+{/lent}
+{passion}
+A: The ungodly are minded : to do Me some mischief, and My heart is disquieted within Me.
+{/passion}
+{/wkd}
+{sun}
+## Quicunque vult
+=191
+A: O Holy and Undivided Trinity.
+S: Whosoever will be saved : before all things it is necessary that he hold the Catholick Faith.
+S: Which Faith except every one do keep whole and undefiled : without doubt he shall perish everlastingly.
+S: And the Catholick Faith is this : That we worship one God in Trinity, and Trinity in Unity;
+S: Neither confounding the Persons : nor dividing the Substance.
+S: For there is one Person of the Father, another of the Son : and another of the Holy Ghost.
+S: But the Godhead of the Father, of the Son, and of the Holy Ghost, is all One : the Glory equal, the Majesty co-eternal.
+S: Such as the Father is, such is the Son : and such is the Holy Ghost.
+S: The Father uncreate, the Son uncreate : and the Holy Ghost uncreate.
+S: The Father incomprehensible, the Son incomprehensible : and the Holy Ghost incomprehensible.
+S: The Father eternal, the Son eternal : and the Holy Ghost eternal.
+S: And yet They are not three eternals : but One Eternal.
+S: As also there are not three incomprehensibles, nor three uncreated : but One Uncreated, and One Incomprehensible.
+S: So likewise the Father is Almighty, the Son Almighty : and the Holy Ghost Almighty.
+S: And yet They are not three almighties : but One Almighty.
+S: So the Father is God, the Son is God : and the Holy Ghost is God.
+S: And yet They are not three gods : but One God.
+S: So likewise the Father is Lord, the Son Lord : and the Holy Ghost Lord.
+S: And yet not three lords : but One Lord.
+S: For like as we are compelled by the Christian Verity : to acknowledge every Person by Himself to be God and Lord;
+S: So are we forbidden by the Catholick Religion : to say, There be three gods, or three lords.
+S: The Father is made of none : neither created, nor begotten.
+S: The Son is of the Father alone : not made, nor created, but begotten.
+S: The Holy Ghost is of the Father and of the Son : neither made, nor created, nor begotten, but Proceeding.
+S: So there is one Father, not three Fathers; one Son, not three Sons : one Holy Ghost, not three Holy Ghosts.
+S: And in this Trinity none is afore, or after other : none is greater, or less than another;
+S: But the whole Three Persons are co-eternal together : and co-equal.
+=192
+S: So that in all things, as is aforesaid : the Unity in Trinity, and the Trinity in Unity is to be worshipped.
+S: He therefore that will be saved : must thus think of the Trinity.
+S: Furthermore, it is necessary to everlasting Salvation : that he also believe rightly the Incarnation of our Lord Jesus Christ.
+S: For the right Faith is, that we believe and confess : that our Lord Jesus Christ, the Son of God, is God and Man.
+S: God, of the substance of the Father, begotten before the worlds : and man of the substance of His Mother, born in the world;
+S: Perfect God, and perfect Man : of a reasonable soul and human flesh subsisting;
+S: Equal to the Father, as touching His Godhead : and Inferior to the Father, as touching His Manhood.
+S: Who although He be God and Man : yet He is not two, but One Christ;
+S: One; not by conversion of the Godhead into flesh : but by taking of the Manhood into God.
+S: One altogether; not by confusion of Substance : but by unity of Person.
+S: For as the reasonable soul and flesh is one man : so God and Man is One Christ;
+S: Who suffered for our salvation : descended into hell, rose again the third day from the dead.
+S: He ascended into heaven, He sitteth on the right hand of the Father, God Almighty : from whence He shall come to judge the quick and the dead.
+S: At Whose coming all men shall rise again with their bodies : and shall give account for their own works.
+S: And they that have done good shall go into life everlasting : and they that have done evil into everlasting fire.
+S: This is the Catholick Faith : which except a man believe faithfully, he cannot be saved.
+* gloria
+{noeaster}
+A: O Holy and Undivided Trinity, with heart and mouth we confess, praise, and bless Thee the Father Eternal, Thee the Only-begotten Son, Thee the Holy Ghost the Comforter : To Thee be glory for ever.
+{/noeaster}
+{easter}
+A: O Holy and Undivided Trinity, with heart and mouth we confess, praise, and bless Thee the Father Eternal, Thee the Only-begotten Son, Thee the Holy Ghost the Comforter : To Thee be glory for ever. Alleluia.
+{/easter}
+{/sun}
+## Chapter and responsory
+{sun}
+@ The Chapter, 1 Tim. i. 17.
+C: Now unto the King Eternal, Immortal, Invisible, the only wise God, be honour and glory for ever and ever. Amen.
+{/sun}
+{wkd}
+=198
+@ The Chapter, Zech. viii. 16.
+C: Execute the judgment of truth and peace in your gates, saith the Lord.
+{/wkd}
+R: Jesu Christ, Son of the living God, have mercy upon us.
+V: Thou that sittest at the Right Hand of the Father.
+R: Have mercy upon us.
+V: Glory be to the Father, and to the Son, and to the Holy Ghost.
+R: Jesu Christ, Son of the living God, have mercy upon us.
+V: O Lord, arise, help us.
+R: And deliver us, for Thy Name's sake.
+@ This versicle, Thou that sittest, is altered on certain Days, as is marked in the Proper Services.
+{wkd}
+## Prayers
+L: Lord, have mercy upon us.
+L: Christ, have mercy upon us.
+L: Lord, have mercy upon us.
+* lords-prayer
+* creed
+V: Unto Thee have I cried, O Lord.
+R: And early shall my prayer come before Thee.
+V: O let my mouth be filled with Thy praise.
+R: That I may sing of Thy glory and honour all the day long.
+V: Turn Thy Face from my sins.
+R: And put out all my misdeeds.
+V: Make me a clean heart, O God.
+R: And renew a right spirit within me.
+V: Cast me not away from Thy Presence.
+R: And take not Thy Holy Spirit from me.
+V: Give me the comfort of Thy help again.
+R: And stablish me with Thy Free Spirit.
+V: Our help is in the Name of the Lord.
+R: Who hath made heaven and earth.
+@ Then is said the following Confession.
+L: We confess to God Almighty, the Father, the Son, and the Holy Ghost, in the sight of the whole company of heaven, that we have
+=199
++ sinned exceedingly in thought, word, and deed, of our fault, our own fault, our own great fault; therefore we pray God to have mercy on us.
+@ And those present shall say,
+L: Almighty God have mercy upon us, and bring us to everlasting life. Amen.
+@ Or he that sayeth the Office may say,
+O: I confess to Almighty God in the sight of the whole company of heaven, and to you, that I have sinned exceedingly in thought, word, and deed, of my fault, of my own fault, of my own grievous fault, and calling to mind the communion of Saints, I beseech you, brethren, to pray for me.
+@ And those present shall answer,
+L: Almighty God have mercy upon thee, forgive thy sins, deliver thee from evil, and bring thee to everlasting life. Amen.
+@ Then those present shall say,
+L: We confess to Almighty God in the sight of the whole company of heaven, and to thee, that we have sinned exceedingly in thought, word, and deed, of our fault, of our own fault, of our own grievous fault, and calling to mind the communion of Saints, we beseech thee to pray for us.
+@ And he that sayeth the Office shall answer,
+O: Almighty God have mercy upon you, forgive your sins, deliver you from evil, and bring you to everlasting life. Amen.
+@ And if a Priest be present, let him add,
+P: The Almighty and merciful Lord grant you Absolution and forgiveness of your sins, time for repentance, amendment of life, and the grace and comfort of His Holy Spirit. Amen.
+V: Wilt Thou not turn again and quicken us?
+R: That Thy people may rejoice in Thee.
+V: Show us Thy mercy, O Lord.
+R: And grant us Thy salvation.
+V: Vouchsafe, O Lord.
+R: To keep us this day without sin.
+V: O Lord, have mercy upon us.
+R: Have mercy upon us.
+V: O Lord, let Thy mercy lighten upon us.
+R: As our trust is in Thee.
+{penit}
+@ In Lent Psalm 51 is always said here, followed by Psalm 32.
+* ps Ps 51
+* ps Ps 32
+{/penit}
+=201
+V: Lord, hear our prayer.
+R: And let our cry come unto Thee.
+{/wkd}
+## Collect
+V: The Lord be with you.
+R: And with thy spirit.
+@ Let us pray.
+O: O Lord, our Heavenly Father, Almighty and Everlasting God, Who hast safely brought us to the beginning of this day; Defend us in the same with Thy mighty power; and grant that this day we fall into no sin, neither run into any kind of danger; but that all our doings may be ordered by Thy governance, to do always that is righteous in Thy sight; through Jesus Christ our Lord. Amen.
+## Conclusion
+V: The Lord be with you.
+R: And with thy spirit.
+V: Bless we the Lord.
+R: Thanks be to God.
+V: May the souls of the Faithful, through the mercy of God, rest in peace.
+R: Amen.
+
+### terce
+## Opening
+=201
+V: O God, make speed to save us.
+R: O Lord, make haste to help us.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost;
+R: As it was in the beginning, is now, and ever shall be : world without end. Amen.
+{nosept}
+L: Alleluia.
+{/nosept}
+{sept}
+L: Praise to Thee, O Lord, we sing, Of Glory the Eternal King.
+{/sept}
+## Hymn
+@ Hymn. Nunc Sancte nobis Spiritus.
+H: Come, Holy Ghost, with God the Son,
+H: And God the Father, ever One;
+H: Shed forth Thy grace within our breast,
+H: And dwell with us, a ready guest.
+H/
+H: By every power, by heart and tongue,
+H: By act and deed, Thy praise be sung;
+H: Inflame with perfect love each sense,
+H: That others' souls may kindle thence.
+H/
+H: O Father, that we ask be done,
+H: Through Jesus Christ, Thine Only Son,
+H: Who, with the Holy Ghost and Thee,
+H: Shall live and reign eternally. Amen.
+## Psalms
+{wkd}
+A: O let Thy loving mercies.
+{/wkd}
+* ps Ps 119:33-48
+=202
+* ps Ps 119:49-64
+* ps Ps 119:65-80
+=203
+{sun}
+A: To Father, Son, and Holy Ghost, The God Whom we adore; Be glory as it was, is now, And shall be evermore.
+{/sun}
+{wkd}
+A: O let Thy loving mercies : come unto me, that I may live.
+{/wkd}
+## Chapter and responsory
+{sun}
+@ The Chapter, 2 Cor. xiii. 14.
+C: The Grace of our Lord Jesus Christ, and the love of God, and the Communion of the Holy Ghost, be with us all. Amen.
+R: Incline my heart unto Thy testimonies, and not to covetousness.
+V: Turn away mine eyes, lest they behold vanity, and quicken Thou me in Thy way.
+R: And not to covetousness.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost.
+R: Incline my heart unto Thy testimonies, and not to covetousness.
+V: I said, Lord, be merciful unto me.
+R: Heal my soul, for I have sinned against Thee.
+{/sun}
+{wkd}
+@ The Chapter, Jer. xvii. 14.
+C: Heal me, O Lord, and I shall be healed; save me, and I shall be saved; for Thou art my praise.
+R: Heal my soul, for I have sinned against Thee.
+V: I said, Lord, be merciful unto me.
+R: For I have sinned against Thee.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost.
+R: Heal my soul, for I have sinned against Thee.
+V: Thou hast been my succour.
+R: Leave me not, neither forsake me, O God of my Salvation.
+V: The Lord be with you.
+R: And with thy spirit.
+{easter}
+@ Let us pray.
+{/easter}
+{noeaster}
+## Prayers
+=204
+* preces 38
+{/noeaster}
+{/wkd}
+## Collect
+@ The Collect, which is always that appointed to be said at Lauds.
+* collect
+## Conclusion
+V: The Lord be with you.
+R: And with thy spirit.
+V: Bless we the Lord.
+R: Thanks be to God.
+V: May the souls of the Faithful, through the mercy of God, rest in peace.
+R: Amen.
+
+### sext
+## Opening
+=205
+V: O God, make speed to save us.
+R: O Lord, make haste to help us.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost;
+R: As it was in the beginning, is now, and ever shall be : world without end. Amen.
+{nosept}
+L: Alleluia.
+{/nosept}
+{sept}
+L: Praise to Thee, O Lord, we sing, Of Glory the Eternal King.
+{/sept}
+## Hymn
+@ Hymn. Rector potens verax Deus.
+H: O God of truth, O Lord of might,
+H: Who orderest time and change aright,
+H: And send'st the early morning ray,
+H: And light'st the glow of perfect day:
+H/
+H: Extinguish Thou each sinful fire,
+H: And banish every ill desire;
+H: And while Thou keep'st the body whole,
+H: Shed forth Thy peace upon the soul.
+H/
+H: O Father, that we ask be done,
+H: Through Jesus Christ, Thine only Son,
+H: Who, with the Holy Ghost and Thee,
+H: Shall live and reign eternally. Amen.
+## Psalms
+{wkd}
+A: Let me not.
+{/wkd}
+* ps Ps 119:81-96
+* ps Ps 119:97-112
+=206
+* ps Ps 119:113-128
+=207
+{sun}
+A: To God the Father, Son, And Spirit ever blest; Eternal Three in One, All glory be addrest.
+{/sun}
+{wkd}
+A: Let me not : be disappointed of my hope.
+{/wkd}
+## Chapter and responsory
+{sun}
+@ The Chapter, 1 St. John v. 7.
+C: There are Three That bear record in heaven, the Father, the Word, and the Holy Ghost; and These Three are One.
+R: O Lord, Thy Word endureth for ever in heaven.
+V: Thy truth also remaineth from one generation to another.
+R: For ever in heaven.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost.
+R: O Lord, Thy Word endureth for ever in heaven.
+V: The Lord is my Shepherd, therefore can I lack nothing.
+R: He shall feed me in a green pasture.
+{/sun}
+{wkd}
+@ The Chapter, 1 Thess. v. 21, 22.
+C: Prove all things; hold fast that which is good. Abstain from all appearance of evil.
+R: I will alway give thanks unto the Lord.
+V: His praise shall ever be in my mouth.
+R: I will alway give thanks.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost.
+R: I will alway give thanks unto the Lord.
+V: The Lord is my Shepherd, therefore shall I lack nothing.
+R: He shall feed me in a green pasture.
+V: The Lord be with you.
+R: And with thy spirit.
+{easter}
+@ Let us pray.
+{/easter}
+{noeaster}
+## Prayers
+* preces 67
+{/noeaster}
+{/wkd}
+## Collect
+@ The Collect, which is always that appointed to be said at Lauds.
+* collect
+## Conclusion
+V: The Lord be with you.
+R: And with thy spirit.
+V: Bless we the Lord.
+R: Thanks be to God.
+V: May the souls of the Faithful, through the mercy of God, rest in peace.
+R: Amen.
+
+### none
+## Opening
+=208
+V: O God, make speed to save us.
+R: O Lord, make haste to help us.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost;
+R: As it was in the beginning, is now, and ever shall be : world without end. Amen.
+{nosept}
+L: Alleluia.
+{/nosept}
+{sept}
+L: Praise to Thee, O Lord, we sing, Of Glory the Eternal King.
+{/sept}
+## Hymn
+@ Hymn. Rerum Deus tenax Vigor.
+H: O God, Creation's secret Force,
+H: Thyself unmoved, all motion's source,
+H: Who from the morn till evening's ray,
+H: Through all its changes guid'st the day;
+H/
+H: Grant us when this short life is past,
+H: The glorious evening that shall last:
+H: That by a holy death attained,
+H: Eternal glory may be gained.
+H/
+H: O Father, that we ask be done,
+H: Through Jesus Christ, Thine only Son;
+H: Who with the Holy Ghost and Thee,
+H: Shall live and reign eternally. Amen.
+## Psalms
+{wkd}
+A: Give me understanding.
+{/wkd}
+* ps Ps 119:129-144
+* ps Ps 119:145-160
+=209
+* ps Ps 119:161-176
+=210
+{sun}
+A: Of Him, and through Him, and to Him, are all things : to Him be glory for ever.
+{/sun}
+{wkd}
+A: Give me understanding : according to Thy Word.
+{/wkd}
+## Chapter and responsory
+{sun}
+@ The Chapter, Eph. iv. 5, 6; Rom. i. 25.
+C: One Lord, one Faith, one Baptism, one God and Father of all, Who is above all, and through all, and in you all, Who is blessed for ever.
+R: I call with my whole heart : hear me, O Lord.
+V: I will keep Thy statutes.
+R: Hear me, O Lord.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost.
+R: I call with my whole heart : hear me, O Lord.
+{/sun}
+{wkd}
+@ The Chapter, Gal. vi. 2.
+C: Bear ye one another's burdens, and so fulfil the law of Christ.
+R: O deliver me, and be merciful unto me.
+V: My foot standeth right : I will praise the Lord in the congregations.
+R: And be merciful unto me.
+V: Glory be to the Father, and to the Son : and to the Holy Ghost.
+R: O deliver me, and be merciful unto me.
+{/wkd}
+V: O cleanse Thou me from my secret faults.
+R: Keep Thy servant also from presumptuous sins.
+{wkd}
+V: The Lord be with you.
+R: And with thy spirit.
+{easter}
+@ Let us pray.
+{/easter}
+{noeaster}
+## Prayers
+* preces 102
+{/noeaster}
+{/wkd}
+## Collect
+@ The Collect, which is always that appointed to be said at Lauds.
+* collect
+## Conclusion
+V: The Lord be with you.
+R: And with thy spirit.
+V: Bless we the Lord.
+R: Thanks be to God.
+V: May the souls of the Faithful, through the mercy of God, rest in peace.
+R: Amen.
+
+### preces
+## The Week-day Prayers
+=172
+@ Here follow the Week-day Prayers, thus, (all kneeling.)
+L: Lord, have mercy upon us.
+L: Christ, have mercy upon us.
+L: Lord, have mercy upon us.
+* lords-prayer
+V: I said, Lord, be merciful unto me.
+R: Heal my soul, for I have sinned against Thee.
+V: Turn Thee again, O Lord, at the last.
+R: And be gracious unto Thy servants.
+V: Let Thy merciful kindness, O Lord, be upon us.
+R: As we do put our trust in Thee.
+V: Let Thy Priests be clothed with righteousness.
+R: And Thy Saints sing with joyfulness.
+V: O Lord, save the Queen.
+R: And mercifully hear us when we call upon Thee.
+V: O God, save Thy servants and handmaidens.
+R: Which put their trust in Thee.
+V: O Lord, save Thy people.
+R: And bless Thine inheritance.
+V: Peace be within Thy walls.
+R: And plenteousness within Thy palaces.
+V: Let us pray for the dead in Christ.
+R: Grant them, O Lord, eternal rest, and let everlasting light shine upon them.
+V: Hearken unto my voice, O Lord, when I cry unto Thee.
+R: Have mercy upon me, and hear me.
+* lent-ps
+=173
+@ Then let the reader [if a Priest, rise from his knees, go to the steps of the Sanctuary, and] say,
+V: O Lord, arise, help us.
+R: And deliver us for Thy Name's sake.
+V: Turn Thee again, O Lord God of Hosts.
+R: Show the light of Thy Countenance, and we shall be whole.
+V: Lord, hear our prayer.
+R: And let our cry come unto Thee.
+V: The Lord be with you.
+R: And with thy spirit.
+@ Let us pray.

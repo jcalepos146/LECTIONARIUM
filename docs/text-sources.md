@@ -26,7 +26,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 1 | [roman-modern-mass](#roman-modern-mass) | guide | 6 | 0 | English collects, prefaces and Eucharistic Prayers II-IV: ICEL permission (icelweb.org); Latin new compositions: Libreria Editrice Vaticana permission |
 | 2 | [liturgy-of-the-hours](#liturgy-of-the-hours) | guide | 5 | 0 | English antiphons, responsories, intercessions and prayers: ICEL permission; Latin new compositions: Libreria Editrice Vaticana permission |
 | 3 | [divine-worship-mass](#divine-worship-mass) | guide | 4 | 0 | Divine Worship: The Missal (2015) itself: permission from the Congregation for Divine Worship via the Ordinariates |
-| 4 | [divine-worship-office](#divine-worship-office) | full (Prime in outline) | 2 | 0 | Divine Worship: Daily Office (2020/21): permission |
+| 4 | [divine-worship-office](#divine-worship-office) | full (Prime, Terce, Sext and None from the Day-Hours, 1877) | 2 | 0 | Divine Worship: Daily Office (2020/21): permission |
 | 5 | [byzantine-catholic](#byzantine-catholic) | order (Liturgy), guide (Office) | 13 | 0 | Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and current UGCC books: permission from the issuing eparchies |
 | 6 | [dominican-mass](#dominican-mass) | none (Office complete) | 2 | 0 | nothing |
 | 7 | [ambrosian](#ambrosian) | none | 6 | 0 | current Ambrosian Missal and Lectionary: Archdiocese of Milan permission |
@@ -114,9 +114,9 @@ Blocked: Divine Worship: The Missal (2015) itself: permission from the Congregat
 
 ### 4. divine-worship-office
 
-Catalog: `divine-worship` · rite `dwdo` · Office · now **full (Prime in outline)**
+Catalog: `divine-worship` · rite `dwdo` · Office · now **full (Prime, Terce, Sext and None from the Day-Hours, 1877)**
 
-Missing: Prime; Terce, Sext and None; office hymns.
+Missing: proper antiphons and hymn endings of feasts and seasons (Day-Hours, Proper of the Seasons).
 
 The Day Hours of the Church of England supplies the little hours in Prayer Book English with the Coverdale psalter already in the project.
 

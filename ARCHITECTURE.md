@@ -33,6 +33,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 | `propers-1962.json`, `propers-pre55.json`, `ordo.json` | Traditional Mass propers and Ordinary, Latin and English |
 | `chant.json`, `hymns.json` | Gregorian chant (GABC) and public-domain hymns |
 | `bcp-office.json` | 1662 Mattins, Evensong and collects |
+| `data/dayhours.json` | Prime, Terce, Sext and None from The Day-Hours of the Church of England (1877), compiled by `tools/dayhours.py` from the page-checked transcription in `tools/texts/dayhours-little.txt` |
 | `data/byz-liturgy.json` | Liturgies of St John Chrysostom, St Basil and the Presanctified (Hapgood, 1906) plus the Sunday hymns of the eight tones (Appendix A), compiled by `tools/byz_texts.py` from the page-checked transcriptions in `tools/texts/hapgood-liturgy.txt` and `hapgood-tones.txt` |
 | `breviary/<form>/` | Full Breviary per form (`br62`, `br55`, `mon`, `op`): `manifest.json`, line shards `l-NNN`, row shards `r-NNN`, a day index per year `y-YYYY` |
 

@@ -36,7 +36,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 |---|---|---|
 | 1962, pre-1955, hybrid | **Complete text** | **Complete text** |
 | Monastic, Dominican | n/a | **Complete text** |
-| Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline) |
+| Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline; Prime, Terce, Sext and None from the Day-Hours, 1877) |
 | Novus Ordo / Liturgy of the Hours | *Guided*: readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal | *Guided*: psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary |
 | Byzantine | *Guided*: Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906), with the Sunday Resurrection hymns of the tone; Menaion hymns from your books | *Guided*: psalms and fixed prayers; Saturday Vespers stichera, dogmatikon and Sunday troparia of the tone (Hapgood); Menaion hymns from your books |
 
@@ -53,6 +53,7 @@ Sessions connect browsers directly (WebRTC through the free PeerJS signalling se
 ## Sources and licences
 
 - **Traditional Breviary and Missal texts**: generated with the [Divinum Officium](https://github.com/DivinumOfficium/divinum-officium) program from its data (MIT licence).
+- **Little hours (Ordinariate)**: *The Day-Hours of the Church of England* (London: Masters, 1877), public domain, transcribed from the Internet Archive scan and checked page by page.
 - **Byzantine daily readings**: a port of [orthocal](https://github.com/brianglass/orthocal) by Brian Glass (MIT licence).
 - **Book of Common Prayer (1662)**: public domain, except in the United Kingdom, where the Crown holds perpetual rights.
 - **Scripture**: Douay-Rheims (public domain) and King James Version (public domain, except Crown rights in the UK).
