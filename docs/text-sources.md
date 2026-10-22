@@ -45,7 +45,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 20 | [orthodox-byzantine](#orthodox-byzantine) | order / guide | 4 | 0 | Lenten Triodion and Festal Menaion (Mother Mary and Ware), HTM Pentecostarion, Lambertsen Menaion, Ephrem Lash: in copyright; ask each translator or publisher |
 | 21 | [western-rite-orthodox](#western-rite-orthodox) | none | 1 | 0 | St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese permission |
 | 22 | [oriental-orthodox](#oriental-orthodox) | none | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
-| 23 | [lutheran](#lutheran) | none | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
+| 23 | [lutheran](#lutheran) | The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
 | 24 | [reformed](#reformed) | none | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
 | 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | none | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; no catalog entries for these families yet |
 | 26 | [old-catholic](#old-catholic) | none | 0 | 0 | no candidate source found yet |
@@ -471,9 +471,9 @@ Blocked: Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book o
 
 ### 23. lutheran
 
-Catalog: `lutheran`, `common-service`, `swedish-orders`, `lcms`, `wels`, `els`, `elca`, `nalc` · rite `new` · Divine Service and Matins/Vespers · now **none**
+Catalog: `lutheran`, `common-service`, `swedish-orders`, `lcms`, `wels`, `els`, `elca`, `nalc` · rite `new` · Divine Service and Matins/Vespers · now **The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics**
 
-Missing: Common Service order; introits, collects and graduals; historic one-year lectionary; Swedish High Mass; current Nordic service books.
+Missing: Swedish High Mass; current Nordic service books.
 
 The Common Service (1888) as printed in the Church Book and the 1917 Common Service Book is the ancestor of TLH, SBH, LBW and LSB page 15; it gives a complete historic Lutheran Divine Service with propers and the one-year lectionary. Add the Missouri Synod's 1917 English Liturgy and Agenda and the 1921 Swedish rite. LSB, ELW, TLH and SBH stay cued. Typed public-domain transcriptions already exist: A Collection of Prayers has the whole Common Service Book (1917-18) as Word and PDF files, and Project Gutenberg has the 1912 Missouri Synod hymn-book. The Church of Sweden's current handbook is a free PDF but its copyright page forbids copying without permission.
 

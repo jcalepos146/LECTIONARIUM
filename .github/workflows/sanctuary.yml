@@ -41,6 +41,7 @@ jobs:
           python3 tools/dayhours.py --check
           python3 tools/do_ordo.py --check
           python3 tools/bcp1662.py --check
+          python3 tools/csb.py --check
           python3 tools/bcp1928.py --check
           python3 tools/bcp1979.py --check
           python3 tools/check_office.py breviary/mon --chant-through 2030-11-30

@@ -3551,14 +3551,29 @@
         "status": "public-domain",
         "source": "https://archive.org/details/commonservicefor0000unse",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical 1888 order only; modern hymnals have separate rights."
+      },
+      {
+        "title": "Common Service Book of the Lutheran Church (1919 text edition)",
+        "year": 1919,
+        "status": "public-domain",
+        "source": "https://archive.org/details/commo00unit",
+        "rights_note": "Published in the United States in 1919; public domain there. The text on this site is transcribed from this scan."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "csb",
+        "hour": null,
+        "label": "The Service"
+      }
+    ],
     "pd_texts_available": [
-      "Common Service"
+      "The Service and the Introits, Collects, Epistles, Graduals and Gospels of the Common Service Book (1917-19): imported from the Internet Archive scan of the 1919 text edition, proofread against the 1917 and 1918 printings."
     ],
     "sources": [
-      "https://archive.org/details/commonservicefor0000unse"
+      "https://archive.org/details/commonservicefor0000unse",
+      "https://archive.org/details/commo00unit"
     ],
     "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-21. Public-domain designation is limited to the original US edition; this listing does not clear later arrangements, translations or editorial additions."
   },

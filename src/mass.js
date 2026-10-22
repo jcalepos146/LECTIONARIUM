@@ -450,6 +450,131 @@ async function buildPB(ctx,opts,book){
 }
 window.LectPB={propers:pbPropers};
 
+/* ---------------------------------------------------------------- The Common Service (Lutheran, Common Service Book 1917-19)
+   data/lutheran-csb.json (tools/csb.py). csbDay(iso, D) applies the book's calendar rubrics: the propers of a
+   Sunday serve the week; a Greater Festival keeps its propers until the next Sunday; a Lesser Festival takes
+   its day, and on a Sunday that is not a Greater Day it takes the Sunday too (the Sunday's collect follows). */
+const CSB_ORD=["First","Second","Third","Fourth","Fifth","Sixth","Seventh","Eighth","Ninth","Tenth","Eleventh","Twelfth","Thirteenth","Fourteenth","Fifteenth","Sixteenth","Seventeenth","Eighteenth","Nineteenth","Twentieth","Twenty-First","Twenty-Second","Twenty-Third","Twenty-Fourth","Twenty-Fifth","Twenty-Sixth","Twenty-Seventh"];
+const CSB_GREATER_FIXED={"12-25":"christmas","01-01":"circumcision","01-06":"epiphany","10-31":"f-10-31"};
+function csbSundayKey(s){
+  const Y=s.getUTCFullYear(), E=easterY(Y), off=Math.round((s-E)/DAY), A=adv1Y(Y);
+  if(s>=A){ const n=Math.round((s-A)/DAY/7)+1; if(n<=4) return "adv"+n; }
+  const md=(s.getUTCMonth()+1)*100+s.getUTCDate();
+  if(md>=1226&&md<=1231) return "xmas-s1";
+  if(md>=1202&&md<1226){ const n=Math.round((s-A)/DAY/7)+1; return "adv"+Math.min(4,n); }
+  if(md>=102&&md<=105) return "xmas-s2";
+  if(md===101) return "circumcision";
+  if(off<-63){ const ep=new Date(Date.UTC(Y,0,6)); const first=new Date(ep.getTime()+(7-ep.getUTCDay())*DAY);
+    const n=Math.round((s-first)/DAY/7)+1, N=Math.round((new Date(E.getTime()-70*DAY)-first)/DAY/7)+1;
+    if(n<1) return "epiphany";
+    return N>1&&n===N?"transfiguration":"epi"+Math.min(n,5); }
+  const T={"-63":"septuagesima","-56":"sexagesima","-49":"quinquagesima","-42":"lent1","-35":"lent2","-28":"lent3","-21":"lent4","-14":"lent5","-7":"palm","0":"easter","7":"easter1","14":"easter2","21":"easter3","28":"easter4","35":"easter5","42":"exaudi","49":"pentecost","56":"trinity"}[off];
+  if(T) return T;
+  const k=Math.round((off-56)/7); if(new Date(s.getTime()+7*DAY)>=A) return "trin27"; return "trin"+Math.min(k,26);
+}
+const CSB_GREATER_SUNDAYS=/^(adv\d|septuagesima|sexagesima|quinquagesima|lent\d|palm|easter|exaudi|pentecost|trinity|transfiguration)$/;
+function csbDay(iso,D){
+  const d=toDate(iso), dow=d.getUTCDay(), Y=d.getUTCFullYear(), E=easterY(Y), off=Math.round((d-E)/DAY), md=iso.slice(5);
+  const sun=new Date(d.getTime()-dow*DAY), sk=csbSundayKey(sun);
+  let key=sk, note="", second=null;
+  // a Greater Festival in the week keeps its propers until the next Sunday (Christmas, the Circumcision, the Epiphany, the Reformation, the Ascension, Ash Wednesday)
+  for(let i=dow;i>=1;i--){ const x=new Date(d.getTime()-(dow-i)*DAY), m=String(x.getUTCMonth()+1).padStart(2,"0")+"-"+String(x.getUTCDate()).padStart(2,"0"), o=Math.round((x-easterY(x.getUTCFullYear()))/DAY);
+    const g=CSB_GREATER_FIXED[m]||(o===39?"ascension":o===-46?"ash":null); if(g){ key=g; break; } }
+  if(CSB_GREATER_FIXED[md]) key=CSB_GREATER_FIXED[md];
+  const mov={"-46":"ash","-6":"hw1","-5":"hw2","-4":"hw3","-3":"hw4","-2":"hw5","-1":"hw6","1":"easter-mon","39":"ascension","50":"pentecost-mon"}[off];
+  if(mov) key=mov;
+  const fest=D["f-"+md];
+  if(fest&&mov) note=`${fest.t} falls on a Greater Day this year (${D[mov].t}): the book lets the festival be observed on the first open day after.`;
+  if(fest&&!mov&&!CSB_GREATER_FIXED[md]){
+    if(dow===0&&CSB_GREATER_SUNDAYS.test(sk)) note=`${fest.t} falls on a Greater Day this year: the book keeps the Sunday and lets the festival be observed on the first open day after.`;
+    else { if(dow===0) second=sk; key="f-"+md; }
+  }
+  if(dow===0&&md>="10-24"&&md<="10-30") note=note||"The book allows the Sunday before the Festival of the Reformation (31 October) to be observed as Reformation Sunday, with the Festival's propers.";
+  if(dow===0&&md==="11-01"&&new Date(Date.UTC(Y,9,31)).getUTCDay()===6) note="With 31 October on a Saturday this year, the book allows today to be observed as Reformation Sunday.";
+  const pref=off>=-46&&off<0?"For Lent":off>=0&&off<39?"For Easter":off>=39&&off<49?"For the Festival of the Ascension":off>=49&&off<56?"For the Festival of Pentecost":off>=56&&off<63?"For the Festival of the Holy Trinity":
+    (md>="12-25"||md<="01-05")?"For Christmas":(off<-63&&md>="01-06")||key==="transfiguration"?"For Epiphany":"";
+  return {key, day:D[key], second:second&&D[second]?D[second]:null, sunday:D[sk], note, preface:pref, weekday:dow&&key===sk};
+}
+const CSB_GLORIA="Glory be to the Father, and to the Son, and to the Holy Ghost: as it was in the beginning, is now, and ever shall be, world without end. Amen.";
+async function buildCSB(ctx,opts){
+  const B=await J("data/lutheran-csb.json"), iso=ctx.iso, C=csbDay(iso,B.days), P=C.day, S=P?P.sets[P.sets.length>1&&opts.csbset==="early"?0:P.sets.length-1]:null;
+  const ante=opts.csbcomm==="no", AB=opts.abridge||0, out=[];
+  const words=t=>String(t).split(/\s+/).filter(Boolean).length;
+  const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
+  const vp=(t,r)=>`<p data-r="${r}">${inl(t==="Glory be to the Father, etc."?CSB_GLORIA:t)}</p>`;
+  const from=p=>S&&S.from&&S.from[p]?`<p class="cite">${esc(p[0].toUpperCase()+p.slice(1))} of ${esc(S.from[p])}</p>`:"";
+  const lesson=async(lab,L)=>{
+    if(!L) return [cue(`The ${lab} for the Day, from the Common Service Book.`),90];
+    let body=L.text.length?L.text.map(t=>`<p data-r="lec">${esc(t)}</p>`).join(""):"";
+    if(!body&&L.ref&&window.LectApp&&window.LectApp.passage){ try{ const r=await window.LectApp.passage(L.ref,null,"kj"); body=`<div data-r="lec">${r.html}</div><p class="note">The book cites this lesson; the King James text is supplied from the site's Bible.</p>`; }catch(e){} }
+    if(!body) body=cue(`Read ${L.cite} from the Bible.`);
+    const pas=L.passage?`<p class="note">Or the History of the Passion (Common Service Book, p. 364), which is not yet on this site.</p>`:"";
+    return [`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(L.cite)}</span></header><div class="rtext">${body}</div>${pas}</section>`, Math.max(60,words(body.replace(/<[^>]+>/g," "))/2.6)];
+  };
+  for(const st of B.service){
+    let its=st.items, html="", secs=spoken(its)/2.4;
+    const at=re=>its.findIndex(x=>re.test(x[1]));
+    const emit=(a,b)=>its.slice(a,b).map(pbItem).join("");
+    if(st.slot==="introit"){
+      const k=at(/^The Introit$/)+1, intr=S&&S.introit.length?S.introit:null;
+      html=emit(0,k+1);
+      if(intr){ html+=`<p class="cite">${esc(P.t)}${S.label?` · ${esc(S.label)}`:""}</p>`+from("introit")+intr[0].map(t=>vp(t,"all")).join("");
+        if(intr.length>1) html+=`<details class="canon"><summary>Or this Introit</summary>${intr.slice(1).map(a=>a.map(t=>vp(t,"all")).join("")).join("<hr>")}</details>`;
+        secs=intr[0].join(" ").split(/\s+/).length/2.2+20; }
+      else { html+=emit(k+1)+cue("No Introit is appointed for this day."); }
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
+    }
+    if(st.slot==="collect"){
+      const k=at(/^The Collect$/);
+      const col=S&&S.collect.length?S.collect:[];
+      let ch=col.length?`<p class="cite">${esc(P.t)}</p>`+from("collect")+vp(col[0],"cel"):cue("The Collect for the Day, from the Common Service Book.");
+      if(col.length>1) ch+=`<details class="canon"><summary>${P.t.startsWith("Apostles")||(S.from&&/Apostles/.test(S.from.collect||""))?"The other Collects for Apostles' Days":"Or this Collect"}</summary>${col.slice(1).map(t=>vp(t,"cel")).join("")}</details>`;
+      if(C.second&&C.second.sets[0].collect.length) ch+=`<h4 class="sub2">The Collect for the Sunday</h4><p class="cite">${esc(C.second.t)}</p>`+vp(C.second.sets[0].collect[0],"cel");
+      if(P&&P.more&&P.more.length) ch+=`<details class="canon"><summary>Other Collects for the season</summary>${P.more.map(t=>vp(t,"cel")).join("")}</details>`;
+      html=emit(0,k+1)+ch+emit(k+1);
+      secs+=col.length?words(col[0])/2.4:25; if(C.second) secs+=30;
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
+    }
+    if(st.slot==="epistle"){
+      const k=at(/^The Epistle$/);
+      const [eh,es]=AB>=3?[abr("the Epistle"),0]:await lesson("Epistle",S&&S.epistle);
+      let alt=""; if(S&&S.epistle_alt){ const [ah]=await lesson("Or this Epistle",S.epistle_alt); alt=`<details class="canon"><summary>Or this lesson: ${esc(S.epistle_alt.cite)}</summary>${ah}</details>`; }
+      html=emit(0,k+1)+eh+alt+emit(k+1); secs+=es;
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
+    }
+    if(st.slot==="gradual"){
+      const k=at(/^The Gradual$/), g=S&&S.gradual.length?S.gradual:null;
+      html=emit(0,k+1)+(g?`<p class="cite">${esc(P.t)}</p>`+from("gradual")+g.map(t=>vp(t,"all")).join(""):cue("No Gradual is appointed for this day."))+emit(k+1);
+      secs=g?g.join(" ").split(/\s+/).length/2.2:0;
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
+    }
+    if(st.slot==="hallelujah"){ out.push(sec(st.t,0,`<details class="canon"><summary>Sung only when the Gradual is omitted</summary><div class="txt one">${emit(0)}</div></details>`)); continue; }
+    if(st.slot==="gospel"){
+      const k=at(/^Glory be to Thee, O Lord\.$/);
+      const [gh,gs]=await lesson("Gospel",S&&S.gospel);
+      html=emit(0,k+1)+gh+emit(k+1); secs+=gs;
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
+    }
+    if(st.slot==="sermon"&&opts.homily>0){ html=emit(0)+`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue; }
+    if(st.slot==="ante"){
+      if(!ante){ out.push(sec(st.t,0,`<details class="canon"><summary>When there is no Communion: the Lord's Prayer, a Hymn and the Benediction end The Service here</summary><div class="txt one">${emit(0)}</div></details>`)); continue; }
+      out.push(sec(st.t,secs/60,`<div class="txt one">${emit(0)}</div>`)); break;
+    }
+    if(st.slot==="prefaces"){
+      const i0=C.preface?its.findIndex(x=>x[0]==="h"&&x[1]===C.preface):-1;
+      let today="";
+      if(i0>=0){ const pick=[]; let j=i0+1; while(j<its.length&&its[j][0]!=="h"&&its[j][0]!=="rub"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(C.preface.replace(/^For (the Festival of )?/,""))}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
+      else { secs=0; today=`<p class="note">No Proper Preface is appointed today: "Therefore with Angels" follows at once.</p>`; }
+      out.push(sec(st.t,secs/60,`<div class="txt one">${today}<details class="canon"><summary>All the Proper Prefaces</summary>${emit(0)}</details></div>`)); continue;
+    }
+    html=emit(0);
+    if(st.slot==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
+    out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`));
+  }
+  return out;
+}
+window.LectCSB={day:csbDay};
+
 /* ---------------------------------------------------------------- 1979 Prayer Book (USA)
    data/bcp1979.json (tools/bcp1979.py). pb79Day(iso, collects) names the day's collect by the 1979 calendar. */
 const ORD79=["First","Second","Third","Fourth","Fifth","Sixth","Seventh","Eighth"];
@@ -901,7 +1026,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp62"||rite==="bcp79", byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp62"||rite==="bcp79"||rite==="csb", byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -926,6 +1051,8 @@ function controls(rite, opts, iso, day, auto){
         ${music}
         <fieldset><legend>Timing</legend>
           ${rite==="bcp79"?`<label class="sl">Rite and prayer <select data-o="p79">${[["II-A","Rite Two · Prayer A"],["II-B","Rite Two · Prayer B"],["II-C","Rite Two · Prayer C"],["II-D","Rite Two · Prayer D"],["I-I","Rite One · Prayer I"]].map(([v,n])=>`<option value="${v}"${(opts.p79||"II-A")===v?" selected":""}>${n}</option>`).join("")}</select></label><label class="sl">Prayers of the People <select data-o="pop79">${["I","II","III","IV","V","VI"].map(v=>`<option${(opts.pop79||"I")===v?" selected":""}>Form ${v}</option>`.replace(`<option`,`<option value="${v}"`)).join("")}</select></label>`:""}
+          ${rite==="csb"&&iso&&iso.slice(5)==="12-25"?`<label class="sl">Christmas <select data-o="csbset"><option value="later"${opts.csbset!=="early"?" selected":""}>For a later service</option><option value="early"${opts.csbset==="early"?" selected":""}>For an early service</option></select></label>`:""}
+          ${rite==="csb"?`<label class="sl">Holy Communion <select data-o="csbcomm"><option value="yes"${opts.csbcomm!=="no"?" selected":""}>Celebrated</option><option value="no"${opts.csbcomm==="no"?" selected":""}>Not celebrated (The Service ends after the General Prayer)</option></select></label>`:""}
           ${rite==="b"?`<label class="sl">Liturgy <select data-o="byzlit">${[["auto","Of the day"],["chrys","St John Chrysostom"],["basil","St Basil the Great"],["pres","Presanctified Gifts"]].map(([v,n])=>`<option value="${v}"${(opts.byzlit||"auto")===v?" selected":""}>${n}</option>`).join("")}</select></label>`:""}
           <label class="sl">${rite==="o"||trad||oo?"Sermon":"Homily"} <select data-o="homily">${[0,3,5,8,10,12,15,20].map(n=>`<option value="${n}"${+opts.homily===n?" selected":""}>${n?n+" min":"None"}</option>`).join("")}</select></label>
           <label class="sl">Communion <select data-o="communion">${[2,4,6,8,10,15].map(n=>`<option value="${n}"${+opts.communion===n?" selected":""}>${n} min</option>`).join("")}</select></label>
@@ -945,6 +1072,10 @@ function ladder(rite){
   if(rite==="bcp79") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["Prayers of the People: Form IV; Eucharistic Prayer A", o=>{ o.pop79="IV"; if(String(o.p79||"II-A").startsWith("II")) o.p79="II-A"; }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
+  if(rite==="csb") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
+    ["Without Holy Communion", o=>{ o.csbcomm="no"; }],
+    ["The Epistle left out", o=>{ o.abridge=3; },"ab"]];
   if(rite==="bcp28"||rite==="bcp62") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     [rite==="bcp62"?"The Ten Commandments left out":"The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
@@ -1065,6 +1196,7 @@ async function render(el, ctx){
     if(rite==="b") return buildByz(ctx,o);
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
     if(rite==="bcp28"||rite==="bcp62") return buildPB(ctx,o,rite);
+    if(rite==="csb") return buildCSB(ctx,o);
     if(rite==="bcp79") return buildPB79(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";

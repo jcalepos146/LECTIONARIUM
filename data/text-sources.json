@@ -1907,11 +1907,8 @@
       ],
       "rite": "new",
       "service": "Divine Service and Matins/Vespers",
-      "now": "none",
+      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics",
       "missing": [
-        "Common Service order",
-        "introits, collects and graduals",
-        "historic one-year lectionary",
         "Swedish High Mass",
         "current Nordic service books"
       ],
