@@ -875,7 +875,7 @@
     "family": "catholic",
     "parent": "alexandrian-catholic",
     "kind": "church",
-    "self_description": "Coptic Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here.",
+    "self_description": "Coptic Catholic Church is an Eastern Catholic church in communion with the Bishop of Rome. Its liturgical practice belongs to the tradition shown here. Bute's 1882 translation follows the Coptic Missal printed at Rome and notes Catholic use.",
     "also_called": [],
     "regions": [
       "Egypt"
@@ -883,14 +883,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
+    "books": [
+      {
+        "title": "The Coptic Morning Service for the Lord's Day",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/copticmorningser00coptuoft",
+        "rights_note": "Translated into English by John, Marquis of Bute (d. 1900); first published 1882, reissued London 1908. Public domain."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "copt",
+        "hour": null,
+        "label": "Liturgy of St Basil"
+      }
+    ],
     "pd_texts_available": [
-      "Historical editions require source and edition verification before use."
+      "The Liturgy of St Basil in the Marquis of Bute's English (1882, reissued 1908): imported from the Internet Archive scan (copticmorningser00coptuoft), proofread by hand against the page images."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-coptic-catholic-church/",
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://archive.org/details/copticmorningser00coptuoft"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -1085,12 +1101,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/divineliturgyofh00arme",
+        "rights_note": "English translation by two Armenian priests, London 1908; published before 1929, public domain in the United States."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "arm",
+        "hour": null,
+        "label": "Divine Liturgy (Badarak)"
+      }
+    ],
+    "pd_texts_available": [
+      "The Divine Liturgy in English (London, 1908): imported from the Internet Archive scan (divineliturgyofh00arme), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-oriental-orthodox-churches/the-armenian-catholic-church/",
-      "https://cnewa.org/eastern-christian-churches/"
+      "https://cnewa.org/eastern-christian-churches/",
+      "https://archive.org/details/divineliturgyofh00arme"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -1282,7 +1316,14 @@
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "a",
+        "hour": null,
+        "label": "Mass (Ordinary and Canon)"
+      }
+    ],
     "pd_texts_available": [],
     "sources": [
       "https://www.newadvent.org/cathen/13064b.htm"
@@ -1302,7 +1343,14 @@
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "z",
+        "hour": null,
+        "label": "Mass (Ordinary)"
+      }
+    ],
     "pd_texts_available": [],
     "sources": [
       "https://www.newadvent.org/cathen/13064b.htm"
@@ -1363,6 +1411,12 @@
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [
+      {
+        "type": "mass",
+        "rite": "d",
+        "hour": null,
+        "label": "Mass (Ordinary)"
+      },
       {
         "type": "office",
         "rite": "op",
@@ -2217,7 +2271,7 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Coptic Orthodox Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "Coptic Orthodox Church preserves its own liturgical tradition. The Liturgy of St Basil is given here in a public-domain English translation of 1882; consult the Church's authorized books and calendar.",
     "also_called": [],
     "regions": [
       "Egypt"
@@ -2225,12 +2279,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Coptic Morning Service for the Lord's Day",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/copticmorningser00coptuoft",
+        "rights_note": "Translated into English by John, Marquis of Bute (d. 1900); first published 1882, reissued London 1908. Public domain."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "copt",
+        "hour": null,
+        "label": "Liturgy of St Basil"
+      }
+    ],
+    "pd_texts_available": [
+      "The Liturgy of St Basil in the Marquis of Bute's English (1882, reissued 1908): imported from the Internet Archive scan (copticmorningser00coptuoft), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/",
-      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental",
+      "https://archive.org/details/copticmorningser00coptuoft"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -2271,12 +2343,30 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/divineliturgyofh00arme",
+        "rights_note": "English translation by two Armenian priests, London 1908; published before 1929, public domain in the United States."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "arm",
+        "hour": null,
+        "label": "Divine Liturgy (Badarak)"
+      }
+    ],
+    "pd_texts_available": [
+      "The Divine Liturgy in English (London, 1908): imported from the Internet Archive scan (divineliturgyofh00arme), proofread by hand against the page images."
+    ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/",
-      "https://www.oikoumene.org/church-families/orthodox-churches-oriental"
+      "https://www.oikoumene.org/church-families/orthodox-churches-oriental",
+      "https://archive.org/details/divineliturgyofh00arme"
     ],
     "source_review": "Seed entry: source URLs supplied; exact editions, territorial rights and current local practice still require editorial review. Some source sites deny automated access."
   },
@@ -2642,14 +2732,22 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp62",
+        "hour": null,
+        "label": "Holy Communion"
+      }
+    ],
     "pd_texts_available": [
-      "1662 edition: verify the exact scan and territory before extraction."
+      "Holy Communion with the Collects, Epistles and Gospels: imported from Lynda M. Howell's transcription (eskimo.com/~lhowell/bcp1662), checked against her notes on later changes, with the 1662 wording of the opening rubrics restored."
     ],
     "sources": [
       "https://justus.anglican.org/resources/bcp/england.htm",
       "https://justus.anglican.org/resources/bcp/world.htm",
-      "https://www.churchofengland.org/copyright"
+      "https://www.churchofengland.org/copyright",
+      "https://www.eskimo.com/~lhowell/bcp1662/communion/index.html"
     ],
     "source_review": "Church of England copyright statement read 2026-10-21: 1662 Prayer Book rights are vested in the Crown; modern Common Worship material has separate copyright and reproduction conditions. No modern text is copied."
   },
@@ -2878,7 +2976,26 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp28",
+        "hour": null,
+        "label": "Holy Communion"
+      },
+      {
+        "type": "office",
+        "rite": "bcp28",
+        "hour": "mp",
+        "label": "Morning Prayer"
+      },
+      {
+        "type": "office",
+        "rite": "bcp28",
+        "hour": "ep",
+        "label": "Evening Prayer"
+      }
+    ],
     "pd_texts_available": [
       "1928 edition: verify the exact scan and territory before extraction."
     ],
@@ -2913,7 +3030,32 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Text of the US Book of Common Prayer; exclude separately copyrighted music and supplementary material."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp79",
+        "hour": null,
+        "label": "Holy Eucharist"
+      },
+      {
+        "type": "office",
+        "rite": "bcp79",
+        "hour": "mp2",
+        "label": "Morning Prayer"
+      },
+      {
+        "type": "office",
+        "rite": "bcp79",
+        "hour": "ep2",
+        "label": "Evening Prayer"
+      },
+      {
+        "type": "office",
+        "rite": "bcp79",
+        "hour": "compline",
+        "label": "Compline"
+      }
+    ],
     "pd_texts_available": [
       "1979 edition: verify the exact scan and territory before extraction."
     ],
@@ -3479,14 +3621,29 @@
         "status": "public-domain",
         "source": "https://archive.org/details/commonservicefor0000unse",
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical 1888 order only; modern hymnals have separate rights."
+      },
+      {
+        "title": "Common Service Book of the Lutheran Church (1919 text edition)",
+        "year": 1919,
+        "status": "public-domain",
+        "source": "https://archive.org/details/commo00unit",
+        "rights_note": "Published in the United States in 1919; public domain there. The text on this site is transcribed from this scan."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "csb",
+        "hour": null,
+        "label": "The Service"
+      }
+    ],
     "pd_texts_available": [
-      "Common Service"
+      "The Service and the Introits, Collects, Epistles, Graduals and Gospels of the Common Service Book (1917-19): imported from the Internet Archive scan of the 1919 text edition, proofread against the 1917 and 1918 printings."
     ],
     "sources": [
-      "https://archive.org/details/commonservicefor0000unse"
+      "https://archive.org/details/commonservicefor0000unse",
+      "https://archive.org/details/commo00unit"
     ],
     "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-21. Public-domain designation is limited to the original US edition; this listing does not clear later arrangements, translations or editorial additions."
   },
@@ -3822,12 +3979,20 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical texts only; modern English translations may be copyrighted. The linked 1856 Dutch Reformed liturgy is a later historical English source, not the 1619 Dutch printing."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "rca",
+        "hour": null,
+        "label": "Lord's Day Morning, with the Lord's Supper"
+      }
+    ],
     "pd_texts_available": [
-      "Liturgical Forms of Dort"
+      "The Office for the Administration of the Lord's Supper (the Form of Dort) and the Order of Public Worship, from the Liturgy of the Reformed Church in America (1882): imported from the Internet Archive scan (liturgyofreform00refo), proofread by hand against the page images."
     ],
     "sources": [
-      "https://archive.org/details/liturgyofreforme0000unse"
+      "https://archive.org/details/liturgyofreforme0000unse",
+      "https://archive.org/details/liturgyofreform00refo"
     ],
     "source_review": "A later historical English liturgy is identified by exact catalog record. The original Dutch forms and each later translation must be distinguished; no modern translation is reproduced."
   },
@@ -3972,12 +4137,20 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical US edition only; not a modern Book of Common Worship."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "pres",
+        "hour": null,
+        "label": "Lord's Day Morning Service"
+      }
+    ],
     "pd_texts_available": [
-      "Book of Common Worship"
+      "The Order of Morning Service and the Order for the Celebration of the Communion: imported from the Internet Archive scan (bookofcommonwors00pres), proofread by hand."
     ],
     "sources": [
-      "https://archive.org/details/bookofcommonwor00pres"
+      "https://archive.org/details/bookofcommonwor00pres",
+      "https://archive.org/details/bookofcommonwors00pres"
     ],
     "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-21. Public-domain designation is limited to the original US edition; this listing does not clear later arrangements, translations or editorial additions."
   },
@@ -4160,5 +4333,120 @@
       "https://www.utrechter-union.org/organisation/mitgliedskirchen/"
     ],
     "source_review": "Identity and Union membership checked against the official member directory on 2026-10-21. No service text or local calendar has been inferred from membership."
+  },
+  {
+    "id": "methodist",
+    "name": "Methodist & Wesleyan",
+    "family": "methodist",
+    "parent": null,
+    "kind": "rite",
+    "self_description": "Methodist and Wesleyan churches descend from John Wesley's revival within the Church of England. Their historic liturgy is Wesley's Sunday Service (1784), an abridgement of the 1662 Prayer Book; modern service books and hymnals have their own rights.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.umc.org/",
+      "https://archive.org/details/amernorfm00wesl"
+    ],
+    "source_review": "Seed entry added 2026-10-22 with the first Methodist text on the site. Exact editions, territorial rights and current local practice still require editorial review."
+  },
+  {
+    "id": "united-methodist",
+    "name": "The United Methodist Church",
+    "family": "methodist",
+    "parent": "methodist",
+    "kind": "church",
+    "self_description": "The United Methodist Church is a Methodist church body. Consult its own worship resources for authorized local practice; its current Book of Worship and Hymnal are in copyright.",
+    "also_called": [
+      "UMC"
+    ],
+    "regions": [
+      "United States",
+      "Africa",
+      "Europe",
+      "Philippines"
+    ],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [],
+    "supported": [],
+    "pd_texts_available": [],
+    "sources": [
+      "https://www.umc.org/"
+    ],
+    "source_review": "Identity checked against the church body’s official website on 2026-10-22. No current service text is reproduced."
+  },
+  {
+    "id": "sunday-service-1784",
+    "name": "The Sunday Service of the Methodists",
+    "family": "methodist",
+    "parent": "methodist",
+    "kind": "book-edition",
+    "self_description": "John Wesley's revision of the 1662 Book of Common Prayer for the Methodists in North America (1784): Morning and Evening Prayer, the Lord's Supper, the occasional services and the ordinal.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "The Sunday Service of the Methodists in North America",
+        "year": 1784,
+        "status": "public-domain",
+        "source": "https://archive.org/details/amernorfm00wesl",
+        "rights_note": "Published in 1784; public domain."
+      }
+    ],
+    "supported": [],
+    "pd_texts_available": [
+      "Complete book in the Internet Archive scan; its long-s typography needs careful proofreading before import."
+    ],
+    "sources": [
+      "https://archive.org/details/amernorfm00wesl"
+    ],
+    "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-22."
+  },
+  {
+    "id": "me-ritual-1908",
+    "name": "Ritual of the Methodist Episcopal Church",
+    "family": "methodist",
+    "parent": "methodist",
+    "kind": "book-edition",
+    "self_description": "The Ritual of the Methodist Episcopal Church (1908 edition): the sacraments and occasional services as the Methodist Episcopal Church used them, descended from Wesley's Sunday Service.",
+    "also_called": [],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Ritual of the Methodist Episcopal Church",
+        "year": 1908,
+        "status": "public-domain",
+        "source": "https://archive.org/details/ritualofmethodis01meth",
+        "rights_note": "Published in the United States in 1908; public domain there."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "me08",
+        "hour": null,
+        "label": "The Lord's Supper"
+      }
+    ],
+    "pd_texts_available": [
+      "Order for the Administration of the Lord's Supper: imported from the Internet Archive scan (ritualofmethodis01meth), proofread by hand against the page images."
+    ],
+    "sources": [
+      "https://archive.org/details/ritualofmethodis01meth"
+    ],
+    "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-22."
   }
 ]

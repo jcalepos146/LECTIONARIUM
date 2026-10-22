@@ -29,10 +29,18 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 | Path | Contents |
 |---|---|
 | `days.json` | One record per day, 2025-11-30 to 2030-11-30: celebrations and readings for every rite (keys `n` Novus Ordo, `o` Ordinariate, `m` 1962, `p` pre-1955, `h` hybrid, `b` Byzantine) |
-| `bible/dr`, `bible/kj`, `bible/cv` | Douay-Rheims, King James, Coverdale psalter, one JSON per book |
+| `bible/dr`, `bible/kj`, `bible/cv` | Douay-Rheims, King James, Coverdale psalter, several books per shard `s<N>.json` (`tools/shard_bible.py`; index in `src/today.js`) |
 | `propers-1962.json`, `propers-pre55.json`, `ordo.json` | Traditional Mass propers and Ordinary, Latin and English |
 | `chant.json`, `hymns.json` | Gregorian chant (GABC) and public-domain hymns |
 | `bcp-office.json` | 1662 Mattins, Evensong and collects |
+| `data/bcp1979.json` | The 1979 Prayer Book: the daily offices, the Holy Eucharist with its Eucharistic Prayers and Prayers of the People, prefaces, collects and the 30-day psalter, built by `tools/bcp1979.py` from bcponline.org; `pb79Day()` in `src/mass.js` finds the day's collect by the 1979 calendar |
+| `data/orders.json` | Orders of service printed in full (the Presbyterian Book of Common Worship 1906, the Reformed Church in America Liturgy 1882 with the Form of Dort, the Methodist Episcopal Lord's Supper 1908, the Armenian Divine Liturgy in the English of 1908, the Coptic Liturgy of St Basil in Bute's English), built by `tools/orders.py` from the hand-proofread texts in `tools/texts/order-*.txt` (markup described in the script); `ORDER_RITES` in mass.js says which orders make up each rite and `buildOrders()` shows them. |
+| `data/lutheran-csb.json` | The Common Service Book (Lutheran, 1917-19): The Service and the propers of the church year, built by `tools/csb.py` from the proofread transcriptions in `tools/texts/csb-*.txt`; `csbDay()` in mass.js applies the book's calendar and precedence rubrics and `buildCSB()` shows The Service. |
+| `data/bcp1662.json` | The 1662 Holy Communion and the collects, epistles and gospels, built by `tools/bcp1662.py` from Lynda Howell's HTML transcription (rubrics in red, headings centred, drop capitals rebuilt), with the 1662 wording of the opening rubrics restored; shown by `buildPB(ctx, opts, "bcp62")` in mass.js, which it shares with 1928 (`PB_BOOKS`). |
+| `data/bcp1928.json` | The American Prayer Book of 1928: Morning and Evening Prayer, Holy Communion and the collects, epistles and gospels, built by `tools/bcp1928.py` from the Society of Archbishop Justus HTML (for the rubrics) and ePub (for the text) |
+| `data/ordo-rites.json` | The Ordinaries of the Dominican, Ambrosian and Mozarabic Masses, parsed from Divinum Officium's Ordo files by `tools/do_ordo.py` (which also corrects OCR slips); the Ambrosian English is Atchley's 1909 translation, page-checked in `tools/texts/atchley-ambrosian.txt` |
+| `data/dayhours.json` | Prime, Terce, Sext and None from The Day-Hours of the Church of England (1877), compiled by `tools/dayhours.py` from the page-checked transcription in `tools/texts/dayhours-little.txt` |
+| `data/byz-liturgy.json` | Liturgies of St John Chrysostom, St Basil and the Presanctified (Hapgood, 1906) plus the Sunday hymns of the eight tones (Appendix A), compiled by `tools/byz_texts.py` from the page-checked transcriptions in `tools/texts/hapgood-liturgy.txt` and `hapgood-tones.txt` |
 | `breviary/<form>/` | Full Breviary per form (`br62`, `br55`, `mon`, `op`): `manifest.json`, line shards `l-NNN`, row shards `r-NNN`, a day index per year `y-YYYY` |
 
 ## Pipeline (`tools/`)

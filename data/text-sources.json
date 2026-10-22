@@ -328,11 +328,9 @@
       ],
       "rite": "dwdo",
       "service": "Office",
-      "now": "full (Prime in outline)",
+      "now": "full (Prime, Terce, Sext and None from the Day-Hours, 1877)",
       "missing": [
-        "Prime",
-        "Terce, Sext and None",
-        "office hymns"
+        "proper antiphons and hymn endings of feasts and seasons (Day-Hours, Proper of the Seasons)"
       ],
       "plan": "The Day Hours of the Church of England supplies the little hours in Prayer Book English with the Coverdale psalter already in the project.",
       "sources": [
@@ -547,9 +545,8 @@
       ],
       "rite": "new: Dominican Mass",
       "service": "Mass",
-      "now": "none (Office complete)",
+      "now": "order (Ordinary in Latin and English)",
       "missing": [
-        "Dominican Ordinary",
         "Dominican propers and calendar"
       ],
       "plan": "Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican calendar, so a Dominican Mass guide can reuse the existing 1962 propers plus the Order's own feasts from the 1933 Missal.",
@@ -596,9 +593,8 @@
       ],
       "rite": "new",
       "service": "Mass and Office",
-      "now": "none",
+      "now": "order (Ordinary and Canon in Latin and English, Atchley 1909)",
       "missing": [
-        "Ambrosian Ordinary",
         "Ambrosian propers",
         "Ambrosian calendar (six-week Advent)",
         "Ambrosian lectionary",
@@ -692,9 +688,9 @@
       ],
       "rite": "new",
       "service": "Mass and Office",
-      "now": "none",
+      "now": "order (English Ordinary)",
       "missing": [
-        "Mozarabic Ordinary",
+        "Latin Ordinary from a public-domain edition (Missale mixtum)",
         "propers",
         "lectionary",
         "Office"
@@ -930,12 +926,13 @@
         "catholic-ethiopian",
         "catholic-eritrean"
       ],
-      "rite": "new",
+      "rite": "copt (new builders for the rest)",
       "service": "Liturgy",
-      "now": "none",
+      "now": "The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt)",
       "missing": [
-        "Coptic Liturgy of St Basil",
         "Ethiopic Liturgy",
+        "Coptic Liturgies of St Gregory and St Cyril",
+        "Coptic Morning Incense office",
         "Agpeya (hours)",
         "Katameros (lectionary)"
       ],
@@ -958,7 +955,7 @@
         },
         {
           "ia": "copticmorningser00coptuoft",
-          "title": "The Coptic Morning Service for the Lord's Day (Marquess of Bute)",
+          "title": "The Coptic Morning Service for the Lord's Day (Marquess of Bute) (Liturgy imported: tools/texts/order-coptic1908.txt)",
           "year": 1908,
           "lang": "en",
           "fills": [
@@ -1165,14 +1162,23 @@
       ],
       "rite": "new",
       "service": "Badarak and Office",
-      "now": "none",
+      "now": "The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm)",
       "missing": [
-        "Divine Liturgy (Badarak)",
         "Book of Hours",
         "lectionary"
       ],
       "plan": "The 1862 English translation was made for Armenian Catholics and is the natural base; Conybeare adds the breviary rites and the old Jerusalem lectionary.",
       "sources": [
+        {
+          "ia": "divineliturgyofh00arme",
+          "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia, translated by two Armenian priests (imported: tools/texts/order-armenian1908.txt)",
+          "year": 1908,
+          "lang": "en",
+          "fills": [
+            "Divine Liturgy"
+          ],
+          "rights": "pd"
+        },
         {
           "ia": "TheArmenianLiturgy",
           "title": "The Armenian Liturgy, translated into English",
@@ -1234,13 +1240,11 @@
       ],
       "rite": "new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders",
       "service": "Daily Office and Holy Communion",
-      "now": "none (1662 Office only, inside the Ordinariate)",
+      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate",
       "missing": [
-        "each book's Communion order",
-        "Office variants",
-        "collects",
-        "lectionary tables",
-        "calendars"
+        "1928 lectionary tables",
+        "1979 Daily Office Lectionary and the Revised Common Lectionary (the RCL is copyrighted)",
+        "other national books"
       ],
       "plan": "The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.",
       "sources": [
@@ -1305,6 +1309,16 @@
           "lang": "en",
           "fills": [
             "Holy Communion and the rest of the book"
+          ],
+          "rights": "crown-uk"
+        },
+        {
+          "url": "https://www.eskimo.com/~lhowell/bcp1662/communion/index.html",
+          "title": "England 1662, HTML transcription (Lynda M. Howell)",
+          "year": 1662,
+          "lang": "en",
+          "fills": [
+            "Holy Communion; Collects, Epistles and Gospels (imported: tools/bcp1662.py)"
           ],
           "rights": "crown-uk"
         },
@@ -1802,7 +1816,7 @@
       ],
       "rite": "new (shared builders with the Eastern Catholic churches of the same tradition)",
       "service": "Liturgy and Office",
-      "now": "none",
+      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt)",
       "missing": [
         "liturgies",
         "hours",
@@ -1853,7 +1867,7 @@
         },
         {
           "ia": "copticmorningser00coptuoft",
-          "title": "Coptic Morning Service (Bute)",
+          "title": "Coptic Morning Service (Bute) (Liturgy imported)",
           "year": 1908,
           "lang": "en",
           "fills": [
@@ -1903,11 +1917,8 @@
       ],
       "rite": "new",
       "service": "Divine Service and Matins/Vespers",
-      "now": "none",
+      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics",
       "missing": [
-        "Common Service order",
-        "introits, collects and graduals",
-        "historic one-year lectionary",
         "Swedish High Mass",
         "current Nordic service books"
       ],
@@ -2109,13 +2120,13 @@
       ],
       "rite": "new",
       "service": "Lord's Day worship and forms",
-      "now": "none",
+      "now": "The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full",
       "missing": [
-        "Dort liturgical forms in English",
+        "the other Dort forms (baptism, discipline, ordination, marriage) in English",
         "metrical psalters",
         "Westminster Directory",
-        "Book of Common Worship",
-        "Reformed Church in America liturgy",
+        "the rest of the Book of Common Worship (Evening Service, sacraments, Treasury of Prayers)",
+        "the RCA Order of Scripture Lessons (a table that needs reading from the page images)",
         "Reformed Church in the United States orders",
         "current denominational forms"
       ],
@@ -2315,13 +2326,18 @@
       "id": "methodist-moravian-and-others",
       "family": "methodist",
       "priority": 25,
-      "catalog": [],
-      "rite": "new (no catalog entries yet; add them in data/traditions.json first)",
+      "catalog": [
+        "methodist",
+        "united-methodist",
+        "sunday-service-1784",
+        "me-ritual-1908"
+      ],
+      "rite": "me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders); Wesley's Sunday Service next",
       "service": "Lord's Supper, Morning Prayer and occasional services",
-      "now": "none",
+      "now": "The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full",
       "missing": [
-        "Wesley's Sunday Service",
-        "Methodist ritual",
+        "Wesley's Sunday Service (1784): the long-s scan needs careful proofreading",
+        "the rest of the Methodist ritual (baptism, reception, matrimony, burial)",
         "Moravian liturgies",
         "Congregational orders",
         "Holiness church rituals"
@@ -2415,7 +2431,7 @@
       ],
       "blockers": [
         "United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright",
-        "no catalog entries for these families yet"
+        "Moravian, Congregational and Holiness families are not in the catalog yet"
       ]
     },
     {

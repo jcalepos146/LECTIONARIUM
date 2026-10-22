@@ -26,28 +26,28 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 1 | [roman-modern-mass](#roman-modern-mass) | guide | 6 | 0 | English collects, prefaces and Eucharistic Prayers II-IV: ICEL permission (icelweb.org); Latin new compositions: Libreria Editrice Vaticana permission |
 | 2 | [liturgy-of-the-hours](#liturgy-of-the-hours) | guide | 5 | 0 | English antiphons, responsories, intercessions and prayers: ICEL permission; Latin new compositions: Libreria Editrice Vaticana permission |
 | 3 | [divine-worship-mass](#divine-worship-mass) | guide | 4 | 0 | Divine Worship: The Missal (2015) itself: permission from the Congregation for Divine Worship via the Ordinariates |
-| 4 | [divine-worship-office](#divine-worship-office) | full (Prime in outline) | 2 | 0 | Divine Worship: Daily Office (2020/21): permission |
+| 4 | [divine-worship-office](#divine-worship-office) | full (Prime, Terce, Sext and None from the Day-Hours, 1877) | 2 | 0 | Divine Worship: Daily Office (2020/21): permission |
 | 5 | [byzantine-catholic](#byzantine-catholic) | order (Liturgy), guide (Office) | 13 | 0 | Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and current UGCC books: permission from the issuing eparchies |
-| 6 | [dominican-mass](#dominican-mass) | none (Office complete) | 2 | 0 | nothing |
-| 7 | [ambrosian](#ambrosian) | none | 6 | 0 | current Ambrosian Missal and Lectionary: Archdiocese of Milan permission |
-| 8 | [mozarabic](#mozarabic) | none | 6 | 0 | Missale Hispano-Mozarabicum (1991-94): Archdiocese of Toledo permission |
+| 6 | [dominican-mass](#dominican-mass) | order (Ordinary in Latin and English) | 2 | 0 | nothing |
+| 7 | [ambrosian](#ambrosian) | order (Ordinary and Canon in Latin and English, Atchley 1909) | 6 | 0 | current Ambrosian Missal and Lectionary: Archdiocese of Milan permission |
+| 8 | [mozarabic](#mozarabic) | order (English Ordinary) | 6 | 0 | Missale Hispano-Mozarabicum (1991-94): Archdiocese of Toledo permission |
 | 9 | [braga](#braga) | none | 1 | 0 | Braga breviary: not located |
 | 10 | [religious-order-uses](#religious-order-uses) | none | 4 | 0 | Premonstratensian and Carmelite breviaries: not located; modern Carthusian books: not public |
 | 11 | [zaire-use](#zaire-use) | none | 0 | 0 | Missel romain pour les diocèses du Zaïre: permission from the Episcopal Conference of the Democratic Republic of the Congo |
-| 12 | [alexandrian-catholic](#alexandrian-catholic) | none | 5 | 0 | Agpeya in public-domain English: not located; Katameros (Coptic lectionary) data: not located |
+| 12 | [alexandrian-catholic](#alexandrian-catholic) | The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt) | 5 | 0 | Agpeya in public-domain English: not located; Katameros (Coptic lectionary) data: not located |
 | 13 | [west-syriac-catholic](#west-syriac-catholic) | none | 4 | 0 | Shehimo in public-domain English: not located |
 | 14 | [east-syriac-catholic](#east-syriac-catholic) | none | 5 | 0 | Syro-Malabar Raza (1986) and current Chaldean books: permission |
-| 15 | [armenian-catholic](#armenian-catholic) | none | 3 | 0 | Armenian Book of Hours in public-domain English: not located |
-| 16 | [anglican-prayer-books](#anglican-prayer-books) | none (1662 Office only, inside the Ordinariate) | 20 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
+| 15 | [armenian-catholic](#armenian-catholic) | The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm) | 4 | 0 | Armenian Book of Hours in public-domain English: not located |
+| 16 | [anglican-prayer-books](#anglican-prayer-books) | US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate | 21 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
 | 17 | [anglo-catholic-missals](#anglo-catholic-missals) | none | 1 | 0 | English Missal 1912 first edition: not located on the Internet Archive |
 | 18 | [anglican-music-and-psalter](#anglican-music-and-psalter) | partial (hymns.json) | 4 | 0 | The Hymnal 1940 and 1982: Church Publishing, in copyright |
 | 19 | [anglican-current-books](#anglican-current-books) | none | 0 | 4 | Church of Ireland 2004: its site refused automated access; check by hand; Scottish Episcopal Church current liturgies: download page not located; written permission from ACNA, Canada, New Zealand and Wales for an app |
 | 20 | [orthodox-byzantine](#orthodox-byzantine) | order / guide | 4 | 0 | Lenten Triodion and Festal Menaion (Mother Mary and Ware), HTM Pentecostarion, Lambertsen Menaion, Ephrem Lash: in copyright; ask each translator or publisher |
 | 21 | [western-rite-orthodox](#western-rite-orthodox) | none | 1 | 0 | St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese permission |
-| 22 | [oriental-orthodox](#oriental-orthodox) | none | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
-| 23 | [lutheran](#lutheran) | none | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
-| 24 | [reformed](#reformed) | none | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
-| 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | none | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; no catalog entries for these families yet |
+| 22 | [oriental-orthodox](#oriental-orthodox) | Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt) | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
+| 23 | [lutheran](#lutheran) | The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
+| 24 | [reformed](#reformed) | The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
+| 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; Moravian, Congregational and Holiness families are not in the catalog yet |
 | 26 | [old-catholic](#old-catholic) | none | 0 | 0 | no candidate source found yet |
 
 ## Catholic
@@ -114,9 +114,9 @@ Blocked: Divine Worship: The Missal (2015) itself: permission from the Congregat
 
 ### 4. divine-worship-office
 
-Catalog: `divine-worship` · rite `dwdo` · Office · now **full (Prime in outline)**
+Catalog: `divine-worship` · rite `dwdo` · Office · now **full (Prime, Terce, Sext and None from the Day-Hours, 1877)**
 
-Missing: Prime; Terce, Sext and None; office hymns.
+Missing: proper antiphons and hymn endings of feasts and seasons (Day-Hours, Proper of the Seasons).
 
 The Day Hours of the Church of England supplies the little hours in Prayer Book English with the Coverdale psalter already in the project.
 
@@ -156,9 +156,9 @@ Blocked: Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and curren
 
 ### 6. dominican-mass
 
-Catalog: `dominican` · rite `new: Dominican Mass` · Mass · now **none (Office complete)**
+Catalog: `dominican` · rite `new: Dominican Mass` · Mass · now **order (Ordinary in Latin and English)**
 
-Missing: Dominican Ordinary; Dominican propers and calendar.
+Missing: Dominican propers and calendar.
 
 Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican calendar, so a Dominican Mass guide can reuse the existing 1962 propers plus the Order's own feasts from the 1933 Missal.
 
@@ -170,9 +170,9 @@ Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican c
 
 ### 7. ambrosian
 
-Catalog: `ambrosian` · rite `new` · Mass and Office · now **none**
+Catalog: `ambrosian` · rite `new` · Mass and Office · now **order (Ordinary and Canon in Latin and English, Atchley 1909)**
 
-Missing: Ambrosian Ordinary; Ambrosian propers; Ambrosian calendar (six-week Advent); Ambrosian lectionary; Ambrosian Office.
+Missing: Ambrosian propers; Ambrosian calendar (six-week Advent); Ambrosian lectionary; Ambrosian Office.
 
 Start with the Mass: Latin Ordinary from Divinum Officium and the 1909 English Ordinary and Canon. Propers and lectionary come from the 1904 Manuale Ambrosianum (medieval) and the 1712 Missal, labelled as the pre-1976 use. The current 1976/1981 Missal and 2008 lectionary are in copyright. The Ambrosian calendar needs its own computation before any day is mapped.
 
@@ -190,9 +190,9 @@ Blocked: current Ambrosian Missal and Lectionary: Archdiocese of Milan permissio
 
 ### 8. mozarabic
 
-Catalog: `mozarabic` · rite `new` · Mass and Office · now **none**
+Catalog: `mozarabic` · rite `new` · Mass and Office · now **order (English Ordinary)**
 
-Missing: Mozarabic Ordinary; propers; lectionary; Office.
+Missing: Latin Ordinary from a public-domain edition (Missale mixtum); propers; lectionary; Office.
 
 The 1500 Cisneros books reprinted in Migne (Patrologia Latina 85-86) give the Missale mixtum and Breviarium gothicum complete; the Liber comicus gives the old lectionary. The restored Missale Hispano-Mozarabicum (1991-94) differs and is in copyright, so label the guide 'Cisneros use'.
 
@@ -255,16 +255,16 @@ Blocked: Missel romain pour les diocèses du Zaïre: permission from the Episcop
 
 ### 12. alexandrian-catholic
 
-Catalog: `alexandrian-catholic`, `catholic-coptic`, `catholic-ethiopian`, `catholic-eritrean` · rite `new` · Liturgy · now **none**
+Catalog: `alexandrian-catholic`, `catholic-coptic`, `catholic-ethiopian`, `catholic-eritrean` · rite `copt (new builders for the rest)` · Liturgy · now **The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt)**
 
-Missing: Coptic Liturgy of St Basil; Ethiopic Liturgy; Agpeya (hours); Katameros (lectionary).
+Missing: Ethiopic Liturgy; Coptic Liturgies of St Gregory and St Cyril; Coptic Morning Incense office; Agpeya (hours); Katameros (lectionary).
 
 Brightman gives the Coptic and Ethiopic liturgies in English; Bute's Coptic Morning Service adds the rest of the Sunday office. The hours and the Katameros have not been found in a public-domain English edition.
 
 | Source | Year | Lang | Format | Fills | Rights |
 |---|---|---|---|---|---|
 | Liturgies Eastern and Western, vol. 1 (F. E. Brightman) ([liturgieseastern01unknuoft](https://archive.org/details/liturgieseastern01unknuoft)) | 1896 | en | scan | Coptic Liturgy of St Mark/Cyril and St Basil; Abyssinian (Ethiopic) Liturgy; Syrian St James; Armenian; Nestorian (East Syrian) Liturgy; Byzantine | pd |
-| The Coptic Morning Service for the Lord's Day (Marquess of Bute) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic Sunday Liturgy and morning office | pd |
+| The Coptic Morning Service for the Lord's Day (Marquess of Bute) (Liturgy imported: tools/texts/order-coptic1908.txt) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic Sunday Liturgy and morning office | pd |
 | The Divine Liturgy of St Mark the Evangelist (S. C. Malan) — No OCR text on this item; transcribe from the page images. ([divineliturgysa00malagoog](https://archive.org/details/divineliturgysa00malagoog)) | 1872 | en | scan | Coptic liturgy | pd |
 | The Ethiopic Liturgy (S. A. B. Mercer) ([ethiopicliturgyi00mercuoft](https://archive.org/details/ethiopicliturgyi00mercuoft)) | 1915 | en | scan | Ethiopic liturgy and anaphoras | pd |
 | The Anaphoras of the Ethiopic Liturgy — Controlled-lending scan; confirm the 1928 date on the title page. ([anaphorasofethio0000yait](https://archive.org/details/anaphorasofethio0000yait)) | 1928 | en | scan | Ethiopic anaphoras | pd |
@@ -309,14 +309,15 @@ Blocked: Syro-Malabar Raza (1986) and current Chaldean books: permission.
 
 ### 15. armenian-catholic
 
-Catalog: `catholic-armenian` · rite `new` · Badarak and Office · now **none**
+Catalog: `catholic-armenian` · rite `new` · Badarak and Office · now **The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm)**
 
-Missing: Divine Liturgy (Badarak); Book of Hours; lectionary.
+Missing: Book of Hours; lectionary.
 
 The 1862 English translation was made for Armenian Catholics and is the natural base; Conybeare adds the breviary rites and the old Jerusalem lectionary.
 
 | Source | Year | Lang | Format | Fills | Rights |
 |---|---|---|---|---|---|
+| The Divine Liturgy of the Holy Apostolic Church of Armenia, translated by two Armenian priests (imported: tools/texts/order-armenian1908.txt) ([divineliturgyofh00arme](https://archive.org/details/divineliturgyofh00arme)) | 1908 | en | scan | Divine Liturgy | pd |
 | The Armenian Liturgy, translated into English ([TheArmenianLiturgy](https://archive.org/details/TheArmenianLiturgy)) | 1862 | en | scan | Divine Liturgy | pd |
 | Liturgy of the Holy Apostolic Church of Armenia (S. C. Malan) ([liturgyholyapos00asdvgoog](https://archive.org/details/liturgyholyapos00asdvgoog)) | 1887 | en | scan | Divine Liturgy | pd |
 | Rituale Armenorum (F. C. Conybeare) ([ritualearmenorum00cony](https://archive.org/details/ritualearmenorum00cony)) | 1905 | en | scan | sacraments; breviary rites; old Armenian lectionary | pd |
@@ -327,9 +328,9 @@ Blocked: Armenian Book of Hours in public-domain English: not located.
 
 ### 16. anglican-prayer-books
 
-Catalog: `anglican-1549-england`, `anglican-1552-england`, `anglican-1559-england`, `anglican-1604-england`, `anglican-1662-england`, `anglican-1928-england`, `anglican-1637-scotland`, `anglican-1764-scotland`, `anglican-1929-scotland`, `anglican-1789-us`, `anglican-1892-us`, `anglican-1928-us`, `anglican-1979-us`, `anglican-1918-canada`, `anglican-1878-ireland`, `anglican-1926-ireland` · rite `new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders` · Daily Office and Holy Communion · now **none (1662 Office only, inside the Ordinariate)**
+Catalog: `anglican-1549-england`, `anglican-1552-england`, `anglican-1559-england`, `anglican-1604-england`, `anglican-1662-england`, `anglican-1928-england`, `anglican-1637-scotland`, `anglican-1764-scotland`, `anglican-1929-scotland`, `anglican-1789-us`, `anglican-1892-us`, `anglican-1928-us`, `anglican-1979-us`, `anglican-1918-canada`, `anglican-1878-ireland`, `anglican-1926-ireland` · rite `new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders` · Daily Office and Holy Communion · now **US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate**
 
-Missing: each book's Communion order; Office variants; collects; lectionary tables; calendars.
+Missing: 1928 lectionary tables; 1979 Daily Office Lectionary and the Revised Common Lectionary (the RCL is copyrighted); other national books.
 
 The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.
 
@@ -341,6 +342,7 @@ The Society of Archbishop Justus has typed transcriptions of almost every histor
 | USA 1892 ([link](https://justus.anglican.org/resources/bcp/1892/BCP_1892.htm)) | 1892 | en | | complete book | pd |
 | USA 1789 ([link](https://justus.anglican.org/resources/bcp/1789/BCP_1789.htm)) | 1789 | en | | complete book | pd |
 | England 1662 ([link](https://justus.anglican.org/resources/bcp/1662/1662.html)) | 1662 | en | | Holy Communion and the rest of the book | crown-uk |
+| England 1662, HTML transcription (Lynda M. Howell) ([link](https://www.eskimo.com/~lhowell/bcp1662/communion/index.html)) | 1662 | en | | Holy Communion; Collects, Epistles and Gospels (imported: tools/bcp1662.py) | crown-uk |
 | England 1928 (proposed) ([link](https://justus.anglican.org/resources/bcp/CofE1928/CofE1928.htm)) | 1928 | en | | complete book | pd |
 | England 1559 ([link](https://justus.anglican.org/resources/bcp/1559/BCP_1559.htm)) | 1559 | en | | complete book | pd |
 | England 1552 ([link](https://justus.anglican.org/resources/bcp/1552/BCP_1552.htm)) | 1552 | en | | complete book | pd |
@@ -448,7 +450,7 @@ Blocked: St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese perm
 
 ### 22. oriental-orthodox
 
-Catalog: `oriental-orthodox`, `oriental-coptic`, `oriental-syriac`, `oriental-armenian`, `oriental-ethiopian`, `oriental-eritrean`, `oriental-malankara`, `oriental-assyrian`, `oriental-ancient` · rite `new (shared builders with the Eastern Catholic churches of the same tradition)` · Liturgy and Office · now **none**
+Catalog: `oriental-orthodox`, `oriental-coptic`, `oriental-syriac`, `oriental-armenian`, `oriental-ethiopian`, `oriental-eritrean`, `oriental-malankara`, `oriental-assyrian`, `oriental-ancient` · rite `new (shared builders with the Eastern Catholic churches of the same tradition)` · Liturgy and Office · now **Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt)**
 
 Missing: liturgies; hours; lectionaries; calendars (Coptic, Ethiopian, Armenian).
 
@@ -460,7 +462,7 @@ Reuse the Alexandrian, West Syriac, East Syriac and Armenian sources above; Orth
 | East Syrian Daily Offices (Maclean) ([eastsyriandailyo00macluoft](https://archive.org/details/eastsyriandailyo00macluoft)) | 1894 | en | scan | Assyrian and Ancient Church of the East hours | pd |
 | Liturgia Sanctorum Apostolorum Adaei et Maris (Urmia) ([liturgiasanctoru0000anon](https://archive.org/details/liturgiasanctoru0000anon)) | 1890 | syr | scan | Takhsa | pd |
 | Rituale Armenorum (Conybeare) ([ritualearmenorum00cony](https://archive.org/details/ritualearmenorum00cony)) | 1905 | en | scan | Armenian rites and lectionary | pd |
-| Coptic Morning Service (Bute) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic liturgy | pd |
+| Coptic Morning Service (Bute) (Liturgy imported) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic liturgy | pd |
 | The Ethiopic Liturgy (Mercer) ([ethiopicliturgyi00mercuoft](https://archive.org/details/ethiopicliturgyi00mercuoft)) | 1915 | en | scan | Ethiopian and Eritrean liturgy | pd |
 | The Service for the Consecration of a Church according to the Coptic Rite (G. Horner) ([serviceforconsec00hornuoft](https://archive.org/details/serviceforconsec00hornuoft)) | 1902 | en | scan | Coptic rubrics and hymn structure | reference |
 
@@ -470,9 +472,9 @@ Blocked: Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book o
 
 ### 23. lutheran
 
-Catalog: `lutheran`, `common-service`, `swedish-orders`, `lcms`, `wels`, `els`, `elca`, `nalc` · rite `new` · Divine Service and Matins/Vespers · now **none**
+Catalog: `lutheran`, `common-service`, `swedish-orders`, `lcms`, `wels`, `els`, `elca`, `nalc` · rite `new` · Divine Service and Matins/Vespers · now **The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics**
 
-Missing: Common Service order; introits, collects and graduals; historic one-year lectionary; Swedish High Mass; current Nordic service books.
+Missing: Swedish High Mass; current Nordic service books.
 
 The Common Service (1888) as printed in the Church Book and the 1917 Common Service Book is the ancestor of TLH, SBH, LBW and LSB page 15; it gives a complete historic Lutheran Divine Service with propers and the one-year lectionary. Add the Missouri Synod's 1917 English Liturgy and Agenda and the 1921 Swedish rite. LSB, ELW, TLH and SBH stay cued. Typed public-domain transcriptions already exist: A Collection of Prayers has the whole Common Service Book (1917-18) as Word and PDF files, and Project Gutenberg has the 1912 Missouri Synod hymn-book. The Church of Sweden's current handbook is a free PDF but its copyright page forbids copying without permission.
 
@@ -500,9 +502,9 @@ Blocked: Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augs
 
 ### 24. reformed
 
-Catalog: `reformed`, `dort-forms`, `genevan-psalter`, `psalter-1912`, `westminster`, `scottish-psalter`, `bcw-1906`, `nrc`, `heritage-reformed`, `free-reformed`, `gereformeerde-gemeenten`, `canadian-reformed`, `urcna`, `pca`, `opc`, `pcusa`, `free-church-scotland`, `reformed-presbyterian` · rite `new` · Lord's Day worship and forms · now **none**
+Catalog: `reformed`, `dort-forms`, `genevan-psalter`, `psalter-1912`, `westminster`, `scottish-psalter`, `bcw-1906`, `nrc`, `heritage-reformed`, `free-reformed`, `gereformeerde-gemeenten`, `canadian-reformed`, `urcna`, `pca`, `opc`, `pcusa`, `free-church-scotland`, `reformed-presbyterian` · rite `new` · Lord's Day worship and forms · now **The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full**
 
-Missing: Dort liturgical forms in English; metrical psalters; Westminster Directory; Book of Common Worship; Reformed Church in America liturgy; Reformed Church in the United States orders; current denominational forms.
+Missing: the other Dort forms (baptism, discipline, ordination, marriage) in English; metrical psalters; Westminster Directory; the rest of the Book of Common Worship (Evening Service, sacraments, Treasury of Prayers); the RCA Order of Scripture Lessons (a table that needs reading from the page images); Reformed Church in the United States orders; current denominational forms.
 
 Reformed worship is mostly an order plus psalms: build a Lord's Day order from the Directory or the 1906 Book of Common Worship and draw psalms from the 1650 Scottish Psalter, the 1912 Psalter and the Genevan psalms. The English Dort forms come from the 19th-century Reformed Dutch printings. Several bodies publish their current forms free on the web (URCNA, CRCNA) or their Directory for Worship as a free PDF (OPC, PCA), but none states a reuse licence; cite them and ask.
 
@@ -533,9 +535,9 @@ Blocked: Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hym
 
 ### 25. methodist-moravian-and-others
 
-Catalog:  · rite `new (no catalog entries yet; add them in data/traditions.json first)` · Lord's Supper, Morning Prayer and occasional services · now **none**
+Catalog: `methodist`, `united-methodist`, `sunday-service-1784`, `me-ritual-1908` · rite `me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders); Wesley's Sunday Service next` · Lord's Supper, Morning Prayer and occasional services · now **The Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full**
 
-Missing: Wesley's Sunday Service; Methodist ritual; Moravian liturgies; Congregational orders; Holiness church rituals.
+Missing: Wesley's Sunday Service (1784): the long-s scan needs careful proofreading; the rest of the Methodist ritual (baptism, reception, matrimony, burial); Moravian liturgies; Congregational orders; Holiness church rituals.
 
 Wesley's 1784 Sunday Service is the root of Methodist liturgy and public domain; the 1908 Methodist Episcopal Ritual and the 1920 Moravian Hymnal and Liturgies cover the 20th-century forms. Current Free Methodist and Nazarene books are free PDFs whose rituals are in copyright. These families are not in the Sanctuary catalog yet, so add them there before building guides.
 
@@ -550,7 +552,7 @@ Wesley's 1784 Sunday Service is the root of Methodist liturgy and public domain;
 | Free Methodist Church USA, 2023 Book of Discipline, official PDF, including the rituals (in use) — Copyright 2024 Free Methodist Church USA. ([link](https://fmcusa.org/wp-content/uploads/2023-Book-of-Discipline-Interactive-PDF-FINAL.pdf)) | 2023 | en | pdf | current Free Methodist rituals | permission |
 | Church of the Nazarene Manual 2023, official PDF including the ritual (in use) — Read the site's terms of use before quoting. ([link](https://nazarene.org/manual/)) | 2023 | en | pdf | current Nazarene ritual | permission |
 
-Blocked: United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; no catalog entries for these families yet.
+Blocked: United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; Moravian, Congregational and Holiness families are not in the catalog yet.
 
 ## Old Catholic
 

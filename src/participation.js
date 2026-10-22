@@ -3,7 +3,7 @@
 'use strict';
 let mode='lay';try{if(sessionStorage.getItem('lect-participation')==='priest')mode='priest';}catch(e){}
 const isPriest=()=>mode==='priest';
-const catholicMass=m=>!!m&&!m.isOffice&&['n','o','m','p','h','b'].includes(m.rite);
+const catholicMass=m=>!!m&&!m.isOffice&&['n','o','m','p','h','b','d','a','z'].includes(m.rite);
 function priestOnly(el,role=''){
  if((' '+role+' ').includes(' cel '))return true;
  for(let p=el;p&&p.nodeType===1;p=p.parentElement){if(p.hasAttribute('data-priest-only')||(' '+(p.getAttribute('data-r')||'')+' ').includes(' cel '))return true;}
