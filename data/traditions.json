@@ -2952,7 +2952,32 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Text of the US Book of Common Prayer; exclude separately copyrighted music and supplementary material."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp79",
+        "hour": null,
+        "label": "Holy Eucharist"
+      },
+      {
+        "type": "office",
+        "rite": "bcp79",
+        "hour": "mp2",
+        "label": "Morning Prayer"
+      },
+      {
+        "type": "office",
+        "rite": "bcp79",
+        "hour": "ep2",
+        "label": "Evening Prayer"
+      },
+      {
+        "type": "office",
+        "rite": "bcp79",
+        "hour": "compline",
+        "label": "Compline"
+      }
+    ],
     "pd_texts_available": [
       "1979 edition: verify the exact scan and territory before extraction."
     ],

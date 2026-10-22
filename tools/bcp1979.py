@@ -32,6 +32,7 @@ def text(b, keep_lines=False):
     b = re.sub(r"<br\s*/?>", "\n", b)
     b = re.sub(r"<[^>]+>", "", b)
     b = html.unescape(b).replace("\xa0", " ").replace("’", "'").replace("“", '"').replace("”", '"')
+    b = re.sub(r"([a-z])-[ \t]*\n\s*([a-z])", r"\1\2", b)          # a word broken at the end of a printed line
     if keep_lines:
         lines = [re.sub(r"[ \t]+", " ", l).strip() for l in b.split("\n")]
         return "\n".join(l for l in lines if l)

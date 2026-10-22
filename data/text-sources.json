@@ -1230,11 +1230,11 @@
       ],
       "rite": "new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders",
       "service": "Daily Office and Holy Communion",
-      "now": "US 1928: Holy Communion with collects, epistles and gospels, and Morning and Evening Prayer, in full; 1662 Office inside the Ordinariate",
+      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); 1662 Office inside the Ordinariate",
       "missing": [
-        "US 1979 Rite I and II",
         "1662 Holy Communion",
         "1928 lectionary tables",
+        "1979 Daily Office Lectionary and the Revised Common Lectionary (the RCL is copyrighted)",
         "other national books"
       ],
       "plan": "The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.",

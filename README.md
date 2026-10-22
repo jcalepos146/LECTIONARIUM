@@ -43,6 +43,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Ambrosian | *Order*: the Ordinary and Canon in Latin (Divinum Officium) and English (Atchley, 1909), with the Epiphany propers and sample prefaces; propers and Milanese calendar from your Missal | Not yet |
 | Mozarabic | *Order*: the Ordinary in English, after the Missale mixtum (Divinum Officium); propers from your Missal | Not yet |
 | Prayer Book 1928 (USA) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | **Complete text**: Morning and Evening Prayer, Coverdale psalms of the day; lessons from your lectionary |
+| Prayer Book 1979 (USA) | *Guided*: the Holy Eucharist in full (Rite One or Two, Prayers I and A to D, Prayers of the People), collect and preface of the day; lessons from the RCL | **Complete text**: Morning and Evening Prayer (Rites One and Two), Noonday, Compline, with the 1979 Psalter |
 
 The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 

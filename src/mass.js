@@ -428,6 +428,92 @@ async function buildPB(ctx,opts){
   return out;
 }
 
+/* ---------------------------------------------------------------- 1979 Prayer Book (USA)
+   data/bcp1979.json (tools/bcp1979.py). pb79Day(iso, collects) names the day's collect by the 1979 calendar. */
+const ORD79=["First","Second","Third","Fourth","Fifth","Sixth","Seventh","Eighth"];
+const MON79=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const LORD79=/^(The Holy Name|The Presentation|The Transfiguration|All Saints' Day)$/;
+function pb79Day(iso, C){
+  const d=toDate(iso), Y=d.getUTCFullYear(), dow=d.getUTCDay(), s=new Date(d-dow*DAY);
+  const off=x=>Math.round((x-easterY(Y))/DAY), o=off(d), os=off(s);
+  const md=`${MON79[d.getUTCMonth()]} ${d.getUTCDate()}`;
+  const fixed=Object.keys(C).find(k=>C[k].sub===md);
+  let season=null;
+  const A1=adv1Y(Y), A1p=adv1Y(Y-1);
+  const xmas=dd=>Date.UTC(dd,11,25);
+  if(d>=A1&&d<xmas(Y)) season=`${ORD79[Math.floor((s-A1)/DAY/7)]} Sunday of Advent`;
+  else if(d.getTime()===xmas(Y)) season="The Nativity of Our Lord: Christmas Day";
+  else if(d>xmas(Y)||(d.getUTCMonth()===0&&d.getUTCDate()<6)){
+    const cy=d.getUTCMonth()===11?Y:Y-1, sun1=new Date(xmas(cy)+((7-new Date(xmas(cy)).getUTCDay())%7||7)*DAY);
+    season= s>=sun1&&s<new Date(sun1.getTime()+7*DAY)?"First Sunday after Christmas Day": s>=new Date(sun1.getTime()+7*DAY)?"Second Sunday after Christmas Day":"The Nativity of Our Lord: Christmas Day";
+    if(d.getUTCMonth()===0&&d.getUTCDate()===1) season="The Holy Name";
+  }
+  else if(o<-46){ const ep=Date.UTC(Y,0,6); if(d<new Date(ep)) season="Second Sunday after Christmas Day";
+    else { const sunE=new Date(ep+((7-new Date(ep).getUTCDay())%7||7)*DAY); const n=Math.floor((s-sunE)/DAY/7);
+      season= s<sunE?"The Epiphany": os===-49?"Last Sunday after the Epiphany": n===0?"First Sunday after the Epiphany: The Baptism of our Lord":`${ORD79[n]} Sunday after the Epiphany`; } }
+  else if(o<-42) season="Ash Wednesday";
+  else if(o<-7) season=`${ORD79[Math.floor((os+42)/7)]} Sunday in Lent`;
+  else if(o===-7) season="Sunday of the Passion: Palm Sunday";
+  else if(o<0) season=["Monday in Holy Week","Tuesday in Holy Week","Wednesday in Holy Week","Maundy Thursday","Good Friday","Holy Saturday"][o+6];
+  else if(o===0) season="Easter Day";
+  else if(o<7) season=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][o-1]+" in Easter Week";
+  else if(o>=39&&o<42) season="Ascension Day";
+  else if(o<42) season=`${ORD79[os/7]} Sunday of Easter`;
+  else if(o<49) season="Seventh Sunday of Easter: The Sunday after Ascension Day";
+  else if(o<56) season="The Day of Pentecost: Whitsunday";
+  else if(o===56) season="First Sunday after Pentecost: Trinity Sunday";
+  else { const base=Date.UTC(Y,4,11); let n=Math.round((s-base)/DAY/7)+1; if(os===56) n=Math.round((s-base)/DAY/7)+1; n=Math.max(1,Math.min(29,n)); season=`Proper ${n}`; }
+  if(o===56&&dow===0) season="First Sunday after Pentecost: Trinity Sunday";
+  let title=season;
+  const protectedDay=(o>=-7&&o<=7)||season==="Ash Wednesday"&&o===-46||/Christmas Day|The Epiphany$|Easter Day|Ascension Day|Pentecost|Trinity Sunday/.test(season)&&(dow===0||o>=39&&o<=39);
+  if(fixed&&!protectedDay&&(dow!==0||LORD79.test(fixed))) title=fixed;
+  return {title, season, fixed};
+}
+const PB79_PREF={"Advent":"Advent","the Incarnation":"Incarnation","the Epiphany":"Epiphany","Lent":"Lent","Holy Week":"Holy Week","Easter":"Easter","the Ascension":"Ascension","Pentecost":"Pentecost","Trinity Sunday":"Trinity Sunday","All Saints":"All Saints","a Saint":"A Saint","Apostles":"Apostles and Ordinations","the Apostles":"Apostles and Ordinations","Baptism":"Baptism","the Dedication of a Church":"Dedication of a Church"};
+function pb79Preface(P, pref, sun, iso){
+  const m=/^Preface (?:of|for) (.+?)(?:,| or |$)/.exec(pref||""); let name=m?m[1]:"";
+  if(name==="the Lord's Day"){ if(!sun) return null; const k=["1. Of God the Father","2. Of God the Son","3. Of God the Holy Spirit"][Math.floor(toDate(iso)/DAY/7)%3]; return P[k]?[k,P[k]]:null; }
+  const k=PB79_PREF[name]; return k&&P[k]?[k,P[k]]:null;
+}
+function pb79Items(its, fill){
+  let h="";
+  for(const it of its){
+    if(it[0]==="slot"){ h+=fill(it[1])||""; continue; }
+    const [k,t,r,lab]=it;
+    if(k==="rub") h+=`<p class="rub">${esc(t)}</p>`;
+    else if(k==="cite") h+=`<p class="cite">${esc(t)}</p>`;
+    else if(k==="h") h+=`<h4 class="sub2">${esc(t)}</h4>`;
+    else h+=`<p data-r="${r||"all"}">${lab?`<span class="sp">${esc(lab)}</span> `:""}${esc(t)}</p>`;
+  }
+  return h;
+}
+const pbWords=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
+async function buildPB79(ctx,opts){
+  const B=await J("data/bcp1979.json"), iso=ctx.iso, sun=toDate(iso).getUTCDay()===0;
+  const key=opts.p79||"II-A", rite=key.startsWith("I-")?"1":"2", form=rite==="1"?"t":"c";
+  const C=B.collects[form], day=pb79Day(iso,C), col=C[day.title]||C[day.season];
+  const pre=pb79Preface(B.prefaces[rite]||{}, col&&col.preface, sun, iso);
+  const pop=(opts.pop79||"I");
+  const out=[];
+  for(const st of B["he"+rite]){
+    let secs=pbWords(st.items)/2.4, extra=0;
+    const fill=name=>{
+      if(name==="collect"){ if(!col) return cue("The Collect of the Day, from the Prayer Book."); extra+=pbWords(col.text.map(t=>["v",t]))/2.4; return `<p class="cite">${esc(day.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""); }
+      if(name==="lessons"){ extra+=300; const yr=ctx.day&&ctx.day.L; return `<p class="cue">The lessons of the day from the Revised Common Lectionary${yr?` (Year ${yr})`:""}: see <a href="https://www.lectionarypage.net/" target="_blank" rel="noopener">lectionarypage.net</a>.</p>`; }
+      if(name==="sermon"){ if(!(opts.homily>0)) return ""; extra+=opts.homily*60; return `<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; }
+      if(name==="pop"){ const f=B.pop.find(x=>x.t==="Form "+pop); if(!f) return ""; extra+=pbWords(f.items)/2.4; return `<h4 class="sub2">Prayers of the People: Form ${esc(pop)}</h4>`+pb79Items(f.items,()=>""); }
+      if(name==="eprayer"){ const P=B.prayers[key]||[]; extra+=pbWords(P)/2.4; return `<h4 class="sub2">Eucharistic Prayer ${esc(key.split("-")[1])}</h4>`+pb79Items(P,fill); }
+      if(name==="preface"){ if(!pre) return `<p class="note">No proper preface today.</p>`; extra+=pbWords(pre[1].map(t=>["v",t]))/2.4; return `<p class="cite">Proper Preface: ${esc(pre[0])}</p>`+pre[1].map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""); }
+      return "";
+    };
+    let html=pb79Items(st.items,fill);
+    if(st.t==="The Breaking of the Bread"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; }
+    out.push(sec(st.t,(secs+extra)/60,`<div class="txt one">${html}</div>`));
+  }
+  return out;
+}
+window.LectPB79={day:pb79Day, items:pb79Items};
+
 /* ---------------------------------------------------------------- Novus Ordo (Heritage Missal order) */
 const LAT={
   sign:"In nómine Patris, et Fílii, ✠ et Spíritus Sancti. ℟. Amen.",
@@ -793,7 +879,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28", byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp79", byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -817,6 +903,7 @@ function controls(rite, opts, iso, day, auto){
       <div class="cgrid">
         ${music}
         <fieldset><legend>Timing</legend>
+          ${rite==="bcp79"?`<label class="sl">Rite and prayer <select data-o="p79">${[["II-A","Rite Two · Prayer A"],["II-B","Rite Two · Prayer B"],["II-C","Rite Two · Prayer C"],["II-D","Rite Two · Prayer D"],["I-I","Rite One · Prayer I"]].map(([v,n])=>`<option value="${v}"${(opts.p79||"II-A")===v?" selected":""}>${n}</option>`).join("")}</select></label><label class="sl">Prayers of the People <select data-o="pop79">${["I","II","III","IV","V","VI"].map(v=>`<option${(opts.pop79||"I")===v?" selected":""}>Form ${v}</option>`.replace(`<option`,`<option value="${v}"`)).join("")}</select></label>`:""}
           ${rite==="b"?`<label class="sl">Liturgy <select data-o="byzlit">${[["auto","Of the day"],["chrys","St John Chrysostom"],["basil","St Basil the Great"],["pres","Presanctified Gifts"]].map(([v,n])=>`<option value="${v}"${(opts.byzlit||"auto")===v?" selected":""}>${n}</option>`).join("")}</select></label>`:""}
           <label class="sl">${rite==="o"||trad||oo?"Sermon":"Homily"} <select data-o="homily">${[0,3,5,8,10,12,15,20].map(n=>`<option value="${n}"${+opts.homily===n?" selected":""}>${n?n+" min":"None"}</option>`).join("")}</select></label>
           <label class="sl">Communion <select data-o="communion">${[2,4,6,8,10,15].map(n=>`<option value="${n}"${+opts.communion===n?" selected":""}>${n} min</option>`).join("")}</select></label>
@@ -833,6 +920,9 @@ function controls(rite, opts, iso, day, auto){
 /* Steps that shorten a session, gentlest first, for each rite. The fitter applies them in order and stops once the target is met. */
 function ladder(rite){
   const trad=rite==="m"||rite==="p"||rite==="h", byz=rite==="b";
+  if(rite==="bcp79") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    ["Prayers of the People: Form IV; Eucharistic Prayer A", o=>{ o.pop79="IV"; if(String(o.p79||"II-A").startsWith("II")) o.p79="II-A"; }],
+    ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
   if(rite==="bcp28") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
@@ -953,6 +1043,7 @@ async function render(el, ctx){
     if(rite==="b") return buildByz(ctx,o);
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
     if(rite==="bcp28") return buildPB(ctx,o);
+    if(rite==="bcp79") return buildPB79(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";
   const fit=async(base)=>{
