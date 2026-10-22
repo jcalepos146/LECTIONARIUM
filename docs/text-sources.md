@@ -46,7 +46,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 21 | [western-rite-orthodox](#western-rite-orthodox) | none | 1 | 0 | St Andrew Service Book and Orthodox Missal: Antiochian Archdiocese permission |
 | 22 | [oriental-orthodox](#oriental-orthodox) | none | 6 | 0 | Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located; Hudra (1960s Trichur edition): check before use |
 | 23 | [lutheran](#lutheran) | The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics | 13 | 0 | Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augsburg Fortress), Christian Worship (NPH): in copyright; The Lutheran Hymnal (1941) and Service Book and Hymnal (1958): renewal status unchecked |
-| 24 | [reformed](#reformed) | none | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
+| 24 | [reformed](#reformed) | The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full | 13 | 0 | Book of Praise (Canadian Reformed), Psalter Hymnal, Trinity Psalter Hymnal, Book of Common Worship 1993/2018, modern Dort translations: in copyright |
 | 25 | [methodist-moravian-and-others](#methodist-moravian-and-others) | none | 6 | 0 | United Methodist Book of Worship and Hymnal, Methodist Worship Book (UK), Moravian Book of Worship: in copyright; no catalog entries for these families yet |
 | 26 | [old-catholic](#old-catholic) | none | 0 | 0 | no candidate source found yet |
 
@@ -501,9 +501,9 @@ Blocked: Lutheran Service Book (CPH), Evangelical Lutheran Worship and LBW (Augs
 
 ### 24. reformed
 
-Catalog: `reformed`, `dort-forms`, `genevan-psalter`, `psalter-1912`, `westminster`, `scottish-psalter`, `bcw-1906`, `nrc`, `heritage-reformed`, `free-reformed`, `gereformeerde-gemeenten`, `canadian-reformed`, `urcna`, `pca`, `opc`, `pcusa`, `free-church-scotland`, `reformed-presbyterian` · rite `new` · Lord's Day worship and forms · now **none**
+Catalog: `reformed`, `dort-forms`, `genevan-psalter`, `psalter-1912`, `westminster`, `scottish-psalter`, `bcw-1906`, `nrc`, `heritage-reformed`, `free-reformed`, `gereformeerde-gemeenten`, `canadian-reformed`, `urcna`, `pca`, `opc`, `pcusa`, `free-church-scotland`, `reformed-presbyterian` · rite `new` · Lord's Day worship and forms · now **The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full**
 
-Missing: Dort liturgical forms in English; metrical psalters; Westminster Directory; Book of Common Worship; Reformed Church in America liturgy; Reformed Church in the United States orders; current denominational forms.
+Missing: the other Dort forms (baptism, discipline, ordination, marriage) in English; metrical psalters; Westminster Directory; the rest of the Book of Common Worship (Evening Service, sacraments, Treasury of Prayers); the RCA Order of Scripture Lessons (a table that needs reading from the page images); Reformed Church in the United States orders; current denominational forms.
 
 Reformed worship is mostly an order plus psalms: build a Lord's Day order from the Directory or the 1906 Book of Common Worship and draw psalms from the 1650 Scottish Psalter, the 1912 Psalter and the Genevan psalms. The English Dort forms come from the 19th-century Reformed Dutch printings. Several bodies publish their current forms free on the web (URCNA, CRCNA) or their Directory for Worship as a free PDF (OPC, PCA), but none states a reuse licence; cite them and ask.
 

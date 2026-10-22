@@ -293,7 +293,7 @@ async function buildTrad(ctx, form, opts){
           else if(ph==="evangelium"){
             if(hybWeekday){ const g=hyb.r.find(x=>x[0]==="Gospel"); if(g){ r.html=await RB(ctx,"Gospel",g[1],"n","dr",false); r.sec=readSecs(r.html,150); } }
             else { r=propBlock("Evangelium"); const ev=part("Evangelium");
-              if(AB>=2&&ev&&words(ev[1]||ev[0])>700){ r={html:`<details class="canon"><summary>Show the full Gospel (the Passion)</summary>${r.html}</details>`+abr("the Passion: read only its final section, from the death of our Lord"),sec:AB>=3?150:240}; } }
+              if(AB>=2&&ev&&words(ev[1]||ev[0])>700){ r={html:`<details class="fold"><summary>Show the full Gospel (the Passion)</summary>${r.html}</details>`+abr("the Passion: read only its final section, from the death of our Lord"),sec:AB>=3?150:240}; } }
             if(opts.homily>0 && !/Ultima/.test(curTitle)) { r.html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; r.sec+=opts.homily*60; }
           }
           else if(ph==="offertorium"){ r=propBlock("Offertorium","Offertory","Offertorium"); const h=hymnSlot(H,iso,"offertory",s,opts,"Offertory hymn"); r.html+=h.html; r.sec+=h.sec; }
@@ -418,13 +418,13 @@ async function buildPB(ctx,opts,book){
   for(const st of B.hc){
     let html="", secs=spoken(st.items)/2.4;
     if(st.t===C.decalogue&&AB>=1){ out.push(sec(st.t,0,abr(C.decalogueAbr))); continue; }
-    if(C.notSaid.includes(st.t)){ out.push(sec(st.t,0,`<details class="canon"><summary>Not said at the celebration itself: shown for reference</summary><div class="txt one">${st.items.map(pbItem).join("")}</div></details>`)); continue; }
+    if(C.notSaid.includes(st.t)){ out.push(sec(st.t,0,`<details class="fold"><summary>Not said at the celebration itself: shown for reference</summary><div class="txt one">${st.items.map(pbItem).join("")}</div></details>`)); continue; }
     if(st.t==="Proper Prefaces"){
       const its=st.items, i0=pref?its.findIndex(x=>x[0]==="h"&&x[1].replace(/[.,]$/,"").toLowerCase().includes(prefH)):-1;
       let today="";
       if(i0>=0){ let j=i0+1; const pick=[]; while(j<its.length&&its[j][0]!=="h"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(its[i0][1].replace(/[.,]$/,""))}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
       else { secs=0; today=`<p class="note">No proper preface today: the Sanctus follows the common preface directly.</p>`; }
-      html=today+`<details class="canon"><summary>All the proper prefaces</summary>${its.map(pbItem).join("")}</details>`;
+      html=today+`<details class="fold"><summary>All the proper prefaces</summary>${its.map(pbItem).join("")}</details>`;
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
     }
     html=st.items.map(pbItem).join("");
@@ -519,7 +519,7 @@ async function buildCSB(ctx,opts){
       const k=at(/^The Introit$/)+1, intr=S&&S.introit.length?S.introit:null;
       html=emit(0,k+1);
       if(intr){ html+=`<p class="cite">${esc(P.t)}${S.label?` · ${esc(S.label)}`:""}</p>`+from("introit")+intr[0].map(t=>vp(t,"all")).join("");
-        if(intr.length>1) html+=`<details class="canon"><summary>Or this Introit</summary>${intr.slice(1).map(a=>a.map(t=>vp(t,"all")).join("")).join("<hr>")}</details>`;
+        if(intr.length>1) html+=`<details class="fold"><summary>Or this Introit</summary>${intr.slice(1).map(a=>a.map(t=>vp(t,"all")).join("")).join("<hr>")}</details>`;
         secs=intr[0].join(" ").split(/\s+/).length/2.2+20; }
       else { html+=emit(k+1)+cue("No Introit is appointed for this day."); }
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
@@ -528,9 +528,9 @@ async function buildCSB(ctx,opts){
       const k=at(/^The Collect$/);
       const col=S&&S.collect.length?S.collect:[];
       let ch=col.length?`<p class="cite">${esc(P.t)}</p>`+from("collect")+vp(col[0],"cel"):cue("The Collect for the Day, from the Common Service Book.");
-      if(col.length>1) ch+=`<details class="canon"><summary>${P.t.startsWith("Apostles")||(S.from&&/Apostles/.test(S.from.collect||""))?"The other Collects for Apostles' Days":"Or this Collect"}</summary>${col.slice(1).map(t=>vp(t,"cel")).join("")}</details>`;
+      if(col.length>1) ch+=`<details class="fold"><summary>${P.t.startsWith("Apostles")||(S.from&&/Apostles/.test(S.from.collect||""))?"The other Collects for Apostles' Days":"Or this Collect"}</summary>${col.slice(1).map(t=>vp(t,"cel")).join("")}</details>`;
       if(C.second&&C.second.sets[0].collect.length) ch+=`<h4 class="sub2">The Collect for the Sunday</h4><p class="cite">${esc(C.second.t)}</p>`+vp(C.second.sets[0].collect[0],"cel");
-      if(P&&P.more&&P.more.length) ch+=`<details class="canon"><summary>Other Collects for the season</summary>${P.more.map(t=>vp(t,"cel")).join("")}</details>`;
+      if(P&&P.more&&P.more.length) ch+=`<details class="fold"><summary>Other Collects for the season</summary>${P.more.map(t=>vp(t,"cel")).join("")}</details>`;
       html=emit(0,k+1)+ch+emit(k+1);
       secs+=col.length?words(col[0])/2.4:25; if(C.second) secs+=30;
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
@@ -538,7 +538,7 @@ async function buildCSB(ctx,opts){
     if(st.slot==="epistle"){
       const k=at(/^The Epistle$/);
       const [eh,es]=AB>=3?[abr("the Epistle"),0]:await lesson("Epistle",S&&S.epistle);
-      let alt=""; if(S&&S.epistle_alt){ const [ah]=await lesson("Or this Epistle",S.epistle_alt); alt=`<details class="canon"><summary>Or this lesson: ${esc(S.epistle_alt.cite)}</summary>${ah}</details>`; }
+      let alt=""; if(S&&S.epistle_alt){ const [ah]=await lesson("Or this Epistle",S.epistle_alt); alt=`<details class="fold"><summary>Or this lesson: ${esc(S.epistle_alt.cite)}</summary>${ah}</details>`; }
       html=emit(0,k+1)+eh+alt+emit(k+1); secs+=es;
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
     }
@@ -548,7 +548,7 @@ async function buildCSB(ctx,opts){
       secs=g?g.join(" ").split(/\s+/).length/2.2:0;
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
     }
-    if(st.slot==="hallelujah"){ out.push(sec(st.t,0,`<details class="canon"><summary>Sung only when the Gradual is omitted</summary><div class="txt one">${emit(0)}</div></details>`)); continue; }
+    if(st.slot==="hallelujah"){ out.push(sec(st.t,0,`<details class="fold"><summary>Sung only when the Gradual is omitted</summary><div class="txt one">${emit(0)}</div></details>`)); continue; }
     if(st.slot==="gospel"){
       const k=at(/^Glory be to Thee, O Lord\.$/);
       const [gh,gs]=await lesson("Gospel",S&&S.gospel);
@@ -557,7 +557,7 @@ async function buildCSB(ctx,opts){
     }
     if(st.slot==="sermon"&&opts.homily>0){ html=emit(0)+`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue; }
     if(st.slot==="ante"){
-      if(!ante){ out.push(sec(st.t,0,`<details class="canon"><summary>When there is no Communion: the Lord's Prayer, a Hymn and the Benediction end The Service here</summary><div class="txt one">${emit(0)}</div></details>`)); continue; }
+      if(!ante){ out.push(sec(st.t,0,`<details class="fold"><summary>When there is no Communion: the Lord's Prayer, a Hymn and the Benediction end The Service here</summary><div class="txt one">${emit(0)}</div></details>`)); continue; }
       out.push(sec(st.t,secs/60,`<div class="txt one">${emit(0)}</div>`)); break;
     }
     if(st.slot==="prefaces"){
@@ -565,7 +565,7 @@ async function buildCSB(ctx,opts){
       let today="";
       if(i0>=0){ const pick=[]; let j=i0+1; while(j<its.length&&its[j][0]!=="h"&&its[j][0]!=="rub"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(C.preface.replace(/^For (the Festival of )?/,""))}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
       else { secs=0; today=`<p class="note">No Proper Preface is appointed today: "Therefore with Angels" follows at once.</p>`; }
-      out.push(sec(st.t,secs/60,`<div class="txt one">${today}<details class="canon"><summary>All the Proper Prefaces</summary>${emit(0)}</details></div>`)); continue;
+      out.push(sec(st.t,secs/60,`<div class="txt one">${today}<details class="fold"><summary>All the Proper Prefaces</summary>${emit(0)}</details></div>`)); continue;
     }
     html=emit(0);
     if(st.slot==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
@@ -574,6 +574,49 @@ async function buildCSB(ctx,opts){
   return out;
 }
 window.LectCSB={day:csbDay};
+
+/* ---------------------------------------------------------------- Orders of service printed in full (Reformed, Methodist, ...)
+   data/orders.json (tools/orders.py, from the hand-proofread texts in tools/texts/order-*.txt). ORDER_RITES says
+   which orders make up each rite's service; slots (hymn, psalter, lessons, sermon, offering, prayer, communion)
+   become timed cues, and alternatives fold away under their summary. */
+const ORDER_RITES={
+  pres:{parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
+  rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true}
+};
+const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
+  offering:["The Offering",3],prayer:["The General Prayer, in the Minister's own words or from the Treasury of Prayers",5]};
+function orderStep(st,opts){
+  let html="", words=0, depth=0, extra=0;
+  for(const it of st.items){
+    const [k,t]=it;
+    if(k==="or"){ html+=`<details class="fold"><summary>${esc(t)}</summary>`; depth++; continue; }
+    if(k==="/or"){ html+=`</details>`; depth--; continue; }
+    if(k==="slot"){
+      if(t==="sermon"){ if(opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; extra+=opts.homily*60; } continue; }
+      if(t==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; continue; }
+      const [lab0,min]=ORDER_SLOT[t], lab=it[2]||lab0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
+    }
+    html+=pbItem(it);
+    if(k==="v"&&!depth) words+=t.split(/\s+/).length;
+  }
+  return [html, words/2.4+extra];
+}
+async function buildOrders(ctx,opts,rite){
+  const O=await J("data/orders.json"), R=ORDER_RITES[rite], out=[];
+  for(const [id,from,upto] of R.parts(opts)){
+    const ord=O[id]; let on=!from;
+    if(!ord) continue;
+    if(R.parts(opts).length>1&&!from) out.push(sec(ord.title,0,`<p class="cite">${esc(ord.book)}</p>`));
+    for(const st of ord.steps){
+      if(!on&&st.t===from) on=true;
+      if(!on) continue;
+      const [html,secs]=orderStep(st,opts);
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`));
+      if(upto&&st.t===upto) break;
+    }
+  }
+  return out;
+}
 
 /* ---------------------------------------------------------------- 1979 Prayer Book (USA)
    data/bcp1979.json (tools/bcp1979.py). pb79Day(iso, collects) names the day's collect by the 1979 calendar. */
@@ -1026,7 +1069,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp62"||rite==="bcp79"||rite==="csb", byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp62"||rite==="bcp79"||rite==="csb"||!!ORDER_RITES[rite], byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -1051,6 +1094,7 @@ function controls(rite, opts, iso, day, auto){
         ${music}
         <fieldset><legend>Timing</legend>
           ${rite==="bcp79"?`<label class="sl">Rite and prayer <select data-o="p79">${[["II-A","Rite Two · Prayer A"],["II-B","Rite Two · Prayer B"],["II-C","Rite Two · Prayer C"],["II-D","Rite Two · Prayer D"],["I-I","Rite One · Prayer I"]].map(([v,n])=>`<option value="${v}"${(opts.p79||"II-A")===v?" selected":""}>${n}</option>`).join("")}</select></label><label class="sl">Prayers of the People <select data-o="pop79">${["I","II","III","IV","V","VI"].map(v=>`<option${(opts.pop79||"I")===v?" selected":""}>Form ${v}</option>`.replace(`<option`,`<option value="${v}"`)).join("")}</select></label>`:""}
+          ${ORDER_RITES[rite]&&ORDER_RITES[rite].supper?`<label class="sl">The Lord's Supper <select data-o="supper"><option value="no"${opts.supper!=="yes"?" selected":""}>Not celebrated</option><option value="yes"${opts.supper==="yes"?" selected":""}>Celebrated after the Sermon</option></select></label>`:""}
           ${rite==="csb"&&iso&&iso.slice(5)==="12-25"?`<label class="sl">Christmas <select data-o="csbset"><option value="later"${opts.csbset!=="early"?" selected":""}>For a later service</option><option value="early"${opts.csbset==="early"?" selected":""}>For an early service</option></select></label>`:""}
           ${rite==="csb"?`<label class="sl">Holy Communion <select data-o="csbcomm"><option value="yes"${opts.csbcomm!=="no"?" selected":""}>Celebrated</option><option value="no"${opts.csbcomm==="no"?" selected":""}>Not celebrated (The Service ends after the General Prayer)</option></select></label>`:""}
           ${rite==="b"?`<label class="sl">Liturgy <select data-o="byzlit">${[["auto","Of the day"],["chrys","St John Chrysostom"],["basil","St Basil the Great"],["pres","Presanctified Gifts"]].map(([v,n])=>`<option value="${v}"${(opts.byzlit||"auto")===v?" selected":""}>${n}</option>`).join("")}</select></label>`:""}
@@ -1072,6 +1116,9 @@ function ladder(rite){
   if(rite==="bcp79") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["Prayers of the People: Form IV; Eucharistic Prayer A", o=>{ o.pop79="IV"; if(String(o.p79||"II-A").startsWith("II")) o.p79="II-A"; }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
+  if(ORDER_RITES[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
+    ["Without the Lord's Supper", o=>{ o.supper="no"; }]];
   if(rite==="csb") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
     ["Without Holy Communion", o=>{ o.csbcomm="no"; }],
@@ -1197,6 +1244,7 @@ async function render(el, ctx){
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
     if(rite==="bcp28"||rite==="bcp62") return buildPB(ctx,o,rite);
     if(rite==="csb") return buildCSB(ctx,o);
+    if(ORDER_RITES[rite]) return buildOrders(ctx,o,rite);
     if(rite==="bcp79") return buildPB79(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";

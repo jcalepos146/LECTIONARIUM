@@ -3909,12 +3909,20 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical texts only; modern English translations may be copyrighted. The linked 1856 Dutch Reformed liturgy is a later historical English source, not the 1619 Dutch printing."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "rca",
+        "hour": null,
+        "label": "Lord's Day Morning, with the Lord's Supper"
+      }
+    ],
     "pd_texts_available": [
-      "Liturgical Forms of Dort"
+      "The Office for the Administration of the Lord's Supper (the Form of Dort) and the Order of Public Worship, from the Liturgy of the Reformed Church in America (1882): imported from the Internet Archive scan (liturgyofreform00refo), proofread by hand against the page images."
     ],
     "sources": [
-      "https://archive.org/details/liturgyofreforme0000unse"
+      "https://archive.org/details/liturgyofreforme0000unse",
+      "https://archive.org/details/liturgyofreform00refo"
     ],
     "source_review": "A later historical English liturgy is identified by exact catalog record. The original Dutch forms and each later translation must be distinguished; no modern translation is reproduced."
   },
@@ -4059,12 +4067,20 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical US edition only; not a modern Book of Common Worship."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "pres",
+        "hour": null,
+        "label": "Lord's Day Morning Service"
+      }
+    ],
     "pd_texts_available": [
-      "Book of Common Worship"
+      "The Order of Morning Service and the Order for the Celebration of the Communion: imported from the Internet Archive scan (bookofcommonwors00pres), proofread by hand."
     ],
     "sources": [
-      "https://archive.org/details/bookofcommonwor00pres"
+      "https://archive.org/details/bookofcommonwor00pres",
+      "https://archive.org/details/bookofcommonwors00pres"
     ],
     "source_review": "Internet Archive catalog title and publication year reviewed 2026-10-21. Public-domain designation is limited to the original US edition; this listing does not clear later arrangements, translations or editorial additions."
   },

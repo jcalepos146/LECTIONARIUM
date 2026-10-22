@@ -2110,13 +2110,13 @@
       ],
       "rite": "new",
       "service": "Lord's Day worship and forms",
-      "now": "none",
+      "now": "The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full",
       "missing": [
-        "Dort liturgical forms in English",
+        "the other Dort forms (baptism, discipline, ordination, marriage) in English",
         "metrical psalters",
         "Westminster Directory",
-        "Book of Common Worship",
-        "Reformed Church in America liturgy",
+        "the rest of the Book of Common Worship (Evening Service, sacraments, Treasury of Prayers)",
+        "the RCA Order of Scripture Lessons (a table that needs reading from the page images)",
         "Reformed Church in the United States orders",
         "current denominational forms"
       ],

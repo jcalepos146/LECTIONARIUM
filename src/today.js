@@ -17,6 +17,8 @@ const MASS_RITES=[
   {id:"d",name:"Dominican Mass",d:"Ordo Praedicatorum · the Ordinary in Latin and English",tr:"dr",ord:1},
   {id:"a",name:"Ambrosian Mass",d:"Rite of Milan · the Ordinary and Canon in Latin and English",tr:"dr",ord:1},
   {id:"z",name:"Mozarabic Mass",d:"Old Spanish rite · the Ordinary in English",tr:"dr",ord:1},
+  {id:"rca",name:"Lord's Day Morning (Reformed Church in America, 1882)",d:"Reformed · Order of Public Worship, with the Lord's Supper in the Form of Dort",tr:"kj",ord:1},
+  {id:"pres",name:"Lord's Day Morning Service (Presbyterian, 1906)",d:"Reformed · The Book of Common Worship, with the Lord's Supper when celebrated",tr:"kj",ord:1},
   {id:"csb",name:"The Service (Common Service Book)",d:"Lutheran · the Common Service of 1888 with the Introit, Collect, Epistle, Gradual and Gospel of the day",tr:"kj",ord:1},
   {id:"bcp62",name:"Holy Communion (1662 Prayer Book)",d:"Church of England · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
   {id:"bcp28",name:"Holy Communion (1928 Prayer Book)",d:"Episcopal Church (USA) · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
@@ -77,6 +79,8 @@ function coverage(type,rite,hour){
     if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
     if(rite==="bcp79") return ["guide","The 1979 Holy Eucharist is printed in full (Rite One or Two, any of Eucharistic Prayers I, A, B, C or D, and the Prayers of the People), with the collect and proper preface of the day. Take the lessons from the Revised Common Lectionary, which is not reproduced."];
+    if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free; the lessons and psalms are chosen by the minister."];
+    if(rite==="pres") return ["full","The Order of Morning Service and the Order for the Lord's Supper from the Presbyterian Book of Common Worship (1906) are printed in full. The book sets no lectionary: the Psalter portion, the lessons, the hymns and the General Prayer are chosen by the minister."];
     if(rite==="csb") return ["full","The Service of the Common Service Book (1917-19) is printed in full, with the Introit, Collect, Epistle, Gradual and Gospel of the day. The hymns are not included."];
     if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
@@ -495,7 +499,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp79:"kj",csb:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp79:"kj",csb:"kj",pres:"kj",rca:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -512,6 +516,12 @@ async function renderSession(){
   else if(S.type==="mass"&&S.rite==="bcp79"){
     const B=await fetch("data/bcp1979.json").then(r=>r.json()), D=window.LectPB79?window.LectPB79.day(iso,B.collects.c):null;
     body=`<h2 class="dayname">${esc(D?D.title:"")}</h2><p class="daysub">The Book of Common Prayer (1979)${D&&D.title!==D.season?` · ${esc(D.season)}`:""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (Episcopal Church, 1979), which is not under copyright, as presented by The Online Book of Common Prayer (bcponline.org). The lessons come from the Revised Common Lectionary, which is not reproduced here.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rca"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">The Liturgy of the Reformed Church in America (1882)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Liturgy of the Reformed Church in America, for use in public worship (New York, 1882), public domain, transcribed from the Internet Archive scan. Its Office for the Lord's Supper is the Form of the Synod of Dort.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="pres"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">The Book of Common Worship (Presbyterian Church in the U.S.A., 1906)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Worship, prepared by the Committee of the General Assembly of the Presbyterian Church in the United States of America (Philadelphia, 1906), public domain, transcribed from the Internet Archive scan.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="csb"){
     const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
