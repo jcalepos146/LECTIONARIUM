@@ -346,7 +346,7 @@ const ORDO_ONLY={
     ["Postcommunion and Dismissal",/^!When the priest has purified/,/^!When the priest has purified/],
     ["Last Gospel",/^!Turning towards the Gospel side/,/^!Turning towards the Gospel side/],
     ["Prayers after Low Mass",/^!To be said kneeling/,/^!To be said kneeling/]]},
-  a:{key:"a",lat:true,name:"Ambrosian",byHead:{_start:"Preparation and prayers at the altar steps",Ingressa:"Ingressa",Gloria:"Gloria and Prayer over the People","Lectio (Prokeimenon).":"Prophecy, Psalmellus and Epistle",Evangelium:"Gospel","Antiphona post Evangelium":"Antiphon after the Gospel and Offertory",Credo:"Creed",Prefatio:"Preface and Sanctus","Incipit Canon.":"Canon",Transitorium:"Transitorium",Postcommunio:"Postcommunion and Dismissal"}},
+  a:{key:"a",lat:true,name:"Ambrosian",byHead:{_start:"Preparation and prayers at the altar steps",Ingressa:"Ingressa",Gloria:"Gloria and Prayer over the People","Lectio (Prokeimenon).":"Prophecy, Psalmellus and Epistle",Evangelium:"Gospel","Antiphona post Evangelium":"Antiphon after the Gospel and Offertory",Credo:"Creed",Prefatio:"Preface and Sanctus","Incipit Canon.":"Canon, Lord's Prayer and Communion",Transitorium:"Transitorium",Postcommunio:"Postcommunion and Dismissal"}},
   z:{key:"mz",lat:false,name:"Mozarabic",byHead:{_start:"Preparation and prayers at the altar steps",Gloria:"Gloria",COLLECT:"Collect",Lesson:"Lessons and Epistle","The GOSPEL":"Gospel, Lauda and Offertory",Lavabo:"Lavabo and the first prayer (Missa)","II. PRAYER":"Second prayer: the Diptychs","III. PRAYER":"Third prayer: Post Nomina","IV. PRAYER":"Fourth prayer: Ad Pacem; the Inlatio and Sanctus","V. PRAYER":"Fifth prayer: Post Sanctus and the Institution","VI. PRAYER":"Sixth prayer: Post Pridie; the Creed","AD CONFRACTIONEM, varying.":"The Fraction","VII. PRAYER":"Seventh prayer: the Lord's Prayer and Communion","The COMMUNION, which varies.":"Communion and Dismissal"}},
 };
 const ordoClean=l=>{ let x=String(l).replace(/\t/g," ").replace(/^!x!!?/,"!").replace(/^!x!/,""); if(/^!\[:.*:\]$/.test(x.trim())||/^!\*/.test(x.trim())) return ""; if(/^\[.*\]$/.test(x.trim())) x="!"+x.trim().slice(1,-1); if(/^!\[/.test(x)) x="!"+x.slice(2).replace(/\]$/,""); if(x.trim()==="...") x="!(The proper text of the day.)"; if(x.trim()==="[INSERT PREFACE HERE]") x="!(The Preface of the day.)"; return x; };
@@ -359,7 +359,7 @@ async function buildOrdoOnly(ctx,opts){
   const lang=cfg.lat?(opts.lang||"both"):"en", P={la:{},en:{}};
   let parts;
   if(cfg.parts){ const L=ordoLines(D.Latin), E=ordoLines(D.English), sl=ordoSplit(L,cfg.parts.map(x=>x[1])), se=ordoSplit(E,cfg.parts.map(x=>x[2])); parts=cfg.parts.map((x,i)=>({t:x[0],la:sl[i],en:se[i]})); }
-  else { const src=cfg.lat?D.Latin:D.English; parts=src.map(s=>({t:cfg.byHead[s.h]||s.h,la:cfg.lat?ordoLines([s]):[],en:cfg.lat?[]:ordoLines([s])})).filter(p=>(p.la.length||p.en.length)); }
+  else { const src=cfg.lat?D.Latin:D.English; parts=src.map(s=>({t:cfg.byHead[s.h]||s.h,la:cfg.lat?ordoLines([s]):[],en:cfg.lat?ordoLines(D.English.filter(e=>e.h===s.h)):ordoLines([s])})).filter(p=>(p.la.length||p.en.length)); }
   if(cfg.key==="op"&&!opts.leonine) parts=parts.filter(p=>p.t!=="Prayers after Low Mass");
   if(opts.lastGospel===false) parts=parts.filter(p=>p.t!=="Last Gospel");
   const out=[];
@@ -369,9 +369,10 @@ async function buildOrdoOnly(ctx,opts){
     if(!cfg.lat||!la.length) html=`<div class="txt one">${(en.length?en:la).map(l=>lineHTML(l,P,"en")).join("")}</div>`;
     else html=block(la,en,P,lang);
     if(p.veiled) html+=cue(VEIL);
-    let secs=words(en.length?en:la)/2.4+(p.veiled?30:0);
-    if(/Communion/.test(p.t)&&!/Postcommunion/.test(p.t)){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the faithful</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
-    if(/Gospel/.test(p.t)&&!/Last/.test(p.t)&&opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; }
+    const spoken=x=>x.filter(l=>!l.trim().startsWith("!"));
+    let secs=words(spoken(la.length?la:en))/2.4+(p.veiled?30:0);   /* the Latin has no seasonal variants, so it times the Mass better */
+    if(!out.comm&&/Communion/.test(p.t)&&!/Postcommunion/.test(p.t)){ out.comm=1; html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the faithful</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
+    if(!out.hom&&/Gospel/.test(p.t)&&!/Last|after the Gospel/.test(p.t)&&opts.homily>0){ out.hom=1; html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; }
     out.push(sec(p.t,secs/60,html));
   }
   return out;

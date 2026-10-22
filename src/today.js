@@ -15,7 +15,7 @@ const MASS_RITES=[
   {id:"h",name:"Hybrid",d:"The proposal on this site: traditional core, more Scripture",tr:"dr"},
   {id:"b",name:"Byzantine Divine Liturgy",d:"Apostol and Gospel for every day",tr:"dr"},
   {id:"d",name:"Dominican Mass",d:"Ordo Praedicatorum · the Ordinary in Latin and English",tr:"dr",ord:1},
-  {id:"a",name:"Ambrosian Mass",d:"Rite of Milan · the Ordinary and Canon",tr:"dr",ord:1},
+  {id:"a",name:"Ambrosian Mass",d:"Rite of Milan · the Ordinary and Canon in Latin and English",tr:"dr",ord:1},
   {id:"z",name:"Mozarabic Mass",d:"Old Spanish rite · the Ordinary in English",tr:"dr",ord:1},
 ];
 const OFFICE_RITES=[
@@ -64,7 +64,7 @@ function coverage(type,rite,hour){
     if(rite==="o") return ["guide","The Prayer Book texts, the Canon and the propers of the day are printed. Divine Worship's own wording differs in places: follow your Missal there."];
     if(rite==="n") return ["guide","The readings and the Latin Ordinary, with a traditional English beside it, are printed. The collects, preface, Eucharistic Prayer and the current English wording come from your missal: press Add text to fill them in."];
     if(rite==="d") return ["order","The Ordinary of the Dominican Mass in Latin and English, from Divinum Officium. The propers of the day (Officium, collect, lessons, responsory, offertory, secret, preface, communion, postcommunion) come from your Dominican Missal."];
-    if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
+    if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
@@ -496,7 +496,7 @@ async function renderSession(){
   else if(S.type==="mass"&&ORD_ONLY(S.rite)){
     const nm=MASS_RITES.find(x=>x.id===S.rite).name;
     const src={d:"The Ordinary is Divinum Officium's Dominican Ordo (MIT licence): the Latin of the Missale Ordinis Praedicatorum with a volunteer English translation.",
-      a:"The Latin Ordinary and Canon are Divinum Officium's Ambrosian Ordo (MIT licence).",
+      a:"The Latin Ordinary and Canon are Divinum Officium's Ambrosian Ordo (MIT licence). The English is E. G. Cuthbert F. Atchley, The Ambrosian Liturgy (London, 1909), public domain, transcribed from the Internet Archive scan.",
       z:"The English Ordinary is Divinum Officium's Mozarabic Ordo (MIT licence), a traditional translation following the Missale mixtum. Divinum Officium's Latin follows the reformed Missale Hispano-Mozarabicum (1991), a modern edition, and is not reproduced."}[S.rite];
     body=`<h2 class="dayname">${esc(nm)}: the Ordinary</h2><p class="callout">The fixed texts of the Mass are printed in full. This rite keeps its own calendar and propers, which are not on this site yet: the guide marks where they go.</p><div id="massGuide"></div><footer class="sesfoot"><p>${src}</p></footer>`;
   }
