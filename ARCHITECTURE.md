@@ -33,6 +33,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 | `propers-1962.json`, `propers-pre55.json`, `ordo.json` | Traditional Mass propers and Ordinary, Latin and English |
 | `chant.json`, `hymns.json` | Gregorian chant (GABC) and public-domain hymns |
 | `bcp-office.json` | 1662 Mattins, Evensong and collects |
+| `data/bcp1928.json` | The American Prayer Book of 1928: Morning and Evening Prayer, Holy Communion and the collects, epistles and gospels, built by `tools/bcp1928.py` from the Society of Archbishop Justus HTML (for the rubrics) and ePub (for the text) |
 | `data/ordo-rites.json` | The Ordinaries of the Dominican, Ambrosian and Mozarabic Masses, parsed from Divinum Officium's Ordo files by `tools/do_ordo.py` (which also corrects OCR slips); the Ambrosian English is Atchley's 1909 translation, page-checked in `tools/texts/atchley-ambrosian.txt` |
 | `data/dayhours.json` | Prime, Terce, Sext and None from The Day-Hours of the Church of England (1877), compiled by `tools/dayhours.py` from the page-checked transcription in `tools/texts/dayhours-little.txt` |
 | `data/byz-liturgy.json` | Liturgies of St John Chrysostom, St Basil and the Presanctified (Hapgood, 1906) plus the Sunday hymns of the eight tones (Appendix A), compiled by `tools/byz_texts.py` from the page-checked transcriptions in `tools/texts/hapgood-liturgy.txt` and `hapgood-tones.txt` |

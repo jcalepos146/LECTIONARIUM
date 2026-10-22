@@ -17,6 +17,7 @@ const MASS_RITES=[
   {id:"d",name:"Dominican Mass",d:"Ordo Praedicatorum · the Ordinary in Latin and English",tr:"dr",ord:1},
   {id:"a",name:"Ambrosian Mass",d:"Rite of Milan · the Ordinary and Canon in Latin and English",tr:"dr",ord:1},
   {id:"z",name:"Mozarabic Mass",d:"Old Spanish rite · the Ordinary in English",tr:"dr",ord:1},
+  {id:"bcp28",name:"Holy Communion (1928 Prayer Book)",d:"Episcopal Church (USA) · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
 ];
 const OFFICE_RITES=[
   {id:"loth",name:"Liturgy of the Hours",d:"Liturgia Horarum (Paul VI), four-week psalter"},
@@ -26,22 +27,25 @@ const OFFICE_RITES=[
   {id:"mon",name:"Monastic Office",d:"Benedictine Breviary (1963) · full Latin and English, with chant"},
   {id:"op",name:"Dominican Office",d:"Ordo Praedicatorum, 1962 · full Latin and English"},
   {id:"byz",name:"Byzantine Office",d:"Horologion · Octoechos"},
+  {id:"bcp28",name:"1928 Prayer Book Office",d:"Episcopal Church (USA) · Morning and Evening Prayer"},
 ];
 const HOURS={
   loth:[["or","Office of Readings"],["lauds","Morning Prayer"],["terce","Midmorning Prayer"],["sext","Midday Prayer"],["none","Midafternoon Prayer"],["vespers","Evening Prayer"],["compline","Night Prayer"]],
   dwdo:[["mattins","Mattins (Morning Prayer)"],["prime","Prime"],["terce","Terce"],["sext","Sext"],["none","None"],["evensong","Evensong (Evening Prayer)"],["compline","Compline"]],
   br:[["matins","Matins"],["lauds","Lauds"],["prime","Prime"],["terce","Terce"],["sext","Sext"],["none","None"],["vespers","Vespers"],["compline","Compline"]],
+  bcp28:[["mp","Morning Prayer"],["ep","Evening Prayer"]],
   byz:[["vespers","Vespers"],["compline","Compline"],["midnight","Midnight Office"],["orthros","Orthros (Matins)"],["first","First Hour"],["third","Third Hour"],["sixth","Sixth Hour"],["ninth","Ninth Hour"]],
 };
-const hoursFor=r=>HOURS[r==="loth"?"loth":r==="dwdo"?"dwdo":r==="byz"?"byz":"br"];
+const hoursFor=r=>HOURS[r]||HOURS.br;
 function suggestHour(rite){
   const h=new Date().getHours()+new Date().getMinutes()/60;
   const pick = h<5?"night": h<8?"morning": h<10.5?"mid1": h<13.5?"mid2": h<16.5?"mid3": h<20?"evening":"night";
   const map={loth:{morning:"lauds",mid1:"terce",mid2:"sext",mid3:"none",evening:"vespers",night:"compline"},
     dwdo:{morning:"mattins",mid1:"terce",mid2:"sext",mid3:"none",evening:"evensong",night:"compline"},
     br:{morning:"lauds",mid1:"terce",mid2:"sext",mid3:"none",evening:"vespers",night:"compline"},
-    byz:{morning:"orthros",mid1:"third",mid2:"sixth",mid3:"ninth",evening:"vespers",night:"compline"}};
-  return map[rite==="loth"?"loth":rite==="dwdo"?"dwdo":rite==="byz"?"byz":"br"][pick];
+    byz:{morning:"orthros",mid1:"third",mid2:"sixth",mid3:"ninth",evening:"vespers",night:"compline"},
+    bcp28:{night:"ep",morning:"mp",mid1:"mp",mid2:"mp",mid3:"ep",evening:"ep"}};
+  return (map[rite]||map.br)[pick];
 }
 
 /* ---------------------------------------------------------------- state */
@@ -66,9 +70,11 @@ function coverage(type,rite,hour){
     if(rite==="d") return ["order","The Ordinary of the Dominican Mass in Latin and English, from Divinum Officium. The propers of the day (Officium, collect, lessons, responsory, offertory, secret, preface, communion, postcommunion) come from your Dominican Missal."];
     if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
+    if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
     if(/^(br62|br55|mon|op)$/.test(rite)) return ["full","Every part of the hour is printed, in Latin and English."];
+    if(rite==="bcp28") return ["full","The 1928 text is printed in full, with the collect of the day and the psalms of the day of the month. The 1928 Psalter is a light revision of Coverdale's; the Coverdale text is given. Take the lessons from the 1928 (1943) lectionary."];
     if(rite==="dwdo") return /^(prime|terce|sext|none)$/.test(hour)?["full","Printed in full from The Day-Hours of the Church of England (1877), a Prayer Book English breviary, with the Coverdale psalms and the Collect of the Day. Proper antiphons and hymn endings for feasts and seasons come from your book."]:["full","The 1662 Prayer Book text is printed in full, with the Coverdale psalms. Divine Worship adapts it in places."];
     if(rite==="loth") return ["guide","The psalms, canticles and Scripture are printed. The hymns, antiphons, intercessions and prayers come from your breviary: press Add text to fill them in."];
     if(rite==="byz") return ["guide","The psalms and the fixed prayers are printed. The hymns of the day come from your Horologion, Octoechos and Menaion: press Add text to fill them in."];
@@ -479,7 +485,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -493,6 +499,10 @@ async function renderSession(){
   { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<p class="covline">${covBadge(c)} ${esc(c[1])}</p>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
+  else if(S.type==="mass"&&S.rite==="bcp28"){
+    const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1928)${pr&&toDate(iso).getUTCDay()?" · the Sunday's collect, epistle and gospel serve the week":""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1928), public domain, as transcribed by the Society of Archbishop Justus. The epistles and gospels are the Prayer Book's own King James text.</p></footer>`;
+  }
   else if(S.type==="mass"&&ORD_ONLY(S.rite)){
     const nm=MASS_RITES.find(x=>x.id===S.rite).name;
     const src={d:"The Ordinary is Divinum Officium's Dominican Ordo (MIT licence): the Latin of the Missale Ordinis Praedicatorum with a volunteer English translation.",
@@ -552,6 +562,21 @@ async function officeBody(iso, day){
     if(H==="or"){ let LOH={}; try{ LOH=JSON.parse(document.getElementById("lect-extra").textContent).LOH; }catch(e){}
       const c=day.nk && LOH[day.nk];
       slots.first = (dow===0 && c && /\d/.test(c)) ? await blk("Biblical reading · one-year cycle",c,"dr") : `<p class="note">Weekday biblical readings follow the Office's own course; see Universalis for today's.</p>`; }
+  } else if(R==="bcp28"){
+    const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
+    h+=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
+    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1928), with the psalms of the day of the month. Take the lessons from the 1928 (1943) lectionary.</p>`;
+    const steps=[];
+    for(const st of B[H]){
+      let x="";
+      const its=st.items.map(bcpItem);
+      if(st.slot==="psalms"){ x+=its[0]||""; for(const p of bcpPsalms(iso,H==="ep")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); x+=its.slice(1).join(""); }
+      else x=its.join("");
+      if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The First Lesson":"The Second Lesson"} appointed for today in the 1928 Prayer Book lectionary.</p>`;
+      if(st.slot==="collect"&&pr){ const c=pr.sets[0].collect; x=its[0]+`<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(pr.t)}</p>`+c.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")+its.slice(1).join(""); }
+      steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
+    }
+    return {h, steps, hourName};
   } else if(R==="dwdo"){
     const on=(day.o&&day.o.s||"").startsWith("Divine Worship: ")?day.o.s.replace("Divine Worship: ",""):"";
     h+=`<h2 class="dayname">${esc(on||day.o.t)}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;

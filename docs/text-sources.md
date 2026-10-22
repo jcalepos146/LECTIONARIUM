@@ -38,7 +38,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 13 | [west-syriac-catholic](#west-syriac-catholic) | none | 4 | 0 | Shehimo in public-domain English: not located |
 | 14 | [east-syriac-catholic](#east-syriac-catholic) | none | 5 | 0 | Syro-Malabar Raza (1986) and current Chaldean books: permission |
 | 15 | [armenian-catholic](#armenian-catholic) | none | 3 | 0 | Armenian Book of Hours in public-domain English: not located |
-| 16 | [anglican-prayer-books](#anglican-prayer-books) | none (1662 Office only, inside the Ordinariate) | 20 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
+| 16 | [anglican-prayer-books](#anglican-prayer-books) | US 1928: Holy Communion with collects, epistles and gospels, and Morning and Evening Prayer, in full; 1662 Office inside the Ordinariate | 20 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
 | 17 | [anglo-catholic-missals](#anglo-catholic-missals) | none | 1 | 0 | English Missal 1912 first edition: not located on the Internet Archive |
 | 18 | [anglican-music-and-psalter](#anglican-music-and-psalter) | partial (hymns.json) | 4 | 0 | The Hymnal 1940 and 1982: Church Publishing, in copyright |
 | 19 | [anglican-current-books](#anglican-current-books) | none | 0 | 4 | Church of Ireland 2004: its site refused automated access; check by hand; Scottish Episcopal Church current liturgies: download page not located; written permission from ACNA, Canada, New Zealand and Wales for an app |
@@ -327,9 +327,9 @@ Blocked: Armenian Book of Hours in public-domain English: not located.
 
 ### 16. anglican-prayer-books
 
-Catalog: `anglican-1549-england`, `anglican-1552-england`, `anglican-1559-england`, `anglican-1604-england`, `anglican-1662-england`, `anglican-1928-england`, `anglican-1637-scotland`, `anglican-1764-scotland`, `anglican-1929-scotland`, `anglican-1789-us`, `anglican-1892-us`, `anglican-1928-us`, `anglican-1979-us`, `anglican-1918-canada`, `anglican-1878-ireland`, `anglican-1926-ireland` · rite `new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders` · Daily Office and Holy Communion · now **none (1662 Office only, inside the Ordinariate)**
+Catalog: `anglican-1549-england`, `anglican-1552-england`, `anglican-1559-england`, `anglican-1604-england`, `anglican-1662-england`, `anglican-1928-england`, `anglican-1637-scotland`, `anglican-1764-scotland`, `anglican-1929-scotland`, `anglican-1789-us`, `anglican-1892-us`, `anglican-1928-us`, `anglican-1979-us`, `anglican-1918-canada`, `anglican-1878-ireland`, `anglican-1926-ireland` · rite `new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders` · Daily Office and Holy Communion · now **US 1928: Holy Communion with collects, epistles and gospels, and Morning and Evening Prayer, in full; 1662 Office inside the Ordinariate**
 
-Missing: each book's Communion order; Office variants; collects; lectionary tables; calendars.
+Missing: US 1979 Rite I and II; 1662 Holy Communion; 1928 lectionary tables; other national books.
 
 The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.
 

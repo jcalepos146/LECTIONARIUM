@@ -1966,6 +1966,56 @@ async function buildOrdoOnly(ctx,opts){
   return out;
 }
 
+/* ---------------------------------------------------------------- Prayer Book Holy Communion (1928, USA)
+   data/bcp1928.json (tools/bcp1928.py): the Order with its rubrics, and the collects, epistles and gospels. */
+function pbItem(it){
+  const [k,t,r,lab]=it;
+  if(k==="rub") return `<p class="rub">${esc(t)}</p>`;
+  if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
+  if(k==="h") return `<h4 class="sub2">${esc(t)}</h4>`;
+  return `<p data-r="${r||"all"}">${lab?`<span class="sp">${lab}</span> `:""}${inl(t)}</p>`;
+}
+const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=Math.round((toDate(iso)-E)/DAY);
+  if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
+async function buildPB(ctx,opts){
+  const B=await J("data/bcp1928.json"), iso=ctx.iso, day=ctx.day||{};
+  const pr=day.o&&day.o.bcp?B.propers[day.o.bcp]:null, set=pr?pr.sets[0]:null;
+  const AB=opts.abridge||0, out=[];
+  const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
+  const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
+  const pref=PB_PREFACE(season(iso,day),iso);
+  for(const st of B.hc){
+    let html="", secs=spoken(st.items)/2.4;
+    if(st.t==="The Decalogue"&&AB>=1){ out.push(sec(st.t,0,abr("the Decalogue (the Summary of the Law and the Kyrie are said instead)"))); continue; }
+    if(st.t==="Proper Prefaces"){
+      const its=st.items, i0=its.findIndex(x=>x[0]==="h"&&x[1].replace(/\.$/,"").toLowerCase()===pref.toLowerCase());
+      let today="";
+      if(i0>=0){ let j=i0+1; const pick=[]; while(j<its.length&&its[j][0]!=="h"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(pref)}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
+      else { secs=0; today=`<p class="note">No proper preface today: the Sanctus follows the common preface directly.</p>`; }
+      html=today+`<details class="canon"><summary>All the proper prefaces</summary>${its.map(pbItem).join("")}</details>`;
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
+    }
+    html=st.items.map(pbItem).join("");
+    if(st.slot==="collect"){
+      const its=st.items, k=its.findIndex(x=>/Collect of the Day/.test(x[1]));
+      const coll=set&&set.collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}</p>`+set.collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
+      html=its.slice(0,k+1).map(pbItem).join("")+coll+(AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec"))+its.slice(k+1).map(pbItem).join("");
+      secs+=(set?set.collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
+    }
+    if(st.slot==="gospel"){
+      const g=set&&(set.gospel||(pr.sets.find(x=>x.gospel)||{}).gospel);
+      const its=st.items, k=Math.max(0,its.findIndex(x=>/Glory be to thee, O Lord/.test(x[1])));
+      html=its.slice(0,k+1).map(pbItem).join("")+reading("Gospel",g,"cel")+its.slice(k+1).map(pbItem).join("");
+      secs+=g?g.text.join(" ").split(/\s+/).length/2.6:120;
+      if(pr&&pr.sets.length>1) html+=`<p class="note">This day has a second set of collect, epistle and gospel (for an early celebration) in the Prayer Book.</p>`;
+    }
+    if(st.slot==="sermon"&&opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; }
+    if(st.slot==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
+    out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`));
+  }
+  return out;
+}
+
 /* ---------------------------------------------------------------- Novus Ordo (Heritage Missal order) */
 const LAT={
   sign:"In nómine Patris, et Fílii, ✠ et Spíritus Sancti. ℟. Amen.",
@@ -2331,7 +2381,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite], byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28", byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -2361,7 +2411,7 @@ function controls(rite, opts, iso, day, auto){
           ${rite==="n"?`<label class="sl">Eucharistic Prayer <select data-o="ep">${["I","II","III","IV"].map(n=>`<option${opts.ep===n?" selected":""}>${n}</option>`).join("")}</select></label>${chk("up","Universal Prayer",opts.up)}`:""}
           ${rite==="o"?chk("up","Prayers of the People",opts.up)+chk("lastGospel","Last Gospel",opts.lastGospel):""}
           ${trad||rite==="d"?chk("leonine","Leonine prayers after Low Mass",opts.leonine)+chk("lastGospel","Last Gospel",opts.lastGospel!==false):""}
-          ${trad||(oo&&ORDO_ONLY[rite].lat)?`<label class="sl">Text <select data-o="lang"><option value="both"${opts.lang==="both"?" selected":""}>Latin and English</option><option value="la"${opts.lang==="la"?" selected":""}>Latin</option><option value="en"${opts.lang==="en"?" selected":""}>English</option></select></label>`:""}
+          ${trad||(ORDO_ONLY[rite]&&ORDO_ONLY[rite].lat)?`<label class="sl">Text <select data-o="lang"><option value="both"${opts.lang==="both"?" selected":""}>Latin and English</option><option value="la"${opts.lang==="la"?" selected":""}>Latin</option><option value="en"${opts.lang==="en"?" selected":""}>English</option></select></label>`:""}
         </fieldset>
       </div>
     </details>
@@ -2371,6 +2421,10 @@ function controls(rite, opts, iso, day, auto){
 /* Steps that shorten a session, gentlest first, for each rite. The fitter applies them in order and stops once the target is met. */
 function ladder(rite){
   const trad=rite==="m"||rite==="p"||rite==="h", byz=rite==="b";
+  if(rite==="bcp28") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    ["The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
+    ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
+    ["The Epistle left out", o=>{ o.abridge=3; },"ab"]];
   if(ORDO_ONLY[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["Last Gospel and prayers after Mass left out", o=>{ o.lastGospel=false; o.leonine=false; }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
@@ -2486,6 +2540,7 @@ async function render(el, ctx){
     if(rite==="o") return buildOrd(ctx,o);
     if(rite==="b") return buildByz(ctx,o);
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
+    if(rite==="bcp28") return buildPB(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";
   const fit=async(base)=>{
@@ -3383,6 +3438,7 @@ const MASS_RITES=[
   {id:"d",name:"Dominican Mass",d:"Ordo Praedicatorum · the Ordinary in Latin and English",tr:"dr",ord:1},
   {id:"a",name:"Ambrosian Mass",d:"Rite of Milan · the Ordinary and Canon in Latin and English",tr:"dr",ord:1},
   {id:"z",name:"Mozarabic Mass",d:"Old Spanish rite · the Ordinary in English",tr:"dr",ord:1},
+  {id:"bcp28",name:"Holy Communion (1928 Prayer Book)",d:"Episcopal Church (USA) · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
 ];
 const OFFICE_RITES=[
   {id:"loth",name:"Liturgy of the Hours",d:"Liturgia Horarum (Paul VI), four-week psalter"},
@@ -3392,22 +3448,25 @@ const OFFICE_RITES=[
   {id:"mon",name:"Monastic Office",d:"Benedictine Breviary (1963) · full Latin and English, with chant"},
   {id:"op",name:"Dominican Office",d:"Ordo Praedicatorum, 1962 · full Latin and English"},
   {id:"byz",name:"Byzantine Office",d:"Horologion · Octoechos"},
+  {id:"bcp28",name:"1928 Prayer Book Office",d:"Episcopal Church (USA) · Morning and Evening Prayer"},
 ];
 const HOURS={
   loth:[["or","Office of Readings"],["lauds","Morning Prayer"],["terce","Midmorning Prayer"],["sext","Midday Prayer"],["none","Midafternoon Prayer"],["vespers","Evening Prayer"],["compline","Night Prayer"]],
   dwdo:[["mattins","Mattins (Morning Prayer)"],["prime","Prime"],["terce","Terce"],["sext","Sext"],["none","None"],["evensong","Evensong (Evening Prayer)"],["compline","Compline"]],
   br:[["matins","Matins"],["lauds","Lauds"],["prime","Prime"],["terce","Terce"],["sext","Sext"],["none","None"],["vespers","Vespers"],["compline","Compline"]],
+  bcp28:[["mp","Morning Prayer"],["ep","Evening Prayer"]],
   byz:[["vespers","Vespers"],["compline","Compline"],["midnight","Midnight Office"],["orthros","Orthros (Matins)"],["first","First Hour"],["third","Third Hour"],["sixth","Sixth Hour"],["ninth","Ninth Hour"]],
 };
-const hoursFor=r=>HOURS[r==="loth"?"loth":r==="dwdo"?"dwdo":r==="byz"?"byz":"br"];
+const hoursFor=r=>HOURS[r]||HOURS.br;
 function suggestHour(rite){
   const h=new Date().getHours()+new Date().getMinutes()/60;
   const pick = h<5?"night": h<8?"morning": h<10.5?"mid1": h<13.5?"mid2": h<16.5?"mid3": h<20?"evening":"night";
   const map={loth:{morning:"lauds",mid1:"terce",mid2:"sext",mid3:"none",evening:"vespers",night:"compline"},
     dwdo:{morning:"mattins",mid1:"terce",mid2:"sext",mid3:"none",evening:"evensong",night:"compline"},
     br:{morning:"lauds",mid1:"terce",mid2:"sext",mid3:"none",evening:"vespers",night:"compline"},
-    byz:{morning:"orthros",mid1:"third",mid2:"sixth",mid3:"ninth",evening:"vespers",night:"compline"}};
-  return map[rite==="loth"?"loth":rite==="dwdo"?"dwdo":rite==="byz"?"byz":"br"][pick];
+    byz:{morning:"orthros",mid1:"third",mid2:"sixth",mid3:"ninth",evening:"vespers",night:"compline"},
+    bcp28:{night:"ep",morning:"mp",mid1:"mp",mid2:"mp",mid3:"ep",evening:"ep"}};
+  return (map[rite]||map.br)[pick];
 }
 
 /* ---------------------------------------------------------------- state */
@@ -3432,9 +3491,11 @@ function coverage(type,rite,hour){
     if(rite==="d") return ["order","The Ordinary of the Dominican Mass in Latin and English, from Divinum Officium. The propers of the day (Officium, collect, lessons, responsory, offertory, secret, preface, communion, postcommunion) come from your Dominican Missal."];
     if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
+    if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
     if(/^(br62|br55|mon|op)$/.test(rite)) return ["full","Every part of the hour is printed, in Latin and English."];
+    if(rite==="bcp28") return ["full","The 1928 text is printed in full, with the collect of the day and the psalms of the day of the month. The 1928 Psalter is a light revision of Coverdale's; the Coverdale text is given. Take the lessons from the 1928 (1943) lectionary."];
     if(rite==="dwdo") return /^(prime|terce|sext|none)$/.test(hour)?["full","Printed in full from The Day-Hours of the Church of England (1877), a Prayer Book English breviary, with the Coverdale psalms and the Collect of the Day. Proper antiphons and hymn endings for feasts and seasons come from your book."]:["full","The 1662 Prayer Book text is printed in full, with the Coverdale psalms. Divine Worship adapts it in places."];
     if(rite==="loth") return ["guide","The psalms, canticles and Scripture are printed. The hymns, antiphons, intercessions and prayers come from your breviary: press Add text to fill them in."];
     if(rite==="byz") return ["guide","The psalms and the fixed prayers are printed. The hymns of the day come from your Horologion, Octoechos and Menaion: press Add text to fill them in."];
@@ -3845,7 +3906,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -3859,6 +3920,10 @@ async function renderSession(){
   { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<p class="covline">${covBadge(c)} ${esc(c[1])}</p>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
+  else if(S.type==="mass"&&S.rite==="bcp28"){
+    const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1928)${pr&&toDate(iso).getUTCDay()?" · the Sunday's collect, epistle and gospel serve the week":""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1928), public domain, as transcribed by the Society of Archbishop Justus. The epistles and gospels are the Prayer Book's own King James text.</p></footer>`;
+  }
   else if(S.type==="mass"&&ORD_ONLY(S.rite)){
     const nm=MASS_RITES.find(x=>x.id===S.rite).name;
     const src={d:"The Ordinary is Divinum Officium's Dominican Ordo (MIT licence): the Latin of the Missale Ordinis Praedicatorum with a volunteer English translation.",
@@ -3918,6 +3983,21 @@ async function officeBody(iso, day){
     if(H==="or"){ let LOH={}; try{ LOH=JSON.parse(document.getElementById("lect-extra").textContent).LOH; }catch(e){}
       const c=day.nk && LOH[day.nk];
       slots.first = (dow===0 && c && /\d/.test(c)) ? await blk("Biblical reading · one-year cycle",c,"dr") : `<p class="note">Weekday biblical readings follow the Office's own course; see Universalis for today's.</p>`; }
+  } else if(R==="bcp28"){
+    const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
+    h+=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
+    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1928), with the psalms of the day of the month. Take the lessons from the 1928 (1943) lectionary.</p>`;
+    const steps=[];
+    for(const st of B[H]){
+      let x="";
+      const its=st.items.map(bcpItem);
+      if(st.slot==="psalms"){ x+=its[0]||""; for(const p of bcpPsalms(iso,H==="ep")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); x+=its.slice(1).join(""); }
+      else x=its.join("");
+      if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The First Lesson":"The Second Lesson"} appointed for today in the 1928 Prayer Book lectionary.</p>`;
+      if(st.slot==="collect"&&pr){ const c=pr.sets[0].collect; x=its[0]+`<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(pr.t)}</p>`+c.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")+its.slice(1).join(""); }
+      steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
+    }
+    return {h, steps, hourName};
   } else if(R==="dwdo"){
     const on=(day.o&&day.o.s||"").startsWith("Divine Worship: ")?day.o.s.replace("Divine Worship: ",""):"";
     h+=`<h2 class="dayname">${esc(on||day.o.t)}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;

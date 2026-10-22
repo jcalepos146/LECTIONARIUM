@@ -378,6 +378,56 @@ async function buildOrdoOnly(ctx,opts){
   return out;
 }
 
+/* ---------------------------------------------------------------- Prayer Book Holy Communion (1928, USA)
+   data/bcp1928.json (tools/bcp1928.py): the Order with its rubrics, and the collects, epistles and gospels. */
+function pbItem(it){
+  const [k,t,r,lab]=it;
+  if(k==="rub") return `<p class="rub">${esc(t)}</p>`;
+  if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
+  if(k==="h") return `<h4 class="sub2">${esc(t)}</h4>`;
+  return `<p data-r="${r||"all"}">${lab?`<span class="sp">${lab}</span> `:""}${inl(t)}</p>`;
+}
+const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=Math.round((toDate(iso)-E)/DAY);
+  if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
+async function buildPB(ctx,opts){
+  const B=await J("data/bcp1928.json"), iso=ctx.iso, day=ctx.day||{};
+  const pr=day.o&&day.o.bcp?B.propers[day.o.bcp]:null, set=pr?pr.sets[0]:null;
+  const AB=opts.abridge||0, out=[];
+  const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
+  const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
+  const pref=PB_PREFACE(season(iso,day),iso);
+  for(const st of B.hc){
+    let html="", secs=spoken(st.items)/2.4;
+    if(st.t==="The Decalogue"&&AB>=1){ out.push(sec(st.t,0,abr("the Decalogue (the Summary of the Law and the Kyrie are said instead)"))); continue; }
+    if(st.t==="Proper Prefaces"){
+      const its=st.items, i0=its.findIndex(x=>x[0]==="h"&&x[1].replace(/\.$/,"").toLowerCase()===pref.toLowerCase());
+      let today="";
+      if(i0>=0){ let j=i0+1; const pick=[]; while(j<its.length&&its[j][0]!=="h"){ pick.push(its[j]); j++; } today=`<p class="cite">Proper Preface: ${esc(pref)}</p>`+pick.map(pbItem).join(""); secs=spoken(pick)/2.4; }
+      else { secs=0; today=`<p class="note">No proper preface today: the Sanctus follows the common preface directly.</p>`; }
+      html=today+`<details class="canon"><summary>All the proper prefaces</summary>${its.map(pbItem).join("")}</details>`;
+      out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
+    }
+    html=st.items.map(pbItem).join("");
+    if(st.slot==="collect"){
+      const its=st.items, k=its.findIndex(x=>/Collect of the Day/.test(x[1]));
+      const coll=set&&set.collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}</p>`+set.collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
+      html=its.slice(0,k+1).map(pbItem).join("")+coll+(AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec"))+its.slice(k+1).map(pbItem).join("");
+      secs+=(set?set.collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
+    }
+    if(st.slot==="gospel"){
+      const g=set&&(set.gospel||(pr.sets.find(x=>x.gospel)||{}).gospel);
+      const its=st.items, k=Math.max(0,its.findIndex(x=>/Glory be to thee, O Lord/.test(x[1])));
+      html=its.slice(0,k+1).map(pbItem).join("")+reading("Gospel",g,"cel")+its.slice(k+1).map(pbItem).join("");
+      secs+=g?g.text.join(" ").split(/\s+/).length/2.6:120;
+      if(pr&&pr.sets.length>1) html+=`<p class="note">This day has a second set of collect, epistle and gospel (for an early celebration) in the Prayer Book.</p>`;
+    }
+    if(st.slot==="sermon"&&opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; }
+    if(st.slot==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
+    out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`));
+  }
+  return out;
+}
+
 /* ---------------------------------------------------------------- Novus Ordo (Heritage Missal order) */
 const LAT={
   sign:"In nómine Patris, et Fílii, ✠ et Spíritus Sancti. ℟. Amen.",
@@ -743,7 +793,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite], byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28", byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -773,7 +823,7 @@ function controls(rite, opts, iso, day, auto){
           ${rite==="n"?`<label class="sl">Eucharistic Prayer <select data-o="ep">${["I","II","III","IV"].map(n=>`<option${opts.ep===n?" selected":""}>${n}</option>`).join("")}</select></label>${chk("up","Universal Prayer",opts.up)}`:""}
           ${rite==="o"?chk("up","Prayers of the People",opts.up)+chk("lastGospel","Last Gospel",opts.lastGospel):""}
           ${trad||rite==="d"?chk("leonine","Leonine prayers after Low Mass",opts.leonine)+chk("lastGospel","Last Gospel",opts.lastGospel!==false):""}
-          ${trad||(oo&&ORDO_ONLY[rite].lat)?`<label class="sl">Text <select data-o="lang"><option value="both"${opts.lang==="both"?" selected":""}>Latin and English</option><option value="la"${opts.lang==="la"?" selected":""}>Latin</option><option value="en"${opts.lang==="en"?" selected":""}>English</option></select></label>`:""}
+          ${trad||(ORDO_ONLY[rite]&&ORDO_ONLY[rite].lat)?`<label class="sl">Text <select data-o="lang"><option value="both"${opts.lang==="both"?" selected":""}>Latin and English</option><option value="la"${opts.lang==="la"?" selected":""}>Latin</option><option value="en"${opts.lang==="en"?" selected":""}>English</option></select></label>`:""}
         </fieldset>
       </div>
     </details>
@@ -783,6 +833,10 @@ function controls(rite, opts, iso, day, auto){
 /* Steps that shorten a session, gentlest first, for each rite. The fitter applies them in order and stops once the target is met. */
 function ladder(rite){
   const trad=rite==="m"||rite==="p"||rite==="h", byz=rite==="b";
+  if(rite==="bcp28") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    ["The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
+    ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
+    ["The Epistle left out", o=>{ o.abridge=3; },"ab"]];
   if(ORDO_ONLY[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
     ["Last Gospel and prayers after Mass left out", o=>{ o.lastGospel=false; o.leonine=false; }],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
@@ -898,6 +952,7 @@ async function render(el, ctx){
     if(rite==="o") return buildOrd(ctx,o);
     if(rite==="b") return buildByz(ctx,o);
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
+    if(rite==="bcp28") return buildPB(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";
   const fit=async(base)=>{
