@@ -1088,9 +1088,10 @@
       ],
       "rite": "new",
       "service": "Qurbana and Office",
-      "now": "none",
+      "now": "The Liturgy of Adai and Mari in full, from the Assyrian Mission's English of 1893 (rite adai); Chaldean differences noted",
       "missing": [
-        "Qurbana of Addai and Mari",
+        "Chaldean and Syro-Malabar forms of the Qurbana",
+        "anaphoras of Theodore and Nestorius",
         "daily office",
         "lectionary"
       ],
@@ -1816,7 +1817,7 @@
       ],
       "rite": "new (shared builders with the Eastern Catholic churches of the same tradition)",
       "service": "Liturgy and Office",
-      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt)",
+      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt). Church of the East: the Liturgy of Adai and Mari in full (1893 English, rite adai)",
       "missing": [
         "liturgies",
         "hours",
