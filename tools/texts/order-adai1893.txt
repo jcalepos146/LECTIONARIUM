@@ -1,0 +1,577 @@
+# The Liturgy of the Holy Apostles Adai and Mari, together with two additional liturgies to be said on certain
+# feasts and other days: and the Order of Baptism (London: printed for the Archbishop of Canterbury's Assyrian
+# Mission, 1893), pp. 1-38: the Order of the Hallowing of the Apostles. The translation is by the priests of the
+# Mission (A. J. Maclean and W. H. Browne), from the Mission's Urmi edition of the Takhsa. Public domain
+# (published before 1929). Transcribed from the Internet Archive scan (LiturgyAdai, a Google scan whose pages run
+# backwards: book p. 1 is page/n174, p. 13 is n154): the text from the scan's ABBYY layer, which marks the
+# italic rubrics, proofread by hand, with the two-column pages and every doubtful reading checked against the
+# page images. Square brackets are the book's: they mark the anthems, litanies and other parts used with the
+# Liturgy but not printed in the Takhsa. The book's footnotes that explain the rite are kept, marked "Note".
+# Where the book prints a marginal column of the priest's actions beside the deacon's litany, the column is given
+# as rubrics before the litany, or folded beside it. Two evident misprints are corrected: "hema" for bema (p. 14) and
+# "Ps. cxcviii." for Ps. cxlviii. (p. 36). The special festal anthems (Qanun dkhilat) to which a note on p. 33 refers
+# are not in this copy. Markup: see tools/orders.py.
+title: The Liturgy of the Holy Apostles Adai and Mari
+book: The Liturgy of the Holy Apostles Adai and Mari, translated for the Archbishop of Canterbury's Assyrian Mission (London, 1893)
+
+= The Beginning and the Marmitha
+## Order of the Hallowing of the Apostles, made by Mar Adai and Mar Mari the blessed Apostles
+¶ First the priest begins.
+Priest. In the name of the Father and of the Son and of the Holy Spirit for ever. Glory to God in the highest
+¶ repeat three times
+{cel} and on earth peace and good hope to men, at every season and for ever; amen. Our Father Which art in heaven hallowed be Thy name. Thy kingdom come. [Holy, holy, holy art Thou. Our Father Which art in heaven. Heaven and earth are full of the greatness of Thy glory. Angels and men cry to Thee, Holy, Holy, Holy art Thou. Our Father Which art in heaven hallowed be Thy name. Thy kingdom come.] Thy will be done, as in heaven so on earth. Give us the bread of our need to-day. And forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from the evil. For Thine is the kingdom and the power and the glory for ever and ever amen. [Glory be to the Father and to the Son and to the Holy Spirit, from everlasting and for ever and ever amen. Our Father Which art in heaven hallowed be Thy name. Thy kingdom come. Holy, Holy, Holy art Thou. Our Father Which art in heaven. Heaven and earth are full of the greatness of Thy glory. Angels and men cry to Thee, Holy, Holy, Holy art Thou.]
+¶ Note: Square brackets are used in this translation to mark farcing, anthems, etc., which are used with the Liturgy, but which are not printed in the Takhsa. "Angels" is literally "watchers" (Dan. iv. 13).
+Deacon. Let us pray. Peace be with us.
+¶ Prayer before the Marmitha for Sundays and Feasts.
+Priest. Strengthen, our Lord and our God, our weakness by Thy grace that we may administer the holy mysteries which were given for the renewal and redemption of our nature, through the mercies of Thy beloved Son, O Lord of all, Father and Son and Holy Spirit for ever.
+[or] Prayer on Memorials, and on ordinary days
+Priest. May the adorable and glorious name of Thy glorious Trinity, be worshipped and glorified and honoured and exalted and confessed and blessed in heaven and on earth, at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+[/or]
+¶ They begin the Marmitha appointed.
+@psalter: The Marmitha appointed, sung antiphonally by those within and those without the sanctuary
+¶ Note: The Marmitha is the portion of Psalms appointed for various seasons or days. (1) First Sunday of Advent to the Fast, except on Memorials of Saints; also from Easter to Pentecost: Ps. xcvi.-xcviii., inclusive. Continuation: Ps. xxxv., from ver. 18 all under one Gloria. (2) Sundays of the Fast and Sundays from Pentecost to the "Hallowing of the Church": Ps. cxliv.-cxlvi., inclusive. (3) Hallowing of the Church, i.e. the four Sundays before Advent: Ps. cxlvii.-cl., inclusive. Continuation: Ps. xlvi., from ver. 4, "the holy place." (4) Memorials of Saints, special. On some feasts the Continuation is not that of the season. There is no farcing on feasts, but after each clause "Hallelujah" is said. The word "feast" is now usually confined by the East-Syrians to the feasts of our Lord. Saints' days are called by them "Memorials."
+Priest. [Ps. xv. 1.] Lord, who shall dwell in Thy tabernacle: and who shall abide on Thy holy mountain? In purity of thoughts, O our Lord, make me to stand before Thine altar. Lord, who shall dwell, etc.
+¶ Deacon. [Ver. 2. Priest. Ver. 3; and so on alternately to the end of Ps. xv.] Priest. [Ps. cl. 1. Deacon. Ver. 2; and so on. Priest. Ps. cxvii. 1. Deacon. Ver. 2.]
+@psalter: Psalms xv., cl. and cxvii., said verse by verse by the Priest and the Deacon
+Priest. Glory be to the Father and to the Son and to the Holy Spirit, from everlasting and for ever and ever; amen. In purity of thoughts, O our Lord, make me to stand before Thine altar.
+Deacon. [Ps. xv. 1.] How beautiful and glorious is the house of Thy sanctuary, O God, Who sanctifiest all. Peace be with us.
+
+= The Anthem of the Sanctuary and the Lakhumara
+¶ Prayer of the Anthem of the Sanctuary; on Feasts and Sundays.
+Priest. Before the glorious throne, my Lord, of Thy majesty, and the high and exalted chair of Thy honour, and the awful judgment-seat of the intensity of Thy love, and the absolving altar which Thy command hath established, and the place where Thy glory abideth; we, Thy people and the sheep of Thy pasture, with thousands of cherubin singing Hallelujahs to Thee, and ten thousand times ten thousand seraphin and archangels proclaiming Thee Holy, do kneel and worship and confess and glorify [Thee] at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+[or] Prayer on Memorials
+Priest. The Name, great and awful, holy and blessed, gracious and incomprehensible, of Thy glorious Trinity, and Thy grace towards our race, we are bound to confess and worship and glorify at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+[/or]
+¶ They say the appointed Anthem of the Sanctuary.
+@hymn: The appointed Anthem of the Sanctuary
+¶ Prayer of the Lakhumara; on Sundays and Feasts.
+Priest. When the sweet odour of the delight of Thy love, our Lord and our God, penetrates us, and our souls are enlightened by the knowledge of Thy truth, may we be made worthy to receive the revelation of Thy Beloved from heaven, and may we there confess Thee and glorify Thee without ceasing in Thy crowned Church, filled with all aids and blessings. For Thou art the Lord and Creator of all, Father and Son and Holy Spirit for ever.
+[or] And on Memorials and on ordinary days
+Priest. For all Thine unrequited aids and graces towards us, let us confess and glorify Thee without ceasing in Thy crowned Church, filled with all aids and blessings. For Thou art the Lord and Creator of all, Father and Son and Holy Spirit for ever.
+[/or]
+¶ They say Lakhumara ("Thee, Lord," the technical term for the following anthem):
+Choir. Thee, Lord of all, we confess, and Thee, Jesus Christ, we glorify; for Thou art the Quickener of our bodies, and Thou art the Saviour of our souls. I have washed my hands in purity, and I have encompassed Thine altar, O Lord. Thee, Lord of all, we confess, and Thee, Jesus Christ, we glorify; for Thou art the Quickener of our bodies and Thou art the Saviour of our souls. Glory be to the Father and to the Son and to the Holy Spirit, from everlasting and for ever and ever; amen. Thee, Lord of all, we confess, and Thee, Jesus Christ, we glorify; for Thou art the Quickener of our bodies and Thou art the Saviour of our souls.
+Deacon. Let us pray. Peace be with us.
+¶ Prayer.
+Priest. Thou, my Lord, art in truth the Quickener of our bodies and Thou art the good Saviour of our souls and the constant Preserver of our life. Thee, my Lord, we are bound to confess and worship and glorify at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+Deacon. Lift up your voice, all ye people, and glorify the living God.
+¶ They answer,
+Choir. Holy God, Holy Mighty, Holy Immortal, have mercy upon us. Glory be to the Father and to the Son and to the Holy Spirit. Holy God, Holy Mighty, Holy Immortal, have mercy upon us, from everlasting and for ever and ever; amen. Holy God, Holy Mighty, Holy Immortal, have mercy upon us.
+
+= The Lections and the Apostle
+¶ Prayer before the Lection.
+Priest. Holy and Glorious, Mighty and Immortal, Who dwellest in the saints, and Whose will rests content, turn O my Lord, and pity and have mercy upon us, as Thou art wont, at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ The Blessing wherewith the priest blesses the reader of the Lections.
+Priest. Blessed be God the Lord of all, Who giveth us wisdom by His holy doctrine. May His mercies abound on the reader and on the hearers, at every season for ever.
+¶ They read the Lections
+@lessons: The Lections, usually two, and always from the Old Testament or the Acts
+¶ and proceed to the proper Shuraya (literally "The Beginning": a few verses of the Psalms prefixed to the Anthems in the daily services, and appointed in other places, as here before the Apostle).
+@psalter: The proper Shuraya
+¶ Prayer before the Apostle (a Lesson from St Paul).
+Priest. Enlighten for us, our Lord and our God, the impulses of our thoughts, that we may hearken and understand the sweet hearing of Thy life-giving and divine commands; and, in Thy grace and mercies, grant that we may gather from them profit, love, hope and salvation, which are serviceable both to the soul and to the body, and that we may sing to Thee constant praise without ceasing, at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+[or] On Memorials and during the Fast, except on Sundays of the Fast, they pray
+Priest. O wise Ruler, Who wonderfully carest for Thy household, O great Treasury, Who pourest forth in Thy pitifulness all aids and blessings, we beseech Thee, turn, O my Lord, pity and have mercy on us as Thou art wont at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+[/or]
+¶ When the deacon who reads the Apostle says,
+Deacon. Bless, O my Lord.
+¶ the priest answers,
+Priest. Christ give thee wisdom by His holy doctrine, and make thee a pure mirror to those that hearken to thee.
+[or] The Turgama before the Apostle (now obsolete in practice)
+¶ [Turgama before the Apostle, sung by all; they go down to the nave and sing it in two choirs antiphonally.]
+Choir. O ye who have been invited by the great Purpose to the living wedding feast of the banquet of the King of those in heaven and those on earth. Behold the fire of the gospel, and cleanse away all worldly thoughts from your minds with the Divine furnace. The Lord hath opened the treasure of benefits before those who made request to Him, and hath said: Come, receive the deed of remission of your trespasses, O ye sinners. Purify your heart, and be converted like children and become inheritors of the kingdom on high and members of the household. Lo, the gospel is preached to you by spiritual voices and opens for you the road to earthly blessings. It is meet that ye turn from the laws of children to the laws of truth, like Paul the son of the Hebrews. Armed was he when the Lord saw him zealous in Israel, and called him to be zealous among the people of the Christians. See, lo, he was blinded to the commands of the law, and his eyes were opened by the commands of Jesus. He drove from his soul all false thoughts and became an apostle and preached His power among the Greeks. It is fit that we should listen to his glorious and true words which he preaches now in his Epistle to the (Galatians, or Corinthians, or Romans, or Ephesians, etc.)
+¶ Note: Turgama is literally "Interpretation" = homily. The use of a Turgama here and before the Gospel dates only from Gregory Bar-Hebraeus, and is now obsolete in practice. It is not mentioned in the rubrics of the Takhsa. The form above is invariable, but that before the Gospel varies according to the season.
+[/or]
+@lessons: The Apostle, a Lesson from St Paul
+¶ They say,
+Choir. [Glory be to the Lord of Paul.]
+
+= The Gospel
+¶ When the priest descends from the Bema (the space between the sanctuary and the low wall across the nave) and comes to the door of the holy place (the place where the altar stands), he and the deacon both incline, and the deacon says,
+Deacon. Let us pray. Peace be with us.
+¶ The priest prays in a low voice,
+Priest. Thee, O Brightness of the Father's glory, and Image of the Person of Him that begat Thee, Who wast revealed in the body of our humanity, and didst enlighten the darkness of our mind by the light of Thy gospel, we confess and worship and glorify at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ And when the priest goes to make ready the Gospel,
+{cel} Glory to the everlasting mercies which sent Thee unto us, O Christ the light of the world and the life of all for ever. Amen.
+¶ And when he takes it up to go out [of the Sanctuary],
+{cel} Give us wisdom by Thy law, and enlighten our impulses by Thy knowledge, sanctify our souls by Thy truth, and grant that we may be obedient to Thy words and may fulfil Thy commands, at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ For the Censer.
+{cel} O my Lord, let that same sweet odour which breathed forth from Thee when Mary the sinner poured sweet-smelling ointment on Thy head, be mingled with this incense which we place to Thine honour, and for the pardon of our debts and of our sins, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ Note: Here is recited the Zumara, literally "the song." It is a few verses of the Psalms, like the Shuraya.
+¶ The deacon says in an audible voice,
+Deacon. Let us stand ready to hear the holy gospel.
+¶ If it be a day of the mysteries, he says, Be calm and still. (Note: The modern Syrians do not understand the meaning of this rubric.)
+¶ The priest proceeds, saying,
+Priest. Peace be with you.
+¶ They answer,
+Choir. And with thee and with thy spirit.
+¶ Note: Here comes the Turgama before the Gospel. This and the Zumara are variable.
+¶ He reads the Gospel,
+@lessons: The Gospel
+¶ and when he concludes, they say,
+Choir. Glory to Christ our Lord.
+
+= The Karuzutha
+¶ A deacon says the Karuzutha, Father of mercies, and that which follows it [standing outside the sanctuary].
+¶ Note: Karuzutha is literally "proclamation," or "preaching," from kerusso. It is partly a bidding prayer and partly a litany. There are several of them in all the offices, and they are always said by a deacon. This Karuzutha is said daily in the morning and evening offices during most of the year, but is usually abbreviated by passing from the end of the first part to "Pray and desire of God the Lord of all." This Karuzutha is not printed in the Takhsa.
+[or] Meanwhile, at the side: the priest blesses the paten and sets out the bread
+¶ During its recitation they both go, a deacon to take the censer, and the priest to cense the paten. [He says,]
+Priest. This paten is blessed, like the paten of the blessed Apostles in the upper chamber. O Creator of sweet herbs and pleasant spices; in the name of the Father, etc.
+¶ At this time also the ma'apra, or outer vestment, is put on.] The priest takes the paten, and goes and puts on it as many loaves (Bukhra, literally "firstborn": when the bread is first blessed it is so called, in allusion to Christ, the Firstborn of all creatures) as he chooses, and sets the paten on the treasury (a recess in the north wall of the sanctuary) until the Karuzutha be ended.
+¶ During the Karuzutha those in the nave sing the proper Anthem of the Gospel.
+[/or]
+Deacon. [Let us all stand up, as is right, with joy and rejoicing; (on week days in sorrow and care;) let us beseech and say, Our Lord, have mercy upon us.
+¶ The people answer,
+Choir. Our Lord, have mercy upon us.
+¶ He proceeds,
+Deacon. Father of mercies, and God of all consolation, we beseech Thee.
+Answer. Our Lord, have mercy upon us.
+¶ and so after each clause.
+Deacon. Our Saviour, Who carest for us, and suppliest all things, we beseech Thee.
+{srv} For the peace, safety and security of all the world and all the churches, we beseech Thee.
+{srv} For our land and for all lands and for those who dwell in them in faith, we beseech Thee.
+{srv} For a moderate climate and a seasonable year, the fruits and produce of the earth, and prosperity of all the world, we beseech Thee.
+{srv} For the welfare of our holy fathers Mar N. (the patriarch, the metropolitan and the bishop of the diocese), and all those who serve under them, we beseech Thee.
+{srv} For the kings who have power in this world, we beseech Thee.
+{srv} O merciful Lord, Who in mercy governest all, we beseech Thee.
+{srv} For orthodox presbyters and deacons, and all our brotherhood in Christ, we beseech Thee.
+{srv} O Thou Who art rich in mercy and overflowing with compassion, we beseech Thee.
+{srv} O Thou Who art before all worlds and Whose power is strong unto all generations, we beseech Thee.
+{srv} O Thou Who art by nature good and the Giver of all good things, we beseech Thee.
+{srv} O Thou Who willest not the death of a sinner but rather that he should repent of his wickedness and live, we beseech Thee.
+{srv} O Thou Who art glorified in heaven and worshipped on earth, we beseech Thee.
+{srv} O Thou Who in Thy holy [Nativity] madest the earth to rejoice and the heavens to be glad, we beseech Thee.
+{srv} O Thou Who by nature hast immortality and dwellest in the light on high, we beseech Thee.
+{srv} O Saviour of all men and specially of them that believe in Thee, we beseech Thee.
+{srv} Save all of us, O Christ our Lord, by Thy grace; increase in us Thy peace and tranquillity, and have mercy upon us.
+¶ Note: Several of these clauses are only said on Sundays, festivals of our Lord, and memorials of saints. In the clause "O Thou Who in Thy holy [Nativity]" the name of the festival of our Lord last preceding is inserted.
+¶ Another.
+Deacon. Let us pray. Peace be with us. Let us pray and desire of God the Lord of all.
+Answer. Amen.
+Deacon. That He may hear the voice of our prayer, and receive our petition, and have mercy upon us.
+{srv} For the holy Catholic Church, here and everywhere, let us pray and desire of God the Lord of all.
+Answer. Amen.
+¶ and so for every clause.
+Deacon. That His peace and tranquillity may abide within her until the end of the world.
+{srv} For our fathers the bishops, let us pray and desire of God the Lord of all. That they may stand at the head of their dioceses without blame or stain all the days of their life.
+{srv} Especially for the welfare of our holy fathers Mar N., let us pray, etc. That He may keep and uphold them at the head of all their dioceses; that they may feed, serve, make ready for the Lord, a perfect people, zealous of good and noble works.
+{srv} For presbyters and deacons who are in this service of the truth, let us pray, etc. That with a good heart and with pure thoughts they may serve before Him.
+{srv} For all the discreet and holy congregation, children of the holy Catholic Church, let us pray, etc. That they may accomplish their good and holy course, and receive from the Lord hope and promise in the land of life.
+{srv} For the memorial of blessed Mart Mariam the holy Virgin, mother of Jesus our Saviour and Lifegiver, let us pray, etc. That the Holy Ghost Who dwelt in her may sanctify us by His grace and perfect His will in us and seal in us His truth all the days of our life.
+{srv} For the memorial of the prophets and apostles and martyrs and confessors let us pray, etc. That by their prayers and sufferings He may give us with them a good hope and salvation, and make us worthy of their blessed memorial and their living and true promise in the kingdom of heaven.
+{srv} For the memorial of our holy fathers Mar Diodorus, Mar Theodorus, Mar Nestorius, bishops and teachers of the truth, and Mar Ephraim, Mar Nersai, and Mar Abraham, and all the holy, ancient and true teachers, let us pray, etc. That by their prayers and petitions the pure truth of the doctrine of their religion and of their faith may be kept in all the holy Catholic Church till the end of the world.
+{srv} For the memorial of our fathers and brothers, faithful and true, who have died and departed from this world in this true faith and orthodox religion, let us pray, etc. That He may loose and forgive their transgressions and offences, and make them worthy to have joy with the just and righteous who were approved by His will.
+{srv} For this country and its inhabitants, for this town [or, village] and those who dwell in it, for this house and those who care for it, and especially for this congregation, let us pray, etc. That He may take away from us by His grace the sword, captivity, robbery, earthquakes, famine, pestilence, and all evil plagues which are against the body.
+{srv} For those who err from this true faith, and are held in the snares of Satan, let us pray, etc. That He may turn the hardness of their hearts, and make them to know that God the Father of truth, is one, and His Son Jesus Christ our Lord.
+{srv} For those who are grievously sick, and tried by evil spirits, let us pray, etc. That He may send His Angel of mercy and healing to visit, cure, heal, help and comfort them in the multitude of His grace and mercies.
+{srv} For the poor and afflicted, orphans and widows, the harassed, troubled and grieved in spirit in this world, let us pray, etc. That He may give them what they need by His grace, provide for them in His pitifulness, comfort them in His compassion and deliver them from whoso governs them with force and fraud.
+{srv} Pray ye and desire of God the Lord of all: that ye may be to Him a kingdom, holy priests and people. Cry to the mighty Lord God with all your heart and all your soul. For He is God, the Father of compassion, merciful and pitiful, Who willeth not that those whom He hath fashioned should perish, but repent and live before Him. And especially must we pray to, confess, worship, glorify, honour and exalt one God, the adorable Father, Lord of all, Who by His Christ wrought a good hope and salvation for our souls: that He may fulfil in us His grace and mercy and compassion until the end.
+Answer. Amen.
+¶ The deacon proceeds.
+Deacon. With petition and with beseeching we ask for an Angel of peace and mercy.
+Answer. From Thee, O Lord.
+Deacon. Night and day, throughout our life, we ask for continual peace for Thy Church and life without sin.
+Answer. From Thee, O Lord.
+Deacon. We ask continual love, which is the bond of perfectness, with the confirmation of the Holy Ghost.
+Answer. From Thee, O Lord.
+Deacon. We ask for forgiveness of sins and those things which help our lives and propitiate Thy Godhead.
+Answer. From Thee, O Lord.
+Deacon. We ask the mercy and compassion of the Lord continually and at all times.
+Answer. From Thee, O Lord.
+Deacon. Let us commit ourselves and one another to the Father, Son and Holy Spirit.
+Answer. To Thee, O Lord our God.]
+¶ When the Karuzutha is ended, the priest says,
+Priest. O Lord God of hosts, we pray and beseech Thee, fulfil in us Thy grace, and pour forth through us Thy gift, and may the mercies and compassion of Thy Godhead be for the pardon of the debts of Thy people, and for remission of sins to all the sheep of Thy pasture, whom Thou hast chosen for Thyself in Thy grace and mercies, O Lord of all, Father and Son and Holy Spirit for ever.
+
+= The Imposition of Hands and the Dismissal
+¶ The deacons say with a loud voice,
+Deacon. Bow your heads for the Imposition of hands and receive the blessing.
+¶ And the people bow their heads, the deacons also, and the priest, inclining himself, repeats this Imposition of hands secretly in a low voice:
+Priest. O Lord God of hosts, (repeat), Thine is the holy Catholic Church, which, by the great Passion of Thy Christ, was purchased [to be] the sheep of Thy pasture; and through the grace of the Holy Spirit, Who is of one essence with Thy glorious Godhead, are the degrees of the Imposition of hands of the true priesthood given. In Thy pitifulness, O my Lord, Thou hast made us who are of feeble and frail nature, worthy to become appointed members in the great body of the holy Catholic Church, and to administer spiritual aids to the souls of the faithful. Do Thou therefore, my Lord, fulfil in us Thy grace and pour forth through us Thy gift, and may the mercies and compassion of Thy Godhead be upon us and upon this people which Thou hast chosen for Thyself.
+¶ He raises his voice and says,
+{cel} And grant unto us, my Lord, in Thy compassion, that we may all together and equally, all the days of our life, please Thy Godhead, in good works of righteousness, acceptable and well-pleasing to the glorious will of Thy Sovereignty, and that we may be worthy, by the aid of Thy grace, to lift up to Thee praise and honour and confession and adoration, at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ The deacons enter the holy place and say,
+Deacon. Whoso hath not received baptism, let him depart; whoso doth not receive the sign of life, let him depart; whoso doth not accept it, let him depart. Go, ye hearers, and watch the doors.
+
+= The Placing of the Mysteries on the Altar
+¶ The priest goes to place the mysteries upon the altar, and when he places the vessels upon the altar, the priest takes the paten and the deacon the chalice, and [the choir] begin the Anthem.
+Choir. I waited confidently for the Lord. The Body of Christ and His precious Blood are on the holy altar. In awe and love let us all draw near unto Him, and with the angels let us cry aloud unto Him, Holy, Holy, Holy, Lord God.
+{ppl} The poor shall eat and be satisfied. The Body of Christ and His precious Blood are on the holy altar. In awe and love let us all draw near unto Him, and with the angels let us cry aloud unto Him, Holy, Holy, Holy, Lord God.
+¶ The priest takes the paten in his left hand, and the chalice in his right, crossing his hands.
+Deacon. Let us pray. Peace be with us.
+¶ The priest says,
+Priest. Let us lift up praise to Thy glorious Trinity at every season for ever. May Christ, Who was sacrificed for our salvation and Who commanded us to make a commemoration of His Death and Burial and Resurrection, accept this sacrifice at our hands, in His grace and mercies for ever. Amen.
+¶ He strikes the chalice and paten together three times, and each time he says,
+{cel} By Thy command, our Lord and our God, (repeat), these glorious, holy, life-giving and divine mysteries are set and ordered on the absolving altar, until the coming of our Lord the second time from heaven, to Whom be glory at every season for ever. Amen.
+¶ He arranges the mysteries on the altar and covers them carefully with a veil.
+¶ Glory be to the Father and to the Son and to the Holy Spirit.
+Choir. Upon the holy altar let there be a memorial of the Virgin Mary, the Mother of Christ.
+¶ From everlasting and for ever and ever. Amen.
+{ppl} O apostles of the Son and lovers of the Only-Begotten, pray that there may be peace in creation.
+¶ Let all the people say Amen, Amen.
+{ppl} Thy memorial, O our Father N. (the name of the patron saint), is upon the holy altar, with the just who have overcome and the martyrs who have been crowned.
+¶ Or this:
+{ppl} Lo all the departed have fallen asleep in hope in Thee, that at the glorious resurrection Thou wilt raise them in glory.
+¶ They go out to the nave, and the priest gives the Cross and the Gospel to the deacons to hold, and says,
+Priest. May Christ our Lord make you worthy to receive Him with open face. Amen.
+
+= The Anthem of the Mysteries and the Creed
+¶ They bind (that is, loop up) the veil, drawing it aside, and the priest begins the appointed Anthem of the Mysteries and those who are within the holy place repeat it.
+¶ The priest prostrates himself towards the four sides of the bema; first he prostrates himself towards the east twice, then to the right, then to the east once, and arises. Then he prostrates himself to the east twice, to the left once, to the east once, and to the west. He says the Gloria in the Anthem of the Mysteries, and goes down and gives the Peace to the people.
+Choir. [The proper Anthem of the Mysteries. Glory be to the Father and to the Son and to the Holy Spirit. (A proper verse follows.) From everlasting and for ever and ever. Make the right hand of Thy mercy, O our Lord Jesus, to overshadow and abide on Thy people and the sheep of Thy pasture. Lord, Thy mercy is for ever on Thy worshippers; cast not the works of Thy hands into the hands of the Evil One. Make true, Lord, Thy promise which Thou madest to the (or, Thy) Twelve, saying: I am with you unto the end of days. Be with us as with Thy Apostles by the help of Thy grace. * And deliver us from temptations, and give us time full of peace, that we may confess and worship and glorify Thy great and holy Name at all times.
+¶ Repeat thrice from the asterisk.] (The verse "Make the right hand of Thy mercy" is invariable.)
+¶ When he comes towards the deacons, they prostrate themselves towards one another face to face, and he says to them;
+Priest. May God the Lord of all, be content with your ministrations and adorn you with all beauty and enrich you with all the gifts of His bounty for ever and ever.
+¶ When he comes to the door of the sanctuary, that is the holy place, he prostrates himself, saying;
+{cel} Our hearts being sprinkled and pure from evil conscience, may we be made worthy to enter the Holy of Holies high and exalted; and in purity, watchfulness and holiness may we stand before Thy holy altar, and offer to Thee spiritual and reasonable sacrifices in the true faith.
+¶ He proceeds,
+{cel} Thou art good and dost not always chide, neither keepest anger for ever; turn Thy face from my sins and blot out all my offences, in the great multitude of Thy pitifulness, O Father and Son and Holy Spirit for ever.
+¶ If there be not time he says:
+{cel} Our Lord Jesus Christ be with us all in His grace and mercies for ever. Amen.
+¶ The priest goes up to the door of the holy place, and prostrates himself and stands up, stretching forth his hands, saying with a loud voice,
+Priest. We believe in one God, the Father Almighty, Maker of all things visible and invisible. And in one Lord Jesus Christ, the Son of God; the Only-begotten, the Firstborn of all creatures, Begotten of His Father before all worlds and not made; very God of very God, of one essence with His Father; by Whose hands the worlds were established and everything was created. Who for us men and for our salvation, came down from heaven, and was incarnate by the Holy Spirit and became man, and was conceived and born of the Virgin Mary; He suffered and was crucified in the days of Pontius Pilate; He was buried and He rose again on the third day as it is written; and ascended into heaven and sat down on the right hand of His Father; and He shall come again to judge the dead and the living. And in one Holy Spirit, the Spirit of truth, Who proceedeth from the Father, the life-giving Spirit. And in one holy, apostolic, catholic Church. And we confess one baptism for the remission of sins; and the resurrection of our bodies, and the life for ever and ever. Amen.
+
+= The Approach to the Altar
+¶ They go in quickly and prostrate themselves thrice, and when the priest prostrates himself before the altar, he says,
+Priest. God the Lord of all be with us all, in us all, in His grace and mercies for ever. Amen.
+¶ Here the priest washes his hands (he goes for this purpose into the Baptistery, which is also a vestry, on the north side of the sanctuary: water must not be brought into the sanctuary) and they make the sign of the cross [in the air with joined hands] towards all the [four] crosses of the holy place (crosses marked in oil at the consecration of the church on each wall of the sanctuary, but not visible crosses).
+¶ The priest says to the deacon who has concluded (the meaning of this rubric is obscure),
+Priest. God, the Lord of all, strengthen thee to sing His praises.
+¶ The deacons say the karuzutha [following], said very slowly, so as to last till the end of the prayer, "Yea, our Lord and our God."
+Deacon. Let us pray; peace be with us. Pray ye for the memorial of our fathers the Catholici and Bishops; and of all priests and deacons and young men and virgins; and of all who have died and departed from this world in the true faith; and of all our fathers and brethren; of all our sons and daughters; of all faithful kings, lovers of Christ; of all prophets and apostles; of all martyrs and confessors here and in every place; that God may crown them at the resurrection from the dead, and give to us with them a good hope and portion and inheritance and life in the kingdom of heaven. May this oblation be accepted with openness of face and be consecrated by the Word of God and by the Holy Spirit, that it may be to us for help and for salvation and for life eternal in the kingdom of heaven by the grace of Christ.
+[or] Meanwhile the priest draws near to the altar, saying the Kushapa softly
+¶ The priest turns his face to the altar and offers three genuflexions, at each genuflexion drawing nearer, and at the beginning of the genuflexions he begins this Kushapa (prayer of beseeching; always said kneeling and in a low voice), saying it softly with his lips.
+Priest. Glory to Thee, O Finder of the lost. Glory to Thee, O Gatherer of the dispersed. Glory to Thee, Who bringest near them that are far off. Glory to Thee, Who turnest the erring to the knowledge of the truth. Glory to Thee, my Lord, Who hast called me, even frail me, in Thy grace, and hast drawn me near unto Thee in Thy compassion, and hast set me as an appointed member in the great body of Thy holy catholic Church, that I may offer before Thee this living and holy and acceptable sacrifice, which is the memorial of the Passion and of the Death and of the Burial and of the Resurrection of our Lord and our Saviour Jesus Christ, in Whom Thou wast well-pleased and reconciled to forgive the sins of all mankind.
+¶ Here I inform thy love, O my Lord (a courteous way of giving information to the reader: Beloved Master, pray observe), that as the priest draws near before the altar, just when he draws near and says the Kushapa, he prostrates himself until he has come to the altar, then he prostrates himself and rises and kisses the middle [of the altar], then he prostrates himself and rises and kisses the right horn, then he prostrates himself and rises and kisses the left horn, then the middle, then the right side, then the left side. And he faces those on the right side while he is inclined on the left side, and he prostrates himself towards them, saying;
+{cel} Bless, O my Lord. My brethren, pray for me, that this oblation may be fulfilled by my hands.
+¶ They return answer to him,
+Choir. God, the Lord of all, strengthen thee to perfect His will, and accept thine oblation, and be well-pleased with thy sacrifice, for us, and for thyself, and for the four regions of the world, by the grace of His compassion for ever. Amen.
+¶ Then he repeats, Glory to Thee, O Finder of the lost, while he prostrates himself and rises and kisses the middle [of the altar], in like manner the right and left sides, and offers a genuflexion; he rises and kisses the middle and the right and left sides. And he faces those on the left, while he is himself on the right, saying;
+Priest. Bless, O my Lord. Pray for me, my brethren and my beloved, that I may be worthy to offer before our Lord Christ this living and holy sacrifice, for myself and for the whole body of the holy Church, by the grace of His compassion for ever. Amen.
+¶ They return answer to him,
+Choir. God, the Lord of all, be well-pleased with thy sacrifice and accept thine oblation, which thou dost offer for us and for thee, in His grace and mercies for ever. Amen.
+¶ Then he says, Glory to Thee, O Finder of the lost, prostrating himself according to the previous order; and when the deacon says, May the oblation be accepted, the priest prostrates himself towards him, saying thus:
+Priest. For all the living and the dead is this oblation offered; may it be accepted from my sinfulness before the awful judgment-seat of Thy majesty, O our Lord, with open face.
+¶ Then the priest descends quickly from the raised place, and turns his face towards the deacon who has concluded, and prostrates himself towards him, saying thus:
+{cel} Christ confirm thy words and accept the fruits of thy lips and pardon the trespasses and sins of all those who hearken to thee.
+¶ Then he turns his face towards the altar and offers a genuflexion, and kneels down until the conclusion of the karuzutha; and while he is on his knees, he repeats this prayer in a low voice, in his heart, supplicatingly. Kushapa.
+{cel} Yea, our Lord and our God, (repeat), look not on the multitude of our sins and let not Thy sovereignty abhor the weight of our iniquities; but in Thine unspeakable grace do Thou accept this sacrifice from our hands and endue it with virtue and efficacy, that it may obtain the pardon of our many sins; that when Thou art revealed at the end of the times, in the humanity which Thou tookest of us, we may find grace and mercies before Thee and may be made worthy to glorify Thee with the spiritual multitudes.
+[/or]
+¶ When the karuzutha is concluded he rises and kisses the altar, and repeats the g'hantha ("prayer of inclining," said with bent head and in a low voice) without stretching forth his hands before the altar. And know that here he may not stretch forth his hands at all, because he has not received confidence. But at the other g'hanthas he stretches out his hands after he has acquired confidence, and at every g'hantha he prostrates himself before the altar, at the beginning and at the end. And he shall stand about one cubit from the altar, and the space between his hands shall be the same; and he shall bow his head as low as to his knees, and at the conclusion of every g'hantha he shall prostrate himself and kiss the middle of the altar.
+
+= The Hallowing: the Peace and the Diptychs
+## Then he offers the Hallowing of the blessed Apostles, Mar Adai and Mar Mari, who made disciples of the East
+¶ They consecrate according to this from Saturday of the Resurrection until the Annunciation (that is, from Easter Eve till Advent); and on [Memorials of] the Departed; and on Memorials of Saints and on ordinary days. The priest says,
+Priest. Bless, O my Lord; bless, O my Lord; bless, O my Lord. My brethren, pray for me.
+¶ Note: The phrase "Barikh Mar" ("Bless, O my Lord"), as understood by the Eastern Syrians, is not addressed to the celebrant, or to a bishop or metropolitan present, but to God. It is sung with much ceremony when in the mouth of the priest; he bows to the east, once to the middle of the altar, once to the right, and once to the left. Outside the Liturgy, it is used whenever prayer is begun. Private or public prayers begin with "In the name, etc. Bless, O my Lord." Only twice in the Liturgy does it seem capable of the translation, Jube domne benedicere, viz. where the deacon says it before the Epistle, and before the Communion. But even there it is probably addressed to God, and not to the priest, and it is so understood by the Syrians themselves.
+¶ They answer,
+Choir. Christ hear thy prayers, Christ accept thine oblation, Christ make thy priesthood to shine in the kingdom of heaven and be well-pleased with this sacrifice which thou dost offer for thyself and for us and for all the whole world, which looks and waits for His grace and mercies for ever.
+¶ The priest repeats this first g'hantha of the Apostles in a low voice. G'hantha.
+Priest. We confess, O my Lord, the overflowing riches of Thy grace towards us (repeat), in that, although we are sinners and weak, yet in the multitude of Thy pitifulness Thou hast made us worthy to administer the holy mysteries of the Body and Blood of Thy Christ. We ask for help from Thee for the strengthening of our souls, * that in entire love and true faith we may administer Thy gift towards us.
+¶ Repeat the beginning and the end of each g'hantha [from the asterisk]. Canon. (At every canon the priest makes a genuflexion and raises his voice.)
+{cel} And that we may lift up to Thee praise and honour and confession and adoration, now and always and for ever and ever.
+¶ He crosses himself, and the people answer,
+Choir. Amen.
+¶ The priest continues,
+Priest. Peace be with you.
+¶ They answer,
+Choir. And with thee and with thy spirit.
+¶ The deacon says,
+Deacon. Give the Peace one to another in the love of Christ.
+¶ They give the Peace one to another, saying,
+All. For all catholici, bishops, presbyters and deacons, and the whole company of the departed of the congregation of the Church; and for the life and peace of the world; and for the crowning of the year, that it may be blessed and fulfilled by Thy grace; and for every child of the Church who is worthy to receive this oblation that is before Thee; and for all Thy servants and handmaids who stand before Thee at this moment; for all of them and for us all may this oblation be accepted for ever. Amen.
+¶ They make the procession of the Peace and read the Diptychs, that is, the Book of the Living and the Dead.
+¶ Note: In the procession of the Peace the priest kisses the altar, and the deacon takes his hands between his own and kisses them. The deacon then goes out to the nave, and similarly gives peace to the person highest in rank in the nave, who then stands at the north-east corner of the nave. The second in rank touches the deacon's hand, and raises his own to his lips, and does the same to the first person, and stands behind him. The third does the same, and so on, each person touching the hand of all in front of him. But a layman kisses the hand of any priest in the congregation. The reading of the Diptychs is now quite obsolete among the East Syrians.
+¶ The deacon says,
+Deacon. Let us all in purity and groaning confess and beseech and supplicate the Lord. With reverence stand and behold those things which are performed in the awful mysteries which are being consecrated. The priest has drawn near to pray, that by his mediation peace may be multiplied unto you. Cast your eyes downwards and lift up your minds to heaven.
+¶ The deacon says,
+{srv} Vigilantly and earnestly seek and supplicate at this moment. Let none dare to speak. Whoso prays, let him pray in his heart. In silence and in awe stand ye and pray, Peace be with us.
+[or] Meanwhile the priest's Kushapa, said in a low voice, and the unveiling
+¶ The priest says in a low voice. Kushapa.
+Priest. O Lord God of hosts, (repeat), help my weakness by Thy pitifulness, and by the assistance of Thy grace make me worthy to offer before Thee this living and holy sacrifice, for the aid of the whole body and to the praise of Thy glorious Trinity, O Father and Son and Holy Ghost for ever.
+¶ The priest stands up and lifts the veil from the mysteries, and winds it about the chalice and the paten, saying,
+{cel} O my Lord, Who in Thy grace hast made me worthy of Thy Body and Thy Blood, make me also worthy of openness of face before Thee in the day of judgment. Amen.
+[/or]
+¶ Prayer of the Incense.
+Priest. Mayest Thou be pleased, our Lord and our God, with the sweet savour which we offer to Thee before Thy holy altar, within Thy glorious temple. May it be for the gladness of Thy holy Name, and for the pardon of Thy servants and of Thy flock, O Father and Son and Holy Spirit for ever.
+¶ The priest says to the deacon,
+{cel} Christ strengthen thee to do His will continually.
+
+= The Hallowing: the Sursum Corda and the Sanctus
+¶ He proceeds, Canon.
+Priest. The grace of our Lord Jesus Christ and the love of God the Father and the fellowship of the Holy Spirit, be with us all, now, always and for ever and ever.
+¶ He signs the mysteries, and they answer,
+Choir. Amen.
+¶ He proceeds.
+Priest. Lift up your minds.
+¶ They answer,
+Choir. Unto Thee, the God of Abraham, of Isaac and of Israel, O glorious King.
+¶ He proceeds.
+Priest. The oblation is offered to God, the Lord of all.
+¶ They answer,
+Choir. It is meet and right.
+¶ (He elevates his hands at every canon which has not the word Now.) The deacon says,
+Deacon. Peace be with us.
+¶ The priest kneels down and prays secretly, saying, in a low voice, Kushapa.
+Priest. Lord, Lord, grant us openness of face before Thee, that with freedom of speech which is from Thee we may perfect this living and holy service, our consciences being pure from all evil and bitterness. Sow among us love, peace and concord towards each other and towards all men.
+¶ He arises and kisses the altar. Now it must be made known, that at the beginning of every g'hantha and at its conclusion, he makes a genuflexion and kisses the altar. And the priest proceeds, stretching out his hands in due order, and saying, G'hantha.
+Priest. Worthy of glory from every mouth, (repeat), and of confession by every tongue, and of adoration and exaltation from all creatures, is the adorable and glorious name of Thy glorious Trinity, Father and Son and Holy Spirit. Who didst create the world in Thy grace and its inhabitants in Thy pitifulness; Who didst save mankind by Thy compassion and hast showed great grace unto mortals. Thousand thousands of those on high bless and adore Thy Majesty, O my Lord; and ten thousand times ten thousand holy angels, and hosts of spiritual beings, ministers of fire and spirit, glorify thy name; * with the holy cherubin and spiritual seraphin, offering adoration to Thy Sovereignty,
+¶ Canon.
+{cel} crying and praising without ceasing, calling one to another and saying;
+¶ They answer,
+Choir. Holy, Holy, Holy, Lord God of hosts. Heaven and earth are full of Thy praises and of the nature of Thy Being and of the excellency of Thy glorious splendour. Hosanna in the highest. Hosanna to the son of David. Blessed be He Who came and Who cometh in the Name of the Lord. Hosanna in the highest.
+¶ And at each crying of Holy, the priest makes a genuflexion before the altar. He kneels down, and says, Kushapa.
+Priest. Holy, Holy, Holy, Lord God of hosts. Heaven and earth are full of Thy praises and of the essence of Thy Being and of the excellency of Thy glorious splendour; as saith the Lord, Heaven and earth are filled by Me. Holy art Thou, God the Father of truth, of Whom all fatherhood in heaven and on earth is named. Holy art Thou, everlasting Son, by Whose hand all things were. Holy art Thou, Spirit of Holiness, Being through Whom all things are sanctified. Woe is me. Woe is me. For I am amazed; because I am a man of unclean lips, and I dwell amongst a people of unclean lips; and mine eyes have seen the King, the Lord of hosts. How awful is this place, for to-day have I seen the Lord face to face. This is none other than the house of God, and this is the gate of heaven. * And now let Thy grace be upon us, Lord, (repeat), and purge our uncleanness and sanctify our lips and mingle, O my Lord, the voices of our feebleness with the Holy of the seraphin, and the hallelujahs of the angels. Glory be to Thy mercies Who hast made creatures of dust partakers with spiritual beings.
+¶ He arises, and says,
+{cel} Bless, O my Lord. Bless, O my Lord. Bless, O my Lord. My brethren, pray for me.
+¶ He repeats, in a low voice, G'hantha.
+{cel} With those heavenly hosts we confess Thee, O my Lord, (repeat), even we Thy servants, weak and frail and miserable. For Thou hast shown great grace unto us which cannot be repaid, in that Thou didst put on our humanity that Thou mightest quicken us by Thy divinity, and Thou hast exalted our low estate and hast restored us from our fall, Thou hast raised us out of a state of death and Thou hast forgiven our debts and justified us from our guilt, Thou hast enlightened our knowledge, * and hast condemned, O our Lord and our God, our enemies, and hast granted victory to the weakness of our frail nature in the abundant mercies of Thy grace.
+
+= The Words of Our Lord
+## The Words of Our Lord
+Priest. [Our Lord Jesus, in the same night in which He was betrayed, took bread, and blessed and brake, and said, Take, eat; this is My Body which is broken for you; this be ye doing for My memorial. Likewise after they had supped, He gave the cup also, and said, This cup is the new testament in My Blood; this be ye doing, as oft as ye drink for My memorial.]
+¶ Or read as it is written in the other Liturgies.
+¶ Note: The words of institution are not written in the Apostles' Liturgy. It is thought that they were always recited, and it is at this part of the service that they are found in the other East Syrian liturgies. (The editors' Latin preface adds that they are printed apart, in the form in which St Paul gives them in his First Epistle to the Corinthians, because they rest on the authority of no ancient codex.)
+¶ Canon.
+Priest. For all Thy aids and graces towards us, let us lift up to Thee praise and honour and confession and adoration, now always and for ever and ever.
+¶ He signs the mysteries, and they answer,
+Choir. Amen.
+¶ The deacon says,
+Deacon. Pray in your minds. Peace be with us.
+¶ The priest proceeds to this kushapa kneeling and saying secretly;
+[or] The priest's Kushapas, said secretly, kneeling
+Priest. Lord God of hosts, accept this oblation for all the holy catholic Church and for all the just and righteous fathers who have been well-pleasing to Thee; for all prophets and apostles; for all martyrs and confessors; for all mourners and afflicted; for all the needy and harassed; for all the sick and distressed; for all the departed who have gone forth and migrated from amongst us; for this people which looks and waits for Thy mercies; * and for my frailty and misery and poverty, (repeat). Yea, our Lord and our God, according to Thy mercies and the multitude of Thy graces, deal Thou towards Thy people and towards my misery, not according to my sins and offences, but so that I and these may be made worthy of the pardon of trespasses and the forgiveness of sins, through this holy Body, which we take in true faith by grace which is from Thee. Amen.
+¶ Kushapa of the Departed. (This is only used at memorials of the dead, in addition to or instead of the foregoing.)
+Priest. I worship Thy grace, O my Lord, and I confess Thy pitifulness, in that though I am unworthy because of my sins, Thou hast brought me near unto Thee in Thy compassion, and hast appointed me a minister and mediator of these glorious and holy mysteries. I desire of Thee, and beseech Thy Sovereignty, that they may be for the peace and safety of the world, for the preservation of Thy holy Church, for the increase of the true faith, for the exaltation of the righteous, for the absolution of sinners, for the acceptance of the penitent, for the return of those who are far off, for the encouragement of the weak, for the refreshing of the harassed, for the comforting of the distressed, for the healing of the sick, for the support of the poor and for a good memorial of the departed, and do Thou to all of us, O my Lord, such things as are helpful and approved by Thy Sovereignty. * Yea, Lord God of hosts, (repeat), may this oblation be accepted in the heights above, from my hands, miserable and offending sinner [though I be]; even as the oblation of Abel in the field and of Noah in the ark and of Abraham in the sacrifice of his son and of Elijah in mount Horeb and of the widow at the treasury and of the apostles in the upper room, and with the oblation of the just and righteous fathers, who from generation to generation have offered their oblation. Yea, our Lord and our God, may this oblation be accepted for all the holy Catholic Church, that it may be established and kept immovable; for priests and kings and rulers that they may be established in the peace of the churches and in the safety of their borders; for the poor and needy and harassed; for the mournful and distressed and tormented; for all the departed, who have separated and passed away from amongst us; and for all those who stand before Thy holy altar and make request and prayer through me a sinner. O grant their requests, pardon their debts and blot out their sins. And for this land and them that dwell therein; for this village and its inhabitants; surround it, my Lord, with a strong wall, and turn away from it in Thy grace hail and famine and death and the flying locust and the moth and the crawling locust, and let not the spoiler have power over us nor let the enemy rejoice over us; for N. and M.,
+¶ he names the cause or the matter [of intercession], kneeling before the altar, and every cause of his own or of others he here brings before God.
+[/or]
+
+= The Invocation of the Holy Spirit
+¶ And he arises and says,
+Priest. Bless, O my Lord; bless, O my Lord; bless, O my Lord; My brethren, pray for me.
+¶ He proceeds to repeat in a low voice, G'hantha.
+{cel} Do Thou, my Lord, in Thy many and unspeakable mercies, (repeat), make a good and acceptable memorial for all the just and righteous fathers who have been well-pleasing before Thee, in the commemoration of the body and blood of Thy Christ which we offer to Thee upon Thy pure and holy altar, as Thou hast taught us, and grant us Thy safety and Thy peace all the days of the world. * Yea, our Lord and our God, grant us Thy safety and Thy peace all the days of the world, (repeat), that all the inhabitants of the earth may know Thee, that Thou art God, the only true Father, and Thou didst send our Lord Jesus Christ, Thy Son and Thy Beloved, and He, our Lord and our God, came and in His life-giving gospel taught us all the purity and holiness of the prophets and apostles, of the martyrs and confessors, of the bishops and doctors, of the priests and deacons and of all the children of the holy catholic Church, even those who have been signed with the living sign of holy baptism.
+¶ And when he says [the word] signed, let him sign the throne (that is, the altar) from below upwards and from right to left, inclining the while. Here he strikes his face with his hands.
+{cel} We also, my Lord, (repeat three times) Thy weak, frail and miserable servants, who are assembled in Thy name and stand before Thee at this moment, have by tradition received the example from Thee, rejoicing and glorifying and exalting and commemorating and celebrating unto Thee this great and awful and holy and life-giving and divine mystery, of the passion and death and burial and resurrection of our Lord and Saviour Jesus Christ.
+{cel} AND MAY THY HOLY SPIRIT, O MY LORD, come and rest upon this oblation of Thy servants, and may He bless it and hallow it and may it be to us, O my Lord, for the pardon of debts and for the forgiveness of sins and for the great hope of resurrection from the dead and for new life in the kingdom of heaven, with all those who have been well-pleasing to Thee. For all this great and wonderful dispensation towards us, * we give Thee thanks and glorify Thee without ceasing, within Thy Church redeemed by the precious blood of Thy Christ, with unclosed mouths and unveiled faces.
+¶ Note: The first two words of the Invocation, which are generally written large, give the name by which it is known; viz. Nithi Mar, "May He come, O my Lord."
+¶ When the priest says, May He come, O my Lord, he arises and elevates his hands, and the deacon says,
+Deacon. In silence and in awe stand ye and pray. Peace be with us.
+¶ Canon.
+Priest. Lifting up glory and honour and confession and adoration, to Thy living and holy and life-giving Name, now always and for ever and ever.
+¶ He signs the mysteries, and they answer,
+Choir. Amen.
+¶ He offers a genuflexion before the altar, but let him not kneel. [Here the veil is closed.] He proceeds.
+Priest. O Christ, the peace of those above and the great tranquillity of those below, grant, my Lord, that Thy peace and tranquillity may abide on the four quarters of the world and especially within Thy holy catholic Church. Grant peace to the priesthood and to the realm (that is, Church and State), make wars to cease from the ends of the earth, scatter the divided peoples who desire war, that we may lead a calm and quiet life in all temperance and in the fear of God.
+¶ He proceeds.
+{cel} I thank Thee, my Father, Lord of heaven and earth, Father and Son and Holy Spirit; that though I am a sinner and weak yet, because of the abundance of Thy pitifulness, Thou hast in Thy grace made me worthy to offer before Thee these mysteries, awful and holy and lifegiving and divine, of the body and blood of Thy Christ, so that I may minister to Thy people and the sheep of Thy pasture, the pardon of their debts and the forgiveness of their sins and the salvation of their souls and the reconciliation of the whole world and the peace and tranquillity of all the churches.
+¶ He proceeds.
+{cel} [Ps. li. ver. 1.] Have mercy upon me, O God, according to Thy grace. * O King Christ (or, O Anointed King), have mercy upon me. * According to the multitude of Thy mercies, blot out my sins. * O King Christ, glory to Thy name. * Wash me throughly from my wickedness. * O King Christ, have mercy upon me.
+¶ [So on, alternately, to the end of the psalm.]
+@psalter: The rest of Psalm li., with "O King Christ" between the verses
+{cel} [Ps. cxxiii.] Unto Thee have I raised mine eyes.
+¶ [And so on, without farcing, to the first clause of ver. 3.]
+{cel} I have washed my hands in purity, and I have encompassed Thine altar, O Lord.
+¶ [Here the priest goes a second time to the baptistery and washes his hands.]
+¶ Prayer of the Incense.
+Priest. May our prayer and our petition be pleasant unto Thee, our Lord and our God, and may the savour of our pleasant censer be for Thy rest, even as the censer of Aaron the priest in the tabernacle. Renew our souls together with our bodies and be reconciled to Thy creation for Thy many mercies' sake, O Creator of pleasant roots and sweet spices, O Lord of all, Father and Son and Holy Spirit for ever.
+
+= The Consignation and the Fraction
+## Order of Consignation and of Fraction
+¶ He begins the order of consignation and of fraction, and he draws near with outstretched hands, not clasped as illiterate men do, and he censes his hands and his face with the incense, saying,
+Priest. Sweeten, our Lord and our God, the odour of our uncleanness and of our corruption, with the fragrant odour of the sweetness of Thy love, and purify us therewith from the stains of sin, O Good Shepherd, Who wentest forth in search of us and didst find us who were lost and willedst our return. Pardon me my debts and my sins, those which I know and those which I know not, in Thy grace and in Thy mercies.
+¶ Repeat thrice, and say,
+{cel} Bless, O my Lord; bless, O my Lord; bless, O my Lord. The pitifulness of Thy grace, our Lord and our God, brings us near unto these glorious, holy, life-giving and divine mysteries, though we are unworthy
+¶ repeat thrice. The deacon answers him,
+Deacon. In truth, my Lord, we are not worthy. Have pity on us, my Lord, for we are not worthy, through our frailty, because of our many sins.
+¶ At the conclusion of each time after the words, the pitifulness of Thy grace, he folds his hands on his breast in the form of a cross and kisses the middle of the altar and the right and left [sides]. He takes the uppermost loaf which is in the middle of the paten, in both his hands, not folding them, and looks upward, saying,
+Priest. Praise to Thy holy Name, our Lord Jesus Christ; and adoration to Thy Sovereignty at every season for ever. Amen. For [Thou art] the living and life-giving bread, which came down from heaven and giveth life to the whole world, for they who eat of it die not, and they who receive it are saved and absolved by it and live in it for ever. Amen.
+¶ They answer,
+Choir. Amen.
+¶ He kisses the loaf in the form of a cross, not touching it with his lips, but figuratively, from the top to the bottom and from right to left, saying,
+Priest. Glory to Thee, O my Lord; glory to Thee, O my Lord; glory to Thee, O my Lord, for Thine unspeakable gift towards us for ever. Amen.
+¶ They answer,
+Choir. Amen.
+¶ [The deacons begin (these anthems are from the Khudhra; singing them in this place is a matter of tradition): See that it is I.
+Choir. I am the bread which came down from on high, said our Saviour in the mysteries to His disciples. Whosoever hath love approacheth and receiveth it and liveth for ever in Me and inheriteth the kingdom.
+¶ Glory be to the Father and to the Son and to the Holy Spirit.
+{ppl} The cherubin and seraphin and archangels in fear and trembling stand before the altar, and gaze at the priest breaking and dividing the body of Christ for the pardon of trespasses.
+¶ From everlasting to everlasting for ever and ever.
+{ppl} O Thou Who in compassion dost open the door to the repentant and callest sinners to come to Thee, open to us, O my Lord, the door of Thy mercies, and let us enter by it and sing glory to Thee by night and by day.]
+¶ He holds the loaf firmly with both hands, saying,
+Priest. We draw near, O my Lord, in the true faith of Thy name, towards these holy mysteries; we break by Thy compassion and we sign by Thy pitifulness the body and blood of our Saviour, our Lord Jesus Christ. In the name of the Father and of the Son and of the Holy Spirit for ever.
+¶ They answer,
+Choir. Amen.
+¶ At the naming of the Trinity, he breaks the loaf that is in his hands discreetly into two halves. Now some here sign the bread with their thumb at the time of the fraction, but do thou beware of such audacity. For it is not here necessary to sign, but only to break at the naming of the Trinity. Holding them in both hands, he puts that half which is in his left hand in its place, not in the former position but differently, disposing the broken side towards the chalice. And with the half that is in his right hand, he signs the Blood that is in the chalice, from east to west and from north to south, dipping a third part of the half that is in his hand into the chalice, that is a third part of both portions. So he signs the chalice with that half of the loaf, but not with the upper side and the edge, as others are wont to do, but at the part where it is broken, the front of the half facing [the chalice]. While he comes [i.e. signs] from east to west, he says,
+Priest. The precious Blood is signed with the life-giving Body of our Lord Jesus Christ. In the name of the Father and of the Son and of the Holy Spirit for ever.
+¶ That is [he says this while signing] from east to west towards him; and [at the words] and of the Holy Spirit, [he signs] from north to south towards the paten. And so he signs the Body that is on the paten, in like manner, with the same half which is in his hand, saying,
+Priest. The holy Body is signed with the absolving Blood of our Lord Jesus Christ. In the name of the Father and of the Son and of the Holy Spirit for ever.
+¶ They answer,
+Choir. Amen.
+¶ He holds both halves in both hands and unites them as if they had not been broken. And let his forefingers be joined round the halves, like a wheel, and let him say;
+Priest. These glorious, holy, life-giving and divine mysteries have been set apart and consecrated, perfected and fulfilled, united and commingled, attached and sealed one to another, in the adorable and glorious name of the glorious Trinity, Father and Son and Holy Spirit, that they may be to us, O my Lord, for the pardon of debts and the forgiveness of sins and for the great hope of resurrection from the dead and for new life in the kingdom of heaven, to us and to the holy Church of Christ our Lord, here and in every place, now and always and for ever and ever.
+¶ At [the word] now he cleaves a cleft with his thumb, in that part which was dipped in the Blood. Then he puts the halves on the paten one upon the other crosswise, so that the broken part of the undermost which was held in his left hand looks towards the chalice, and the broken part of the upper one which was held in his right hand looks to the west towards the priest, so that the cleft in it shall be towards the chalice. He wipes his hands well, and signs himself on the forehead with his thumb, with the sign of the Cross, and then the deacons around him, saying:
+Priest. Christ accept thy ministry. Christ make thy face to shine. Christ preserve thy life. Christ nurture thy youth.
+¶ Let him loosen the veil which was folded around the paten and the chalice, and say;
+{cel} Glory to Thee, our Lord Jesus Christ, that, although I am unworthy, Thou hast in Thy grace appointed me a minister and mediator of Thy glorious, holy, life-giving and divine mysteries. By the grace of Thy compassion make me worthy of the pardon of debts and the forgiveness of sins.
+¶ And then:
+{cel} Glory to Thee, O God. Glory to Thee, O eternal Son. Glory to Thee, O Holy Spirit, Who sanctifiest all for ever.
+¶ They answer,
+Choir. Amen.
+¶ He kisses the altar in the midst, and exclaims like one making an announcement, saying;
+Priest. The grace of our Lord Jesus Christ and the love of God the Father and the fellowship of the Holy Spirit, be with us all; now always and for ever and ever.
+¶ They answer,
+Choir. Amen.
+¶ He signs himself lifting his hands a little upwards on either side, because this signing is made on behalf of the people although the priest signs it on himself. [The veil is opened.]
+
+= The Approach to Communion and the Lord's Prayer
+¶ The deacon proclaims,
+Deacon. Let us all in awe and reverence, draw near to the mysteries of the precious Body and Blood of our Saviour. With a pure heart and with true faith, let us remember His Passion and consider His Resurrection. For for our sakes the Only-Begotten of God took of mankind a mortal body, and a reasonable, intelligent, and immortal soul. And by His life-giving laws and by His holy commands, He has brought us out of error to the knowledge of the truth. And after all His dispensation for us, He, the first-fruits of our nature, was lifted up on the cross, He rose from the dead and was taken up to heaven. He hath delivered to us His holy mysteries, that in them we might commemorate all His goodness towards us. Let us therefore with overflowing love, and with a humble will receive the gift of eternal life. With pure prayer and manifold sorrow, let us communicate in the mysteries of the Church in penitent hope, turning from our offences, and sorrowing for our sins, and asking mercy and forgiveness from God the Lord of all.
+[or] Meanwhile the priest says softly to himself, and breaks the Body
+Priest. Blessed art Thou, O Lord God of our fathers, and glorified is Thy name for ever. For not according to our sins hast Thou dealt with us, but in the multitude of Thy mercies Thou hast delivered us from the power of darkness and hast bidden us to the kingdom of Thy Beloved Son, our Lord Jesus Christ.
+¶ While this is being said, the priest breaks the Body, and then dips a cake (literally, "live coal": the Syrians interpret Is. vi. 6, the "live coal on the altar," as signifying mystically Christ) for the children.
+[/or]
+Deacon. We condone the offences of our fellow-servants.
+¶ They answer,
+Choir. Lord, pardon the sins and offences of Thy servants.
+Deacon. We purify our consciences from divisions and strife.
+Choir. Lord, pardon the sins and offences of Thy servants.
+Deacon. Our souls being clear from anger and enmity.
+Choir. Lord, pardon the sins and offences of Thy servants.
+Deacon. Let us take the Holy [Thing] and be made holy by the Holy Spirit.
+Choir. Lord, pardon the sins and offences of Thy servants.
+Deacon. In concord and harmony of our minds let us receive in peace one with another the communion of the mysteries.
+Choir. Lord, pardon the sins and offences of Thy servants.
+Deacon. That they may be to us, O my Lord, for the resurrection of our bodies and for the salvation of our souls and for eternal life.
+¶ When the Karuzutha is concluded the deacon says,
+{srv} Let us pray. Peace be with us.
+¶ The priest repeats secretly in a low voice,
+Priest. Pardon, my Lord, in Thy compassion, the sins and offences of Thy servants and sanctify our lips by Thy grace, that they may yield the fruits of praise to Thy most high Godhead, with all Thy saints within Thy kingdom.
+¶ If there are unconsecrated chalices he here signs them. (This custom is now obsolete, and the meaning is not understood.) He rises to his full height from the bowing and raises his voice, saying,
+{cel} And make us worthy, our Lord and our God, constantly and without blame to stand before Thee, with a pure heart and open face and with that freedom of speech which is granted by Thee in Thy mercies, that we may all equally call on Thee, saying,
+[or] Instead of "Make us worthy," on the feasts of our Lord they say
+Priest. Make Thy tranquillity, my Lord, to dwell amongst us, and Thy peace within our hearts; may our tongues proclaim Thy truth, may Thy cross be the guardian of our souls, while we make new harps of our mouths, and speak a new language with fiery tongues. Make us worthy, my Lord, in the freedom of speech that is of Thee, to pray before Thee this pure and holy prayer, which Thy life-giving mouth taught to Thy true disciples, sons of Thy mysteries; Whensoever ye pray, after this manner pray ye and give thanks and say;
+¶ Then follows the Lord's Prayer, and "O Lord God of hosts," and so on, as on ordinary days; and after "One Holy Father," on the greatest festivals follow the special anthems (Qanun dkhilat). The veil is drawn to during the special anthems, but again opened when they are finished. (The book's "Canon" over this prayer is a word which, though found in the manuscripts, seems to be a mistake.)
+[/or]
+¶ They answer,
+All. Our Father which art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done, as in heaven so on earth. Give us the bread of our need to-day. And forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation but deliver us from the Evil one. For Thine is the kingdom and the power and the glory for ever and ever, Amen.
+¶ The priest repeats this prayer in a low voice.
+Priest. O Lord God of hosts, our gracious God and our merciful King, we desire of Thee and beseech the abundance of Thy pitifulness; lead us not, my Lord, into temptation, but deliver us from the Evil one and his hosts; for Thine is the kingdom and the power and the might and the strength and the dominion, in heaven and on earth, now and always and for ever and ever, Amen.
+[or] Or this, sometimes said in an audible voice and slowly
+Priest. Yea, our Lord and our God, we desire of Thee, and beseech the pitifulness of Thy grace, lead us not, my Lord, my Lord, into temptation, but save and deliver us from the Evil one and his hosts. For Thine is the kingdom and the power and the might and the strength and the dominion in heaven and on earth, now and always,
+¶ he signs himself and raises his voice,
+{cel} and for ever and ever.
+¶ They answer,
+Choir. Amen.
+[/or]
+¶ The priest says,
+Priest. Peace be with you.
+¶ The people answer,
+Choir. And with thee and with thy spirit.
+¶ He proceeds,
+Priest. The Holy [Thing] is perfectly meet for the holy.
+¶ They answer,
+Choir. One Holy Father, one Holy Son, one Holy Spirit. Glory to the Father and to the Son and to the Holy Spirit, for ever and ever. Amen.
+
+= The Communion
+¶ The deacon who says the Karuzutha comes towards the priest, saying,
+Deacon. Let us pray. Peace be with us.
+¶ The priest takes the hand of the deacon and places it on the chalice, saying,
+Priest. The grace of the Holy Spirit be with thee and with us and with the partakers hereof in the kingdom of heaven for ever, Amen.
+¶ The deacon answers,
+Deacon. With thee and with us and with the partakers hereof in the kingdom of heaven.
+¶ The deacon says,
+{srv} Praise ye the living God.
+¶ They say [the Anthem] of the Bema on days of the mysteries. Antiphon.
+Choir. Blessed be Thy Body and Thy Blood, O our Lord, which Thou didst give for the pardon of the nations. And in it Thou hast consecrated our nature that we may sing praise to Thy Sovereignty.
+[or] Meanwhile the deacons take the paten and the chalice
+¶ The deacon who read the Apostle comes in front of the priest, and says,
+Deacon. Let us pray. Peace be with us.
+¶ The priest puts on him a veil and places the paten on his arm, saying,
+Priest. Divine grace be with thee and with us and with the partakers hereof for ever.
+¶ Then the deacon who gave the Peace draws near, saying,
+Deacon. Let us pray. Peace be with us.
+¶ The priest taking the chalice gives it to him, saying,
+Priest. The grace of the Holy Spirit be with thee and with us.
+[/or]
+¶ When the Antiphon is concluded, the deacon holding the chalice exclaims,
+Deacon. Bless, O my Lord.
+¶ The priest raises his hand and makes the sign of the cross over the people, saying in an audible voice,
+Priest. The gift of the grace of our Giver of Life our Lord Jesus Christ be fulfilled in mercies with us all.
+¶ They answer,
+Choir. For ever and ever, Amen.
+¶ When the priest gives the Body, he says,
+Priest. The Body of our Lord to the devout priest; or to the deacon of God; or to the pious believer; for the pardon of debts.
+¶ The deacon says over the chalice,
+Deacon. The precious Blood for the pardon of debts, a spiritual feast unto eternal life; to the devout priest; or to the deacon of God;
+¶ and so to every one according to his degree.
+¶ Note: The priest communicates the people at the sanctuary gate, from the paten which is held by the apostle-deacon, round whom the sanctuary veil is wrapped. The peace-deacon administers the cup on the north side through a hole in a low wall which runs parallel to the sanctuary wall at a distance of about three feet. The space between these two walls is the bema.
+@communion
+¶ They say the verses of the Antiphon,
+Choir. My brethren, receive the Body of the Son, saith the Church, and drink His chalice with faith within the kingdom.
+¶ [Variable Anthem of the Bema follows.]
+¶ Hymn of praise for Sundays.
+Choir. Our Lord Jesus, the adorable King: Who by Thy passion didst conquer death the tyrant. * Son of God Who didst promise us: new life in the kingdom on high. * Cause all guiles to cease from us: and make Thy tranquillity and mercies to dwell in our land. * That in the day of Thy shining forth we may live before Thee: and may go forth to meet Thee according to Thy will. * With hosannas we will confess Thy name: for Thy grace towards our race. * For Thy mercies are multiplied towards our humanity: and Thy love hath shined forth upon our mortality. * Thou hast blotted out our debts through Thine absolution: glory to Thy name for Thy gift. * Blessed be Thy glory from Thy place: Who forgivest our debts because of Thy mercies; * In Thy grace make us all worthy: to confess and adore Thy divinity. * And at every season let us lift up: glory to Thy Sovereignty amen and amen.
+¶ [Here the veil is closed.]
+[or] And on Feasts of our Lord
+Choir. Strengthen, our Lord, the hands that have been stretched out: and have received the Holy Thing for the pardon of debts. * Make them worthy every day: to yield fruits to Thy Godhead. * The mouths which have praised Thee within the holy place: do Thou make fit to sing glory. * The ears which have heard the voice of Thy praises: let them not, my Lord, hear the voice of alarm. * The eyes that have seen Thy great compassion: again, O Lord, let them see Thy blessed hope. * The tongues also that have cried Holy: do Thou dispose to speak truth. * The feet that have walked within the Church: make them to walk in the land of light. * The bodies that have eaten Thy living Body: do Thou renew with new life. * Our congregation which is worshipping Thy Godhead: O multiply towards it every aid. * And with us may Thy great love abide: and therein may we abundantly render glory. * Open the door to the petition of us all: and may our service also enter Thy presence.
+¶ [Here follows "Cause all guiles," etc., as on Sundays, to the end.]
+[/or]
+[or] On Memorials of the Departed and on ordinary days
+Choir. May the mysteries which we have taken in faith: be to us, O my Lord, for the pardon of debts. * Thou art in the form of the Creature and also of the Creator: O Christ, the King of the ages. * By Thy body and by Thy blood Thou hast pardoned and forgiven: the stains and debts of all who have believed in Thee. * And make us all worthy at Thy revelation: to go forth with confidence to meet Thee. * And with the ranks of the heavenly beings: may we lift up glory; amen and amen.
+¶ [Veil closed.]
+[/or]
+
+= The Thanksgiving and the Dismissal
+¶ When the people have received the Holy Thing, the priest returns the vessels with the mysteries to their place. And while the priest goes in, the deacon proclaims,
+Deacon. Let us all, therefore, who, through the gift of the grace of the Holy Spirit, have drawn near and have been made worthy and have communicated, in the taking of these holy mysteries, glorious, holy, life-giving and divine, with one accord confess and glorify God Who gave them.
+¶ They answer,
+Choir. Glory to Him for His unspeakable gift.
+¶ The deacon says,
+Deacon. Let us pray. Peace be with us.
+¶ The priest prays in a loud voice.
+Priest. It is meet, my Lord, every day (repeat) and it is right at every time and fitting every hour, to confess and adore and glorify the awful name of Thy Majesty. For by Thy grace, my Lord, Thou hast made worthy the weak nature of mortal man, with spiritual beings to hallow Thy name, to have communion in the mysteries of Thy gift, to delight in the sweetness of Thy words and to lift up voices of praise and of thanksgiving to Thy most high Godhead, at every season, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ They answer,
+Choir. Amen. Bless, O my Lord.
+¶ He prays the second time.
+Priest. May Christ our God and our Lord our King our Saviour our Giver of life and the Forgiver of our sins, Who in His grace and His mercies made us worthy to take His precious, all-sanctifying Body and Blood, grant unto us to please Him in our thoughts, words, deeds and actions. And may this earnest, O my Lord, which we have received and are receiving, be to us for the pardon of debts and the forgiveness of sins, for the great hope of resurrection from the dead and for new life in the kingdom of heaven, with all those who have been well-pleasing unto Thee in Thy grace and Thy mercies, for ever; amen.
+¶ At the sound of the priest's voice, one of the deacons draws the veils aside, and while the priests give the Peace to one another within the sanctuary, those [in the nave] say this Psalm.
+Choir. [Ps. cxlviii.] Praise the Lord from heaven. * The Son Who gave us His Body and His Blood. * Praise Him in the heights. * The Son Who gave us His Body and His Blood.
+¶ [So on to v. 6.]
+@psalter: Psalm cxlviii. to verse 6, with "The Son Who gave us His Body and His Blood" after each verse
+¶ They proceed,
+Choir. [Ps. cxvii.] Praise the Lord all ye heathen, * For His gift towards us. * Praise Him all ye nations, * For His gift towards us, * For His merciful kindness is great towards us, * For His gift towards us. * Truly He is the Lord for ever, * For His gift towards us. * Glory to the Father and to the Son and to the Holy Spirit, * The Son Who gave us His Body and His Blood, * From everlasting and for ever and ever. * The Son Who gave us His Body and His Blood. * Let all the people say amen, amen. * The Son Who gave us His Body and His Blood. * Let us confess and worship and glorify * The Son Who gave us His Body and His Blood.
+¶ They proceed (the Lord's Prayer, not farced, but with doxology)
+All. Our Father which art in heaven, hallowed be Thy name. Thy kingdom come. Thy will be done, as in heaven so on earth. Give us the bread of our need to-day. And forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation but deliver us from the Evil one. For Thine is the kingdom and the power and the glory for ever and ever, Amen.
+¶ three times.
+[or] But on ordinary days they say
+Priest. Glory, O my Lord, and honour (repeat) and confession and adoration and constant thanksgiving, we are bound to lift up to Thy glorious Trinity; for Thy gift of the holy mysteries which Thou hast given us in Thy compassion for the pardon of our debts, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ They answer,
+Choir. Amen, Bless, O my Lord.
+¶ Another.
+Priest. Blessed be Thy adorable glory from Thy place on high, O Christ, Who pardonest our debts and our sins and dost make our offences to pass away, by Thy glorious, holy, life-giving and divine mysteries. O Christ, the Hope of our nature always and for ever.
+¶ They say, Our Father which art in heaven.
+[/or]
+## Conclusion (literally "sealing"): on Sundays, Feasts, and Memorials
+¶ The priest goes forth and stands in the great doorway of the holy place at the right side, and he blesses the people in an audible voice, saying,
+Priest. May He Who hath blessed us with all spiritual blessings in heaven through Jesus Christ our Lord and hath bidden us to His kingdom and hath called us and brought us to desirable blessings, which pass not away neither cease nor vanish, as He promised and assured to us in His life-giving gospel, saying to the blessed company of His disciples, Verily, verily, I say unto you, Whoso eateth My Flesh and drinketh My Blood, dwelleth in Me and I in him, and I will raise him up at the last day, and he cometh not into judgment, but hath passed from death to life eternal; bless our congregation and guard our company and make our people glorious, which came and rejoiced in the power of His glorious, holy, life-giving and divine mysteries. With the living sign of the cross of our Lord be ye sealed and guarded from all harm hidden or open, now and always and for ever and ever.
+¶ They answer,
+Choir. Amen.
+¶ The people receive the Peace from the priest.
+¶ Note: Here the people kiss the cross in the priest's hands, partake of the blessed bread which was baked with the holy loaves, and go out of the church. The blessed bread is given by one of the priests or deacons standing at the nave entrance to the baptistery, saying during the distribution a prayer "of Mariam" (see "Preparatory Office at the Baking of the Bread").
+[or] Conclusion on ordinary days
+Priest. May our Lord Jesus Christ, Whom we have served and celebrated and honoured in His glorious, holy, life-giving and divine mysteries, make us worthy of the fair glory of His kingdom, and of delight with His holy angels, and of openness of face before Him, and of standing at His right hand in Jerusalem which is above, in His grace and mercies. To Him be glory and upon us and upon all creatures, may the right hand of His providence rest; now and always and for ever and ever.
+[/or]
+[or] The priest's prayers at his communion and at the consuming of the Mysteries
+¶ Note: In practice the priest and deacon within the sanctuary do not communicate until this time; and these prayers are said during their communion.
+¶ Prayer on receiving the Holy Thing.
+Priest. Sanctify our bodies by Thy holy Body, pardon our debts by Thy precious Blood, purge our consciences with the hyssop of Thy compassion, O Christ the Hope of our nature, O Lord of all, Father and Son and Holy Spirit for ever.
+¶ On ordering [i.e. consuming the remains of] the Mysteries.
+Priest. Let not Thy living Body, O my Lord, which we have eaten, and Thy victorious Blood which we have drunk, be to us, O my Lord, for judgment and for vengeance; but for the pardon of debts and the remission of sins, for the great hope of resurrection from the dead, for the new life in the kingdom of heaven and for openness of face before Thee with the just and righteous who have pleased Thee, O Christ, the Hope of our nature, O Lord of all, Father and Son and Holy Spirit for ever, amen.
+¶ Another.
+Priest. For that we have received Thy Body openly, may Thy power dwell in us secretly, may we go forth to meet Thee joyfully, may we sing glory to Thee threefold, with the just who have fulfilled Thy will O Christ the Hope of our nature, O Lord of all, Father and Son and Holy Spirit for ever, amen.
+¶ Another.
+Priest. For that we have received Thy Body from the paten and have drunk Thy Blood from the chalice, make us worthy, O my Lord, with the robber to sing glory in Paradise, with the just who have fulfilled Thy will, O Lord of all, Father and Son and Holy Spirit for ever. Amen.
+¶ Conclusion.
+Priest. For that Thou hast made us worthy, O my Lord, to take delight in Thy Body and in Thy holy Blood, in like manner make us worthy to take delight in Thy kingdom, which passeth not away nor vanisheth, with all Thy saints, now and at all times and for ever and ever.
+[/or]
+¶ Here endeth the Order of the Mysteries, with the Hallowing of the blessed Apostles Mar Adai and Mar Mari, who made disciples of the East. Amen.
