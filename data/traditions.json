@@ -1282,7 +1282,14 @@
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "a",
+        "hour": null,
+        "label": "Mass (Ordinary and Canon)"
+      }
+    ],
     "pd_texts_available": [],
     "sources": [
       "https://www.newadvent.org/cathen/13064b.htm"
@@ -1302,7 +1309,14 @@
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "z",
+        "hour": null,
+        "label": "Mass (Ordinary)"
+      }
+    ],
     "pd_texts_available": [],
     "sources": [
       "https://www.newadvent.org/cathen/13064b.htm"
@@ -1363,6 +1377,12 @@
     "lectionary": "Consult the local church calendar and authorized service book.",
     "books": [],
     "supported": [
+      {
+        "type": "mass",
+        "rite": "d",
+        "hour": null,
+        "label": "Mass (Ordinary)"
+      },
       {
         "type": "office",
         "rite": "op",

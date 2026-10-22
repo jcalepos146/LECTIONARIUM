@@ -14,6 +14,9 @@ const MASS_RITES=[
   {id:"p",name:"Pre-1955 Missal",d:"Divino Afflatu rubrics · older Holy Week",tr:"dr"},
   {id:"h",name:"Hybrid",d:"The proposal on this site: traditional core, more Scripture",tr:"dr"},
   {id:"b",name:"Byzantine Divine Liturgy",d:"Apostol and Gospel for every day",tr:"dr"},
+  {id:"d",name:"Dominican Mass",d:"Ordo Praedicatorum · the Ordinary in Latin and English",tr:"dr",ord:1},
+  {id:"a",name:"Ambrosian Mass",d:"Rite of Milan · the Ordinary and Canon",tr:"dr",ord:1},
+  {id:"z",name:"Mozarabic Mass",d:"Old Spanish rite · the Ordinary in English",tr:"dr",ord:1},
 ];
 const OFFICE_RITES=[
   {id:"loth",name:"Liturgy of the Hours",d:"Liturgia Horarum (Paul VI), four-week psalter"},
@@ -60,6 +63,9 @@ function coverage(type,rite,hour){
     if(/^(m|p|h)$/.test(rite)) return ["full","The complete historical text is available in Latin and English. Lay study keeps priest-only passages as references and veils the words of consecration."];
     if(rite==="o") return ["guide","The Prayer Book texts, the Canon and the propers of the day are printed. Divine Worship's own wording differs in places: follow your Missal there."];
     if(rite==="n") return ["guide","The readings and the Latin Ordinary, with a traditional English beside it, are printed. The collects, preface, Eucharistic Prayer and the current English wording come from your missal: press Add text to fill them in."];
+    if(rite==="d") return ["order","The Ordinary of the Dominican Mass in Latin and English, from Divinum Officium. The propers of the day (Officium, collect, lessons, responsory, offertory, secret, preface, communion, postcommunion) come from your Dominican Missal."];
+    if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
+    if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
     if(/^(br62|br55|mon|op)$/.test(rite)) return ["full","Every part of the hour is printed, in Latin and English."];
@@ -77,9 +83,9 @@ function renderAsk(){
   const riteOK = S.type && (S.type==="mass"?MASS_RITES:OFFICE_RITES).some(r=>r.id===S.rite);
   if(S.type==="office" && riteOK){ const sug=suggestHour(S.rite); hourHTML=hoursFor(S.rite).map(([id,n])=>choiceBtn("hour",id,n,id===sug?"Suggested for now":"",S.hour===id)).join(""); }
   const TIMED=["timed","Timed session","Fit to a set length, from 15 minutes up · for study sessions"];
-  const LENGTHS=S.rite==="b"?[["full","Full Liturgy","As usually served"],TIMED]:[["said","Said","Spoken, no music · shortest"],["sung","Sung, simple","Hymns and a chant Ordinary"],["chant","Full chant","Gregorian propers and Ordinary · longest"],TIMED];
+  const LENGTHS=S.rite==="b"||ORD_ONLY(S.rite)?[["full",S.rite==="b"?"Full Liturgy":"Full Mass","As usually celebrated"],TIMED]:[["said","Said","Spoken, no music · shortest"],["sung","Sung, simple","Hymns and a chant Ordinary"],["chant","Full chant","Gregorian propers and Ordinary · longest"],TIMED];
   let lenHTML=""; if(S.type==="mass"&&riteOK){ let st={}; try{ st=JSON.parse(localStorage.getItem("lect-mass-"+S.rite)||"null")||{}; }catch(e){}
-    if(!S.len||!LENGTHS.some(x=>x[0]===S.len)) S.len=st.target?"timed":(S.rite==="b"?"full":(st.preset&&st.preset!=="custom"?st.preset:"sung"));
+    if(!S.len||!LENGTHS.some(x=>x[0]===S.len)) S.len=st.target?"timed":(S.rite==="b"||ORD_ONLY(S.rite)?"full":(st.preset&&st.preset!=="custom"?st.preset:"sung"));
     S.mins=S.mins||st.target||20;
     lenHTML=LENGTHS.map(([id,n,d])=>choiceBtn("len",id,n,d,S.len===id)).join("");
     if(S.len==="timed") lenHTML+=`<div class="tchips minrow" role="group" aria-label="Minutes">${[15,20,30,45,60,90].map(m=>`<button type="button" class="tchip${S.mins===m?" on":""}" data-mins="${m}" aria-pressed="${S.mins===m}">${m} min</button>`).join("")}</div>`; }
@@ -473,7 +479,8 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr"};
+const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
   const iso=S.date||todayISO();
@@ -486,6 +493,13 @@ async function renderSession(){
   { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<p class="covline">${covBadge(c)} ${esc(c[1])}</p>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
+  else if(S.type==="mass"&&ORD_ONLY(S.rite)){
+    const nm=MASS_RITES.find(x=>x.id===S.rite).name;
+    const src={d:"The Ordinary is Divinum Officium's Dominican Ordo (MIT licence): the Latin of the Missale Ordinis Praedicatorum with a volunteer English translation.",
+      a:"The Latin Ordinary and Canon are Divinum Officium's Ambrosian Ordo (MIT licence).",
+      z:"The English Ordinary is Divinum Officium's Mozarabic Ordo (MIT licence), a traditional translation following the Missale mixtum. Divinum Officium's Latin follows the reformed Missale Hispano-Mozarabicum (1991), a modern edition, and is not reproduced."}[S.rite];
+    body=`<h2 class="dayname">${esc(nm)}: the Ordinary</h2><p class="callout">The fixed texts of the Mass are printed in full. This rite keeps its own calendar and propers, which are not on this site yet: the guide marks where they go.</p><div id="massGuide"></div><footer class="sesfoot"><p>${src}</p></footer>`;
+  }
   else if(S.type==="mass"){
     const r=day[S.rite], tr=RITE_TR[S.rite];
     const trName=tr==="kj"?"King James Version (with Apocrypha)":"Douay-Rheims (Challoner)";

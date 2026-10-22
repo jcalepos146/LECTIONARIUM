@@ -25,7 +25,7 @@ def entries():
         for b in n['books']:
             assert b['status'] in ['public-domain','open-licence','copyright']
         for s in n['supported']:
-            assert (s['type']=='mass' and s['rite'] in ['n','o','m','p','h','b']) or (s['type']=='office' and s['rite'] in ['loth','dwdo','br62','br55','mon','op','byz'])
+            assert (s['type']=='mass' and s['rite'] in ['n','o','m','p','h','b','d','a','z']) or (s['type']=='office' and s['rite'] in ['loth','dwdo','br62','br55','mon','op','byz'])
         seen=set(); cur=n
         while cur['parent']:
             assert cur['id'] not in seen, 'Catalog parent cycle'

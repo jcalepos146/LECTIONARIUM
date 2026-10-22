@@ -35,10 +35,13 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Rite | Mass | Office |
 |---|---|---|
 | 1962, pre-1955, hybrid | **Complete text** | **Complete text** |
-| Monastic, Dominican | n/a | **Complete text** |
+| Monastic | n/a | **Complete text** |
 | Ordinariate | *Guided*: 1662 texts, Canon and propers; Divine Worship wording differs in places | **Complete text** (1662 Mattins, Evensong, Compline; Prime, Terce, Sext and None from the Day-Hours, 1877) |
 | Novus Ordo / Liturgy of the Hours | *Guided*: readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal | *Guided*: psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary |
 | Byzantine | *Guided*: Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906), with the Sunday Resurrection hymns of the tone; Menaion hymns from your books | *Guided*: psalms and fixed prayers; Saturday Vespers stichera, dogmatikon and Sunday troparia of the tone (Hapgood); Menaion hymns from your books |
+| Dominican | *Order*: the Ordinary in Latin and English (Divinum Officium); propers from your Missal | **Complete text** (Divinum Officium, 1962) |
+| Ambrosian | *Order*: the Latin Ordinary and Canon (Divinum Officium); propers and Milanese calendar from your Missal | Not yet |
+| Mozarabic | *Order*: the Ordinary in English, after the Missale mixtum (Divinum Officium); propers from your Missal | Not yet |
 
 The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 

@@ -328,6 +328,55 @@ async function buildTrad(ctx, form, opts){
   return out;
 }
 
+/* ---------------------------------------------------------------- Ordinary-only rites: Dominican, Ambrosian, Mozarabic
+   The Ordinary comes from Divinum Officium's Ordo files (data/ordo-rites.json, built by tools/do_ordo.py).
+   Latin and English are re-sectioned at matching anchor lines so the two columns stay together. */
+const ORDO_ONLY={
+  d:{key:"op",lat:true,name:"Dominican",parts:[
+    ["Preparation of the chalice",null,null],
+    ["Prayers at the foot of the altar",/^!The priest says in a low voice/,/^!The priest says in a low voice/],
+    ["Kyrie",/^P\.\s*Kyrie eleison/,/^!After making the sign of the cross on the altar/],
+    ["Gloria and Collect",/^Gloria in excelsis Deo/,/^!Then follows the Gloria/],
+    ["Epistle, Responsory and Gospel",/^!At the end of the Collect/,/^!At the end of the Collect/],
+    ["Creed",/^!After the Gospel the priest/,/^!After the Gospel the priest/],
+    ["Offertory, Lavabo, Orate fratres",/^P\.\s*Dominus vobiscum\.\s*S\./,/^P\.\s+The Lord be with you\.\s*$/],
+    ["Preface and Sanctus",/^!After the Secret prayers/,/^!After the Secret prayers/],
+    ["Canon",/^!The Canon of the Mass/,/^!The Canon of the Mass/],
+    ["Lord's Prayer, Agnus Dei and Communion",/^OREMUS/,/^!Oremus/],
+    ["Postcommunion and Dismissal",/^!When the priest has purified/,/^!When the priest has purified/],
+    ["Last Gospel",/^!Turning towards the Gospel side/,/^!Turning towards the Gospel side/],
+    ["Prayers after Low Mass",/^!To be said kneeling/,/^!To be said kneeling/]]},
+  a:{key:"a",lat:true,name:"Ambrosian",byHead:{_start:"Preparation and prayers at the altar steps",Ingressa:"Ingressa",Gloria:"Gloria and Prayer over the People","Lectio (Prokeimenon).":"Prophecy, Psalmellus and Epistle",Evangelium:"Gospel","Antiphona post Evangelium":"Antiphon after the Gospel and Offertory",Credo:"Creed",Prefatio:"Preface and Sanctus","Incipit Canon.":"Canon",Transitorium:"Transitorium",Postcommunio:"Postcommunion and Dismissal"}},
+  z:{key:"mz",lat:false,name:"Mozarabic",byHead:{_start:"Preparation and prayers at the altar steps",Gloria:"Gloria",COLLECT:"Collect",Lesson:"Lessons and Epistle","The GOSPEL":"Gospel, Lauda and Offertory",Lavabo:"Lavabo and the first prayer (Missa)","II. PRAYER":"Second prayer: the Diptychs","III. PRAYER":"Third prayer: Post Nomina","IV. PRAYER":"Fourth prayer: Ad Pacem; the Inlatio and Sanctus","V. PRAYER":"Fifth prayer: Post Sanctus and the Institution","VI. PRAYER":"Sixth prayer: Post Pridie; the Creed","AD CONFRACTIONEM, varying.":"The Fraction","VII. PRAYER":"Seventh prayer: the Lord's Prayer and Communion","The COMMUNION, which varies.":"Communion and Dismissal"}},
+};
+const ordoClean=l=>{ let x=String(l).replace(/\t/g," ").replace(/^!x!!?/,"!").replace(/^!x!/,""); if(/^!\[:.*:\]$/.test(x.trim())||/^!\*/.test(x.trim())) return ""; if(/^\[.*\]$/.test(x.trim())) x="!"+x.trim().slice(1,-1); if(/^!\[/.test(x)) x="!"+x.slice(2).replace(/\]$/,""); if(x.trim()==="...") x="!(The proper text of the day.)"; if(x.trim()==="[INSERT PREFACE HERE]") x="!(The Preface of the day.)"; return x; };
+function ordoLines(secs){ const out=[]; secs.forEach(s=>s.items.forEach(it=>it.split("\n").forEach(l=>{ const c=ordoClean(l); if(c&&c.trim()) out.push(c); }))); return out; }
+function ordoSplit(lines,res){ const cut=[0]; let at=0; for(let i=1;i<res.length;i++){ const re=res[i]; let k=-1; if(re) for(let j=at+1;j<lines.length;j++){ if(re.test(lines[j].trim())){ k=j; break; } } cut.push(k<0?null:k); if(k>=0) at=k; }
+  return cut.map((c,i)=>{ if(c==null) return []; let e=lines.length; for(let j=i+1;j<cut.length;j++){ if(cut[j]!=null){ e=cut[j]; break; } } return lines.slice(c,e); }); }
+const INST_RE=/HOC EST ENIM|HIC EST ENIM|THIS IS MY BODY|THIS IS THE CHALICE|FOR THIS IS MY BODY|FOR THIS IS THE CHALICE|^HOC EST CORPUS|^HIC EST CALIX/;
+async function buildOrdoOnly(ctx,opts){
+  const R=await J("data/ordo-rites.json"), cfg=ORDO_ONLY[ctx.rite], D=R[cfg.key];
+  const lang=cfg.lat?(opts.lang||"both"):"en", P={la:{},en:{}};
+  let parts;
+  if(cfg.parts){ const L=ordoLines(D.Latin), E=ordoLines(D.English), sl=ordoSplit(L,cfg.parts.map(x=>x[1])), se=ordoSplit(E,cfg.parts.map(x=>x[2])); parts=cfg.parts.map((x,i)=>({t:x[0],la:sl[i],en:se[i]})); }
+  else { const src=cfg.lat?D.Latin:D.English; parts=src.map(s=>({t:cfg.byHead[s.h]||s.h,la:cfg.lat?ordoLines([s]):[],en:cfg.lat?[]:ordoLines([s])})).filter(p=>(p.la.length||p.en.length)); }
+  if(cfg.key==="op"&&!opts.leonine) parts=parts.filter(p=>p.t!=="Prayers after Low Mass");
+  if(opts.lastGospel===false) parts=parts.filter(p=>p.t!=="Last Gospel");
+  const out=[];
+  for(const p of parts){
+    let la=p.la, en=p.en, html="";
+    if(opts.veil){ const hide=a=>{ let hit=false; const r=a.filter(l=>{ if(INST_RE.test(l)){ hit=true; return false; } return true; }); return [r,hit]; }; const [la2,h1]=hide(la), [en2,h2]=hide(en); la=la2; en=en2; if(h1||h2) p.veiled=true; }
+    if(!cfg.lat||!la.length) html=`<div class="txt one">${(en.length?en:la).map(l=>lineHTML(l,P,"en")).join("")}</div>`;
+    else html=block(la,en,P,lang);
+    if(p.veiled) html+=cue(VEIL);
+    let secs=words(en.length?en:la)/2.4+(p.veiled?30:0);
+    if(/Communion/.test(p.t)&&!/Postcommunion/.test(p.t)){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the faithful</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
+    if(/Gospel/.test(p.t)&&!/Last/.test(p.t)&&opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; }
+    out.push(sec(p.t,secs/60,html));
+  }
+  return out;
+}
+
 /* ---------------------------------------------------------------- Novus Ordo (Heritage Missal order) */
 const LAT={
   sign:"In nómine Patris, et Fílii, ✠ et Spíritus Sancti. ℟. Amen.",
@@ -693,7 +742,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", byz=rite==="b";
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite], byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -717,13 +766,13 @@ function controls(rite, opts, iso, day, auto){
       <div class="cgrid">
         ${music}
         <fieldset><legend>Timing</legend>
-          ${byz?`<label class="sl">Liturgy <select data-o="byzlit">${[["auto","Of the day"],["chrys","St John Chrysostom"],["basil","St Basil the Great"],["pres","Presanctified Gifts"]].map(([v,n])=>`<option value="${v}"${(opts.byzlit||"auto")===v?" selected":""}>${n}</option>`).join("")}</select></label>`:""}
-          <label class="sl">${rite==="o"||trad?"Sermon":"Homily"} <select data-o="homily">${[0,3,5,8,10,12,15,20].map(n=>`<option value="${n}"${+opts.homily===n?" selected":""}>${n?n+" min":"None"}</option>`).join("")}</select></label>
+          ${rite==="b"?`<label class="sl">Liturgy <select data-o="byzlit">${[["auto","Of the day"],["chrys","St John Chrysostom"],["basil","St Basil the Great"],["pres","Presanctified Gifts"]].map(([v,n])=>`<option value="${v}"${(opts.byzlit||"auto")===v?" selected":""}>${n}</option>`).join("")}</select></label>`:""}
+          <label class="sl">${rite==="o"||trad||oo?"Sermon":"Homily"} <select data-o="homily">${[0,3,5,8,10,12,15,20].map(n=>`<option value="${n}"${+opts.homily===n?" selected":""}>${n?n+" min":"None"}</option>`).join("")}</select></label>
           <label class="sl">Communion <select data-o="communion">${[2,4,6,8,10,15].map(n=>`<option value="${n}"${+opts.communion===n?" selected":""}>${n} min</option>`).join("")}</select></label>
           ${rite==="n"?`<label class="sl">Eucharistic Prayer <select data-o="ep">${["I","II","III","IV"].map(n=>`<option${opts.ep===n?" selected":""}>${n}</option>`).join("")}</select></label>${chk("up","Universal Prayer",opts.up)}`:""}
           ${rite==="o"?chk("up","Prayers of the People",opts.up)+chk("lastGospel","Last Gospel",opts.lastGospel):""}
-          ${trad?chk("leonine","Leonine prayers after Low Mass",opts.leonine)+chk("lastGospel","Last Gospel",opts.lastGospel!==false):""}
-          ${trad?`<label class="sl">Text <select data-o="lang"><option value="both"${opts.lang==="both"?" selected":""}>Latin and English</option><option value="la"${opts.lang==="la"?" selected":""}>Latin</option><option value="en"${opts.lang==="en"?" selected":""}>English</option></select></label>`:""}
+          ${trad||rite==="d"?chk("leonine","Leonine prayers after Low Mass",opts.leonine)+chk("lastGospel","Last Gospel",opts.lastGospel!==false):""}
+          ${trad||(oo&&ORDO_ONLY[rite].lat)?`<label class="sl">Text <select data-o="lang"><option value="both"${opts.lang==="both"?" selected":""}>Latin and English</option><option value="la"${opts.lang==="la"?" selected":""}>Latin</option><option value="en"${opts.lang==="en"?" selected":""}>English</option></select></label>`:""}
         </fieldset>
       </div>
     </details>
@@ -733,6 +782,9 @@ function controls(rite, opts, iso, day, auto){
 /* Steps that shorten a session, gentlest first, for each rite. The fitter applies them in order and stops once the target is met. */
 function ladder(rite){
   const trad=rite==="m"||rite==="p"||rite==="h", byz=rite==="b";
+  if(ORDO_ONLY[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    ["Last Gospel and prayers after Mass left out", o=>{ o.lastGospel=false; o.leonine=false; }],
+    ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }]];
   const S=[];
   if(!byz){
     S.push(["Asperges and Marian antiphon left out", o=>{ o.asperges=false; o.marian=false; },"music"]);
@@ -844,6 +896,7 @@ async function render(el, ctx){
     if(rite==="h") return buildTrad(ctx,"1962",o);
     if(rite==="o") return buildOrd(ctx,o);
     if(rite==="b") return buildByz(ctx,o);
+    if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
     return buildNO(ctx,o); };
   const continuous=isOffice||rite==="b";
   const fit=async(base)=>{

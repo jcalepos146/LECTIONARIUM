@@ -545,9 +545,8 @@
       ],
       "rite": "new: Dominican Mass",
       "service": "Mass",
-      "now": "none (Office complete)",
+      "now": "order (Ordinary in Latin and English)",
       "missing": [
-        "Dominican Ordinary",
         "Dominican propers and calendar"
       ],
       "plan": "Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican calendar, so a Dominican Mass guide can reuse the existing 1962 propers plus the Order's own feasts from the 1933 Missal.",
@@ -594,9 +593,9 @@
       ],
       "rite": "new",
       "service": "Mass and Office",
-      "now": "none",
+      "now": "order (Latin Ordinary and Canon)",
       "missing": [
-        "Ambrosian Ordinary",
+        "English Ordinary (Atchley 1909)",
         "Ambrosian propers",
         "Ambrosian calendar (six-week Advent)",
         "Ambrosian lectionary",
@@ -690,9 +689,9 @@
       ],
       "rite": "new",
       "service": "Mass and Office",
-      "now": "none",
+      "now": "order (English Ordinary)",
       "missing": [
-        "Mozarabic Ordinary",
+        "Latin Ordinary from a public-domain edition (Missale mixtum)",
         "propers",
         "lectionary",
         "Office"

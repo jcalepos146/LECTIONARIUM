@@ -28,9 +28,9 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 3 | [divine-worship-mass](#divine-worship-mass) | guide | 4 | 0 | Divine Worship: The Missal (2015) itself: permission from the Congregation for Divine Worship via the Ordinariates |
 | 4 | [divine-worship-office](#divine-worship-office) | full (Prime, Terce, Sext and None from the Day-Hours, 1877) | 2 | 0 | Divine Worship: Daily Office (2020/21): permission |
 | 5 | [byzantine-catholic](#byzantine-catholic) | order (Liturgy), guide (Office) | 13 | 0 | Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and current UGCC books: permission from the issuing eparchies |
-| 6 | [dominican-mass](#dominican-mass) | none (Office complete) | 2 | 0 | nothing |
-| 7 | [ambrosian](#ambrosian) | none | 6 | 0 | current Ambrosian Missal and Lectionary: Archdiocese of Milan permission |
-| 8 | [mozarabic](#mozarabic) | none | 6 | 0 | Missale Hispano-Mozarabicum (1991-94): Archdiocese of Toledo permission |
+| 6 | [dominican-mass](#dominican-mass) | order (Ordinary in Latin and English) | 2 | 0 | nothing |
+| 7 | [ambrosian](#ambrosian) | order (Latin Ordinary and Canon) | 6 | 0 | current Ambrosian Missal and Lectionary: Archdiocese of Milan permission |
+| 8 | [mozarabic](#mozarabic) | order (English Ordinary) | 6 | 0 | Missale Hispano-Mozarabicum (1991-94): Archdiocese of Toledo permission |
 | 9 | [braga](#braga) | none | 1 | 0 | Braga breviary: not located |
 | 10 | [religious-order-uses](#religious-order-uses) | none | 4 | 0 | Premonstratensian and Carmelite breviaries: not located; modern Carthusian books: not public |
 | 11 | [zaire-use](#zaire-use) | none | 0 | 0 | Missel romain pour les diocèses du Zaïre: permission from the Episcopal Conference of the Democratic Republic of the Congo |
@@ -156,9 +156,9 @@ Blocked: Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and curren
 
 ### 6. dominican-mass
 
-Catalog: `dominican` · rite `new: Dominican Mass` · Mass · now **none (Office complete)**
+Catalog: `dominican` · rite `new: Dominican Mass` · Mass · now **order (Ordinary in Latin and English)**
 
-Missing: Dominican Ordinary; Dominican propers and calendar.
+Missing: Dominican propers and calendar.
 
 Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican calendar, so a Dominican Mass guide can reuse the existing 1962 propers plus the Order's own feasts from the 1933 Missal.
 
@@ -170,9 +170,9 @@ Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican c
 
 ### 7. ambrosian
 
-Catalog: `ambrosian` · rite `new` · Mass and Office · now **none**
+Catalog: `ambrosian` · rite `new` · Mass and Office · now **order (Latin Ordinary and Canon)**
 
-Missing: Ambrosian Ordinary; Ambrosian propers; Ambrosian calendar (six-week Advent); Ambrosian lectionary; Ambrosian Office.
+Missing: English Ordinary (Atchley 1909); Ambrosian propers; Ambrosian calendar (six-week Advent); Ambrosian lectionary; Ambrosian Office.
 
 Start with the Mass: Latin Ordinary from Divinum Officium and the 1909 English Ordinary and Canon. Propers and lectionary come from the 1904 Manuale Ambrosianum (medieval) and the 1712 Missal, labelled as the pre-1976 use. The current 1976/1981 Missal and 2008 lectionary are in copyright. The Ambrosian calendar needs its own computation before any day is mapped.
 
@@ -190,9 +190,9 @@ Blocked: current Ambrosian Missal and Lectionary: Archdiocese of Milan permissio
 
 ### 8. mozarabic
 
-Catalog: `mozarabic` · rite `new` · Mass and Office · now **none**
+Catalog: `mozarabic` · rite `new` · Mass and Office · now **order (English Ordinary)**
 
-Missing: Mozarabic Ordinary; propers; lectionary; Office.
+Missing: Latin Ordinary from a public-domain edition (Missale mixtum); propers; lectionary; Office.
 
 The 1500 Cisneros books reprinted in Migne (Patrologia Latina 85-86) give the Missale mixtum and Breviarium gothicum complete; the Liber comicus gives the old lectionary. The restored Missale Hispano-Mozarabicum (1991-94) differs and is in copyright, so label the guide 'Cisneros use'.
 
