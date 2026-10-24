@@ -413,7 +413,7 @@ const PB_BOOKS={
     notSaid:["Exhortations","Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
   /* The earlier books (data/bcp<year>.json, tools/bcp_early.py) carry the service without a day-by-day table of collects,
      epistles and gospels, so those three are cued from the book. */
-  bcp49:{file:"data/bcp1549.json", decalogue:"", decalogueAbr:"",
+  bcp49:{file:"data/bcp1549.json", decalogue:"", decalogueAbr:"", introitStep:"Introit and Kyrie",
     collectAt:/^Then shall folowe the Collect of the daie/, epistleAt:/^The Epistle of sainct Paule/, gospelAt:/^Glory be to thee, O Lorde/,
     notSaid:["Collects and rubrics","Exhortations"], prefaceHead:p=>({Christmas:"Christmas","Easter":"Easter",Ascension:"Assencion",Whitsuntide:"Whitsonday","Trinity Sunday":"Trinitie"})[p]||p},
   bcp52:{file:"data/bcp1552.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments",
@@ -455,6 +455,9 @@ async function buildPB(ctx,opts,book){
       out.push(sec(st.t,secs/60,`<div class="txt one">${html}</div>`)); continue;
     }
     html=st.items.map(pbItem).join("");
+    if(C.introitStep&&st.t===C.introitStep&&set&&set.introit&&st.items.length){
+      html=pbItem(st.items[0])+`<h4 class="sub2">The Introit of the Day</h4><p class="cite">${esc(set.introit.head)}</p>`+set.introit.text.map(t=>`<p data-r="all">${esc(t)}</p>`).join("")+st.items.slice(1).map(pbItem).join("");
+    }
     if(st.slot==="collect"){
       const its=st.items, k=C.collectBeforeEpistle?at(its,C.epistleAt)-1:at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
       const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
@@ -467,7 +470,7 @@ async function buildPB(ctx,opts,book){
       const its=st.items, k=Math.max(0,at(its,C.gospelAt));
       html=its.slice(0,k+1).map(pbItem).join("")+reading("Gospel",g,"cel")+its.slice(k+1).map(pbItem).join("");
       secs+=g?g.text.join(" ").split(/\s+/).length/2.6:120;
-      if(pr&&pr.sets.length>1) html+=`<p class="note">This day has a second set of collect, epistle and gospel (for an early celebration) in the Prayer Book.</p>`;
+      if(pr&&pr.sets.length>1){ const lab=x=>x.label?`at the ${x.label} Communion`:"for another celebration"; html+=`<p class="note">Shown: the set ${esc(lab(pr.sets[0]))}. The Prayer Book also gives a set ${pr.sets.slice(1).map(x=>esc(lab(x))).join(" and ")}.</p>`; }
     }
     if(st.slot==="sermon"&&opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; }
     if(st.slot==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }

@@ -53,8 +53,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Armenian Divine Liturgy (Armenian Apostolic; Armenian Catholic) | *Guided*: the Divine Liturgy in full in the English of 1908, with the vesting, litanies and the priest's private prayers; lessons from the Armenian lectionary are cued | Not yet |
 | Methodist: Ritual of the Methodist Episcopal Church (1908) | **Complete text**: the Order for the Administration of the Lord's Supper | Not yet |
 | Lutheran: Common Service Book (1917-19) | **Complete text**: The Service with the Introit, Collect, Epistle, Gradual and Gospel of the day (lessons the book only cites come from the King James Version) | Not yet |
-| Prayer Book 1549 (England) | *Guided*: The Supper of the Lord, commonly called the Mass, in full in the spelling of the book; the Introit, collect, epistle and gospel of the day are cited | Not yet |
-| Prayer Book 1552, 1559 (England) | *Guided*: the Order for the Administration of the Lordes Supper in full in the spelling of the book; collect, epistle and gospel of the day are cited | Not yet |
+| Prayer Book 1549, 1552, 1559 (England) | **Complete text**: the Communion service in full in the spelling of each book (1549: The Supper of the Lord, commonly called the Mass), with the Introit (1549 only), collect, epistle and gospel of every Sunday and holy day | Not yet |
 | Prayer Book 1637 (Scotland) | *Guided*: the Scottish Communion Office in full, with the prayer of consecration and the prayer of oblation; collect, epistle and gospel of the day are cited | Not yet |
 | Prayer Book 1662 (England) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | See Ordinariate: 1662 Mattins and Evensong |
 | Prayer Book 1789, 1892 (USA) | *Guided*: the Order for the Administration of the Lord's Supper in full; collect, epistle and gospel of the day are cited | Not yet |
@@ -190,7 +189,9 @@ replacement. It changes fetch sizes, not the liturgical content.
 ## The Prayer Book texts
 
 The 1662, 1928 and 1979 books are compiled from complete transcriptions with a day-by-day table of
-collects, epistles and gospels (`tools/bcp1662.py`, `tools/bcp1928.py`). The earlier books (1549, 1552, 1559,
+collects, epistles and gospels (`tools/bcp1662.py`, `tools/bcp1928.py`). The 1549, 1552 and 1559 books also have a day-by-day table, parsed from the Justus Epistles and Gospels pages by
+`tools/bcp_propers.py` (where the books differ the margin notes decide; a few choices are listed in its VARIANTS table).
+The earlier books (1549, 1552, 1559,
 1637, 1789, 1892) are built from hand-proofread orders in `tools/texts/bcp-<year>.txt`, written in the order
 markup of `tools/orders.py`. The first draft of each comes from the Society of Archbishop Justus
 transcriptions (justus.anglican.org/resources/bcp/, public domain) through `tools/justus.py`; the header of
