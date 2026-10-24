@@ -784,6 +784,8 @@ body.san-open{overflow:hidden}
 <li><a href="https://archive.org/details/liturgyofreform00refo" target="_blank" rel="noopener">https://archive.org/details/liturgyofreform00refo</a></li>
 <li><a href="https://archive.org/details/liturgyofreforme0000unse" target="_blank" rel="noopener">https://archive.org/details/liturgyofreforme0000unse</a></li>
 <li><a href="https://archive.org/details/lutheranhymnalev0000vari_g9j5" target="_blank" rel="noopener">https://archive.org/details/lutheranhymnalev0000vari_g9j5</a></li>
+<li><a href="https://archive.org/details/orderofworshipfo00unknuoft" target="_blank" rel="noopener">https://archive.org/details/orderofworshipfo00unknuoft</a></li>
+<li><a href="https://archive.org/details/ordwors00refo" target="_blank" rel="noopener">https://archive.org/details/ordwors00refo</a></li>
 <li><a href="https://archive.org/details/psalterwithrespo00unit" target="_blank" rel="noopener">https://archive.org/details/psalterwithrespo00unit</a></li>
 <li><a href="https://archive.org/details/ritualofmethodis01meth" target="_blank" rel="noopener">https://archive.org/details/ritualofmethodis01meth</a></li>
 <li><a href="https://bcp2019.anglicanchurch.net/" target="_blank" rel="noopener">https://bcp2019.anglicanchurch.net/</a></li>
@@ -872,7 +874,7 @@ body.san-open{overflow:hidden}
       <tr><td>Prayer Books 1637, 1789, 1892</td><td><span class="cov cov-guide">Guided text</span> Holy Communion in full (the early books in their own spelling); the day's collect, epistle and gospel from your Prayer Book</td><td>Not yet</td></tr>
       <tr><td>Prayer Books 1662, 1928</td><td><span class="cov cov-full">Complete text</span> Holy Communion with the collect, epistle and gospel of the day</td><td><span class="cov cov-full">Complete text</span> 1928 Morning and Evening Prayer; 1662 Mattins and Evensong (Ordinariate)</td></tr>
       <tr><td>Prayer Book 1979</td><td><span class="cov cov-guide">Guided text</span> the Holy Eucharist in full, collect and preface of the day</td><td><span class="cov cov-full">Complete text</span> Morning and Evening Prayer, Noonday, Compline</td></tr>
-      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service (1917-19), Book of Common Worship (1906), RCA Liturgy (1882), Methodist Ritual (1908)</td><td>Not yet</td></tr>
+      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service (1917-19), Book of Common Worship (1906), RCA Liturgy (1882), Mercersburg Order of Worship (1866), Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's</td></tr>
     </tbody></table></div>
     <h3>Reading data</h3>
     <ul class="src">
@@ -2280,6 +2282,9 @@ const ORDER_RITES={
   copt:{parts:o=>[["coptic1908"]], optional:["The Preparation of the Altar"], optLabel:"The preparation of the altar left out"},
   arm:{parts:o=>[["armenian1908"]], optional:["The Vesting of the Priest","The Approach to the Altar"], optLabel:"The vesting and the prayers of approach left out"},
   rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
+  rcus:{parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
+  rcusv:{parts:o=>[["rcus1866-evening"]]},
+  rcusp:{parts:o=>[["rcus1866-preparation"]]},
   csbm:{parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{parts:o=>[["csb-vespers"]], csbCollect:true}
 };
@@ -3868,6 +3873,9 @@ const MASS_RITES=[
   {id:"arm",name:"Armenian Divine Liturgy (Badarak)",d:"Armenian Apostolic Church · in the English of 1908, with the vesting, the litanies and the priest's private prayers",tr:"kj",ord:1},
   {id:"me08",name:"The Lord's Supper (Methodist Episcopal, 1908)",d:"Methodist · Wesley's order from the 1662 Prayer Book, as in the 1908 Ritual",tr:"kj",ord:1},
   {id:"rca",name:"Lord's Day Morning (Reformed Church in America, 1882)",d:"Reformed · Order of Public Worship, with the Lord's Supper in the Form of Dort",tr:"kj",ord:1},
+  {id:"rcus",name:"Lord's Day Morning (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Order of Worship of the Mercersburg theologians, with the Holy Communion when celebrated",tr:"kj",ord:1},
+  {id:"rcusv",name:"Lord's Day Evening (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Evening Service of the Order of Worship",tr:"kj",ord:2},
+  {id:"rcusp",name:"Preparation for the Holy Communion (Mercersburg 1866)",d:"Reformed · the preparatory service: the Law, the Litany and the address to communicants",tr:"kj",ord:2},
   {id:"pres",name:"Lord's Day Morning Service (Presbyterian, 1906)",d:"Reformed · The Book of Common Worship, with the Lord's Supper when celebrated",tr:"kj",ord:1},
   {id:"csbm",name:"Matins (Common Service Book)",d:"Lutheran · the morning office of 1917-19, with the collect of the day",tr:"kj",ord:2},
   {id:"csbv",name:"Vespers (Common Service Book)",d:"Lutheran · the evening office of 1917-19, with the collect of the day",tr:"kj",ord:2},
@@ -3941,6 +3949,9 @@ function coverage(type,rite,hour){
     if(rite==="copt") return ["guide","The Coptic Liturgy of St Basil is printed in full, in the Marquis of Bute's English (1882, reissued 1908). The lessons and Gospel of the day come from the Coptic lectionary (the Katameros), which is not yet on this site."];
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
     if(rite==="me08") return ["full","The Order for the Administration of the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) is printed in full."];
+    if(rite==="rcus") return ["full","The Regular Service on the Lord's Day, and the Holy Communion, from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) are printed in full, with the Litany. The Epistle and Gospel, the hymns and the sermon are the minister's."];
+    if(rite==="rcusv") return ["full","The Evening Service from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full, with the Litany. The lessons, the hymns and the sermon are the minister's."];
+    if(rite==="rcusp") return ["full","The Preparation for the Holy Communion from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full: the Law, the Litany, the address to the communicants, the confession and the pardon."];
     if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free; the lessons and psalms are chosen by the minister."];
     if(rite==="pres") return ["full","The Order of Morning Service and the Order for the Lord's Supper from the Presbyterian Book of Common Worship (1906) are printed in full. The book sets no lectionary: the Psalter portion, the lessons, the hymns and the General Prayer are chosen by the minister."];
     if(rite==="csbm") return ["full","Matins from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
@@ -4369,7 +4380,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -4398,6 +4409,15 @@ async function renderSession(){
   }
   else if(S.type==="mass"&&S.rite==="me08"){
     body=`<h2 class="dayname">The Lord's Supper</h2><p class="daysub">Ritual of the Methodist Episcopal Church (1908)</p><div id="massGuide"></div><footer class="sesfoot"><p>Ritual of the Methodist Episcopal Church (New York: Eaton &amp; Mains, 1908), public domain, transcribed from the Internet Archive scan. The order descends from John Wesley's Sunday Service of 1784.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rcus"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Regular Service and Holy Communion · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rcusv"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Evening Service · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rcusp"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Preparation for the Holy Communion · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="rca"){
     body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">The Liturgy of the Reformed Church in America (1882)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Liturgy of the Reformed Church in America, for use in public worship (New York, 1882), public domain, transcribed from the Internet Archive scan. Its Office for the Lord's Supper is the Form of the Synod of Dort.</p></footer>`;

@@ -1918,7 +1918,7 @@
       ],
       "rite": "new",
       "service": "Divine Service and Matins/Vespers",
-      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics",
+      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics; Matins and Vespers with the collect of the day",
       "missing": [
         "Swedish High Mass",
         "current Nordic service books"
@@ -2102,6 +2102,7 @@
       "catalog": [
         "reformed",
         "dort-forms",
+        "mercersburg",
         "genevan-psalter",
         "psalter-1912",
         "westminster",
@@ -2121,7 +2122,7 @@
       ],
       "rite": "new",
       "service": "Lord's Day worship and forms",
-      "now": "The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, in full",
+      "now": "The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper, and the Mercersburg Order of Worship (1866) Morning and Evening Service, Litany and Holy Communion with its Preparation, in full",
       "missing": [
         "the other Dort forms (baptism, discipline, ordination, marriage) in English",
         "metrical psalters",

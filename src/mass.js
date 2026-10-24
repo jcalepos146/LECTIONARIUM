@@ -616,6 +616,9 @@ const ORDER_RITES={
   copt:{parts:o=>[["coptic1908"]], optional:["The Preparation of the Altar"], optLabel:"The preparation of the altar left out"},
   arm:{parts:o=>[["armenian1908"]], optional:["The Vesting of the Priest","The Approach to the Altar"], optLabel:"The vesting and the prayers of approach left out"},
   rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
+  rcus:{parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
+  rcusv:{parts:o=>[["rcus1866-evening"]]},
+  rcusp:{parts:o=>[["rcus1866-preparation"]]},
   csbm:{parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{parts:o=>[["csb-vespers"]], csbCollect:true}
 };
