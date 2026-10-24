@@ -133,7 +133,7 @@ const VEIL="The words of consecration are not shown in lay study. Follow in sile
 const veilCue=()=>`<p class="cue veiled" data-priest-only>${esc(VEIL)}</p>`;
 /* The words of consecration in the prayer-book and Eastern texts that carry no explicit marker: the institution
    narrative as said over the gifts, and the Byzantine epiclesis. Lessons (Maundy Thursday's epistle) never pass here. */
-const CONS_RE=/\b(this is my (body|blood)|this cup is the new (testament|covenant)|this is the new (testament|covenant) in my blood|this is my blood of the new)|make this bread the precious body|make that which is in this chalice|this bread is in very truth the precious body|this chalice, in very truth the precious blood|transmuting them by thy holy spirit/i;
+const CONS_RE=/\b(this is my (bod(y|ye)|blou?de?)|this cup is the new (testament|covenant)|this is the new (testament|covenant) in my blood|this is my blood of the new)|make this bread the precious body|make that which is in this chalice|this bread is in very truth the precious body|this chalice, in very truth the precious blood|transmuting them by thy holy spirit/i;
 let VEILING=false;
 /* Ordo items the abridgment levels leave out, by Latin section heading and occurrence: {level:[item indexes]} (levels are cumulative). */
 const TRAD_DROP={
@@ -413,6 +413,9 @@ const PB_BOOKS={
     notSaid:["Exhortations","Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
   /* The earlier books (data/bcp<year>.json, tools/bcp_early.py) carry the service without a day-by-day table of collects,
      epistles and gospels, so those three are cued from the book. */
+  bcp49:{file:"data/bcp1549.json", decalogue:"", decalogueAbr:"",
+    collectAt:/^Then shall folowe the Collect of the daie/, epistleAt:/^The Epistle of sainct Paule/, gospelAt:/^Glory be to thee, O Lorde/,
+    notSaid:["Collects and rubrics","Exhortations"], prefaceHead:p=>({Christmas:"Christmas","Easter":"Easter",Ascension:"Assencion",Whitsuntide:"Whitsonday","Trinity Sunday":"Trinitie"})[p]||p},
   bcp89:{file:"data/bcp1789.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},

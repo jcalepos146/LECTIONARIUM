@@ -26,6 +26,7 @@ const MASS_RITES=[
   {id:"csb",name:"The Service (Common Service Book)",d:"Lutheran · the Common Service of 1888 with the Introit, Collect, Epistle, Gradual and Gospel of the day",tr:"kj",ord:1},
   {id:"bcp62",name:"Holy Communion (1662 Prayer Book)",d:"Church of England · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
   {id:"bcp28",name:"Holy Communion (1928 Prayer Book)",d:"Episcopal Church (USA) · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
+  {id:"bcp49",name:"The Supper of the Lord (1549 Prayer Book)",d:"Church of England · the first English Prayer Book, commonly called the Mass, in its own spelling",tr:"kj",ord:1},
   {id:"bcp89",name:"Holy Communion (1789 Prayer Book)",d:"Episcopal Church (USA), the first American book · the service in full",tr:"kj",ord:1},
   {id:"bcp92",name:"Holy Communion (1892 Prayer Book)",d:"Episcopal Church (USA) · the revision before 1928, the service in full",tr:"kj",ord:1},
   {id:"bcp79",name:"Holy Eucharist (1979 Prayer Book)",d:"Episcopal Church · Rites One and Two, Prayers A to D, with the collect of the day",tr:"kj",ord:1},
@@ -93,6 +94,7 @@ function coverage(type,rite,hour){
     if(rite==="pres") return ["full","The Order of Morning Service and the Order for the Lord's Supper from the Presbyterian Book of Common Worship (1906) are printed in full. The book sets no lectionary: the Psalter portion, the lessons, the hymns and the General Prayer are chosen by the minister."];
     if(rite==="csb") return ["full","The Service of the Common Service Book (1917-19) is printed in full, with the Introit, Collect, Epistle, Gradual and Gospel of the day. The hymns are not included."];
     if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
+    if(rite==="bcp49") return ["guide","The Supper of the Lord and the Holy Communion in the first Prayer Book of Edward VI (1549) is printed in full, in the spelling of the book. The Introit, Collect, Epistle and Gospel of the day come from your Prayer Book."];
     if(rite==="bcp89") return ["guide","The Order for the Administration of the Lord's Supper in the first American Prayer Book (1789) is printed in full. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
     if(rite==="bcp92") return ["guide","The Order for the Administration of the Lord's Supper in the American Prayer Book of 1892 is printed in full. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
     if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
@@ -511,7 +513,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",pres:"kj",rca:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",pres:"kj",rca:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -555,6 +557,9 @@ async function renderSession(){
     const B=await fetch("data/bcp1662.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day):(day.o&&day.o.bcp&&B.propers[day.o.bcp]);
     const wk=pr&&toDate(iso).getUTCDay()&&!/BEFORE EASTER|FRIDAY|EVEN|WEEK|DAY$/i.test(pr.t.toUpperCase())&&/SUNDAY/i.test(pr.t);
     body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1662)${wk?" · the Sunday's collect, epistle and gospel serve the week":""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (1662), as transcribed by Lynda M. Howell (eskimo.com/~lhowell/bcp1662), with the 1662 wording of the opening rubrics restored from her notes on later changes. The epistles and gospels are the Prayer Book's own King James text. Within the United Kingdom the Prayer Book is Crown property, administered by the King's Printer.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="bcp49"){
+    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1549)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Church of England (1549), public domain, as transcribed by the Society of Archbishop Justus, in the spelling of the book. The Introit, Collect, Epistle and Gospel of the day are not yet printed here: read them from the book.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="bcp89"){
     body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1789)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1789), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are not yet printed for this book: take them from your Prayer Book.</p></footer>`;
