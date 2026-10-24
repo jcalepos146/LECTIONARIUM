@@ -422,6 +422,9 @@ const PB_BOOKS={
   bcp59:{file:"data/bcp1559.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments",
     collectAt:/^Then shall folowe the Collect of the day/, epistleAt:/^The Epystle written/, gospelAt:/^The Gospell wrytten/,
     notSaid:["Exhortations of warning","Collects and rubrics"], prefaceHead:p=>({Christmas:"Christmas",Easter:"Easter",Ascension:"Ascencion",Whitsuntide:"Wytsonday","Trinity Sunday":"Trinitie"})[p]||p},
+  bcp37:{file:"data/bcp1637.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", collectBeforeEpistle:true,
+    collectAt:null, epistleAt:/^Immediately after the Collects/, gospelAt:/^And the Epistle ended, the Gospel/,
+    notSaid:["Exhortations of warning","Collects and rubrics"], prefaceHead:p=>({Christmas:"Christmas",Easter:"Easter",Ascension:"Ascension",Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
   bcp89:{file:"data/bcp1789.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
@@ -453,7 +456,7 @@ async function buildPB(ctx,opts,book){
     }
     html=st.items.map(pbItem).join("");
     if(st.slot==="collect"){
-      const its=st.items, k=at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
+      const its=st.items, k=C.collectBeforeEpistle?at(its,C.epistleAt)-1:at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
       const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
       const ep=AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec");
       html=its.slice(0,k+1).map(pbItem).join("")+coll+its.slice(k+1,ke+1).map(pbItem).join("")+ep+its.slice(ke+1).map(pbItem).join("");
