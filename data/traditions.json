@@ -3730,6 +3730,18 @@
         "rite": "csb",
         "hour": null,
         "label": "The Service"
+      },
+      {
+        "type": "mass",
+        "rite": "csbm",
+        "hour": null,
+        "label": "Matins"
+      },
+      {
+        "type": "mass",
+        "rite": "csbv",
+        "hour": null,
+        "label": "Vespers"
       }
     ],
     "pd_texts_available": [
