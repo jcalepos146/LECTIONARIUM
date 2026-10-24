@@ -119,8 +119,14 @@ individual catalog share pages within the 512-file site limit.
 ## Local participation mode
 
 `src/participation.js` is loaded before Mass/session tools. It owns the local
-sessionStorage choice between lay study and a self-declared ordained-priest
-mode. The host’s options never supply that choice. Mass rendering derives
+localStorage choice between lay study and a self-declared priest-or-seminarian
+mode, and asks the first-time question (a non-blocking `<dialog>` over a guide
+already drawn in lay study). The host’s options never supply that choice. The
+words of consecration are veiled in three ways: the Roman, Ambrosian,
+Dominican and Mozarabic builders match their institution formulas (`INST_RE`);
+the prayer-book, Common Service and Byzantine texts are matched by `CONS_RE`;
+the orders in `tools/texts/order-*.txt` mark them explicitly with
+`[consecration]` … `[/consecration]`. Mass rendering derives
 `veil` locally; received live options are normalized before comparison so a
 host’s priest mode cannot override a lay follower or cause redraw loops.
 

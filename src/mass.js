@@ -129,7 +129,12 @@ const words=lines=>(lines||[]).join(" ").replace(/[!&$]\S*/g," ").split(/\s+/).f
 /* ---------------------------------------------------------------- shared pieces */
 function cue(text){ return `<p class="cue">${esc(text)}</p>`; }
 function abr(list){ list=[].concat(list).filter(Boolean); return list.length?`<p class="abr"><span class="lbl">Shortened for time</span> ${list.map(esc).join(" · ")}</p>`:""; }
-const VEIL="Priest-only Eucharistic prayer: follow silently in lay study. Do not voice the priest’s prayer or imitate the consecration and elevation. See the canonical guidance in Sources.";
+const VEIL="The words of consecration are not shown in lay study. Follow in silence; do not voice the priest’s prayer or imitate the consecration. (Priests and seminarians: choose Participation › Priest or seminarian.)";
+const veilCue=()=>`<p class="cue veiled" data-priest-only>${esc(VEIL)}</p>`;
+/* The words of consecration in the prayer-book and Eastern texts that carry no explicit marker: the institution
+   narrative as said over the gifts, and the Byzantine epiclesis. Lessons (Maundy Thursday's epistle) never pass here. */
+const CONS_RE=/\b(this is my (body|blood)|this cup is the new (testament|covenant)|this is the new (testament|covenant) in my blood|this is my blood of the new)|make this bread the precious body|make that which is in this chalice|this bread is in very truth the precious body|this chalice, in very truth the precious blood|transmuting them by thy holy spirit/i;
+let VEILING=false;
 /* Ordo items the abridgment levels leave out, by Latin section heading and occurrence: {level:[item indexes]} (levels are cumulative). */
 const TRAD_DROP={
   "Incipit#1":{2:[4],3:[3]},
@@ -246,7 +251,7 @@ async function buildTrad(ctx, form, opts){
       if(j===0&&secSkip) continue;
       if(!conditions(la)) continue;
       if(dropped(key,j,AB)){ const nm=incipitOf(la.split("\n")); if(nm) curDrop.push(nm); continue; }
-      if(opts.veil&&key==="Canon#1"&&/HOC EST ENIM|HIC EST ENIM/.test(la)){ const host=/HOC EST ENIM/.test(la); curHTML+=cue(VEIL); curSec+=30; continue; }
+      if(opts.veil&&key==="Canon#1"&&/HOC EST ENIM|HIC EST ENIM/.test(la)){ const host=/HOC EST ENIM/.test(la); curHTML+=veilCue(); curSec+=30; continue; }
       // split on placeholders
       const segL=la.split("\n"), segE=en.split("\n");
       const phs=segL.filter(l=>/^&[A-Za-z_]+\s*$/.test(l.trim())&&!/^&(Gloria|DominusVobiscum)\s*$/.test(l.trim())).map(l=>l.trim().slice(1));
@@ -368,7 +373,7 @@ async function buildOrdoOnly(ctx,opts){
     if(opts.veil){ const hide=a=>{ let hit=false; const r=a.filter(l=>{ if(INST_RE.test(l)){ hit=true; return false; } return true; }); return [r,hit]; }; const [la2,h1]=hide(la), [en2,h2]=hide(en); la=la2; en=en2; if(h1||h2) p.veiled=true; }
     if(!cfg.lat||!la.length) html=`<div class="txt one">${(en.length?en:la).map(l=>lineHTML(l,P,"en")).join("")}</div>`;
     else html=block(la,en,P,lang);
-    if(p.veiled) html+=cue(VEIL);
+    if(p.veiled) html+=veilCue();
     const spoken=x=>x.filter(l=>!l.trim().startsWith("!"));
     let secs=words(spoken(la.length?la:en))/2.4+(p.veiled?30:0);   /* the Latin has no seasonal variants, so it times the Mass better */
     if(!out.comm&&/Communion/.test(p.t)&&!/Postcommunion/.test(p.t)){ out.comm=1; html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the faithful</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
@@ -382,6 +387,7 @@ async function buildOrdoOnly(ctx,opts){
    data/bcp1928.json (tools/bcp1928.py): the Order with its rubrics, and the collects, epistles and gospels. */
 function pbItem(it){
   const [k,t,r,lab]=it;
+  if(VEILING&&k==="v"&&CONS_RE.test(t)) return veilCue();
   if(k==="rub") return `<p class="rub">${esc(t)}</p>`;
   if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
   if(k==="h") return `<h4 class="sub2">${esc(t)}</h4>`;
@@ -590,9 +596,13 @@ const ORDER_RITES={
 const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
   offering:["The Offering",3],prayer:["The General Prayer, in the Minister's own words or from the Treasury of Prayers",5]};
 function orderStep(st,opts){
-  let html="", words=0, depth=0, extra=0;
+  let html="", words=0, depth=0, extra=0, cons=false;
   for(const it of st.items){
     const [k,t]=it;
+    /* Marked words of consecration: shown to priests and seminarians, a notice in lay study; timed either way. */
+    if(k==="cons"){ cons=true; if(opts.veil) html+=veilCue(); continue; }
+    if(k==="/cons"){ cons=false; continue; }
+    if(cons&&opts.veil){ if(k==="v"&&!depth) words+=t.split(/\s+/).length; continue; }
     if(k==="or"){ html+=`<details class="fold"><summary>${esc(t)}</summary>`; depth++; continue; }
     if(k==="/or"){ html+=`</details>`; depth--; continue; }
     if(k==="slot"){
@@ -678,6 +688,7 @@ function pb79Items(its, fill){
     if(k==="rub") h+=`<p class="rub">${esc(t)}</p>`;
     else if(k==="cite") h+=`<p class="cite">${esc(t)}</p>`;
     else if(k==="h") h+=`<h4 class="sub2">${esc(t)}</h4>`;
+    else if(VEILING&&k==="v"&&CONS_RE.test(t)) h+=veilCue();
     else h+=`<p data-r="${r||"all"}">${lab?`<span class="sp">${esc(lab)}</span> `:""}${esc(t)}</p>`;
   }
   return h;
@@ -895,7 +906,7 @@ async function buildOrd(ctx, opts){
   const off=hymnSlot(H,iso,"offertory",s,opts,"Offertory hymn"); h+=`<h4 class="sub2">Offertory</h4>`+pos([["sit"]])+(off.html||(en("Offertorium","ppl")?`<p class="cite">Offertory</p>`+en("Offertorium","ppl"):cue(`Offertory sentence: ${DW}.`)))+para("Pray, brethren, that my sacrifice and yours may be acceptable to God the Father almighty. ℟. May the Lord receive the sacrifice at thy hands, to the praise and glory of his Name, to our benefit and that of all his holy Church.")+(en("Secreta")?`<p class="cite">Prayer over the Offerings</p>`+en("Secreta")+from62:cue(`Prayer over the Offerings: ${DW}.`)); t+=(off.sec||(AB>=3?20:AB>=2?40:90))+(AB>=3?30:60);
   h+=`<h4 class="sub2">Sursum corda</h4>`+pos([["stand"]])+para(BCP.sursum)+(()=>{ const sun=toDate(iso).getUTCDay()===0, paschal=PASCHAL(iso); const pk=(PP&&PP.pref)||(sun?"Trinitate":paschal?"Pasch":s==="lent"?"Quad":s==="christmas"?"Nat":s==="epiphany"?"Epi":"Communis"); const pe=(O.English.pref[pk]||O.English.pref.Communis||""); if(!pe) return cue(`Proper Preface: ${DW}.`); ROLE="cel"; const x=`<p class="cite">Preface: ${esc(pk)}</p><div class="txt one">${pe.split("\n").filter(l=>!/^(Sanctus|v\. Holy)/.test(l)).map(l=>lineHTML(l,PRE,"en")).join("")}</div>`+from62; return x; })()+`<h4 class="sub2">Sanctus and Benedictus</h4>`+para(BCP.sanctus,"","all")+pos([["kneel","from the Sanctus through Communion"],["bell","at the Sanctus and at each elevation"]]); if(sung){ const k=ord("Sanctus",`Sanctus ${mass} (Latin)`); h+=k.html; t+=k.sec; } t+=AB>=3?60:90;
   const canonL=(O.English.ordo.find(x=>x.h==="Canon")||{items:[]}).items.filter((it,j)=>!(AB>=2&&TRAD_DROP["Canon#1"][2].includes(j)));
-  const canonH=canonL.map(it=>opts.veil&&/!!!\s*FOR THIS IS/.test(it)?cue(VEIL):it.split("\n").map(l=>lineHTML(l,{prayers:O.English.prayers},"en")).join("")).join("");
+  const canonH=canonL.map(it=>opts.veil&&/!!!\s*FOR THIS IS/.test(it)?veilCue():it.split("\n").map(l=>lineHTML(l,{prayers:O.English.prayers},"en")).join("")).join("");
   h+=`<h4 class="sub2">Roman Canon${AB>=2?" (core)":""}</h4>`+`<details class="canon"><summary>Show the Canon (traditional English${AB>=2?"; core only":""})</summary><div class="txt one">${canonH}</div></details>`+(AB>=2?abr("the Canon's intercessions; the institution narrative and doxology are kept"):"")+cue(`${DW} prints the Roman Canon in its own traditional-language translation; this text is the older English version of the same prayer. Eucharistic Prayer II may be used on weekdays.`); t+=AB>=3?3*60:AB>=2?4*60:8*60;
   out.push(sec("Offertory and Canon",t/60,h));
   h=""; t=0;
@@ -1001,7 +1012,7 @@ async function byzFull(ctx,kind,veil,AB){
     const n=MAP[part.key]; if(n===undefined||(part.key==="after"&&AB>=1)) continue;
     let h="", quiet=[];
     /* Prayers said quietly (with the rubrics between them) fold into one closed block. */
-    const flush=()=>{ if(!quiet.length) return; const sp=quiet.filter(x=>x.t==="s"), who=sp.every(x=>x.w==="D")?"the deacon":sp.some(x=>x.w==="D")?"the priest and deacon":"the priest"; h+=`<details class="secret"><summary>Said quietly by ${who}</summary><div class="txt one">${quiet.map(x=>x.t==="r"?`<p class="rub">${inl(x.x)}</p>`:`<p data-r="${BYZ_WHO[x.w][0]}"><span class="sp">${BYZ_WHO[x.w][1]}.</span> ${inl(x.x)}</p>`).join("")}</div></details>`; quiet=[]; };
+    const flush=()=>{ if(!quiet.length) return; const sp=quiet.filter(x=>x.t==="s"), who=sp.every(x=>x.w==="D")?"the deacon":sp.some(x=>x.w==="D")?"the priest and deacon":"the priest"; h+=`<details class="secret"><summary>Said quietly by ${who}</summary><div class="txt one">${quiet.map(x=>x.t==="r"?`<p class="rub">${inl(x.x)}</p>`:veil&&x.w==="P"&&CONS_RE.test(x.x||"")?veilCue():`<p data-r="${BYZ_WHO[x.w][0]}"><span class="sp">${BYZ_WHO[x.w][1]}.</span> ${inl(x.x)}</p>`).join("")}</div></details>`; quiet=[]; };
     const items=part.items.filter(it=>byzOk(it,env));
     const quietNext=i=>{ for(let k=i+1;k<items.length;k++){ if(items[k].t==="r") continue; return items[k].t==="s"&&!!items[k].q; } return false; };
     for(let i=0;i<items.length;i++){
@@ -1027,7 +1038,7 @@ async function byzFull(ctx,kind,veil,AB){
         else if(it.n==="gospel"&&!b) h+=cue("Today's Apostol and Gospel follow the weekday lectionary; see the Byzantine lectionary.");
         continue;
       }
-      if(it.i){ h+=veil?cue(VEIL):`<p class="emph" data-r="cel"><span class="sp">Priest.</span> ${inl(it.x)}</p>`; continue; }
+      if(it.i||(veil&&it.w==="P"&&CONS_RE.test(it.x||""))){ h+=veil?veilCue():`<p class="emph" data-r="cel"><span class="sp">Priest.</span> ${inl(it.x)}</p>`; continue; }
       const [role,lab]=BYZ_WHO[it.w];
       h+=`<p data-r="${role}"><span class="sp">${lab}.</span> ${inl(it.x)}${it.re?` <span class="resp" data-r="ppl"><span class="sp">℟.</span> ${esc(it.re)}</span>`:""}</p>`;
     }
@@ -1285,6 +1296,7 @@ async function render(el, ctx){
   };
   const draw=async()=>{
     if(!isOffice) opts.veil=!window.LectParticipation.isPriest();
+    VEILING=!!opts.veil&&!isOffice;
     window.LectMusic&&window.LectMusic.stopAll();
     const auto=isOffice?"":defaultMass(ctx.iso,ctx.day,rite);
     const ctl=following?`<div class="mctlbox"><p class="note livenote">Following a live session: the host sets the length and music.</p></div>`:(isOffice?officeControls(opts,!!ctx.office.alt):controls(rite,opts,ctx.iso,ctx.day,auto));
@@ -1301,8 +1313,9 @@ async function render(el, ctx){
     el.querySelector(".mbody").innerHTML=parts.map((p,i)=>p.html.replace('<section class="mpart','<section id="mp-'+i+'" data-i="'+i+'" class="mpart')).join("");
     if(window.LectTexts) window.LectTexts.decorate(el.querySelector(".mbody"),ctx,()=>draw());
     window.LectParticipation.annotate(el,isOffice);
+    if(!isOffice&&!following) window.LectParticipation.ask();
     const modeSelect=el.querySelector("#participation-mode");
-    if(modeSelect)modeSelect.addEventListener("change",()=>{window.LectParticipation.setMode(modeSelect.value);draw();});
+    if(modeSelect)modeSelect.addEventListener("change",()=>window.LectParticipation.setMode(modeSelect.value));
     if(window.LectTools) window.LectTools.mount(el,{parts:parts.map(p=>({title:p.title,min:p.min})),starts,total:at,ctx,opts:clone(opts),noun,isOffice,rite:ctx.rite,following,
       roles:isOffice?{cel:"Officiant",lec:"Reader",ppl:"All"}:{cel:"Celebrant",srv:rite==="b"?"Deacon":"Server",lec:"Lector",ppl:"Congregation"}});
     if(following) return;
@@ -1318,6 +1331,9 @@ async function render(el, ctx){
     el.querySelectorAll(".hsel").forEach(sel=>sel.addEventListener("change",()=>{ keepOpen(); opts.choice={...(opts.choice||{}),[sel.dataset.slot]:sel.value}; saveOpts(store,opts); draw(); }));
   };
   el.__redraw=draw;
+  /* A change of participation (the Participation setting or the first-time question) redraws this guide. */
+  if(el.__onMode){ window.removeEventListener("lect-participation",el.__onMode); el.__onMode=null; }
+  if(!isOffice){ const onMode=()=>{ if(!el.isConnected){ window.removeEventListener("lect-participation",onMode); return; } if(el.__redraw===draw&&opts.veil===window.LectParticipation.isPriest()) draw(); }; el.__onMode=onMode; window.addEventListener("lect-participation",onMode); }
   await draw();
 }
 function officeControls(opts,chant){

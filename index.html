@@ -249,6 +249,16 @@ input[type=date]{font:inherit;background:var(--leaf);color:var(--ink);border:1px
 .txt .emph{font-weight:700;font-family:var(--f-display);font-size:1.08rem}
 .txt h5.sub{font-family:var(--f-sc);letter-spacing:.05em;color:var(--rubric);font-size:.9rem;margin:10px 0 4px;font-weight:500}
 .sp{color:var(--rubric);font-weight:700;font-family:var(--f-sc)} .cross{color:var(--rubric)}
+.cue.veiled{border-left-color:var(--rubric);font-style:italic}
+dialog.pq{max-width:min(560px,calc(100vw - 32px));border:1px solid var(--rule);border-radius:10px;background:var(--paper);color:var(--ink);padding:22px 24px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+dialog.pq::backdrop{background:rgba(20,14,8,.55)}
+dialog.pq h2{font-family:var(--f-display);font-size:1.35rem;margin:0 0 10px;line-height:1.25}
+dialog.pq p{margin:0 0 12px;line-height:1.5}
+dialog.pq .pq-warn{border-left:3px solid var(--rubric);padding:6px 12px;background:var(--rubric-wash)}
+dialog.pq .pq-btns{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 8px}
+dialog.pq .tbtn{font-size:1rem;padding:8px 18px}
+dialog.pq .pq-alt{background:transparent;color:var(--rubric)}
+dialog.pq .pq-small{font-size:.85rem;color:var(--muted);margin:8px 0 0}
 .cue{border-left:3px solid var(--lit-violet);padding:5px 10px;color:var(--ink);font-size:.97rem;margin:6px 0;background:var(--leaf);border-radius:0 6px 6px 0}
 .mpart p.lat{font-family:var(--f-display)}
 .homily{display:flex;gap:10px;align-items:baseline;padding:8px 10px;margin:10px 0;border:1px dashed var(--rule);border-radius:8px;font-size:.92rem;color:var(--muted)}
@@ -736,15 +746,16 @@ body.san-open{overflow:hidden}
 <section class="view" id="sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
   <div class="card" id="canonical-guidance">
 <h3>Participation and canonical guidance</h3>
-<p>Lay study is the default. A live host cannot change another participant’s local priest mode. Priest-only prayers and actions are not lay assigned parts; the read-aloud tool does not recite priest-only Mass prayers.</p>
+<p>The first time a Eucharistic liturgy is opened, the site asks whether you are a priest or studying as a seminarian. Lay study is the default: every liturgy in the library is shown without its words of consecration (the institution narrative and, in the Eastern rites, the invocation over the gifts), which are replaced by a short notice. Priest or seminarian mode shows them, with this warning: simulating the words of consecration, or any other sacrament, is a grave offence under canon law (cf. can. 1379), and doing so in a public setting gives scandal; the texts are for study and for supervised practice in priestly formation. The choice is remembered on this device and can be changed with the Participation setting above each liturgy. The Reformed orders are shown in full in either mode, because their words of institution are read as a warrant from Scripture rather than said as a prayer of consecration. A live host cannot change another participant’s local priest mode. Priest-only prayers and actions are not lay assigned parts; the read-aloud tool does not recite priest-only Mass prayers.</p>
 <p><a href="https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann879-958_en.html" target="_blank" rel="noopener">Canons 900 §1 and 907</a>: only a validly ordained priest can confect the Eucharist; during the Eucharistic celebration, deacons and lay people do not offer the prayers or perform actions proper to the celebrating priest. <a href="https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib6-cann1364-1399_en.html" target="_blank" rel="noopener">Canon 1379 §1, 1°</a> concerns a non-priest attempting the liturgical celebration of the Eucharistic Sacrifice. Studying a historical text is distinct from attempting that celebration.</p>
 <p><a href="https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib2-cann208-329_en.html" target="_blank" rel="noopener">Canon 276 §2</a> addresses clerical holiness: faithful pastoral ministry, Scripture and the Eucharist, the daily Hours according to proper approved books, retreats, mental prayer, confession and Marian devotion. Priests and deacons preparing for priesthood have the daily Hours obligation; permanent deacons follow the extent defined by their bishops’ conference. A selected, shortened or historical guide here does not certify fulfillment of that obligation.</p>
-<p>These citations are from the Latin Code of Canon Law. Eastern Catholic practice also requires its own applicable law and approved books. Priest mode is a local declaration, not verification of ordination, faculties or permission to celebrate.</p>
+<p>These citations are from the Latin Code of Canon Law. Eastern Catholic practice also requires its own applicable law and approved books. Priest or seminarian mode is a local declaration, not verification of ordination, faculties or permission to celebrate.</p>
 </div>
 
 <section id="tradition-sources" aria-label="Tradition directory sources"><h3>Tradition directory sources</h3>
 <p>See each directory entry for edition rights, territorial limits and source-review status.</p>
 <ul>
+<li><a href="https://archive.org/details/LiturgyAdai" target="_blank" rel="noopener">https://archive.org/details/LiturgyAdai</a></li>
 <li><a href="https://archive.org/details/amernorfm00wesl" target="_blank" rel="noopener">https://archive.org/details/amernorfm00wesl</a></li>
 <li><a href="https://archive.org/details/bim_early-english-books-1641-1700_a-directory-for-the-publ_1644-45" target="_blank" rel="noopener">https://archive.org/details/bim_early-english-books-1641-1700_a-directory-for-the-publ_1644-45</a></li>
 <li><a href="https://archive.org/details/bim_early-english-books-1641-1700_the-psalms-of-david-in-m_bible-english_1650" target="_blank" rel="noopener">https://archive.org/details/bim_early-english-books-1641-1700_the-psalms-of-david-in-m_bible-english_1650</a></li>
@@ -1553,19 +1564,52 @@ window.LectMusic={chantWidget,hymnWidget,chantSeconds,hymnSeconds,stopAll,parseG
 })();
 </script>
 <script>
-/* Participation is a local choice. A live host never supplies ordination status. */
+/* Participation is a local choice, remembered on this device. A live host never supplies ordination status.
+   Lay study (the default) shows every liturgy without its words of consecration; "priest or seminarian" shows
+   them, with a warning. The first time a Eucharistic liturgy is opened, the reader is asked which applies. */
 (function(){
 'use strict';
-let mode='lay';try{if(sessionStorage.getItem('lect-participation')==='priest')mode='priest';}catch(e){}
+const KEY='lect-participation', ASKED='lect-participation-asked';
+const get=k=>{try{return localStorage.getItem(k)||sessionStorage.getItem(k);}catch(e){return null;}};
+const put=(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}};
+let mode=get(KEY)==='priest'?'priest':'lay';
 const isPriest=()=>mode==='priest';
-const catholicMass=m=>!!m&&!m.isOffice&&['n','o','m','p','h','b','d','a','z'].includes(m.rite);
+/* Rites whose Eucharist only a priest may celebrate: the Catholic rites and the Orthodox and Oriental liturgies. */
+const catholicMass=m=>!!m&&!m.isOffice&&['n','o','m','p','h','b','d','a','z','arm','copt','adai'].includes(m.rite);
 function priestOnly(el,role=''){
  if((' '+role+' ').includes(' cel '))return true;
  for(let p=el;p&&p.nodeType===1;p=p.parentElement){if(p.hasAttribute('data-priest-only')||(' '+(p.getAttribute('data-r')||'')+' ').includes(' cel '))return true;}
  return false;
 }
-function setMode(value){mode=value==='priest'?'priest':'lay';try{sessionStorage.setItem('lect-participation',mode);}catch(e){}window.dispatchEvent(new Event('lect-participation'));}
-function controls(){return `<div class="mctlbox participation"><label class="sl" for="participation-mode">Participation <select id="participation-mode"><option value="lay"${!isPriest()?' selected':''}>Lay study</option><option value="priest"${isPriest()?' selected':''}>Ordained priest</option></select></label><p class="note">${isPriest()?'Priest mode is for validly ordained priests. Use the approved books and observe applicable law; this setting does not establish faculties or permission to celebrate.':'Lay study: follow the readings and responses. Priest-only texts are references, not assigned parts. Do not attempt the Eucharistic celebration or imitate its priest-only actions.'} Read-aloud omits priest-only prayers in either mode. <a href="#sources" data-canon-link>Canonical guidance</a></p></div>`;}
+function setMode(value){mode=value==='priest'?'priest':'lay';put(KEY,mode);put(ASKED,'1');window.dispatchEvent(new Event('lect-participation'));}
+const WARNING='Simulating the words of consecration, or any other sacrament, is a grave offence under canon law (cf. Code of Canon Law, can. 1379), and doing so in a public setting gives scandal. These texts are for study and for supervised practice in priestly formation. They do not authorize anyone to celebrate.';
+function controls(){return `<div class="mctlbox participation"><label class="sl" for="participation-mode">Participation <select id="participation-mode"><option value="lay"${!isPriest()?' selected':''}>Lay study</option><option value="priest"${isPriest()?' selected':''}>Priest or seminarian</option></select></label><p class="note">${isPriest()?'Priest or seminarian: the words of consecration are shown. '+WARNING:'Lay study: follow the readings and responses. The words of consecration are not shown, and priest-only texts are references, not assigned parts. Do not attempt the Eucharistic celebration or imitate its priest-only actions.'} Read-aloud omits priest-only prayers in either mode. <a href="#sources" data-canon-link>Canonical guidance</a></p></div>`;}
+/* The first-time question. It never blocks the page: the guide is already drawn in lay study behind it. */
+let dlg=null;
+function ask(){
+ if(get(ASKED)||dlg||typeof document==='undefined')return;
+ dlg=document.createElement('dialog');dlg.className='pq';dlg.setAttribute('aria-labelledby','pq-h');
+ const step1=`<h2 id="pq-h">Are you a priest, or studying as a seminarian?</h2>
+  <p>Some liturgies on this site contain the words of consecration. They are shown only to priests and to seminarians preparing for ordination.</p>
+  <div class="pq-btns"><button type="button" class="tbtn" data-pq="yes">Yes</button><button type="button" class="tbtn pq-alt" data-pq="no">No</button></div>
+  <p class="pq-small">You can change this at any time with the Participation setting above each liturgy.</p>`;
+ const step2=`<h2 id="pq-h">Before you continue</h2>
+  <p class="pq-warn">${WARNING}</p>
+  <p>Priests should celebrate from the approved books of their Church; this site is a study aid.</p>
+  <div class="pq-btns"><button type="button" class="tbtn" data-pq="ok">I understand: show the full texts</button><button type="button" class="tbtn pq-alt" data-pq="back">Back</button></div>`;
+ dlg.innerHTML=step1;
+ const done=v=>{dlg.close();dlg.remove();dlg=null;setMode(v);};
+ dlg.addEventListener('click',e=>{const b=e.target.closest('[data-pq]');if(!b)return;const a=b.dataset.pq;
+  if(a==='yes'){dlg.innerHTML=step2;dlg.querySelector('[data-pq="ok"]').focus();}
+  else if(a==='back'){dlg.innerHTML=step1;dlg.querySelector('[data-pq="yes"]').focus();}
+  else if(a==='ok')done('priest');
+  else if(a==='no')done('lay');});
+ /* Escape keeps lay study but asks again next time. */
+ dlg.addEventListener('cancel',e=>{e.preventDefault();dlg.close();dlg.remove();dlg=null;});
+ document.body.append(dlg);
+ if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
+ dlg.querySelector('[data-pq="yes"]').focus();
+}
 function annotate(el,isOffice){
  if(isOffice)return;
  el.querySelectorAll('.mbody .cue').forEach(c=>{
@@ -1577,6 +1621,8 @@ function annotate(el,isOffice){
   }
  });
  el.querySelectorAll('.mbody .canon, .mbody [data-r]').forEach(n=>{if(n.classList.contains('canon')||(' '+(n.getAttribute('data-r')||'')+' ').includes(' cel '))n.setAttribute('data-priest-only','');});
+ /* Several veiled passages in a row read as one notice. */
+ el.querySelectorAll('.mbody .veiled').forEach(n=>{let p=n.previousElementSibling;while(p&&p.classList.contains('rub'))p=p.previousElementSibling;if(p&&p.classList.contains('veiled'))n.remove();});
  el.querySelectorAll('.mbody > section.mpart').forEach(sec=>{
   const title=sec.querySelector('h3 span')?.textContent||'';
   if(/^(Canon|Anaphora)(\b|$)/i.test(title)){
@@ -1590,8 +1636,8 @@ function annotate(el,isOffice){
  });
  if(!isPriest())el.querySelectorAll('.mbody details.canon').forEach(n=>{n.open=false;const s=n.querySelector('summary');if(s)s.textContent='Priest-only Canon · study reference';});
 }
-document.addEventListener('click',e=>{if(e.target.closest('[data-canon-link]')){e.preventDefault();document.getElementById('tab-sources').click();requestAnimationFrame(()=>document.getElementById('canonical-guidance').scrollIntoView({block:'start'}));}});
-window.LectParticipation={isPriest,setMode,catholicMass,priestOnly,controls,annotate};
+document.addEventListener('click',e=>{if(e.target.closest('[data-canon-link]')){e.preventDefault();if(dlg){dlg.close();dlg.remove();dlg=null;}document.getElementById('tab-sources').click();requestAnimationFrame(()=>document.getElementById('canonical-guidance').scrollIntoView({block:'start'}));}});
+window.LectParticipation={isPriest,setMode,catholicMass,priestOnly,controls,annotate,ask,WARNING};
 })();
 </script>
 <script>
@@ -1726,7 +1772,12 @@ const words=lines=>(lines||[]).join(" ").replace(/[!&$]\S*/g," ").split(/\s+/).f
 /* ---------------------------------------------------------------- shared pieces */
 function cue(text){ return `<p class="cue">${esc(text)}</p>`; }
 function abr(list){ list=[].concat(list).filter(Boolean); return list.length?`<p class="abr"><span class="lbl">Shortened for time</span> ${list.map(esc).join(" · ")}</p>`:""; }
-const VEIL="Priest-only Eucharistic prayer: follow silently in lay study. Do not voice the priest’s prayer or imitate the consecration and elevation. See the canonical guidance in Sources.";
+const VEIL="The words of consecration are not shown in lay study. Follow in silence; do not voice the priest’s prayer or imitate the consecration. (Priests and seminarians: choose Participation › Priest or seminarian.)";
+const veilCue=()=>`<p class="cue veiled" data-priest-only>${esc(VEIL)}</p>`;
+/* The words of consecration in the prayer-book and Eastern texts that carry no explicit marker: the institution
+   narrative as said over the gifts, and the Byzantine epiclesis. Lessons (Maundy Thursday's epistle) never pass here. */
+const CONS_RE=/\b(this is my (body|blood)|this cup is the new (testament|covenant)|this is the new (testament|covenant) in my blood|this is my blood of the new)|make this bread the precious body|make that which is in this chalice|this bread is in very truth the precious body|this chalice, in very truth the precious blood|transmuting them by thy holy spirit/i;
+let VEILING=false;
 /* Ordo items the abridgment levels leave out, by Latin section heading and occurrence: {level:[item indexes]} (levels are cumulative). */
 const TRAD_DROP={
   "Incipit#1":{2:[4],3:[3]},
@@ -1843,7 +1894,7 @@ async function buildTrad(ctx, form, opts){
       if(j===0&&secSkip) continue;
       if(!conditions(la)) continue;
       if(dropped(key,j,AB)){ const nm=incipitOf(la.split("\n")); if(nm) curDrop.push(nm); continue; }
-      if(opts.veil&&key==="Canon#1"&&/HOC EST ENIM|HIC EST ENIM/.test(la)){ const host=/HOC EST ENIM/.test(la); curHTML+=cue(VEIL); curSec+=30; continue; }
+      if(opts.veil&&key==="Canon#1"&&/HOC EST ENIM|HIC EST ENIM/.test(la)){ const host=/HOC EST ENIM/.test(la); curHTML+=veilCue(); curSec+=30; continue; }
       // split on placeholders
       const segL=la.split("\n"), segE=en.split("\n");
       const phs=segL.filter(l=>/^&[A-Za-z_]+\s*$/.test(l.trim())&&!/^&(Gloria|DominusVobiscum)\s*$/.test(l.trim())).map(l=>l.trim().slice(1));
@@ -1965,7 +2016,7 @@ async function buildOrdoOnly(ctx,opts){
     if(opts.veil){ const hide=a=>{ let hit=false; const r=a.filter(l=>{ if(INST_RE.test(l)){ hit=true; return false; } return true; }); return [r,hit]; }; const [la2,h1]=hide(la), [en2,h2]=hide(en); la=la2; en=en2; if(h1||h2) p.veiled=true; }
     if(!cfg.lat||!la.length) html=`<div class="txt one">${(en.length?en:la).map(l=>lineHTML(l,P,"en")).join("")}</div>`;
     else html=block(la,en,P,lang);
-    if(p.veiled) html+=cue(VEIL);
+    if(p.veiled) html+=veilCue();
     const spoken=x=>x.filter(l=>!l.trim().startsWith("!"));
     let secs=words(spoken(la.length?la:en))/2.4+(p.veiled?30:0);   /* the Latin has no seasonal variants, so it times the Mass better */
     if(!out.comm&&/Communion/.test(p.t)&&!/Postcommunion/.test(p.t)){ out.comm=1; html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the faithful</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
@@ -1979,6 +2030,7 @@ async function buildOrdoOnly(ctx,opts){
    data/bcp1928.json (tools/bcp1928.py): the Order with its rubrics, and the collects, epistles and gospels. */
 function pbItem(it){
   const [k,t,r,lab]=it;
+  if(VEILING&&k==="v"&&CONS_RE.test(t)) return veilCue();
   if(k==="rub") return `<p class="rub">${esc(t)}</p>`;
   if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
   if(k==="h") return `<h4 class="sub2">${esc(t)}</h4>`;
@@ -2187,9 +2239,13 @@ const ORDER_RITES={
 const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
   offering:["The Offering",3],prayer:["The General Prayer, in the Minister's own words or from the Treasury of Prayers",5]};
 function orderStep(st,opts){
-  let html="", words=0, depth=0, extra=0;
+  let html="", words=0, depth=0, extra=0, cons=false;
   for(const it of st.items){
     const [k,t]=it;
+    /* Marked words of consecration: shown to priests and seminarians, a notice in lay study; timed either way. */
+    if(k==="cons"){ cons=true; if(opts.veil) html+=veilCue(); continue; }
+    if(k==="/cons"){ cons=false; continue; }
+    if(cons&&opts.veil){ if(k==="v"&&!depth) words+=t.split(/\s+/).length; continue; }
     if(k==="or"){ html+=`<details class="fold"><summary>${esc(t)}</summary>`; depth++; continue; }
     if(k==="/or"){ html+=`</details>`; depth--; continue; }
     if(k==="slot"){
@@ -2275,6 +2331,7 @@ function pb79Items(its, fill){
     if(k==="rub") h+=`<p class="rub">${esc(t)}</p>`;
     else if(k==="cite") h+=`<p class="cite">${esc(t)}</p>`;
     else if(k==="h") h+=`<h4 class="sub2">${esc(t)}</h4>`;
+    else if(VEILING&&k==="v"&&CONS_RE.test(t)) h+=veilCue();
     else h+=`<p data-r="${r||"all"}">${lab?`<span class="sp">${esc(lab)}</span> `:""}${esc(t)}</p>`;
   }
   return h;
@@ -2492,7 +2549,7 @@ async function buildOrd(ctx, opts){
   const off=hymnSlot(H,iso,"offertory",s,opts,"Offertory hymn"); h+=`<h4 class="sub2">Offertory</h4>`+pos([["sit"]])+(off.html||(en("Offertorium","ppl")?`<p class="cite">Offertory</p>`+en("Offertorium","ppl"):cue(`Offertory sentence: ${DW}.`)))+para("Pray, brethren, that my sacrifice and yours may be acceptable to God the Father almighty. ℟. May the Lord receive the sacrifice at thy hands, to the praise and glory of his Name, to our benefit and that of all his holy Church.")+(en("Secreta")?`<p class="cite">Prayer over the Offerings</p>`+en("Secreta")+from62:cue(`Prayer over the Offerings: ${DW}.`)); t+=(off.sec||(AB>=3?20:AB>=2?40:90))+(AB>=3?30:60);
   h+=`<h4 class="sub2">Sursum corda</h4>`+pos([["stand"]])+para(BCP.sursum)+(()=>{ const sun=toDate(iso).getUTCDay()===0, paschal=PASCHAL(iso); const pk=(PP&&PP.pref)||(sun?"Trinitate":paschal?"Pasch":s==="lent"?"Quad":s==="christmas"?"Nat":s==="epiphany"?"Epi":"Communis"); const pe=(O.English.pref[pk]||O.English.pref.Communis||""); if(!pe) return cue(`Proper Preface: ${DW}.`); ROLE="cel"; const x=`<p class="cite">Preface: ${esc(pk)}</p><div class="txt one">${pe.split("\n").filter(l=>!/^(Sanctus|v\. Holy)/.test(l)).map(l=>lineHTML(l,PRE,"en")).join("")}</div>`+from62; return x; })()+`<h4 class="sub2">Sanctus and Benedictus</h4>`+para(BCP.sanctus,"","all")+pos([["kneel","from the Sanctus through Communion"],["bell","at the Sanctus and at each elevation"]]); if(sung){ const k=ord("Sanctus",`Sanctus ${mass} (Latin)`); h+=k.html; t+=k.sec; } t+=AB>=3?60:90;
   const canonL=(O.English.ordo.find(x=>x.h==="Canon")||{items:[]}).items.filter((it,j)=>!(AB>=2&&TRAD_DROP["Canon#1"][2].includes(j)));
-  const canonH=canonL.map(it=>opts.veil&&/!!!\s*FOR THIS IS/.test(it)?cue(VEIL):it.split("\n").map(l=>lineHTML(l,{prayers:O.English.prayers},"en")).join("")).join("");
+  const canonH=canonL.map(it=>opts.veil&&/!!!\s*FOR THIS IS/.test(it)?veilCue():it.split("\n").map(l=>lineHTML(l,{prayers:O.English.prayers},"en")).join("")).join("");
   h+=`<h4 class="sub2">Roman Canon${AB>=2?" (core)":""}</h4>`+`<details class="canon"><summary>Show the Canon (traditional English${AB>=2?"; core only":""})</summary><div class="txt one">${canonH}</div></details>`+(AB>=2?abr("the Canon's intercessions; the institution narrative and doxology are kept"):"")+cue(`${DW} prints the Roman Canon in its own traditional-language translation; this text is the older English version of the same prayer. Eucharistic Prayer II may be used on weekdays.`); t+=AB>=3?3*60:AB>=2?4*60:8*60;
   out.push(sec("Offertory and Canon",t/60,h));
   h=""; t=0;
@@ -2598,7 +2655,7 @@ async function byzFull(ctx,kind,veil,AB){
     const n=MAP[part.key]; if(n===undefined||(part.key==="after"&&AB>=1)) continue;
     let h="", quiet=[];
     /* Prayers said quietly (with the rubrics between them) fold into one closed block. */
-    const flush=()=>{ if(!quiet.length) return; const sp=quiet.filter(x=>x.t==="s"), who=sp.every(x=>x.w==="D")?"the deacon":sp.some(x=>x.w==="D")?"the priest and deacon":"the priest"; h+=`<details class="secret"><summary>Said quietly by ${who}</summary><div class="txt one">${quiet.map(x=>x.t==="r"?`<p class="rub">${inl(x.x)}</p>`:`<p data-r="${BYZ_WHO[x.w][0]}"><span class="sp">${BYZ_WHO[x.w][1]}.</span> ${inl(x.x)}</p>`).join("")}</div></details>`; quiet=[]; };
+    const flush=()=>{ if(!quiet.length) return; const sp=quiet.filter(x=>x.t==="s"), who=sp.every(x=>x.w==="D")?"the deacon":sp.some(x=>x.w==="D")?"the priest and deacon":"the priest"; h+=`<details class="secret"><summary>Said quietly by ${who}</summary><div class="txt one">${quiet.map(x=>x.t==="r"?`<p class="rub">${inl(x.x)}</p>`:veil&&x.w==="P"&&CONS_RE.test(x.x||"")?veilCue():`<p data-r="${BYZ_WHO[x.w][0]}"><span class="sp">${BYZ_WHO[x.w][1]}.</span> ${inl(x.x)}</p>`).join("")}</div></details>`; quiet=[]; };
     const items=part.items.filter(it=>byzOk(it,env));
     const quietNext=i=>{ for(let k=i+1;k<items.length;k++){ if(items[k].t==="r") continue; return items[k].t==="s"&&!!items[k].q; } return false; };
     for(let i=0;i<items.length;i++){
@@ -2624,7 +2681,7 @@ async function byzFull(ctx,kind,veil,AB){
         else if(it.n==="gospel"&&!b) h+=cue("Today's Apostol and Gospel follow the weekday lectionary; see the Byzantine lectionary.");
         continue;
       }
-      if(it.i){ h+=veil?cue(VEIL):`<p class="emph" data-r="cel"><span class="sp">Priest.</span> ${inl(it.x)}</p>`; continue; }
+      if(it.i||(veil&&it.w==="P"&&CONS_RE.test(it.x||""))){ h+=veil?veilCue():`<p class="emph" data-r="cel"><span class="sp">Priest.</span> ${inl(it.x)}</p>`; continue; }
       const [role,lab]=BYZ_WHO[it.w];
       h+=`<p data-r="${role}"><span class="sp">${lab}.</span> ${inl(it.x)}${it.re?` <span class="resp" data-r="ppl"><span class="sp">℟.</span> ${esc(it.re)}</span>`:""}</p>`;
     }
@@ -2882,6 +2939,7 @@ async function render(el, ctx){
   };
   const draw=async()=>{
     if(!isOffice) opts.veil=!window.LectParticipation.isPriest();
+    VEILING=!!opts.veil&&!isOffice;
     window.LectMusic&&window.LectMusic.stopAll();
     const auto=isOffice?"":defaultMass(ctx.iso,ctx.day,rite);
     const ctl=following?`<div class="mctlbox"><p class="note livenote">Following a live session: the host sets the length and music.</p></div>`:(isOffice?officeControls(opts,!!ctx.office.alt):controls(rite,opts,ctx.iso,ctx.day,auto));
@@ -2898,8 +2956,9 @@ async function render(el, ctx){
     el.querySelector(".mbody").innerHTML=parts.map((p,i)=>p.html.replace('<section class="mpart','<section id="mp-'+i+'" data-i="'+i+'" class="mpart')).join("");
     if(window.LectTexts) window.LectTexts.decorate(el.querySelector(".mbody"),ctx,()=>draw());
     window.LectParticipation.annotate(el,isOffice);
+    if(!isOffice&&!following) window.LectParticipation.ask();
     const modeSelect=el.querySelector("#participation-mode");
-    if(modeSelect)modeSelect.addEventListener("change",()=>{window.LectParticipation.setMode(modeSelect.value);draw();});
+    if(modeSelect)modeSelect.addEventListener("change",()=>window.LectParticipation.setMode(modeSelect.value));
     if(window.LectTools) window.LectTools.mount(el,{parts:parts.map(p=>({title:p.title,min:p.min})),starts,total:at,ctx,opts:clone(opts),noun,isOffice,rite:ctx.rite,following,
       roles:isOffice?{cel:"Officiant",lec:"Reader",ppl:"All"}:{cel:"Celebrant",srv:rite==="b"?"Deacon":"Server",lec:"Lector",ppl:"Congregation"}});
     if(following) return;
@@ -2915,6 +2974,9 @@ async function render(el, ctx){
     el.querySelectorAll(".hsel").forEach(sel=>sel.addEventListener("change",()=>{ keepOpen(); opts.choice={...(opts.choice||{}),[sel.dataset.slot]:sel.value}; saveOpts(store,opts); draw(); }));
   };
   el.__redraw=draw;
+  /* A change of participation (the Participation setting or the first-time question) redraws this guide. */
+  if(el.__onMode){ window.removeEventListener("lect-participation",el.__onMode); el.__onMode=null; }
+  if(!isOffice){ const onMode=()=>{ if(!el.isConnected){ window.removeEventListener("lect-participation",onMode); return; } if(el.__redraw===draw&&opts.veil===window.LectParticipation.isPriest()) draw(); }; el.__onMode=onMode; window.addEventListener("lect-participation",onMode); }
   await draw();
 }
 function officeControls(opts,chant){

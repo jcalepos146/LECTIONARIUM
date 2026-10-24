@@ -177,10 +177,19 @@ replacement. It changes fetch sizes, not the liturgical content.
 
 ## Participation and canonical guidance
 
-Mass guides open in **Lay study**. **Ordained priest** mode is an explicit local
-choice saved only for that browser session. A host cannot change another
-participant’s mode. Lay study offers no celebrant assignment; priest-only
-passages remain study references and the institution words are veiled.
+The first Eucharistic liturgy a visitor opens asks: *Are you a priest, or
+studying as a seminarian?* **Lay study** (the default, and the answer "No")
+shows every liturgy in the library without its words of consecration: the
+institution narrative and, in the Byzantine, Armenian, Coptic and East Syrian
+rites, the invocation over the gifts, each replaced by a short notice.
+**Priest or seminarian** shows them after a warning that simulating the words
+of consecration or any other sacrament is a grave offence under canon law (cf.
+can. 1379), above all in public, and that the texts are for study and
+supervised practice. The choice is remembered on that device and can be changed
+above each liturgy. The Reformed orders print their words of institution in
+either mode, since they are read there as a warrant from Scripture. A host
+cannot change another participant’s mode. Lay study offers no celebrant
+assignment; priest-only passages remain study references.
 Read-aloud omits priest-only Mass prayers in both modes. Chat scripts and
 presenter slides omit them in lay study, including pasted prayers inside a
 reserved section. Switching back to lay study clears a celebrant selection and

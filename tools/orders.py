@@ -13,6 +13,8 @@ Each text file is one order (the file name after "order-" is its id). Markup, on
     Priest. / Deacon. / Choir. / Clergy. / Reader. / All. / Bishop. text   a speaker, named
     {srv} text         a role without a label: cel (celebrant), srv (deacon, server), lec, ppl, all
     [or] Summary       alternatives, shown folded under Summary, until [/or]
+    [consecration]     the words of consecration (institution narrative, epiclesis), until [/consecration]:
+                       shown only in priest-or-seminarian mode, replaced by a notice in lay study
     @name[: label]     a slot the site fills: hymn, psalter, lessons, sermon, offering, prayer, communion
     # ...              a comment (source notes)
 
@@ -35,7 +37,7 @@ ROLES = {"cel", "srv", "ppl", "lec", "all"}
 
 def parse(path):
     order = {"steps": []}
-    step, depth = None, 0
+    step, depth, cons = None, 0, False
     for n, raw in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
         l = raw.strip()
         if not l or l.startswith("#") and not l.startswith("## "):
@@ -44,6 +46,8 @@ def parse(path):
         if m and step is None:
             order[m.group(1)] = m.group(2); continue
         if l.startswith("= "):
+            if cons:
+                raise SystemExit(f"{path.name}:{n}: step starts inside [consecration]")
             if depth:
                 raise SystemExit(f"{path.name}:{n}: step starts inside [or]")
             step = {"t": l[2:].strip(), "items": []}; order["steps"].append(step); continue
@@ -58,6 +62,14 @@ def parse(path):
             depth += 1; it.append(["or", l[4:].strip() or "Or this", ""])
         elif l == "[/or]":
             depth -= 1; it.append(["/or", "", ""])
+        elif l == "[consecration]":
+            if cons:
+                raise SystemExit(f"{path.name}:{n}: nested [consecration]")
+            cons = True; it.append(["cons", "", ""])
+        elif l == "[/consecration]":
+            if not cons:
+                raise SystemExit(f"{path.name}:{n}: [/consecration] without [consecration]")
+            cons = False; it.append(["/cons", "", ""])
         elif l.startswith("@"):
             name, _, label = l[1:].partition(":")
             if name.strip() not in SLOTS:
@@ -79,6 +91,8 @@ def parse(path):
                 it.append(["v", l, "cel"])
     if depth:
         raise SystemExit(f"{path.name}: unclosed [or]")
+    if cons:
+        raise SystemExit(f"{path.name}: unclosed [consecration]")
     for k in ("title", "book"):
         if k not in order:
             raise SystemExit(f"{path.name}: no {k}: line")
