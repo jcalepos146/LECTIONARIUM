@@ -10,8 +10,9 @@
 
 - **Pray today**: answer three questions (Mass or Office, which rite, which hour) and get a step-by-step guide for any day from 30 November 2025 to 30 November 2030.
 - **Every rite and use**:
-  - Mass: Novus Ordo, Ordinariate (Divine Worship), 1962 Missal, pre-1955, the hybrid proposal and the Byzantine Divine Liturgy.
-  - Office: the Liturgy of the Hours, the Ordinariate Daily Office, and the 1962, pre-1955, Monastic and Dominican Breviaries, with Byzantine Office outlines.
+  - Mass: Novus Ordo, Ordinariate (Divine Worship), 1962 Missal, pre-1955, the hybrid proposal, the Dominican, Ambrosian and Mozarabic rites, and the Byzantine, Armenian, Coptic and East Syrian liturgies.
+  - Holy Communion from the Anglican Prayer Books (1549, 1552, 1559, 1637, 1662, 1789, 1892, 1928, 1979), the Lutheran Common Service, the Presbyterian, Reformed and Methodist orders.
+  - Office: the Liturgy of the Hours, the Ordinariate Daily Office, and the 1962, pre-1955, Monastic and Dominican Breviaries, Morning and Evening Prayer from the Prayer Books, with Byzantine Office outlines.
 - **Any length**: fit a service to anything from 15 minutes up to full length. The guide trims step by step and shows what was cut.
 - **Live group sessions**: a host shares a code, and everyone else follows the same day, settings and position. The host can assign parts (celebrant, server, lector, people), see who is ready, and start music for everyone. Sessions run browser to browser, with no account needed.
 - **Music**: Gregorian propers and Ordinary in chant notation with playback, plus hymns.
@@ -24,6 +25,9 @@
   - The Ordinariate Mass propers.
   - The Novus Ordo Ordinary in Latin, with traditional English.
   - Mattins and Evensong from the 1662 Book of Common Prayer, with the Coverdale psalter.
+  - The Holy Communion service of nine Prayer Books, from the first English book of 1549 to the American book of 1928 (the early books in the spelling of their day).
+  - The Lutheran Common Service (1917-19), the Presbyterian Book of Common Worship (1906), the Reformed Church in America Liturgy (1882) and the Methodist Ritual (1908).
+  - The Liturgies of Adai and Mari (1893), the Coptic St Basil (1882), and the Armenian Divine Liturgy (1908), each in a public-domain English translation.
   - Scripture readings in the Douay-Rheims and King James versions.
 - **Tools**: a presenter view for screen-sharing, a chat-script export for Discord or Minecraft (copy and paste), read-aloud, role views, posture cues and a printable booklet.
 - **Compare**: every lectionary side by side for the whole year, with feast precedence.
@@ -49,7 +53,10 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Armenian Divine Liturgy (Armenian Apostolic; Armenian Catholic) | *Guided*: the Divine Liturgy in full in the English of 1908, with the vesting, litanies and the priest's private prayers; lessons from the Armenian lectionary are cued | Not yet |
 | Methodist: Ritual of the Methodist Episcopal Church (1908) | **Complete text**: the Order for the Administration of the Lord's Supper | Not yet |
 | Lutheran: Common Service Book (1917-19) | **Complete text**: The Service with the Introit, Collect, Epistle, Gradual and Gospel of the day (lessons the book only cites come from the King James Version) | Not yet |
+| Prayer Book 1549, 1552, 1559 (England) | **Complete text**: the Communion service in full in the spelling of each book (1549: The Supper of the Lord, commonly called the Mass), with the Introit (1549 only), collect, epistle and gospel of every Sunday and holy day | Not yet |
+| Prayer Book 1637 (Scotland) | *Guided*: the Scottish Communion Office in full, with the prayer of consecration and the prayer of oblation; collect, epistle and gospel of the day are cited | Not yet |
 | Prayer Book 1662 (England) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | See Ordinariate: 1662 Mattins and Evensong |
+| Prayer Book 1789, 1892 (USA) | *Guided*: the Order for the Administration of the Lord's Supper in full; collect, epistle and gospel of the day are cited | Not yet |
 | Prayer Book 1928 (USA) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | **Complete text**: Morning and Evening Prayer, Coverdale psalms of the day; lessons from your lectionary |
 | Prayer Book 1979 (USA) | *Guided*: the Holy Eucharist in full (Rite One or Two, Prayers I and A to D, Prayers of the People), collect and preface of the day; lessons from the RCL | **Complete text**: Morning and Evening Prayer (Rites One and Two), Noonday, Compline, with the 1979 Psalter |
 
@@ -141,9 +148,7 @@ description, canonical URL and redirect. Churches and traditions have individual
 family artwork. The generator keeps the complete project below the 512-file limit.
 Cards use `tools/card.html`, with no church logos or insignia.
 
-New Anglican, Lutheran and Reformed service texts (Part C of the feature request)
-follow release of the launcher and reviewed directory. They are not implemented
-in this change. The attached *Divine Liturgies Public Domain Companion* identifies
+The attached *Divine Liturgies Public Domain Companion* identifies
 Hapgood (1906) as its historical source, but its own introduction says the
 anthology is not complete. The Liturgies of St John Chrysostom, St Basil and the Presanctified are
 therefore transcribed directly from the 1906 page images (`tools/texts/hapgood-liturgy.txt`,
@@ -180,6 +185,22 @@ consolidated into 4 MB shards with `office_gen.py rechunk br55 4000` and
 This operation preserves every line, row and day ID. Both packs passed full
 rendered-cell and title comparison against their original directories before
 replacement. It changes fetch sizes, not the liturgical content.
+
+## The Prayer Book texts
+
+The 1662, 1928 and 1979 books are compiled from complete transcriptions with a day-by-day table of
+collects, epistles and gospels (`tools/bcp1662.py`, `tools/bcp1928.py`). The 1549, 1552 and 1559 books also have a day-by-day table, parsed from the Justus Epistles and Gospels pages by
+`tools/bcp_propers.py` (where the books differ the margin notes decide; a few choices are listed in its VARIANTS table).
+The earlier books (1549, 1552, 1559,
+1637, 1789, 1892) are built from hand-proofread orders in `tools/texts/bcp-<year>.txt`, written in the order
+markup of `tools/orders.py`. The first draft of each comes from the Society of Archbishop Justus
+transcriptions (justus.anglican.org/resources/bcp/, public domain) through `tools/justus.py`; the header of
+every text lists what was corrected by hand. `python3 tools/bcp_early.py` writes `data/bcp<year>.json`, and
+`python3 tools/bcp_early.py --check` is run in CI. All of these use one engine, the `PB_BOOKS` table in
+`src/mass.js`, which sets the day's collect, epistle and gospel into the service where the book places them
+and cites them where the book's own table is not yet imported. The words of institution are veiled in lay
+study in every book. To add a book, drop in its text, add an entry to `PB_BOOKS` and `MASS_RITES`, and
+register the rite in `tools/build_traditions.py` and `data/traditions.json`.
 
 ## Participation and canonical guidance
 

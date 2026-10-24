@@ -10,7 +10,7 @@ Each text file is one order (the file name after "order-" is its id). Markup, on
     + text             said by all
     - text             said by the People
     Minister. / People. / Answer. text                versicles and responses (shown as ℣. and ℟.)
-    Priest. / Deacon. / Choir. / Clergy. / Reader. / All. / Bishop. text   a speaker, named
+    Priest. / Presbyter. / Deacon. / Choir. / Clergy. / Reader. / All. / Bishop. text   a speaker, named
     {srv} text         a role without a label: cel (celebrant), srv (deacon, server), lec, ppl, all
     [or] Summary       alternatives, shown folded under Summary, until [/or]
     [consecration]     the words of consecration (institution narrative, epiclesis), until [/consecration]:
@@ -28,9 +28,9 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "orders.json"
-SLOTS = {"hymn", "psalter", "lessons", "sermon", "offering", "prayer", "communion"}
+SLOTS = {"hymn", "psalter", "lessons", "sermon", "offering", "prayer", "communion", "collect", "gospel"}
 LABELS = {"Minister": ("cel", "℣."), "People": ("ppl", "℟."), "Answer": ("ppl", "℟."),
-          "Priest": ("cel", "Priest."), "Deacon": ("srv", "Deacon."), "Choir": ("ppl", "Choir."), "Clergy": ("cel srv", "Clergy."),
+          "Priest": ("cel", "Priest."), "Presbyter": ("cel", "Presbyter."), "Deacon": ("srv", "Deacon."), "Choir": ("ppl", "Choir."), "Clergy": ("cel srv", "Clergy."),
           "Reader": ("lec", "Reader."), "All": ("all", "All."), "Bishop": ("cel", "Bishop.")}
 ROLES = {"cel", "srv", "ppl", "lec", "all"}
 
