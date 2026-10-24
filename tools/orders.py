@@ -28,7 +28,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "orders.json"
-SLOTS = {"hymn", "psalter", "lessons", "sermon", "offering", "prayer", "communion"}
+SLOTS = {"hymn", "psalter", "lessons", "sermon", "offering", "prayer", "communion", "collect", "gospel"}
 LABELS = {"Minister": ("cel", "℣."), "People": ("ppl", "℟."), "Answer": ("ppl", "℟."),
           "Priest": ("cel", "Priest."), "Deacon": ("srv", "Deacon."), "Choir": ("ppl", "Choir."), "Clergy": ("cel srv", "Clergy."),
           "Reader": ("lec", "Reader."), "All": ("all", "All."), "Bishop": ("cel", "Bishop.")}

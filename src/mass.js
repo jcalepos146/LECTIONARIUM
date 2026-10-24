@@ -410,8 +410,14 @@ const PB_BOOKS={
     collectAt:/Collect of the Day/, epistleAt:null, gospelAt:/Glory be to thee, O Lord/, notSaid:[], prefaceHead:p=>p},
   bcp62:{file:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments",
     collectAt:/^Then shall be said the Collect of the Day/, epistleAt:/^The Epistle \(or,/, gospelAt:/^The holy Gospel is written/,
-    notSaid:["Exhortations","Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p}
+    notSaid:["Exhortations","Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
+  /* The earlier books (data/bcp<year>.json, tools/bcp_early.py) carry the service without a day-by-day table of collects,
+     epistles and gospels, so those three are cued from the book. */
+  bcp89:{file:"data/bcp1789.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+    collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
+    notSaid:["Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p}
 };
+const isPB=r=>!!PB_BOOKS[r];
 async function buildPB(ctx,opts,book){
   const C=PB_BOOKS[book||"bcp28"], B=await J(C.file), iso=ctx.iso, day=ctx.day||{};
   const pr=pbPropers(B,iso,day), set=pr?pr.sets[0]:null, same=pr&&pr.same?B.propers[pr.same]:null;
@@ -1085,7 +1091,7 @@ const TG_MAX=125; /* slider value meaning "full length" */
 const TG_CHIPS=[15,20,30,45,60,0];
 function controls(rite, opts, iso, day, auto){
   const P=Object.entries(PRESETS).map(([k,v])=>`<button type="button" class="pre${opts.preset===k?" on":""}" data-pre="${k}" aria-pressed="${opts.preset===k}"><b>${v.label}</b><span>${v.desc}</span></button>`).join("");
-  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||rite==="bcp28"||rite==="bcp62"||rite==="bcp79"||rite==="csb"||!!ORDER_RITES[rite], byz=rite==="b"||oo;
+  const trad=rite==="m"||rite==="p"||rite==="h", oo=!!ORDO_ONLY[rite]||isPB(rite)||rite==="bcp79"||rite==="csb"||!!ORDER_RITES[rite], byz=rite==="b"||oo;
   const chk=(id,lab,on)=>`<label class="ck"><input type="checkbox" data-o="${id}"${on?" checked":""}> ${lab}</label>`;
   const tg=+opts.target||0;
   const target=`<div class="target">
@@ -1140,8 +1146,8 @@ function ladder(rite){
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
     ["Without Holy Communion", o=>{ o.csbcomm="no"; }],
     ["The Epistle left out", o=>{ o.abridge=3; },"ab"]];
-  if(rite==="bcp28"||rite==="bcp62") return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
-    [rite==="bcp62"?"The Ten Commandments left out":"The Decalogue left out (Summary of the Law instead)", o=>{ o.abridge=1; },"ab"],
+  if(isPB(rite)) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
+    [rite==="bcp28"?"The Decalogue left out (Summary of the Law instead)":"The Ten Commandments left out", o=>{ o.abridge=1; },"ab"],
     ["No sermon; Communion 2 minutes", o=>{ o.homily=0; o.communion=Math.min(+o.communion,2); }],
     ["The Epistle left out", o=>{ o.abridge=3; },"ab"]];
   if(ORDO_ONLY[rite]) return [["Sermon held to 5 minutes, Communion to 4", o=>{ o.homily=Math.min(+o.homily,5); o.communion=Math.min(+o.communion,4); }],
@@ -1259,7 +1265,7 @@ async function render(el, ctx){
     if(rite==="o") return buildOrd(ctx,o);
     if(rite==="b") return buildByz(ctx,o);
     if(ORDO_ONLY[rite]) return buildOrdoOnly(ctx,o);
-    if(rite==="bcp28"||rite==="bcp62") return buildPB(ctx,o,rite);
+    if(isPB(rite)) return buildPB(ctx,o,rite);
     if(rite==="csb") return buildCSB(ctx,o);
     if(ORDER_RITES[rite]) return buildOrders(ctx,o,rite);
     if(rite==="bcp79") return buildPB79(ctx,o);
