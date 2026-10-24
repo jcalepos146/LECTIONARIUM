@@ -79,11 +79,17 @@ The full list is on the site's **Sources** tab.
 
 ## Sanctuary mode
 
-Choose **Enter Sanctuary mode** or press **S** outside a text field. Browse the
+The Sanctuary is the default view: opening the site without an address fragment
+lands on it, and the guides it opens wear its palette and type, with a bar back
+to the Sanctuary. **Classic view** (in the Sanctuary toolbar, its menu, or the
+bar above a guide) switches to the plainer, lighter classic page, and the choice
+is remembered on that device; **Sanctuary** on the classic page switches back.
+Links to a tab or a Sanctuary route still open where they point. Press **S**
+outside a text field to open or close the Sanctuary at any time. Browse the
 night-time library with mouse, touch, arrow keys and Enter, or a gamepad. Escape /
 Backspace or gamepad B returns to the parent; `/` or gamepad Y opens Search. Start
-opens text-size, theme, optional sound and exit controls. Sound starts off. Exit
-returns to the existing page; Pray now opens the existing guide.
+opens text-size, theme, optional sound and classic-view controls. Sound starts
+off. Pray now opens the guide.
 
 Routes: `#/sanctuary`, `#/t/catholic`, `#/t/catholic/latin`, and `#/search`.
 The catalog is fetched only on Sanctuary entry. Sources references are included
