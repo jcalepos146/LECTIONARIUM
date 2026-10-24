@@ -497,7 +497,9 @@ Deacon. For our true and fulfilled redemption we give Thee thanks, O Christ our 
 
 = The Institution
 ¶ This hymn ended, all the Clergy kneel. The Priest, whilst the Clerks chant the Sanctus, says in a low voice, with outstretched arms:
-Priest. Holy, Holy, Holy art Thou, verily and most Holy. Who is he that can measure the immensity of Thy mercy, Thou who from the first didst watch over and comfort man fallen in sin, by means of the Prophets, of the Books of the Law, of the priesthood, and by the offering of kine, symbolical of another sacrifice? Thou who at the time ordained didst remit the burden of our debts and gave us Thine Only Begotten Son, both debtor and debt, victim and offering, Lamb and bread of Heaven, High-priest and Sacrifice; for He indeed is the distributor and He is distributed among us without being consumed, and having become man, not in semblance only but in very truth being incarnate from the womb of the Virgin Mary, Mother of God, He took upon Himself the passions of human life, yet was without sin and of His own free will suffered death upon the Cross, giving life to the world and redemption to mankind. Then taking the bread in His holy, divine, immaculate and life-giving hands, He blessed + it, and when he had given thanks, brake it, and gave it to His disciples, saying:
+Priest. Holy, Holy, Holy art Thou, verily and most Holy. Who is he that can measure the immensity of Thy mercy, Thou who from the first didst watch over and comfort man fallen in sin, by means of the Prophets, of the Books of the Law, of the priesthood, and by the offering of kine, symbolical of another sacrifice? Thou who at the time ordained didst remit the burden of our debts and gave us Thine Only Begotten Son, both debtor and debt, victim and offering, Lamb and bread of Heaven, High-priest and Sacrifice; for He indeed is the distributor and He is distributed among us without being consumed, and having become man, not in semblance only but in very truth being incarnate from the womb of the Virgin Mary, Mother of God, He took upon Himself the passions of human life, yet was without sin and of His own free will suffered death upon the Cross, giving life to the world and redemption to mankind.
+[consecration]
+{cel} Then taking the bread in His holy, divine, immaculate and life-giving hands, He blessed + it, and when he had given thanks, brake it, and gave it to His disciples, saying:
 Deacon. Sir, give the blessing.
 ¶ The Priest (aloud):
 Priest. Take eat, this is my Body which is given for you and for many for the expiation and remission of sins.
@@ -508,6 +510,7 @@ Deacon. Sir, give the blessing.
 ¶ The Priest (aloud):
 Priest. Drink ye all this. This is my Blood, of the New Testament, which is shed for you and for many, for the expiation and remission of sins.
 Choir. Amen.
+[/consecration]
 ¶ All rise, and the Clerks continue:
 Choir. O Heavenly Father, who for us hast delivered up to death Thy Son, as the debtor of our debts; for the sake of His Blood, which has been shed, we implore Thee to have mercy upon us Thy human flock.
 ¶ During this time the Priest says privately:
@@ -531,6 +534,7 @@ Choir. In Thy presence, O Lord, O Son of God, who hast offered Thyself to the Fa
 Priest. We adore Thee, we pray Thee and supplicate Thee, O merciful God, to shed abroad upon us, and upon these oblations which we now offer, Thy Holy Spirit co-eternal and co-essential with Thee.
 ¶ The Deacon standing close to the Priest shall reverently say:
 Deacon. Amen. Sir, give the blessing.
+[consecration]
 ¶ Then the Priest shall make the sign of the Cross upon the Host, and say in a low voice:
 Priest. Whereby Thou hast made the consecrated bread to become verily and indeed the Body of our Lord Jesus Christ.
 ¶ (This he repeats three times, and then makes the sign of the Cross upon the chalice.)
@@ -539,6 +543,7 @@ Priest. Whereby Thou hast made the consecrated bread to become verily and indeed
 {cel} Whereby Thou hast made the consecrated Bread and Wine to become verily and indeed the Body and Blood of our Lord Jesus Christ, changing them by Thy Holy Spirit. (Repeated thrice.)
 ¶ At every blessing the Deacon answers in a low voice:
 Deacon. Amen.
+[/consecration]
 Deacon. Sir, give the blessing.
 ¶ The Priest (aloud):
 Priest. To all us here assembled, may the approach unto this Sacrament be not condemnation, but expiation and pardon of our sins.

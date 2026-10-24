@@ -504,6 +504,7 @@ Choir. According to Thy mercy, O Lord, and not according to our sins.
 = The Institution
 ¶ The censer is held for him by the Deacon; he puts incense in it, and holds his hands for some moments in the smoke, saying:
 Priest. And He hath instituted for us this great mystery of godliness.
+[consecration]
 ¶ He extends his hands over the bread and wine, saying:
 {cel} For when He was determined to give Himself up to death for the life of the world—
 ¶ The People say:
@@ -563,6 +564,7 @@ Priest. For as often as ye eat of this Bread
 {cel} And drink of this Cup,
 ¶ And ends thus:
 {cel} Ye do show forth My death, ye do confess My resurrection, ye do make memorial of Me until I come.
+[/consecration]
 ¶ The People say:
 Choir. Amen. Amen. Amen. We show forth Thy death, O Lord! and we confess Thine holy resurrection and ascension. We praise Thee; we bless Thee; we give Thee thanks, O Lord, and entreat of Thee, O our God!
 ¶ Meanwhile the Priest says inaudibly:
@@ -580,6 +582,7 @@ Priest. And we beseech Thee, O Christ our God, we, Thy sinful and unworthy serva
 [or] Note: the translator on the words of the Invocation
 ¶ These words, and the clauses immediately following, certainly present some difficulties, and offer a certain temptation to interpret them in the sense of the peculiar opinion regarding the necessity of the Invocation for the completion of the Consecration, which has obtained a footing in some of the Oriental churches. Whether this opinion has ever been known among the Copts, the translator is not aware, but it may be said that this passage would hardly have been composed, as it now stands, by a writer of the present day. The Copts whom the translator has consulted as to the meaning, understand it in the sense of the words in the Canon of the Roman Mass: "We humbly beseech Thee, O Almighty God, that it may please Thee that these [prayers and petitions of Thy people] may be borne up by the hands of Thine holy Angel unto Thine Altar on high, before the Face of Thy Divine Majesty, that whosoever of us shall from this Thine Altar here be made partakers of the Most Holy Body and Blood of Thy Son, may be filled with all heavenly blessing and grace." As also it is said by S. Thomas Aquinas, in the Praeparatio ad Missam prefixed to the Roman Missal: "Grant, I pray Thee, that I may receive not only the Sacrament of the Body and Blood of the Lord, but also the very essence and power (rem et virtutem) of the Sacrament." And this again is already expressed by S. Augustine, (quoted in the Roman Breviary on the Feast of Corpus Christi,) where, commenting on the words "He that eateth My Flesh and drinketh My Blood dwelleth in Me and I in him," he says: "To dwell in Christ therefore, and to have Him dwelling in us, is to 'eat of that Bread and drink of that Cup,' and he which dwelleth not in Christ, and in whom Christ dwelleth not, without all doubt doth not spiritually eat His Flesh nor drink His Blood, although he do carnally and visibly press the Sacrament with his teeth; but, contrariwise, he 'eateth and drinketh damnation to himself,' because he dareth to draw nigh filthy to that secret and holy thing of Christ, whereunto none draweth nigh worthily, save he which is pure, even he which is of them concerning whom it is said — 'Blessed are the pure in heart, for they shall see God.'"
 [/or]
+[consecration]
 ¶ He continues aloud:
 Priest. And may make them manifest as a sanctification of Thy Saints.
 ¶ The Deacon says:
@@ -606,6 +609,7 @@ Priest. On this cup the Glorious Blood of the New Testament of—
 Choir. I believe.
 ¶ The Priest continues:
 Priest. O Lord and God and Saviour Jesus Christ. It is given for the remission of sins and eternal life unto them that shall take thereof.
+[/consecration]
 ¶ The People say:
 Choir. Amen. Lord, have mercy. Lord, have mercy. Lord, have mercy.
 

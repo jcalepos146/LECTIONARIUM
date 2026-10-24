@@ -18,6 +18,8 @@ class SanctuaryTests(unittest.TestCase):
         self.context=self.browser.new_context(viewport={'width':1920,'height':1080})
         # External font/CDN failures are outside this local regression suite. No app/data mocks.
         self.context.route('https://**/*',lambda route: route.abort())
+        # The first-time question and the Sanctuary default view have their own tests; elsewhere the classic page is home.
+        self.context.add_init_script("localStorage.setItem('lect-participation-asked','1');if(localStorage.getItem('lect-home')===null)localStorage.setItem('lect-home','\"classic\"')")
         self.page=self.context.new_page();self.page.clock.install(time=datetime.datetime(2026,10,21,16,tzinfo=datetime.timezone.utc));self.errors=[]
         self.page.on('pageerror',lambda e:self.errors.append(str(e)))
         self.page.on('console',lambda m:self.errors.append(m.text) if m.type=='error' and 'Failed to load resource' not in m.text else None)
@@ -79,6 +81,8 @@ class SanctuaryTests(unittest.TestCase):
     def test_gamepad_stick_repeat_and_held_select(self):
         self.page.add_init_script('''window.testPad={connected:true,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false}))};navigator.getGamepads=()=>[window.testPad];''')
         self.open('#/sanctuary');self.page.locator('[data-route="#/t/roman-modern"]').wait_for()
+        # The home view focuses its first tile once it has rendered; start the stick only after that.
+        self.page.wait_for_function("document.activeElement?.dataset.route==='#/t/roman-modern'")
         self.page.clock.pause_at(datetime.datetime(2026,10,21,17,tzinfo=datetime.timezone.utc))
         self.page.evaluate('testPad.axes[0]=1');self.page.clock.run_for(100)
         self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/divine-worship')
@@ -137,6 +141,52 @@ class SanctuaryTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#participation-mode').count(),0)
         self.page.locator('#tab-sources').click();self.page.locator('#canonical-guidance').wait_for()
         self.assertIn('permanent deacons',self.page.locator('#canonical-guidance').inner_text())
+    def test_sanctuary_is_default_view_and_classic_is_remembered(self):
+        ctx=self.browser.new_context(viewport={'width':1280,'height':900});ctx.route('https://**/*',lambda route: route.abort())
+        ctx.add_init_script("localStorage.setItem('lect-participation-asked','1')")
+        page=ctx.new_page();page.on('pageerror',lambda e:self.errors.append(str(e)))
+        try:
+            page.goto(self.url);page.locator('#sanctuary').get_by_role('heading',name='Sanctuary',exact=True).wait_for()
+            self.assertEqual(page.evaluate('location.hash'),'#/sanctuary')
+            page.evaluate("location.hash='#/t/oriental-coptic'");page.locator('[data-pray]').first.click()
+            page.locator('.mbody .mpart').first.wait_for()
+            self.assertEqual(page.evaluate('document.documentElement.dataset.skin'),'sanctuary')
+            self.assertTrue(page.locator('#san-bar').is_visible())
+            page.locator('#san-bar [data-bar=home]').click();page.locator('#sanctuary').get_by_role('heading',name='Sanctuary',exact=True).wait_for()
+            page.locator('#sanctuary [data-action=exit]').click()
+            page.wait_for_function("document.getElementById('sanctuary').hidden && !document.documentElement.dataset.skin")
+            page.goto(self.url);page.wait_for_load_state('networkidle')
+            self.assertTrue(page.evaluate("document.getElementById('sanctuary').hidden"))
+            page.locator('#enter-sanctuary').click();page.locator('#sanctuary').get_by_role('heading',name='Sanctuary',exact=True).wait_for()
+            self.assertEqual(page.evaluate("localStorage.getItem('lect-home')"),'"sanctuary"')
+        finally:
+            ctx.close()
+    def test_first_time_question_and_consecration_veil(self):
+        ctx=self.browser.new_context(viewport={'width':1280,'height':900});ctx.route('https://**/*',lambda route: route.abort())
+        ctx.add_init_script("localStorage.setItem('lect-home',JSON.stringify('classic'))")
+        page=ctx.new_page();page.on('pageerror',lambda e:self.errors.append(str(e)))
+        try:
+            page.goto(self.url);page.wait_for_load_state('networkidle')
+            page.evaluate("LectApp.follow({type:'mass',rite:'copt',iso:'2026-10-25'})")
+            page.get_by_role('heading',name='Are you a priest, or studying as a seminarian?').wait_for()
+            # Lay study is drawn behind the question: no words of consecration, a notice in their place.
+            self.assertNotIn('For this is my Body',page.locator('.mbody').text_content())
+            self.assertGreater(page.locator('.mbody .veiled').count(),0)
+            page.get_by_role('button',name='Yes',exact=True).click()
+            page.locator('dialog.pq .pq-warn').get_by_text('can. 1379').wait_for()
+            page.get_by_role('button',name='Back',exact=True).click()
+            page.get_by_role('button',name='No',exact=True).click()
+            self.assertEqual(page.locator('dialog').count(),0)
+            self.assertEqual(page.locator('#participation-mode').input_value(),'lay')
+            page.reload();page.wait_for_load_state('networkidle')
+            page.evaluate("LectApp.follow({type:'mass',rite:'bcp62',iso:'2026-10-25'})");page.locator('#participation-mode').wait_for()
+            self.assertEqual(page.locator('dialog').count(),0)
+            self.assertNotIn('this is my Body',page.locator('.mbody').text_content())
+            page.locator('#participation-mode').select_option('priest')
+            page.wait_for_function("document.querySelector('.mbody').textContent.includes('this is my Body')")
+            self.assertIn('can. 1379',page.locator('.participation').text_content())
+        finally:
+            ctx.close()
     def test_priest_only_text_not_exported_or_read_aloud(self):
         self.page.add_init_script("""window.spoken=[];window.SpeechSynthesisUtterance=class{constructor(text){this.text=text;}};Object.defineProperty(window,'speechSynthesis',{value:{getVoices:()=>[],cancel:()=>{},speak:u=>{spoken.push(u.text);setTimeout(()=>u.onend?.(),0);}}});""")
         self.open();self.page.evaluate("LectApp.follow({type:'mass',rite:'n',iso:'2026-10-21'})")
@@ -191,7 +241,7 @@ class SanctuaryTests(unittest.TestCase):
             follower_context=self.browser.new_context(viewport={'width':1920,'height':1080})
             follower_context.route('https://**/*',lambda route:route.abort())
             follower_context.route(endpoint,lambda route:route.fulfill(body=script,content_type='application/javascript'))
-            follower_context.add_init_script(init)
+            follower_context.add_init_script(init);follower_context.add_init_script("localStorage.setItem('lect-participation-asked','1');if(localStorage.getItem('lect-home')===null)localStorage.setItem('lect-home','\"classic\"')")
             follower=follower_context.new_page();follower.clock.install(time=datetime.datetime(2026,10,21,16,tzinfo=datetime.timezone.utc))
             follower.on('pageerror',lambda e:self.errors.append('Follower: '+str(e)))
             follower.goto(self.url);follower.locator('#joinCode').fill(code);follower.locator('#joinForm button').click()

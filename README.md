@@ -79,11 +79,17 @@ The full list is on the site's **Sources** tab.
 
 ## Sanctuary mode
 
-Choose **Enter Sanctuary mode** or press **S** outside a text field. Browse the
+The Sanctuary is the default view: opening the site without an address fragment
+lands on it, and the guides it opens wear its palette and type, with a bar back
+to the Sanctuary. **Classic view** (in the Sanctuary toolbar, its menu, or the
+bar above a guide) switches to the plainer, lighter classic page, and the choice
+is remembered on that device; **Sanctuary** on the classic page switches back.
+Links to a tab or a Sanctuary route still open where they point. Press **S**
+outside a text field to open or close the Sanctuary at any time. Browse the
 night-time library with mouse, touch, arrow keys and Enter, or a gamepad. Escape /
 Backspace or gamepad B returns to the parent; `/` or gamepad Y opens Search. Start
-opens text-size, theme, optional sound and exit controls. Sound starts off. Exit
-returns to the existing page; Pray now opens the existing guide.
+opens text-size, theme, optional sound and classic-view controls. Sound starts
+off. Pray now opens the guide.
 
 Routes: `#/sanctuary`, `#/t/catholic`, `#/t/catholic/latin`, and `#/search`.
 The catalog is fetched only on Sanctuary entry. Sources references are included
@@ -177,10 +183,19 @@ replacement. It changes fetch sizes, not the liturgical content.
 
 ## Participation and canonical guidance
 
-Mass guides open in **Lay study**. **Ordained priest** mode is an explicit local
-choice saved only for that browser session. A host cannot change another
-participant’s mode. Lay study offers no celebrant assignment; priest-only
-passages remain study references and the institution words are veiled.
+The first Eucharistic liturgy a visitor opens asks: *Are you a priest, or
+studying as a seminarian?* **Lay study** (the default, and the answer "No")
+shows every liturgy in the library without its words of consecration: the
+institution narrative and, in the Byzantine, Armenian, Coptic and East Syrian
+rites, the invocation over the gifts, each replaced by a short notice.
+**Priest or seminarian** shows them after a warning that simulating the words
+of consecration or any other sacrament is a grave offence under canon law (cf.
+can. 1379), above all in public, and that the texts are for study and
+supervised practice. The choice is remembered on that device and can be changed
+above each liturgy. The Reformed orders print their words of institution in
+either mode, since they are read there as a warrant from Scripture. A host
+cannot change another participant’s mode. Lay study offers no celebrant
+assignment; priest-only passages remain study references.
 Read-aloud omits priest-only Mass prayers in both modes. Chat scripts and
 presenter slides omit them in lay study, including pasted prayers inside a
 reserved section. Switching back to lay study clears a celebrant selection and

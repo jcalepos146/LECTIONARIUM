@@ -1,16 +1,49 @@
-/* Participation is a local choice. A live host never supplies ordination status. */
+/* Participation is a local choice, remembered on this device. A live host never supplies ordination status.
+   Lay study (the default) shows every liturgy without its words of consecration; "priest or seminarian" shows
+   them, with a warning. The first time a Eucharistic liturgy is opened, the reader is asked which applies. */
 (function(){
 'use strict';
-let mode='lay';try{if(sessionStorage.getItem('lect-participation')==='priest')mode='priest';}catch(e){}
+const KEY='lect-participation', ASKED='lect-participation-asked';
+const get=k=>{try{return localStorage.getItem(k)||sessionStorage.getItem(k);}catch(e){return null;}};
+const put=(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}};
+let mode=get(KEY)==='priest'?'priest':'lay';
 const isPriest=()=>mode==='priest';
-const catholicMass=m=>!!m&&!m.isOffice&&['n','o','m','p','h','b','d','a','z'].includes(m.rite);
+/* Rites whose Eucharist only a priest may celebrate: the Catholic rites and the Orthodox and Oriental liturgies. */
+const catholicMass=m=>!!m&&!m.isOffice&&['n','o','m','p','h','b','d','a','z','arm','copt','adai'].includes(m.rite);
 function priestOnly(el,role=''){
  if((' '+role+' ').includes(' cel '))return true;
  for(let p=el;p&&p.nodeType===1;p=p.parentElement){if(p.hasAttribute('data-priest-only')||(' '+(p.getAttribute('data-r')||'')+' ').includes(' cel '))return true;}
  return false;
 }
-function setMode(value){mode=value==='priest'?'priest':'lay';try{sessionStorage.setItem('lect-participation',mode);}catch(e){}window.dispatchEvent(new Event('lect-participation'));}
-function controls(){return `<div class="mctlbox participation"><label class="sl" for="participation-mode">Participation <select id="participation-mode"><option value="lay"${!isPriest()?' selected':''}>Lay study</option><option value="priest"${isPriest()?' selected':''}>Ordained priest</option></select></label><p class="note">${isPriest()?'Priest mode is for validly ordained priests. Use the approved books and observe applicable law; this setting does not establish faculties or permission to celebrate.':'Lay study: follow the readings and responses. Priest-only texts are references, not assigned parts. Do not attempt the Eucharistic celebration or imitate its priest-only actions.'} Read-aloud omits priest-only prayers in either mode. <a href="#sources" data-canon-link>Canonical guidance</a></p></div>`;}
+function setMode(value){mode=value==='priest'?'priest':'lay';put(KEY,mode);put(ASKED,'1');window.dispatchEvent(new Event('lect-participation'));}
+const WARNING='Simulating the words of consecration, or any other sacrament, is a grave offence under canon law (cf. Code of Canon Law, can. 1379), and doing so in a public setting gives scandal. These texts are for study and for supervised practice in priestly formation. They do not authorize anyone to celebrate.';
+function controls(){return `<div class="mctlbox participation"><label class="sl" for="participation-mode">Participation <select id="participation-mode"><option value="lay"${!isPriest()?' selected':''}>Lay study</option><option value="priest"${isPriest()?' selected':''}>Priest or seminarian</option></select></label><p class="note">${isPriest()?'Priest or seminarian: the words of consecration are shown. '+WARNING:'Lay study: follow the readings and responses. The words of consecration are not shown, and priest-only texts are references, not assigned parts. Do not attempt the Eucharistic celebration or imitate its priest-only actions.'} Read-aloud omits priest-only prayers in either mode. <a href="#sources" data-canon-link>Canonical guidance</a></p></div>`;}
+/* The first-time question. It never blocks the page: the guide is already drawn in lay study behind it. */
+let dlg=null;
+function ask(){
+ if(get(ASKED)||dlg||typeof document==='undefined')return;
+ dlg=document.createElement('dialog');dlg.className='pq';dlg.setAttribute('aria-labelledby','pq-h');
+ const step1=`<h2 id="pq-h">Are you a priest, or studying as a seminarian?</h2>
+  <p>Some liturgies on this site contain the words of consecration. They are shown only to priests and to seminarians preparing for ordination.</p>
+  <div class="pq-btns"><button type="button" class="tbtn" data-pq="yes">Yes</button><button type="button" class="tbtn pq-alt" data-pq="no">No</button></div>
+  <p class="pq-small">You can change this at any time with the Participation setting above each liturgy.</p>`;
+ const step2=`<h2 id="pq-h">Before you continue</h2>
+  <p class="pq-warn">${WARNING}</p>
+  <p>Priests should celebrate from the approved books of their Church; this site is a study aid.</p>
+  <div class="pq-btns"><button type="button" class="tbtn" data-pq="ok">I understand: show the full texts</button><button type="button" class="tbtn pq-alt" data-pq="back">Back</button></div>`;
+ dlg.innerHTML=step1;
+ const done=v=>{dlg.close();dlg.remove();dlg=null;setMode(v);};
+ dlg.addEventListener('click',e=>{const b=e.target.closest('[data-pq]');if(!b)return;const a=b.dataset.pq;
+  if(a==='yes'){dlg.innerHTML=step2;dlg.querySelector('[data-pq="ok"]').focus();}
+  else if(a==='back'){dlg.innerHTML=step1;dlg.querySelector('[data-pq="yes"]').focus();}
+  else if(a==='ok')done('priest');
+  else if(a==='no')done('lay');});
+ /* Escape keeps lay study but asks again next time. */
+ dlg.addEventListener('cancel',e=>{e.preventDefault();dlg.close();dlg.remove();dlg=null;});
+ document.body.append(dlg);
+ if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
+ dlg.querySelector('[data-pq="yes"]').focus();
+}
 function annotate(el,isOffice){
  if(isOffice)return;
  el.querySelectorAll('.mbody .cue').forEach(c=>{
@@ -22,6 +55,8 @@ function annotate(el,isOffice){
   }
  });
  el.querySelectorAll('.mbody .canon, .mbody [data-r]').forEach(n=>{if(n.classList.contains('canon')||(' '+(n.getAttribute('data-r')||'')+' ').includes(' cel '))n.setAttribute('data-priest-only','');});
+ /* Several veiled passages in a row read as one notice. */
+ el.querySelectorAll('.mbody .veiled').forEach(n=>{let p=n.previousElementSibling;while(p&&p.classList.contains('rub'))p=p.previousElementSibling;if(p&&p.classList.contains('veiled'))n.remove();});
  el.querySelectorAll('.mbody > section.mpart').forEach(sec=>{
   const title=sec.querySelector('h3 span')?.textContent||'';
   if(/^(Canon|Anaphora)(\b|$)/i.test(title)){
@@ -35,6 +70,6 @@ function annotate(el,isOffice){
  });
  if(!isPriest())el.querySelectorAll('.mbody details.canon').forEach(n=>{n.open=false;const s=n.querySelector('summary');if(s)s.textContent='Priest-only Canon · study reference';});
 }
-document.addEventListener('click',e=>{if(e.target.closest('[data-canon-link]')){e.preventDefault();document.getElementById('tab-sources').click();requestAnimationFrame(()=>document.getElementById('canonical-guidance').scrollIntoView({block:'start'}));}});
-window.LectParticipation={isPriest,setMode,catholicMass,priestOnly,controls,annotate};
+document.addEventListener('click',e=>{if(e.target.closest('[data-canon-link]')){e.preventDefault();if(dlg){dlg.close();dlg.remove();dlg=null;}document.getElementById('tab-sources').click();requestAnimationFrame(()=>document.getElementById('canonical-guidance').scrollIntoView({block:'start'}));}});
+window.LectParticipation={isPriest,setMode,catholicMass,priestOnly,controls,annotate,ask,WARNING};
 })();

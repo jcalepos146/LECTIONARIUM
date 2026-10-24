@@ -80,6 +80,15 @@ directional repeats. Action buttons require release between selections. Input
 prompts reflect the latest input. WebAudio sounds are opt-in. Reduced-motion
 preferences disable tile transitions. Theme and text size are local to Sanctuary.
 
+The home view is a remembered choice (`lect-home`: `sanctuary`, the default, or
+`classic`). With the Sanctuary as home, a visit whose opened URL has no fragment
+is routed to `#/sanctuary` (the URL is read from the navigation entry, because
+the tab router may already have written `#today`), and the classic page is
+skinned with `data-skin="sanctuary"` on the root: the shared colour variables
+are remapped to the Sanctuary palette (night, or vellum with its theme), the
+body type becomes the display serif, and a sticky `#san-bar` offers Sanctuary,
+Search and Classic view. Classic view removes the skin and the redirect.
+
 `tools/build_traditions.py` validates parent links, guide mappings and URLs, emits
 share stubs and captures original church and tradition artwork using the vellum/penwork from
 `tools/card.html`. `--check` verifies exact stub contents, PNG dimensions and the
@@ -119,8 +128,14 @@ individual catalog share pages within the 512-file site limit.
 ## Local participation mode
 
 `src/participation.js` is loaded before Mass/session tools. It owns the local
-sessionStorage choice between lay study and a self-declared ordained-priest
-mode. The host’s options never supply that choice. Mass rendering derives
+localStorage choice between lay study and a self-declared priest-or-seminarian
+mode, and asks the first-time question (a non-blocking `<dialog>` over a guide
+already drawn in lay study). The host’s options never supply that choice. The
+words of consecration are veiled in three ways: the Roman, Ambrosian,
+Dominican and Mozarabic builders match their institution formulas (`INST_RE`);
+the prayer-book, Common Service and Byzantine texts are matched by `CONS_RE`;
+the orders in `tools/texts/order-*.txt` mark them explicitly with
+`[consecration]` … `[/consecration]`. Mass rendering derives
 `veil` locally; received live options are normalized before comparison so a
 host’s priest mode cannot override a lay follower or cause redraw loops.
 

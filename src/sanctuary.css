@@ -45,3 +45,17 @@ body.san-open{overflow:hidden}
 @media(min-width:1800px){#sanctuary{font-size:calc(26px * var(--san-scale))}}
 @media(max-width:600px){.san-toolbar{gap:9px;padding:12px 16px}.san-toolbar button{padding:7px 10px;font-size:18px}.san-toolbar button:nth-child(2){margin-right:0}.san-content{padding:22px 22px 60px}.san-hero{display:block}.san-hero>div{width:160px}.san-facts{grid-template-columns:1fr}.san-prompts{font-size:16px}.san-grid{grid-template-columns:1fr}.san-tile{flex-basis:280px;width:280px}}
 @media(prefers-reduced-motion:reduce){#sanctuary *,#sanctuary *::before,#sanctuary *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* The Sanctuary skin: the classic page (the guides, the tabs, Sources) in the Sanctuary's palette and type while
+   the Sanctuary is the home view. "Classic view" removes it. */
+:root[data-skin=sanctuary]{--paper:#121619;--leaf:#1b2225;--ink:#eee4ce;--muted:#bfb6a4;--rule:#3b474b;--gold:#c7a465;--gold-hi:#e9cf94;--rubric:#e58b6f;--rubric-wash:#3a2620;--focus:#e9ba74;--lapis:#9db1e8;--f-body:var(--f-display);font-size:calc(112.5% * var(--fs, 1));color-scheme:dark}
+:root[data-skin=sanctuary][data-skin-theme=vellum]{--paper:#ede1c7;--leaf:#f5ebd6;--ink:#2a2018;--muted:#665748;--rule:#cdb98f;--gold:#806022;--gold-hi:#a8842f;--rubric:#9b2f1f;--rubric-wash:#f1dccd;--focus:#7a2b1f;--lapis:#1f3b7a;color-scheme:light}
+:root[data-skin=sanctuary] body{background:radial-gradient(ellipse at top,#293033,#121619 65%) fixed}
+:root[data-skin=sanctuary][data-skin-theme=vellum] body{background:#ede1c7}
+#san-bar{position:sticky;top:0;z-index:50;display:flex;gap:12px;flex-wrap:wrap;padding:12px 0;margin-bottom:6px;background:var(--paper);border-bottom:1px solid var(--gold)}
+#san-bar[hidden]{display:none}
+#san-bar button{font:inherit;font-family:var(--f-display);font-size:1rem;color:var(--ink);background:var(--leaf);border:1px solid var(--gold);border-radius:3px;padding:6px 16px;cursor:pointer}
+#san-bar button:first-child{margin-right:auto}
+#san-bar button:focus-visible{outline:3px solid #e9ba74;outline-offset:3px}
+:root[data-skin=sanctuary] #enter-sanctuary{display:none}
+@media(max-width:600px){#san-bar{gap:8px;padding:10px 0}#san-bar button{padding:6px 10px}}

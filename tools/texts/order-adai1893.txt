@@ -328,8 +328,10 @@ Priest. Holy, Holy, Holy, Lord God of hosts. Heaven and earth are full of Thy pr
 
 = The Words of Our Lord
 ## The Words of Our Lord
+[consecration]
 Priest. [Our Lord Jesus, in the same night in which He was betrayed, took bread, and blessed and brake, and said, Take, eat; this is My Body which is broken for you; this be ye doing for My memorial. Likewise after they had supped, He gave the cup also, and said, This cup is the new testament in My Blood; this be ye doing, as oft as ye drink for My memorial.]
 ¶ Or read as it is written in the other Liturgies.
+[/consecration]
 ¶ Note: The words of institution are not written in the Apostles' Liturgy. It is thought that they were always recited, and it is at this part of the service that they are found in the other East Syrian liturgies. (The editors' Latin preface adds that they are printed apart, in the form in which St Paul gives them in his First Epistle to the Corinthians, because they rest on the authority of no ancient codex.)
 ¶ Canon.
 Priest. For all Thy aids and graces towards us, let us lift up to Thee praise and honour and confession and adoration, now always and for ever and ever.
@@ -352,7 +354,9 @@ Priest. Bless, O my Lord; bless, O my Lord; bless, O my Lord; My brethren, pray 
 {cel} Do Thou, my Lord, in Thy many and unspeakable mercies, (repeat), make a good and acceptable memorial for all the just and righteous fathers who have been well-pleasing before Thee, in the commemoration of the body and blood of Thy Christ which we offer to Thee upon Thy pure and holy altar, as Thou hast taught us, and grant us Thy safety and Thy peace all the days of the world. * Yea, our Lord and our God, grant us Thy safety and Thy peace all the days of the world, (repeat), that all the inhabitants of the earth may know Thee, that Thou art God, the only true Father, and Thou didst send our Lord Jesus Christ, Thy Son and Thy Beloved, and He, our Lord and our God, came and in His life-giving gospel taught us all the purity and holiness of the prophets and apostles, of the martyrs and confessors, of the bishops and doctors, of the priests and deacons and of all the children of the holy catholic Church, even those who have been signed with the living sign of holy baptism.
 ¶ And when he says [the word] signed, let him sign the throne (that is, the altar) from below upwards and from right to left, inclining the while. Here he strikes his face with his hands.
 {cel} We also, my Lord, (repeat three times) Thy weak, frail and miserable servants, who are assembled in Thy name and stand before Thee at this moment, have by tradition received the example from Thee, rejoicing and glorifying and exalting and commemorating and celebrating unto Thee this great and awful and holy and life-giving and divine mystery, of the passion and death and burial and resurrection of our Lord and Saviour Jesus Christ.
+[consecration]
 {cel} AND MAY THY HOLY SPIRIT, O MY LORD, come and rest upon this oblation of Thy servants, and may He bless it and hallow it and may it be to us, O my Lord, for the pardon of debts and for the forgiveness of sins and for the great hope of resurrection from the dead and for new life in the kingdom of heaven, with all those who have been well-pleasing to Thee. For all this great and wonderful dispensation towards us, * we give Thee thanks and glorify Thee without ceasing, within Thy Church redeemed by the precious blood of Thy Christ, with unclosed mouths and unveiled faces.
+[/consecration]
 ¶ Note: The first two words of the Invocation, which are generally written large, give the name by which it is known; viz. Nithi Mar, "May He come, O my Lord."
 ¶ When the priest says, May He come, O my Lord, he arises and elevates his hands, and the deacon says,
 Deacon. In silence and in awe stand ye and pray. Peace be with us.
