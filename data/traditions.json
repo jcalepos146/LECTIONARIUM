@@ -2732,7 +2732,14 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review. Crown rights apply to the 1662 Book of Common Prayer in the United Kingdom."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp59",
+        "hour": null,
+        "label": "Holy Communion"
+      }
+    ],
     "pd_texts_available": [
       "1559 edition: verify the exact scan and territory before extraction."
     ],
