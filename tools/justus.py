@@ -77,7 +77,7 @@ class Runs(HTMLParser):
 
 
 def clean(t):
-    t = html.unescape(t).replace("\xa0", " ")
+    t = html.unescape(t).replace("\xa0", " ").replace("\ue000", " ").replace("\ue001", " ")
     t = t.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
     return re.sub(r"\s+", " ", t).strip()
 
