@@ -21,8 +21,23 @@ const MASS_RITES=[
   {id:"copt",name:"Coptic Liturgy of St Basil",d:"Coptic Orthodox and Coptic Catholic · in the Marquis of Bute's English, with the incense, the lessons and the priest's private prayers",tr:"kj",ord:1},
   {id:"arm",name:"Armenian Divine Liturgy (Badarak)",d:"Armenian Apostolic Church · in the English of 1908, with the vesting, the litanies and the priest's private prayers",tr:"kj",ord:1},
   {id:"me08",name:"The Lord's Supper (Methodist Episcopal, 1908)",d:"Methodist · Wesley's order from the 1662 Prayer Book, as in the 1908 Ritual",tr:"kj",ord:1},
+  {id:"wes84",name:"The Lord's Supper (Wesley's Sunday Service, 1784)",d:"Methodist · John Wesley's abridgement of the 1662 Prayer Book for America, with its Sunday collects, epistles and gospels",tr:"kj",ord:1},
+  {id:"wes84o",name:"Morning and Evening Prayer (Wesley's Sunday Service, 1784)",d:"Methodist · Wesley's Lord's Day Morning and Evening Prayer and the Litany, with the book's collects and proper lessons",tr:"kj",ord:1},
   {id:"rca",name:"Lord's Day Morning (Reformed Church in America, 1882)",d:"Reformed · Order of Public Worship, with the Lord's Supper in the Form of Dort",tr:"kj",ord:1},
+  {id:"rcus",name:"Lord's Day Morning (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Order of Worship of the Mercersburg theologians, with the Holy Communion when celebrated",tr:"kj",ord:1},
+  {id:"rcusv",name:"Lord's Day Evening (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Evening Service of the Order of Worship",tr:"kj",ord:2},
+  {id:"rcusp",name:"Preparation for the Holy Communion (Mercersburg 1866)",d:"Reformed · the preparatory service: the Law, the Litany and the address to communicants",tr:"kj",ord:2},
+  {id:"byzv",name:"Great Vespers (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the Vespers of the All-Night Vigil in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"byzm",name:"Matins (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the Six Psalms to the Dismissal, in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"byzh",name:"The Hours (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the First, Third, Sixth and Ninth Hours and the Typical Psalms, in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"byzc",name:"Grand Compline (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · Grand Compline in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"csbl",name:"The Litany (Common Service Book)",d:"Lutheran · the Litany of 1917-19, with its collects",tr:"kj",ord:3},
+  {id:"csbs",name:"The Suffrages (Common Service Book)",d:"Lutheran · the Suffrages of 1917-19, for Matins or Vespers or alone",tr:"kj",ord:3},
+  {id:"csbsm",name:"Morning Suffrages (Common Service Book)",d:"Lutheran · the brief morning office of 1917-19",tr:"kj",ord:3},
+  {id:"csbse",name:"Evening Suffrages (Common Service Book)",d:"Lutheran · the brief evening office of 1917-19",tr:"kj",ord:3},
   {id:"pres",name:"Lord's Day Morning Service (Presbyterian, 1906)",d:"Reformed · The Book of Common Worship, with the Lord's Supper when celebrated",tr:"kj",ord:1},
+  {id:"csbm",name:"Matins (Common Service Book)",d:"Lutheran · the morning office of 1917-19, with the collect of the day",tr:"kj",ord:2},
+  {id:"csbv",name:"Vespers (Common Service Book)",d:"Lutheran · the evening office of 1917-19, with the collect of the day",tr:"kj",ord:2},
   {id:"csb",name:"The Service (Common Service Book)",d:"Lutheran · the Common Service of 1888 with the Introit, Collect, Epistle, Gradual and Gospel of the day",tr:"kj",ord:1},
   {id:"bcp62",name:"Holy Communion (1662 Prayer Book)",d:"Church of England · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
   {id:"bcp28",name:"Holy Communion (1928 Prayer Book)",d:"Episcopal Church (USA) · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
@@ -93,16 +108,31 @@ function coverage(type,rite,hour){
     if(rite==="copt") return ["guide","The Coptic Liturgy of St Basil is printed in full, in the Marquis of Bute's English (1882, reissued 1908). The lessons and Gospel of the day come from the Coptic lectionary (the Katameros), which is not yet on this site."];
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
     if(rite==="me08") return ["full","The Order for the Administration of the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) is printed in full."];
-    if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free; the lessons and psalms are chosen by the minister."];
+    if(rite==="wes84") return ["full","The Order for the Administration of the Lord's Supper from John Wesley's Sunday Service of the Methodists in North America (1784) is printed in full, with the book's own Collect, Epistle and Gospel for each Sunday and chief feast. The book keeps no saints' days or weekday propers: on other days the Sunday's are used."];
+    if(rite==="wes84o") return ["full","Morning and Evening Prayer for the Lord's Day and the Litany from Wesley's Sunday Service (1784) are printed in full, with the Psalms of the day from the book's own Select Psalms, its Collect of the day and, on Sundays and the chief feasts, the lessons of its table in the King James Version. On other days the book leaves the lessons to the Minister."];
+    if(rite==="rcus") return ["full","The Regular Service on the Lord's Day, and the Holy Communion, from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) are printed in full, with the Litany. The Epistle and Gospel, the hymns and the sermon are the minister's."];
+    if(rite==="rcusv") return ["full","The Evening Service from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full, with the Litany. The lessons, the hymns and the sermon are the minister's."];
+    if(rite==="rcusp") return ["full","The Preparation for the Holy Communion from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full: the Law, the Litany, the address to the communicants, the confession and the pardon."];
+    if(rite==="byzv") return ["guide","Great Vespers is printed in full from Isabel Hapgood's Service Book (1906), public domain. The hymns that change with the day (the stichera, the Dogmatikon, the Gradual and the Hymn of the Feast) come from the Octoechos and Menaion, which are not in the public domain in a modern English translation: the guide marks where they go. Hapgood's English is not any church's present authorized text."];
+    if(rite==="byzm") return ["guide","Matins is printed in full from Isabel Hapgood's Service Book (1906), public domain: the Six Psalms, the twelve Morning Prayers, the litanies, the Polyeleos, the Gospel, the Magnificat and the Great Doxology. The hymns that change with the day (the troparia, the Canon, the stichera) come from the Octoechos and Menaion, which are not in the public domain in a modern English translation; the Gospel of the Resurrection is read from the Gospels. Hapgood's English is not any church's present authorized text."];
+    if(rite==="byzh") return ["guide","The First, Third, Sixth and Ninth Hours (with the Interhour) and the Typical Psalms are printed in full from Isabel Hapgood's Service Book (1906), public domain, with the psalms in the Prayer Book's wording. The troparia and kontakia of the day come from the Octoechos and Menaion, which are not in the public domain in a modern English translation; the guide marks where they go. Hapgood's English is not any church's present authorized text."];
+    if(rite==="byzc") return ["guide","Grand Compline is printed in full from Isabel Hapgood's Service Book (1906), public domain, with the psalms in the Prayer Book's wording. The hymns of the day and the Great Canon of St. Andrew are not in the public domain in a modern English translation; the guide marks where they go. Hapgood's English is not any church's present authorized text."];
+    if(rite==="csbl") return ["full","The Litany of the Common Service Book (1917-19) is printed in full, with its collects and the collect of the day."];
+    if(rite==="csbs") return ["full","The Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day."];
+    if(rite==="csbsm") return ["full","The Morning Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day. The psalm, lesson and hymn are the minister's."];
+    if(rite==="csbse") return ["full","The Evening Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day. The psalm, lesson and hymn are the minister's."];
+    if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free. The lessons of the day come from the book's own Order of Scripture Lessons, in the King James Version; the psalm, if one is read, is the minister's choice."];
     if(rite==="pres") return ["full","The Order of Morning Service and the Order for the Lord's Supper from the Presbyterian Book of Common Worship (1906) are printed in full. The book sets no lectionary: the Psalter portion, the lessons, the hymns and the General Prayer are chosen by the minister."];
+    if(rite==="csbm") return ["full","Matins from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
+    if(rite==="csbv") return ["full","Vespers from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csb") return ["full","The Service of the Common Service Book (1917-19) is printed in full, with the Introit, Collect, Epistle, Gradual and Gospel of the day. The hymns are not included."];
     if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="bcp49") return ["full","The Supper of the Lord and the Holy Communion in the first Prayer Book of Edward VI (1549) is printed in full, in the spelling of the book, with the Introit, Collect, Epistle and Gospel of the day."];
     if(rite==="bcp52") return ["full","The Order for the Administration of the Lordes Supper in the second Prayer Book of Edward VI (1552) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
     if(rite==="bcp59") return ["full","The Order for the Administration of the Lordes Supper in the Elizabethan Prayer Book (1559) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
-    if(rite==="bcp37") return ["guide","The Order of the Administration of the Lords Supper in the Scottish Prayer Book of 1637 is printed in full, in the spelling of the book. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
-    if(rite==="bcp89") return ["guide","The Order for the Administration of the Lord's Supper in the first American Prayer Book (1789) is printed in full. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
-    if(rite==="bcp92") return ["guide","The Order for the Administration of the Lord's Supper in the American Prayer Book of 1892 is printed in full. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
+    if(rite==="bcp37") return ["guide","The Order of the Administration of the Lords Supper in the Scottish Prayer Book of 1637 is printed in full, in the spelling of the book. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
+    if(rite==="bcp89") return ["guide","The Order for the Administration of the Lord's Supper in the first American Prayer Book (1789) is printed in full. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
+    if(rite==="bcp92") return ["guide","The Order for the Administration of the Lord's Supper in the American Prayer Book of 1892 is printed in full. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
     if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
@@ -239,7 +269,7 @@ async function passage(cit, numbering, tr){
         for(let v=vs; v<=ve; v++){
           let [bk,cc,vv]=[p.book,c,v];
           if(trx==="dr" && numbering!=="v") [bk,cc,vv]=toVulgate(p.book,c,v);
-          if(trx==="kj"){ [bk,cc,vv]=commonShift(p.book,c,v); if(bk==="Ps") vv=Math.max(1,vv-psOff); }
+          if(trx==="kj"&&numbering!=="k"){ [bk,cc,vv]=commonShift(p.book,c,v); if(bk==="Ps") vv=Math.max(1,vv-psOff); }
           const key=cc+":"+vv; if(seen.has(key)) continue; seen.add(key);
           out.push([cc,vv]);
         }
@@ -519,7 +549,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",pres:"kj",rca:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -549,11 +579,56 @@ async function renderSession(){
   else if(S.type==="mass"&&S.rite==="me08"){
     body=`<h2 class="dayname">The Lord's Supper</h2><p class="daysub">Ritual of the Methodist Episcopal Church (1908)</p><div id="massGuide"></div><footer class="sesfoot"><p>Ritual of the Methodist Episcopal Church (New York: Eaton &amp; Mains, 1908), public domain, transcribed from the Internet Archive scan. The order descends from John Wesley's Sunday Service of 1784.</p></footer>`;
   }
+  else if(S.type==="mass"&&S.rite==="rcus"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Regular Service and Holy Communion · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rcusv"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Evening Service · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rcusp"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Preparation for the Holy Communion · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzv"){
+    body=`<h2 class="dayname">Great Vespers</h2><p class="daysub">The Eastern Orthodox Church · the All-Night Vigil</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzm"){
+    body=`<h2 class="dayname">Matins</h2><p class="daysub">The Eastern Orthodox Church · the All-Night Vigil</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzh"){
+    body=`<h2 class="dayname">The Hours</h2><p class="daysub">The Eastern Orthodox Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzc"){
+    body=`<h2 class="dayname">Grand Compline</h2><p class="daysub">The Eastern Orthodox Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbl"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">The Litany · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbs"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">The Suffrages · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbsm"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Morning Suffrages · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbse"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Evening Suffrages · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
   else if(S.type==="mass"&&S.rite==="rca"){
     body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">The Liturgy of the Reformed Church in America (1882)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Liturgy of the Reformed Church in America, for use in public worship (New York, 1882), public domain, transcribed from the Internet Archive scan. Its Office for the Lord's Supper is the Form of the Synod of Dort.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="pres"){
     body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">The Book of Common Worship (Presbyterian Church in the U.S.A., 1906)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Worship, prepared by the Committee of the General Assembly of the Presbyterian Church in the United States of America (Philadelphia, 1906), public domain, transcribed from the Internet Archive scan.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbm"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Matins · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the typed edition and proofread against the Internet Archive scans.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbv"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Vespers · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the typed edition and proofread against the Internet Archive scans.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="csb"){
     const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
@@ -576,11 +651,20 @@ async function renderSession(){
   else if(S.type==="mass"&&S.rite==="bcp37"){
     body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Booke of Common Prayer (Scotland, 1637)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Booke of Common Prayer for the Church of Scotland (1637), public domain, as transcribed by the Society of Archbishop Justus, in the spelling of the book. The Collect, Epistle and Gospel of the day are from the same Justus transcription of the book's table; where the books differ in a day's wording, the margin notes decide.</p></footer>`;
   }
+  else if(S.type==="mass"&&S.rite==="wes84o"){
+    const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Morning and Evening Prayer · The Sunday Service of the Methodists in North America (1784)</p><div id="massGuide"></div><footer class="sesfoot"><p>John Wesley, The Sunday Service of the Methodists in North America (London, 1784), public domain, transcribed from the Internet Archive scan and checked against the 1662 Prayer Book it abridges. Wesley appointed these services for the Lord's Day and the Litany for Wednesdays and Fridays, "praying extempore on all other days". The Psalms are Wesley's Select Psalms, read through each month; the lessons are those of the book's table, in the King James Version.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="wes84"){
+    const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;
+    const wk=pr&&toDate(iso).getUTCDay()&&/SUNDAY/i.test(pr.t);
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">The Sunday Service of the Methodists in North America (1784)${wk?" · the Sunday's collect, epistle and gospel serve the week":""}</p><div id="massGuide"></div><footer class="sesfoot"><p>John Wesley, The Sunday Service of the Methodists in North America, with Other Occasional Services (London, 1784), public domain, transcribed from the Internet Archive scan of the Princeton Theological Seminary copy and checked against the 1662 Prayer Book it abridges. Wesley numbers the Sundays from Christmas to Lent as Sundays after Christmas; the 1662 name of each is given beside it. The epistles and gospels are the King James text the book prints.</p></footer>`;
+  }
   else if(S.type==="mass"&&S.rite==="bcp89"){
-    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1789)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1789), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are not yet printed for this book: take them from your Prayer Book.</p></footer>`;
+    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1789)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1789), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are given from the 1662 Prayer Book, whose table this book follows closely.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="bcp92"){
-    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1892)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1892), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are not yet printed for this book: take them from your Prayer Book.</p></footer>`;
+    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1892)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1892), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are given from the 1662 Prayer Book, whose table this book follows closely.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="bcp28"){
     const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
@@ -783,6 +867,10 @@ function render(){
 window.LectApp={
   passage,
   coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
+  /* every rite the guide can open, with how much of its text is printed (the home page lists the complete ones and the
+     work-in-progress page the rest) */
+  rites(){ return [...MASS_RITES.map(r=>({type:"mass",hour:null,...r})),...OFFICE_RITES.map(r=>({type:"office",hour:suggestHour(r.id),...r}))]
+    .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }

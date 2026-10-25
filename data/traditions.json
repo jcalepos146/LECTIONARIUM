@@ -149,6 +149,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -163,10 +170,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
@@ -202,6 +233,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -216,10 +254,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
@@ -255,6 +317,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -269,10 +338,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-bulgarian-catholic-church/",
@@ -311,6 +404,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -325,10 +425,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
@@ -364,6 +488,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -378,10 +509,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
@@ -417,6 +572,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -431,10 +593,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/"
@@ -469,6 +655,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -483,10 +676,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/churches-with-no-orthodox-counterpart/the-italo-albanian-catholic-church/",
@@ -522,6 +739,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -536,10 +760,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
@@ -576,6 +824,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -590,10 +845,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-melkite-catholic-church/",
@@ -629,6 +908,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -643,10 +929,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-romanian-catholic-church/",
@@ -682,6 +992,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -696,10 +1013,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
@@ -739,6 +1080,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -753,10 +1101,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ruthenian-catholic-churches/",
@@ -792,6 +1164,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -806,10 +1185,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/"
@@ -844,6 +1247,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -858,10 +1268,34 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ukrainian-catholic-church/",
@@ -1572,9 +2006,44 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
+      }
+    ],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
+    ],
     "sources": [
       "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
       "https://www.oca.org/questions/autocephaly"
@@ -1744,11 +2213,43 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
+      }
+    ],
     "pd_texts_available": [
-      "Hapgood Service Book (1906): historical English, not a current local edition."
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://www.oca.org/directories/world-churches",
@@ -2133,11 +2634,43 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzm",
+        "hour": null,
+        "label": "Matins (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzh",
+        "hour": null,
+        "label": "The Hours (Hapgood 1906)"
+      },
+      {
+        "type": "mass",
+        "rite": "byzc",
+        "hour": null,
+        "label": "Grand Compline (Hapgood 1906)"
+      }
+    ],
     "pd_texts_available": [
-      "Hapgood Service Book (1906): historical English, not a current local edition."
+      "Hapgood Service Book (1906): the Divine Liturgy, Great Vespers, Matins, the Hours and Grand Compline, in historical English, not a current local edition."
     ],
     "sources": [
       "https://www.oca.org/directories/world-churches",
@@ -3730,6 +4263,42 @@
         "rite": "csb",
         "hour": null,
         "label": "The Service"
+      },
+      {
+        "type": "mass",
+        "rite": "csbm",
+        "hour": null,
+        "label": "Matins"
+      },
+      {
+        "type": "mass",
+        "rite": "csbv",
+        "hour": null,
+        "label": "Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "csbl",
+        "hour": null,
+        "label": "The Litany"
+      },
+      {
+        "type": "mass",
+        "rite": "csbs",
+        "hour": null,
+        "label": "The Suffrages"
+      },
+      {
+        "type": "mass",
+        "rite": "csbsm",
+        "hour": null,
+        "label": "Morning Suffrages"
+      },
+      {
+        "type": "mass",
+        "rite": "csbse",
+        "hour": null,
+        "label": "Evening Suffrages"
       }
     ],
     "pd_texts_available": [
@@ -4089,6 +4658,59 @@
       "https://archive.org/details/liturgyofreform00refo"
     ],
     "source_review": "A later historical English liturgy is identified by exact catalog record. The original Dutch forms and each later translation must be distinguished; no modern translation is reproduced."
+  },
+  {
+    "id": "mercersburg",
+    "name": "Mercersburg Liturgy (Reformed Church in the U.S.)",
+    "family": "reformed",
+    "parent": "reformed",
+    "kind": "book-edition",
+    "self_description": "The Order of Worship of the Reformed Church in the United States, written by the Mercersburg theologians, is a historical resource in this directory. The entry describes the 1866 edition, in the public domain.",
+    "also_called": [
+      "Order of Worship (1866)",
+      "Provisional Liturgy"
+    ],
+    "regions": [],
+    "calendar": null,
+    "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
+    "lectionary": "Consult the local church calendar and authorized service book.",
+    "books": [
+      {
+        "title": "Order of Worship for the Reformed Church in the United States (partial edition)",
+        "year": 1866,
+        "status": "public-domain",
+        "source": "https://archive.org/details/orderofworshipfo00unknuoft",
+        "rights_note": "Public domain: published in the United States in 1866."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "rcus",
+        "hour": null,
+        "label": "Lord's Day Morning, with the Holy Communion"
+      },
+      {
+        "type": "mass",
+        "rite": "rcusv",
+        "hour": null,
+        "label": "Lord's Day Evening"
+      },
+      {
+        "type": "mass",
+        "rite": "rcusp",
+        "hour": null,
+        "label": "Preparation for the Holy Communion"
+      }
+    ],
+    "pd_texts_available": [
+      "The Regular Service (Morning and Evening), the Litany and the Holy Communion with its Preparation, from the Order of Worship for the Reformed Church in the United States (1866): imported from the Internet Archive scan (orderofworshipfo00unknuoft), proofread by hand and checked against the 1867 and 1869 editions."
+    ],
+    "sources": [
+      "https://archive.org/details/orderofworshipfo00unknuoft",
+      "https://archive.org/details/ordwors00refo"
+    ],
+    "source_review": "The 1866 partial edition is identified by exact catalog record. Later revisions of the Order (1869, 1884, 1905) differ in wording and are not mixed in."
   },
   {
     "id": "genevan-psalter",
@@ -4497,9 +5119,22 @@
         "rights_note": "Published in 1784; public domain."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "wes84",
+        "hour": null,
+        "label": "The Lord's Supper (1784)"
+      },
+      {
+        "type": "mass",
+        "rite": "wes84o",
+        "hour": null,
+        "label": "Morning and Evening Prayer, and the Litany (1784)"
+      }
+    ],
     "pd_texts_available": [
-      "Complete book in the Internet Archive scan; its long-s typography needs careful proofreading before import."
+      "The Order for the Administration of the Lord's Supper with the Collects, Epistles and Gospels, Morning and Evening Prayer for the Lord's Day, the Litany, the Select Psalms, and the table of proper lessons: transcribed from the Internet Archive scan (amernorfm00wesl), checked against the 1662 text it abridges and the page images."
     ],
     "sources": [
       "https://archive.org/details/amernorfm00wesl"

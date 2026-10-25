@@ -4,21 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lectionarium</title>
-<meta name="description" content="Pray the Mass or the Divine Office for any day: Novus Ordo, 1962, pre-1955, Ordinariate and Byzantine, with complete public-domain texts where they exist (the traditional Missal and Breviary in Latin and English, with chant) and a clearly marked guide where they do not. Fit a service to anything from 15 minutes to full length and run live group sessions with assigned parts.">
+<meta name="description" content="Pray the Eucharist and the daily office in Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed and Methodist rites, each with the Bible readings of its own lectionary for the day. Complete public-domain texts where they exist, a clearly marked guide where they do not. Fit a service to any length and pray it together in live group sessions.">
 <link rel="canonical" href="https://jcalepos146.github.io/LECTIONARIUM/">
 <meta name="theme-color" content="#A3291C">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lectionarium">
-<meta property="og:title" content="Lectionarium · the Mass and the Office in every Catholic rite">
-<meta property="og:description" content="Pray the Mass or the Divine Office for any day: Novus Ordo, 1962, pre-1955, Ordinariate and Byzantine, with complete public-domain texts where they exist (the traditional Missal and Breviary in Latin and English, with chant) and a clearly marked guide where they do not. Fit a service to anything from 15 minutes to full length and run live group sessions with assigned parts.">
+<meta property="og:title" content="Lectionarium · the liturgy of every Christian tradition, for any day">
+<meta property="og:description" content="Pray the Eucharist and the daily office in Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed and Methodist rites, each with the Bible readings of its own lectionary for the day. Complete public-domain texts where they exist, a clearly marked guide where they do not. Fit a service to any length and pray it together in live group sessions.">
 <meta property="og:url" content="https://jcalepos146.github.io/LECTIONARIUM/">
 <meta property="og:image" content="https://jcalepos146.github.io/LECTIONARIUM/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Lectionarium in blackletter with an illuminated initial and a Chi-Rho medallion, on vellum">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Lectionarium · the Mass and the Office in every Catholic rite">
-<meta name="twitter:description" content="Pray the Mass or the Divine Office for any day: Novus Ordo, 1962, pre-1955, Ordinariate and Byzantine, with complete public-domain texts where they exist (the traditional Missal and Breviary in Latin and English, with chant) and a clearly marked guide where they do not. Fit a service to anything from 15 minutes to full length and run live group sessions with assigned parts.">
+<meta name="twitter:title" content="Lectionarium · the liturgy of every Christian tradition, for any day">
+<meta name="twitter:description" content="Pray the Eucharist and the daily office in Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed and Methodist rites, each with the Bible readings of its own lectionary for the day. Complete public-domain texts where they exist, a clearly marked guide where they do not. Fit a service to any length and pray it together in live group sessions.">
 <meta name="twitter:image" content="https://jcalepos146.github.io/LECTIONARIUM/og.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -515,6 +515,12 @@ body.san-open{overflow:hidden}
 #san-bar button:focus-visible{outline:3px solid #e9ba74;outline-offset:3px}
 :root[data-skin=sanctuary] #enter-sanctuary{display:none}
 @media(max-width:600px){#san-bar{gap:8px;padding:10px 0}#san-bar button{padding:6px 10px}}
+.san-wip{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.san-wip li{border-left:3px solid var(--san-gold);padding:10px 18px;background:var(--san-panel)}
+.san-wip li p{margin:6px 0 0;opacity:.85;font-size:.9em}
+.san-wip-open{font:inherit;font-size:1.1em;background:none;border:0;color:inherit;padding:0;text-align:left;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.san-wip-fam{margin:26px 0 4px}
+.san-complete{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
 
 </style>
 </head>
@@ -524,8 +530,8 @@ body.san-open{overflow:hidden}
   <div class="mast"><div class="mast-txt">
     <p class="kicker">Missal<b>✠</b>Breviary<b>✠</b>Lectionary</p>
     <h1 class="wordmark" aria-label="Lectionarium"><span class="ini" aria-hidden="true"><span>L</span></span><span aria-hidden="true">ectionarium</span></h1>
-    <p class="dek">Pray the Mass or the Office for any day in the Catholic rites, printed in full wherever the texts are free to print and guided by citation where they are not, and compare every lectionary side by side.</p>
-    <ul class="feats" aria-label="Features"><li>Every Catholic rite, its text coverage marked</li><li>15 minutes to full length</li><li>Live group sessions with parts</li><li>Gregorian chant and hymns</li><li>Full Breviary in Latin and English</li></ul>
+    <p class="dek">Pray the Eucharist or the daily office for any day in the rites of the Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed and Methodist churches, with each tradition's own Bible readings, printed in full wherever the texts are free to print and guided by citation where they are not.</p>
+    <ul class="feats" aria-label="Features"><li>Rites of every tradition, their text coverage marked</li><li>15 minutes to full length</li><li>Live group sessions with parts</li><li>Gregorian chant and hymns</li><li>Full Breviary in Latin and English</li></ul>
   </div><svg class="chirho" viewBox="0 0 120 120" role="img" aria-label="Chi-Rho with Alpha and Omega"><circle class="disc" cx="60" cy="60" r="54"/><circle cx="60" cy="60" r="55" fill="none" style="stroke:var(--gold)" stroke-width="3.2"/><circle cx="60" cy="60" r="49.5" fill="none" style="stroke:var(--gold)" stroke-width="1.2"/><circle cx="112.30" cy="60.00" r="1.3" style="fill:var(--rubric)"/><circle cx="105.29" cy="86.15" r="1.3" style="fill:var(--rubric)"/><circle cx="86.15" cy="105.29" r="1.3" style="fill:var(--rubric)"/><circle cx="60.00" cy="112.30" r="1.3" style="fill:var(--rubric)"/><circle cx="33.85" cy="105.29" r="1.3" style="fill:var(--rubric)"/><circle cx="14.71" cy="86.15" r="1.3" style="fill:var(--rubric)"/><circle cx="7.70" cy="60.00" r="1.3" style="fill:var(--rubric)"/><circle cx="14.71" cy="33.85" r="1.3" style="fill:var(--rubric)"/><circle cx="33.85" cy="14.71" r="1.3" style="fill:var(--rubric)"/><circle cx="60.00" cy="7.70" r="1.3" style="fill:var(--rubric)"/><circle cx="86.15" cy="14.71" r="1.3" style="fill:var(--rubric)"/><circle cx="105.29" cy="33.85" r="1.3" style="fill:var(--rubric)"/><g style="stroke:var(--lapis)" stroke-width="9" stroke-linecap="butt"><line x1="33" y1="40" x2="87" y2="94"/><line x1="87" y1="40" x2="33" y2="94"/></g><line x1="26.5" y1="46.5" x2="39.5" y2="33.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="80.5" y1="100.5" x2="93.5" y2="87.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="80.5" y1="33.5" x2="93.5" y2="46.5" style="stroke:var(--lapis)" stroke-width="3"/><line x1="26.5" y1="87.5" x2="39.5" y2="100.5" style="stroke:var(--lapis)" stroke-width="3"/><path d="M60 16 V104" style="stroke:var(--rubric)" stroke-width="9" fill="none"/><path d="M60 20.5 H66 A14.5 14.5 0 0 1 66 49.5 H60" style="stroke:var(--rubric)" stroke-width="8" fill="none"/><line x1="53" y1="104" x2="67" y2="104" style="stroke:var(--rubric)" stroke-width="3"/><text x="26" y="75" font-family="Uncial Antiqua, serif" font-size="17" style="fill:var(--gold)" text-anchor="middle">A</text><text x="94" y="75" font-family="Uncial Antiqua, serif" font-size="17" style="fill:var(--gold)" text-anchor="middle">ω</text></svg></div>
   <button type="button" id="enter-sanctuary">Enter Sanctuary mode <kbd>S</kbd></button>
   <div class="fsctl" role="group" aria-label="Text size"><span class="lbl">Text</span><button type="button" data-fs="-1" aria-label="Smaller text">A−</button><button type="button" data-fs="0" aria-label="Default text size">A</button><button type="button" data-fs="1" aria-label="Larger text">A+</button></div>
@@ -784,6 +790,8 @@ body.san-open{overflow:hidden}
 <li><a href="https://archive.org/details/liturgyofreform00refo" target="_blank" rel="noopener">https://archive.org/details/liturgyofreform00refo</a></li>
 <li><a href="https://archive.org/details/liturgyofreforme0000unse" target="_blank" rel="noopener">https://archive.org/details/liturgyofreforme0000unse</a></li>
 <li><a href="https://archive.org/details/lutheranhymnalev0000vari_g9j5" target="_blank" rel="noopener">https://archive.org/details/lutheranhymnalev0000vari_g9j5</a></li>
+<li><a href="https://archive.org/details/orderofworshipfo00unknuoft" target="_blank" rel="noopener">https://archive.org/details/orderofworshipfo00unknuoft</a></li>
+<li><a href="https://archive.org/details/ordwors00refo" target="_blank" rel="noopener">https://archive.org/details/ordwors00refo</a></li>
 <li><a href="https://archive.org/details/psalterwithrespo00unit" target="_blank" rel="noopener">https://archive.org/details/psalterwithrespo00unit</a></li>
 <li><a href="https://archive.org/details/ritualofmethodis01meth" target="_blank" rel="noopener">https://archive.org/details/ritualofmethodis01meth</a></li>
 <li><a href="https://bcp2019.anglicanchurch.net/" target="_blank" rel="noopener">https://bcp2019.anglicanchurch.net/</a></li>
@@ -865,14 +873,14 @@ body.san-open{overflow:hidden}
       <tr><td>Monastic and Dominican</td><td>n/a</td><td><span class="cov cov-full">Complete text</span></td></tr>
       <tr><td>Ordinariate</td><td><span class="cov cov-guide">Guided text</span> 1662 texts, Canon and propers; Divine Worship's wording differs in places</td><td><span class="cov cov-full">Complete text</span> 1662 Mattins, Evensong, Compline; Prime in outline</td></tr>
       <tr><td>Novus Ordo / Liturgy of the Hours</td><td><span class="cov cov-guide">Guided text</span> readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal</td><td><span class="cov cov-guide">Guided text</span> psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary</td></tr>
-      <tr><td>Byzantine</td><td><span class="cov cov-guide">Guided text</span> Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906); Menaion hymns from your books</td><td><span class="cov cov-guide">Guided text</span> psalms and fixed prayers; Saturday Vespers stichera, dogmatikon and Sunday troparia of the tone (Hapgood)</td></tr>
+      <tr><td>Byzantine</td><td><span class="cov cov-guide">Guided text</span> Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906); Menaion hymns from your books</td><td><span class="cov cov-guide">Guided text</span> Great Vespers, Matins, the Hours and Grand Compline in full (Hapgood, 1906); psalms and fixed prayers; Saturday Vespers stichera, dogmatikon and Sunday troparia of the tone (Hapgood)</td></tr>
       <tr><td>Dominican, Ambrosian, Mozarabic</td><td><span class="cov cov-order">Order and readings</span> the Ordinary (Latin and English); propers from your Missal</td><td>Dominican: <span class="cov cov-full">Complete text</span>; the others not yet</td></tr>
       <tr><td>Armenian, Coptic, East Syrian (Adai and Mari)</td><td><span class="cov cov-guide">Guided text</span> the liturgy in full in a public-domain English translation (1908, 1882, 1893); lessons cued</td><td>Not yet</td></tr>
       <tr><td>Prayer Books 1549, 1552, 1559</td><td><span class="cov cov-full">Complete text</span> Holy Communion in their own spelling, with the Introit (1549), collect, epistle and gospel of the day</td><td>Not yet</td></tr>
       <tr><td>Prayer Books 1637, 1789, 1892</td><td><span class="cov cov-guide">Guided text</span> Holy Communion in full (the early books in their own spelling); the day's collect, epistle and gospel from your Prayer Book</td><td>Not yet</td></tr>
       <tr><td>Prayer Books 1662, 1928</td><td><span class="cov cov-full">Complete text</span> Holy Communion with the collect, epistle and gospel of the day</td><td><span class="cov cov-full">Complete text</span> 1928 Morning and Evening Prayer; 1662 Mattins and Evensong (Ordinariate)</td></tr>
       <tr><td>Prayer Book 1979</td><td><span class="cov cov-guide">Guided text</span> the Holy Eucharist in full, collect and preface of the day</td><td><span class="cov cov-full">Complete text</span> Morning and Evening Prayer, Noonday, Compline</td></tr>
-      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service (1917-19), Book of Common Worship (1906), RCA Liturgy (1882), Methodist Ritual (1908)</td><td>Not yet</td></tr>
+      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882) with its Order of Scripture Lessons, Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's, Wesley's Morning and Evening Prayer and Litany (1784) with his Select Psalms, collects and Sunday lessons</td></tr>
     </tbody></table></div>
     <h3>Reading data</h3>
     <ul class="src">
@@ -2001,7 +2009,7 @@ async function buildTrad(ctx, form, opts){
    The Ordinary comes from Divinum Officium's Ordo files (data/ordo-rites.json, built by tools/do_ordo.py).
    Latin and English are re-sectioned at matching anchor lines so the two columns stay together. */
 const ORDO_ONLY={
-  d:{key:"op",lat:true,name:"Dominican",parts:[
+  d:{key:"op",lat:true,name:"Dominican",lect:"rom62",parts:[
     ["Preparation of the chalice",null,null],
     ["Prayers at the foot of the altar",/^!The priest says in a low voice/,/^!The priest says in a low voice/],
     ["Kyrie",/^P\.\s*Kyrie eleison/,/^!After making the sign of the cross on the altar/],
@@ -2032,14 +2040,18 @@ async function buildOrdoOnly(ctx,opts){
   if(cfg.key==="op"&&!opts.leonine) parts=parts.filter(p=>p.t!=="Prayers after Low Mass");
   if(opts.lastGospel===false) parts=parts.filter(p=>p.t!=="Last Gospel");
   const out=[];
+  /* the day's lessons, from the lectionary of the rite (or the nearest one, labelled), at the part that reads them */
+  const LL=cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null, LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
   for(const p of parts){
     let la=p.la, en=p.en, html="";
+    { const pick=LI.filter(x=>!x.used&&(x.slot?x.slot.test(p.t):/Epistle|Lesson|Prophecy|Gospel/.test(p.t)));
+      if(pick.length){ html+=(lectHeaded?"":lectHead(LL)); lectHeaded=true; pick.forEach(x=>{ x.used=true; html+=x.html; }); p.lectSecs=pick.reduce((a,x)=>a+x.secs,0); } }
     if(opts.veil){ const hide=a=>{ let hit=false; const r=a.filter(l=>{ if(INST_RE.test(l)){ hit=true; return false; } return true; }); return [r,hit]; }; const [la2,h1]=hide(la), [en2,h2]=hide(en); la=la2; en=en2; if(h1||h2) p.veiled=true; }
-    if(!cfg.lat||!la.length) html=`<div class="txt one">${(en.length?en:la).map(l=>lineHTML(l,P,"en")).join("")}</div>`;
-    else html=block(la,en,P,lang);
+    if(!cfg.lat||!la.length) html+=`<div class="txt one">${(en.length?en:la).map(l=>lineHTML(l,P,"en")).join("")}</div>`;
+    else html+=block(la,en,P,lang);
     if(p.veiled) html+=veilCue();
     const spoken=x=>x.filter(l=>!l.trim().startsWith("!"));
-    let secs=words(spoken(la.length?la:en))/2.4+(p.veiled?30:0);   /* the Latin has no seasonal variants, so it times the Mass better */
+    let secs=words(spoken(la.length?la:en))/2.4+(p.veiled?30:0)+(p.lectSecs||0);   /* the Latin has no seasonal variants, so it times the Mass better */
     if(!out.comm&&/Communion/.test(p.t)&&!/Postcommunion/.test(p.t)){ out.comm=1; html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the faithful</span> ≈ ${opts.communion} min</div>`; secs+=opts.communion*60; }
     if(!out.hom&&/Gospel/.test(p.t)&&!/Last|after the Gospel/.test(p.t)&&opts.homily>0){ out.hom=1; html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; secs+=opts.homily*60; }
     out.push(sec(p.t,secs/60,html));
@@ -2061,10 +2073,13 @@ const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=M
   if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
 /* Holy Week has no o.bcp in days.json: name its days by their distance from Easter, as the 1662 book heads them. */
 const PB_HOLYWEEK={"-6":"MONDAY BEFORE EASTER","-5":"TUESDAY BEFORE EASTER","-4":"WEDNESDAY BEFORE EASTER","-3":"THURSDAY BEFORE EASTER","-2":"GOOD FRIDAY","-1":"EASTER EVEN"};
-function pbPropers(B,iso,day){
+function pbPropers(B,iso,day,days){
   const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
   const k=PB_HOLYWEEK[off]&&B.propers[PB_HOLYWEEK[off]]?PB_HOLYWEEK[off]:(day.o&&day.o.bcp);
-  return k&&B.propers[k]?B.propers[k]:null;
+  const pr=k&&B.propers[k]?B.propers[k]:null;
+  /* A book that keeps only the Sundays and chief feasts (Wesley's Sunday Service): any other day takes the Sunday's. */
+  if(!pr&&B.fallback==="sunday"&&toDate(iso).getUTCDay()){ const si=new Date(toDate(iso)-toDate(iso).getUTCDay()*DAY).toISOString().slice(0,10); return pbPropers(B,si,(days&&days[si])||{}); }
+  return pr;
 }
 /* The two English-language Prayer Book orders share one builder. Each book differs in where the collect, the
    epistle and the gospel go into its Order, which steps a shortened session leaves out, and which are not said at
@@ -2086,25 +2101,34 @@ const PB_BOOKS={
   bcp59:{file:"data/bcp1559.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments",
     collectAt:/^Then shall folowe the Collect of the day/, epistleAt:/^The Epystle written/, gospelAt:/^The Gospell wrytten/,
     notSaid:["Exhortations of warning","Collects and rubrics"], prefaceHead:p=>({Christmas:"Christmas",Easter:"Easter",Ascension:"Ascencion",Whitsuntide:"Wytsonday","Trinity Sunday":"Trinitie"})[p]||p},
-  bcp37:{file:"data/bcp1637.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", collectBeforeEpistle:true,
+  bcp37:{file:"data/bcp1637.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", collectBeforeEpistle:true,
     collectAt:null, epistleAt:/^Immediately after the Collects/, gospelAt:/^And the Epistle ended, the Gospel/,
     notSaid:["Exhortations of warning","Collects and rubrics"], prefaceHead:p=>({Christmas:"Christmas",Easter:"Easter",Ascension:"Ascension",Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
-  bcp89:{file:"data/bcp1789.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+  bcp89:{file:"data/bcp1789.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
-  bcp92:{file:"data/bcp1892.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+  wes84:{file:"data/bcp1784.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", prefaceDayOnly:true,
+    collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[or/, gospelAt:/^The holy Gospel is written/,
+    notSaid:[], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
+  bcp92:{file:"data/bcp1892.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the Day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p}
 };
 const isPB=r=>!!PB_BOOKS[r];
 async function buildPB(ctx,opts,book){
   const C=PB_BOOKS[book||"bcp28"], B=await J(C.file), iso=ctx.iso, day=ctx.day||{};
-  const pr=pbPropers(B,iso,day), set=pr?pr.sets[0]:null, same=pr&&pr.same?B.propers[pr.same]:null;
+  /* a book whose own table of collects, epistles and gospels is not on the site takes the 1662 table, which it follows */
+  const PBk=C.propersFrom&&!Object.keys(B.propers||{}).length?await J(C.propersFrom):B;
+  let pr=pbPropers(PBk,iso,day,B.fallback?await J("days.json"):null);
+  if(!pr&&PBk!==B){ const days=await J("days.json"), si=lectSun(iso); pr=pbPropers(PBk,si,days[si]||{}); }
+  const set=pr?pr.sets[0]:null, same=pr&&pr.same?PBk.propers[pr.same]:null;
   const collect=set&&set.collect.length?set.collect:(same?same.sets[0].collect:[]);
   const AB=opts.abridge||0, out=[];
   const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
-  const pref=PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
+  /* Wesley prints the proper prefaces for the feast itself only, not its octave. */
+  const d0=toDate(iso), off0=Math.round((d0-easterY(d0.getUTCFullYear()))/DAY);
+  const pref=C.prefaceDayOnly?((d0.getUTCMonth()===11&&d0.getUTCDate()===25)?"Christmas":({0:"Easter",39:"Ascension",49:"Whitsuntide",56:"Trinity Sunday"})[off0]||""):PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
   const at=(its,re)=>re?its.findIndex(x=>re.test(x[1])):-1;
   for(const st of B.hc){
     let html="", secs=spoken(st.items)/2.4;
@@ -2124,7 +2148,7 @@ async function buildPB(ctx,opts,book){
     }
     if(st.slot==="collect"){
       const its=st.items, k=C.collectBeforeEpistle?at(its,C.epistleAt)-1:at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
-      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
+      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}${PBk!==B?" · from the 1662 table, which this book follows; its own wording differs in places":""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
       const ep=AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec");
       html=its.slice(0,k+1).map(pbItem).join("")+coll+its.slice(k+1,ke+1).map(pbItem).join("")+ep+its.slice(ke+1).map(pbItem).join("");
       secs+=(collect.length?collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
@@ -2273,15 +2297,88 @@ window.LectCSB={day:csbDay};
    data/orders.json (tools/orders.py, from the hand-proofread texts in tools/texts/order-*.txt). ORDER_RITES says
    which orders make up each rite's service; slots (hymn, psalter, lessons, sermon, offering, prayer, communion)
    become timed cues, and alternatives fold away under their summary. */
+/* ---------------------------------------------------------------- the day's lessons, from the lectionary each rite belongs to
+   LECT[name](ctx, opts) gives {src, note, items:[{lab, cite, text?, num, tr, slot?}]}: the readings of the day in the table
+   the rite's own book keeps or, where the book leaves the lessons to the minister, the table its tradition used (the user's
+   choice: the historic one-year Epistles and Gospels). lectHTML draws them; orders put them at their @lessons slots. */
+const lectSun=iso=>{ const d=toDate(iso); return new Date(d-d.getUTCDay()*DAY).toISOString().slice(0,10); };
+const LECT={
+  /* the 1662 Prayer Book's Epistle and Gospel of the day (a weekday takes the Sunday's) */
+  async hist(ctx){ const B=await J("data/bcp1662.json"), days=await J("days.json");
+    let pr=pbPropers(B,ctx.iso,ctx.day||{}); if(!pr){ const si=lectSun(ctx.iso); pr=pbPropers(B,si,days[si]||{}); }
+    if(!pr) return null; const S=pr.sets[0], g=S.gospel||(pr.sets.find(x=>x.gospel)||{}).gospel;
+    return {src:`${pr.t} · the Epistle and Gospel of the 1662 Book of Common Prayer`, items:[S.epistle&&{lab:"The Epistle",cite:S.epistle.cite,text:S.epistle.text,slot:/Epistle|Lesson|Scripture|lessons/i},g&&{lab:"The Gospel",cite:g.cite,text:g.text,slot:/Gospel|Lesson|Scripture|lessons/i}].filter(Boolean)}; },
+  /* the Common Service Book's own Epistle and Gospel of the day */
+  async csb(ctx){ const B=await J("data/lutheran-csb.json"), C=csbDay(ctx.iso,B.days), P=C&&C.day; if(!P) return null;
+    const S=P.sets[P.sets.length-1]; return {src:`${P.t} · the Epistle and Gospel of the day in the Common Service Book`, note:"The book leaves the lessons of Matins, Vespers and the Suffrages to the minister; given here are its own Epistle and Gospel of the day.",
+      items:[S.epistle&&{lab:"The Epistle",cite:S.epistle.cite,text:S.epistle.text},S.gospel&&{lab:"The Gospel",cite:S.gospel.cite,text:S.gospel.text}].filter(Boolean)}; },
+  /* the Roman Missal of 1962, whose Epistles and Gospels the Dominican Missal shares on most days */
+  async rom62(ctx){ const m=(ctx.day||{}).m; if(!m||!m.r) return null;
+    return {src:`${m.t} · the Epistle and Gospel of the Roman Missal (1962)`, note:"The Dominican Missal reads the Roman Epistles and Gospels on most days; on the Order's own feasts and in a few seasons it appoints its own, so check your Missal.",
+      items:m.r.filter(x=>!/Psalm|Gradual/.test(x[0])).map(x=>({lab:x[0],cite:x[1],num:x[2]||"v",tr:"dr",slot:/Gospel/.test(x[0])?/Gospel/:/Epistle|Lesson|Prophecy/}))}; }
+};
+async function lectItems(ctx,L){ const out=[];
+  for(const it of (L&&L.items)||[]){
+    let html;
+    if(it.text) html=`<section class="reading"><header><span class="rl">${esc(it.lab)}</span><span class="rc">${esc(it.cite)}</span></header><div class="rtext">${it.text.map(t=>`<p data-r="lec">${esc(t)}</p>`).join("")}</div></section>`;
+    else html=await RB(ctx,it.lab,it.cite,it.num||"k",it.tr||"kj");
+    out.push({html,secs:readSecs(html,90),slot:it.slot||null,used:false});
+  }
+  return out; }
+const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
+
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
+function rcaLessonDay(T,iso){
+  const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
+  const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
+  const d=toDate(iso), E=easterY(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=(d.getUTCMonth()+1)*100+d.getUTCDate();
+  if(md===1225) return pick(T.christmas.christmas,"Christmas");
+  if(md===101) return pick(T.christmas.circumcision,"The Circumcision");
+  if(off===-2) return pick(T.easter.goodfriday,"Good Friday");
+  if(off===39) return pick(T.easter.ascension,"Ascension Day");
+  const s=new Date(d-d.getUTCDay()*DAY), SY=s.getUTCFullYear(), so=Math.round((s-easterY(SY))/DAY), A1=adv1Y(SY), xm=new Date(Date.UTC(SY,11,25));
+  if(s>=A1&&s<xm){ const n=4-Math.round((s-A1)/DAY/7); return pick(T.christmas.before[n],`The ${N[n]} Sunday before Christmas`); }
+  if(s>=xm||so<-63){ const xs=s>=xm?xm:new Date(Date.UTC(SY-1,11,25)), n=Math.ceil((s-xs)/DAY/7);
+    return n<1?pick(T.christmas.christmas,"Christmas"):pick(T.christmas.after[n],`The ${N[n]} Sunday after Christmas`); }
+  if(so<0) return pick(T.easter.before[-so/7],`The ${N[-so/7]} Sunday before Easter`);
+  if(so===0) return pick(T.easter.easter,"Easter");
+  if(so<=35) return pick(T.easter.after[so/7],`The ${N[so/7]} Sunday after Easter`);
+  if(so===42) return pick(T.pentecost.before,"The Sunday before Pentecost");
+  if(so===49) return pick(T.pentecost.pentecost,"Pentecost");
+  return pick(T.pentecost.after[(so-49)/7],`The ${N[(so-49)/7]} Sunday after Pentecost`);
+}
 const ORDER_RITES={
-  pres:{parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
-  me08:{parts:o=>[["me1908-supper"]]},
+  pres:{lect:"hist", parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
+  me08:{lect:"hist", lectNote:"The 1908 Ritual's Lord's Supper has no lessons of its own and the book sets no table: these are the historic Epistle and Gospel of the day, as the 1662 Prayer Book that Wesley's order comes from appoints them.", parts:o=>[["me1908-supper"]]},
   adai:{parts:o=>[["adai1893"]], optional:["The Approach to the Altar"], optLabel:"The priest's approach to the altar left out"},
   copt:{parts:o=>[["coptic1908"]], optional:["The Preparation of the Altar"], optLabel:"The preparation of the altar left out"},
   arm:{parts:o=>[["armenian1908"]], optional:["The Vesting of the Priest","The Approach to the Altar"], optLabel:"The vesting and the prayers of approach left out"},
-  rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true}
+  rca:{rcaLessons:true, parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
+  rcus:{parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
+  rcusv:{parts:o=>[["rcus1866-evening"]]},
+  rcusp:{parts:o=>[["rcus1866-preparation"]]},
+  csbm:{lect:"csb", parts:o=>[["csb-matins"]], csbCollect:true},
+  csbv:{lect:"csb", parts:o=>[["csb-vespers"]], csbCollect:true}
 };
-const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
+ORDER_RITES.csbl={parts:o=>[["csb-litany"]], csbCollect:true};
+ORDER_RITES.csbs={parts:o=>[["csb-suffrages"]], csbCollect:true};
+ORDER_RITES.csbsm={lect:"csb", parts:o=>[["csb-suffrages-morning"]], csbCollect:true};
+ORDER_RITES.csbse={lect:"csb", parts:o=>[["csb-suffrages-evening"]], csbCollect:true};
+ORDER_RITES.byzv={parts:o=>[["byz-vespers"]], optional:["The Litiya","The Blessing of the Loaves"], optLabel:"The Litiya and the blessing of the loaves left out"};
+ORDER_RITES.byzm={parts:o=>[["byz-matins"]], optional:["The Opening, when Matins is said apart from the Vigil"], optLabel:"The opening for Matins said apart from the Vigil left out"};
+ORDER_RITES.byzc={parts:o=>[["byz-compline"]]};
+/* Wesley's Sunday Service (1784): Morning and Evening Prayer for the Lord's Day and the Litany for Wednesdays and Fridays,
+   with the book's Collect of the day and its table of proper lessons (data/bcp1784.json). */
+ORDER_RITES.wes84o={parts:o=>o.hour==="e"?[["wes1784-evening"]]:o.hour==="l"?[["wes1784-litany"]]:[["wes1784-morning"]], wesley:true,
+  optional:["A Prayer and Thanksgiving for the Lord's Day"], optLabel:"The Prayer and General Thanksgiving for the Lord's Day left out",
+  sel:{key:"hour",label:"The Service",opts:[["m","Morning Prayer"],["e","Evening Prayer"],["l","The Litany (Wednesdays and Fridays)"]]}};
+
+const BYZH={"1":["The First Hour"],"3":["The Third Hour"],"6":["The Sixth Hour"],"9":["The Ninth Hour","The Interhour"]};
+ORDER_RITES.byzh={parts:o=>{ const h=o.hour||"1"; if(h==="t") return [["byz-typical"]]; const s=BYZH[h]; return [["byz-hours",s[0],s[s.length-1]]]; },
+  sel:{key:"hour",label:"The Hour",opts:[["1","The First Hour"],["3","The Third Hour"],["6","The Sixth Hour"],["9","The Ninth Hour, with the Interhour"],["t","The Typical Psalms"]]}};const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
   offering:["The Offering",3],prayer:["The General Prayer, in the Minister's own words or from the Treasury of Prayers",5]};
 function orderStep(st,opts){
   let html="", words=0, depth=0, extra=0, cons=false;
@@ -2296,6 +2393,12 @@ function orderStep(st,opts){
     if(k==="slot"){
       if(t==="sermon"){ if(opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; extra+=opts.homily*60; } continue; }
       if(t==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; continue; }
+      if(t==="prayer"&&it[2]==="The Collect for the Day"&&opts._coll){ html+=opts._coll; extra+=30; continue; }
+      if(opts._less&&opts._less[t+":"+(it[2]||"")]){ const [h,m]=opts._less[t+":"+(it[2]||"")]; html+=h; extra+=m*60; continue; }
+      if(t==="lessons"&&opts._lect&&opts._lect.items.some(x=>!x.used)){ const lab=it[2]||"", I=opts._lect.items;
+        let pick=lab?I.filter(x=>!x.used&&x.slot&&x.slot.test(lab)):[]; if(!pick.length) pick=I.filter(x=>!x.used);
+        if(!opts._lect.headed){ opts._lect.headed=true; html+=lectHead(opts._lect.L); }
+        pick.forEach(x=>{ x.used=true; html+=x.html; extra+=x.secs; }); continue; }
       const [lab0,min0]=ORDER_SLOT[t], lab=it[2]||lab0, min=t!=="lessons"?min0:/^The Psalm before/.test(lab)?1:/^The (Gospel|Lesson)/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
     }
     html+=pbItem(it);
@@ -2305,6 +2408,56 @@ function orderStep(st,opts){
 }
 async function buildOrders(ctx,opts,rite){
   const O=await J("data/orders.json"), R=ORDER_RITES[rite], out=[];
+  if(R.csbCollect){   /* the Common Service Book's collect of the day (the Sunday's too, when a festival takes the day) */
+    const B=await J("data/lutheran-csb.json"), C=csbDay(ctx.iso,B.days), P=C.day, S=P?P.sets[P.sets.length-1]:null;
+    const col=S&&S.collect.length?S.collect:[], p=t=>`<p data-r="cel">${esc(t)}</p>`;
+    let h=col.length?`<p class="cite">${esc(P.t)}</p>`+p(col[0])+(col.length>1?`<details class="fold"><summary>Or this Collect</summary>${col.slice(1).map(p).join("")}</details>`:""):cue("The Collect for the Day, from the Common Service Book.");
+    if(C.second&&C.second.sets[0].collect.length) h+=`<h4 class="sub2">The Collect for the Sunday</h4><p class="cite">${esc(C.second.t)}</p>`+p(C.second.sets[0].collect[0]);
+    opts={...opts,_coll:h};
+  }
+  if(R.rcaLessons){   /* the 1882 Liturgy's Order of Scripture Lessons: Christmas, Easter and Pentecost seasons */
+    const T=await J("data/rca1882-lessons.json"), L=rcaLessonDay(T,ctx.iso), less={};
+    if(L){
+      const [ot,nt]=L.m;
+      less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
+    }
+    opts={...opts,_less:less};
+  }
+  if(R.wesley){   /* the Sunday Service's Collect of the day, proper lessons and proper psalms */
+    const B=await J("data/bcp1784.json"), days=await J("days.json"), day=ctx.day||{}, iso=ctx.iso;
+    const pr=pbPropers(B,iso,day,days), p=t=>`<p data-r="cel">${esc(t)}</p>`;
+    const col=pr?(pr.sets[0].collect.length?pr.sets[0].collect:[]):[];
+    const coll=col.length?`<p class="cite">${esc(pr.t)}</p>`+col.map(p).join("")+`<p data-r="ppl"><span class="sp">℟.</span> Amen.</p>`:cue("The Collect of the Day, from the Sunday Service.");
+    const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
+    const key=(PB_HOLYWEEK[off]&&B.lessons[PB_HOLYWEEK[off]])?PB_HOLYWEEK[off]:day.o&&day.o.bcp;
+    const L=key&&B.lessons[key]&&(toDate(iso).getUTCDay()===0||/CHRISTMAS DAY|GOOD FRIDAY|ASCENSION DAY/.test(key))?B.lessons[key]:null;
+    const H=opts.hour==="e"?"e":"m", less={};
+    if(L){
+      less["lessons:The First Lesson"]=[await RB(ctx,"The First Lesson",L[H][0],"k","kj"),5];
+      less["lessons:The Second Lesson"]=L[H][1]?[await RB(ctx,"The Second Lesson",L[H][1],"k","kj"),4]:[cue(H==="m"?"The Second Lesson: a chapter out of the Four Gospels or the Acts of the Apostles, in regular rotation, as the book's table directs.":"The Second Lesson: a chapter out of the Epistles, in regular rotation, as the book's table directs."),4];
+    } else {
+      less["lessons:The First Lesson"]=[cue("The book's table appoints proper lessons for the Sundays and for Christmas, Good Friday and Ascension Day only: on other days the Minister chooses a chapter of the Old Testament."),5];
+      less["lessons:The Second Lesson"]=[cue("The Second Lesson: a chapter out of the "+(H==="m"?"Four Gospels or the Acts of the Apostles":"Epistles")+", in regular rotation."),4];
+    }
+    const PS=key&&B.psalms[key]&&B.psalms[key][H];
+    if(opts.hour!=="l"){
+      const P=(await J("data/bcp1784-psalter.json")).psalter;
+      /* The Psalter is read through each month (the 1662 rule: February borrows the last day of January and the first of
+         March; the thirty-first day of a month repeats the thirtieth). The Proper Psalms take the place of the day's. */
+      const dd=toDate(iso), mo=dd.getUTCMonth()+1, dt=dd.getUTCDate(), Y=dd.getUTCFullYear(), leap=(Y%4===0&&Y%100!==0)||Y%400===0;
+      const dayN=mo===1&&dt===31?1:mo===2?dt+1:mo===3&&dt===1?(leap?1:30):dt===31?30:dt;
+      const all=Object.values(P).flatMap(x=>[...x.m,...x.e]);
+      const list=PS?PS.flatMap(n=>all.filter(x=>x.p===n)):P[String(dayN)][H];
+      let h=`<p class="cite">${PS?`The Proper Psalms for ${esc(pr?pr.t:"the day")}`:`The ${dayN}${["th","st","nd","rd"][dayN%10>3||[11,12,13].includes(dayN)?0:dayN%10]} Day: ${H==="m"?"Morning":"Evening"} Prayer`}</p>`, words=0;
+      list.forEach((ps,i)=>{
+        h+=`<h4 class="sub2">Psalm ${ps.p}${ps.part?` · ${esc(ps.part)}`:""}</h4>`+ps.v.map(([n,t])=>{ words+=t.split(/\s+/).length; return `<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`; }).join("");
+        if(i<list.length-1) h+=`<p data-r="all">Glory be to the Father, and to the Son, and to the Holy Ghost; As it was in the beginning, is now, and ever shall be, world without end. Amen.</p>`;
+      });
+      less["psalter:The Psalms appointed"]=[h,words/2.4/60];
+    }
+    opts={...opts,_coll:coll,_less:less};
+  }
+  if(R.lect&&LECT[R.lect]){ const L=await LECT[R.lect](ctx,opts); if(L) opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}}; }
   for(const [id,from,upto] of R.parts(opts)){
     const ord=O[id]; let on=!from;
     if(!ord) continue;
@@ -2318,6 +2471,9 @@ async function buildOrders(ctx,opts,rite){
       if(upto&&st.t===upto) break;
     }
   }
+  /* an order with no place for the lessons (a Lord's Supper that follows the preaching service): the day's lessons first */
+  if(opts._lect&&opts._lect.items.length&&opts._lect.items.every(x=>!x.used)){ const I=opts._lect.items;
+    out.unshift(sec("The Lessons of the Day",I.reduce((a,x)=>a+x.secs,0)/60,`<div class="txt one">${lectHead(opts._lect.L)}<p class="note">${esc(R.lectNote||"The order itself has no lessons: these are the lessons of the day, for the service of the Word that goes before it.")}</p>${I.map(x=>x.html).join("")}</div>`)); }
   return out;
 }
 
@@ -2798,6 +2954,7 @@ function controls(rite, opts, iso, day, auto){
         ${music}
         <fieldset><legend>Timing</legend>
           ${rite==="bcp79"?`<label class="sl">Rite and prayer <select data-o="p79">${[["II-A","Rite Two · Prayer A"],["II-B","Rite Two · Prayer B"],["II-C","Rite Two · Prayer C"],["II-D","Rite Two · Prayer D"],["I-I","Rite One · Prayer I"]].map(([v,n])=>`<option value="${v}"${(opts.p79||"II-A")===v?" selected":""}>${n}</option>`).join("")}</select></label><label class="sl">Prayers of the People <select data-o="pop79">${["I","II","III","IV","V","VI"].map(v=>`<option${(opts.pop79||"I")===v?" selected":""}>Form ${v}</option>`.replace(`<option`,`<option value="${v}"`)).join("")}</select></label>`:""}
+          ${ORDER_RITES[rite]&&ORDER_RITES[rite].sel?`<label class="sl">${ORDER_RITES[rite].sel.label} <select data-o="${ORDER_RITES[rite].sel.key}">${ORDER_RITES[rite].sel.opts.map(([v,n])=>`<option value="${v}"${(opts[ORDER_RITES[rite].sel.key]||ORDER_RITES[rite].sel.opts[0][0])===v?" selected":""}>${n}</option>`).join("")}</select></label>`:""}
           ${ORDER_RITES[rite]&&ORDER_RITES[rite].supper?`<label class="sl">The Lord's Supper <select data-o="supper"><option value="no"${opts.supper!=="yes"?" selected":""}>Not celebrated</option><option value="yes"${opts.supper==="yes"?" selected":""}>Celebrated after the Sermon</option></select></label>`:""}
           ${rite==="csb"&&iso&&iso.slice(5)==="12-25"?`<label class="sl">Christmas <select data-o="csbset"><option value="later"${opts.csbset!=="early"?" selected":""}>For a later service</option><option value="early"${opts.csbset==="early"?" selected":""}>For an early service</option></select></label>`:""}
           ${rite==="csb"?`<label class="sl">Holy Communion <select data-o="csbcomm"><option value="yes"${opts.csbcomm!=="no"?" selected":""}>Celebrated</option><option value="no"${opts.csbcomm==="no"?" selected":""}>Not celebrated (The Service ends after the General Prayer)</option></select></label>`:""}
@@ -3857,8 +4014,23 @@ const MASS_RITES=[
   {id:"copt",name:"Coptic Liturgy of St Basil",d:"Coptic Orthodox and Coptic Catholic · in the Marquis of Bute's English, with the incense, the lessons and the priest's private prayers",tr:"kj",ord:1},
   {id:"arm",name:"Armenian Divine Liturgy (Badarak)",d:"Armenian Apostolic Church · in the English of 1908, with the vesting, the litanies and the priest's private prayers",tr:"kj",ord:1},
   {id:"me08",name:"The Lord's Supper (Methodist Episcopal, 1908)",d:"Methodist · Wesley's order from the 1662 Prayer Book, as in the 1908 Ritual",tr:"kj",ord:1},
+  {id:"wes84",name:"The Lord's Supper (Wesley's Sunday Service, 1784)",d:"Methodist · John Wesley's abridgement of the 1662 Prayer Book for America, with its Sunday collects, epistles and gospels",tr:"kj",ord:1},
+  {id:"wes84o",name:"Morning and Evening Prayer (Wesley's Sunday Service, 1784)",d:"Methodist · Wesley's Lord's Day Morning and Evening Prayer and the Litany, with the book's collects and proper lessons",tr:"kj",ord:1},
   {id:"rca",name:"Lord's Day Morning (Reformed Church in America, 1882)",d:"Reformed · Order of Public Worship, with the Lord's Supper in the Form of Dort",tr:"kj",ord:1},
+  {id:"rcus",name:"Lord's Day Morning (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Order of Worship of the Mercersburg theologians, with the Holy Communion when celebrated",tr:"kj",ord:1},
+  {id:"rcusv",name:"Lord's Day Evening (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Evening Service of the Order of Worship",tr:"kj",ord:2},
+  {id:"rcusp",name:"Preparation for the Holy Communion (Mercersburg 1866)",d:"Reformed · the preparatory service: the Law, the Litany and the address to communicants",tr:"kj",ord:2},
+  {id:"byzv",name:"Great Vespers (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the Vespers of the All-Night Vigil in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"byzm",name:"Matins (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the Six Psalms to the Dismissal, in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"byzh",name:"The Hours (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the First, Third, Sixth and Ninth Hours and the Typical Psalms, in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"byzc",name:"Grand Compline (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · Grand Compline in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"csbl",name:"The Litany (Common Service Book)",d:"Lutheran · the Litany of 1917-19, with its collects",tr:"kj",ord:3},
+  {id:"csbs",name:"The Suffrages (Common Service Book)",d:"Lutheran · the Suffrages of 1917-19, for Matins or Vespers or alone",tr:"kj",ord:3},
+  {id:"csbsm",name:"Morning Suffrages (Common Service Book)",d:"Lutheran · the brief morning office of 1917-19",tr:"kj",ord:3},
+  {id:"csbse",name:"Evening Suffrages (Common Service Book)",d:"Lutheran · the brief evening office of 1917-19",tr:"kj",ord:3},
   {id:"pres",name:"Lord's Day Morning Service (Presbyterian, 1906)",d:"Reformed · The Book of Common Worship, with the Lord's Supper when celebrated",tr:"kj",ord:1},
+  {id:"csbm",name:"Matins (Common Service Book)",d:"Lutheran · the morning office of 1917-19, with the collect of the day",tr:"kj",ord:2},
+  {id:"csbv",name:"Vespers (Common Service Book)",d:"Lutheran · the evening office of 1917-19, with the collect of the day",tr:"kj",ord:2},
   {id:"csb",name:"The Service (Common Service Book)",d:"Lutheran · the Common Service of 1888 with the Introit, Collect, Epistle, Gradual and Gospel of the day",tr:"kj",ord:1},
   {id:"bcp62",name:"Holy Communion (1662 Prayer Book)",d:"Church of England · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
   {id:"bcp28",name:"Holy Communion (1928 Prayer Book)",d:"Episcopal Church (USA) · with the collect, epistle and gospel of the day",tr:"kj",ord:1},
@@ -3929,16 +4101,31 @@ function coverage(type,rite,hour){
     if(rite==="copt") return ["guide","The Coptic Liturgy of St Basil is printed in full, in the Marquis of Bute's English (1882, reissued 1908). The lessons and Gospel of the day come from the Coptic lectionary (the Katameros), which is not yet on this site."];
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
     if(rite==="me08") return ["full","The Order for the Administration of the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) is printed in full."];
-    if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free; the lessons and psalms are chosen by the minister."];
+    if(rite==="wes84") return ["full","The Order for the Administration of the Lord's Supper from John Wesley's Sunday Service of the Methodists in North America (1784) is printed in full, with the book's own Collect, Epistle and Gospel for each Sunday and chief feast. The book keeps no saints' days or weekday propers: on other days the Sunday's are used."];
+    if(rite==="wes84o") return ["full","Morning and Evening Prayer for the Lord's Day and the Litany from Wesley's Sunday Service (1784) are printed in full, with the Psalms of the day from the book's own Select Psalms, its Collect of the day and, on Sundays and the chief feasts, the lessons of its table in the King James Version. On other days the book leaves the lessons to the Minister."];
+    if(rite==="rcus") return ["full","The Regular Service on the Lord's Day, and the Holy Communion, from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) are printed in full, with the Litany. The Epistle and Gospel, the hymns and the sermon are the minister's."];
+    if(rite==="rcusv") return ["full","The Evening Service from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full, with the Litany. The lessons, the hymns and the sermon are the minister's."];
+    if(rite==="rcusp") return ["full","The Preparation for the Holy Communion from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full: the Law, the Litany, the address to the communicants, the confession and the pardon."];
+    if(rite==="byzv") return ["guide","Great Vespers is printed in full from Isabel Hapgood's Service Book (1906), public domain. The hymns that change with the day (the stichera, the Dogmatikon, the Gradual and the Hymn of the Feast) come from the Octoechos and Menaion, which are not in the public domain in a modern English translation: the guide marks where they go. Hapgood's English is not any church's present authorized text."];
+    if(rite==="byzm") return ["guide","Matins is printed in full from Isabel Hapgood's Service Book (1906), public domain: the Six Psalms, the twelve Morning Prayers, the litanies, the Polyeleos, the Gospel, the Magnificat and the Great Doxology. The hymns that change with the day (the troparia, the Canon, the stichera) come from the Octoechos and Menaion, which are not in the public domain in a modern English translation; the Gospel of the Resurrection is read from the Gospels. Hapgood's English is not any church's present authorized text."];
+    if(rite==="byzh") return ["guide","The First, Third, Sixth and Ninth Hours (with the Interhour) and the Typical Psalms are printed in full from Isabel Hapgood's Service Book (1906), public domain, with the psalms in the Prayer Book's wording. The troparia and kontakia of the day come from the Octoechos and Menaion, which are not in the public domain in a modern English translation; the guide marks where they go. Hapgood's English is not any church's present authorized text."];
+    if(rite==="byzc") return ["guide","Grand Compline is printed in full from Isabel Hapgood's Service Book (1906), public domain, with the psalms in the Prayer Book's wording. The hymns of the day and the Great Canon of St. Andrew are not in the public domain in a modern English translation; the guide marks where they go. Hapgood's English is not any church's present authorized text."];
+    if(rite==="csbl") return ["full","The Litany of the Common Service Book (1917-19) is printed in full, with its collects and the collect of the day."];
+    if(rite==="csbs") return ["full","The Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day."];
+    if(rite==="csbsm") return ["full","The Morning Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day. The psalm, lesson and hymn are the minister's."];
+    if(rite==="csbse") return ["full","The Evening Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day. The psalm, lesson and hymn are the minister's."];
+    if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free. The lessons of the day come from the book's own Order of Scripture Lessons, in the King James Version; the psalm, if one is read, is the minister's choice."];
     if(rite==="pres") return ["full","The Order of Morning Service and the Order for the Lord's Supper from the Presbyterian Book of Common Worship (1906) are printed in full. The book sets no lectionary: the Psalter portion, the lessons, the hymns and the General Prayer are chosen by the minister."];
+    if(rite==="csbm") return ["full","Matins from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
+    if(rite==="csbv") return ["full","Vespers from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csb") return ["full","The Service of the Common Service Book (1917-19) is printed in full, with the Introit, Collect, Epistle, Gradual and Gospel of the day. The hymns are not included."];
     if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="bcp49") return ["full","The Supper of the Lord and the Holy Communion in the first Prayer Book of Edward VI (1549) is printed in full, in the spelling of the book, with the Introit, Collect, Epistle and Gospel of the day."];
     if(rite==="bcp52") return ["full","The Order for the Administration of the Lordes Supper in the second Prayer Book of Edward VI (1552) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
     if(rite==="bcp59") return ["full","The Order for the Administration of the Lordes Supper in the Elizabethan Prayer Book (1559) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
-    if(rite==="bcp37") return ["guide","The Order of the Administration of the Lords Supper in the Scottish Prayer Book of 1637 is printed in full, in the spelling of the book. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
-    if(rite==="bcp89") return ["guide","The Order for the Administration of the Lord's Supper in the first American Prayer Book (1789) is printed in full. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
-    if(rite==="bcp92") return ["guide","The Order for the Administration of the Lord's Supper in the American Prayer Book of 1892 is printed in full. The Collect, Epistle and Gospel of the day come from your Prayer Book."];
+    if(rite==="bcp37") return ["guide","The Order of the Administration of the Lords Supper in the Scottish Prayer Book of 1637 is printed in full, in the spelling of the book. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
+    if(rite==="bcp89") return ["guide","The Order for the Administration of the Lord's Supper in the first American Prayer Book (1789) is printed in full. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
+    if(rite==="bcp92") return ["guide","The Order for the Administration of the Lord's Supper in the American Prayer Book of 1892 is printed in full. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
     if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
@@ -4075,7 +4262,7 @@ async function passage(cit, numbering, tr){
         for(let v=vs; v<=ve; v++){
           let [bk,cc,vv]=[p.book,c,v];
           if(trx==="dr" && numbering!=="v") [bk,cc,vv]=toVulgate(p.book,c,v);
-          if(trx==="kj"){ [bk,cc,vv]=commonShift(p.book,c,v); if(bk==="Ps") vv=Math.max(1,vv-psOff); }
+          if(trx==="kj"&&numbering!=="k"){ [bk,cc,vv]=commonShift(p.book,c,v); if(bk==="Ps") vv=Math.max(1,vv-psOff); }
           const key=cc+":"+vv; if(seen.has(key)) continue; seen.add(key);
           out.push([cc,vv]);
         }
@@ -4355,7 +4542,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",pres:"kj",rca:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -4385,11 +4572,56 @@ async function renderSession(){
   else if(S.type==="mass"&&S.rite==="me08"){
     body=`<h2 class="dayname">The Lord's Supper</h2><p class="daysub">Ritual of the Methodist Episcopal Church (1908)</p><div id="massGuide"></div><footer class="sesfoot"><p>Ritual of the Methodist Episcopal Church (New York: Eaton &amp; Mains, 1908), public domain, transcribed from the Internet Archive scan. The order descends from John Wesley's Sunday Service of 1784.</p></footer>`;
   }
+  else if(S.type==="mass"&&S.rite==="rcus"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Regular Service and Holy Communion · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rcusv"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Evening Service · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="rcusp"){
+    body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Preparation for the Holy Communion · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzv"){
+    body=`<h2 class="dayname">Great Vespers</h2><p class="daysub">The Eastern Orthodox Church · the All-Night Vigil</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzm"){
+    body=`<h2 class="dayname">Matins</h2><p class="daysub">The Eastern Orthodox Church · the All-Night Vigil</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzh"){
+    body=`<h2 class="dayname">The Hours</h2><p class="daysub">The Eastern Orthodox Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzc"){
+    body=`<h2 class="dayname">Grand Compline</h2><p class="daysub">The Eastern Orthodox Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbl"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">The Litany · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbs"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">The Suffrages · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbsm"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Morning Suffrages · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbse"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Evening Suffrages · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the Internet Archive scan of the 1919 text edition.</p></footer>`;
+  }
   else if(S.type==="mass"&&S.rite==="rca"){
     body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">The Liturgy of the Reformed Church in America (1882)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Liturgy of the Reformed Church in America, for use in public worship (New York, 1882), public domain, transcribed from the Internet Archive scan. Its Office for the Lord's Supper is the Form of the Synod of Dort.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="pres"){
     body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">The Book of Common Worship (Presbyterian Church in the U.S.A., 1906)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Worship, prepared by the Committee of the General Assembly of the Presbyterian Church in the United States of America (Philadelphia, 1906), public domain, transcribed from the Internet Archive scan.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbm"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Matins · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the typed edition and proofread against the Internet Archive scans.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="csbv"){
+    const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
+    body=`<h2 class="dayname">${esc(P?P.t:"")}</h2><p class="daysub">Vespers · Common Service Book of the Lutheran Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Common Service Book of the Lutheran Church (Philadelphia, 1917-1919), public domain, transcribed from the typed edition and proofread against the Internet Archive scans.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="csb"){
     const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;
@@ -4412,11 +4644,20 @@ async function renderSession(){
   else if(S.type==="mass"&&S.rite==="bcp37"){
     body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Booke of Common Prayer (Scotland, 1637)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Booke of Common Prayer for the Church of Scotland (1637), public domain, as transcribed by the Society of Archbishop Justus, in the spelling of the book. The Collect, Epistle and Gospel of the day are from the same Justus transcription of the book's table; where the books differ in a day's wording, the margin notes decide.</p></footer>`;
   }
+  else if(S.type==="mass"&&S.rite==="wes84o"){
+    const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Morning and Evening Prayer · The Sunday Service of the Methodists in North America (1784)</p><div id="massGuide"></div><footer class="sesfoot"><p>John Wesley, The Sunday Service of the Methodists in North America (London, 1784), public domain, transcribed from the Internet Archive scan and checked against the 1662 Prayer Book it abridges. Wesley appointed these services for the Lord's Day and the Litany for Wednesdays and Fridays, "praying extempore on all other days". The Psalms are Wesley's Select Psalms, read through each month; the lessons are those of the book's table, in the King James Version.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="wes84"){
+    const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;
+    const wk=pr&&toDate(iso).getUTCDay()&&/SUNDAY/i.test(pr.t);
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">The Sunday Service of the Methodists in North America (1784)${wk?" · the Sunday's collect, epistle and gospel serve the week":""}</p><div id="massGuide"></div><footer class="sesfoot"><p>John Wesley, The Sunday Service of the Methodists in North America, with Other Occasional Services (London, 1784), public domain, transcribed from the Internet Archive scan of the Princeton Theological Seminary copy and checked against the 1662 Prayer Book it abridges. Wesley numbers the Sundays from Christmas to Lent as Sundays after Christmas; the 1662 name of each is given beside it. The epistles and gospels are the King James text the book prints.</p></footer>`;
+  }
   else if(S.type==="mass"&&S.rite==="bcp89"){
-    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1789)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1789), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are not yet printed for this book: take them from your Prayer Book.</p></footer>`;
+    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1789)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1789), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are given from the 1662 Prayer Book, whose table this book follows closely.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="bcp92"){
-    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1892)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1892), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are not yet printed for this book: take them from your Prayer Book.</p></footer>`;
+    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1892)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1892), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are given from the 1662 Prayer Book, whose table this book follows closely.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="bcp28"){
     const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
@@ -4619,6 +4860,10 @@ function render(){
 window.LectApp={
   passage,
   coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
+  /* every rite the guide can open, with how much of its text is printed (the home page lists the complete ones and the
+     work-in-progress page the rest) */
+  rites(){ return [...MASS_RITES.map(r=>({type:"mass",hour:null,...r})),...OFFICE_RITES.map(r=>({type:"office",hour:suggestHour(r.id),...r}))]
+    .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
@@ -4642,7 +4887,7 @@ let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});
 let homePref=read('lect-home','sanctuary')==='classic'?'classic':'sanctuary';
 let recent=read('lect-sanctuary-recent',[]);if(!Array.isArray(recent))recent=[];
 const root=document.createElement('section');root.id='sanctuary';root.hidden=true;root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Sanctuary mode');document.body.append(root);
-const isRoute=h=>/^#\/(sanctuary|t(?:\/|$)|search(?:\/|$))/.test(h);
+const isRoute=h=>/^#\/(sanctuary|wip|t(?:\/|$)|search(?:\/|$))/.test(h);
 returnHash=isRoute(location.hash)?'#today':location.hash||'#today';
 const glyphs={keyboard:'↑ ↓ ← → Move · Enter Select · Esc Back · / Search · S Exit',gamepad:'✚ / Left stick Move · A Select · B Back · Y Search · Start Menu',touch:'Tap a tile to explore · Back to return',mouse:'Click a tile to explore · Back to return'};
 function prompts(){const p=root.querySelector('.san-prompts');if(p)p.textContent=glyphs[input];}
@@ -4668,7 +4913,7 @@ function nodeTile(n,subtitle){return tile('#/t/'+n.id,n.name,subtitle??n.kind,n.
 function shelf(title,tiles,empty=''){return `<section class="san-shelf"><h2>${esc(title)}</h2>${tiles?`<div class="san-row" aria-label="${esc(title)}">${tiles}</div>`:`<p class="san-muted">${esc(empty)}</p>`}</section>`;}
 function parentOf(n){return n&&n.parent?catalog.find(x=>x.id===n.parent):null;}
 function go(hash){if(location.hash===hash)render();else location.hash=hash;}
-function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search')go('#/sanctuary');else close();}
+function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search'||bits[0]==='wip')go('#/sanctuary');else close();}
 function close(hash=returnHash){go(isRoute(hash)?'#today':hash||'#today');}
 function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();gameFrame=requestAnimationFrame(pollGamepad);}
 function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
@@ -4681,13 +4926,32 @@ function move(direction){const list=controls(),cur=document.activeElement;if(!li
  const scored=list.filter(e=>e!==cur).map(el=>{const b=el.getBoundingClientRect(),dx=b.x+b.width/2-ax,dy=b.y+b.height/2-ay;const forward=direction==='down'?dy:direction==='up'?-dy:direction==='right'?dx:-dx;const side=Math.abs(direction==='down'||direction==='up'?dx:dy);return {el,forward,score:forward+side*2};}).filter(x=>x.forward>4).sort((a,b)=>a.score-b.score);
  focus(scored[0]?.el||list[(list.indexOf(cur)+(direction==='up'||direction==='left'?-1:1)+list.length)%list.length]);sound();}
 async function load(){if(catalog)return;if(!loading)loading=fetch('data/traditions.json').then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json();}).then(j=>{catalog=j;}).catch(e=>{loading=null;throw e;});return loading;}
+/* The rites the guide can open, from LectApp, with the tradition each belongs to (for its emblem). */
+const RITE_FAMILY={wes84:'methodist',wes84o:'methodist',me08:'methodist',rca:'reformed',rcus:'reformed',rcusv:'reformed',rcusp:'reformed',pres:'reformed',
+ csb:'lutheran',csbm:'lutheran',csbv:'lutheran',csbl:'lutheran',csbs:'lutheran',csbsm:'lutheran',csbse:'lutheran',
+ bcp62:'anglican',bcp28:'anglican',bcp49:'anglican',bcp52:'anglican',bcp59:'anglican',bcp37:'anglican',bcp89:'anglican',bcp92:'anglican',bcp79:'anglican',
+ b:'eastern-orthodox',byz:'eastern-orthodox',byzv:'eastern-orthodox',byzm:'eastern-orthodox',byzh:'eastern-orthodox',byzc:'eastern-orthodox',adai:'oriental',copt:'oriental',arm:'oriental'};
+const FAMILY_NAME={catholic:'Catholic','eastern-orthodox':'Eastern Orthodox',oriental:'Oriental Orthodox and the Church of the East','old-catholic':'Old Catholic',anglican:'Anglican',lutheran:'Lutheran',reformed:'Reformed and Presbyterian',methodist:'Methodist'};
+function rites(){try{return window.LectApp.rites();}catch(e){return [];}}
+function riteTile(r){return `<button class="san-tile" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}"><span class="san-art">${emblem(RITE_FAMILY[r.rite]||'catholic')}<span class="san-chip">${esc(r.covLabel)}</span></span><span class="san-tile-title">${esc(r.name)}</span><span class="san-subtitle">${esc((r.type==='mass'?'Eucharist':'Daily office')+' · '+r.d)}</span></button>`;}
+function completeList(list){const order=['catholic','eastern-orthodox','oriental','anglican','lutheran','reformed','methodist'];const fam=r=>RITE_FAMILY[r.rite]||'catholic';
+ return order.filter(f=>list.some(r=>fam(r)===f)).map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f])}</h3><ul class="san-wip san-complete">${list.filter(r=>fam(r)===f).map(r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button><p>${esc((r.type==='mass'?'Eucharist':'Daily office')+' · '+r.d)}</p></li>`).join('')}</ul>`).join('');}
+function wip(){const all=rites(),guide=all.filter(r=>r.cov==='guide'),order=all.filter(r=>r.cov==='order');
+ const row=r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button> <span class="san-chip">${esc(r.covLabel)}</span><p>${esc(r.note)}</p></li>`;
+ const none=catalog.filter(n=>!n.supported.length&&!catalog.some(c=>c.parent===n.id));
+ const fams=[...new Set(none.map(n=>n.family))];
+ return `<p class="san-eyebrow">Work in progress</p><h1>Not yet complete</h1><p class="san-lede">These rites can be prayed here, but part of their text still comes from your own book, because it is not yet on the site or is still under copyright. Each note says what is missing.</p>
+ <section class="san-shelf"><h2>Guided text · ${guide.length}</h2><ul class="san-wip">${guide.map(row).join('')}</ul></section>
+ <section class="san-shelf"><h2>Order and readings · ${order.length}</h2><ul class="san-wip">${order.map(row).join('')}</ul></section>
+ <section class="san-shelf"><h2>Churches and books with no service yet · ${none.length}</h2>${fams.map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f]||f)}</h3><div class="san-grid">${none.filter(n=>n.family===f).map(n=>nodeTile(n)).join('')}</div>`).join('')}</section>`;}
 async function home(){
  if(!days){try{const r=await fetch('days.json');if(!r.ok)throw Error();days=await r.json();}catch(e){days={};}}
  const iso=today(),d=days[iso];
- const dayTiles=['roman-modern','divine-worship','roman-1962','roman-pre55','hybrid-proposal','catholic-ruthenian'].map(id=>catalog.find(n=>n.id===id)).filter(Boolean).map(n=>{const rite=n.supported[0].rite;const v=d?.[rite];const label=typeof v==='string'?v:Array.isArray(v)?v.filter(x=>typeof x==='string').join(' · '):v?.name||v?.title||v?.t||'';return nodeTile(n,label|| (d?'Open the guide for today’s readings':'Date outside the supported calendar'));}).join('');
+ const tc=t=>String(t||'').toLowerCase().replace(/(^|[\s-])\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
+ const dayTiles=['roman-modern','roman-1962','catholic-ruthenian','anglican-1662-england','common-service','sunday-service-1784','dort-forms','oriental-coptic'].map(id=>catalog.find(n=>n.id===id)).filter(Boolean).map(n=>{const rite=n.supported[0].rite;const v=/^bcp|^csb|^wes/.test(rite)?(d?.o?.bcp?tc(d.o.bcp):''):d?.[rite];const label=typeof v==='string'?v:Array.isArray(v)?v.filter(x=>typeof x==='string').join(' · '):v?.name||v?.title||v?.t||'';return nodeTile(n,label|| (d?'Open the guide for today’s readings':'Date outside the supported calendar'));}).join('');
  return `<p class="san-eyebrow">A place to begin</p><h1>Sanctuary</h1><p class="san-lede">Explore traditions, find a book, and return to prayer.</p>`+
  shelf('Continue',recent.slice(0,8).map((r,i)=>tile(String(i),r.label,`${r.iso} · ${r.hour||'Mass'}`,r.family||'catholic',coverage(r),'resume')).join(''),'Your recent guides will appear here, stored only in this browser.')+
- shelf('Today · '+iso,dayTiles)+shelf('Traditions',catalog.filter(n=>!n.parent).map(n=>nodeTile(n)).join(''))+
+ shelf('Today · '+iso,dayTiles)+(()=>{const full=rites().filter(r=>r.cov==='full');return `<section class="san-shelf"><h2>Complete texts · ${full.length}</h2><p class="san-muted">Every word of these services is printed here.</p>${completeList(full)}</section>`+shelf('Work in progress',tile('#/wip','Not yet complete',`${rites().filter(r=>r.cov!=='full').length} rites with text still to come, and the churches with no service yet`,'catholic','WIP'));})()+shelf('Traditions',catalog.filter(n=>!n.parent).map(n=>nodeTile(n)).join(''))+
  shelf('Explore',tile('#/search','All churches and books','Search names, places, and editions','anglican'));
 }
 function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=parentOf(n);
@@ -4708,16 +4972,16 @@ async function render(){
  const shell=body=>`<header class="san-toolbar"><button data-action="back" aria-label="Back">← Back</button><button data-route="#/sanctuary">Sanctuary</button><button data-route="#/search" aria-label="Search">Search /</button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Switch to the classic view">Classic view</button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
  try{await load();if(serial!==routeSerial)return;let body;
-  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/sanctuary')body=await home();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
+  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
   if(serial!==routeSerial)return;root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
   const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>(e.dataset.route||e.dataset.pray||e.id||e.dataset.action)===saved);
   if(!saved)root.scrollTop=0;
-  focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
+  focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash==='#/wip'?root.querySelector('.san-wip-open'):null)||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
  }catch(e){if(serial!==routeSerial)return;root.innerHTML=shell('<h1>The library could not load</h1><p>Check your connection and try again.</p><button data-action="retry">Try again</button>');focus(root.querySelector('[data-action="retry"]'));}
 }
 function launch(s,label,family){if(!s)return;const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);returnScroll=0;returnFocus=document.getElementById('tab-today');close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
-root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
+root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('click',e=>{if(e.detail===0)activeInput('keyboard');setHome('sanctuary');returnHash=location.hash||'#today';go('#/sanctuary');});

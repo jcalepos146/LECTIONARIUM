@@ -63,7 +63,7 @@ class SanctuaryTests(unittest.TestCase):
     def test_keyboard_spatial_wrap_and_focus_trap(self):
         self.open('#/sanctuary');first=self.page.locator('.san-shelf').filter(has=self.page.get_by_role('heading',name='Today ·',exact=False)).locator('.san-tile').first
         first.wait_for();first.focus();self.page.keyboard.press('ArrowLeft')
-        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/catholic-ruthenian')
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/oriental-coptic')
         self.page.keyboard.press('ArrowRight');self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/roman-modern')
         self.page.keyboard.press('ArrowDown');self.assertTrue(self.page.locator(':focus').evaluate('(e)=>e.closest("#sanctuary")!==null'))
         self.page.locator('[data-action="back"]').focus();self.page.keyboard.press('Shift+Tab');self.assertTrue(self.page.locator(':focus').evaluate('(e)=>e.closest("#sanctuary")!==null'))
@@ -85,13 +85,13 @@ class SanctuaryTests(unittest.TestCase):
         self.page.wait_for_function("document.activeElement?.dataset.route==='#/t/roman-modern'")
         self.page.clock.pause_at(datetime.datetime(2026,10,21,17,tzinfo=datetime.timezone.utc))
         self.page.evaluate('testPad.axes[0]=1');self.page.clock.run_for(100)
-        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/divine-worship')
-        self.page.clock.run_for(140)
-        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/divine-worship')
-        self.page.clock.run_for(180)
         self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/roman-1962')
+        self.page.clock.run_for(140)
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/roman-1962')
+        self.page.clock.run_for(180)
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/catholic-ruthenian')
         self.page.evaluate('testPad.axes[0]=0;testPad.buttons[0].pressed=true');self.page.clock.run_for(700)
-        self.sanctuary().get_by_role('heading',name='Roman Rite · 1962',exact=True).wait_for()
+        self.sanctuary().get_by_role('heading',name='Ruthenian Catholic Church',exact=True).wait_for()
         self.page.evaluate('testPad.buttons[0].pressed=false')
     def test_layouts_and_screenshots(self):
         output=pathlib.Path(os.environ.get('SCREENSHOT_DIR','/tmp/lectionarium-screenshots'));output.mkdir(parents=True,exist_ok=True)
@@ -113,7 +113,11 @@ class SanctuaryTests(unittest.TestCase):
         self.assertGreater(len(self.page.locator('#session').inner_text()),5000)
     def test_keyboard_only_home_tradition_church_and_back(self):
         self.open('#/sanctuary');self.page.locator('[data-route="#/t/roman-modern"]').wait_for()
-        self.page.keyboard.press('ArrowDown');self.page.keyboard.press('Enter')
+        # Down from the Today shelf, past the list of complete texts, to the Traditions shelf.
+        for _ in range(60):
+            if self.page.locator(':focus').get_attribute('data-route')=='#/t/catholic': break
+            self.page.keyboard.press('ArrowDown')
+        self.page.keyboard.press('Enter')
         self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
         self.page.keyboard.press('ArrowDown');self.page.keyboard.press('Enter')
         self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for()
