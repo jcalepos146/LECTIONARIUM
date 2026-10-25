@@ -521,6 +521,18 @@ body.san-open{overflow:hidden}
 .san-wip-open{font:inherit;font-size:1.1em;background:none;border:0;color:inherit;padding:0;text-align:left;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .san-wip-fam{margin:26px 0 4px}
 .san-complete{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+:root[data-skin=sanctuary] .tabs{display:none}
+.san-guide-help{flex-basis:100%;font-size:.85rem;color:var(--muted)}
+.san-guide-help summary{cursor:pointer}
+.san-guide-help p{margin:.4rem 0}
+body:not(.in-session) .san-guide-help{display:none}
+:root[data-skin=sanctuary] .mpart:focus{outline:3px solid var(--focus);outline-offset:5px;scroll-margin-top:150px}
+/* The calendar reader follows the guide's active palette and fits narrow screens. */
+.lesson-calendar { margin:1rem 0; padding:1rem; border:1px solid var(--line,#999); border-radius:.5rem; }
+.lesson-calendar summary { cursor:pointer; font-weight:bold; }
+.lesson-calendar textarea { display:block; box-sizing:border-box; width:100%; max-width:100%; margin:.5rem 0; font:inherit; }
+.lesson-calendar input[type=date] { max-width:100%; font:inherit; }
+.lesson-calendar .reading { margin:1rem 0; }
 
 </style>
 </head>
@@ -868,20 +880,8 @@ body.san-open{overflow:hidden}
   <div class="prose">
     <p class="lede">What is printed and what is cited. Texts in the public domain or under an open licence are printed in full: Scripture in the Douay-Rheims, King James and Coverdale versions, the traditional Missal and Breviary in Latin and English, and the 1662 Book of Common Prayer. Texts still in copyright (the current Missal and Breviary translations, Divine Worship, the Byzantine service books) are cited, never reproduced; you can fill them in from your own book with <i>Add text</i>, which keeps them in your browser only. The comparison tabs give citations. The reading data was compiled programmatically and spot-checked.</p>
     <h3>Text coverage by rite</h3>
-    <div class="tbl" tabindex="0" role="region" aria-label="Text coverage by rite"><table class="covtab"><thead><tr><th>Rite</th><th>Mass</th><th>Office</th></tr></thead><tbody>
-      <tr><td>1962 and pre-1955 (and the hybrid)</td><td><span class="cov cov-full">Complete text</span></td><td><span class="cov cov-full">Complete text</span></td></tr>
-      <tr><td>Monastic and Dominican</td><td>n/a</td><td><span class="cov cov-full">Complete text</span></td></tr>
-      <tr><td>Ordinariate</td><td><span class="cov cov-guide">Guided text</span> 1662 texts, Canon and propers; Divine Worship's wording differs in places</td><td><span class="cov cov-full">Complete text</span> 1662 Mattins, Evensong, Compline; Prime in outline</td></tr>
-      <tr><td>Novus Ordo / Liturgy of the Hours</td><td><span class="cov cov-guide">Guided text</span> readings and Latin Ordinary; collects, preface, Eucharistic Prayer from your missal</td><td><span class="cov cov-guide">Guided text</span> psalms, canticles, Scripture; hymns, antiphons, prayers from your breviary</td></tr>
-      <tr><td>Byzantine</td><td><span class="cov cov-guide">Guided text</span> Liturgies of St John Chrysostom, St Basil and the Presanctified in full (Hapgood, 1906); Menaion hymns from your books</td><td><span class="cov cov-guide">Guided text</span> Great Vespers, Matins, the Hours and Grand Compline in full (Hapgood, 1906); psalms and fixed prayers; Saturday Vespers stichera, dogmatikon and Sunday troparia of the tone (Hapgood)</td></tr>
-      <tr><td>Dominican, Ambrosian, Mozarabic</td><td><span class="cov cov-order">Order and readings</span> the Ordinary (Latin and English); propers from your Missal</td><td>Dominican: <span class="cov cov-full">Complete text</span>; the others not yet</td></tr>
-      <tr><td>Armenian, Coptic, East Syrian (Adai and Mari)</td><td><span class="cov cov-guide">Guided text</span> the liturgy in full in a public-domain English translation (1908, 1882, 1893); lessons cued</td><td>Not yet</td></tr>
-      <tr><td>Prayer Books 1549, 1552, 1559</td><td><span class="cov cov-full">Complete text</span> Holy Communion in their own spelling, with the Introit (1549), collect, epistle and gospel of the day</td><td>Not yet</td></tr>
-      <tr><td>Prayer Books 1637, 1789, 1892</td><td><span class="cov cov-guide">Guided text</span> Holy Communion in full (the early books in their own spelling); the day's collect, epistle and gospel from your Prayer Book</td><td>Not yet</td></tr>
-      <tr><td>Prayer Books 1662, 1928</td><td><span class="cov cov-full">Complete text</span> Holy Communion with the collect, epistle and gospel of the day</td><td><span class="cov cov-full">Complete text</span> 1928 Morning and Evening Prayer; 1662 Mattins and Evensong (Ordinariate)</td></tr>
-      <tr><td>Prayer Book 1979</td><td><span class="cov cov-guide">Guided text</span> the Holy Eucharist in full, collect and preface of the day</td><td><span class="cov cov-full">Complete text</span> Morning and Evening Prayer, Noonday, Compline</td></tr>
-      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882) with its Order of Scripture Lessons, Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's, Wesley's Morning and Evening Prayer and Litany (1784) with his Select Psalms, collects and Sunday lessons</td></tr>
-    </tbody></table></div>
+    <p class="note">Coverage is listed for every guide using the same labels as the homepage and work-in-progress list.</p>
+    <div class="tbl" tabindex="0" role="region" aria-label="Text coverage by rite"><table class="covtab"><thead><tr><th>Rite or book</th><th>Coverage</th><th>What is printed and what remains</th></tr></thead><tbody id="coverage-body"></tbody></table></div>
     <h3>Reading data</h3>
     <ul class="src">
       <li>Pre-1955 and 1962: <a href="https://github.com/DivinumOfficium/divinum-officium" target="_blank" rel="noopener">Divinum Officium project</a>, missal files under its Divino Afflatu and 1960 rubrics, including the pre- and post-1955 Holy Week books.</li>
@@ -1670,6 +1670,129 @@ window.LectParticipation={isPriest,setMode,catholicMass,priestOnly,controls,anno
 })();
 </script>
 <script>
+/* Sourced appointments and a date-scoped Bible reader. No remote Scripture APIs. */
+(function(){
+"use strict";
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const DAY=864e5, date=s=>new Date(s+'T00:00:00Z'), iso=d=>d.toISOString().slice(0,10);
+const cache={};
+const json=p=>cache[p]||(cache[p]=fetch(p).then(r=>{if(!r.ok)throw Error(p);return r.json();}).catch(e=>{delete cache[p];throw e;}));
+function easter(y){const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),n=h+l-7*m+114;return new Date(Date.UTC(y,Math.floor(n/31)-1,n%31+1));}
+function advent(y){const x=new Date(Date.UTC(y,11,25));return new Date(+x-((x.getUTCDay()||7)+21)*DAY);}
+const sunday=d=>new Date(+d-d.getUTCDay()*DAY);
+const ord=['First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eighth'];
+const PB_ALIAS={"The Nativity of Our Lord: Christmas Day":"Christmas Day I","The Holy Name":"Holy Name","First Sunday after Christmas Day":"First Sunday after Christmas","Second Sunday after Christmas Day":"Second Sunday after Christmas","First Sunday after the Epiphany: The Baptism of our Lord":"First Sunday after Epiphany","Sunday of the Passion: Palm Sunday":"Palm Sunday: Passion","The Day of Pentecost: Whitsunday":"Pentecost","First Sunday after Pentecost: Trinity Sunday":"Trinity Sunday","Seventh Sunday of Easter: The Sunday after Ascension Day":"Seventh Sunday of Easter","Saint Andrew":"St. Andrew","Saint Thomas":"St. Thomas"};
+function pbLabel(s){return (PB_ALIAS[s]||s).replace(/ after the Epiphany/,' after Epiphany').replace(/\bSaint\b/g,'St.').replace(/^SS\./,'St.').replace(/ and /g,' & ').replace(/& St\. /g,'& ').replace(/^The Holy Innocents$/,'Holy Innocents').replace(/^The Nativity of St\./,'Nativity of St.').replace(/’/g,"'");}
+function officeKey(s){const d=date(s),y=d.getUTCFullYear(),E=easter(y),off=Math.round((d-E)/DAY),su=sunday(d),os=Math.round((su-E)/DAY),A=advent(y);
+ if(d>=A&&d<new Date(Date.UTC(y,11,25)))return 'advent'+(Math.floor((su-A)/DAY/7)+1);
+ if(off>=-46&&off<-42)return 'ash';
+ if(off>=-42&&off<-7)return 'lent'+(Math.floor((os+42)/7)+1);
+ if(off>=-7&&off<0)return 'holy';
+ if(off>=0&&off<7)return 'easter0';
+ if(off>=7&&off<49)return 'easter'+(Math.floor(off/7)+1);
+ if(off>=49)return 'proper'+Math.max(1,Math.min(29,Math.round((su-Date.UTC(y,4,11))/DAY/7)+1));
+ if(os===-49)return 'last-epiphany';
+ const ep=new Date(Date.UTC(y,0,6)),first=new Date(+ep+((7-ep.getUTCDay())%7||7)*DAY);
+ if(d>=first)return 'epiphany'+(Math.floor((su-first)/DAY/7)+1);
+ return null;
+}
+function psalmRefs(s){
+ // Parentheses and brackets in the source are optional verses; use the long form.
+ s=s.split(' or ')[0].replace(/\d+\*+\s*&\s*/g,'').replace(/[\[\]*]/g,'').replace(/(?<=\d)\(/g,',').replace(/\)(?=\d)/g,',').replace(/[()]/g,'').trim();
+ return s.split(/,\s*(?=\d+(?:\s*$|:))/).filter(t=>/^\d/.test(t)).map(t=>'Ps '+t.replace(/\s/g,''));
+}
+const readings=refs=>refs.map((cite,i)=>({lab:/^Ps /.test(cite)?'Psalm':/^(Matt|Mark|Luke|John) /.test(cite)?'Gospel':i===0?'First Lesson':'Second Lesson',cite,num:'k',tr:'kj'}));
+async function pb79(ctx,office=false,eve=false){
+ const T=await json('data/bcp1979-lectionary.json'),B=await json('data/bcp1979.json'),d=date(ctx.iso),y=d.getUTCFullYear(),ly=y+(d>=advent(y)?1:0),cycle='ABC'[(ly+1)%3],year=ly%2?'1':'2';
+ const title=window.LectPB79.day(ctx.iso,B.collects.c).title,label=pbLabel(title);
+ let row,refs=[],ps=[];
+ if(!office){row=Object.values(T.sunday[cycle]).find(r=>pbLabel(r.label)===label);
+  // A Sunday appointment is a clearly identified study selection on an otherwise unappointed weekday.
+  if(!row&&d.getUTCDay()){const su=iso(sunday(d)),st=window.LectPB79.day(su,B.collects.c).title;row=Object.values(T.sunday[cycle]).find(r=>pbLabel(r.label)===pbLabel(st));}
+  if(row){refs=row.readings;ps=psalmRefs(row.ps);}
+ }else{
+  const special=T.special[year],holy=Object.values(T.holydays).find(r=>pbLabel(r.label)===label||pbLabel(r.label).replace(/^SS\./,'St.')===label);
+  const fixed={"12-25":"Christmas Day","01-01":"Holy Name","01-06":"Epiphany"};
+  const md=ctx.iso.slice(5),key=officeKey(ctx.iso),dow=d.getUTCDay(),off=Math.round((d-easter(y))/DAY);
+  let name=fixed[md]||({'-7':'Palm Sunday','-3':'Maundy Thursday','-2':'Good Friday','-1':'Holy Saturday','0':'Easter Day','39':'Ascension Day','49':'The Day of Pentecost','56':'Trinity Sunday'})[off];
+  if(title==='Ash Wednesday'&&off===-46)name='Ash Wednesday';
+  if(/Sunday after Christmas/.test(label))name=label;
+  if(!name&&d.getUTCMonth()===11&&d.getUTCDate()>=24)name='Dec. '+d.getUTCDate();
+  const ep=new Date(Date.UTC(y,0,6)),epSunday=new Date(+ep+((7-ep.getUTCDay())%7||7)*DAY);
+  if(!name&&d.getUTCMonth()===0&&d.getUTCDate()>=2&&d.getUTCDate()<=12&&d<epSunday)name='Jan. '+d.getUTCDate();
+  if(eve){if(md==='12-24')name='Christmas Eve';else if(md==='12-31')name='Eve of Holy Name';else if(md==='01-05')name='Eve of Epiphany';else if(off===38)name='Eve of Ascension';else if(off===48)name='Eve of Pentecost';else if(off===55)name='Eve of Trinity Sunday';}
+  if(holy){row=holy;refs=holy[eve?'e':'m'];}
+  else{row=name&&special[name]||key&&T.office[year][key+'-'+dow];
+   if(row){refs=row[eve?'e':'m']||(eve&&(name?.startsWith('Eve ')||name==='Christmas Eve')?row.readings:eve?[row.readings[year==='1'?2:1]]:[row.readings[0],row.readings[year==='1'?1:2]]);}}
+  if(row)ps=psalmRefs(row.ps[eve?1:0]);
+ }
+ const info={src:`Book of Common Prayer (1979) · ${office?'Daily Office Year '+year:'original Eucharistic Year '+cycle}`,url:T.source.url,note:office?'The two-year Office lectionary, with its morning/evening distribution. Local feast transfers must be checked in your church calendar.':'The historical 1979 lectionary, before the RCL replaced it in 2007. On weekdays without a proper, the preceding Sunday is a study selection. Local transfers must be checked.',title:row?.label||title,items:readings(refs.filter(Boolean)),psalms:ps};
+ if(!row)info.note+=' No verified appointment is loaded for this date; enter citations from your book below.';
+ return info;
+}
+/* Psalm boundaries in Septuagint numbering; Scripture is rendered in the bundled Douay-Rheims. */
+const K=[null,[1,8],[9,16],[17,23],[24,31],[32,36],[37,45],[46,54],[55,63],[64,69],[70,76],[77,84],[85,90],[91,100],[101,104],[105,108],[109,117],[118,118],[119,133],[134,142],[143,150]];
+const EOTH=[null,'Matt 28:16-20','Mark 16:1-8','Mark 16:9-20','Luke 24:1-12','Luke 24:12-35','Luke 24:36-53','John 20:1-10','John 20:11-18','John 20:19-31','John 21:1-14','John 21:15-25'];
+function byzantine(ctx,hour){
+ const d=date(ctx.iso),y=d.getUTCFullYear(),off=Math.round((d-easter(y))/DAY),dow=d.getUTCDay(),md=+ctx.iso.slice(5).replace('-','');
+ const matins=hour==='orthros'||hour==='byzm',vespers=hour==='vespers'||hour==='byzv';
+ const summer=(md>=1220||md<=114)||(md>=115&&off>=-63&&off<=-49)||(off>=7&&md<=921);
+ let ks=[];let note='The ordinary Greco-Russian Psalter course. Dates use Gregorian Pascha, as does this site’s existing Byzantine calendar; churches keeping Julian Pascha or a different fixed calendar must check their book. Feast and vigil exceptions take precedence.';
+ if(matins)ks=(summer?[[2,3],[4,5],[7,8],[10,11],[13,14],[19,20],[16,17]]:[[2,3],[4,5,6],[7,8,9],[10,11,12],[13,14,15],[19,20],[16,17]])[dow];
+ if(vespers)ks=(summer?[[],[6],[9],[12],[15],[18],[1]]:[[],[18],[18],[18],[18],[18],[1]])[dow];
+ if(off>=0&&off<7){ks=[];note='Bright Week has no kathisma. Use the Paschal Hours and the services of the Pentecostarion.';}
+ else if(off>=-48&&off<0){ks=[];note='The Great Fast and Holy Week require their special Psalter and readings tables. Enter the appointed citations from your Triodion; the ordinary course is not substituted.';}
+ const items=ks.flatMap(k=>Array.from({length:K[k][1]-K[k][0]+1},(_,i)=>({lab:`Kathisma ${k} · Psalm ${K[k][0]+i} (LXX)`,cite:'Ps '+(K[k][0]+i),num:'v',tr:'dr',slot:'psalter'})));
+ if(matins&&dow===0){let E=easter(y);if(d<E)E=easter(y-1);const n=Math.round((d-E)/DAY);
+  if(n>=56&&!(off>=-7&&off<0)){const eo=(Math.floor((n-56)/7)%11)+1;items.push({lab:'Resurrection Gospel · Eothinon '+eo,cite:EOTH[eo],num:'k',tr:'kj',slot:'gospel'});}
+ }
+ return {src:'Byzantine Office · Psalter and Resurrection Gospel',url:'https://www.oca.org/liturgics/outlines/kathisma-readings-at-matins',note,items};
+}
+const SOURCES={
+ adai:['East Syriac Qurbana','https://archive.org/details/eastsyriandailyo00macluoft','The East Syriac seasonal lectionary has not yet been transcribed and checked. Enter the lessons from your Hudra or approved calendar.'],
+ copt:['Coptic Katameros','https://www.copticchurch.net/readings','Use the Katameros for the Coptic date, movable season and local commemoration. Its complete calendar has not yet been imported.'],
+ arm:['Armenian Lectionary','https://armenianchurch.us/','The Armenian calendar has its own movable commemorations. Enter the readings from your church’s calendar; a Byzantine table is not substituted.'],
+ a:['Ambrosian Lectionary','https://www.chiesadimilano.it/','Select the historical or current Ambrosian book you use. Its six-week Advent and reading cycles differ from the Roman calendar; no Roman fallback is used.'],
+ z:['Mozarabic Liber Commicus','https://archive.org/details/missalemixtumsec00unkngoog','The historic Mozarabic lectionary differs from the Roman calendar and the modern reformed missal. Enter the citations from the edition you use.'],
+ rcus:['Mercersburg Order of Worship (1866–67)','https://archive.org/details/orderofworshipfo00refo','The book appoints its own Gospel and Epistle and a separate evening lesson table. Their full transcription is still under review.'],
+ rcusv:['Mercersburg evening lesson table (1867)','https://archive.org/details/orderofworshipfo00refo','Use the Evening Lessons in the book’s table, not the morning Gospel and Epistle.'],
+ rcusp:['Mercersburg preparation for Communion','https://archive.org/details/orderofworshipfo00refo','This preparatory order has no additional daily lectionary of its own. Scripture selections may be entered for study.']
+};
+const storageKey=c=>'lect-lessons:'+JSON.stringify([c.type||'mass',c.rite,c.hour||'',c.iso]);
+function local(c){try{const v=JSON.parse(localStorage.getItem(storageKey(c)));return Array.isArray(v)?v:[];}catch(e){return [];}}
+function custom(c){const rows=local(c);return rows.length?{src:'Your readings for '+c.iso,note:'Citations selected on this device for this rite, hour and date. Check them against your church calendar.',items:rows}:null;}
+async function appointments(c){
+ if(c.rite==='bcp79')return pb79(c,c.type==='office',/^ep/.test(c.hour||''));
+ if(c.rite==='byz'||/^byz[vmhc]$/.test(c.rite))return byzantine(c,c.hour||c.rite);
+ if(SOURCES[c.rite]){const [src,url,note]=SOURCES[c.rite];return {src,url,note,items:[]};}
+ return null;
+}
+async function html(ctx,L){let h=L?`<p class="cite">${esc(L.src)}${L.title?' · '+esc(L.title):''}</p><p class="note">${esc(L.note||'')}</p>`:'';
+ for(const it of L?.items||[])h+=await ctx.readingBlock(it.lab,it.cite,it.num||'k',it.tr||'kj');
+ return h;
+}
+async function mount(el,c,reader,reload){
+ const L=await appointments(c),mine=custom(c),src=L?.src||'The lectionary of this service';
+ if(!el.isConnected)return;
+ el.innerHTML=`<details class="lesson-calendar"><summary>Lectionary calendar and Bible</summary><p><label>Date <input type="date" class="lesson-date" min="2025-11-30" max="2030-11-30" value="${esc(c.iso)}"></label></p><p class="cite">${esc(src)}</p>${L?.url?`<p><a href="${esc(L.url)}" target="_blank" rel="noopener">Open the source calendar or book</a></p>`:''}<p class="note">${esc(L?.note||'The day’s readings are printed in the service below. Use this reader for additional passages or a local calendar’s appointments.')}</p><div class="calendar-readings"></div><form class="lesson-form"><label>Readings from your calendar, one per line <textarea rows="4" maxlength="3000" placeholder="Epistle | Rom 8:1-11\nGospel | John 6:35-40">${esc(local(c).map(r=>r.lab+' | '+r.cite).join('\n'))}</textarea></label><p class="note">Use book abbreviations such as Gen, Isa, Ps, Matt, Rom and 1 Cor. These selections are saved for this rite, hour and date on this device.</p><button type="submit">Save readings</button> <button type="button" class="lesson-clear">Clear local readings</button><p class="lesson-status" role="status"></p></form></details>`;
+ const out=el.querySelector('.calendar-readings'),details=el.querySelector('details');let loaded=false;
+ details.addEventListener('toggle',async()=>{if(!details.open||loaded)return;loaded=true;try{out.innerHTML=await html({readingBlock:reader},mine||L);}catch(e){loaded=false;out.textContent='Readings could not load. Close this panel and open it to retry.';}});
+ el.querySelector('.lesson-date').addEventListener('change',e=>{if(e.target.checkValidity()&&e.target.value)window.LectApp.follow({...c,iso:e.target.value});});
+ el.querySelector('form').addEventListener('submit',async e=>{e.preventDefault();const status=el.querySelector('.lesson-status'),lines=el.querySelector('textarea').value.split('\n').map(x=>x.trim()).filter(Boolean),rows=[];
+  if(lines.length>12){status.textContent='Use at most 12 readings per service.';return;}
+  try{for(const line of lines){const bits=line.split('|');if(bits.length!==2||!bits[0].trim()||!bits[1].trim()){status.textContent='Use Label | citation on each line, for example Gospel | John 1:1-14.';return;}
+    const [lab,cite]=bits.map(x=>x.trim());if(cite.length>200||[...cite.matchAll(/\d+/g)].some(m=>+m[0]>200)){status.textContent='Use a single, bounded Bible citation on each line.';return;}
+    const p=await window.LectApp.passage(cite,'k','kj');if(!p.html.includes('class="scripture"')){status.textContent='No text found for '+cite+'. Check the citation.';return;}
+    const slot=/gospel/i.test(lab)?'gospel':/^Ps /i.test(cite)?'psalter':'lessons';rows.push({lab,cite,num:'k',tr:'kj',slot});}
+   localStorage.setItem(storageKey(c),JSON.stringify(rows));reload();
+  }catch(err){status.textContent='The readings could not be saved. Check storage and the local Bible files, then try again.';}
+ });
+ el.querySelector('.lesson-clear').addEventListener('click',()=>{try{localStorage.removeItem(storageKey(c));reload();}catch(e){el.querySelector('.lesson-status').textContent='Local storage is unavailable.';}});
+}
+window.LectCalendar={pb79,byzantine,appointments,custom,html,mount,officeKey,psalmRefs};
+})();
+</script>
+<script>
 /* ================================================================ MASS GUIDE (full missal) */
 (function(){
 "use strict";
@@ -2041,7 +2164,7 @@ async function buildOrdoOnly(ctx,opts){
   if(opts.lastGospel===false) parts=parts.filter(p=>p.t!=="Last Gospel");
   const out=[];
   /* the day's lessons, from the lectionary of the rite (or the nearest one, labelled), at the part that reads them */
-  const LL=cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null, LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
+  const LL=window.LectCalendar.custom({...ctx,type:"mass"})||(cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null), LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
   for(const p of parts){
     let la=p.la, en=p.en, html="";
     { const pick=LI.filter(x=>!x.used&&(x.slot?x.slot.test(p.t):/Epistle|Lesson|Prophecy|Gospel/.test(p.t)));
@@ -2322,7 +2445,11 @@ async function lectItems(ctx,L){ const out=[];
     let html;
     if(it.text) html=`<section class="reading"><header><span class="rl">${esc(it.lab)}</span><span class="rc">${esc(it.cite)}</span></header><div class="rtext">${it.text.map(t=>`<p data-r="lec">${esc(t)}</p>`).join("")}</div></section>`;
     else html=await RB(ctx,it.lab,it.cite,it.num||"k",it.tr||"kj");
-    out.push({html,secs:readSecs(html,90),slot:it.slot||null,used:false});
+    let slot=typeof it.slot==="string"?it.slot==="gospel"?/Gospel/i:it.slot==="psalter"?/Psalm|Psalter|Kathisma/i:/Epistle|Lesson|Lection|Apostle|Paul|Prophet/i:it.slot||null;
+    if(ctx.rite==="copt"&&it.slot){slot=/^Ps /.test(it.cite)?/Psalm before/:/^(Matt|Mark|Luke|John) /.test(it.cite)?/^The Gospel of the day/:/^Acts /.test(it.cite)?/Acts/:/^(Jas|[123] (Pet|John)|Jude) /.test(it.cite)?/Catholic/:/S\. Paul/;}
+    if(ctx.rite==="adai"&&it.slot){slot=/^(Matt|Mark|Luke|John) /.test(it.cite)?/Gospel/:/^(Rom|[12] Cor|Gal|Eph|Phil|Col|[12] Thess|[12] Tim|Titus|Phlm|Heb) /.test(it.cite)?/Paul/:/Lections/;}
+    if(ctx.rite==="arm"&&it.slot){slot=/^(Matt|Mark|Luke|John) /.test(it.cite)?/^The Gospel/:/Psalm of the day/;}
+    out.push({html,secs:readSecs(html,90),slot,kind:it.slot||"lessons",used:false});
   }
   return out; }
 const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
@@ -2395,11 +2522,12 @@ function orderStep(st,opts){
       if(t==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; continue; }
       if(t==="prayer"&&it[2]==="The Collect for the Day"&&opts._coll){ html+=opts._coll; extra+=30; continue; }
       if(opts._less&&opts._less[t+":"+(it[2]||"")]){ const [h,m]=opts._less[t+":"+(it[2]||"")]; html+=h; extra+=m*60; continue; }
-      if(t==="lessons"&&opts._lect&&opts._lect.items.some(x=>!x.used)){ const lab=it[2]||"", I=opts._lect.items;
-        let pick=lab?I.filter(x=>!x.used&&x.slot&&x.slot.test(lab)):[]; if(!pick.length) pick=I.filter(x=>!x.used);
+      if((t==="lessons"||t==="gospel"||t==="psalter")&&opts._lect&&opts._lect.items.some(x=>!x.used)){ const lab=it[2]||t, I=opts._lect.items;
+        let pick=I.filter(x=>!x.used&&(x.slot?x.slot.test(lab):t==="lessons"));
+        if(pick.length){
         if(!opts._lect.headed){ opts._lect.headed=true; html+=lectHead(opts._lect.L); }
-        pick.forEach(x=>{ x.used=true; html+=x.html; extra+=x.secs; }); continue; }
-      const [lab0,min0]=ORDER_SLOT[t], lab=it[2]||lab0, min=t!=="lessons"?min0:/^The Psalm before/.test(lab)?1:/^The (Gospel|Lesson)/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
+        pick.forEach(x=>{ x.used=true; html+=x.html; extra+=x.secs; }); continue; } }
+      const [lab0,min0]=ORDER_SLOT[t]||[t==="gospel"?"The appointed Gospel":"The appointed text",3], lab=it[2]||lab0, min=t!=="lessons"?min0:/^The Psalm before/.test(lab)?1:/^The (Gospel|Lesson)/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
     }
     html+=pbItem(it);
     if(k==="v"&&!depth) words+=t.split(/\s+/).length;
@@ -2457,7 +2585,10 @@ async function buildOrders(ctx,opts,rite){
     }
     opts={...opts,_coll:coll,_less:less};
   }
-  if(R.lect&&LECT[R.lect]){ const L=await LECT[R.lect](ctx,opts); if(L) opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}}; }
+  { const local=window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});
+    const L=local||(/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
+    if(L)opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}};
+  }
   for(const [id,from,upto] of R.parts(opts)){
     const ord=O[id]; let on=!from;
     if(!ord) continue;
@@ -2544,12 +2675,14 @@ async function buildPB79(ctx,opts){
   const C=B.collects[form], day=pb79Day(iso,C), col=C[day.title]||C[day.season];
   const pre=pb79Preface(B.prefaces[rite]||{}, col&&col.preface, sun, iso);
   const pop=(opts.pop79||"I");
+  const lessons=window.LectCalendar.custom({...ctx,type:"mass"})||await window.LectCalendar.pb79(ctx);
+  const lessonHTML=await window.LectCalendar.html(ctx,{...lessons,items:[...lessons.items.slice(0,1),...(lessons.psalms||[]).map(cite=>({lab:"Psalm",cite,num:"k",tr:"kj"})),...lessons.items.slice(1)]});
   const out=[];
   for(const st of B["he"+rite]){
     let secs=pbWords(st.items)/2.4, extra=0;
     const fill=name=>{
       if(name==="collect"){ if(!col) return cue("The Collect of the Day, from the Prayer Book."); extra+=pbWords(col.text.map(t=>["v",t]))/2.4; return `<p class="cite">${esc(day.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""); }
-      if(name==="lessons"){ extra+=300; const yr=ctx.day&&ctx.day.L; return `<p class="cue">The lessons of the day from the Revised Common Lectionary${yr?` (Year ${yr})`:""}: see <a href="https://www.lectionarypage.net/" target="_blank" rel="noopener">lectionarypage.net</a>.</p>`; }
+      if(name==="lessons"){ extra+=readSecs(lessonHTML,300); return lessonHTML; }
       if(name==="sermon"){ if(!(opts.homily>0)) return ""; extra+=opts.homily*60; return `<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; }
       if(name==="pop"){ const f=B.pop.find(x=>x.t==="Form "+pop); if(!f) return ""; extra+=pbWords(f.items)/2.4; return `<h4 class="sub2">Prayers of the People: Form ${esc(pop)}</h4>`+pb79Items(f.items,()=>""); }
       if(name==="eprayer"){ const P=B.prayers[key]||[]; extra+=pbWords(P)/2.4; return `<h4 class="sub2">Eucharistic Prayer ${esc(key.split("-")[1])}</h4>`+pb79Items(P,fill); }
@@ -3163,6 +3296,8 @@ async function render(el, ctx){
     if(modeSelect)modeSelect.addEventListener("change",()=>window.LectParticipation.setMode(modeSelect.value));
     if(window.LectTools) window.LectTools.mount(el,{parts:parts.map(p=>({title:p.title,min:p.min})),starts,total:at,ctx,opts:clone(opts),noun,isOffice,rite:ctx.rite,following,
       roles:isOffice?{cel:"Officiant",lec:"Reader",ppl:"All"}:{cel:"Celebrant",srv:rite==="b"?"Deacon":"Server",lec:"Lector",ppl:"Congregation"}});
+    const calendar=el.parentElement?.querySelector("#lessonCalendar");
+    if(calendar)window.LectCalendar.mount(calendar,{...ctx,type:isOffice?"office":"mass",hour:ctx.hour||opts.hour||null},ctx.readingBlock,()=>isOffice?window.LectApp.follow(window.LectApp.current()):el.__redraw());
     if(following) return;
     // controls
     const keepOpen=()=>{ const d=el.querySelector("details.custom"); opts.openCustom=!!(d&&d.open); };
@@ -4096,7 +4231,7 @@ function coverage(type,rite,hour){
     if(rite==="d") return ["order","The Ordinary of the Dominican Mass in Latin and English, from Divinum Officium. The propers of the day (Officium, collect, lessons, responsory, offertory, secret, preface, communion, postcommunion) come from your Dominican Missal."];
     if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
-    if(rite==="bcp79") return ["guide","The 1979 Holy Eucharist is printed in full (Rite One or Two, any of Eucharistic Prayers I, A, B, C or D, and the Prayers of the People), with the collect and proper preface of the day. Take the lessons from the Revised Common Lectionary, which is not reproduced."];
+    if(rite==="bcp79") return ["guide","The 1979 Holy Eucharist, collect and proper preface are printed, with the original three-year 1979 lectionary in the King James Bible. This historical cycle differs from the RCL adopted in 2007. Check local feast transfers in your church calendar."];
     if(rite==="adai") return ["guide","The Liturgy of the Holy Apostles Adai and Mari is printed in full, in the English made for the Archbishop of Canterbury's Assyrian Mission (1893). The lections, the Apostle and the Gospel of the day come from the East Syrian lectionary, which is not yet on this site."];
     if(rite==="copt") return ["guide","The Coptic Liturgy of St Basil is printed in full, in the Marquis of Bute's English (1882, reissued 1908). The lessons and Gospel of the day come from the Coptic lectionary (the Katameros), which is not yet on this site."];
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
@@ -4130,7 +4265,7 @@ function coverage(type,rite,hour){
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
     if(/^(br62|br55|mon|op)$/.test(rite)) return ["full","Every part of the hour is printed, in Latin and English."];
-    if(rite==="bcp79") return ["full","The 1979 office is printed in full, with the 1979 Psalter's psalms for the day of the month and the collect of the day. Take the lessons from the Daily Office Lectionary."];
+    if(rite==="bcp79") return ["guide","The 1979 office and collect are printed, with the two-year Daily Office lessons and appointed psalms in the King James Bible where a verified appointment is loaded. Noonday and Compline retain their fixed short lessons. Check feast transfers and any missing appointment in your book."];
     if(rite==="bcp28") return ["full","The 1928 text is printed in full, with the collect of the day and the psalms of the day of the month. The 1928 Psalter is a light revision of Coverdale's; the Coverdale text is given. Take the lessons from the 1928 (1943) lectionary."];
     if(rite==="dwdo") return /^(prime|terce|sext|none)$/.test(hour)?["full","Printed in full from The Day-Hours of the Church of England (1877), a Prayer Book English breviary, with the Coverdale psalms and the Collect of the Day. Proper antiphons and hymn endings for feasts and seasons come from your book."]:["full","The 1662 Prayer Book text is printed in full, with the Coverdale psalms. Divine Worship adapts it in places."];
     if(rite==="loth") return ["guide","The psalms, canticles and Scripture are printed. The hymns, antiphons, intercessions and prayers come from your breviary: press Add text to fill them in."];
@@ -4213,6 +4348,7 @@ function parseCit(cit){
   const segs=[]; let chap=null;
   for(const part0 of rest.split(/[;,]\s*/)){
     const part=part0.trim().replace(/([0-9])[a-e]+/g,"$1"); if(!part) continue;
+    if(chap===null){const whole=/^(\d+)-(\d+)$/.exec(part);if(whole){for(let c=+whole[1];c<=+whole[2];c++)segs.push([c,1,c,999]);chap=+whole[2];continue;}}
     let mm=/^(?:(\d+):)?(\d+)(?:-(?:(\d+):)?(\d+))?$/.exec(part);
     if(!mm){ const wc=/^(\d+)-(\d+)$/.exec(part); if(wc && chap===null){ for(let c=+wc[1];c<=+wc[2];c++) segs.push([c,1,c,999]); continue; } return {skip:"unparsed",raw:cit}; }
     let [ ,c1,v1,c2,v2]=mm;
@@ -4558,7 +4694,7 @@ async function renderSession(){
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
   else if(S.type==="mass"&&S.rite==="bcp79"){
     const B=await fetch("data/bcp1979.json").then(r=>r.json()), D=window.LectPB79?window.LectPB79.day(iso,B.collects.c):null;
-    body=`<h2 class="dayname">${esc(D?D.title:"")}</h2><p class="daysub">The Book of Common Prayer (1979)${D&&D.title!==D.season?` · ${esc(D.season)}`:""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (Episcopal Church, 1979), which is not under copyright, as presented by The Online Book of Common Prayer (bcponline.org). The lessons come from the Revised Common Lectionary, which is not reproduced here.</p></footer>`;
+    body=`<h2 class="dayname">${esc(D?D.title:"")}</h2><p class="daysub">The Book of Common Prayer (1979)${D&&D.title!==D.season?` · ${esc(D.season)}`:""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (Episcopal Church, 1979), which is not under copyright, as presented by The Online Book of Common Prayer (bcponline.org). Scripture follows the original 1979 three-year lectionary in the public-domain King James Bible. This historical cycle differs from the Revised Common Lectionary adopted by the Episcopal Church in 2007.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="adai"){
     body=`<h2 class="dayname">The Hallowing of the Apostles</h2><p class="daysub">The Church of the East</p><div id="massGuide"></div><footer class="sesfoot"><p>The Liturgy of the Holy Apostles Adai and Mari, translated for the Archbishop of Canterbury's Assyrian Mission (London, 1893), public domain, transcribed from the Internet Archive scan. The translators' notes are kept. Chaldean Catholic use differs (the Words of Institution are written into the anaphora and the commemorations are changed); follow your own book.</p></footer>`;
@@ -4693,6 +4829,7 @@ async function renderSession(){
     officeData=await officeBody(iso, day);
     body=officeData.h+`<h3 class="ordhead">${esc(officeData.hourName)}</h3><div id="massGuide"></div>`;
   }
+  body=body.replace('<div id="massGuide">','<div id="lessonCalendar"></div><div id="massGuide">');
   $("#session").innerHTML=head+`<article class="sesbody${S.type==="mass"?" wide":""}">${body}</article>`;
   const mg=document.getElementById("massGuide");
   if(mg && window.LectMass){
@@ -4726,11 +4863,14 @@ async function officeBody(iso, day){
     const B=await fetch("data/bcp1979.json").then(r=>r.json()), rite1=/1$/.test(H), C=B.collects[rite1?"t":"c"];
     const D=window.LectPB79.day(iso,C), col=C[D.title]||C[D.season];
     const dom=Math.min(30,d.getUTCDate()), eve=/^ep|compline/.test(H);
+    const L=window.LectCalendar.custom({type:"office",rite:R,hour:H,iso})||await window.LectCalendar.pb79({iso,day},true,eve);
+    const lessonHTML=await window.LectCalendar.html({readingBlock},L);
+    let psalmHTML="";for(const cite of L.psalms||[])psalmHTML+=await blk("Appointed Psalm",cite,"kj");
     h+=`<h2 class="dayname">${esc(D.title)}</h2><p class="daysub">Day ${dom} of the month · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1979), with the psalms appointed for the ${dom}${[,"st","nd","rd"][dom%10>3||Math.floor(dom/10)===1?0:dom%10]||"th"} day of the month in the 1979 Psalter. Take the lessons from the Daily Office Lectionary.</p>`;
+    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1979), with the two-year Daily Office lessons and appointed psalms in the King James Bible. Where an appointment is missing, check your book; the monthly 1979 Psalter remains available. Noonday and Compline retain their fixed short lessons.</p>`;
     const fill=name=>{
-      if(name==="psalms") return B.psalter[(eve?"e":"m")+dom].map(p=>`<h5 class="sub">Psalm ${esc(p.n)}${p.latin?` <i>${esc(p.latin)}</i>`:""}</h5>`+p.v.map(([n,t])=>n?`<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`:`<p class="rub">${esc(t)}</p>`).join("")).join("");
-      if(name==="lessons") return `<p class="cue">The lessons appointed for today in the Daily Office Lectionary.</p>`;
+      if(name==="psalms") return psalmHTML||B.psalter[(eve?"e":"m")+dom].map(p=>`<h5 class="sub">Psalm ${esc(p.n)}${p.latin?` <i>${esc(p.latin)}</i>`:""}</h5>`+p.v.map(([n,t])=>n?`<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`:`<p class="rub">${esc(t)}</p>`).join("")).join("");
+      if(name==="lessons") return lessonHTML;
       if(name==="collect"&&col) return `<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(D.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("");
       return "";
     };
@@ -4868,6 +5008,9 @@ window.LectApp={
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
 };
+/* Sources, home and WIP all use the same coverage policy. */
+const covBody=document.getElementById('coverage-body');
+if(covBody)covBody.innerHTML=window.LectApp.rites().map(r=>`<tr><td>${esc(r.name)}</td><td>${covBadge([r.cov,r.note])}</td><td>${esc(r.note)}</td></tr>`).join('');
 loadPrefs(); S.date=todayISO(); render();
 })();
 </script>
@@ -4880,26 +5023,26 @@ const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fa
 const write=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch(e){}};
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
 let catalog,loading,days,open=false,returnHash='#today',returnScroll=0,returnFocus,routeSerial=0,input='keyboard',menu=false;
-let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio;
+let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio,guideReturn='#/sanctuary';
 let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});
 /* The Sanctuary is the default view. "Classic view" is the economical page; the choice is remembered. While the
    Sanctuary is the home view, the classic page (where the guides are drawn) wears the Sanctuary's skin. */
 let homePref=read('lect-home','sanctuary')==='classic'?'classic':'sanctuary';
 let recent=read('lect-sanctuary-recent',[]);if(!Array.isArray(recent))recent=[];
 const root=document.createElement('section');root.id='sanctuary';root.hidden=true;root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Sanctuary mode');document.body.append(root);
-const isRoute=h=>/^#\/(sanctuary|wip|t(?:\/|$)|search(?:\/|$))/.test(h);
+const isRoute=h=>/^#\/(sanctuary|study|wip|t(?:\/|$)|search(?:\/|$))/.test(h);
 returnHash=isRoute(location.hash)?'#today':location.hash||'#today';
 const glyphs={keyboard:'↑ ↓ ← → Move · Enter Select · Esc Back · / Search · S Exit',gamepad:'✚ / Left stick Move · A Select · B Back · Y Search · Start Menu',touch:'Tap a tile to explore · Back to return',mouse:'Click a tile to explore · Back to return'};
 function prompts(){const p=root.querySelector('.san-prompts');if(p)p.textContent=glyphs[input];}
 function activeInput(value){if(input!==value){input=value;prompts();}}
 function applyPrefs(){root.dataset.theme=prefs.theme;root.style.setProperty('--san-scale',String(prefs.size));write('lect-sanctuary-prefs',prefs);applySkin();}
 const bar=document.createElement('div');bar.id='san-bar';bar.setAttribute('role','navigation');bar.setAttribute('aria-label','Sanctuary');
-bar.innerHTML='<button type="button" data-bar="home">← Sanctuary</button><button type="button" data-bar="search">Search</button><button type="button" data-bar="classic">Classic view</button>';
+bar.innerHTML='<button type="button" data-bar="home">← Sanctuary</button><button type="button" data-bar="study">Study</button><button type="button" data-bar="search">Search</button><button type="button" data-bar="classic">Classic view</button><details class="san-guide-help"><summary>Guide controls</summary><p>↑ ↓ Sections · ← → Controls · Enter Select · Esc Back</p><p>Gamepad: D-pad / left stick Move · A Select · B Back · Y Search · Start Menu</p></details>';
 function applySkin(){const on=homePref==='sanctuary',r=document.documentElement;
  if(on){r.dataset.skin='sanctuary';r.dataset.skinTheme=prefs.theme;r.dataset.theme=prefs.theme==='vellum'?'light':'dark';}
  else{delete r.dataset.skin;delete r.dataset.skinTheme;delete r.dataset.theme;}
  bar.hidden=!on;const b=document.getElementById('enter-sanctuary');if(b)b.innerHTML=on?'Sanctuary <kbd>S</kbd>':'Sanctuary view <kbd>S</kbd>';}
-function setHome(v){homePref=v==='classic'?'classic':'sanctuary';write('lect-home',homePref);applySkin();}
+function setHome(v){homePref=v==='classic'?'classic':'sanctuary';write('lect-home',homePref);applySkin();startPolling();}
 function sound(){if(!prefs.sound)return;try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=380;g.gain.setValueAtTime(.025,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.07);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.07);}catch(e){}}
 // Original geometric Christian symbols, never church insignia.
 const marks={catholic:'☧','eastern-orthodox':'✚',oriental:'✣','old-catholic':'⚓',anglican:'✥',lutheran:'✝',reformed:'☷',methodist:'✙'};
@@ -4913,10 +5056,10 @@ function nodeTile(n,subtitle){return tile('#/t/'+n.id,n.name,subtitle??n.kind,n.
 function shelf(title,tiles,empty=''){return `<section class="san-shelf"><h2>${esc(title)}</h2>${tiles?`<div class="san-row" aria-label="${esc(title)}">${tiles}</div>`:`<p class="san-muted">${esc(empty)}</p>`}</section>`;}
 function parentOf(n){return n&&n.parent?catalog.find(x=>x.id===n.parent):null;}
 function go(hash){if(location.hash===hash)render();else location.hash=hash;}
-function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search'||bits[0]==='wip')go('#/sanctuary');else close();}
+function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search'||bits[0]==='wip'||bits[0]==='study')go('#/sanctuary');else close();}
 function close(hash=returnHash){go(isRoute(hash)?'#today':hash||'#today');}
-function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();gameFrame=requestAnimationFrame(pollGamepad);}
-function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
+function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();startPolling();}
+function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);gameFrame=0;startPolling();menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
 function saveFocus(){const el=document.activeElement;if(root.contains(el))focusByRoute.set(previousRoute,el.dataset.route||el.dataset.pray||el.id||el.dataset.action);}
 function focus(el){if(!el)return;el.focus({preventScroll:true});el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});}
 function controls(){return [...root.querySelectorAll('button:not([disabled]),input,a[href],select,summary')].filter(e=>e.getClientRects().length);}
@@ -4925,6 +5068,21 @@ function move(direction){const list=controls(),cur=document.activeElement;if(!li
  const a=cur.getBoundingClientRect(),ax=a.x+a.width/2,ay=a.y+a.height/2;
  const scored=list.filter(e=>e!==cur).map(el=>{const b=el.getBoundingClientRect(),dx=b.x+b.width/2-ax,dy=b.y+b.height/2-ay;const forward=direction==='down'?dy:direction==='up'?-dy:direction==='right'?dx:-dx;const side=Math.abs(direction==='down'||direction==='up'?dx:dy);return {el,forward,score:forward+side*2};}).filter(x=>x.forward>4).sort((a,b)=>a.score-b.score);
  focus(scored[0]?.el||list[(list.indexOf(cur)+(direction==='up'||direction==='left'?-1:1)+list.length)%list.length]);sound();}
+function guideActive(){return !open&&homePref==='sanctuary'&&!document.getElementById('today')?.hidden&&!document.getElementById('session')?.hidden&&!document.querySelector('dialog[open]')&&![...document.querySelectorAll('[aria-modal="true"]')].some(e=>e!==root&&e.getClientRects().length)&&!!document.querySelector('#massGuide .mbody .mpart');}
+function guideMove(direction){
+ const parts=[...document.querySelectorAll('#massGuide .mbody .mpart')].filter(e=>e.getClientRects().length);if(!parts.length)return;
+ const active=document.activeElement,part=active?.closest('.mpart');let i=parts.indexOf(part);
+ if(i<0)i=Math.max(0,parts.findIndex(e=>e.getBoundingClientRect().bottom>100));
+ if(direction==='up'||direction==='down'){
+  if(part)i=Math.max(0,Math.min(parts.length-1,i+(direction==='up'?-1:1)));
+  const target=parts[i];target.tabIndex=-1;target.setAttribute('aria-label',target.querySelector('h3')?.textContent||'Service section');focus(target);
+ }else{
+  const list=[...parts[i].querySelectorAll('button:not([disabled]),a[href],summary,input:not([disabled]),select:not([disabled]),textarea:not([disabled])')].filter(e=>e.getClientRects().length);
+  if(!list.length){parts[i].tabIndex=-1;focus(parts[i]);return;}
+  const n=list.indexOf(active),step=direction==='left'?-1:1;focus(list[n<0?(step>0?0:list.length-1):(n+step+list.length)%list.length]);
+ }
+ sound();
+}
 async function load(){if(catalog)return;if(!loading)loading=fetch('data/traditions.json').then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json();}).then(j=>{catalog=j;}).catch(e=>{loading=null;throw e;});return loading;}
 /* The rites the guide can open, from LectApp, with the tradition each belongs to (for its emblem). */
 const RITE_FAMILY={wes84:'methodist',wes84o:'methodist',me08:'methodist',rca:'reformed',rcus:'reformed',rcusv:'reformed',rcusp:'reformed',pres:'reformed',
@@ -4944,6 +5102,8 @@ function wip(){const all=rites(),guide=all.filter(r=>r.cov==='guide'),order=all.
  <section class="san-shelf"><h2>Guided text · ${guide.length}</h2><ul class="san-wip">${guide.map(row).join('')}</ul></section>
  <section class="san-shelf"><h2>Order and readings · ${order.length}</h2><ul class="san-wip">${order.map(row).join('')}</ul></section>
  <section class="san-shelf"><h2>Churches and books with no service yet · ${none.length}</h2>${fams.map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f]||f)}</h3><div class="san-grid">${none.filter(n=>n.family===f).map(n=>nodeTile(n)).join('')}</div>`).join('')}</section>`;}
+const STUDY=[['compare','Compare the year','Dated readings across the calendars'],['lectionaries','Every lectionary','How the traditions arrange Scripture'],['hybrid','Hybrid proposal','Explore the proposed expanded traditional cycle'],['changes','1955 vs 1962','Compare the older Roman Holy Week and rubrics'],['office','Divine Office','Compare daily offices and their books'],['sources','Sources and coverage','Text coverage, provenance and edition limits']];
+function study(){return `<p class="san-eyebrow">Study</p><h1>Study the liturgy</h1><p class="san-lede">Compare calendars, explore the books, and check the sources.</p><div class="san-grid">${STUDY.map(([id,title,desc])=>tile(id,title,desc,'anglican','','study')).join('')}</div>`;}
 async function home(){
  if(!days){try{const r=await fetch('days.json');if(!r.ok)throw Error();days=await r.json();}catch(e){days={};}}
  const iso=today(),d=days[iso];
@@ -4952,6 +5112,7 @@ async function home(){
  return `<p class="san-eyebrow">A place to begin</p><h1>Sanctuary</h1><p class="san-lede">Explore traditions, find a book, and return to prayer.</p>`+
  shelf('Continue',recent.slice(0,8).map((r,i)=>tile(String(i),r.label,`${r.iso} · ${r.hour||'Mass'}`,r.family||'catholic',coverage(r),'resume')).join(''),'Your recent guides will appear here, stored only in this browser.')+
  shelf('Today · '+iso,dayTiles)+(()=>{const full=rites().filter(r=>r.cov==='full');return `<section class="san-shelf"><h2>Complete texts · ${full.length}</h2><p class="san-muted">Every word of these services is printed here.</p>${completeList(full)}</section>`+shelf('Work in progress',tile('#/wip','Not yet complete',`${rites().filter(r=>r.cov!=='full').length} rites with text still to come, and the churches with no service yet`,'catholic','WIP'));})()+shelf('Traditions',catalog.filter(n=>!n.parent).map(n=>nodeTile(n)).join(''))+
+ shelf('Study',tile('#/study','Study the liturgy','Calendars, lectionaries, comparisons and sources','anglican'))+
  shelf('Explore',tile('#/search','All churches and books','Search names, places, and editions','anglican'));
 }
 function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=parentOf(n);
@@ -4972,23 +5133,29 @@ async function render(){
  const shell=body=>`<header class="san-toolbar"><button data-action="back" aria-label="Back">← Back</button><button data-route="#/sanctuary">Sanctuary</button><button data-route="#/search" aria-label="Search">Search /</button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Switch to the classic view">Classic view</button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
  try{await load();if(serial!==routeSerial)return;let body;
-  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
+  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/study')body=study();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
   if(serial!==routeSerial)return;root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
   const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>(e.dataset.route||e.dataset.pray||e.id||e.dataset.action)===saved);
   if(!saved)root.scrollTop=0;
   focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash==='#/wip'?root.querySelector('.san-wip-open'):null)||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
  }catch(e){if(serial!==routeSerial)return;root.innerHTML=shell('<h1>The library could not load</h1><p>Check your connection and try again.</p><button data-action="retry">Try again</button>');focus(root.querySelector('[data-action="retry"]'));}
 }
-function launch(s,label,family){if(!s)return;const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);returnScroll=0;returnFocus=document.getElementById('tab-today');close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
+function launch(s,label,family){if(!s)return;guideReturn=location.hash;saveFocus();const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);returnScroll=0;returnFocus=bar.querySelector('[data-bar="home"]');close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
+root.addEventListener('click',e=>{const b=e.target.closest('[data-study]');if(!b)return;returnScroll=0;returnFocus=bar.querySelector('[data-bar="study"]');close('#'+b.dataset.study);document.getElementById('tab-'+b.dataset.study)?.click();});
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
 root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('click',e=>{if(e.detail===0)activeInput('keyboard');setHome('sanctuary');returnHash=location.hash||'#today';go('#/sanctuary');});
 window.addEventListener('keydown',e=>{
- if(e.altKey||e.ctrlKey||e.metaKey||(e.repeat&&e.key.toLowerCase()==='s'))return;
+ if(e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||(e.repeat&&e.key.toLowerCase()==='s'))return;
  const edit=/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)||e.target.isContentEditable;
- if(!open){if(!edit&&e.key.toLowerCase()==='s'){e.preventDefault();activeInput('keyboard');returnHash=location.hash||'#today';go('#/sanctuary');}return;}
+ if(!open){if(!edit&&e.key.toLowerCase()==='s'){e.preventDefault();activeInput('keyboard');returnHash=location.hash||'#today';go('#/sanctuary');return;}
+  if(!edit&&guideActive()){
+   if(e.key.startsWith('Arrow')){e.preventDefault();activeInput('keyboard');guideMove(e.key.slice(5).toLowerCase());}
+   else if(e.key==='Escape'||e.key==='Backspace'){e.preventDefault();go(guideReturn);}
+   else if(e.key==='/'){e.preventDefault();go('#/search');}
+  }return;}
  activeInput('keyboard');
  if(edit){if(e.target.id==='san-query'&&e.key==='ArrowDown'){e.preventDefault();focus(root.querySelector('#san-results button'));return;}if(e.key==='Escape'){e.preventDefault();back();}return;}
  if(e.key==='s'||e.key==='S'){e.preventDefault();close();}else if(e.key==='/'||e.key==='y'){e.preventDefault();go('#/search');}
@@ -4997,22 +5164,24 @@ window.addEventListener('keydown',e=>{
  else if(e.key==='Enter'&&e.target===root){e.preventDefault();controls()[0]?.click();}
  else if(e.key==='Tab'){const list=controls(),i=list.indexOf(document.activeElement);if((e.shiftKey&&i<=0)||(!e.shiftKey&&i===list.length-1)){e.preventDefault();focus(e.shiftKey?list.at(-1):list[0]);}}
 });
-function pollGamepad(now){if(!open)return;let pads=[];try{pads=navigator.getGamepads?.()||[];}catch(e){}const pad=[...pads].find(p=>p&&p.connected!==false);let action='';if(pad){const pressed=i=>pad.buttons[i]?.pressed;
+function startPolling(){if(!gameFrame&&(open||homePref==='sanctuary'))gameFrame=requestAnimationFrame(pollGamepad);}
+function pollGamepad(now){gameFrame=0;let pads=[];try{pads=navigator.getGamepads?.()||[];}catch(e){}const pad=[...pads].find(p=>p&&p.connected!==false);let action='';if(pad){const pressed=i=>pad.buttons[i]?.pressed;
  action=pressed(0)?'select':pressed(1)?'back':pressed(3)?'search':pressed(9)?'menu':pressed(12)||pad.axes[1]<-.55?'up':pressed(13)||pad.axes[1]>.55?'down':pressed(14)||pad.axes[0]<-.55?'left':pressed(15)||pad.axes[0]>.55?'right':'';
- if(action){activeInput('gamepad');const directional=['up','down','left','right'].includes(action);if(action!==lastGameAction||(directional&&now>=gameRepeatAt)){const changed=action!==lastGameAction;gameRepeatAt=now+(changed?360:140);if(directional)move(action);else if(action==='select')document.activeElement?.click();else if(action==='back')back();else if(action==='search')go('#/search');else {menu=!menu;render();}}}}
- lastGameAction=action;gameFrame=requestAnimationFrame(pollGamepad);
+ if(action&&(open||guideActive())){activeInput('gamepad');const directional=['up','down','left','right'].includes(action);if(action!==lastGameAction||(directional&&now>=gameRepeatAt)){const changed=action!==lastGameAction;gameRepeatAt=now+(changed?360:140);if(directional){if(open)move(action);else guideMove(action);}else if(action==='select')document.activeElement?.click();else if(action==='back'){if(open)back();else go(guideReturn);}else if(action==='search')go('#/search');else {menu=!menu;if(open)render();else go('#/sanctuary');}}}}
+ lastGameAction=action;startPolling();
 }
 window.addEventListener('lect-session',e=>{const s=e.detail;if(!s?.rite)return;const known=catalog?.find(n=>n.supported.some(v=>v.type===s.type&&v.rite===s.rite));const session={...s,label:known?.name||s.label||s.rite,family:known?.family||'catholic'};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);});
 window.addEventListener('hashchange',e=>{if(isRoute(location.hash)&&!open){try{const old=new URL(e.oldURL).hash;if(!isRoute(old))returnHash=old||'#today';}catch(err){}}render();});
 window.LectSanctuary={open:()=>go('#/sanctuary'),close};
 bar.addEventListener('click',e=>{const b=e.target.closest('[data-bar]');if(!b)return;const a=b.dataset.bar;
- if(a==='classic'){setHome('classic');return;}returnHash=location.hash||'#today';go(a==='search'?'#/search':'#/sanctuary');});
+ if(a==='classic'){setHome('classic');return;}returnHash=location.hash||'#today';go(a==='search'?'#/search':a==='study'?'#/study':'#/sanctuary');});
 document.querySelector('.wrap')?.prepend(bar);applySkin();
 /* The page script may already have written #today; the address the visitor actually opened decides. */
 const openedHash=(()=>{try{return new URL(performance.getEntriesByType('navigation')[0]?.name||location.href).hash;}catch(e){return location.hash;}})();
 if(homePref==='sanctuary'&&(!openedHash||openedHash==='#')&&!isRoute(location.hash)){returnHash=location.hash||'#today';history.replaceState(null,'','#/sanctuary');}
 if(isRoute(location.hash))render();
 window.LectSanctuary.setHome=setHome;
+startPolling();
 })();
 </script>
 </body>

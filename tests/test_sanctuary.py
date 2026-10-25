@@ -306,4 +306,51 @@ class SanctuaryTests(unittest.TestCase):
             import shutil
             shutil.copytree(ROOT/'src',pathlib.Path(d)/'src');subprocess.run(['python3',str(pathlib.Path(d)/'src/assemble.py')],check=True,capture_output=True)
             self.assertEqual((pathlib.Path(d)/'index.html').read_bytes(),(ROOT/'index.html').read_bytes())
+    def test_1979_lectionary_cycles_and_appointments(self):
+        self.open()
+        values=self.page.evaluate('''async()=>{
+          const get=(iso,office=false,eve=false)=>LectCalendar.pb79({iso},office,eve);
+          return [await get('2026-11-29'),await get('2026-11-29',true),await get('2026-10-25',true),await get('2026-10-25',true,true),await get('2026-04-03'),await get('2026-04-05')];
+        }''')
+        self.assertIn('Year A',values[0]['src']);self.assertIn('Year 1',values[1]['src'])
+        self.assertEqual([r['cite'] for r in values[0]['items']],['Isa 2:1-5','Rom 13:8-14','Matt 24:37-44'])
+        self.assertEqual([r['cite'] for r in values[2]['items']],['Sir 18:19-33','Matt 18:15-20'])
+        self.assertEqual([r['cite'] for r in values[3]['items']],['1 Cor 10:15-24'])
+        self.assertEqual(values[4]['items'][-1]['cite'],'John 18:1-40;19:1-37')
+        self.assertEqual(values[5]['items'][-1]['cite'],'Luke 24:1-10')
+        self.page.evaluate("LectApp.follow({type:'mass',rite:'bcp79',iso:'2026-11-29'})")
+        self.page.locator('.mbody .reading').first.wait_for()
+        self.assertIn('Isa 2:1-5',self.page.locator('.mbody').inner_text())
+        self.assertEqual(self.page.locator('.mbody .reading .scripture').count(),4)
+
+    def test_local_calendar_readings_are_date_and_rite_scoped(self):
+        self.open();self.page.evaluate("LectApp.follow({type:'mass',rite:'copt',iso:'2026-10-25'})")
+        panel=self.page.locator('#lessonCalendar');panel.locator('summary').click()
+        panel.locator('textarea').fill('Gospel | not a citation')
+        panel.get_by_role('button',name='Save readings',exact=True).click()
+        self.assertIn('No text found',panel.locator('[role="status"]').inner_text())
+        panel.locator('textarea').fill('Gospel | John 1:1-14\nActs | Acts 2:1-11\nCatholic Epistle | Jas 1:1-12\nPsalm | Ps 23\nPauline Epistle | Rom 8:1-11')
+        panel.get_by_role('button',name='Save readings',exact=True).click()
+        self.page.wait_for_function("document.querySelectorAll('.mbody .reading').length===5")
+        self.assertEqual(self.page.locator('.mbody .reading .rc').all_inner_texts(),['Rom 8:1-11','Jas 1:1-12','Acts 2:1-11','Ps 23','John 1:1-14'])
+        self.page.locator('#nextDay').click();self.page.wait_for_function("LectApp.current().iso==='2026-10-26' && document.querySelector('.mbody .mpart')")
+        self.assertEqual(self.page.locator('.mbody .reading').count(),0)
+        self.page.evaluate("LectApp.follow({type:'mass',rite:'arm',iso:'2026-10-25'})")
+        self.page.wait_for_function("document.querySelector('.mbody .mpart') && document.querySelector('.crumbs').textContent.includes('Armenian')")
+        self.assertEqual(self.page.locator('.mbody .reading').count(),0)
+        self.page.evaluate("LectApp.follow({type:'mass',rite:'copt',iso:'2026-10-25'})")
+        self.page.wait_for_function("document.querySelectorAll('.mbody .reading').length===5")
+        self.page.locator('#lessonCalendar summary').click();self.page.locator('.lesson-clear').click()
+        self.page.wait_for_function("document.querySelector('.mbody .mpart') && !document.querySelector('.mbody .reading')")
+
+    def test_byzantine_bright_week_and_sunday_gospel(self):
+        self.open()
+        rows=self.page.evaluate("()=>[LectCalendar.byzantine({iso:'2026-04-08'},'byzm'),LectCalendar.byzantine({iso:'2026-10-25'},'byzm'),LectCalendar.byzantine({iso:'2026-10-24'},'byzv')]")
+        self.assertEqual(rows[0]['items'],[])
+        self.assertTrue(any(r.get('slot')=='gospel' for r in rows[1]['items']))
+        self.assertEqual([r['cite'] for r in rows[2]['items']],['Ps '+str(i) for i in range(1,9)])
+        self.page.evaluate("LectApp.follow({type:'mass',rite:'byzm',iso:'2026-10-25'})")
+        self.page.locator('.mbody .reading').first.wait_for()
+        self.assertIn('Eothinon',self.page.locator('.mbody').inner_text())
+
 if __name__=='__main__':unittest.main()

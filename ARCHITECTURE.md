@@ -69,7 +69,7 @@ verified; they must never be silently treated as Gregorian.
 The launcher is an accessible modal layer over the existing `.wrap`. The normal
 page becomes inert while open. It restores focus and scroll on exit. The old tab
 router ignores slash-prefixed routes so hash history belongs to Sanctuary until
-exit. The launcher owns home, hierarchical detail and search screens; it never
+exit. The launcher owns home, Study, hierarchical detail and search screens; it never
 renders a service. `LectApp.follow()` remains the service handoff and
 `LectApp.coverage()` exposes the existing coverage labels without duplicating
 coverage policy. Existing guide controls, roles, music and live-session code are
@@ -81,6 +81,15 @@ uses `requestAnimationFrame`, dead zones, an initial 360 ms hold delay and 140 m
 directional repeats. Action buttons require release between selections. Input
 prompts reflect the latest input. WebAudio sounds are opt-in. Reduced-motion
 preferences disable tile transitions. Theme and text size are local to Sanctuary.
+
+Sanctuary guide navigation shares the launcher's gamepad polling loop. Up/down
+focuses service sections, left/right focuses visible controls within a section,
+and Back returns to the launch route. The loop preserves held-button state across
+catalog/guide transitions. Native editing controls and visible modal tools take
+precedence. The Study route opens the existing tab panels without changing the
+remembered home preference. Classic tabs are hidden only in the Sanctuary skin.
+The Sources table is rendered from `LectApp.rites()` so its coverage matches the
+home and WIP inventories.
 
 The home view is a remembered choice (`lect-home`: `sanctuary`, the default, or
 `classic`). With the Sanctuary as home, a visit whose opened URL has no fragment
@@ -151,3 +160,16 @@ only a recipient’s own choice enables a celebrant role. Office officiant
 roles remain available, with the canonical obligation/approved-book limits
 explained separately in Sources. Mode changes stop queued speech and clear
 an inappropriate celebrant selection.
+
+## Source appointments and local calendar readings
+
+`src/lectionary.js` is assembled before `mass.js`. It exposes `LectCalendar` for
+the original 1979 Eucharistic and Office appointments, ordinary Byzantine
+kathismata and Resurrection Gospels, and the shared date-scoped Bible reader.
+`tools/texts/bcp1979-lectionary.json` records readable source citations and PDF
+pages; `tools/bcp_lectionary.py` validates and packs the runtime JSON.
+Local citations use a structured localStorage key containing type, rite, hour
+and ISO date. They are never uploaded. The orders renderer selects each citation
+by its actual lesson slot, preventing a Gospel from consuming a Psalm slot or
+all Coptic lessons from appearing at the Pauline reading.
+See `docs/lectionaries.md` for source limits and unfinished imports.
