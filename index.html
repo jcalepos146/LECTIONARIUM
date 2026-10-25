@@ -874,7 +874,7 @@ body.san-open{overflow:hidden}
       <tr><td>Prayer Books 1637, 1789, 1892</td><td><span class="cov cov-guide">Guided text</span> Holy Communion in full (the early books in their own spelling); the day's collect, epistle and gospel from your Prayer Book</td><td>Not yet</td></tr>
       <tr><td>Prayer Books 1662, 1928</td><td><span class="cov cov-full">Complete text</span> Holy Communion with the collect, epistle and gospel of the day</td><td><span class="cov cov-full">Complete text</span> 1928 Morning and Evening Prayer; 1662 Mattins and Evensong (Ordinariate)</td></tr>
       <tr><td>Prayer Book 1979</td><td><span class="cov cov-guide">Guided text</span> the Holy Eucharist in full, collect and preface of the day</td><td><span class="cov cov-full">Complete text</span> Morning and Evening Prayer, Noonday, Compline</td></tr>
-      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882), Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's. <span class="cov cov-guide">Guided text</span> Wesley's Morning and Evening Prayer and Litany (1784), with the book's collects and Sunday lessons; its Psalter is cued</td></tr>
+      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882) with its Order of Scripture Lessons, Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's. <span class="cov cov-guide">Guided text</span> Wesley's Morning and Evening Prayer and Litany (1784), with the book's collects and Sunday lessons; its Psalter is cued</td></tr>
     </tbody></table></div>
     <h3>Reading data</h3>
     <ul class="src">
@@ -2283,13 +2283,36 @@ window.LectCSB={day:csbDay};
    data/orders.json (tools/orders.py, from the hand-proofread texts in tools/texts/order-*.txt). ORDER_RITES says
    which orders make up each rite's service; slots (hymn, psalter, lessons, sermon, offering, prayer, communion)
    become timed cues, and alternatives fold away under their summary. */
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
+function rcaLessonDay(T,iso){
+  const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
+  const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
+  const d=toDate(iso), E=easterY(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=(d.getUTCMonth()+1)*100+d.getUTCDate();
+  if(md===1225) return pick(T.christmas.christmas,"Christmas");
+  if(md===101) return pick(T.christmas.circumcision,"The Circumcision");
+  if(off===-2) return pick(T.easter.goodfriday,"Good Friday");
+  if(off===39) return pick(T.easter.ascension,"Ascension Day");
+  const s=new Date(d-d.getUTCDay()*DAY), SY=s.getUTCFullYear(), so=Math.round((s-easterY(SY))/DAY), A1=adv1Y(SY), xm=new Date(Date.UTC(SY,11,25));
+  if(s>=A1&&s<xm){ const n=4-Math.round((s-A1)/DAY/7); return pick(T.christmas.before[n],`The ${N[n]} Sunday before Christmas`); }
+  if(s>=xm||so<-63){ const xs=s>=xm?xm:new Date(Date.UTC(SY-1,11,25)), n=Math.ceil((s-xs)/DAY/7);
+    return n<1?pick(T.christmas.christmas,"Christmas"):pick(T.christmas.after[n],`The ${N[n]} Sunday after Christmas`); }
+  if(so<0) return pick(T.easter.before[-so/7],`The ${N[-so/7]} Sunday before Easter`);
+  if(so===0) return pick(T.easter.easter,"Easter");
+  if(so<=35) return pick(T.easter.after[so/7],`The ${N[so/7]} Sunday after Easter`);
+  if(so===42) return pick(T.pentecost.before,"The Sunday before Pentecost");
+  if(so===49) return pick(T.pentecost.pentecost,"Pentecost");
+  return pick(T.pentecost.after[(so-49)/7],`The ${N[(so-49)/7]} Sunday after Pentecost`);
+}
 const ORDER_RITES={
   pres:{parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
   me08:{parts:o=>[["me1908-supper"]]},
   adai:{parts:o=>[["adai1893"]], optional:["The Approach to the Altar"], optLabel:"The priest's approach to the altar left out"},
   copt:{parts:o=>[["coptic1908"]], optional:["The Preparation of the Altar"], optLabel:"The preparation of the altar left out"},
   arm:{parts:o=>[["armenian1908"]], optional:["The Vesting of the Priest","The Approach to the Altar"], optLabel:"The vesting and the prayers of approach left out"},
-  rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
+  rca:{rcaLessons:true, parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
   rcus:{parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
   rcusv:{parts:o=>[["rcus1866-evening"]]},
   rcusp:{parts:o=>[["rcus1866-preparation"]]},
@@ -2343,6 +2366,14 @@ async function buildOrders(ctx,opts,rite){
     let h=col.length?`<p class="cite">${esc(P.t)}</p>`+p(col[0])+(col.length>1?`<details class="fold"><summary>Or this Collect</summary>${col.slice(1).map(p).join("")}</details>`:""):cue("The Collect for the Day, from the Common Service Book.");
     if(C.second&&C.second.sets[0].collect.length) h+=`<h4 class="sub2">The Collect for the Sunday</h4><p class="cite">${esc(C.second.t)}</p>`+p(C.second.sets[0].collect[0]);
     opts={...opts,_coll:h};
+  }
+  if(R.rcaLessons){   /* the 1882 Liturgy's Order of Scripture Lessons: Christmas, Easter and Pentecost seasons */
+    const T=await J("data/rca1882-lessons.json"), L=rcaLessonDay(T,ctx.iso), less={};
+    if(L){
+      const [ot,nt]=L.m;
+      less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
+    }
+    opts={...opts,_less:less};
   }
   if(R.wesley){   /* the Sunday Service's Collect of the day, proper lessons and proper psalms */
     const B=await J("data/bcp1784.json"), days=await J("days.json"), day=ctx.day||{}, iso=ctx.iso;
@@ -4017,7 +4048,7 @@ function coverage(type,rite,hour){
     if(rite==="csbs") return ["full","The Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day."];
     if(rite==="csbsm") return ["full","The Morning Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day. The psalm, lesson and hymn are the minister's."];
     if(rite==="csbse") return ["full","The Evening Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day. The psalm, lesson and hymn are the minister's."];
-    if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free; the lessons and psalms are chosen by the minister."];
+    if(rite==="rca") return ["full","The Order of Public Worship and the Office for the Lord's Supper (the Form of Dort) from the Liturgy of the Reformed Church in America (1882) are printed in full. Prayer is ordinarily free. The lessons of the day come from the book's own Order of Scripture Lessons, in the King James Version; the psalm, if one is read, is the minister's choice."];
     if(rite==="pres") return ["full","The Order of Morning Service and the Order for the Lord's Supper from the Presbyterian Book of Common Worship (1906) are printed in full. The book sets no lectionary: the Psalter portion, the lessons, the hymns and the General Prayer are chosen by the minister."];
     if(rite==="csbm") return ["full","Matins from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csbv") return ["full","Vespers from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];

@@ -617,13 +617,36 @@ window.LectCSB={day:csbDay};
    data/orders.json (tools/orders.py, from the hand-proofread texts in tools/texts/order-*.txt). ORDER_RITES says
    which orders make up each rite's service; slots (hymn, psalter, lessons, sermon, offering, prayer, communion)
    become timed cues, and alternatives fold away under their summary. */
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
+function rcaLessonDay(T,iso){
+  const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
+  const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
+  const d=toDate(iso), E=easterY(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=(d.getUTCMonth()+1)*100+d.getUTCDate();
+  if(md===1225) return pick(T.christmas.christmas,"Christmas");
+  if(md===101) return pick(T.christmas.circumcision,"The Circumcision");
+  if(off===-2) return pick(T.easter.goodfriday,"Good Friday");
+  if(off===39) return pick(T.easter.ascension,"Ascension Day");
+  const s=new Date(d-d.getUTCDay()*DAY), SY=s.getUTCFullYear(), so=Math.round((s-easterY(SY))/DAY), A1=adv1Y(SY), xm=new Date(Date.UTC(SY,11,25));
+  if(s>=A1&&s<xm){ const n=4-Math.round((s-A1)/DAY/7); return pick(T.christmas.before[n],`The ${N[n]} Sunday before Christmas`); }
+  if(s>=xm||so<-63){ const xs=s>=xm?xm:new Date(Date.UTC(SY-1,11,25)), n=Math.ceil((s-xs)/DAY/7);
+    return n<1?pick(T.christmas.christmas,"Christmas"):pick(T.christmas.after[n],`The ${N[n]} Sunday after Christmas`); }
+  if(so<0) return pick(T.easter.before[-so/7],`The ${N[-so/7]} Sunday before Easter`);
+  if(so===0) return pick(T.easter.easter,"Easter");
+  if(so<=35) return pick(T.easter.after[so/7],`The ${N[so/7]} Sunday after Easter`);
+  if(so===42) return pick(T.pentecost.before,"The Sunday before Pentecost");
+  if(so===49) return pick(T.pentecost.pentecost,"Pentecost");
+  return pick(T.pentecost.after[(so-49)/7],`The ${N[(so-49)/7]} Sunday after Pentecost`);
+}
 const ORDER_RITES={
   pres:{parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
   me08:{parts:o=>[["me1908-supper"]]},
   adai:{parts:o=>[["adai1893"]], optional:["The Approach to the Altar"], optLabel:"The priest's approach to the altar left out"},
   copt:{parts:o=>[["coptic1908"]], optional:["The Preparation of the Altar"], optLabel:"The preparation of the altar left out"},
   arm:{parts:o=>[["armenian1908"]], optional:["The Vesting of the Priest","The Approach to the Altar"], optLabel:"The vesting and the prayers of approach left out"},
-  rca:{parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
+  rca:{rcaLessons:true, parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
   rcus:{parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
   rcusv:{parts:o=>[["rcus1866-evening"]]},
   rcusp:{parts:o=>[["rcus1866-preparation"]]},
@@ -677,6 +700,14 @@ async function buildOrders(ctx,opts,rite){
     let h=col.length?`<p class="cite">${esc(P.t)}</p>`+p(col[0])+(col.length>1?`<details class="fold"><summary>Or this Collect</summary>${col.slice(1).map(p).join("")}</details>`:""):cue("The Collect for the Day, from the Common Service Book.");
     if(C.second&&C.second.sets[0].collect.length) h+=`<h4 class="sub2">The Collect for the Sunday</h4><p class="cite">${esc(C.second.t)}</p>`+p(C.second.sets[0].collect[0]);
     opts={...opts,_coll:h};
+  }
+  if(R.rcaLessons){   /* the 1882 Liturgy's Order of Scripture Lessons: Christmas, Easter and Pentecost seasons */
+    const T=await J("data/rca1882-lessons.json"), L=rcaLessonDay(T,ctx.iso), less={};
+    if(L){
+      const [ot,nt]=L.m;
+      less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
+    }
+    opts={...opts,_less:less};
   }
   if(R.wesley){   /* the Sunday Service's Collect of the day, proper lessons and proper psalms */
     const B=await J("data/bcp1784.json"), days=await J("days.json"), day=ctx.day||{}, iso=ctx.iso;
