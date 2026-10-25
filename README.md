@@ -26,7 +26,7 @@
   - The Novus Ordo Ordinary in Latin, with traditional English.
   - Mattins and Evensong from the 1662 Book of Common Prayer, with the Coverdale psalter.
   - The Holy Communion service of nine Prayer Books, from the first English book of 1549 to the American book of 1928 (the early books in the spelling of their day).
-  - The Lutheran Common Service with Matins and Vespers (1917-19), the Presbyterian Book of Common Worship (1906), the Reformed Church in America Liturgy (1882), the Mercersburg Order of Worship (1866) and the Methodist Ritual (1908).
+  - The Lutheran Common Service with Matins, Vespers, the Litany and the Suffrages (1917-19), the Presbyterian Book of Common Worship (1906), the Reformed Church in America Liturgy (1882), the Mercersburg Order of Worship (1866) and the Methodist Ritual (1908).
   - The Liturgies of Adai and Mari (1893), the Coptic St Basil (1882), and the Armenian Divine Liturgy (1908), each in a public-domain English translation.
   - Scripture readings in the Douay-Rheims and King James versions.
 - **Tools**: a presenter view for screen-sharing, a chat-script export for Discord or Minecraft (copy and paste), read-aloud, role views, posture cues and a printable booklet.
@@ -53,7 +53,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Coptic Liturgy of St Basil (Coptic Orthodox; Coptic Catholic) | *Guided*: the Liturgy in full in the Marquis of Bute's English (1882, reissued 1908), with the incense, the litanies, the priest's private prayers and Bute's notes on Catholic and Orthodox use; lessons from the Katameros are cued | Not yet |
 | Armenian Divine Liturgy (Armenian Apostolic; Armenian Catholic) | *Guided*: the Divine Liturgy in full in the English of 1908, with the vesting, litanies and the priest's private prayers; lessons from the Armenian lectionary are cued | Not yet |
 | Methodist: Ritual of the Methodist Episcopal Church (1908) | **Complete text**: the Order for the Administration of the Lord's Supper | Not yet |
-| Lutheran: Common Service Book (1917-19) | **Complete text**: The Service with the Introit, Collect, Epistle, Gradual and Gospel of the day (lessons the book only cites come from the King James Version) | **Complete text**: Matins and Vespers, with the collect of the day (the psalms, hymn and lessons are the minister's) |
+| Lutheran: Common Service Book (1917-19) | **Complete text**: The Service with the Introit, Collect, Epistle, Gradual and Gospel of the day (lessons the book only cites come from the King James Version) | **Complete text**: Matins, Vespers, the Litany and the Suffrages, with the collect of the day (the psalms, hymn and lessons are the minister's) |
 | Prayer Book 1549, 1552, 1559 (England) | **Complete text**: the Communion service in full in the spelling of each book (1549: The Supper of the Lord, commonly called the Mass), with the Introit (1549 only), collect, epistle and gospel of every Sunday and holy day | Not yet |
 | Prayer Book 1637 (Scotland) | *Guided*: the Scottish Communion Office in full, with the prayer of consecration and the prayer of oblation; collect, epistle and gospel of the day are cited | Not yet |
 | Prayer Book 1662 (England) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | See Ordinariate: 1662 Mattins and Evensong |

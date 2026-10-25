@@ -622,6 +622,10 @@ const ORDER_RITES={
   csbm:{parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{parts:o=>[["csb-vespers"]], csbCollect:true}
 };
+ORDER_RITES.csbl={parts:o=>[["csb-litany"]], csbCollect:true};
+ORDER_RITES.csbs={parts:o=>[["csb-suffrages"]], csbCollect:true};
+ORDER_RITES.csbsm={parts:o=>[["csb-suffrages-morning"]], csbCollect:true};
+ORDER_RITES.csbse={parts:o=>[["csb-suffrages-evening"]], csbCollect:true};
 const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
   offering:["The Offering",3],prayer:["The General Prayer, in the Minister's own words or from the Treasury of Prayers",5]};
 function orderStep(st,opts){

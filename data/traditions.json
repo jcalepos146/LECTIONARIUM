@@ -3742,6 +3742,30 @@
         "rite": "csbv",
         "hour": null,
         "label": "Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "csbl",
+        "hour": null,
+        "label": "The Litany"
+      },
+      {
+        "type": "mass",
+        "rite": "csbs",
+        "hour": null,
+        "label": "The Suffrages"
+      },
+      {
+        "type": "mass",
+        "rite": "csbsm",
+        "hour": null,
+        "label": "Morning Suffrages"
+      },
+      {
+        "type": "mass",
+        "rite": "csbse",
+        "hour": null,
+        "label": "Evening Suffrages"
       }
     ],
     "pd_texts_available": [

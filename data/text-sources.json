@@ -1917,8 +1917,8 @@
         "nalc"
       ],
       "rite": "new",
-      "service": "Divine Service and Matins/Vespers",
-      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics; Matins and Vespers with the collect of the day",
+      "service": "Divine Service and Matins/Vespers, Litany, Suffrages",
+      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics; Matins, Vespers, the Litany and the Suffrages with the collect of the day",
       "missing": [
         "Swedish High Mass",
         "current Nordic service books"

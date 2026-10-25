@@ -1,0 +1,66 @@
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), General Prayers, pp. 242-244,
+# public domain in the United States. Transcribed from the Internet Archive scan of the 1919 text edition (commo00unit), checked against the 1917
+# text edition and the 1918 music edition. Versicles are the Minister's, responses the Congregation's. Markup: see tools/orders.py.
+title: The Suffrages
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Suffrages
+¶ The Suffrages may be used at Matins or Vespers in the same manner as the Litany. (See Litany Rubrics.)
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation;
+People. But deliver us from evil.
+Minister. I said, O Lord, be merciful unto me;
+People. Heal my soul; for I have sinned against Thee.
+Minister. Return, O Lord, how long?
+People. And let it repent Thee concerning Thy servants.
+Minister. Let Thy mercy, O Lord, be upon us;
+People. According as we hope in Thee.
+Minister. Let Thy priests be clothed with righteousness;
+People. And let Thy saints shout for joy.
+Minister. O Lord, save our rulers;
+People. Let the King hear us when we call.
+Minister. Save Thy people, and bless Thine inheritance;
+People. Feed them also, and lift them up for ever.
+Minister. Remember Thy congregation;
+People. Which Thou hast purchased of old.
+Minister. Peace be within thy walls;
+People. And prosperity within thy palaces.
+Minister. Let us pray for our absent brethren;
+People. O Thou, our God, save Thy servants that trust in Thee.
+Minister. Let us pray for the broken-hearted and the captives;
+People. Redeem Israel, O God, out of all his troubles.
+Minister. Send them help from the Sanctuary;
+People. And strengthen them out of Zion.
+Minister. Hear my prayer, O Lord;
+People. And let my cry come unto Thee.
+¶ At Matins may then be said responsively the Psalm (130), De profundis; and at Vespers may be said the Psalm (51), Miserere mei.
+¶ Then shall be said:
+Minister. Turn us again, O God of hosts;
+People. Cause Thy face to shine and we shall be saved.
+Minister. Arise, O Christ, for our help;
+People. And redeem us, for Thy mercy's sake.
+Minister. Hear my prayer, O Lord;
+People. And let my cry come unto Thee.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+¶ Then shall the Minister say the Collect for the Day, after which he may say any other suitable Collects, ending with this Collect for Peace.
+@prayer: The Collect for the Day
+Minister. Give peace in our days, O Lord:
+People. Because there is none other that fighteth for us, except Thou, our God.
+Minister. O Lord, let there be peace in Thy strength:
+People. And abundance in Thy towers.
+Minister. Let us pray.
+O God, from Whom all holy desires, all good counsels, and all just works do proceed: Give unto Thy servants that peace, which the world cannot give; that our hearts may be set to obey Thy commandments, and also that by Thee, we, being defended from the fear of our enemies, may pass our time in rest and quietness; through the merits of Jesus Christ our Saviour, Who liveth and reigneth with Thee and the Holy Ghost, ever One God, world without end.
+- Amen.
+¶ Then may be sung or said the Benedicamus.
+Minister. Bless we the Lord.
+People. Thanks be to God.
+¶ Then shall be said the Benediction.
+The Grace of our Lord Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+- Amen.

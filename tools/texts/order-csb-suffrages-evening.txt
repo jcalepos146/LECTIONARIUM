@@ -1,0 +1,55 @@
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), General Prayers, pp. 247-249,
+# public domain in the United States. Transcribed from the Internet Archive scan of the 1919 text edition (commo00unit), checked against the 1917
+# text edition and the 1918 music edition. Versicles are the Minister's, responses the Congregation's. Markup: see tools/orders.py.
+title: The Evening Suffrages
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Evening Suffrages
+¶ The Evening Suffrages may be said at Vespers, or in the Evening Prayer of the Household, or alone as a brief Evening Office.
+¶ When said at Vespers, the Evening Suffrages shall immediately follow the Canticle.
+¶ When used as a special Evening Office, the Evening Suffrages shall begin: In the Name of the Father, and of the Son, and of the Holy Ghost. Amen. After the Creed shall follow a Psalm, a brief Lesson with the Response and a Hymn; and after the Benedicamus shall be said this Benediction: The Blessing of Almighty God, the Father, the Son, and the Holy Ghost, be with you all. Amen.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+¶ Then shall all say the Lord's Prayer:
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
++ I believe in God the Father Almighty, Maker of heaven and earth.
++ And in Jesus Christ His only Son, our Lord; Who was conceived by the Holy Ghost, Born of the Virgin Mary; Suffered under Pontius Pilate, Was crucified, dead, and buried; He descended into hell; The third day He rose again from the dead; He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence He shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; The holy Christian Church, the Communion of Saints; The Forgiveness of sins; The Resurrection of the body; And the Life everlasting. Amen.
+¶ When the Evening Suffrages are used as a Special Office, here shall follow the Psalm, the Lesson, and the Hymn.
+@psalter
+@lessons: A brief Lesson, with the Response
+@hymn
+¶ Then shall the Minister say:
+Minister. Blessed art Thou, O Lord God of our fathers:
+People. And greatly to be praised and glorified, for ever.
+Minister. Bless we the Father, and the Son, and the Holy Ghost:
+People. We praise and magnify Him for ever.
+Minister. Blessed art Thou, O Lord, in the firmament of heaven:
+People. And greatly to be praised, and glorified, and highly exalted for ever.
+Minister. The Almighty and Merciful Lord, bless and preserve us.
+People. Amen.
+Minister. Vouchsafe, O Lord, this night:
+People. To keep us without sin.
+Minister. O Lord, have mercy upon us.
+People. Have mercy upon us.
+Minister. O Lord, let Thy mercy be upon us:
+People. As our trust is in Thee.
+Minister. Hear my prayer, O Lord:
+People. And let my cry come unto Thee.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+¶ Then shall be said the Collect for the Day, and any other suitable Collects; after which may be said the Prayer here following.
+@prayer: The Collect for the Day
+We give thanks unto Thee, Heavenly Father, through Jesus Christ, Thy dear Son, that Thou hast this day so graciously protected us, and we beseech Thee to forgive us all our sins, and the wrong which we have done, and by Thy great mercy defend us from all the perils and dangers of this night. Into Thy hands we commend our bodies and souls, and all that is ours. Let Thy holy angel have charge concerning us, that the wicked one have no power over us.
+- Amen.
+¶ Then may be sung or said the Benedicamus.
+Minister. Bless we the Lord.
+People. Thanks be to God.
+¶ Then shall be said the Benediction.
+The Grace of our Lord Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+- Amen.
