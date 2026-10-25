@@ -628,6 +628,7 @@ ORDER_RITES.csbsm={parts:o=>[["csb-suffrages-morning"]], csbCollect:true};
 ORDER_RITES.csbse={parts:o=>[["csb-suffrages-evening"]], csbCollect:true};
 ORDER_RITES.byzv={parts:o=>[["byz-vespers"]], optional:["The Litiya","The Blessing of the Loaves"], optLabel:"The Litiya and the blessing of the loaves left out"};
 ORDER_RITES.byzm={parts:o=>[["byz-matins"]], optional:["The Opening, when Matins is said apart from the Vigil"], optLabel:"The opening for Matins said apart from the Vigil left out"};
+ORDER_RITES.byzc={parts:o=>[["byz-compline"]]};
 
 const BYZH={"1":["The First Hour"],"3":["The Third Hour"],"6":["The Sixth Hour"],"9":["The Ninth Hour","The Interhour"]};
 ORDER_RITES.byzh={parts:o=>{ const h=o.hour||"1"; if(h==="t") return [["byz-typical"]]; const s=BYZH[h]; return [["byz-hours",s[0],s[s.length-1]]]; },
