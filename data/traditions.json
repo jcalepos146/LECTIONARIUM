@@ -149,6 +149,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -163,10 +170,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
@@ -202,6 +215,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -216,10 +236,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
@@ -255,6 +281,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -269,10 +302,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-bulgarian-catholic-church/",
@@ -311,6 +350,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -325,10 +371,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
@@ -364,6 +416,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -378,10 +437,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
@@ -417,6 +482,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -431,10 +503,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/"
@@ -469,6 +547,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -483,10 +568,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/churches-with-no-orthodox-counterpart/the-italo-albanian-catholic-church/",
@@ -522,6 +613,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -536,10 +634,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/greek-catholic-churches-in-former-yugoslavia/",
@@ -576,6 +680,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -590,10 +701,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-melkite-catholic-church/",
@@ -629,6 +746,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -643,10 +767,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-romanian-catholic-church/",
@@ -682,6 +812,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -696,10 +833,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/other-eastern-catholic-communities/",
@@ -739,6 +882,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -753,10 +903,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ruthenian-catholic-churches/",
@@ -792,6 +948,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -806,10 +969,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/"
@@ -844,6 +1013,13 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
     "supported": [
@@ -858,10 +1034,16 @@
         "rite": "byz",
         "hour": "vespers",
         "label": "Byzantine Vespers"
+      },
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
       }
     ],
     "pd_texts_available": [
-      "Isabel Florence Hapgood, Service Book (1906), historical Greco-Russian usage"
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://cnewa.org/eastern-christian-churches/the-catholic-eastern-churches/from-the-orthodox-church/the-ukrainian-catholic-church/",
@@ -1572,9 +1754,26 @@
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
     "lectionary": "Consult the local church calendar and authorized service book.",
-    "books": [],
-    "supported": [],
-    "pd_texts_available": [],
+    "books": [
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
+      }
+    ],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      }
+    ],
+    "pd_texts_available": [
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
+    ],
     "sources": [
       "https://www.oikoumene.org/church-families/orthodox-churches-eastern",
       "https://www.oca.org/questions/autocephaly"
@@ -1744,11 +1943,25 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      }
+    ],
     "pd_texts_available": [
-      "Hapgood Service Book (1906): historical English, not a current local edition."
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://www.oca.org/directories/world-churches",
@@ -2133,11 +2346,25 @@
         "status": "public-domain",
         "source": "https://archive.org/details/cu31924029363128",
         "rights_note": "Historical Hapgood translation; public domain in the United States. This is a study source, not a current authorized local edition."
+      },
+      {
+        "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
+        "year": 1906,
+        "status": "public-domain",
+        "source": "https://archive.org/details/cu31924029363128",
+        "rights_note": "Isabel Florence Hapgood's translation; public domain in the United States. A historical English, not a current authorized local edition."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "byzv",
+        "hour": null,
+        "label": "Great Vespers (Hapgood 1906)"
+      }
+    ],
     "pd_texts_available": [
-      "Hapgood Service Book (1906): historical English, not a current local edition."
+      "Hapgood Service Book (1906): the Divine Liturgy and Great Vespers, in historical English, not a current local edition."
     ],
     "sources": [
       "https://www.oca.org/directories/world-churches",
