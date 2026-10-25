@@ -874,7 +874,7 @@ body.san-open{overflow:hidden}
       <tr><td>Prayer Books 1637, 1789, 1892</td><td><span class="cov cov-guide">Guided text</span> Holy Communion in full (the early books in their own spelling); the day's collect, epistle and gospel from your Prayer Book</td><td>Not yet</td></tr>
       <tr><td>Prayer Books 1662, 1928</td><td><span class="cov cov-full">Complete text</span> Holy Communion with the collect, epistle and gospel of the day</td><td><span class="cov cov-full">Complete text</span> 1928 Morning and Evening Prayer; 1662 Mattins and Evensong (Ordinariate)</td></tr>
       <tr><td>Prayer Book 1979</td><td><span class="cov cov-guide">Guided text</span> the Holy Eucharist in full, collect and preface of the day</td><td><span class="cov cov-full">Complete text</span> Morning and Evening Prayer, Noonday, Compline</td></tr>
-      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882), Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's</td></tr>
+      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882), Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's. <span class="cov cov-guide">Guided text</span> Wesley's Morning and Evening Prayer and Litany (1784), with the book's collects and Sunday lessons; its Psalter is cued</td></tr>
     </tbody></table></div>
     <h3>Reading data</h3>
     <ul class="src">
@@ -2303,6 +2303,11 @@ ORDER_RITES.csbse={parts:o=>[["csb-suffrages-evening"]], csbCollect:true};
 ORDER_RITES.byzv={parts:o=>[["byz-vespers"]], optional:["The Litiya","The Blessing of the Loaves"], optLabel:"The Litiya and the blessing of the loaves left out"};
 ORDER_RITES.byzm={parts:o=>[["byz-matins"]], optional:["The Opening, when Matins is said apart from the Vigil"], optLabel:"The opening for Matins said apart from the Vigil left out"};
 ORDER_RITES.byzc={parts:o=>[["byz-compline"]]};
+/* Wesley's Sunday Service (1784): Morning and Evening Prayer for the Lord's Day and the Litany for Wednesdays and Fridays,
+   with the book's Collect of the day and its table of proper lessons (data/bcp1784.json). */
+ORDER_RITES.wes84o={parts:o=>o.hour==="e"?[["wes1784-evening"]]:o.hour==="l"?[["wes1784-litany"]]:[["wes1784-morning"]], wesley:true,
+  optional:["A Prayer and Thanksgiving for the Lord's Day"], optLabel:"The Prayer and General Thanksgiving for the Lord's Day left out",
+  sel:{key:"hour",label:"The Service",opts:[["m","Morning Prayer"],["e","Evening Prayer"],["l","The Litany (Wednesdays and Fridays)"]]}};
 
 const BYZH={"1":["The First Hour"],"3":["The Third Hour"],"6":["The Sixth Hour"],"9":["The Ninth Hour","The Interhour"]};
 ORDER_RITES.byzh={parts:o=>{ const h=o.hour||"1"; if(h==="t") return [["byz-typical"]]; const s=BYZH[h]; return [["byz-hours",s[0],s[s.length-1]]]; },
@@ -2322,6 +2327,7 @@ function orderStep(st,opts){
       if(t==="sermon"){ if(opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; extra+=opts.homily*60; } continue; }
       if(t==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; continue; }
       if(t==="prayer"&&it[2]==="The Collect for the Day"&&opts._coll){ html+=opts._coll; extra+=30; continue; }
+      if(opts._less&&opts._less[t+":"+(it[2]||"")]){ const [h,m]=opts._less[t+":"+(it[2]||"")]; html+=h; extra+=m*60; continue; }
       const [lab0,min0]=ORDER_SLOT[t], lab=it[2]||lab0, min=t!=="lessons"?min0:/^The Psalm before/.test(lab)?1:/^The (Gospel|Lesson)/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
     }
     html+=pbItem(it);
@@ -2337,6 +2343,26 @@ async function buildOrders(ctx,opts,rite){
     let h=col.length?`<p class="cite">${esc(P.t)}</p>`+p(col[0])+(col.length>1?`<details class="fold"><summary>Or this Collect</summary>${col.slice(1).map(p).join("")}</details>`:""):cue("The Collect for the Day, from the Common Service Book.");
     if(C.second&&C.second.sets[0].collect.length) h+=`<h4 class="sub2">The Collect for the Sunday</h4><p class="cite">${esc(C.second.t)}</p>`+p(C.second.sets[0].collect[0]);
     opts={...opts,_coll:h};
+  }
+  if(R.wesley){   /* the Sunday Service's Collect of the day, proper lessons and proper psalms */
+    const B=await J("data/bcp1784.json"), days=await J("days.json"), day=ctx.day||{}, iso=ctx.iso;
+    const pr=pbPropers(B,iso,day,days), p=t=>`<p data-r="cel">${esc(t)}</p>`;
+    const col=pr?(pr.sets[0].collect.length?pr.sets[0].collect:[]):[];
+    const coll=col.length?`<p class="cite">${esc(pr.t)}</p>`+col.map(p).join("")+`<p data-r="ppl"><span class="sp">℟.</span> Amen.</p>`:cue("The Collect of the Day, from the Sunday Service.");
+    const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
+    const key=(PB_HOLYWEEK[off]&&B.lessons[PB_HOLYWEEK[off]])?PB_HOLYWEEK[off]:day.o&&day.o.bcp;
+    const L=key&&B.lessons[key]&&(toDate(iso).getUTCDay()===0||/CHRISTMAS DAY|GOOD FRIDAY|ASCENSION DAY/.test(key))?B.lessons[key]:null;
+    const H=opts.hour==="e"?"e":"m", less={};
+    if(L){
+      less["lessons:The First Lesson"]=[await RB(ctx,"The First Lesson",L[H][0],"k","kj"),5];
+      less["lessons:The Second Lesson"]=L[H][1]?[await RB(ctx,"The Second Lesson",L[H][1],"k","kj"),4]:[cue(H==="m"?"The Second Lesson: a chapter out of the Four Gospels or the Acts of the Apostles, in regular rotation, as the book's table directs.":"The Second Lesson: a chapter out of the Epistles, in regular rotation, as the book's table directs."),4];
+    } else {
+      less["lessons:The First Lesson"]=[cue("The book's table appoints proper lessons for the Sundays and for Christmas, Good Friday and Ascension Day only: on other days the Minister chooses a chapter of the Old Testament."),5];
+      less["lessons:The Second Lesson"]=[cue("The Second Lesson: a chapter out of the "+(H==="m"?"Four Gospels or the Acts of the Apostles":"Epistles")+", in regular rotation."),4];
+    }
+    const PS=key&&B.psalms[key]&&B.psalms[key][H];
+    less["psalter:The Psalms appointed"]=[PS?cue(`The Proper Psalms for ${pr?pr.t:"the day"}: Psalm ${PS.join(", ")}.`):cue("The Psalms in order as they are appointed, from the Psalter the Sunday Service prints."),PS?PS.length*2:4];
+    opts={...opts,_coll:coll,_less:less};
   }
   for(const [id,from,upto] of R.parts(opts)){
     const ord=O[id]; let on=!from;
@@ -3892,6 +3918,7 @@ const MASS_RITES=[
   {id:"arm",name:"Armenian Divine Liturgy (Badarak)",d:"Armenian Apostolic Church · in the English of 1908, with the vesting, the litanies and the priest's private prayers",tr:"kj",ord:1},
   {id:"me08",name:"The Lord's Supper (Methodist Episcopal, 1908)",d:"Methodist · Wesley's order from the 1662 Prayer Book, as in the 1908 Ritual",tr:"kj",ord:1},
   {id:"wes84",name:"The Lord's Supper (Wesley's Sunday Service, 1784)",d:"Methodist · John Wesley's abridgement of the 1662 Prayer Book for America, with its Sunday collects, epistles and gospels",tr:"kj",ord:1},
+  {id:"wes84o",name:"Morning and Evening Prayer (Wesley's Sunday Service, 1784)",d:"Methodist · Wesley's Lord's Day Morning and Evening Prayer and the Litany, with the book's collects and proper lessons",tr:"kj",ord:1},
   {id:"rca",name:"Lord's Day Morning (Reformed Church in America, 1882)",d:"Reformed · Order of Public Worship, with the Lord's Supper in the Form of Dort",tr:"kj",ord:1},
   {id:"rcus",name:"Lord's Day Morning (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Order of Worship of the Mercersburg theologians, with the Holy Communion when celebrated",tr:"kj",ord:1},
   {id:"rcusv",name:"Lord's Day Evening (Reformed Church in the U.S., Mercersburg 1866)",d:"Reformed · the Evening Service of the Order of Worship",tr:"kj",ord:2},
@@ -3978,6 +4005,7 @@ function coverage(type,rite,hour){
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
     if(rite==="me08") return ["full","The Order for the Administration of the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) is printed in full."];
     if(rite==="wes84") return ["full","The Order for the Administration of the Lord's Supper from John Wesley's Sunday Service of the Methodists in North America (1784) is printed in full, with the book's own Collect, Epistle and Gospel for each Sunday and chief feast. The book keeps no saints' days or weekday propers: on other days the Sunday's are used."];
+    if(rite==="wes84o") return ["guide","Morning and Evening Prayer for the Lord's Day and the Litany from Wesley's Sunday Service (1784) are printed in full, with the book's Collect of the day and, on Sundays, the lessons of its table in the King James Version. The Psalms are cued: the book's own selection from the Psalter is not on the site yet."];
     if(rite==="rcus") return ["full","The Regular Service on the Lord's Day, and the Holy Communion, from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) are printed in full, with the Litany. The Epistle and Gospel, the hymns and the sermon are the minister's."];
     if(rite==="rcusv") return ["full","The Evening Service from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full, with the Litany. The lessons, the hymns and the sermon are the minister's."];
     if(rite==="rcusp") return ["full","The Preparation for the Holy Communion from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full: the Law, the Litany, the address to the communicants, the confession and the pardon."];
@@ -4137,7 +4165,7 @@ async function passage(cit, numbering, tr){
         for(let v=vs; v<=ve; v++){
           let [bk,cc,vv]=[p.book,c,v];
           if(trx==="dr" && numbering!=="v") [bk,cc,vv]=toVulgate(p.book,c,v);
-          if(trx==="kj"){ [bk,cc,vv]=commonShift(p.book,c,v); if(bk==="Ps") vv=Math.max(1,vv-psOff); }
+          if(trx==="kj"&&numbering!=="k"){ [bk,cc,vv]=commonShift(p.book,c,v); if(bk==="Ps") vv=Math.max(1,vv-psOff); }
           const key=cc+":"+vv; if(seen.has(key)) continue; seen.add(key);
           out.push([cc,vv]);
         }
@@ -4417,7 +4445,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -4518,6 +4546,10 @@ async function renderSession(){
   }
   else if(S.type==="mass"&&S.rite==="bcp37"){
     body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Booke of Common Prayer (Scotland, 1637)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Booke of Common Prayer for the Church of Scotland (1637), public domain, as transcribed by the Society of Archbishop Justus, in the spelling of the book. The Collect, Epistle and Gospel of the day are from the same Justus transcription of the book's table; where the books differ in a day's wording, the margin notes decide.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="wes84o"){
+    const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Morning and Evening Prayer · The Sunday Service of the Methodists in North America (1784)</p><div id="massGuide"></div><footer class="sesfoot"><p>John Wesley, The Sunday Service of the Methodists in North America (London, 1784), public domain, transcribed from the Internet Archive scan and checked against the 1662 Prayer Book it abridges. Wesley appointed these services for the Lord's Day and the Litany for Wednesdays and Fridays, "praying extempore on all other days". The lessons are those of the book's table, in the King James Version.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="wes84"){
     const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;

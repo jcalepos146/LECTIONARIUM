@@ -2334,11 +2334,11 @@
         "sunday-service-1784",
         "me-ritual-1908"
       ],
-      "rite": "wes84 (Wesley's Sunday Service 1784, the Lord's Supper with its collects, epistles and gospels, shown by the Prayer Book builder); me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders)",
+      "rite": "wes84 (Wesley's Sunday Service 1784, the Lord's Supper with its collects, epistles and gospels, shown by the Prayer Book builder); me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders); wes84o (Wesley's Morning and Evening Prayer and Litany, shown by buildOrders)",
       "service": "Lord's Supper, Morning Prayer and occasional services",
-      "now": "The Lord's Supper from Wesley's Sunday Service (1784) in full with its Sunday collects, epistles and gospels; the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full",
+      "now": "The Lord's Supper from Wesley's Sunday Service (1784) in full with its Sunday collects, epistles and gospels, and its Morning and Evening Prayer and Litany with the collects and the table of Sunday lessons; the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full",
       "missing": [
-        "Wesley's Sunday Service (1784): Morning and Evening Prayer, the Litany, the table of proper lessons and the occasional services",
+        "Wesley's Sunday Service (1784): its abridged Psalter, and the occasional services (baptism, matrimony, burial, ordinal)",
         "the rest of the Methodist ritual (baptism, reception, matrimony, burial)",
         "Moravian liturgies",
         "Congregational orders",

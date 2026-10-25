@@ -1,0 +1,535 @@
+{
+ "lessons": {
+  "THE FIRST SUNDAY IN ADVENT": {
+   "m": [
+    "Isa 1"
+   ],
+   "e": [
+    "Isa 2"
+   ]
+  },
+  "THE SECOND SUNDAY IN ADVENT": {
+   "m": [
+    "Isa 5"
+   ],
+   "e": [
+    "Isa 24"
+   ]
+  },
+  "THE THIRD SUNDAY IN ADVENT": {
+   "m": [
+    "Isa 25"
+   ],
+   "e": [
+    "Isa 26"
+   ]
+  },
+  "THE FOURTH SUNDAY IN ADVENT": {
+   "m": [
+    "Isa 30"
+   ],
+   "e": [
+    "Isa 32"
+   ]
+  },
+  "THE SUNDAY AFTER CHRISTMAS DAY": {
+   "m": [
+    "Isa 37"
+   ],
+   "e": [
+    "Isa 38"
+   ]
+  },
+  "THE FIRST SUNDAY AFTER THE EPIPHANY": {
+   "m": [
+    "Isa 41"
+   ],
+   "e": [
+    "Isa 43"
+   ]
+  },
+  "THE SECOND SUNDAY AFTER THE EPIPHANY": {
+   "m": [
+    "Isa 44"
+   ],
+   "e": [
+    "Isa 46"
+   ]
+  },
+  "THE THIRD SUNDAY AFTER THE EPIPHANY": {
+   "m": [
+    "Isa 51"
+   ],
+   "e": [
+    "Isa 53"
+   ]
+  },
+  "THE FOURTH SUNDAY AFTER THE EPIPHANY": {
+   "m": [
+    "Isa 55"
+   ],
+   "e": [
+    "Isa 56"
+   ]
+  },
+  "THE FIFTH SUNDAY AFTER THE EPIPHANY": {
+   "m": [
+    "Isa 57"
+   ],
+   "e": [
+    "Isa 58"
+   ]
+  },
+  "THE SIXTH SUNDAY AFTER THE EPIPHANY": {
+   "m": [
+    "Isa 59"
+   ],
+   "e": [
+    "Isa 64"
+   ]
+  },
+  "SEPTUAGESIMA": {
+   "m": [
+    "Isa 65"
+   ],
+   "e": [
+    "Isa 66"
+   ]
+  },
+  "SEXAGESIMA": {
+   "m": [
+    "Gen 1"
+   ],
+   "e": [
+    "Gen 2"
+   ]
+  },
+  "QUINQUAGESIMA": {
+   "m": [
+    "Gen 3"
+   ],
+   "e": [
+    "Gen 6"
+   ]
+  },
+  "THE FIRST SUNDAY IN LENT": {
+   "m": [
+    "Gen 7"
+   ],
+   "e": [
+    "Gen 18"
+   ]
+  },
+  "THE SECOND SUNDAY IN LENT": {
+   "m": [
+    "Gen 19:1-29"
+   ],
+   "e": [
+    "Gen 22"
+   ]
+  },
+  "THE THIRD SUNDAY IN LENT": {
+   "m": [
+    "Gen 24"
+   ],
+   "e": [
+    "Gen 37"
+   ]
+  },
+  "THE FOURTH SUNDAY IN LENT": {
+   "m": [
+    "Gen 39"
+   ],
+   "e": [
+    "Gen 42"
+   ]
+  },
+  "THE FIFTH SUNDAY IN LENT": {
+   "m": [
+    "Gen 43"
+   ],
+   "e": [
+    "Gen 44:1-45:28"
+   ]
+  },
+  "THE SUNDAY NEXT BEFORE EASTER": {
+   "m": [
+    "Exod 9",
+    "Matt 26"
+   ],
+   "e": [
+    "Exod 10",
+    "Heb 5:1-10"
+   ]
+  },
+  "EASTER DAY": {
+   "m": [
+    "Exod 12",
+    "Rom 6"
+   ],
+   "e": [
+    "Exod 14",
+    "Acts 2:22-47"
+   ]
+  },
+  "THE FIRST SUNDAY AFTER EASTER": {
+   "m": [
+    "Num 16"
+   ],
+   "e": [
+    "Num 22"
+   ]
+  },
+  "THE SECOND SUNDAY AFTER EASTER": {
+   "m": [
+    "Num 23:1-24:30"
+   ],
+   "e": [
+    "Num 25"
+   ]
+  },
+  "THE THIRD SUNDAY AFTER EASTER": {
+   "m": [
+    "Deut 4"
+   ],
+   "e": [
+    "Deut 5"
+   ]
+  },
+  "THE FOURTH SUNDAY AFTER EASTER": {
+   "m": [
+    "Deut 6"
+   ],
+   "e": [
+    "Deut 7"
+   ]
+  },
+  "THE FIFTH SUNDAY AFTER EASTER": {
+   "m": [
+    "Deut 8"
+   ],
+   "e": [
+    "Deut 9"
+   ]
+  },
+  "SUNDAY AFTER ASCENSION DAY": {
+   "m": [
+    "Deut 12"
+   ],
+   "e": [
+    "Deut 13"
+   ]
+  },
+  "WHITSUNDAY": {
+   "m": [
+    "Deut 16:1-17",
+    "Acts 10:34-48"
+   ],
+   "e": [
+    "Isa 11",
+    "Acts 19:1-20"
+   ]
+  },
+  "TRINITY SUNDAY": {
+   "m": [
+    "Gen 1",
+    "Matt 3"
+   ],
+   "e": [
+    "Gen 18",
+    "1 John 5"
+   ]
+  },
+  "THE FIRST SUNDAY AFTER TRINITY": {
+   "m": [
+    "Josh 10"
+   ],
+   "e": [
+    "Josh 23"
+   ]
+  },
+  "THE SECOND SUNDAY AFTER TRINITY": {
+   "m": [
+    "Judg 4"
+   ],
+   "e": [
+    "Judg 5"
+   ]
+  },
+  "THE THIRD SUNDAY AFTER TRINITY": {
+   "m": [
+    "1 Sam 2"
+   ],
+   "e": [
+    "1 Sam 3"
+   ]
+  },
+  "THE FOURTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "1 Sam 12"
+   ],
+   "e": [
+    "1 Sam 13"
+   ]
+  },
+  "THE FIFTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "1 Sam 15"
+   ],
+   "e": [
+    "1 Sam 17"
+   ]
+  },
+  "THE SIXTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "2 Sam 12"
+   ],
+   "e": [
+    "2 Sam 19"
+   ]
+  },
+  "THE SEVENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "2 Sam 21"
+   ],
+   "e": [
+    "2 Sam 24"
+   ]
+  },
+  "THE EIGHTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "1 Kgs 13"
+   ],
+   "e": [
+    "1 Kgs 17"
+   ]
+  },
+  "THE NINTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "1 Kgs 18"
+   ],
+   "e": [
+    "1 Kgs 19"
+   ]
+  },
+  "THE TENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "1 Kgs 21"
+   ],
+   "e": [
+    "1 Kgs 22"
+   ]
+  },
+  "THE ELEVENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "2 Kgs 5"
+   ],
+   "e": [
+    "2 Kgs 9"
+   ]
+  },
+  "THE TWELFTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "2 Kgs 10"
+   ],
+   "e": [
+    "2 Kgs 18"
+   ]
+  },
+  "THE THIRTEENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "2 Kgs 19"
+   ],
+   "e": [
+    "2 Kgs 23"
+   ]
+  },
+  "THE FOURTEENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Jer 5"
+   ],
+   "e": [
+    "Jer 22"
+   ]
+  },
+  "THE FIFTEENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Jer 35"
+   ],
+   "e": [
+    "Jer 36"
+   ]
+  },
+  "THE SIXTEENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Ezek 2"
+   ],
+   "e": [
+    "Ezek 13"
+   ]
+  },
+  "THE SEVENTEENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Ezek 14"
+   ],
+   "e": [
+    "Ezek 18"
+   ]
+  },
+  "THE EIGHTEENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Ezek 20"
+   ],
+   "e": [
+    "Ezek 24"
+   ]
+  },
+  "THE NINETEENTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Dan 3"
+   ],
+   "e": [
+    "Dan 6"
+   ]
+  },
+  "THE TWENTIETH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Joel 2"
+   ],
+   "e": [
+    "Mic 6"
+   ]
+  },
+  "THE TWENTY-FIRST SUNDAY AFTER TRINITY": {
+   "m": [
+    "Hab 2"
+   ],
+   "e": [
+    "Prov 1"
+   ]
+  },
+  "THE TWENTY-SECOND SUNDAY AFTER TRINITY": {
+   "m": [
+    "Prov 2"
+   ],
+   "e": [
+    "Prov 3"
+   ]
+  },
+  "THE TWENTY-THIRD SUNDAY AFTER TRINITY": {
+   "m": [
+    "Prov 11"
+   ],
+   "e": [
+    "Prov 12"
+   ]
+  },
+  "THE TWENTY-FOURTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Prov 13"
+   ],
+   "e": [
+    "Prov 14"
+   ]
+  },
+  "THE TWENTY-FIFTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Prov 15"
+   ],
+   "e": [
+    "Prov 16"
+   ]
+  },
+  "THE TWENTY-SIXTH SUNDAY AFTER TRINITY": {
+   "m": [
+    "Prov 17"
+   ],
+   "e": [
+    "Prov 19"
+   ]
+  },
+  "CHRISTMAS DAY": {
+   "m": [
+    "Isa 9:1-7",
+    "Luke 2:1-14"
+   ],
+   "e": [
+    "Isa 7:10-16",
+    "Titus 3:4-8"
+   ]
+  },
+  "GOOD FRIDAY": {
+   "m": [
+    "Gen 22:1-19",
+    "John 18"
+   ],
+   "e": [
+    "Isa 53",
+    "1 Pet 2"
+   ]
+  },
+  "THE ASCENSION DAY": {
+   "m": [
+    "Deut 10",
+    "Luke 24:44-53"
+   ],
+   "e": [
+    "2 Kgs 2",
+    "Eph 4:1-16"
+   ]
+  }
+ },
+ "psalms": {
+  "CHRISTMAS DAY": {
+   "m": [
+    19,
+    45,
+    85
+   ],
+   "e": [
+    89
+   ]
+  },
+  "GOOD FRIDAY": {
+   "m": [
+    22,
+    40
+   ],
+   "e": [
+    69
+   ]
+  },
+  "EASTER DAY": {
+   "m": [
+    2,
+    57,
+    111
+   ],
+   "e": [
+    113,
+    114,
+    118
+   ]
+  },
+  "THE ASCENSION DAY": {
+   "m": [
+    8,
+    15
+   ],
+   "e": [
+    24,
+    47
+   ]
+  },
+  "WHITSUNDAY": {
+   "m": [
+    48,
+    68
+   ],
+   "e": [
+    104,
+    145
+   ]
+  }
+ }
+}

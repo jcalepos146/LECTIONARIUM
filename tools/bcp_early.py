@@ -40,6 +40,8 @@ def build(path):
     out = {"source": f"{o['book']}: {o['title']}. Public domain; {src}", "hc": hc, "propers": propers}
     if path.stem == "bcp-1784":
         out["fallback"] = "sunday"   # the book keeps only the Sundays and chief feasts: other days take the Sunday's propers
+        lf = path.with_name(path.stem + "-lessons.json")   # the table of proper lessons (and psalms) for Morning and Evening Prayer
+        out.update(json.loads(lf.read_text(encoding="utf-8")))
     return out
 
 

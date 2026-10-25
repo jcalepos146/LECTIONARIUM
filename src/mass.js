@@ -637,6 +637,11 @@ ORDER_RITES.csbse={parts:o=>[["csb-suffrages-evening"]], csbCollect:true};
 ORDER_RITES.byzv={parts:o=>[["byz-vespers"]], optional:["The Litiya","The Blessing of the Loaves"], optLabel:"The Litiya and the blessing of the loaves left out"};
 ORDER_RITES.byzm={parts:o=>[["byz-matins"]], optional:["The Opening, when Matins is said apart from the Vigil"], optLabel:"The opening for Matins said apart from the Vigil left out"};
 ORDER_RITES.byzc={parts:o=>[["byz-compline"]]};
+/* Wesley's Sunday Service (1784): Morning and Evening Prayer for the Lord's Day and the Litany for Wednesdays and Fridays,
+   with the book's Collect of the day and its table of proper lessons (data/bcp1784.json). */
+ORDER_RITES.wes84o={parts:o=>o.hour==="e"?[["wes1784-evening"]]:o.hour==="l"?[["wes1784-litany"]]:[["wes1784-morning"]], wesley:true,
+  optional:["A Prayer and Thanksgiving for the Lord's Day"], optLabel:"The Prayer and General Thanksgiving for the Lord's Day left out",
+  sel:{key:"hour",label:"The Service",opts:[["m","Morning Prayer"],["e","Evening Prayer"],["l","The Litany (Wednesdays and Fridays)"]]}};
 
 const BYZH={"1":["The First Hour"],"3":["The Third Hour"],"6":["The Sixth Hour"],"9":["The Ninth Hour","The Interhour"]};
 ORDER_RITES.byzh={parts:o=>{ const h=o.hour||"1"; if(h==="t") return [["byz-typical"]]; const s=BYZH[h]; return [["byz-hours",s[0],s[s.length-1]]]; },
@@ -656,6 +661,7 @@ function orderStep(st,opts){
       if(t==="sermon"){ if(opts.homily>0){ html+=`<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; extra+=opts.homily*60; } continue; }
       if(t==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; continue; }
       if(t==="prayer"&&it[2]==="The Collect for the Day"&&opts._coll){ html+=opts._coll; extra+=30; continue; }
+      if(opts._less&&opts._less[t+":"+(it[2]||"")]){ const [h,m]=opts._less[t+":"+(it[2]||"")]; html+=h; extra+=m*60; continue; }
       const [lab0,min0]=ORDER_SLOT[t], lab=it[2]||lab0, min=t!=="lessons"?min0:/^The Psalm before/.test(lab)?1:/^The (Gospel|Lesson)/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
     }
     html+=pbItem(it);
@@ -671,6 +677,26 @@ async function buildOrders(ctx,opts,rite){
     let h=col.length?`<p class="cite">${esc(P.t)}</p>`+p(col[0])+(col.length>1?`<details class="fold"><summary>Or this Collect</summary>${col.slice(1).map(p).join("")}</details>`:""):cue("The Collect for the Day, from the Common Service Book.");
     if(C.second&&C.second.sets[0].collect.length) h+=`<h4 class="sub2">The Collect for the Sunday</h4><p class="cite">${esc(C.second.t)}</p>`+p(C.second.sets[0].collect[0]);
     opts={...opts,_coll:h};
+  }
+  if(R.wesley){   /* the Sunday Service's Collect of the day, proper lessons and proper psalms */
+    const B=await J("data/bcp1784.json"), days=await J("days.json"), day=ctx.day||{}, iso=ctx.iso;
+    const pr=pbPropers(B,iso,day,days), p=t=>`<p data-r="cel">${esc(t)}</p>`;
+    const col=pr?(pr.sets[0].collect.length?pr.sets[0].collect:[]):[];
+    const coll=col.length?`<p class="cite">${esc(pr.t)}</p>`+col.map(p).join("")+`<p data-r="ppl"><span class="sp">℟.</span> Amen.</p>`:cue("The Collect of the Day, from the Sunday Service.");
+    const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
+    const key=(PB_HOLYWEEK[off]&&B.lessons[PB_HOLYWEEK[off]])?PB_HOLYWEEK[off]:day.o&&day.o.bcp;
+    const L=key&&B.lessons[key]&&(toDate(iso).getUTCDay()===0||/CHRISTMAS DAY|GOOD FRIDAY|ASCENSION DAY/.test(key))?B.lessons[key]:null;
+    const H=opts.hour==="e"?"e":"m", less={};
+    if(L){
+      less["lessons:The First Lesson"]=[await RB(ctx,"The First Lesson",L[H][0],"k","kj"),5];
+      less["lessons:The Second Lesson"]=L[H][1]?[await RB(ctx,"The Second Lesson",L[H][1],"k","kj"),4]:[cue(H==="m"?"The Second Lesson: a chapter out of the Four Gospels or the Acts of the Apostles, in regular rotation, as the book's table directs.":"The Second Lesson: a chapter out of the Epistles, in regular rotation, as the book's table directs."),4];
+    } else {
+      less["lessons:The First Lesson"]=[cue("The book's table appoints proper lessons for the Sundays and for Christmas, Good Friday and Ascension Day only: on other days the Minister chooses a chapter of the Old Testament."),5];
+      less["lessons:The Second Lesson"]=[cue("The Second Lesson: a chapter out of the "+(H==="m"?"Four Gospels or the Acts of the Apostles":"Epistles")+", in regular rotation."),4];
+    }
+    const PS=key&&B.psalms[key]&&B.psalms[key][H];
+    less["psalter:The Psalms appointed"]=[PS?cue(`The Proper Psalms for ${pr?pr.t:"the day"}: Psalm ${PS.join(", ")}.`):cue("The Psalms in order as they are appointed, from the Psalter the Sunday Service prints."),PS?PS.length*2:4];
+    opts={...opts,_coll:coll,_less:less};
   }
   for(const [id,from,upto] of R.parts(opts)){
     const ord=O[id]; let on=!from;
