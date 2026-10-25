@@ -369,7 +369,7 @@ async function buildOrdoOnly(ctx,opts){
   if(opts.lastGospel===false) parts=parts.filter(p=>p.t!=="Last Gospel");
   const out=[];
   /* the day's lessons, from the lectionary of the rite (or the nearest one, labelled), at the part that reads them */
-  const LL=cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null, LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
+  const LL=window.LectCalendar.custom({...ctx,type:"mass"})||(cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null), LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
   for(const p of parts){
     let la=p.la, en=p.en, html="";
     { const pick=LI.filter(x=>!x.used&&(x.slot?x.slot.test(p.t):/Epistle|Lesson|Prophecy|Gospel/.test(p.t)));
@@ -650,7 +650,11 @@ async function lectItems(ctx,L){ const out=[];
     let html;
     if(it.text) html=`<section class="reading"><header><span class="rl">${esc(it.lab)}</span><span class="rc">${esc(it.cite)}</span></header><div class="rtext">${it.text.map(t=>`<p data-r="lec">${esc(t)}</p>`).join("")}</div></section>`;
     else html=await RB(ctx,it.lab,it.cite,it.num||"k",it.tr||"kj");
-    out.push({html,secs:readSecs(html,90),slot:it.slot||null,used:false});
+    let slot=typeof it.slot==="string"?it.slot==="gospel"?/Gospel/i:it.slot==="psalter"?/Psalm|Psalter|Kathisma/i:/Epistle|Lesson|Lection|Apostle|Paul|Prophet/i:it.slot||null;
+    if(ctx.rite==="copt"&&it.slot){slot=/^Ps /.test(it.cite)?/Psalm before/:/^(Matt|Mark|Luke|John) /.test(it.cite)?/^The Gospel of the day/:/^Acts /.test(it.cite)?/Acts/:/^(Jas|[123] (Pet|John)|Jude) /.test(it.cite)?/Catholic/:/S\. Paul/;}
+    if(ctx.rite==="adai"&&it.slot){slot=/^(Matt|Mark|Luke|John) /.test(it.cite)?/Gospel/:/^(Rom|[12] Cor|Gal|Eph|Phil|Col|[12] Thess|[12] Tim|Titus|Phlm|Heb) /.test(it.cite)?/Paul/:/Lections/;}
+    if(ctx.rite==="arm"&&it.slot){slot=/^(Matt|Mark|Luke|John) /.test(it.cite)?/^The Gospel/:/Psalm of the day/;}
+    out.push({html,secs:readSecs(html,90),slot,kind:it.slot||"lessons",used:false});
   }
   return out; }
 const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
@@ -723,11 +727,12 @@ function orderStep(st,opts){
       if(t==="communion"){ html+=`<div class="homily" data-r="all"><span class="lbl">Communion of the people</span> ≈ ${opts.communion} min</div>`; extra+=opts.communion*60; continue; }
       if(t==="prayer"&&it[2]==="The Collect for the Day"&&opts._coll){ html+=opts._coll; extra+=30; continue; }
       if(opts._less&&opts._less[t+":"+(it[2]||"")]){ const [h,m]=opts._less[t+":"+(it[2]||"")]; html+=h; extra+=m*60; continue; }
-      if(t==="lessons"&&opts._lect&&opts._lect.items.some(x=>!x.used)){ const lab=it[2]||"", I=opts._lect.items;
-        let pick=lab?I.filter(x=>!x.used&&x.slot&&x.slot.test(lab)):[]; if(!pick.length) pick=I.filter(x=>!x.used);
+      if((t==="lessons"||t==="gospel"||t==="psalter")&&opts._lect&&opts._lect.items.some(x=>!x.used)){ const lab=it[2]||t, I=opts._lect.items;
+        let pick=I.filter(x=>!x.used&&(x.slot?x.slot.test(lab):t==="lessons"));
+        if(pick.length){
         if(!opts._lect.headed){ opts._lect.headed=true; html+=lectHead(opts._lect.L); }
-        pick.forEach(x=>{ x.used=true; html+=x.html; extra+=x.secs; }); continue; }
-      const [lab0,min0]=ORDER_SLOT[t], lab=it[2]||lab0, min=t!=="lessons"?min0:/^The Psalm before/.test(lab)?1:/^The (Gospel|Lesson)/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
+        pick.forEach(x=>{ x.used=true; html+=x.html; extra+=x.secs; }); continue; } }
+      const [lab0,min0]=ORDER_SLOT[t]||[t==="gospel"?"The appointed Gospel":"The appointed text",3], lab=it[2]||lab0, min=t!=="lessons"?min0:/^The Psalm before/.test(lab)?1:/^The (Gospel|Lesson)/.test(lab)?3:min0; html+=`<div class="homily" data-r="all"><span class="lbl">${esc(lab)}</span> ≈ ${min} min</div>`; extra+=min*60; continue;
     }
     html+=pbItem(it);
     if(k==="v"&&!depth) words+=t.split(/\s+/).length;
@@ -785,7 +790,10 @@ async function buildOrders(ctx,opts,rite){
     }
     opts={...opts,_coll:coll,_less:less};
   }
-  if(R.lect&&LECT[R.lect]){ const L=await LECT[R.lect](ctx,opts); if(L) opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}}; }
+  { const local=window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});
+    const L=local||(/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
+    if(L)opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}};
+  }
   for(const [id,from,upto] of R.parts(opts)){
     const ord=O[id]; let on=!from;
     if(!ord) continue;
@@ -872,12 +880,14 @@ async function buildPB79(ctx,opts){
   const C=B.collects[form], day=pb79Day(iso,C), col=C[day.title]||C[day.season];
   const pre=pb79Preface(B.prefaces[rite]||{}, col&&col.preface, sun, iso);
   const pop=(opts.pop79||"I");
+  const lessons=window.LectCalendar.custom({...ctx,type:"mass"})||await window.LectCalendar.pb79(ctx);
+  const lessonHTML=await window.LectCalendar.html(ctx,{...lessons,items:[...lessons.items.slice(0,1),...(lessons.psalms||[]).map(cite=>({lab:"Psalm",cite,num:"k",tr:"kj"})),...lessons.items.slice(1)]});
   const out=[];
   for(const st of B["he"+rite]){
     let secs=pbWords(st.items)/2.4, extra=0;
     const fill=name=>{
       if(name==="collect"){ if(!col) return cue("The Collect of the Day, from the Prayer Book."); extra+=pbWords(col.text.map(t=>["v",t]))/2.4; return `<p class="cite">${esc(day.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""); }
-      if(name==="lessons"){ extra+=300; const yr=ctx.day&&ctx.day.L; return `<p class="cue">The lessons of the day from the Revised Common Lectionary${yr?` (Year ${yr})`:""}: see <a href="https://www.lectionarypage.net/" target="_blank" rel="noopener">lectionarypage.net</a>.</p>`; }
+      if(name==="lessons"){ extra+=readSecs(lessonHTML,300); return lessonHTML; }
       if(name==="sermon"){ if(!(opts.homily>0)) return ""; extra+=opts.homily*60; return `<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; }
       if(name==="pop"){ const f=B.pop.find(x=>x.t==="Form "+pop); if(!f) return ""; extra+=pbWords(f.items)/2.4; return `<h4 class="sub2">Prayers of the People: Form ${esc(pop)}</h4>`+pb79Items(f.items,()=>""); }
       if(name==="eprayer"){ const P=B.prayers[key]||[]; extra+=pbWords(P)/2.4; return `<h4 class="sub2">Eucharistic Prayer ${esc(key.split("-")[1])}</h4>`+pb79Items(P,fill); }
@@ -1491,6 +1501,8 @@ async function render(el, ctx){
     if(modeSelect)modeSelect.addEventListener("change",()=>window.LectParticipation.setMode(modeSelect.value));
     if(window.LectTools) window.LectTools.mount(el,{parts:parts.map(p=>({title:p.title,min:p.min})),starts,total:at,ctx,opts:clone(opts),noun,isOffice,rite:ctx.rite,following,
       roles:isOffice?{cel:"Officiant",lec:"Reader",ppl:"All"}:{cel:"Celebrant",srv:rite==="b"?"Deacon":"Server",lec:"Lector",ppl:"Congregation"}});
+    const calendar=el.parentElement?.querySelector("#lessonCalendar");
+    if(calendar)window.LectCalendar.mount(calendar,{...ctx,type:isOffice?"office":"mass",hour:ctx.hour||opts.hour||null},ctx.readingBlock,()=>isOffice?window.LectApp.follow(window.LectApp.current()):el.__redraw());
     if(following) return;
     // controls
     const keepOpen=()=>{ const d=el.querySelector("details.custom"); opts.openCustom=!!(d&&d.open); };

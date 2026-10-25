@@ -160,3 +160,16 @@ only a recipient’s own choice enables a celebrant role. Office officiant
 roles remain available, with the canonical obligation/approved-book limits
 explained separately in Sources. Mode changes stop queued speech and clear
 an inappropriate celebrant selection.
+
+## Source appointments and local calendar readings
+
+`src/lectionary.js` is assembled before `mass.js`. It exposes `LectCalendar` for
+the original 1979 Eucharistic and Office appointments, ordinary Byzantine
+kathismata and Resurrection Gospels, and the shared date-scoped Bible reader.
+`tools/texts/bcp1979-lectionary.json` records readable source citations and PDF
+pages; `tools/bcp_lectionary.py` validates and packs the runtime JSON.
+Local citations use a structured localStorage key containing type, rite, hour
+and ISO date. They are never uploaded. The orders renderer selects each citation
+by its actual lesson slot, preventing a Gospel from consuming a Psalm slot or
+all Coptic lessons from appearing at the Pauline reading.
+See `docs/lectionaries.md` for source limits and unfinished imports.

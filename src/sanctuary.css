@@ -71,3 +71,9 @@ body.san-open{overflow:hidden}
 .san-guide-help p{margin:.4rem 0}
 body:not(.in-session) .san-guide-help{display:none}
 :root[data-skin=sanctuary] .mpart:focus{outline:3px solid var(--focus);outline-offset:5px;scroll-margin-top:150px}
+/* The calendar reader follows the guide's active palette and fits narrow screens. */
+.lesson-calendar { margin:1rem 0; padding:1rem; border:1px solid var(--line,#999); border-radius:.5rem; }
+.lesson-calendar summary { cursor:pointer; font-weight:bold; }
+.lesson-calendar textarea { display:block; box-sizing:border-box; width:100%; max-width:100%; margin:.5rem 0; font:inherit; }
+.lesson-calendar input[type=date] { max-width:100%; font:inherit; }
+.lesson-calendar .reading { margin:1rem 0; }

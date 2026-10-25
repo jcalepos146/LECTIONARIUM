@@ -103,7 +103,7 @@ function coverage(type,rite,hour){
     if(rite==="d") return ["order","The Ordinary of the Dominican Mass in Latin and English, from Divinum Officium. The propers of the day (Officium, collect, lessons, responsory, offertory, secret, preface, communion, postcommunion) come from your Dominican Missal."];
     if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
-    if(rite==="bcp79") return ["guide","The 1979 Holy Eucharist is printed in full (Rite One or Two, any of Eucharistic Prayers I, A, B, C or D, and the Prayers of the People), with the collect and proper preface of the day. Take the lessons from the Revised Common Lectionary, which is not reproduced."];
+    if(rite==="bcp79") return ["guide","The 1979 Holy Eucharist, collect and proper preface are printed, with the original three-year 1979 lectionary in the King James Bible. This historical cycle differs from the RCL adopted in 2007. Check local feast transfers in your church calendar."];
     if(rite==="adai") return ["guide","The Liturgy of the Holy Apostles Adai and Mari is printed in full, in the English made for the Archbishop of Canterbury's Assyrian Mission (1893). The lections, the Apostle and the Gospel of the day come from the East Syrian lectionary, which is not yet on this site."];
     if(rite==="copt") return ["guide","The Coptic Liturgy of St Basil is printed in full, in the Marquis of Bute's English (1882, reissued 1908). The lessons and Gospel of the day come from the Coptic lectionary (the Katameros), which is not yet on this site."];
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
@@ -137,7 +137,7 @@ function coverage(type,rite,hour){
     if(rite==="b") return ["guide","The Liturgies of St John Chrysostom, St Basil and the Presanctified Gifts are printed in full in Isabel Hapgood's 1906 English (Greco-Russian usage), with the day's readings and, on Sundays, the Resurrection troparion and kontakion of the week's tone. The hymns of the saint, the feast and the temple come from your service books."];
   } else {
     if(/^(br62|br55|mon|op)$/.test(rite)) return ["full","Every part of the hour is printed, in Latin and English."];
-    if(rite==="bcp79") return ["full","The 1979 office is printed in full, with the 1979 Psalter's psalms for the day of the month and the collect of the day. Take the lessons from the Daily Office Lectionary."];
+    if(rite==="bcp79") return ["guide","The 1979 office and collect are printed, with the two-year Daily Office lessons and appointed psalms in the King James Bible where a verified appointment is loaded. Noonday and Compline retain their fixed short lessons. Check feast transfers and any missing appointment in your book."];
     if(rite==="bcp28") return ["full","The 1928 text is printed in full, with the collect of the day and the psalms of the day of the month. The 1928 Psalter is a light revision of Coverdale's; the Coverdale text is given. Take the lessons from the 1928 (1943) lectionary."];
     if(rite==="dwdo") return /^(prime|terce|sext|none)$/.test(hour)?["full","Printed in full from The Day-Hours of the Church of England (1877), a Prayer Book English breviary, with the Coverdale psalms and the Collect of the Day. Proper antiphons and hymn endings for feasts and seasons come from your book."]:["full","The 1662 Prayer Book text is printed in full, with the Coverdale psalms. Divine Worship adapts it in places."];
     if(rite==="loth") return ["guide","The psalms, canticles and Scripture are printed. The hymns, antiphons, intercessions and prayers come from your breviary: press Add text to fill them in."];
@@ -220,6 +220,7 @@ function parseCit(cit){
   const segs=[]; let chap=null;
   for(const part0 of rest.split(/[;,]\s*/)){
     const part=part0.trim().replace(/([0-9])[a-e]+/g,"$1"); if(!part) continue;
+    if(chap===null){const whole=/^(\d+)-(\d+)$/.exec(part);if(whole){for(let c=+whole[1];c<=+whole[2];c++)segs.push([c,1,c,999]);chap=+whole[2];continue;}}
     let mm=/^(?:(\d+):)?(\d+)(?:-(?:(\d+):)?(\d+))?$/.exec(part);
     if(!mm){ const wc=/^(\d+)-(\d+)$/.exec(part); if(wc && chap===null){ for(let c=+wc[1];c<=+wc[2];c++) segs.push([c,1,c,999]); continue; } return {skip:"unparsed",raw:cit}; }
     let [ ,c1,v1,c2,v2]=mm;
@@ -565,7 +566,7 @@ async function renderSession(){
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
   else if(S.type==="mass"&&S.rite==="bcp79"){
     const B=await fetch("data/bcp1979.json").then(r=>r.json()), D=window.LectPB79?window.LectPB79.day(iso,B.collects.c):null;
-    body=`<h2 class="dayname">${esc(D?D.title:"")}</h2><p class="daysub">The Book of Common Prayer (1979)${D&&D.title!==D.season?` · ${esc(D.season)}`:""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (Episcopal Church, 1979), which is not under copyright, as presented by The Online Book of Common Prayer (bcponline.org). The lessons come from the Revised Common Lectionary, which is not reproduced here.</p></footer>`;
+    body=`<h2 class="dayname">${esc(D?D.title:"")}</h2><p class="daysub">The Book of Common Prayer (1979)${D&&D.title!==D.season?` · ${esc(D.season)}`:""}</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer (Episcopal Church, 1979), which is not under copyright, as presented by The Online Book of Common Prayer (bcponline.org). Scripture follows the original 1979 three-year lectionary in the public-domain King James Bible. This historical cycle differs from the Revised Common Lectionary adopted by the Episcopal Church in 2007.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="adai"){
     body=`<h2 class="dayname">The Hallowing of the Apostles</h2><p class="daysub">The Church of the East</p><div id="massGuide"></div><footer class="sesfoot"><p>The Liturgy of the Holy Apostles Adai and Mari, translated for the Archbishop of Canterbury's Assyrian Mission (London, 1893), public domain, transcribed from the Internet Archive scan. The translators' notes are kept. Chaldean Catholic use differs (the Words of Institution are written into the anaphora and the commemorations are changed); follow your own book.</p></footer>`;
@@ -700,6 +701,7 @@ async function renderSession(){
     officeData=await officeBody(iso, day);
     body=officeData.h+`<h3 class="ordhead">${esc(officeData.hourName)}</h3><div id="massGuide"></div>`;
   }
+  body=body.replace('<div id="massGuide">','<div id="lessonCalendar"></div><div id="massGuide">');
   $("#session").innerHTML=head+`<article class="sesbody${S.type==="mass"?" wide":""}">${body}</article>`;
   const mg=document.getElementById("massGuide");
   if(mg && window.LectMass){
@@ -733,11 +735,14 @@ async function officeBody(iso, day){
     const B=await fetch("data/bcp1979.json").then(r=>r.json()), rite1=/1$/.test(H), C=B.collects[rite1?"t":"c"];
     const D=window.LectPB79.day(iso,C), col=C[D.title]||C[D.season];
     const dom=Math.min(30,d.getUTCDate()), eve=/^ep|compline/.test(H);
+    const L=window.LectCalendar.custom({type:"office",rite:R,hour:H,iso})||await window.LectCalendar.pb79({iso,day},true,eve);
+    const lessonHTML=await window.LectCalendar.html({readingBlock},L);
+    let psalmHTML="";for(const cite of L.psalms||[])psalmHTML+=await blk("Appointed Psalm",cite,"kj");
     h+=`<h2 class="dayname">${esc(D.title)}</h2><p class="daysub">Day ${dom} of the month · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1979), with the psalms appointed for the ${dom}${[,"st","nd","rd"][dom%10>3||Math.floor(dom/10)===1?0:dom%10]||"th"} day of the month in the 1979 Psalter. Take the lessons from the Daily Office Lectionary.</p>`;
+    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1979), with the two-year Daily Office lessons and appointed psalms in the King James Bible. Where an appointment is missing, check your book; the monthly 1979 Psalter remains available. Noonday and Compline retain their fixed short lessons.</p>`;
     const fill=name=>{
-      if(name==="psalms") return B.psalter[(eve?"e":"m")+dom].map(p=>`<h5 class="sub">Psalm ${esc(p.n)}${p.latin?` <i>${esc(p.latin)}</i>`:""}</h5>`+p.v.map(([n,t])=>n?`<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`:`<p class="rub">${esc(t)}</p>`).join("")).join("");
-      if(name==="lessons") return `<p class="cue">The lessons appointed for today in the Daily Office Lectionary.</p>`;
+      if(name==="psalms") return psalmHTML||B.psalter[(eve?"e":"m")+dom].map(p=>`<h5 class="sub">Psalm ${esc(p.n)}${p.latin?` <i>${esc(p.latin)}</i>`:""}</h5>`+p.v.map(([n,t])=>n?`<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`:`<p class="rub">${esc(t)}</p>`).join("")).join("");
+      if(name==="lessons") return lessonHTML;
       if(name==="collect"&&col) return `<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(D.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("");
       return "";
     };

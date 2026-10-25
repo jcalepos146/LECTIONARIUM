@@ -272,6 +272,7 @@ Priest. The Lesson from the Holy Gospel according to N.
 Choir. Glory to thee, O Lord ; glory to thee.
 Deacon. Let us attend.
 ¶ Then the Priest readeth the Holy Gospel.
+@gospel: The Resurrection Gospel
 Choir. Glory to thee, O Lord ; glory to thee.
 ¶ The Choir then singeth, while the book of the Holy Gospels is laid upon the table at the centre of the Temple :
 In that we have beheld the Resurrection of Christ, let us bow down before the holy Lord Jesus, the only sinless One. Thy Cross do we adore, O Christ, and thy holy Resurrection we laud and glorify : for thou art our God, and we know none other beside thee ; we call upon thy Name. O come, all ye faithful, let us adore Christ's holy Resurrection. For lo, through the Cross is joy come into all the world. Ever blessing the Lord, let us sing his Resurrection : for in that he endured the Cross he hath destroyed Death by death.
