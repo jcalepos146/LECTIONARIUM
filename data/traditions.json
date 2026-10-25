@@ -5119,9 +5119,16 @@
         "rights_note": "Published in 1784; public domain."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "wes84",
+        "hour": null,
+        "label": "The Lord's Supper (1784)"
+      }
+    ],
     "pd_texts_available": [
-      "Complete book in the Internet Archive scan; its long-s typography needs careful proofreading before import."
+      "The Order for the Administration of the Lord's Supper with the Collects, Epistles and Gospels: transcribed from the Internet Archive scan (amernorfm00wesl), checked against the 1662 text it abridges and the page images."
     ],
     "sources": [
       "https://archive.org/details/amernorfm00wesl"

@@ -397,10 +397,13 @@ const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=M
   if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
 /* Holy Week has no o.bcp in days.json: name its days by their distance from Easter, as the 1662 book heads them. */
 const PB_HOLYWEEK={"-6":"MONDAY BEFORE EASTER","-5":"TUESDAY BEFORE EASTER","-4":"WEDNESDAY BEFORE EASTER","-3":"THURSDAY BEFORE EASTER","-2":"GOOD FRIDAY","-1":"EASTER EVEN"};
-function pbPropers(B,iso,day){
+function pbPropers(B,iso,day,days){
   const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
   const k=PB_HOLYWEEK[off]&&B.propers[PB_HOLYWEEK[off]]?PB_HOLYWEEK[off]:(day.o&&day.o.bcp);
-  return k&&B.propers[k]?B.propers[k]:null;
+  const pr=k&&B.propers[k]?B.propers[k]:null;
+  /* A book that keeps only the Sundays and chief feasts (Wesley's Sunday Service): any other day takes the Sunday's. */
+  if(!pr&&B.fallback==="sunday"&&toDate(iso).getUTCDay()){ const si=new Date(toDate(iso)-toDate(iso).getUTCDay()*DAY).toISOString().slice(0,10); return pbPropers(B,si,(days&&days[si])||{}); }
+  return pr;
 }
 /* The two English-language Prayer Book orders share one builder. Each book differs in where the collect, the
    epistle and the gospel go into its Order, which steps a shortened session leaves out, and which are not said at
@@ -428,6 +431,9 @@ const PB_BOOKS={
   bcp89:{file:"data/bcp1789.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
+  wes84:{file:"data/bcp1784.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", prefaceDayOnly:true,
+    collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[or/, gospelAt:/^The holy Gospel is written/,
+    notSaid:[], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
   bcp92:{file:"data/bcp1892.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the Day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p}
@@ -435,12 +441,14 @@ const PB_BOOKS={
 const isPB=r=>!!PB_BOOKS[r];
 async function buildPB(ctx,opts,book){
   const C=PB_BOOKS[book||"bcp28"], B=await J(C.file), iso=ctx.iso, day=ctx.day||{};
-  const pr=pbPropers(B,iso,day), set=pr?pr.sets[0]:null, same=pr&&pr.same?B.propers[pr.same]:null;
+  const pr=pbPropers(B,iso,day,B.fallback?await J("days.json"):null), set=pr?pr.sets[0]:null, same=pr&&pr.same?B.propers[pr.same]:null;
   const collect=set&&set.collect.length?set.collect:(same?same.sets[0].collect:[]);
   const AB=opts.abridge||0, out=[];
   const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
-  const pref=PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
+  /* Wesley prints the proper prefaces for the feast itself only, not its octave. */
+  const d0=toDate(iso), off0=Math.round((d0-easterY(d0.getUTCFullYear()))/DAY);
+  const pref=C.prefaceDayOnly?((d0.getUTCMonth()===11&&d0.getUTCDate()===25)?"Christmas":({0:"Easter",39:"Ascension",49:"Whitsuntide",56:"Trinity Sunday"})[off0]||""):PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
   const at=(its,re)=>re?its.findIndex(x=>re.test(x[1])):-1;
   for(const st of B.hc){
     let html="", secs=spoken(st.items)/2.4;

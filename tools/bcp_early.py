@@ -36,8 +36,11 @@ def build(path):
         hc.append(step)
     pf = path.with_name(path.stem + "-propers.json")
     propers = json.loads(pf.read_text(encoding="utf-8")) if pf.exists() else {}
-    return {"source": f"{o['book']}: {o['title']}. Public domain; text from the Society of Archbishop Justus (justus.anglican.org)",
-            "hc": hc, "propers": propers}
+    src = "transcribed from the Internet Archive scan" if path.stem == "bcp-1784" else "text from the Society of Archbishop Justus (justus.anglican.org)"
+    out = {"source": f"{o['book']}: {o['title']}. Public domain; {src}", "hc": hc, "propers": propers}
+    if path.stem == "bcp-1784":
+        out["fallback"] = "sunday"   # the book keeps only the Sundays and chief feasts: other days take the Sunday's propers
+    return out
 
 
 def main():
