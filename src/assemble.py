@@ -14,10 +14,10 @@ def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False):
     for f in ("page_script.js","music.js","participation.js",mass)+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"sanctuary.js"):
         parts.append("<script>\n"+open(f).read().rstrip("\n")+"\n</script>")
     return "\n".join(parts)+"\n"
-GH_DESC = ("Pray the Mass or the Divine Office for any day: Novus Ordo, 1962, pre-1955, Ordinariate and Byzantine, "
-           "with complete public-domain texts where they exist (the traditional Missal and Breviary in Latin and English, "
-           "with chant) and a clearly marked guide where they do not. Fit a service to anything from 15 minutes to full "
-           "length and run live group sessions with assigned parts.")
+GH_DESC = ("Pray the Eucharist and the daily office in Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed "
+           "and Methodist rites, each with the Bible readings of its own lectionary for the day. Complete public-domain "
+           "texts where they exist, a clearly marked guide where they do not. Fit a service to any length and pray it "
+           "together in live group sessions.")
 def gh(base, repo_url):
     """The public build: a whole HTML document with the tags link previews (Discord, iMessage, Slack) read."""
     import html
@@ -26,7 +26,7 @@ def gh(base, repo_url):
     body = body.replace("<footer>Lectionarium · public-domain texts in full, copyrighted texts cited · consult the approved liturgical books for celebration.</footer>",
         f'<footer>Lectionarium · public-domain texts in full, copyrighted texts cited · consult the approved liturgical books for celebration · <a href="{repo_url}">Source on GitHub</a></footer>')
     split = body.index("</style>") + len("</style>")
-    d = html.escape(GH_DESC, quote=True); t = "Lectionarium · the Mass and the Office in every Catholic rite"
+    d = html.escape(GH_DESC, quote=True); t = "Lectionarium · the liturgy of every Christian tradition, for any day"
     head = f"""<!doctype html>
 <html lang="en">
 <head>

@@ -1,6 +1,6 @@
 # ✠ Lectionarium
 
-**The Mass and the Divine Office for any day of the year: printed in full where the texts are free to print, guided by citation where they are not.**
+**The Eucharist and the daily office of every Christian tradition, Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed and Methodist, for any day of the year, each with its own lectionary's Bible readings: printed in full where the texts are free to print, guided by citation where they are not.**
 
 👉 **https://jcalepos146.github.io/LECTIONARIUM/**
 

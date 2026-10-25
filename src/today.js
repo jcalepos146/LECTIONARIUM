@@ -867,6 +867,10 @@ function render(){
 window.LectApp={
   passage,
   coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
+  /* every rite the guide can open, with how much of its text is printed (the home page lists the complete ones and the
+     work-in-progress page the rest) */
+  rites(){ return [...MASS_RITES.map(r=>({type:"mass",hour:null,...r})),...OFFICE_RITES.map(r=>({type:"office",hour:suggestHour(r.id),...r}))]
+    .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
