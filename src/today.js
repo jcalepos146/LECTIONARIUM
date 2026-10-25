@@ -27,6 +27,7 @@ const MASS_RITES=[
   {id:"rcusp",name:"Preparation for the Holy Communion (Mercersburg 1866)",d:"Reformed · the preparatory service: the Law, the Litany and the address to communicants",tr:"kj",ord:2},
   {id:"byzv",name:"Great Vespers (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the Vespers of the All-Night Vigil in Isabel Hapgood's English",tr:"kj",ord:1},
   {id:"byzm",name:"Matins (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the Six Psalms to the Dismissal, in Isabel Hapgood's English",tr:"kj",ord:1},
+  {id:"byzh",name:"The Hours (Hapgood 1906)",d:"Eastern Orthodox and Byzantine Catholic · the First, Third, Sixth and Ninth Hours and the Typical Psalms, in Isabel Hapgood's English",tr:"kj",ord:1},
   {id:"csbl",name:"The Litany (Common Service Book)",d:"Lutheran · the Litany of 1917-19, with its collects",tr:"kj",ord:3},
   {id:"csbs",name:"The Suffrages (Common Service Book)",d:"Lutheran · the Suffrages of 1917-19, for Matins or Vespers or alone",tr:"kj",ord:3},
   {id:"csbsm",name:"Morning Suffrages (Common Service Book)",d:"Lutheran · the brief morning office of 1917-19",tr:"kj",ord:3},
@@ -109,6 +110,7 @@ function coverage(type,rite,hour){
     if(rite==="rcusp") return ["full","The Preparation for the Holy Communion from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full: the Law, the Litany, the address to the communicants, the confession and the pardon."];
     if(rite==="byzv") return ["guide","Great Vespers is printed in full from Isabel Hapgood's Service Book (1906), public domain. The hymns that change with the day (the stichera, the Dogmatikon, the Gradual and the Hymn of the Feast) come from the Octoechos and Menaion, which are not in the public domain in a modern English translation: the guide marks where they go. Hapgood's English is not any church's present authorized text."];
     if(rite==="byzm") return ["guide","Matins is printed in full from Isabel Hapgood's Service Book (1906), public domain: the Six Psalms, the twelve Morning Prayers, the litanies, the Polyeleos, the Gospel, the Magnificat and the Great Doxology. The hymns that change with the day (the troparia, the Canon, the stichera) come from the Octoechos and Menaion, which are not in the public domain in a modern English translation; the Gospel of the Resurrection is read from the Gospels. Hapgood's English is not any church's present authorized text."];
+    if(rite==="byzh") return ["guide","The First, Third, Sixth and Ninth Hours (with the Interhour) and the Typical Psalms are printed in full from Isabel Hapgood's Service Book (1906), public domain, with the psalms in the Prayer Book's wording. The troparia and kontakia of the day come from the Octoechos and Menaion, which are not in the public domain in a modern English translation; the guide marks where they go. Hapgood's English is not any church's present authorized text."];
     if(rite==="csbl") return ["full","The Litany of the Common Service Book (1917-19) is printed in full, with its collects and the collect of the day."];
     if(rite==="csbs") return ["full","The Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day."];
     if(rite==="csbsm") return ["full","The Morning Suffrages of the Common Service Book (1917-19) are printed in full, with the collect of the day. The psalm, lesson and hymn are the minister's."];
@@ -541,7 +543,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzv:"kj",byzm:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",bcp92:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -585,6 +587,9 @@ async function renderSession(){
   }
   else if(S.type==="mass"&&S.rite==="byzm"){
     body=`<h2 class="dayname">Matins</h2><p class="daysub">The Eastern Orthodox Church · the All-Night Vigil</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="byzh"){
+    body=`<h2 class="dayname">The Hours</h2><p class="daysub">The Eastern Orthodox Church</p><div id="massGuide"></div><footer class="sesfoot"><p>Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church, translated by Isabel Florence Hapgood (Boston and New York: Houghton, Mifflin, 1906), public domain in the United States, transcribed from the Internet Archive scan. Hapgood's English is a historical translation, not any church's present authorized text.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="csbl"){
     const B=await fetch("data/lutheran-csb.json").then(r=>r.json()), C=window.LectCSB?window.LectCSB.day(iso,B.days):null, P=C&&C.day;

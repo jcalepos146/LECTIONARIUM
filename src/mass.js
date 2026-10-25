@@ -628,7 +628,10 @@ ORDER_RITES.csbsm={parts:o=>[["csb-suffrages-morning"]], csbCollect:true};
 ORDER_RITES.csbse={parts:o=>[["csb-suffrages-evening"]], csbCollect:true};
 ORDER_RITES.byzv={parts:o=>[["byz-vespers"]], optional:["The Litiya","The Blessing of the Loaves"], optLabel:"The Litiya and the blessing of the loaves left out"};
 ORDER_RITES.byzm={parts:o=>[["byz-matins"]], optional:["The Opening, when Matins is said apart from the Vigil"], optLabel:"The opening for Matins said apart from the Vigil left out"};
-const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
+
+const BYZH={"1":["The First Hour"],"3":["The Third Hour"],"6":["The Sixth Hour"],"9":["The Ninth Hour","The Interhour"]};
+ORDER_RITES.byzh={parts:o=>{ const h=o.hour||"1"; if(h==="t") return [["byz-typical"]]; const s=BYZH[h]; return [["byz-hours",s[0],s[s.length-1]]]; },
+  sel:{key:"hour",label:"The Hour",opts:[["1","The First Hour"],["3","The Third Hour"],["6","The Sixth Hour"],["9","The Ninth Hour, with the Interhour"],["t","The Typical Psalms"]]}};const ORDER_SLOT={hymn:["Hymn",3],psalter:["A portion of the Psalter, chanted or read responsively",3],lessons:["The lessons from the Old and New Testaments, chosen by the Minister",6],
   offering:["The Offering",3],prayer:["The General Prayer, in the Minister's own words or from the Treasury of Prayers",5]};
 function orderStep(st,opts){
   let html="", words=0, depth=0, extra=0, cons=false;
@@ -1153,6 +1156,7 @@ function controls(rite, opts, iso, day, auto){
         ${music}
         <fieldset><legend>Timing</legend>
           ${rite==="bcp79"?`<label class="sl">Rite and prayer <select data-o="p79">${[["II-A","Rite Two · Prayer A"],["II-B","Rite Two · Prayer B"],["II-C","Rite Two · Prayer C"],["II-D","Rite Two · Prayer D"],["I-I","Rite One · Prayer I"]].map(([v,n])=>`<option value="${v}"${(opts.p79||"II-A")===v?" selected":""}>${n}</option>`).join("")}</select></label><label class="sl">Prayers of the People <select data-o="pop79">${["I","II","III","IV","V","VI"].map(v=>`<option${(opts.pop79||"I")===v?" selected":""}>Form ${v}</option>`.replace(`<option`,`<option value="${v}"`)).join("")}</select></label>`:""}
+          ${ORDER_RITES[rite]&&ORDER_RITES[rite].sel?`<label class="sl">${ORDER_RITES[rite].sel.label} <select data-o="${ORDER_RITES[rite].sel.key}">${ORDER_RITES[rite].sel.opts.map(([v,n])=>`<option value="${v}"${(opts[ORDER_RITES[rite].sel.key]||ORDER_RITES[rite].sel.opts[0][0])===v?" selected":""}>${n}</option>`).join("")}</select></label>`:""}
           ${ORDER_RITES[rite]&&ORDER_RITES[rite].supper?`<label class="sl">The Lord's Supper <select data-o="supper"><option value="no"${opts.supper!=="yes"?" selected":""}>Not celebrated</option><option value="yes"${opts.supper==="yes"?" selected":""}>Celebrated after the Sermon</option></select></label>`:""}
           ${rite==="csb"&&iso&&iso.slice(5)==="12-25"?`<label class="sl">Christmas <select data-o="csbset"><option value="later"${opts.csbset!=="early"?" selected":""}>For a later service</option><option value="early"${opts.csbset==="early"?" selected":""}>For an early service</option></select></label>`:""}
           ${rite==="csb"?`<label class="sl">Holy Communion <select data-o="csbcomm"><option value="yes"${opts.csbcomm!=="no"?" selected":""}>Celebrated</option><option value="no"${opts.csbcomm==="no"?" selected":""}>Not celebrated (The Service ends after the General Prayer)</option></select></label>`:""}
