@@ -874,7 +874,7 @@ body.san-open{overflow:hidden}
       <tr><td>Prayer Books 1637, 1789, 1892</td><td><span class="cov cov-guide">Guided text</span> Holy Communion in full (the early books in their own spelling); the day's collect, epistle and gospel from your Prayer Book</td><td>Not yet</td></tr>
       <tr><td>Prayer Books 1662, 1928</td><td><span class="cov cov-full">Complete text</span> Holy Communion with the collect, epistle and gospel of the day</td><td><span class="cov cov-full">Complete text</span> 1928 Morning and Evening Prayer; 1662 Mattins and Evensong (Ordinariate)</td></tr>
       <tr><td>Prayer Book 1979</td><td><span class="cov cov-guide">Guided text</span> the Holy Eucharist in full, collect and preface of the day</td><td><span class="cov cov-full">Complete text</span> Morning and Evening Prayer, Noonday, Compline</td></tr>
-      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882) with its Order of Scripture Lessons, Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's. <span class="cov cov-guide">Guided text</span> Wesley's Morning and Evening Prayer and Litany (1784), with the book's collects and Sunday lessons; its Psalter is cued</td></tr>
+      <tr><td>Lutheran, Presbyterian, Reformed, Methodist</td><td><span class="cov cov-full">Complete text</span> the Common Service, Litany and Suffrages (1917-19), Book of Common Worship (1906), RCA Liturgy (1882) with its Order of Scripture Lessons, Mercersburg Order of Worship (1866), Wesley's Sunday Service (1784) with its collects, epistles and gospels, Methodist Ritual (1908)</td><td><span class="cov cov-full">Complete text</span> Lutheran Matins and Vespers (1917-19), Mercersburg Evening Service (1866); the psalms, hymns and lessons are the minister's, Wesley's Morning and Evening Prayer and Litany (1784) with his Select Psalms, collects and Sunday lessons</td></tr>
     </tbody></table></div>
     <h3>Reading data</h3>
     <ul class="src">
@@ -2392,7 +2392,21 @@ async function buildOrders(ctx,opts,rite){
       less["lessons:The Second Lesson"]=[cue("The Second Lesson: a chapter out of the "+(H==="m"?"Four Gospels or the Acts of the Apostles":"Epistles")+", in regular rotation."),4];
     }
     const PS=key&&B.psalms[key]&&B.psalms[key][H];
-    less["psalter:The Psalms appointed"]=[PS?cue(`The Proper Psalms for ${pr?pr.t:"the day"}: Psalm ${PS.join(", ")}.`):cue("The Psalms in order as they are appointed, from the Psalter the Sunday Service prints."),PS?PS.length*2:4];
+    if(opts.hour!=="l"){
+      const P=(await J("data/bcp1784-psalter.json")).psalter;
+      /* The Psalter is read through each month (the 1662 rule: February borrows the last day of January and the first of
+         March; the thirty-first day of a month repeats the thirtieth). The Proper Psalms take the place of the day's. */
+      const dd=toDate(iso), mo=dd.getUTCMonth()+1, dt=dd.getUTCDate(), Y=dd.getUTCFullYear(), leap=(Y%4===0&&Y%100!==0)||Y%400===0;
+      const dayN=mo===1&&dt===31?1:mo===2?dt+1:mo===3&&dt===1?(leap?1:30):dt===31?30:dt;
+      const all=Object.values(P).flatMap(x=>[...x.m,...x.e]);
+      const list=PS?PS.flatMap(n=>all.filter(x=>x.p===n)):P[String(dayN)][H];
+      let h=`<p class="cite">${PS?`The Proper Psalms for ${esc(pr?pr.t:"the day")}`:`The ${dayN}${["th","st","nd","rd"][dayN%10>3||[11,12,13].includes(dayN)?0:dayN%10]} Day: ${H==="m"?"Morning":"Evening"} Prayer`}</p>`, words=0;
+      list.forEach((ps,i)=>{
+        h+=`<h4 class="sub2">Psalm ${ps.p}${ps.part?` · ${esc(ps.part)}`:""}</h4>`+ps.v.map(([n,t])=>{ words+=t.split(/\s+/).length; return `<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`; }).join("");
+        if(i<list.length-1) h+=`<p data-r="all">Glory be to the Father, and to the Son, and to the Holy Ghost; As it was in the beginning, is now, and ever shall be, world without end. Amen.</p>`;
+      });
+      less["psalter:The Psalms appointed"]=[h,words/2.4/60];
+    }
     opts={...opts,_coll:coll,_less:less};
   }
   for(const [id,from,upto] of R.parts(opts)){
@@ -4036,7 +4050,7 @@ function coverage(type,rite,hour){
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
     if(rite==="me08") return ["full","The Order for the Administration of the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) is printed in full."];
     if(rite==="wes84") return ["full","The Order for the Administration of the Lord's Supper from John Wesley's Sunday Service of the Methodists in North America (1784) is printed in full, with the book's own Collect, Epistle and Gospel for each Sunday and chief feast. The book keeps no saints' days or weekday propers: on other days the Sunday's are used."];
-    if(rite==="wes84o") return ["guide","Morning and Evening Prayer for the Lord's Day and the Litany from Wesley's Sunday Service (1784) are printed in full, with the book's Collect of the day and, on Sundays, the lessons of its table in the King James Version. The Psalms are cued: the book's own selection from the Psalter is not on the site yet."];
+    if(rite==="wes84o") return ["full","Morning and Evening Prayer for the Lord's Day and the Litany from Wesley's Sunday Service (1784) are printed in full, with the Psalms of the day from the book's own Select Psalms, its Collect of the day and, on Sundays and the chief feasts, the lessons of its table in the King James Version. On other days the book leaves the lessons to the Minister."];
     if(rite==="rcus") return ["full","The Regular Service on the Lord's Day, and the Holy Communion, from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) are printed in full, with the Litany. The Epistle and Gospel, the hymns and the sermon are the minister's."];
     if(rite==="rcusv") return ["full","The Evening Service from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full, with the Litany. The lessons, the hymns and the sermon are the minister's."];
     if(rite==="rcusp") return ["full","The Preparation for the Holy Communion from the Order of Worship of the Reformed Church in the United States (Mercersburg, 1866) is printed in full: the Law, the Litany, the address to the communicants, the confession and the pardon."];
@@ -4580,7 +4594,7 @@ async function renderSession(){
   }
   else if(S.type==="mass"&&S.rite==="wes84o"){
     const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;
-    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Morning and Evening Prayer · The Sunday Service of the Methodists in North America (1784)</p><div id="massGuide"></div><footer class="sesfoot"><p>John Wesley, The Sunday Service of the Methodists in North America (London, 1784), public domain, transcribed from the Internet Archive scan and checked against the 1662 Prayer Book it abridges. Wesley appointed these services for the Lord's Day and the Litany for Wednesdays and Fridays, "praying extempore on all other days". The lessons are those of the book's table, in the King James Version.</p></footer>`;
+    body=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Morning and Evening Prayer · The Sunday Service of the Methodists in North America (1784)</p><div id="massGuide"></div><footer class="sesfoot"><p>John Wesley, The Sunday Service of the Methodists in North America (London, 1784), public domain, transcribed from the Internet Archive scan and checked against the 1662 Prayer Book it abridges. Wesley appointed these services for the Lord's Day and the Litany for Wednesdays and Fridays, "praying extempore on all other days". The Psalms are Wesley's Select Psalms, read through each month; the lessons are those of the book's table, in the King James Version.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="wes84"){
     const B=await fetch("data/bcp1784.json").then(r=>r.json()), pr=window.LectPB?window.LectPB.propers(B,iso,day,DAYS):null;

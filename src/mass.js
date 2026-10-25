@@ -726,7 +726,21 @@ async function buildOrders(ctx,opts,rite){
       less["lessons:The Second Lesson"]=[cue("The Second Lesson: a chapter out of the "+(H==="m"?"Four Gospels or the Acts of the Apostles":"Epistles")+", in regular rotation."),4];
     }
     const PS=key&&B.psalms[key]&&B.psalms[key][H];
-    less["psalter:The Psalms appointed"]=[PS?cue(`The Proper Psalms for ${pr?pr.t:"the day"}: Psalm ${PS.join(", ")}.`):cue("The Psalms in order as they are appointed, from the Psalter the Sunday Service prints."),PS?PS.length*2:4];
+    if(opts.hour!=="l"){
+      const P=(await J("data/bcp1784-psalter.json")).psalter;
+      /* The Psalter is read through each month (the 1662 rule: February borrows the last day of January and the first of
+         March; the thirty-first day of a month repeats the thirtieth). The Proper Psalms take the place of the day's. */
+      const dd=toDate(iso), mo=dd.getUTCMonth()+1, dt=dd.getUTCDate(), Y=dd.getUTCFullYear(), leap=(Y%4===0&&Y%100!==0)||Y%400===0;
+      const dayN=mo===1&&dt===31?1:mo===2?dt+1:mo===3&&dt===1?(leap?1:30):dt===31?30:dt;
+      const all=Object.values(P).flatMap(x=>[...x.m,...x.e]);
+      const list=PS?PS.flatMap(n=>all.filter(x=>x.p===n)):P[String(dayN)][H];
+      let h=`<p class="cite">${PS?`The Proper Psalms for ${esc(pr?pr.t:"the day")}`:`The ${dayN}${["th","st","nd","rd"][dayN%10>3||[11,12,13].includes(dayN)?0:dayN%10]} Day: ${H==="m"?"Morning":"Evening"} Prayer`}</p>`, words=0;
+      list.forEach((ps,i)=>{
+        h+=`<h4 class="sub2">Psalm ${ps.p}${ps.part?` · ${esc(ps.part)}`:""}</h4>`+ps.v.map(([n,t])=>{ words+=t.split(/\s+/).length; return `<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`; }).join("");
+        if(i<list.length-1) h+=`<p data-r="all">Glory be to the Father, and to the Son, and to the Holy Ghost; As it was in the beginning, is now, and ever shall be, world without end. Amen.</p>`;
+      });
+      less["psalter:The Psalms appointed"]=[h,words/2.4/60];
+    }
     opts={...opts,_coll:coll,_less:less};
   }
   for(const [id,from,upto] of R.parts(opts)){

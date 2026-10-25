@@ -50,15 +50,17 @@ def main():
     for p in sorted(TEXTS.glob("bcp-*.txt")):
         out["bcp" + p.stem[len("bcp-"):]] = build(p)
     changed = []
+    for p in sorted(TEXTS.glob("bcp-*-psalter.json")):   # a book's own Psalter (Wesley's Select Psalms), kept in a file of its own
+        out["bcp" + p.stem[len("bcp-"):]] = json.loads(p.read_text(encoding="utf-8"))
     for name, d in out.items():
         js = json.dumps(d, ensure_ascii=False, separators=(",", ":"))
         f = ROOT / "data" / (name + ".json")
         if "--check" in sys.argv:
             assert f.exists() and f.read_text(encoding="utf-8") == js, f"data/{name}.json is out of date: run python3 tools/bcp_early.py"
-            assert d["hc"] and all(s["items"] for s in d["hc"]), name
+            assert name.endswith("-psalter") or (d["hc"] and all(s["items"] for s in d["hc"])), name
         else:
             f.write_text(js, encoding="utf-8"); changed.append(name)
-    print(("ok: " if "--check" in sys.argv else "wrote ") + ", ".join(f"{n} ({len(d['hc'])} steps, {len(d['propers'])} days)" for n, d in out.items()))
+    print(("ok: " if "--check" in sys.argv else "wrote ") + ", ".join(f"{n} ({len(d['hc'])} steps, {len(d['propers'])} days)" if "hc" in d else f"{n} ({len(d['psalter'])} days)" for n, d in out.items()))
     return 0
 
 
