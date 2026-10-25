@@ -6,26 +6,26 @@ const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fa
 const write=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch(e){}};
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
 let catalog,loading,days,open=false,returnHash='#today',returnScroll=0,returnFocus,routeSerial=0,input='keyboard',menu=false;
-let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio;
+let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio,guideReturn='#/sanctuary';
 let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});
 /* The Sanctuary is the default view. "Classic view" is the economical page; the choice is remembered. While the
    Sanctuary is the home view, the classic page (where the guides are drawn) wears the Sanctuary's skin. */
 let homePref=read('lect-home','sanctuary')==='classic'?'classic':'sanctuary';
 let recent=read('lect-sanctuary-recent',[]);if(!Array.isArray(recent))recent=[];
 const root=document.createElement('section');root.id='sanctuary';root.hidden=true;root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Sanctuary mode');document.body.append(root);
-const isRoute=h=>/^#\/(sanctuary|wip|t(?:\/|$)|search(?:\/|$))/.test(h);
+const isRoute=h=>/^#\/(sanctuary|study|wip|t(?:\/|$)|search(?:\/|$))/.test(h);
 returnHash=isRoute(location.hash)?'#today':location.hash||'#today';
 const glyphs={keyboard:'↑ ↓ ← → Move · Enter Select · Esc Back · / Search · S Exit',gamepad:'✚ / Left stick Move · A Select · B Back · Y Search · Start Menu',touch:'Tap a tile to explore · Back to return',mouse:'Click a tile to explore · Back to return'};
 function prompts(){const p=root.querySelector('.san-prompts');if(p)p.textContent=glyphs[input];}
 function activeInput(value){if(input!==value){input=value;prompts();}}
 function applyPrefs(){root.dataset.theme=prefs.theme;root.style.setProperty('--san-scale',String(prefs.size));write('lect-sanctuary-prefs',prefs);applySkin();}
 const bar=document.createElement('div');bar.id='san-bar';bar.setAttribute('role','navigation');bar.setAttribute('aria-label','Sanctuary');
-bar.innerHTML='<button type="button" data-bar="home">← Sanctuary</button><button type="button" data-bar="search">Search</button><button type="button" data-bar="classic">Classic view</button>';
+bar.innerHTML='<button type="button" data-bar="home">← Sanctuary</button><button type="button" data-bar="study">Study</button><button type="button" data-bar="search">Search</button><button type="button" data-bar="classic">Classic view</button><details class="san-guide-help"><summary>Guide controls</summary><p>↑ ↓ Sections · ← → Controls · Enter Select · Esc Back</p><p>Gamepad: D-pad / left stick Move · A Select · B Back · Y Search · Start Menu</p></details>';
 function applySkin(){const on=homePref==='sanctuary',r=document.documentElement;
  if(on){r.dataset.skin='sanctuary';r.dataset.skinTheme=prefs.theme;r.dataset.theme=prefs.theme==='vellum'?'light':'dark';}
  else{delete r.dataset.skin;delete r.dataset.skinTheme;delete r.dataset.theme;}
  bar.hidden=!on;const b=document.getElementById('enter-sanctuary');if(b)b.innerHTML=on?'Sanctuary <kbd>S</kbd>':'Sanctuary view <kbd>S</kbd>';}
-function setHome(v){homePref=v==='classic'?'classic':'sanctuary';write('lect-home',homePref);applySkin();}
+function setHome(v){homePref=v==='classic'?'classic':'sanctuary';write('lect-home',homePref);applySkin();startPolling();}
 function sound(){if(!prefs.sound)return;try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=380;g.gain.setValueAtTime(.025,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.07);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+.07);}catch(e){}}
 // Original geometric Christian symbols, never church insignia.
 const marks={catholic:'☧','eastern-orthodox':'✚',oriental:'✣','old-catholic':'⚓',anglican:'✥',lutheran:'✝',reformed:'☷',methodist:'✙'};
@@ -39,10 +39,10 @@ function nodeTile(n,subtitle){return tile('#/t/'+n.id,n.name,subtitle??n.kind,n.
 function shelf(title,tiles,empty=''){return `<section class="san-shelf"><h2>${esc(title)}</h2>${tiles?`<div class="san-row" aria-label="${esc(title)}">${tiles}</div>`:`<p class="san-muted">${esc(empty)}</p>`}</section>`;}
 function parentOf(n){return n&&n.parent?catalog.find(x=>x.id===n.parent):null;}
 function go(hash){if(location.hash===hash)render();else location.hash=hash;}
-function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search'||bits[0]==='wip')go('#/sanctuary');else close();}
+function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search'||bits[0]==='wip'||bits[0]==='study')go('#/sanctuary');else close();}
 function close(hash=returnHash){go(isRoute(hash)?'#today':hash||'#today');}
-function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();gameFrame=requestAnimationFrame(pollGamepad);}
-function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
+function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();startPolling();}
+function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);gameFrame=0;startPolling();menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
 function saveFocus(){const el=document.activeElement;if(root.contains(el))focusByRoute.set(previousRoute,el.dataset.route||el.dataset.pray||el.id||el.dataset.action);}
 function focus(el){if(!el)return;el.focus({preventScroll:true});el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});}
 function controls(){return [...root.querySelectorAll('button:not([disabled]),input,a[href],select,summary')].filter(e=>e.getClientRects().length);}
@@ -51,6 +51,21 @@ function move(direction){const list=controls(),cur=document.activeElement;if(!li
  const a=cur.getBoundingClientRect(),ax=a.x+a.width/2,ay=a.y+a.height/2;
  const scored=list.filter(e=>e!==cur).map(el=>{const b=el.getBoundingClientRect(),dx=b.x+b.width/2-ax,dy=b.y+b.height/2-ay;const forward=direction==='down'?dy:direction==='up'?-dy:direction==='right'?dx:-dx;const side=Math.abs(direction==='down'||direction==='up'?dx:dy);return {el,forward,score:forward+side*2};}).filter(x=>x.forward>4).sort((a,b)=>a.score-b.score);
  focus(scored[0]?.el||list[(list.indexOf(cur)+(direction==='up'||direction==='left'?-1:1)+list.length)%list.length]);sound();}
+function guideActive(){return !open&&homePref==='sanctuary'&&!document.getElementById('today')?.hidden&&!document.getElementById('session')?.hidden&&!document.querySelector('dialog[open]')&&![...document.querySelectorAll('[aria-modal="true"]')].some(e=>e!==root&&e.getClientRects().length)&&!!document.querySelector('#massGuide .mbody .mpart');}
+function guideMove(direction){
+ const parts=[...document.querySelectorAll('#massGuide .mbody .mpart')].filter(e=>e.getClientRects().length);if(!parts.length)return;
+ const active=document.activeElement,part=active?.closest('.mpart');let i=parts.indexOf(part);
+ if(i<0)i=Math.max(0,parts.findIndex(e=>e.getBoundingClientRect().bottom>100));
+ if(direction==='up'||direction==='down'){
+  if(part)i=Math.max(0,Math.min(parts.length-1,i+(direction==='up'?-1:1)));
+  const target=parts[i];target.tabIndex=-1;target.setAttribute('aria-label',target.querySelector('h3')?.textContent||'Service section');focus(target);
+ }else{
+  const list=[...parts[i].querySelectorAll('button:not([disabled]),a[href],summary,input:not([disabled]),select:not([disabled]),textarea:not([disabled])')].filter(e=>e.getClientRects().length);
+  if(!list.length){parts[i].tabIndex=-1;focus(parts[i]);return;}
+  const n=list.indexOf(active),step=direction==='left'?-1:1;focus(list[n<0?(step>0?0:list.length-1):(n+step+list.length)%list.length]);
+ }
+ sound();
+}
 async function load(){if(catalog)return;if(!loading)loading=fetch('data/traditions.json').then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json();}).then(j=>{catalog=j;}).catch(e=>{loading=null;throw e;});return loading;}
 /* The rites the guide can open, from LectApp, with the tradition each belongs to (for its emblem). */
 const RITE_FAMILY={wes84:'methodist',wes84o:'methodist',me08:'methodist',rca:'reformed',rcus:'reformed',rcusv:'reformed',rcusp:'reformed',pres:'reformed',
@@ -70,6 +85,8 @@ function wip(){const all=rites(),guide=all.filter(r=>r.cov==='guide'),order=all.
  <section class="san-shelf"><h2>Guided text · ${guide.length}</h2><ul class="san-wip">${guide.map(row).join('')}</ul></section>
  <section class="san-shelf"><h2>Order and readings · ${order.length}</h2><ul class="san-wip">${order.map(row).join('')}</ul></section>
  <section class="san-shelf"><h2>Churches and books with no service yet · ${none.length}</h2>${fams.map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f]||f)}</h3><div class="san-grid">${none.filter(n=>n.family===f).map(n=>nodeTile(n)).join('')}</div>`).join('')}</section>`;}
+const STUDY=[['compare','Compare the year','Dated readings across the calendars'],['lectionaries','Every lectionary','How the traditions arrange Scripture'],['hybrid','Hybrid proposal','Explore the proposed expanded traditional cycle'],['changes','1955 vs 1962','Compare the older Roman Holy Week and rubrics'],['office','Divine Office','Compare daily offices and their books'],['sources','Sources and coverage','Text coverage, provenance and edition limits']];
+function study(){return `<p class="san-eyebrow">Study</p><h1>Study the liturgy</h1><p class="san-lede">Compare calendars, explore the books, and check the sources.</p><div class="san-grid">${STUDY.map(([id,title,desc])=>tile(id,title,desc,'anglican','','study')).join('')}</div>`;}
 async function home(){
  if(!days){try{const r=await fetch('days.json');if(!r.ok)throw Error();days=await r.json();}catch(e){days={};}}
  const iso=today(),d=days[iso];
@@ -78,6 +95,7 @@ async function home(){
  return `<p class="san-eyebrow">A place to begin</p><h1>Sanctuary</h1><p class="san-lede">Explore traditions, find a book, and return to prayer.</p>`+
  shelf('Continue',recent.slice(0,8).map((r,i)=>tile(String(i),r.label,`${r.iso} · ${r.hour||'Mass'}`,r.family||'catholic',coverage(r),'resume')).join(''),'Your recent guides will appear here, stored only in this browser.')+
  shelf('Today · '+iso,dayTiles)+(()=>{const full=rites().filter(r=>r.cov==='full');return `<section class="san-shelf"><h2>Complete texts · ${full.length}</h2><p class="san-muted">Every word of these services is printed here.</p>${completeList(full)}</section>`+shelf('Work in progress',tile('#/wip','Not yet complete',`${rites().filter(r=>r.cov!=='full').length} rites with text still to come, and the churches with no service yet`,'catholic','WIP'));})()+shelf('Traditions',catalog.filter(n=>!n.parent).map(n=>nodeTile(n)).join(''))+
+ shelf('Study',tile('#/study','Study the liturgy','Calendars, lectionaries, comparisons and sources','anglican'))+
  shelf('Explore',tile('#/search','All churches and books','Search names, places, and editions','anglican'));
 }
 function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=parentOf(n);
@@ -98,23 +116,29 @@ async function render(){
  const shell=body=>`<header class="san-toolbar"><button data-action="back" aria-label="Back">← Back</button><button data-route="#/sanctuary">Sanctuary</button><button data-route="#/search" aria-label="Search">Search /</button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Switch to the classic view">Classic view</button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
  try{await load();if(serial!==routeSerial)return;let body;
-  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
+  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/study')body=study();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
   if(serial!==routeSerial)return;root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
   const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>(e.dataset.route||e.dataset.pray||e.id||e.dataset.action)===saved);
   if(!saved)root.scrollTop=0;
   focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash==='#/wip'?root.querySelector('.san-wip-open'):null)||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
  }catch(e){if(serial!==routeSerial)return;root.innerHTML=shell('<h1>The library could not load</h1><p>Check your connection and try again.</p><button data-action="retry">Try again</button>');focus(root.querySelector('[data-action="retry"]'));}
 }
-function launch(s,label,family){if(!s)return;const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);returnScroll=0;returnFocus=document.getElementById('tab-today');close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
+function launch(s,label,family){if(!s)return;guideReturn=location.hash;saveFocus();const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);returnScroll=0;returnFocus=bar.querySelector('[data-bar="home"]');close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
+root.addEventListener('click',e=>{const b=e.target.closest('[data-study]');if(!b)return;returnScroll=0;returnFocus=bar.querySelector('[data-bar="study"]');close('#'+b.dataset.study);document.getElementById('tab-'+b.dataset.study)?.click();});
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
 root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('click',e=>{if(e.detail===0)activeInput('keyboard');setHome('sanctuary');returnHash=location.hash||'#today';go('#/sanctuary');});
 window.addEventListener('keydown',e=>{
- if(e.altKey||e.ctrlKey||e.metaKey||(e.repeat&&e.key.toLowerCase()==='s'))return;
+ if(e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||(e.repeat&&e.key.toLowerCase()==='s'))return;
  const edit=/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)||e.target.isContentEditable;
- if(!open){if(!edit&&e.key.toLowerCase()==='s'){e.preventDefault();activeInput('keyboard');returnHash=location.hash||'#today';go('#/sanctuary');}return;}
+ if(!open){if(!edit&&e.key.toLowerCase()==='s'){e.preventDefault();activeInput('keyboard');returnHash=location.hash||'#today';go('#/sanctuary');return;}
+  if(!edit&&guideActive()){
+   if(e.key.startsWith('Arrow')){e.preventDefault();activeInput('keyboard');guideMove(e.key.slice(5).toLowerCase());}
+   else if(e.key==='Escape'||e.key==='Backspace'){e.preventDefault();go(guideReturn);}
+   else if(e.key==='/'){e.preventDefault();go('#/search');}
+  }return;}
  activeInput('keyboard');
  if(edit){if(e.target.id==='san-query'&&e.key==='ArrowDown'){e.preventDefault();focus(root.querySelector('#san-results button'));return;}if(e.key==='Escape'){e.preventDefault();back();}return;}
  if(e.key==='s'||e.key==='S'){e.preventDefault();close();}else if(e.key==='/'||e.key==='y'){e.preventDefault();go('#/search');}
@@ -123,20 +147,22 @@ window.addEventListener('keydown',e=>{
  else if(e.key==='Enter'&&e.target===root){e.preventDefault();controls()[0]?.click();}
  else if(e.key==='Tab'){const list=controls(),i=list.indexOf(document.activeElement);if((e.shiftKey&&i<=0)||(!e.shiftKey&&i===list.length-1)){e.preventDefault();focus(e.shiftKey?list.at(-1):list[0]);}}
 });
-function pollGamepad(now){if(!open)return;let pads=[];try{pads=navigator.getGamepads?.()||[];}catch(e){}const pad=[...pads].find(p=>p&&p.connected!==false);let action='';if(pad){const pressed=i=>pad.buttons[i]?.pressed;
+function startPolling(){if(!gameFrame&&(open||homePref==='sanctuary'))gameFrame=requestAnimationFrame(pollGamepad);}
+function pollGamepad(now){gameFrame=0;let pads=[];try{pads=navigator.getGamepads?.()||[];}catch(e){}const pad=[...pads].find(p=>p&&p.connected!==false);let action='';if(pad){const pressed=i=>pad.buttons[i]?.pressed;
  action=pressed(0)?'select':pressed(1)?'back':pressed(3)?'search':pressed(9)?'menu':pressed(12)||pad.axes[1]<-.55?'up':pressed(13)||pad.axes[1]>.55?'down':pressed(14)||pad.axes[0]<-.55?'left':pressed(15)||pad.axes[0]>.55?'right':'';
- if(action){activeInput('gamepad');const directional=['up','down','left','right'].includes(action);if(action!==lastGameAction||(directional&&now>=gameRepeatAt)){const changed=action!==lastGameAction;gameRepeatAt=now+(changed?360:140);if(directional)move(action);else if(action==='select')document.activeElement?.click();else if(action==='back')back();else if(action==='search')go('#/search');else {menu=!menu;render();}}}}
- lastGameAction=action;gameFrame=requestAnimationFrame(pollGamepad);
+ if(action&&(open||guideActive())){activeInput('gamepad');const directional=['up','down','left','right'].includes(action);if(action!==lastGameAction||(directional&&now>=gameRepeatAt)){const changed=action!==lastGameAction;gameRepeatAt=now+(changed?360:140);if(directional){if(open)move(action);else guideMove(action);}else if(action==='select')document.activeElement?.click();else if(action==='back'){if(open)back();else go(guideReturn);}else if(action==='search')go('#/search');else {menu=!menu;if(open)render();else go('#/sanctuary');}}}}
+ lastGameAction=action;startPolling();
 }
 window.addEventListener('lect-session',e=>{const s=e.detail;if(!s?.rite)return;const known=catalog?.find(n=>n.supported.some(v=>v.type===s.type&&v.rite===s.rite));const session={...s,label:known?.name||s.label||s.rite,family:known?.family||'catholic'};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);});
 window.addEventListener('hashchange',e=>{if(isRoute(location.hash)&&!open){try{const old=new URL(e.oldURL).hash;if(!isRoute(old))returnHash=old||'#today';}catch(err){}}render();});
 window.LectSanctuary={open:()=>go('#/sanctuary'),close};
 bar.addEventListener('click',e=>{const b=e.target.closest('[data-bar]');if(!b)return;const a=b.dataset.bar;
- if(a==='classic'){setHome('classic');return;}returnHash=location.hash||'#today';go(a==='search'?'#/search':'#/sanctuary');});
+ if(a==='classic'){setHome('classic');return;}returnHash=location.hash||'#today';go(a==='search'?'#/search':a==='study'?'#/study':'#/sanctuary');});
 document.querySelector('.wrap')?.prepend(bar);applySkin();
 /* The page script may already have written #today; the address the visitor actually opened decides. */
 const openedHash=(()=>{try{return new URL(performance.getEntriesByType('navigation')[0]?.name||location.href).hash;}catch(e){return location.hash;}})();
 if(homePref==='sanctuary'&&(!openedHash||openedHash==='#')&&!isRoute(location.hash)){returnHash=location.hash||'#today';history.replaceState(null,'','#/sanctuary');}
 if(isRoute(location.hash))render();
 window.LectSanctuary.setHome=setHome;
+startPolling();
 })();

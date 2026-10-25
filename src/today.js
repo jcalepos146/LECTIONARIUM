@@ -875,5 +875,8 @@ window.LectApp={
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
 };
+/* Sources, home and WIP all use the same coverage policy. */
+const covBody=document.getElementById('coverage-body');
+if(covBody)covBody.innerHTML=window.LectApp.rites().map(r=>`<tr><td>${esc(r.name)}</td><td>${covBadge([r.cov,r.note])}</td><td>${esc(r.note)}</td></tr>`).join('');
 loadPrefs(); S.date=todayISO(); render();
 })();

@@ -65,3 +65,9 @@ body.san-open{overflow:hidden}
 .san-wip-open{font:inherit;font-size:1.1em;background:none;border:0;color:inherit;padding:0;text-align:left;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .san-wip-fam{margin:26px 0 4px}
 .san-complete{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+:root[data-skin=sanctuary] .tabs{display:none}
+.san-guide-help{flex-basis:100%;font-size:.85rem;color:var(--muted)}
+.san-guide-help summary{cursor:pointer}
+.san-guide-help p{margin:.4rem 0}
+body:not(.in-session) .san-guide-help{display:none}
+:root[data-skin=sanctuary] .mpart:focus{outline:3px solid var(--focus);outline-offset:5px;scroll-margin-top:150px}

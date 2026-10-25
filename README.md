@@ -99,7 +99,18 @@ Backspace or gamepad B returns to the parent; `/` or gamepad Y opens Search. Sta
 opens text-size, theme, optional sound and classic-view controls. Sound starts
 off. Pray now opens the guide.
 
-Routes: `#/sanctuary`, `#/t/catholic`, `#/t/catholic/latin`, and `#/search`.
+The **Study** shelf opens calendar comparisons, the lectionary directory, the
+hybrid proposal, 1955/1962 changes, the Office overview, and Sources. Classic
+view retains the economical tab navigation. The Sources coverage table is drawn
+from the same guide inventory as the homepage and WIP page.
+
+Inside a Sanctuary guide, **Up/Down** moves through sections and **Left/Right**
+moves through the controls in the current section. **Enter** or gamepad **A**
+activates the focused control; **Escape** or **B** returns to the entry that opened
+the guide. **Y** opens Search and **Start** opens the Sanctuary menu. Text fields,
+sliders, selects and open modal tools retain their own keyboard controls.
+
+Routes: `#/sanctuary`, `#/study`, `#/t/catholic`, `#/t/catholic/latin`, and `#/search`.
 The catalog is fetched only on Sanctuary entry. Sources references are included
 in the generated HTML. Recent guides
 and Sanctuary preferences stay in localStorage; no account or analytics is used.
