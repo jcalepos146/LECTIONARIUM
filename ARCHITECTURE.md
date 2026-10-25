@@ -164,10 +164,20 @@ an inappropriate celebrant selection.
 ## Source appointments and local calendar readings
 
 `src/lectionary.js` is assembled before `mass.js`. It exposes `LectCalendar` for
-the original 1979 Eucharistic and Office appointments, ordinary Byzantine
-kathismata and Resurrection Gospels, and the shared date-scoped Bible reader.
+the current Episcopal calendar link, an explicit original 1979 Eucharistic
+option, the two-year Office appointments, Coptic Orthodox appointments,
+ordinary Byzantine kathismata and Resurrection Gospels, and the shared
+date-scoped Bible reader. Appointed Prayer Book psalms use the bundled 1979
+Psalter, whose verse numbers differ from the KJV.
 `tools/texts/bcp1979-lectionary.json` records readable source citations and PDF
 pages; `tools/bcp_lectionary.py` validates and packs the runtime JSON.
+`tools/texts/coptic-lectionary.json` stores 1,827 dates referencing 221 distinct
+day tables, with separate service/hour sections, citation provenance and three
+unresolved references. `tools/coptic_lectionary.py` validates every unflagged
+citation against the bundled Bible and packs an 83 KB runtime file. The optional
+.NET exporter in `tools/coptic-export/` reads a pinned upstream checkout; it
+serializes citation identifiers only. Neither the upstream database nor modern
+Bible/prayer/Synaxarium text enters the site. Normal builds and CI remain offline.
 Local citations use a structured localStorage key containing type, rite, hour
 and ISO date. They are never uploaded. The orders renderer selects each citation
 by its actual lesson slot, preventing a Gospel from consuming a Psalm slot or

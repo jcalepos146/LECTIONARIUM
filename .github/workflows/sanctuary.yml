@@ -47,6 +47,7 @@ jobs:
           python3 tools/bcp1928.py --check
           python3 tools/bcp1979.py --check
           python3 tools/bcp_lectionary.py --check
+          python3 tools/coptic_lectionary.py --check
           python3 tools/check_office.py breviary/mon --chant-through 2030-11-30
           python3 tools/check_office.py breviary/br55
           python3 tools/check_office.py breviary/br62

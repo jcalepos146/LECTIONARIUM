@@ -30,8 +30,17 @@ function psalmRefs(s){
  return s.split(/,\s*(?=\d+(?:\s*$|:))/).filter(t=>/^\d/.test(t)).map(t=>'Ps '+t.replace(/\s/g,''));
 }
 const readings=refs=>refs.map((cite,i)=>({lab:/^Ps /.test(cite)?'Psalm':/^(Matt|Mark|Luke|John) /.test(cite)?'Gospel':i===0?'First Lesson':'Second Lesson',cite,num:'k',tr:'kj'}));
+async function psalm79(cite,lab='Psalm'){
+ const B=await json('data/bcp1979.json'),m=/^Ps (\d+)(?::([\d,\-]+))?$/.exec(cite);
+ const P=m&&Object.values(B.psalter).flat().find(p=>(p.n==='I'?'1':p.n)===m[1]);
+ if(!P)return `<p class="note">${esc(cite)}: check the appointed Psalm in your Prayer Book.</p>`;
+ const wanted=m[2]?m[2].split(',').flatMap(s=>{const [a,b]=s.split('-').map(Number);return Array.from({length:(b||a)-a+1},(_,i)=>a+i);}):P.v.filter(([v])=>v).map(([v])=>v);
+ const verses=wanted.map(v=>P.v.find(([n])=>n===v));
+ if(verses.some(v=>!v))return `<p class="note">${esc(cite)}: the complete appointment could not be found in the bundled 1979 Psalter. Check your book.</p>`;
+ return `<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(cite)}</span></header><p class="cite">Book of Common Prayer (1979) Psalter</p><p class="scripture">${verses.map(([n,t])=>`<sup>${n}</sup> ${esc(t)}`).join(' ')}</p></section>`;
+}
 async function pb79(ctx,office=false,eve=false){
- const T=await json('data/bcp1979-lectionary.json'),B=await json('data/bcp1979.json'),d=date(ctx.iso),y=d.getUTCFullYear(),ly=y+(d>=advent(y)?1:0),cycle='ABC'[(ly+1)%3],year=ly%2?'1':'2';
+ const T=await json('data/bcp1979-lectionary.json'),B=await json('data/bcp1979.json'),d=date(ctx.iso),y=d.getUTCFullYear(),ly=y+(d>=advent(y)?1:0),cycle='ABC'[(ly+2)%3],year=ly%2?'1':'2';
  const title=window.LectPB79.day(ctx.iso,B.collects.c).title,label=pbLabel(title);
  let row,refs=[],ps=[];
  if(!office){row=Object.values(T.sunday[cycle]).find(r=>pbLabel(r.label)===label);
@@ -77,26 +86,40 @@ function byzantine(ctx,hour){
  return {src:'Byzantine Office · Psalter and Resurrection Gospel',url:'https://www.oca.org/liturgics/outlines/kathisma-readings-at-matins',note,items};
 }
 const SOURCES={
- adai:['East Syriac Qurbana','https://archive.org/details/eastsyriandailyo00macluoft','The East Syriac seasonal lectionary has not yet been transcribed and checked. Enter the lessons from your Hudra or approved calendar.'],
- copt:['Coptic Katameros','https://www.copticchurch.net/readings','Use the Katameros for the Coptic date, movable season and local commemoration. Its complete calendar has not yet been imported.'],
- arm:['Armenian Lectionary','https://armenianchurch.us/','The Armenian calendar has its own movable commemorations. Enter the readings from your church’s calendar; a Byzantine table is not substituted.'],
- a:['Ambrosian Lectionary','https://www.chiesadimilano.it/','Select the historical or current Ambrosian book you use. Its six-week Advent and reading cycles differ from the Roman calendar; no Roman fallback is used.'],
- z:['Mozarabic Liber Commicus','https://archive.org/details/missalemixtumsec00unkngoog','The historic Mozarabic lectionary differs from the Roman calendar and the modern reformed missal. Enter the citations from the edition you use.'],
- rcus:['Mercersburg Order of Worship (1866–67)','https://archive.org/details/orderofworshipfo00refo','The book appoints its own Gospel and Epistle and a separate evening lesson table. Their full transcription is still under review.'],
- rcusv:['Mercersburg evening lesson table (1867)','https://archive.org/details/orderofworshipfo00refo','Use the Evening Lessons in the book’s table, not the morning Gospel and Epistle.'],
- rcusp:['Mercersburg preparation for Communion','https://archive.org/details/orderofworshipfo00refo','This preparatory order has no additional daily lectionary of its own. Scripture selections may be entered for study.']
+ adai:['Assyrian Church of the East · current parish calendar','https://www.maryosipparish.org/documents/assyrian/propers2026.html','The linked Mar Yosip parish table covers Sundays and principal feasts in 2026. Its readings have not been imported. Enter the citations for the selected date. Ancient Church of the East and Chaldean Catholic calendars require their own source. The service text below is historical.'],
+ arm:['Armenian Apostolic Church · current Prelacy calendar','https://westernprelacy.org/daily-bible-readings/','Use the current annual readings prepared by the Eastern Prelacy. Its appointments have not been imported. Armenian Catholic and other local calendars require their own source. The service text below is historical.'],
+ a:['Archdiocese of Milan · current Ambrosian calendar','https://www.chiesadimilano.it/letture-rito-ambrosiano','Use Milan’s current dated Ambrosian readings, including its own six-week Advent and cycles. The automatic table is not yet imported. The ordinary below is historical; current calendar readings do not make it the modern approved service.'],
+ z:['Toledo · current Hispano-Mozarabic calendar','https://www.catedralprimada.es/culto/rito-hispano-mozarabe/','Use the current Missale Hispano-Mozarabicum and Liber Commicus with your church’s ordo. The Toledo link provides current rite information, not a complete daily reading table. Verified automatic readings remain to be imported. The ordinary below is historical.'],
+ rcus:['RCUS · congregation’s Scripture selections','https://rcus.org/worship/','The current RCUS Directory of Worship leaves Scripture selection to the minister and congregation. Enter their selections below. No fixed daily lectionary is prescribed here. The Mercersburg order below is historical.']
 };
+SOURCES.rcusv=SOURCES.rcusp=SOURCES.rcus;
+function calendarMode(){try{return localStorage.getItem('lect-calendar-bcp79')==='1979'?'1979':'current';}catch(e){return 'current';}}
+function currentEpiscopal(c){const [y,m]=c.iso.split('-');return {src:'Episcopal Church · current Revised Common Lectionary',url:`https://lectionary.episcopalchurch.org/${y}/${+m}`,note:'Use the current Episcopal RCL calendar for the selected date. Its automatic citations are not bundled here; enter them below. You can explicitly select the original 1979 Eucharistic table for historical study. The Daily Office continues to use the Prayer Book’s two-year table.',items:[]};}
+const COPT_HOURS={1:'Vespers',2:'Matins',4:'First Hour',5:'Third Hour',6:'Sixth Hour',7:'Ninth Hour',8:'Eleventh Hour',9:'Eve · First Hour',10:'Eve · Third Hour',11:'Eve · Sixth Hour',12:'Eve · Ninth Hour',13:'Eve · Eleventh Hour',14:'Twelfth Hour'};
+const COPT_READINGS={1:['Psalm','psalter'],2:['Gospel','gospel'],3:['Pauline Epistle','pauline'],4:['Catholic Epistle','catholic'],5:['Acts','acts'],7:['Prophecy','prophecy'],8:['Gospel','gospel']};
+function copticMode(){try{return localStorage.getItem('lect-calendar-copt')==='local'?'local':'orthodox';}catch(e){return 'orthodox';}}
+function copticItems(rows,T){return (rows||[]).flatMap(([id,refs])=>refs.map(cite=>({lab:COPT_READINGS[id][0],slot:COPT_READINGS[id][1],cite,num:T.douay.includes(cite)?'v':'k',tr:T.douay.includes(cite)?'dr':'kj',issue:T.issues[cite]||null})));}
+async function coptic(c){
+ if(copticMode()==='local')return {src:'Coptic Catholic or local church calendar',note:'Enter the readings from your church’s current calendar below. Automatic appointments have not been imported for this profile. The Bute service text below is historical.',items:[]};
+ const T=await json('data/coptic-lectionary.json'),table=T.tables[T.days[c.iso]],items=copticItems(table?.['3'],T);
+ const [y,m,d]=c.iso.split('-'),url=`https://copticchurch.net/readings?g_year=${y}&g_month=${m}&g_day=${d}`;
+ let note='Coptic Orthodox appointments, using a community-maintained Katameros snapshot for 30 November 2025–30 November 2030. Scripture uses the bundled public-domain Bibles. Local exceptions take precedence; choose the Catholic or local profile for other appointments. The Bute service text below is historical.';
+ if(!table)note+=' No verified appointments are loaded outside this date range.';
+ else if(!items.length)note+=' This snapshot has Holy Week hours rather than a separate Liturgy appointment today. Choose an hour in the calendar reader; its readings are not inserted into the historical Mass.';
+ return {src:'Coptic Orthodox Katameros',url,note,items,hours:Object.entries(table||{}).filter(([id])=>id!=='3').map(([id,rows])=>({title:COPT_HOURS[id],items:copticItems(rows,T)}))};
+}
 const storageKey=c=>'lect-lessons:'+JSON.stringify([c.type||'mass',c.rite,c.hour||'',c.iso]);
 function local(c){try{const v=JSON.parse(localStorage.getItem(storageKey(c)));return Array.isArray(v)?v:[];}catch(e){return [];}}
 function custom(c){const rows=local(c);return rows.length?{src:'Your readings for '+c.iso,note:'Citations selected on this device for this rite, hour and date. Check them against your church calendar.',items:rows}:null;}
 async function appointments(c){
- if(c.rite==='bcp79')return pb79(c,c.type==='office',/^ep/.test(c.hour||''));
+ if(c.rite==='bcp79')return c.type==='office'?pb79(c,true,/^ep/.test(c.hour||'')):calendarMode()==='1979'?pb79(c):currentEpiscopal(c);
+ if(c.rite==='copt')return coptic(c);
  if(c.rite==='byz'||/^byz[vmhc]$/.test(c.rite))return byzantine(c,c.hour||c.rite);
  if(SOURCES[c.rite]){const [src,url,note]=SOURCES[c.rite];return {src,url,note,items:[]};}
  return null;
 }
-async function html(ctx,L){let h=L?`<p class="cite">${esc(L.src)}${L.title?' · '+esc(L.title):''}</p><p class="note">${esc(L.note||'')}</p>`:'';
- for(const it of L?.items||[])h+=await ctx.readingBlock(it.lab,it.cite,it.num||'k',it.tr||'kj');
+async function html(ctx,L){let h=L?`<p class="cite">${L.url?`<a href="${esc(L.url)}" target="_blank" rel="noopener">${esc(L.src)}</a>`:esc(L.src)}${L.title?' · '+esc(L.title):''}</p><p class="note">${esc(L.note||'')}</p>`:'';
+ for(const it of L?.items||[])h+=it.issue?`<p class="note">${esc(it.lab)} · ${esc(it.cite)}: ${esc(it.issue)}</p>`:it.tr==='bcp79'?await psalm79(it.cite,it.lab):await ctx.readingBlock(it.lab,it.cite,it.num||'k',it.tr||'kj');
  return h;
 }
 async function mount(el,c,reader,reload){
@@ -104,7 +127,25 @@ async function mount(el,c,reader,reload){
  if(!el.isConnected)return;
  el.innerHTML=`<details class="lesson-calendar"><summary>Lectionary calendar and Bible</summary><p><label>Date <input type="date" class="lesson-date" min="2025-11-30" max="2030-11-30" value="${esc(c.iso)}"></label></p><p class="cite">${esc(src)}</p>${L?.url?`<p><a href="${esc(L.url)}" target="_blank" rel="noopener">Open the source calendar or book</a></p>`:''}<p class="note">${esc(L?.note||'The day’s readings are printed in the service below. Use this reader for additional passages or a local calendar’s appointments.')}</p><div class="calendar-readings"></div><form class="lesson-form"><label>Readings from your calendar, one per line <textarea rows="4" maxlength="3000" placeholder="Epistle | Rom 8:1-11\nGospel | John 6:35-40">${esc(local(c).map(r=>r.lab+' | '+r.cite).join('\n'))}</textarea></label><p class="note">Use book abbreviations such as Gen, Isa, Ps, Matt, Rom and 1 Cor. These selections are saved for this rite, hour and date on this device.</p><button type="submit">Save readings</button> <button type="button" class="lesson-clear">Clear local readings</button><p class="lesson-status" role="status"></p></form></details>`;
  const out=el.querySelector('.calendar-readings'),details=el.querySelector('details');let loaded=false;
- details.addEventListener('toggle',async()=>{if(!details.open||loaded)return;loaded=true;try{out.innerHTML=await html({readingBlock:reader},mine||L);}catch(e){loaded=false;out.textContent='Readings could not load. Close this panel and open it to retry.';}});
+ if(c.rite==='bcp79'&&c.type!=='office'){
+  out.insertAdjacentHTML('beforebegin',`<p><label>Calendar <select class="lesson-edition"><option value="current">Current Episcopal RCL · source calendar</option><option value="1979">Original 1979 Eucharistic table · historical study</option></select></label></p>`);
+  const select=el.querySelector('.lesson-edition');select.value=calendarMode();
+  select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-bcp79',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The calendar choice could not be saved.';}});
+ }
+ if(c.rite==='copt'){
+  out.insertAdjacentHTML('beforebegin','<p><label>Church calendar <select class="lesson-church"><option value="orthodox">Coptic Orthodox · Katameros snapshot</option><option value="local">Coptic Catholic or local calendar · enter citations</option></select></label></p>');
+  const select=el.querySelector('.lesson-church');select.value=copticMode();
+  select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-copt',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The church calendar choice could not be saved.';}});
+ }
+ if(L?.hours?.length)out.insertAdjacentHTML('beforebegin',`<p><label>Readings <select class="lesson-hour"><option value="">Liturgy${mine?' · your selections':''}</option>${L.hours.map((h,i)=>`<option value="${i}">${esc(h.title)}</option>`).join('')}</select></label></p>`);
+ let renderVersion=0;
+ async function show(){const version=++renderVersion;try{const hour=el.querySelector('.lesson-hour')?.value,H=hour?L.hours[+hour]:null;
+   let selected=H?{...L,...H}:mine||L;
+   if(selected?.psalms?.length){const ps=selected.psalms.map(cite=>({lab:'Appointed Psalm',cite,tr:'bcp79'}));selected={...selected,items:c.type==='office'?[...ps,...selected.items]:[...selected.items.slice(0,1),...ps,...selected.items.slice(1)]};}
+   const content=await html({readingBlock:reader},selected);if(version===renderVersion&&el.isConnected)out.innerHTML=content;
+  }catch(e){loaded=false;if(version===renderVersion)out.textContent='Readings could not load. Close this panel and open it to retry.';}}
+ details.addEventListener('toggle',()=>{if(!details.open||loaded)return;loaded=true;show();});
+ el.querySelector('.lesson-hour')?.addEventListener('change',show);
  el.querySelector('.lesson-date').addEventListener('change',e=>{if(e.target.checkValidity()&&e.target.value)window.LectApp.follow({...c,iso:e.target.value});});
  el.querySelector('form').addEventListener('submit',async e=>{e.preventDefault();const status=el.querySelector('.lesson-status'),lines=el.querySelector('textarea').value.split('\n').map(x=>x.trim()).filter(Boolean),rows=[];
   if(lines.length>12){status.textContent='Use at most 12 readings per service.';return;}
@@ -117,5 +158,5 @@ async function mount(el,c,reader,reload){
  });
  el.querySelector('.lesson-clear').addEventListener('click',()=>{try{localStorage.removeItem(storageKey(c));reload();}catch(e){el.querySelector('.lesson-status').textContent='Local storage is unavailable.';}});
 }
-window.LectCalendar={pb79,byzantine,appointments,custom,html,mount,officeKey,psalmRefs};
+window.LectCalendar={pb79,psalm79,byzantine,appointments,custom,html,mount,officeKey,psalmRefs};
 })();

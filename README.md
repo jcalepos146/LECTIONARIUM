@@ -50,7 +50,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Reformed: Reformed Church in America Liturgy (1882) | **Complete text**: the Order of Public Worship, with the Lord's Supper in the Form of Dort and the lessons of the day from the book's Order of Scripture Lessons | Not yet |
 | Reformed: Order of Worship, Reformed Church in the U.S. (Mercersburg, 1866) | **Complete text**: the Regular Service (Morning and Evening) with the Litany, the Holy Communion and its Preparation (the lessons, hymns and sermon are the minister's) | **Complete text**: the Evening Service |
 | Liturgy of Adai and Mari (Assyrian and Ancient Church of the East; Chaldean Catholic) | *Guided*: the Holy Qurbana in full in the English of the Archbishop of Canterbury's Assyrian Mission (1893), with the karuzuthas, anthems, the priest's private prayers and the translators' notes; lections cued | Not yet |
-| Coptic Liturgy of St Basil (Coptic Orthodox; Coptic Catholic) | *Guided*: the Liturgy in full in the Marquis of Bute's English (1882, reissued 1908), with the incense, the litanies, the priest's private prayers and Bute's notes on Catholic and Orthodox use; lessons from the Katameros are cued | Not yet |
+| Coptic Liturgy of St Basil (Coptic Orthodox; Coptic Catholic) | *Guided*: the Liturgy in full in the Marquis of Bute's English (1882, reissued 1908), with the incense, the litanies, the priest's private prayers and Bute's notes on Catholic and Orthodox use; current Coptic Orthodox Katameros readings included for the supported dates; local and Catholic appointments require your church calendar | Not yet |
 | Armenian Divine Liturgy (Armenian Apostolic; Armenian Catholic) | *Guided*: the Divine Liturgy in full in the English of 1908, with the vesting, litanies and the priest's private prayers; lessons from the Armenian lectionary are cued | Not yet |
 | Methodist: Wesley's Sunday Service (1784); Ritual of the Methodist Episcopal Church (1908) | **Complete text**: the Lord's Supper of both books, with the Sunday Service's own collects, epistles and gospels | **Complete text**: Wesley's Morning and Evening Prayer for the Lord's Day and the Litany, with his Select Psalms for the day of the month, the book's collects and its Sunday lessons |
 | Lutheran: Common Service Book (1917-19) | **Complete text**: The Service with the Introit, Collect, Epistle, Gradual and Gospel of the day (lessons the book only cites come from the King James Version) | **Complete text**: Matins, Vespers, the Litany and the Suffrages, with the collect of the day (the psalms, hymn and lessons are the minister's) |
@@ -59,7 +59,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Prayer Book 1662 (England) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | See Ordinariate: 1662 Mattins and Evensong |
 | Prayer Book 1789, 1892 (USA) | *Guided*: the Order for the Administration of the Lord's Supper in full; collect, epistle and gospel of the day are cited | Not yet |
 | Prayer Book 1928 (USA) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | **Complete text**: Morning and Evening Prayer, Coverdale psalms of the day; lessons from your lectionary |
-| Prayer Book 1979 (USA) | *Guided*: the Holy Eucharist in full (Rite One or Two, Prayers I and A to D, Prayers of the People), collect and preface of the day; original 1979 three-year readings in the KJV (distinct from the RCL) | *Guided*: Morning and Evening Prayer with two-year Office lessons and appointed psalms in the KJV; Noonday and Compline retain their fixed short lessons |
+| Prayer Book 1979 (USA) | *Guided*: the Holy Eucharist in full (Rite One or Two, Prayers I and A to D, Prayers of the People), collect and preface of the day; current Episcopal RCL linked for citation entry; original 1979 readings available as an explicit historical study option | *Guided*: Morning and Evening Prayer with two-year Office lessons in the KJV and appointed psalms from the 1979 Psalter; Noonday and Compline retain their fixed short lessons |
 
 The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 
@@ -244,7 +244,15 @@ proper approved Hours. Lay people are not assigned that clerical obligation.
 ## Lectionary calendar and Bible
 
 Each guide has a date picker and local Bible reader. The 1979 guides now include
-the historical three-year Eucharistic and two-year Office lectionaries; Hapgood
+the current Episcopal RCL calendar link and an explicit original 1979 Eucharistic option, plus the two-year Office lectionary; Hapgood
 Vespers and Matins have ordinary kathisma appointments and Sunday Resurrection
 Gospels. Calendar and translation limits, source provenance, and the remaining
 imports are tracked in [the lectionary implementation notes](docs/lectionaries.md).
+
+The Coptic reader uses a citation-only Katameros snapshot for all 1,827 supported
+dates. It keeps Liturgy appointments separate from Matins, Vespers and Holy Week
+hours, flags unresolved source references, and renders the existing public-domain
+Bible texts. Current church sources are linked for Armenian, Assyrian, Ambrosian
+and Hispano-Mozarabic calendars; their full automatic tables remain unfinished.
+The current RCUS profile accepts the congregation’s selections without imposing
+a fixed calendar. See [calendar provenance and remaining work](docs/lectionaries.md).

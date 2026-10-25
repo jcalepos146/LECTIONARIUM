@@ -310,15 +310,16 @@ class SanctuaryTests(unittest.TestCase):
         self.open()
         values=self.page.evaluate('''async()=>{
           const get=(iso,office=false,eve=false)=>LectCalendar.pb79({iso},office,eve);
-          return [await get('2026-11-29'),await get('2026-11-29',true),await get('2026-10-25',true),await get('2026-10-25',true,true),await get('2026-04-03'),await get('2026-04-05')];
+          return [await get('2025-11-30'),await get('2026-11-29',true),await get('2026-10-25',true),await get('2026-10-25',true,true),await get('2026-04-03'),await get('2026-04-05')];
         }''')
         self.assertIn('Year A',values[0]['src']);self.assertIn('Year 1',values[1]['src'])
         self.assertEqual([r['cite'] for r in values[0]['items']],['Isa 2:1-5','Rom 13:8-14','Matt 24:37-44'])
         self.assertEqual([r['cite'] for r in values[2]['items']],['Sir 18:19-33','Matt 18:15-20'])
         self.assertEqual([r['cite'] for r in values[3]['items']],['1 Cor 10:15-24'])
         self.assertEqual(values[4]['items'][-1]['cite'],'John 18:1-40;19:1-37')
-        self.assertEqual(values[5]['items'][-1]['cite'],'Luke 24:1-10')
-        self.page.evaluate("LectApp.follow({type:'mass',rite:'bcp79',iso:'2026-11-29'})")
+        self.assertEqual(values[5]['items'][-1]['cite'],'John 20:1-10,11-18')
+        self.page.evaluate("localStorage.setItem('lect-calendar-bcp79','1979')")
+        self.page.evaluate("LectApp.follow({type:'mass',rite:'bcp79',iso:'2025-11-30'})")
         self.page.locator('.mbody .reading').first.wait_for()
         self.assertIn('Isa 2:1-5',self.page.locator('.mbody').inner_text())
         self.assertEqual(self.page.locator('.mbody .reading .scripture').count(),4)
@@ -331,17 +332,17 @@ class SanctuaryTests(unittest.TestCase):
         self.assertIn('No text found',panel.locator('[role="status"]').inner_text())
         panel.locator('textarea').fill('Gospel | John 1:1-14\nActs | Acts 2:1-11\nCatholic Epistle | Jas 1:1-12\nPsalm | Ps 23\nPauline Epistle | Rom 8:1-11')
         panel.get_by_role('button',name='Save readings',exact=True).click()
-        self.page.wait_for_function("document.querySelectorAll('.mbody .reading').length===5")
+        self.page.wait_for_function("document.querySelector('.mbody .reading .rc')?.textContent==='Rom 8:1-11'")
         self.assertEqual(self.page.locator('.mbody .reading .rc').all_inner_texts(),['Rom 8:1-11','Jas 1:1-12','Acts 2:1-11','Ps 23','John 1:1-14'])
-        self.page.locator('#nextDay').click();self.page.wait_for_function("LectApp.current().iso==='2026-10-26' && document.querySelector('.mbody .mpart')")
-        self.assertEqual(self.page.locator('.mbody .reading').count(),0)
+        self.page.locator('#nextDay').click();self.page.wait_for_function("LectApp.current().iso==='2026-10-26' && document.querySelector('.mbody .reading .rc')?.textContent==='Heb 4:14-16'")
+        self.assertEqual(self.page.locator('.mbody .reading .rc').all_inner_texts(),['Heb 4:14-16','Heb 5:1-14','1 Pet 1:1-9','Acts 12:1-24','Ps 110:4,5,7','Matt 16:13-19'])
         self.page.evaluate("LectApp.follow({type:'mass',rite:'arm',iso:'2026-10-25'})")
         self.page.wait_for_function("document.querySelector('.mbody .mpart') && document.querySelector('.crumbs').textContent.includes('Armenian')")
         self.assertEqual(self.page.locator('.mbody .reading').count(),0)
         self.page.evaluate("LectApp.follow({type:'mass',rite:'copt',iso:'2026-10-25'})")
-        self.page.wait_for_function("document.querySelectorAll('.mbody .reading').length===5")
+        self.page.wait_for_function("document.querySelector('.mbody .reading .rc')?.textContent==='Rom 8:1-11'")
         self.page.locator('#lessonCalendar summary').click();self.page.locator('.lesson-clear').click()
-        self.page.wait_for_function("document.querySelector('.mbody .mpart') && !document.querySelector('.mbody .reading')")
+        self.page.wait_for_function("document.querySelector('.mbody .reading .rc')?.textContent==='1 Cor 16:12-24'")
 
     def test_byzantine_bright_week_and_sunday_gospel(self):
         self.open()

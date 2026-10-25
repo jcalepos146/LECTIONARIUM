@@ -8,3 +8,7 @@ tools/cache/
 tools/breviary/
 
 node_modules/
+
+# Optional .NET citation exporter build output
+tools/coptic-export/bin/
+tools/coptic-export/obj/
