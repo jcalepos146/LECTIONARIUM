@@ -1,6 +1,6 @@
 # ✠ Lectionarium
 
-**The Eucharist and the daily office of every Christian tradition, Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed and Methodist, for any day of the year, each with its own lectionary's Bible readings: printed in full where the texts are free to print, guided by citation where they are not.**
+**The Eucharist and the daily office of every Christian tradition, Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed and Methodist, for any day in the supported calendar, with sourced lectionary readings where implemented and clearly marked gaps: printed in full where the texts are free to print, guided by citation where they are not.**
 
 👉 **https://jcalepos146.github.io/LECTIONARIUM/**
 
@@ -59,7 +59,7 @@ Every rite is labelled in the app so you know before you open it what it prints.
 | Prayer Book 1662 (England) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | See Ordinariate: 1662 Mattins and Evensong |
 | Prayer Book 1789, 1892 (USA) | *Guided*: the Order for the Administration of the Lord's Supper in full; collect, epistle and gospel of the day are cited | Not yet |
 | Prayer Book 1928 (USA) | **Complete text**: Holy Communion with the collect, epistle and gospel of the day | **Complete text**: Morning and Evening Prayer, Coverdale psalms of the day; lessons from your lectionary |
-| Prayer Book 1979 (USA) | *Guided*: the Holy Eucharist in full (Rite One or Two, Prayers I and A to D, Prayers of the People), collect and preface of the day; lessons from the RCL | **Complete text**: Morning and Evening Prayer (Rites One and Two), Noonday, Compline, with the 1979 Psalter |
+| Prayer Book 1979 (USA) | *Guided*: the Holy Eucharist in full (Rite One or Two, Prayers I and A to D, Prayers of the People), collect and preface of the day; original 1979 three-year readings in the KJV (distinct from the RCL) | *Guided*: Morning and Evening Prayer with two-year Office lessons and appointed psalms in the KJV; Noonday and Compline retain their fixed short lessons |
 
 The comparison tabs (Compare the year, Every lectionary, Hybrid, 1955 vs 1962, Divine Office) are reference tables of citations.
 
@@ -229,3 +229,11 @@ current Vatican text. These are Latin Code citations; Eastern Catholic use also
 requires its applicable law and approved books. A shortened or historical
 Office guide does not certify fulfillment of a cleric’s obligation to pray the
 proper approved Hours. Lay people are not assigned that clerical obligation.
+
+## Lectionary calendar and Bible
+
+Each guide has a date picker and local Bible reader. The 1979 guides now include
+the historical three-year Eucharistic and two-year Office lectionaries; Hapgood
+Vespers and Matins have ordinary kathisma appointments and Sunday Resurrection
+Gospels. Calendar and translation limits, source provenance, and the remaining
+imports are tracked in [the lectionary implementation notes](docs/lectionaries.md).

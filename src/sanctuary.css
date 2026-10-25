@@ -65,3 +65,9 @@ body.san-open{overflow:hidden}
 .san-wip-open{font:inherit;font-size:1.1em;background:none;border:0;color:inherit;padding:0;text-align:left;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .san-wip-fam{margin:26px 0 4px}
 .san-complete{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+/* The calendar reader follows the guide's active palette and fits narrow screens. */
+.lesson-calendar { margin:1rem 0; padding:1rem; border:1px solid var(--line,#999); border-radius:.5rem; }
+.lesson-calendar summary { cursor:pointer; font-weight:bold; }
+.lesson-calendar textarea { display:block; box-sizing:border-box; width:100%; max-width:100%; margin:.5rem 0; font:inherit; }
+.lesson-calendar input[type=date] { max-width:100%; font:inherit; }
+.lesson-calendar .reading { margin:1rem 0; }
