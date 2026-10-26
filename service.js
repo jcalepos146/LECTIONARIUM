@@ -749,7 +749,7 @@ const PB_BOOKS={
     notSaid:[], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
   /* The Scottish Liturgy (1929): its own seasons of Proper Prefaces (Advent, Lent, Passiontide, Maundy Thursday and
      the Scottish saints' days), picked by date; the 1662 propers stand in for the Scottish Book's own. */
-  bcp29:{file:"data/bcp-hc.json", part:"bcp1929", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
+  bcp29:{file:"data/bcp1929.json", showNotes:true, decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
     collectAt:/^Let us pray\.$/, epistleAt:/^Then the Presbyter, or some other Presbyter or Deacon, turning to the people, shall read the Epistle/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["General Rubrics","The Order for a Second Consecration","Post-Communions","Collects","Exhortations"], prefaceHead:p=>p, prefaceFn:scotPreface},
   bcp18:{file:"data/bcp-hc.json", part:"bcp1918", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
@@ -769,7 +769,13 @@ async function buildPB(ctx,opts,book){
   const set=pr?pr.sets[0]:null, same=pr&&pr.same?PBk.propers[pr.same]:null;
   const collect=set&&set.collect.length?set.collect:(same?same.sets[0].collect:[]);
   const AB=opts.abridge||0, out=[];
-  const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
+  /* r.head: the book's own heading ("The Lesson", for a reading from the Old Testament, the Acts or the Revelation in the
+     Epistle's place); r.alt: the reading the book gives as "Or this". */
+  const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(r.head?r.head.replace(/^The /,""):lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`+
+    (r.alt?`<details class="fold"><summary>Or this ${esc((r.alt.head||lab).replace(/^The /,""))}: ${esc(r.alt.cite)}</summary><div class="rtext">${r.alt.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></details>`:""):cue(`The ${lab} of the day, from the Prayer Book.`);
+  /* the book's optional collects and anthems for the day (an Additional Collect for Christmastide) and its rubrics */
+  const extras=set&&set.extra?set.extra.filter(e=>!/^At Morning Prayer/.test(e.head)).map(e=>`<details class="fold"><summary>${esc(e.head)}</summary>${e.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")}</details>`).join(""):"";
+  const dayNotes=C.showNotes&&pr&&pr.notes?pr.notes.map(n=>`<p class="note">${esc(n)}</p>`).join(""):"";
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
   /* Wesley prints the proper prefaces for the feast itself only, not its octave. */
   const d0=toDate(iso), off0=fromEaster(d0);
@@ -793,7 +799,7 @@ async function buildPB(ctx,opts,book){
     }
     if(st.slot==="collect"){
       const its=st.items, k=C.collectBeforeEpistle?at(its,C.epistleAt)-1:at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
-      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}${PBk!==B?" · from the 1662 table, which this book follows; its own wording differs in places":""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
+      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}${PBk!==B?" · from the 1662 table, which this book follows; its own wording differs in places":""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")+dayNotes+extras:cue("The Collect of the Day, from the Prayer Book.");
       const ep=AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec");
       html=its.slice(0,k+1).map(pbItem).join("")+coll+its.slice(k+1,ke+1).map(pbItem).join("")+ep+its.slice(ke+1).map(pbItem).join("");
       secs+=(collect.length?collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));

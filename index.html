@@ -1047,7 +1047,7 @@ window.LitDate=(()=>{
    first time a service is opened and in the background once the page is idle. The standalone build inlines them,
    so service() resolves at once. */
 window.LectLoad=(()=>{
- const url="service.js?v=12334e8b7d"; let p=null;
+ const url="service.js?v=74855a5022"; let p=null;
  function service(){
   if(window.LectMass||!url) return Promise.resolve();
   return p||(p=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=url; s.onload=()=>res(); s.onerror=()=>{ p=null; s.remove(); rej(new Error("The service code could not load.")); }; document.head.appendChild(s); }));
