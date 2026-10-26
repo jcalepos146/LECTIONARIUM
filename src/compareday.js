@@ -11,19 +11,23 @@ const shift=(iso,n)=>new Date(Date.parse(iso+"T00:00:00Z")+n*864e5).toISOString(
 const tcase=t=>String(t||"").toLowerCase().replace(/(^|\s)\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And|To|Our|With)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
 const R=(lab,cite,num,tr)=>({lab,cite,num:num||"k",tr:tr||"kj"});
 
+/* A lectionary of the shared layer (LectCalendar.fromTable): its own calendar's lessons, ignoring a local choice. */
+async function table(rite,iso){ const L=window.LectCalendar.TABLES[rite]; if(!L) return null;
+  const T=await J(L.file), K=L.calendar(iso), reads=[], names=[];
+  for(const k of K.keys){ let D=T.days[k]; if(!D) continue; names.push(D.t); if(D.as) D={...T.days[D.as],t:D.t};
+    for(const [col,cite,ver] of D.r||[]){ const dr=(ver||L.tr)==="dr"; reads.push(R(T.cols[col],cite,dr?"v":L.num,dr?"dr":"kj")); } }
+  return {name:names.join(" · ")+(names.length&&K.weekday?" (the Sunday's lessons)":""),reads,note:reads.length?"":K.empty}; }
 /* Each source: tradition, book, the rite it opens, and a function giving {name, reads, note} for a date. */
 const SOURCES=[
  {fam:"catholic",book:"Roman Missal · Lectionary for Mass",rite:"n",get:async(iso,day)=>day.n&&{name:day.n.t,reads:(day.n.r||[]).map(x=>R(x[0],x[1],"n","dr"))}},
  {fam:"catholic",book:"Divine Worship: The Missal (Ordinariate)",rite:"o",get:async(iso,day)=>day.o&&{name:day.o.s&&/Divine Worship:/.test(day.o.s)?day.o.s.replace(/^Divine Worship: /,""):day.o.t,reads:(day.o.r||[]).map(x=>R(x[0],x[1],"n","kj")),same:"n"}},
  {fam:"catholic",book:"Roman Missal of 1962",rite:"m",get:async(iso,day)=>day.m&&{name:day.m.t,reads:(day.m.r||[]).map(x=>R(x[0],x[1],x[2]||"v","dr"))}},
  {fam:"catholic",book:"Roman Missal before 1955",rite:"p",get:async(iso,day)=>day.p&&{name:day.p.t,reads:(day.p.r||[]).map(x=>R(x[0],x[1],x[2]||"v","dr")),same:"m"}},
- {fam:"catholic",book:"Ambrosian Missal of 1954 (Milan)",rite:"a",get:async iso=>{const L=await window.LectCalendar.ambrosian({rite:"a",type:"mass",iso});
-   return L&&{name:L.title||"",reads:(L.items||[]).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items.length?"":L.note};}},
+ {fam:"catholic",book:"Ambrosian Missal of 1954 (Milan)",rite:"a",get:iso=>table("a",iso)},
  {fam:"eastern-orthodox",book:"Byzantine Apostol and Gospel",rite:"b",get:async(iso,day)=>day.b&&{name:[day.b.t,day.b.s].filter(Boolean).join(" · "),reads:(day.b.r||[]).map(x=>R(x[0],x[1],"n","dr"))}},
  {fam:"oriental",book:"Coptic Orthodox Katameros",rite:"copt",get:async iso=>{const L=await window.LectCalendar.appointments({rite:"copt",type:"mass",iso});
    const nm=(window.LectApp.dayNames(iso,{})||[]).find(x=>x.fam==="oriental");return L&&{name:nm?nm.name:"",reads:(L.items||[]).filter(x=>!x.issue).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items&&!L.items.length?"No Liturgy appointment in the snapshot for this date.":""};}},
- {fam:"oriental",book:"Church of the East · Maclean's lectionary (1894)",rite:"adai",get:async iso=>{const L=await window.LectCalendar.eastSyriac({rite:"adai",type:"mass",iso});
-   return L&&{name:L.title||"",reads:(L.items||[]).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items.length?"":"No lessons are appointed in the Liturgy for this day."};}},
+ {fam:"oriental",book:"Church of the East · Maclean's lectionary (1894)",rite:"adai",get:iso=>table("adai",iso)},
  {fam:"anglican",book:"Book of Common Prayer 1662",rite:"bcp62",get:async(iso,day,days)=>pb("data/bcp1662.json",iso,day,days)},
  {fam:"anglican",book:"Book of Common Prayer 1928 (USA)",rite:"bcp28",get:async(iso,day,days)=>pb("data/bcp1928.json",iso,day,days)},
  {fam:"anglican",book:"Book of Common Prayer 1979 (USA) · original Eucharistic table",rite:"bcp79",get:async iso=>{const L=await window.LectCalendar.pb79({rite:"bcp79",type:"mass",iso});

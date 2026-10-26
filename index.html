@@ -1923,16 +1923,6 @@ function esyDay(isoS){
  }
  return keys;
 }
-async function eastSyriac(c){
- if((()=>{try{return localStorage.getItem('lect-calendar-adai')==='local';}catch(e){return false;}})()){const [src,url,note]=SOURCES.adai;return {src,url,note,items:[]};}
- const T=await json('data/eastsyriac-1894.json'),keys=esyDay(c.iso),items=[],names=[];
- const LAB={law:'The Law',proph:'The Prophecy',acts:'The Acts',ap:'The Apostle',gos:'The Gospel'};
- for(const k of keys){let D=T.days[k];if(!D)continue;names.push(D.t);if(D.as)D={...T.days[D.as],t:D.t};
-  for(const col of ['law','proph','acts','ap','gos'])for(const cite of D[col]||[]){const dr=cite.endsWith('*');
-   items.push({lab:LAB[col],cite:cite.replace('*',''),num:dr?'v':'k',tr:dr?'dr':'kj',slot:col==='gos'?'gospel':'lessons'});}}
- const note='The lessons of the Liturgy in A. J. Maclean’s East Syrian Daily Offices (1894), from the Urmi Lectionary of 1889, set on the Gregorian calendar with Gregorian Easter as the Assyrian Church of the East now keeps it. The Ancient Church of the East and the Chaldean Catholic Church keep other calendars, and current parish tables have revised some lessons: choose the local calendar to enter them.'+(names.length?'':' No lessons are appointed in the Liturgy for this day.');
- return {src:'East Syrian Lectionary · Maclean 1894',url:'https://archive.org/details/eastsyriandailyo00macluoft/page/264',title:names.join(' · '),note,items};
-}
 /* The Ambrosian year of the 1954 Missal: six Sundays of Advent from the second Sunday before the Roman Advent; the Sundays
    after Pentecost until the Beheading of St John (29 August), then the Sundays after the Beheading, the Sundays of October
    (the third is the Dedication of the Cathedral) and the Sundays after the Dedication; the last Sunday of October is Christ
@@ -1963,21 +1953,44 @@ function ambDay(isoS){
   return null;})();
  return [key,dow!==0];
 }
-async function ambrosian(c){
- if((()=>{try{return localStorage.getItem('lect-calendar-a')==='current';}catch(e){return false;}})()){const [src,url,note]=SOURCES.a;return {src,url,note,items:[]};}
- const T=await json('data/ambrosian-1954.json'),[k,weekday]=ambDay(c.iso),D=k&&T.days[k];
- const note='The lessons of the Ambrosian Missal of 1954 (the last edition before the reform), on its own calendar: '+T.method+(weekday?' This weekday takes the lessons of the Sunday.':'');
- if(!D)return {src:'Ambrosian Missal · 1954',url:T.url,note:k===null&&new Date(c.iso+'T00:00:00Z').getUTCDay()===5?'The Fridays of Lent are aliturgical in the Ambrosian rite: no Mass is said.':'The 1954 Missal has no proper lessons for this day in the table here: the Mass of the saint or a votive Mass is said.',items:[]};
- return {src:'Ambrosian Missal · 1954',url:T.url,title:D.t+(weekday?' (the Sunday)':''),note,items:D.r.map(([lab,cite])=>({lab:T.cols[lab],cite,num:'v',tr:'dr',slot:lab==='gos'?'gospel':'lessons'}))};
+/* ---------------------------------------------------------------- the shared lectionary layer
+   A lectionary is a table and a calendar. The table (data/<name>.json) has one shape for every tradition:
+     {source, url, method?, cols:{col: label}, days:{key: {t: title, r: [[col, cite, "dr"?], ...], as?: key}}}
+   where a third element "dr" reads that lesson in the Douay-Rheims with Vulgate numbering, and "as" borrows the
+   lessons of another day under this day's own title. The calendar is a function iso → {keys, weekday?, empty?}
+   naming the day's keys (several when two observances meet), whether a weekday takes its Sunday's lessons, and
+   what to say when there are none. A church whose current calendar is not bundled offers it as a choice: SOURCES
+   holds that calendar's link and note, and the choice is kept in localStorage under "lect-calendar-<rite>". */
+const TABLES={
+ adai:{file:'data/eastsyriac-1894.json', src:'East Syrian Lectionary · Maclean 1894', num:'k', tr:'kj',
+  calendar:iso=>({keys:esyDay(iso), empty:'No lessons are appointed in the Liturgy for this day.'}),
+  note:()=>'The lessons of the Liturgy in A. J. Maclean’s East Syrian Daily Offices (1894), from the Urmi Lectionary of 1889, set on the Gregorian calendar with Gregorian Easter as the Assyrian Church of the East now keeps it. The Ancient Church of the East and the Chaldean Catholic Church keep other calendars, and current parish tables have revised some lessons: choose the local calendar to enter them.',
+  choice:{alt:'local', options:[['maclean','Church of the East · Maclean’s lectionary (1894)'],['local','Current parish or Chaldean calendar · enter citations']]}},
+ a:{file:'data/ambrosian-1954.json', src:'Ambrosian Missal · 1954', num:'v', tr:'dr',
+  calendar:iso=>{const [k,weekday]=ambDay(iso);return {keys:k?[k]:[],weekday,empty:k===null&&date(iso).getUTCDay()===5?'The Fridays of Lent are aliturgical in the Ambrosian rite: no Mass is said.':'The 1954 Missal has no proper lessons for this day in the table here: the Mass of the saint or a votive Mass is said.'};},
+  note:T=>'The lessons of the Ambrosian Missal of 1954 (the last edition before the reform), on its own calendar: '+T.method,
+  choice:{alt:'current', options:[['1954','Ambrosian Missal of 1954 · historical table'],['current','Current Ambrosian calendar (Milan) · enter citations']]}}
+};
+const choiceOf=rite=>{const C=TABLES[rite]?.choice;if(!C)return null;try{return localStorage.getItem('lect-calendar-'+rite)===C.alt?C.alt:C.options[0][0];}catch(e){return C.options[0][0];}};
+/* The day's lessons from a table: {src, url, title, note, items:[{lab, cite, num, tr, slot}]} */
+async function fromTable(rite,c){
+ const L=TABLES[rite];
+ if(L.choice&&choiceOf(rite)===L.choice.alt){const [src,url,note]=SOURCES[rite];return {src,url,note,items:[]};}
+ const T=await json(L.file),K=L.calendar(c.iso),items=[],names=[];
+ for(const k of K.keys){let D=T.days[k];if(!D)continue;names.push(D.t);if(D.as)D={...T.days[D.as],t:D.t};
+  for(const [col,cite,ver] of D.r||[]){const dr=(ver||L.tr)==='dr';items.push({lab:T.cols[col],cite,num:dr?'v':L.num,tr:dr?'dr':'kj',slot:/^gos/.test(col)?'gospel':'lessons'});}}
+ const title=names.join(' · ')+(names.length&&K.weekday?' (the Sunday)':'');
+ const note=L.note(T)+(K.weekday&&names.length?' This weekday takes the lessons of the Sunday.':'')+(names.length?'':' '+K.empty);
+ return {src:L.src,url:T.url,title,note:note.trim(),items};
 }
+const eastSyriac=c=>fromTable('adai',{...c,rite:'adai'}), ambrosian=c=>fromTable('a',{...c,rite:'a'});
 const storageKey=c=>'lect-lessons:'+JSON.stringify([c.type||'mass',c.rite,c.hour||'',c.iso]);
 function local(c){try{const v=JSON.parse(localStorage.getItem(storageKey(c)));return Array.isArray(v)?v:[];}catch(e){return [];}}
 function custom(c){const rows=local(c);return rows.length?{src:'Your readings for '+c.iso,note:'Citations selected on this device for this rite, hour and date. Check them against your church calendar.',items:rows}:null;}
 async function appointments(c){
  if(c.rite==='bcp79')return c.type==='office'?pb79(c,true,/^ep/.test(c.hour||'')):calendarMode()==='1979'?pb79(c):currentEpiscopal(c);
  if(c.rite==='copt')return coptic(c);
- if(c.rite==='adai')return eastSyriac(c);
- if(c.rite==='a')return ambrosian(c);
+ if(TABLES[c.rite])return fromTable(c.rite,c);
  if(c.rite==='byz'||/^byz[vmhc]$/.test(c.rite))return byzantine(c,c.hour||c.rite);
  if(SOURCES[c.rite]){const [src,url,note]=SOURCES[c.rite];return {src,url,note,items:[]};}
  return null;
@@ -1996,15 +2009,11 @@ async function mount(el,c,reader,reload){
   const select=el.querySelector('.lesson-edition');select.value=calendarMode();
   select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-bcp79',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The calendar choice could not be saved.';}});
  }
- if(c.rite==='adai'){
-  out.insertAdjacentHTML('beforebegin','<p><label>Church calendar <select class="lesson-church"><option value="maclean">Church of the East · Maclean’s lectionary (1894)</option><option value="local">Current parish or Chaldean calendar · enter citations</option></select></label></p>');
-  const select=el.querySelector('.lesson-church');try{select.value=localStorage.getItem('lect-calendar-adai')==='local'?'local':'maclean';}catch(e){}
-  select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-adai',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The church calendar choice could not be saved.';}});
- }
-  if(c.rite==='a'){
-  out.insertAdjacentHTML('beforebegin','<p><label>Calendar <select class="lesson-church"><option value="1954">Ambrosian Missal of 1954 · historical table</option><option value="current">Current Ambrosian calendar (Milan) · enter citations</option></select></label></p>');
-  const select=el.querySelector('.lesson-church');try{select.value=localStorage.getItem('lect-calendar-a')==='current'?'current':'1954';}catch(e){}
-  select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-a',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The calendar choice could not be saved.';}});
+ if(TABLES[c.rite]?.choice){
+  const C=TABLES[c.rite].choice;
+  out.insertAdjacentHTML('beforebegin',`<p><label>Church calendar <select class="lesson-church">${C.options.map(([v,t])=>`<option value="${esc(v)}">${esc(t)}</option>`).join('')}</select></label></p>`);
+  const select=el.querySelector('.lesson-church');select.value=choiceOf(c.rite);
+  select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-'+c.rite,select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The church calendar choice could not be saved.';}});
  }
  if(c.rite==='copt'){
   out.insertAdjacentHTML('beforebegin','<p><label>Church calendar <select class="lesson-church"><option value="orthodox">Coptic Orthodox · Katameros snapshot</option><option value="local">Coptic Catholic or local calendar · enter citations</option></select></label></p>');
@@ -2032,7 +2041,7 @@ async function mount(el,c,reader,reload){
  });
  el.querySelector('.lesson-clear').addEventListener('click',()=>{try{localStorage.removeItem(storageKey(c));reload();}catch(e){el.querySelector('.lesson-status').textContent='Local storage is unavailable.';}});
 }
-window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,ambDay,ambrosian,appointments,custom,html,mount,officeKey,psalmRefs};
+window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,ambDay,ambrosian,fromTable,TABLES,appointments,custom,html,mount,officeKey,psalmRefs};
 })();
 </script>
 <script>
@@ -5545,19 +5554,23 @@ const shift=(iso,n)=>new Date(Date.parse(iso+"T00:00:00Z")+n*864e5).toISOString(
 const tcase=t=>String(t||"").toLowerCase().replace(/(^|\s)\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And|To|Our|With)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
 const R=(lab,cite,num,tr)=>({lab,cite,num:num||"k",tr:tr||"kj"});
 
+/* A lectionary of the shared layer (LectCalendar.fromTable): its own calendar's lessons, ignoring a local choice. */
+async function table(rite,iso){ const L=window.LectCalendar.TABLES[rite]; if(!L) return null;
+  const T=await J(L.file), K=L.calendar(iso), reads=[], names=[];
+  for(const k of K.keys){ let D=T.days[k]; if(!D) continue; names.push(D.t); if(D.as) D={...T.days[D.as],t:D.t};
+    for(const [col,cite,ver] of D.r||[]){ const dr=(ver||L.tr)==="dr"; reads.push(R(T.cols[col],cite,dr?"v":L.num,dr?"dr":"kj")); } }
+  return {name:names.join(" · ")+(names.length&&K.weekday?" (the Sunday's lessons)":""),reads,note:reads.length?"":K.empty}; }
 /* Each source: tradition, book, the rite it opens, and a function giving {name, reads, note} for a date. */
 const SOURCES=[
  {fam:"catholic",book:"Roman Missal · Lectionary for Mass",rite:"n",get:async(iso,day)=>day.n&&{name:day.n.t,reads:(day.n.r||[]).map(x=>R(x[0],x[1],"n","dr"))}},
  {fam:"catholic",book:"Divine Worship: The Missal (Ordinariate)",rite:"o",get:async(iso,day)=>day.o&&{name:day.o.s&&/Divine Worship:/.test(day.o.s)?day.o.s.replace(/^Divine Worship: /,""):day.o.t,reads:(day.o.r||[]).map(x=>R(x[0],x[1],"n","kj")),same:"n"}},
  {fam:"catholic",book:"Roman Missal of 1962",rite:"m",get:async(iso,day)=>day.m&&{name:day.m.t,reads:(day.m.r||[]).map(x=>R(x[0],x[1],x[2]||"v","dr"))}},
  {fam:"catholic",book:"Roman Missal before 1955",rite:"p",get:async(iso,day)=>day.p&&{name:day.p.t,reads:(day.p.r||[]).map(x=>R(x[0],x[1],x[2]||"v","dr")),same:"m"}},
- {fam:"catholic",book:"Ambrosian Missal of 1954 (Milan)",rite:"a",get:async iso=>{const L=await window.LectCalendar.ambrosian({rite:"a",type:"mass",iso});
-   return L&&{name:L.title||"",reads:(L.items||[]).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items.length?"":L.note};}},
+ {fam:"catholic",book:"Ambrosian Missal of 1954 (Milan)",rite:"a",get:iso=>table("a",iso)},
  {fam:"eastern-orthodox",book:"Byzantine Apostol and Gospel",rite:"b",get:async(iso,day)=>day.b&&{name:[day.b.t,day.b.s].filter(Boolean).join(" · "),reads:(day.b.r||[]).map(x=>R(x[0],x[1],"n","dr"))}},
  {fam:"oriental",book:"Coptic Orthodox Katameros",rite:"copt",get:async iso=>{const L=await window.LectCalendar.appointments({rite:"copt",type:"mass",iso});
    const nm=(window.LectApp.dayNames(iso,{})||[]).find(x=>x.fam==="oriental");return L&&{name:nm?nm.name:"",reads:(L.items||[]).filter(x=>!x.issue).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items&&!L.items.length?"No Liturgy appointment in the snapshot for this date.":""};}},
- {fam:"oriental",book:"Church of the East · Maclean's lectionary (1894)",rite:"adai",get:async iso=>{const L=await window.LectCalendar.eastSyriac({rite:"adai",type:"mass",iso});
-   return L&&{name:L.title||"",reads:(L.items||[]).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items.length?"":"No lessons are appointed in the Liturgy for this day."};}},
+ {fam:"oriental",book:"Church of the East · Maclean's lectionary (1894)",rite:"adai",get:iso=>table("adai",iso)},
  {fam:"anglican",book:"Book of Common Prayer 1662",rite:"bcp62",get:async(iso,day,days)=>pb("data/bcp1662.json",iso,day,days)},
  {fam:"anglican",book:"Book of Common Prayer 1928 (USA)",rite:"bcp28",get:async(iso,day,days)=>pb("data/bcp1928.json",iso,day,days)},
  {fam:"anglican",book:"Book of Common Prayer 1979 (USA) · original Eucharistic table",rite:"bcp79",get:async iso=>{const L=await window.LectCalendar.pb79({rite:"bcp79",type:"mass",iso});

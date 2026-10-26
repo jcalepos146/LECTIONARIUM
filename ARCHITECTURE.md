@@ -171,6 +171,15 @@ option, the two-year Office appointments, Coptic Orthodox appointments,
 ordinary Byzantine kathismata and Resurrection Gospels, and the shared
 date-scoped Bible reader. Appointed Prayer Book psalms use the bundled 1979
 Psalter, whose verse numbers differ from the KJV.
+
+Lectionaries that are a table and a calendar go through one shared layer
+(`TABLES` and `fromTable()` in `lectionary.js`). Each table has the same shape,
+`{source, url, cols, days:{key:{t, r:[[col, cite, "dr"?]], as?}}}`, and each
+calendar is a function from a date to the day's keys. The Church of the East
+(`eastsyriac-1894.json`, `esyDay()`) and Milan (`ambrosian-1954.json`, `ambDay()`)
+use it; the Mass, the calendar panel (with its choice of a current church
+calendar) and Readings by day all read through it. A new lectionary of this
+kind is a data file, a calendar function and one `TABLES` entry.
 `tools/texts/bcp1979-lectionary.json` records readable source citations and PDF
 pages; `tools/bcp_lectionary.py` validates and packs the runtime JSON.
 `tools/texts/coptic-lectionary.json` stores 1,827 dates referencing 221 distinct
