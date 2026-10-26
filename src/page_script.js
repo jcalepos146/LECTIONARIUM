@@ -1,10 +1,56 @@
+/* ---------------------------------------------------------------- the liturgical date arithmetic, shared by every module
+   Dates are UTC midnights; an ISO date string names the day. easter(Y) is the Gregorian (Western) Easter; advent(Y) the
+   first Sunday of the Roman Advent before Christmas of Y; fromEaster(d) the days from that year's Easter (negative before). */
+window.LitDate=(()=>{
+ const DAY=864e5;
+ const U=(y,m,d)=>new Date(Date.UTC(y,m-1,d));
+ const toDate=s=>{ const [y,m,d]=String(s).split("-").map(Number); return U(y,m,d); };
+ const iso=dt=>dt.toISOString().slice(0,10);
+ const add=(dt,n)=>new Date(dt.getTime()+n*DAY);
+ const today=()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+ function easter(Y){ const a=Y%19,b=Math.floor(Y/100),c=Y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1; return new Date(Date.UTC(Y,mo-1,da)); }
+ function advent(Y){ const x=U(Y,12,25), w=x.getUTCDay(); return add(x,-((w===0?7:w)+21)); }
+ const fromEaster=x=>{ const d=typeof x==="string"?toDate(x):x; return Math.round((d-easter(d.getUTCFullYear()))/DAY); };
+ const sundayOf=x=>{ const d=typeof x==="string"?toDate(x):x; return add(d,-d.getUTCDay()); };
+ return {DAY,U,toDate,iso,add,today,easter,advent,fromEaster,sundayOf};
+})();
+/* The service builders (music.js and mass.js) are a separate file in the published site, service.js, fetched the
+   first time a service is opened and in the background once the page is idle. The standalone build inlines them,
+   so service() resolves at once. */
+window.LectLoad=(()=>{
+ const url=/*SERVICE-URL*/""; let p=null;
+ function service(){
+  if(window.LectMass||!url) return Promise.resolve();
+  return p||(p=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=url; s.onload=()=>res(); s.onerror=()=>{ p=null; s.remove(); rej(new Error("The service code could not load.")); }; document.head.appendChild(s); }));
+ }
+ const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));
+ if(url) window.addEventListener("load",()=>idle(()=>service().catch(()=>{})));
+ return {service};
+})();
+/* Offline use (sw.js). The worker caches the page and whatever is opened; save() fetches every calendar year, data
+   file and Bible ahead of time. Browsers under automation (the tests) register it only when asked to. */
+window.LectOffline=(()=>{
+ const ok="serviceWorker" in navigator&&window.isSecureContext&&/^https?:$/.test(location.protocol);
+ let wantTest=false; try{ wantTest=localStorage.getItem("lect-sw")==="1"; }catch(e){}
+ const ready=ok&&(!navigator.webdriver||wantTest)?navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).catch(()=>null):Promise.resolve(null);
+ let savedKey="lect-offline-saved";
+ const saved=()=>{ try{ return localStorage.getItem(savedKey); }catch(e){ return null; } };
+ async function save(onProgress){
+  const reg=await ready; const sw=reg&&(reg.active||navigator.serviceWorker.controller);
+  if(!sw) throw new Error("This browser cannot keep the site for offline use.");
+  return new Promise(res=>{ const ch=new MessageChannel();
+   ch.port1.onmessage=e=>{ onProgress&&onProgress(e.data); if(e.data.finished){ try{ localStorage.setItem(savedKey,new Date().toISOString().slice(0,10)); }catch(err){} res(e.data); } };
+   sw.postMessage({type:"save"},[ch.port2]); });
+ }
+ return {supported:ok, ready, save, saved};
+})();
 /* The day table (tools/build_days.py) is split by year into days/<year>.json; days/2026.json also holds
    Advent 2025. LectDays.load(iso) fetches the year of a date (and, in January or December, the year beside it,
    for look-ups of the nearest Sunday) into one shared map, and resolves to that map. */
 window.LectDays=(()=>{
  const all={}, got={}, chunk=y=>Math.min(2030,Math.max(2026,y));
  const year=y=>got[y]||(got[y]=fetch(`days/${y}.json`).then(r=>{ if(!r.ok) throw Error(r.status); return r.json(); }).then(j=>{ Object.assign(all,j); }).catch(()=>{ delete got[y]; }));
- const today=()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+ const today=window.LitDate.today;
  async function load(iso){ const [y,m]=String(iso||today()).split("-").map(Number), ys=new Set([chunk(y)]);
   if(m===1) ys.add(chunk(y-1)); if(m===12) ys.add(chunk(y+1));
   await Promise.all([...ys].map(year)); return all; }
@@ -18,15 +64,8 @@ const X = JSON.parse(document.getElementById("lect-extra").textContent);
 const B = X.BYZ, LOH = X.LOH, BRV = X.BRV;
 
 /* ---------------------------------------------------------------- dates */
-const DAY = 864e5;
-const U = (y,m,d)=>new Date(Date.UTC(y,m-1,d));
-const add = (dt,n)=>new Date(dt.getTime()+n*DAY);
+const {DAY,U,add,iso,easter,advent:adv1}=window.LitDate;
 const dow = dt=>dt.getUTCDay();
-const iso = dt=>dt.toISOString().slice(0,10);
-function easter(Y){ const a=Y%19,b=Math.floor(Y/100),c=Y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),
-  g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),
-  mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1; return U(Y,mo,da); }
-function adv1(Y){ const xmas=U(Y,12,25); const w=dow(xmas); return add(xmas, -(w===0?7:w) - 21); }
 function sundayIn(Y,m,d1,d2){ for(let d=d1; d<=d2; d++){ const t=U(Y,m,d); if(dow(t)===0) return t; } return null; }
 function lastSundayOct(Y){ let t=U(Y,10,31); while(dow(t)!==0) t=add(t,-1); return t; }
 function yearLetter(Y){ return ["C","A","B"][(Y+1)%3]; }

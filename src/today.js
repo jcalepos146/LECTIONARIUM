@@ -167,8 +167,8 @@ function suggestHour(rite){
 const S={type:null,rite:null,hour:null,date:null,view:"ask"};
 function loadPrefs(){ try{ const p=JSON.parse(localStorage.getItem("lect-pray")||"null"); if(p){ S.type=p.type; S.rite=p.rite; S.hour=p.hour; } }catch(e){} }
 function savePrefs(){ try{ localStorage.setItem("lect-pray",JSON.stringify({type:S.type,rite:S.rite,hour:S.hour})); }catch(e){} }
-const todayISO=()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
-const toDate=iso=>{ const [y,m,d]=iso.split("-").map(Number); return new Date(Date.UTC(y,m-1,d)); };
+const todayISO=window.LitDate.today;
+const {DAY,toDate,easter:easterY,advent:adv1Y,fromEaster}=window.LitDate;
 const isoOf=dt=>dt.toISOString().slice(0,10);
 const addDays=(iso,n)=>isoOf(new Date(toDate(iso).getTime()+n*864e5));
 const longDate=iso=>new Intl.DateTimeFormat("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(toDate(iso));
@@ -308,6 +308,7 @@ function open(){ savePrefs();
 
 /* ---------------------------------------------------------------- citations → text */
 const BOOKFILE={"Gen":"Gen","Exod":"Exod","Lev":"Lev","Num":"Num","Deut":"Deut","Josh":"Josh","Judg":"Judg","Ruth":"Ruth","1 Sam":"1Sam","2 Sam":"2Sam","1 Kgs":"1Kgs","2 Kgs":"2Kgs","1 Chr":"1Chr","2 Chr":"2Chr","Ezra":"Ezra","Neh":"Neh","Tob":"Tob","Jdt":"Jdt","Esth":"Esth","Est":"Esth","1 Macc":"1Macc","2 Macc":"2Macc","1 Mac":"1Macc","Job":"Job","Ps":"Ps","Prov":"Prov","Eccl":"Eccl","Song":"Song","Cant":"Song","Wis":"Wis","Sir":"Sir","Isa":"Isa","Jer":"Jer","Lam":"Lam","Bar":"Bar","Ezek":"Ezek","Dan":"Dan","Hos":"Hos","Joel":"Joel","Amos":"Amos","Obad":"Obad","Jonah":"Jonah","Mic":"Mic","Nah":"Nah","Hab":"Hab","Zeph":"Zeph","Hag":"Hag","Zech":"Zech","Mal":"Mal","Matt":"Matt","Mark":"Mark","Luke":"Luke","John":"John","Acts":"Acts","Rom":"Rom","1 Cor":"1Cor","2 Cor":"2Cor","Gal":"Gal","Eph":"Eph","Phil":"Phil","Col":"Col","1 Thess":"1Thess","2 Thess":"2Thess","1 Tim":"1Tim","2 Tim":"2Tim","Titus":"Titus","Phlm":"Phlm","Heb":"Heb","Jas":"Jas","1 Pet":"1Pet","2 Pet":"2Pet","1 John":"1John","2 John":"2John","3 John":"3John","Jude":"Jude","Rev":"Rev","Levit":"Lev","1 Kings":"1Kgs","Qoh":"Eccl"};
+const BOOKALIAS={"Joh":"John","1 Mach":"1 Macc","2 Mach":"2 Macc"}, ONECHAP=new Set(["Obad","Phlm","2 John","3 John","Jude"]);
 const cache={};
 /* Bible books are packed several to a file (tools/shard_bible.py writes this index). */
 const BIB=/*BIBLE-SHARDS*/{"cv":{"Ps":0},"dr":{"1Chr":0,"1Cor":0,"1John":0,"1Kgs":0,"1Macc":1,"1Pet":1,"1Sam":1,"1Thess":1,"1Tim":1,"2Chr":2,"2Cor":2,"2John":2,"2Kgs":2,"2Macc":2,"2Pet":2,"2Sam":3,"2Thess":3,"2Tim":3,"3John":3,"Acts":3,"Amos":3,"Bar":3,"Col":3,"Dan":3,"Deut":4,"Eccl":4,"Eph":4,"Esth":4,"Exod":4,"Ezek":5,"Ezra":5,"Gal":5,"Gen":6,"Hab":6,"Hag":6,"Heb":6,"Hos":6,"Isa":7,"Jas":7,"Jdt":7,"Jer":8,"Job":8,"Joel":8,"John":9,"Jonah":9,"Josh":9,"Jude":9,"Judg":9,"Lam":9,"Lev":10,"Luke":10,"Mal":10,"Mark":10,"Matt":11,"Mic":11,"Nah":11,"Neh":11,"Num":11,"Obad":11,"Phil":11,"Phlm":11,"Prov":12,"Ps":12,"Rev":12,"Rom":13,"Ruth":13,"Sir":13,"Song":13,"Titus":13,"Tob":13,"Wis":13,"Zech":13,"Zeph":13},"kj":{"1Chr":0,"1Cor":0,"1John":0,"1Kgs":0,"1Macc":1,"1Pet":1,"1Sam":1,"1Thess":1,"1Tim":1,"2Chr":2,"2Cor":2,"2John":2,"2Kgs":2,"2Macc":2,"2Pet":2,"2Sam":3,"2Thess":3,"2Tim":3,"3John":3,"Acts":3,"Amos":3,"Bar":3,"Col":3,"Dan":3,"Deut":4,"Eccl":4,"Eph":4,"Esth":4,"Exod":4,"Ezek":5,"Ezra":5,"Gal":5,"Gen":6,"Hab":6,"Hag":6,"Heb":6,"Hos":6,"Isa":7,"Jas":7,"Jdt":7,"Jer":8,"Job":8,"Joel":8,"John":9,"Jonah":9,"Josh":9,"Jude":9,"Judg":9,"Lam":9,"Lev":10,"Luke":10,"Mal":10,"Mark":10,"Matt":11,"Mic":11,"Nah":11,"Neh":11,"Num":11,"Obad":11,"Phil":12,"Phlm":12,"Prov":12,"Ps":12,"Rev":12,"Rom":13,"Ruth":13,"Sir":13,"Song":13,"Titus":13,"Tob":13,"Wis":13,"Zech":13,"Zeph":13}}/*END-BIBLE-SHARDS*/;
@@ -319,12 +320,18 @@ function parseCit(cit){
   const orIdx=s.indexOf(" or "); if(orIdx>0){ alt=s.slice(orIdx+1); s=s.slice(0,orIdx); }
   if(/\((selections|composite)\)/.test(s)) return {skip:"selections", raw:cit};
   s=s.replace(/\s*\(.*?\)\s*/g,"").replace(/\[.*?\]/g,"").replace(/Eccl\/Qoh/,"Eccl");
-  const m=/^((?:[1-4] )?[A-Za-z]+)\.?\s+(.*)$/.exec(s); if(!m) return {skip:"unparsed",raw:cit};
-  const bk=m[1], file=BOOKFILE[bk]; if(!file) return {skip:"book",raw:cit};
-  const rest=m[2].replace(/\+/g,", ").replace(/—|–/g,"-");
+  const m=/^((?:[1-4] )?[A-Za-z]+)\.?(?:\s+(.*))?$/.exec(s); if(!m) return {skip:"unparsed",raw:cit};
+  const bk=BOOKALIAS[m[1]]||m[1], file=BOOKFILE[bk]; if(!file) return {skip:"book",raw:cit};
+  /* a book of one chapter is cited by verse alone (Phlm 7-20) or not at all (Jude) */
+  let rest=(m[2]||"").replace(/\+/g,", ").replace(/—|–/g,"-");
+  if(ONECHAP.has(bk)&&!rest.includes(":")) rest=rest.trim()?"1:"+rest.trim():"1";
+  if(!rest.trim()) return {skip:"unparsed",raw:cit};
   const segs=[]; let chap=null;
-  for(const part0 of rest.split(/[;,]\s*/)){
-    const part=part0.trim().replace(/([0-9])[a-e]+/g,"$1"); if(!part) continue;
+  /* after a semicolon a bare number followed by verses names the chapter: Sir 44:16-27; 45, 3-20 */
+  const parts=[]; rest.split(/;\s*/).forEach((g,gi)=>{ const ps=g.split(/,\s*/); if(gi&&ps.length>1&&/^\d+$/.test(ps[0].trim())&&/^\d/.test(ps[1].trim())){ parts.push("@"+ps[0].trim()); ps.shift(); } parts.push(...ps); });
+  for(const part0 of parts){
+    if(part0.startsWith("@")){ chap=+part0.slice(1); continue; }
+    const part=part0.trim().replace(/([0-9])[a-z]+/g,"$1"); if(!part) continue;
     if(chap===null){const whole=/^(\d+)-(\d+)$/.exec(part);if(whole){for(let c=+whole[1];c<=+whole[2];c++)segs.push([c,1,c,999]);chap=+whole[2];continue;}}
     let mm=/^(?:(\d+):)?(\d+)(?:-(?:(\d+):)?(\d+))?$/.exec(part);
     if(!mm){ const wc=/^(\d+)-(\d+)$/.exec(part); if(wc && chap===null){ for(let c=+wc[1];c<=+wc[2];c++) segs.push([c,1,c,999]); continue; } return {skip:"unparsed",raw:cit}; }
@@ -348,9 +355,15 @@ function toVulgate(bk,c,v){
     if(c===147) return v<=11?["Ps",146,v]:["Ps",147,v-11];
     return ["Ps",c,v];
   }
-  return commonShift(bk,c,v);
+  return commonShift(bk,c,v,true);
 }
-function commonShift(bk,c,v){
+/* Where the Hebrew chapter-and-verse numbering of a modern lectionary (NAB, NRSV) differs from the English (KJV):
+   [book, Hebrew chapter, first verse, last verse, English chapter, verse offset, does the Douay-Rheims divide it as
+   the English does?]. The last column was set by comparing the bundled Douay-Rheims and KJV chapter lengths; where
+   the Vulgate keeps its own division, a Douay-Rheims reading keeps the Hebrew numbers. */
+const HEB_ENG=[["Gen",32,1,1,31,54,1],["Gen",32,2,33,32,-1,1],["Exod",7,26,29,8,-25,1],["Exod",8,1,28,8,4,1],["Exod",21,37,37,22,-36,1],["Exod",22,1,30,22,1,1],["Lev",5,20,26,6,-19,1],["Lev",6,1,23,6,7,1],["Num",17,1,15,16,35,1],["Num",17,16,28,17,-15,1],["Num",30,1,1,29,39,0],["Num",30,2,17,30,-1,0],["Deut",13,1,1,12,31,1],["Deut",13,2,19,13,-1,1],["Deut",23,1,1,22,29,1],["Deut",23,2,26,23,-1,1],["Deut",28,69,69,29,-68,1],["Deut",29,1,28,29,1,1],["1 Sam",21,1,1,20,41,0],["1 Sam",21,2,16,21,-1,1],["1 Sam",24,1,1,23,28,0],["1 Sam",24,2,23,24,-1,0],["2 Sam",19,1,1,18,32,1],["2 Sam",19,2,44,19,-1,1],["1 Kgs",5,1,14,4,20,1],["1 Kgs",5,15,32,5,-14,1],["2 Kgs",12,1,1,11,20,1],["2 Kgs",12,2,22,12,-1,1],["1 Chr",5,27,41,6,-26,1],["1 Chr",6,1,66,6,15,1],["2 Chr",1,18,18,2,-17,1],["2 Chr",2,1,17,2,1,1],["2 Chr",13,23,23,14,-22,1],["2 Chr",14,1,14,14,1,1],["Neh",3,33,38,4,-32,0],["Neh",4,1,17,4,6,1],["Neh",10,1,1,9,37,1],["Neh",10,2,40,10,-1,1],["Job",40,25,32,41,-24,0],["Job",41,1,26,41,8,0],["Eccl",4,17,17,5,-16,0],["Eccl",5,1,19,5,1,0],["Song",7,1,1,6,12,0],["Song",7,2,14,7,-1,1],["Isa",63,19,19,64,-18,1],["Isa",64,1,11,64,1,1],["Jer",8,23,23,9,-22,1],["Jer",9,1,25,9,1,1],["Ezek",21,1,5,20,44,1],["Ezek",21,6,37,21,-5,1],["Hos",2,1,2,1,9,0],["Hos",2,3,25,2,-2,0],["Hos",12,1,1,11,11,1],["Hos",12,2,15,12,-1,1],["Hos",14,1,1,13,15,0],["Hos",14,2,10,14,-1,0],["Jonah",2,1,1,1,16,0],["Jonah",2,2,11,2,-1,0],["Mic",4,14,14,5,-13,0],["Mic",5,1,14,5,1,0],["Nah",2,1,1,1,14,1],["Nah",2,2,14,2,-1,1],["Zech",2,1,4,1,17,1],["Zech",2,5,17,2,-4,1]];
+function commonShift(bk,c,v,dr){
+  for(const [b,hc,a,z,ec,d,vg] of HEB_ENG) if(b===bk&&hc===c&&v>=a&&v<=z) return dr&&!vg?[bk,c,v]:[bk,ec,v+d];
   if(bk==="Mal"&&c===3&&v>=19) return ["Mal",4,v-18];
   if(bk==="Joel"&&c===3) return ["Joel",2,v+27];
   if(bk==="Joel"&&c===4) return ["Joel",3,v];
@@ -393,9 +406,7 @@ async function passage(cit, numbering, tr){
 }
 
 /* ---------------------------------------------------------------- liturgical helpers (Office) */
-const DAY=864e5;
-function easterY(Y){ const a=Y%19,b=Math.floor(Y/100),c=Y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1; return new Date(Date.UTC(Y,mo-1,da)); }
-function adv1Y(Y){ const x=new Date(Date.UTC(Y,11,25)); const w=x.getUTCDay(); return new Date(x.getTime()-((w===0?7:w)+21)*DAY); }
+
 function psalterWeek(iso){
   const d=toDate(iso), Y=d.getUTCFullYear();
   const A=adv1Y(Y)<=d?adv1Y(Y):adv1Y(Y-1);
@@ -659,6 +670,7 @@ const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bc
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
+  try{ await window.LectLoad.service(); }catch(e){}
   const iso=S.date||todayISO();
   window.dispatchEvent(new CustomEvent("lect-session",{detail:{type:S.type,rite:S.rite,hour:S.hour,iso,label:(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite)?.name}}));
   const rname=(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name, rk=riteKind(S.type,S.rite);
@@ -929,7 +941,7 @@ async function officeBody(iso, day){
       slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion</h4>`+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion); }
     if(TN&&/^(first|third|sixth|ninth)$/.test(H)) slots.tris=(slots.tris||"")+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+hy(`Kontakion, Tone ${sunTone}`,TN.kontakion);
     /* The Great Feasts from Hapgood's Special Services: Vespers is the vigil of the coming day's feast. */
-    { const fx=i=>{ if(!BZ||!BZ.feasts) return []; const d=toDate(i), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY); return [BZ.feasts[i.slice(5)],BZ.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean); };
+    { const fx=i=>{ if(!BZ||!BZ.feasts) return []; const d=toDate(i), off=fromEaster(d); return [BZ.feasts[i.slice(5)],BZ.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean); };
       const TONE=n=>n?`, Tone ${n}`:"";
       const FX=H==="vespers"?fx(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)).filter(f=>f.lic):fx(iso);
       if(FX.length){
@@ -1026,7 +1038,10 @@ window.LectApp={
   rites(){ return [...MASS_RITES.map(r=>({type:"mass",hour:null,...r})),...OFFICE_RITES.map(r=>({type:"office",hour:suggestHour(r.id),...r}))]
     .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,kind:riteKind(r.type,r.id),cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
-  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
+  /* An hour this rite does not have (a stale link, a bookmark from another rite) opens its first hour instead. */
+  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session";
+    if(S.type==="office"){ const H=hoursFor(S.rite)||[]; if(!H.some(h=>h[0]===S.hour)) S.hour=(H[0]||[])[0]||null; }
+    render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
 };
 /* Sources, home and WIP all use the same coverage policy. */

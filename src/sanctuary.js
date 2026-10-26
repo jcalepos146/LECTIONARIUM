@@ -4,7 +4,7 @@
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback;}catch(e){return fallback;}};
 const write=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch(e){}};
-const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+const today=window.LitDate.today;
 let catalog,loading,days,open=false,returnHash='#today',returnScroll=0,returnFocus,routeSerial=0,input=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)?'touch':'keyboard',menu=false;
 let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio,guideReturn='#/sanctuary';
 let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});
@@ -49,7 +49,8 @@ function back(){if(menu){menu=false;render();return;}const bits=location.hash.sl
 function close(hash=returnHash){go(isRoute(hash)?'#today':hash||'#today');}
 function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();startPolling();}
 function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);gameFrame=0;startPolling();menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
-function saveFocus(){const el=document.activeElement;if(root.contains(el))focusByRoute.set(previousRoute,el.dataset.route||el.dataset.pray||el.id||el.dataset.action);}
+const focusKey=el=>el.dataset.route||el.dataset.pray||el.dataset.launch||el.id||el.dataset.action;
+function saveFocus(){const el=document.activeElement;if(root.contains(el)&&focusKey(el))focusByRoute.set(previousRoute,focusKey(el));}
 function focus(el){if(!el)return;el.focus({preventScroll:true});el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});}
 function controls(){return [...root.querySelectorAll('button:not([disabled]),input,a[href],select,summary')].filter(e=>e.getClientRects().length);}
 function move(direction){const list=controls(),cur=document.activeElement;if(!list.length)return;if(!list.includes(cur)){focus(list[0]);return;}
@@ -137,7 +138,7 @@ function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=pare
 function results(q){const words=q.toLocaleLowerCase().split(/\s+/).filter(Boolean);return catalog.filter(n=>words.every(w=>[n.name,...n.also_called,...n.regions,...n.books.map(b=>b.title)].join(' ').toLocaleLowerCase().includes(w)));}
 function search(){return `<h1>All churches and books</h1><label for="san-query">Search names, alternative names, books or countries</label><input id="san-query" type="search" autocomplete="off" placeholder="Try 1928, Ruthenian, or Scotland"><p id="san-count" role="status"></p><div id="san-results" class="san-grid"></div>`;}
 function updateSearch(q){const found=results(q);root.querySelector('#san-count').textContent=`${found.length} results`;root.querySelector('#san-results').innerHTML=found.map(n=>nodeTile(n)).join('')||'<p>No matches. Try another name or year.</p>';}
-function menuHTML(){return `<h1>Sanctuary menu</h1><div class="san-settings"><button data-action="size">Text size · ${Math.round(prefs.size*100)}%</button><button data-action="theme">Theme · ${esc(prefs.theme)}</button><button data-action="sound">Sound · ${prefs.sound?'on':'off'}</button><button data-action="dismiss">Return to browsing</button><button data-action="exit">Switch to classic view</button></div>`;}
+function menuHTML(){return `<h1>Sanctuary menu</h1><div class="san-settings"><button data-action="size">Text size · ${Math.round(prefs.size*100)}%</button><button data-action="theme">Theme · ${esc(prefs.theme)}</button><button data-action="sound">Sound · ${prefs.sound?'on':'off'}</button>${window.LectOffline&&window.LectOffline.supported?`<button data-action="offline">${window.LectOffline.saved()?'Saved for offline use · '+esc(window.LectOffline.saved())+' · update':'Save for offline use (about 24 MB)'}</button>`:''}<button data-action="dismiss">Return to browsing</button><button data-action="exit">Switch to classic view</button></div>`;}
 async function render(){
  if(!isRoute(location.hash)){leave();return;}
  const hash=location.hash;if(!open)enter();saveFocus();previousRoute=hash;
@@ -147,8 +148,8 @@ async function render(){
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
  try{await load();if(serial!==routeSerial)return;let body;
   if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/study')body=study();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
-  if(serial!==routeSerial)return;root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
-  const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>(e.dataset.route||e.dataset.pray||e.id||e.dataset.action)===saved);
+  if(serial!==routeSerial)return;saveFocus();root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
+  const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>focusKey(e)===saved);
   if(!saved)root.scrollTop=0;
   focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash==='#/wip'?root.querySelector('.san-wip-open'):null)||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
  }catch(e){if(serial!==routeSerial)return;root.innerHTML=shell('<h1>The library could not load</h1><p>Check your connection and try again.</p><button data-action="retry">Try again</button>');focus(root.querySelector('[data-action="retry"]'));}
@@ -157,7 +158,7 @@ function launch(s,label,family){if(!s)return;guideReturn=location.hash;saveFocus
 root.addEventListener('click',e=>{const b=e.target.closest('[data-study]');if(!b)return;returnScroll=0;returnFocus=bar.querySelector('[data-bar="study"]');close('#'+b.dataset.study);document.getElementById('tab-'+b.dataset.study)?.click();});
 root.addEventListener('click',e=>{const b=e.target.closest('[data-tfilter]');if(!b)return;e.stopPropagation();const f=b.dataset.tfilter;write('lect-today-filter',f);if(f!=='all'&&window.LectApp?.setFave)window.LectApp.setFave(f);focusByRoute.set('#/sanctuary','');render().then(()=>focus(root.querySelector(`[data-tfilter="${f}"]`)));},true);
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
-root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
+root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'offline':{b.disabled=true;b.textContent='Saving for offline use…';window.LectOffline.save(p=>{b.textContent=`Saving for offline use · ${p.done} of ${p.total}`;}).then(p=>{b.disabled=false;b.textContent=p.failed?`Saved, but ${p.failed} files could not be fetched · try again`:`Saved for offline use · ${window.LectOffline.saved()} · update`;}).catch(err=>{b.disabled=false;b.textContent=err.message;});break;}case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('click',e=>{if(e.detail===0)activeInput('keyboard');setHome('sanctuary');returnHash=location.hash||'#today';go('#/sanctuary');});
@@ -178,11 +179,14 @@ window.addEventListener('keydown',e=>{
  else if(e.key==='Enter'&&e.target===root){e.preventDefault();controls()[0]?.click();}
  else if(e.key==='Tab'){const list=controls(),i=list.indexOf(document.activeElement);if((e.shiftKey&&i<=0)||(!e.shiftKey&&i===list.length-1)){e.preventDefault();focus(e.shiftKey?list.at(-1):list[0]);}}
 });
+/* The controller is polled once a frame only while one is connected: the loop stops when no pad is found, and a
+   gamepadconnected event (Chrome sends it on the pad's first input) starts it again from scratch. */
 function startPolling(){if(!gameFrame&&(open||homePref==='sanctuary'))gameFrame=requestAnimationFrame(pollGamepad);}
+window.addEventListener('gamepadconnected',()=>{cancelAnimationFrame(gameFrame);gameFrame=0;startPolling();});
 function pollGamepad(now){gameFrame=0;let pads=[];try{pads=navigator.getGamepads?.()||[];}catch(e){}const pad=[...pads].find(p=>p&&p.connected!==false);let action='';if(pad){const pressed=i=>pad.buttons[i]?.pressed;
  action=pressed(0)?'select':pressed(1)?'back':pressed(3)?'search':pressed(9)?'menu':pressed(12)||pad.axes[1]<-.55?'up':pressed(13)||pad.axes[1]>.55?'down':pressed(14)||pad.axes[0]<-.55?'left':pressed(15)||pad.axes[0]>.55?'right':'';
  if(action&&(open||guideActive())){activeInput('gamepad');const directional=['up','down','left','right'].includes(action);if(action!==lastGameAction||(directional&&now>=gameRepeatAt)){const changed=action!==lastGameAction;gameRepeatAt=now+(changed?360:140);if(directional){if(open)move(action);else guideMove(action);}else if(action==='select')document.activeElement?.click();else if(action==='back'){if(open)back();else go(guideReturn);}else if(action==='search')go('#/search');else {menu=!menu;if(open)render();else go('#/sanctuary');}}}}
- lastGameAction=action;startPolling();
+ lastGameAction=action;if(pad)startPolling();
 }
 window.addEventListener('lect-session',e=>{const s=e.detail;if(!s?.rite)return;const known=catalog?.find(n=>n.supported.some(v=>v.type===s.type&&v.rite===s.rite));const session={...s,label:known?.name||s.label||s.rite,family:known?.family||'catholic'};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);});
 window.addEventListener('hashchange',e=>{if(isRoute(location.hash)&&!open){try{const old=new URL(e.oldURL).hash;if(!isRoute(old))returnHash=old||'#today';}catch(err){}}render();});

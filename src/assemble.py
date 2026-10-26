@@ -1,19 +1,44 @@
 """Builds the site from the modules in this folder.
 
-  python3 src/assemble.py                 -> index.html at the repo root (GitHub Pages build, peer-to-peer live sessions)
+  python3 src/assemble.py                 -> index.html at the repo root (GitHub Pages build, peer-to-peer live sessions),
+                                             and service.js, the service builders it loads on demand
   python3 src/assemble.py --standalone    -> build/lectionarium.html (no peer-to-peer; for hosts with their own session store)
 """
 import sys, os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://jcalepos146.github.io/LECTIONARIUM/"
 REPO = "https://github.com/jcalepos146/LECTIONARIUM"
-def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False):
+SERVICE = ("music.js", "mass.js")   # the service builders: loaded on demand (window.LectLoad) in the published site
+def service_js():
+    return "\n".join(open(f).read().rstrip("\n") for f in SERVICE) + "\n"
+def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False, split=False):
     d1='<script type="application/json" id="lect-data">'+open("pagedata.json").read().strip()+'</script>'
     d2='<script type="application/json" id="lect-extra">'+open("extradata.json").read().strip()+'</script>'
     parts=[open(head).read().rstrip("\n").replace("</style>", open("sanctuary.css").read()+"\n</style>"), open("page_body.html").read().rstrip("\n").replace('<section id="tradition-sources" aria-label="Tradition directory sources"></section>', '<section id="tradition-sources" aria-label="Tradition directory sources">'+open("tradition_sources.html").read()+"</section>"), d1, d2]
-    for f in ("page_script.js","music.js","participation.js","lectionary.js",mass)+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"compareday.js","psalter.js","sanctuary.js"):
-        parts.append("<script>\n"+open(f).read().rstrip("\n")+"\n</script>")
+    files=("page_script.js","music.js","participation.js","lectionary.js",mass)+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"compareday.js","psalter.js","sanctuary.js")
+    for f in files:
+        if split and f in SERVICE:
+            continue
+        code=open(f).read().rstrip("\n")
+        if split and f=="page_script.js":
+            import hashlib
+            code=code.replace('/*SERVICE-URL*/""','"service.js?v='+hashlib.md5(service_js().encode()).hexdigest()[:10]+'"')
+        parts.append("<script>\n"+code+"\n</script>")
     return "\n".join(parts)+"\n"
+def offline_worker(page, svc):
+    """sw.js: the offline worker (src/sw.js) with its version, core files and the data "Save for offline use" fetches.
+    The data is every calendar year, data file and Bible the site reads; the Office packs (breviary/, 72 MB) are cached
+    as they are opened instead."""
+    import hashlib, json, glob
+    root = ".."
+    save = sorted(p[len(root) + 1:] for pat in ("days/*.json", "data/*.json", "bible/*/*.json") for p in glob.glob(f"{root}/{pat}"))
+    save += [f for f in ("bcp-office.json", "chant.json", "hymns.json", "ordo.json", "propers-1962.json", "propers-pre55.json") if os.path.exists(f"{root}/{f}")]
+    core = ["./", "index.html", "service.js?v=" + hashlib.md5(svc.encode()).hexdigest()[:10], "favicon.svg", "favicon-32.png", "apple-touch-icon.png"]
+    version = hashlib.md5((page + svc + json.dumps(save)).encode()).hexdigest()[:10]
+    s = open("sw.js").read()
+    for k, v in (("VERSION", json.dumps(version)), ("CORE", json.dumps(core)), ("SAVE", json.dumps(save))):
+        s = s.replace(f'/*{k}*/' + ('"dev"' if k == "VERSION" else "[]"), f"/*{k}*/" + v, 1)
+    return s
 GH_DESC = ("Pray the Eucharist and the daily office in Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed "
            "and Methodist rites, each with the Bible readings of its own lectionary for the day. Complete public-domain "
            "texts where they exist, a clearly marked guide where they do not. Fit a service to any length and pray it "
@@ -21,7 +46,7 @@ GH_DESC = ("Pray the Eucharist and the daily office in Catholic, Orthodox, Orien
 def gh(base, repo_url):
     """The public build: a whole HTML document with the tags link previews (Discord, iMessage, Slack) read."""
     import html
-    body = build(p2p=True)
+    body = build(p2p=True, split=True)
     body = body.replace("<title>Lectionarium</title>\n", "").replace('<meta name="claude:viewport-fit-sides" content="cover">\n', "")
     body = body.replace("<footer>Lectionarium · public-domain texts in full, copyrighted texts cited · consult the approved liturgical books for celebration.</footer>",
         f'<footer>Lectionarium · public-domain texts in full, copyrighted texts cited · consult the approved liturgical books for celebration · <a href="{repo_url}">Source on GitHub</a></footer>')
@@ -58,3 +83,5 @@ if "--standalone" in sys.argv:
     os.makedirs("../build", exist_ok=True); out = build(); open("../build/lectionarium.html", "w").write(out); print("build/lectionarium.html", len(out.encode()), "bytes")
 else:
     out = gh(BASE, REPO); open("../index.html", "w").write(out); print("index.html", len(out.encode()), "bytes")
+    svc = service_js(); open("../service.js", "w").write(svc); print("service.js", len(svc.encode()), "bytes")
+    sw = offline_worker(out, svc); open("../sw.js", "w").write(sw); print("sw.js", len(sw.encode()), "bytes")

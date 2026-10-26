@@ -84,6 +84,9 @@ class SanctuaryTests(unittest.TestCase):
         # The home view focuses its first tile once it has rendered; start the stick only after that.
         self.page.wait_for_function("document.activeElement?.dataset.launch==='mass|n|'")
         self.page.clock.pause_at(datetime.datetime(2026,10,21,17,tzinfo=datetime.timezone.utc))
+        # Pausing the fake clock can drop the frame the poll loop was waiting on; a connect event restarts it,
+        # as a controller's first input does in a browser.
+        self.page.evaluate("dispatchEvent(new Event('gamepadconnected'))")
         self.page.evaluate('testPad.axes[0]=1');self.page.clock.run_for(100)
         self.assertEqual(self.page.locator(':focus').get_attribute('data-launch'),'mass|m|')
         self.page.clock.run_for(140)
