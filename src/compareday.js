@@ -56,7 +56,7 @@ let serial=0;
 async function render(iso){
  const out=$("#cdOut"); if(!out) return; const my=++serial;
  $("#cdDate").value=iso; out.innerHTML=`<p class="note">Gathering the lectionaries for ${esc(window.LectApp.longDate(iso))}…</p>`;
- let days={}; try{ days=await J("days.json"); }catch(e){}
+ const days=await window.LectDays.load(iso);
  const day=days[iso]||{};
  const rows=await Promise.all(SOURCES.map(async s=>{ try{ return {s,v:await s.get(iso,day,days)}; }catch(e){ console.warn(e); return {s,v:null}; } }));
  if(my!==serial) return;

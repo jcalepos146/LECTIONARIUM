@@ -29,7 +29,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 
 | Path | Contents |
 |---|---|
-| `days.json` | One record per day, 2025-11-30 to 2030-11-30: celebrations and readings for every rite (keys `n` Novus Ordo, `o` Ordinariate, `m` 1962, `p` pre-1955, `h` hybrid, `b` Byzantine) |
+| `days/<year>.json` | One record per day, 2025-11-30 to 2030-11-30, one file per year (2026 also holds Advent 2025), loaded on demand by `LectDays` in `page_script.js`: celebrations and readings for every rite (keys `n` Novus Ordo, `o` Ordinariate, `m` 1962, `p` pre-1955, `h` hybrid, `b` Byzantine) |
 | `bible/dr`, `bible/kj`, `bible/cv` | Douay-Rheims, King James, Coverdale psalter, several books per shard `s<N>.json` (`tools/shard_bible.py`; index in `src/today.js`) |
 | `propers-1962.json`, `propers-pre55.json`, `ordo.json` | Traditional Mass propers and Ordinary, Latin and English |
 | `chant.json`, `hymns.json` | Gregorian chant (GABC) and public-domain hymns |
@@ -50,7 +50,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 
 ## Pipeline (`tools/`)
 
-Offline scripts that produced the data. `office_gen.py` runs the Divinum Officium engine (clone `DivinumOfficium/divinum-officium` into `tools/do/`, perl with `-I tools/perlstub`). `build_days.py` builds `days.json`; `byz_daily.py` ports orthocal's Byzantine lectionary; `bcp_*.py` extract the 1662 texts from a copy of the Prayer Book you supply.
+Offline scripts that produced the data. `office_gen.py` runs the Divinum Officium engine (clone `DivinumOfficium/divinum-officium` into `tools/do/`, perl with `-I tools/perlstub`). `build_days.py` builds `days/<year>.json`; `byz_daily.py` ports orthocal's Byzantine lectionary; `bcp_*.py` extract the 1662 texts from a copy of the Prayer Book you supply.
 
 ## Rules the code follows
 

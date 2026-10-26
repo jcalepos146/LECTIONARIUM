@@ -1,3 +1,15 @@
+/* The day table (tools/build_days.py) is split by year into days/<year>.json; days/2026.json also holds
+   Advent 2025. LectDays.load(iso) fetches the year of a date (and, in January or December, the year beside it,
+   for look-ups of the nearest Sunday) into one shared map, and resolves to that map. */
+window.LectDays=(()=>{
+ const all={}, got={}, chunk=y=>Math.min(2030,Math.max(2026,y));
+ const year=y=>got[y]||(got[y]=fetch(`days/${y}.json`).then(r=>{ if(!r.ok) throw Error(r.status); return r.json(); }).then(j=>{ Object.assign(all,j); }).catch(()=>{ delete got[y]; }));
+ const today=()=>{ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+ async function load(iso){ const [y,m]=String(iso||today()).split("-").map(Number), ys=new Set([chunk(y)]);
+  if(m===1) ys.add(chunk(y-1)); if(m===12) ys.add(chunk(y+1));
+  await Promise.all([...ys].map(year)); return all; }
+ return {load, all};
+})();
 (function(){
 "use strict";
 const D = JSON.parse(document.getElementById("lect-data").textContent);

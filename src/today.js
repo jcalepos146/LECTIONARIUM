@@ -3,8 +3,8 @@
 "use strict";
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let DAYS=null;
-const daysReady = fetch("days.json").then(r=>r.json()).then(j=>{DAYS=j;}).catch(()=>{DAYS={};});
+const DAYS=window.LectDays.all;
+const daysReady = window.LectDays.load();
 
 /* ---------------------------------------------------------------- choices */
 const MASS_RITES=[
@@ -664,6 +664,7 @@ async function renderSession(){
   const rname=(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name, rk=riteKind(S.type,S.rite);
   const crumbs=rname.toLowerCase().startsWith(rk.toLowerCase())?[rname]:[rk,rname];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
+  await window.LectDays.load(iso);
   const day=DAYS[iso];
   let head=`<div class="sesbar"><button type="button" class="ghost" id="backAsk">← Change</button><span class="crumbs">${crumbs.map(esc).join(" › ")}</span>
     <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous day">‹</button><span class="dlabel">${esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next day">›</button></span></div>`;
@@ -1018,7 +1019,7 @@ function render(){
 window.LectApp={
   passage, riteKind, familyOf,
   /* the psalms of a date: the Prayer Book's course by the day of the month, and the Liturgy of the Hours' four-week psalter */
-  async psalmsOfDay(iso){ await daysReady; const day=DAYS[iso]||{}; return {bcp:{m:bcpPsalms(iso,false),e:bcpPsalms(iso,true)},loth:{lauds:lothPsalms(iso,"lauds",day),vespers:lothPsalms(iso,"vespers",day),week:psalterWeek(iso)}}; }, dayNames, getFave, setFave, FAMILIES, DEF_RITE, defaultOffice, longDate,
+  async psalmsOfDay(iso){ await window.LectDays.load(iso); const day=DAYS[iso]||{}; return {bcp:{m:bcpPsalms(iso,false),e:bcpPsalms(iso,true)},loth:{lauds:lothPsalms(iso,"lauds",day),vespers:lothPsalms(iso,"vespers",day),week:psalterWeek(iso)}}; }, dayNames, getFave, setFave, FAMILIES, DEF_RITE, defaultOffice, longDate,
   coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
   /* every rite the guide can open, with how much of its text is printed (the home page lists the complete ones and the
      work-in-progress page the rest) */
