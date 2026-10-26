@@ -6,7 +6,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const cache={};
 const J=p=>cache[p]||(cache[p]=fetch(p).then(r=>{if(!r.ok)throw Error(p);return r.json();}).catch(e=>{delete cache[p];throw e;}));
-const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;};
+const today=window.LitDate.today;
 const shift=(iso,n)=>new Date(Date.parse(iso+"T00:00:00Z")+n*864e5).toISOString().slice(0,10);
 const tcase=t=>String(t||"").toLowerCase().replace(/(^|\s)\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And|To|Our|With)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
 const R=(lab,cite,num,tr)=>({lab,cite,num:num||"k",tr:tr||"kj"});

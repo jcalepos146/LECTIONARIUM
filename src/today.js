@@ -167,8 +167,8 @@ function suggestHour(rite){
 const S={type:null,rite:null,hour:null,date:null,view:"ask"};
 function loadPrefs(){ try{ const p=JSON.parse(localStorage.getItem("lect-pray")||"null"); if(p){ S.type=p.type; S.rite=p.rite; S.hour=p.hour; } }catch(e){} }
 function savePrefs(){ try{ localStorage.setItem("lect-pray",JSON.stringify({type:S.type,rite:S.rite,hour:S.hour})); }catch(e){} }
-const todayISO=()=>{ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
-const toDate=iso=>{ const [y,m,d]=iso.split("-").map(Number); return new Date(Date.UTC(y,m-1,d)); };
+const todayISO=window.LitDate.today;
+const {DAY,toDate,easter:easterY,advent:adv1Y,fromEaster}=window.LitDate;
 const isoOf=dt=>dt.toISOString().slice(0,10);
 const addDays=(iso,n)=>isoOf(new Date(toDate(iso).getTime()+n*864e5));
 const longDate=iso=>new Intl.DateTimeFormat("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(toDate(iso));
@@ -406,9 +406,7 @@ async function passage(cit, numbering, tr){
 }
 
 /* ---------------------------------------------------------------- liturgical helpers (Office) */
-const DAY=864e5;
-function easterY(Y){ const a=Y%19,b=Math.floor(Y/100),c=Y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1; return new Date(Date.UTC(Y,mo-1,da)); }
-function adv1Y(Y){ const x=new Date(Date.UTC(Y,11,25)); const w=x.getUTCDay(); return new Date(x.getTime()-((w===0?7:w)+21)*DAY); }
+
 function psalterWeek(iso){
   const d=toDate(iso), Y=d.getUTCFullYear();
   const A=adv1Y(Y)<=d?adv1Y(Y):adv1Y(Y-1);
@@ -942,7 +940,7 @@ async function officeBody(iso, day){
       slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion</h4>`+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion); }
     if(TN&&/^(first|third|sixth|ninth)$/.test(H)) slots.tris=(slots.tris||"")+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+hy(`Kontakion, Tone ${sunTone}`,TN.kontakion);
     /* The Great Feasts from Hapgood's Special Services: Vespers is the vigil of the coming day's feast. */
-    { const fx=i=>{ if(!BZ||!BZ.feasts) return []; const d=toDate(i), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY); return [BZ.feasts[i.slice(5)],BZ.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean); };
+    { const fx=i=>{ if(!BZ||!BZ.feasts) return []; const d=toDate(i), off=fromEaster(d); return [BZ.feasts[i.slice(5)],BZ.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean); };
       const TONE=n=>n?`, Tone ${n}`:"";
       const FX=H==="vespers"?fx(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)).filter(f=>f.lic):fx(iso);
       if(FX.length){
@@ -1039,7 +1037,10 @@ window.LectApp={
   rites(){ return [...MASS_RITES.map(r=>({type:"mass",hour:null,...r})),...OFFICE_RITES.map(r=>({type:"office",hour:suggestHour(r.id),...r}))]
     .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,kind:riteKind(r.type,r.id),cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
-  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
+  /* An hour this rite does not have (a stale link, a bookmark from another rite) opens its first hour instead. */
+  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session";
+    if(S.type==="office"){ const H=hoursFor(S.rite)||[]; if(!H.some(h=>h[0]===S.hour)) S.hour=(H[0]||[])[0]||null; }
+    render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
 };
 /* Sources, home and WIP all use the same coverage policy. */

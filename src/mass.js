@@ -5,10 +5,7 @@ const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",
 const M=()=>window.LectMusic;
 const cache={};
 const J=n=>cache[n]||(cache[n]=fetch(n).then(r=>{ if(!r.ok) throw new Error(n); return r.json(); }));
-const DAY=864e5;
-const toDate=iso=>{ const [y,m,d]=iso.split("-").map(Number); return new Date(Date.UTC(y,m-1,d)); };
-function easterY(Y){ const a=Y%19,b=Math.floor(Y/100),c=Y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1; return new Date(Date.UTC(Y,mo-1,da)); }
-function adv1Y(Y){ const x=new Date(Date.UTC(Y,11,25)); const w=x.getUTCDay(); return new Date(x.getTime()-((w===0?7:w)+21)*DAY); }
+const {DAY,toDate,easter:easterY,advent:adv1Y,fromEaster}=window.LitDate;
 function hash(s){ let h=2166136261; for(const c of s){ h^=c.charCodeAt(0); h=Math.imul(h,16777619);} return Math.abs(h); }
 
 /* ---------------------------------------------------------------- season / defaults */
@@ -412,7 +409,7 @@ const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=M
 /* Holy Week has no o.bcp in the day table: name its days by their distance from Easter, as the 1662 book heads them. */
 const PB_HOLYWEEK={"-6":"MONDAY BEFORE EASTER","-5":"TUESDAY BEFORE EASTER","-4":"WEDNESDAY BEFORE EASTER","-3":"THURSDAY BEFORE EASTER","-2":"GOOD FRIDAY","-1":"EASTER EVEN"};
 function pbPropers(B,iso,day,days){
-  const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
+  const off=fromEaster(iso);
   const k=PB_HOLYWEEK[off]&&B.propers[PB_HOLYWEEK[off]]?PB_HOLYWEEK[off]:(day.o&&day.o.bcp);
   const pr=k&&B.propers[k]?B.propers[k]:null;
   /* A book that keeps only the Sundays and chief feasts (Wesley's Sunday Service): any other day takes the Sunday's. */
@@ -473,7 +470,7 @@ async function buildPB(ctx,opts,book){
   const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
   /* Wesley prints the proper prefaces for the feast itself only, not its octave. */
-  const d0=toDate(iso), off0=Math.round((d0-easterY(d0.getUTCFullYear()))/DAY);
+  const d0=toDate(iso), off0=fromEaster(d0);
   const pref=C.prefaceFn?C.prefaceFn(season(iso,day),iso):C.prefaceDayOnly?((d0.getUTCMonth()===11&&d0.getUTCDate()===25)?"Christmas":({0:"Easter",39:"Ascension",49:"Whitsuntide",56:"Trinity Sunday"})[off0]||""):PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
   const at=(its,re)=>re?its.findIndex(x=>re.test(x[1])):-1;
   for(const st of B.hc){
@@ -542,7 +539,7 @@ function csbDay(iso,D){
   const sun=new Date(d.getTime()-dow*DAY), sk=csbSundayKey(sun);
   let key=sk, note="", second=null;
   // a Greater Festival in the week keeps its propers until the next Sunday (Christmas, the Circumcision, the Epiphany, the Reformation, the Ascension, Ash Wednesday)
-  for(let i=dow;i>=1;i--){ const x=new Date(d.getTime()-(dow-i)*DAY), m=String(x.getUTCMonth()+1).padStart(2,"0")+"-"+String(x.getUTCDate()).padStart(2,"0"), o=Math.round((x-easterY(x.getUTCFullYear()))/DAY);
+  for(let i=dow;i>=1;i--){ const x=new Date(d.getTime()-(dow-i)*DAY), m=String(x.getUTCMonth()+1).padStart(2,"0")+"-"+String(x.getUTCDate()).padStart(2,"0"), o=fromEaster(x);
     const g=CSB_GREATER_FIXED[m]||(o===39?"ascension":o===-46?"ash":null); if(g){ key=g; break; } }
   if(CSB_GREATER_FIXED[md]) key=CSB_GREATER_FIXED[md];
   const mov={"-46":"ash","-6":"hw1","-5":"hw2","-4":"hw3","-3":"hw4","-2":"hw5","-1":"hw6","1":"easter-mon","39":"ascension","50":"pentecost-mon"}[off];
@@ -852,7 +849,7 @@ async function buildOrders(ctx,opts,rite){
     const pr=pbPropers(B,iso,day,days), p=t=>`<p data-r="cel">${esc(t)}</p>`;
     const col=pr?(pr.sets[0].collect.length?pr.sets[0].collect:[]):[];
     const coll=col.length?`<p class="cite">${esc(pr.t)}</p>`+col.map(p).join("")+`<p data-r="ppl"><span class="sp">℟.</span> Amen.</p>`:cue("The Collect of the Day, from the Sunday Service.");
-    const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
+    const off=fromEaster(iso);
     const key=(PB_HOLYWEEK[off]&&B.lessons[PB_HOLYWEEK[off]])?PB_HOLYWEEK[off]:day.o&&day.o.bcp;
     const L=key&&B.lessons[key]&&(toDate(iso).getUTCDay()===0||/CHRISTMAS DAY|GOOD FRIDAY|ASCENSION DAY/.test(key))?B.lessons[key]:null;
     const H=opts.hour==="e"?"e":"m", less={};
@@ -1105,7 +1102,7 @@ async function buildNO(ctx, opts){
   out.push(sec("Communion Rite",t/60,h));
   // Conclusion
   h=""; t=0;
-  h+=pos([["cross","at the blessing"]])+bil("bless","")+bil("ite","","cel",paschal&&(Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY)<=7||/Pentecost/.test(r.t))?"Ite, missa est, allelúia, allelúia. ℟. Deo grátias, allelúia, allelúia.":LAT.ite)+cue(`${ICEL}: ${HM}.`);
+  h+=pos([["cross","at the blessing"]])+bil("bless","")+bil("ite","","cel",paschal&&(fromEaster(iso)<=7||/Pentecost/.test(r.t))?"Ite, missa est, allelúia, allelúia. ℟. Deo grátias, allelúia, allelúia.":LAT.ite)+cue(`${ICEL}: ${HM}.`);
   if(sung){ const ids=(C.kyriale[mass]||{}).ids||{}; const id=ids.Ite||C.common.ite_no; h+=ch("Ite, missa est",id); t+=chs(id); } t+=40;
   const rec=hymnSlot(H,iso,"recessional",s,opts,"Recessional hymn"); h+=rec.html; t+=rec.sec;
   if(opts.marian){ const ma=marian(iso,C); if(ma){ h+=CW(ma.name,ma.gabc,"Seasonal Marian antiphon · GregoBase (CC0)"); t+=M().chantSeconds(ma.gabc); } }
@@ -1273,14 +1270,14 @@ function byzToneOf(iso){
   return ((Math.round((sun-thomas)/DAY/7))%8+8)%8+1;
 }
 function byzEnv(iso,kind){
-  const d=toDate(iso), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY), sun=d.getUTCDay()===0, pascha=off>=0&&off<=38;
+  const d=toDate(iso), off=fromEaster(d), sun=d.getUTCDay()===0, pascha=off>=0&&off<=38;
   return {kind,pascha,departed:!sun&&!pascha,tone:sun?byzToneOf(iso):0,sun,illum:off>=-25&&off<=-4};
 }
 /* Hapgood's propers of the Great Feasts (data/byz-liturgy.json "feasts"), by fixed date or by distance from Pascha;
    Bright Week keeps the Paschal hymns. Two may meet (the Annunciation in Holy Week): both are returned. */
 function byzFeasts(iso,D){
   if(!D||!D.feasts) return [];
-  const d=toDate(iso), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY), md=iso.slice(5);
+  const d=toDate(iso), off=fromEaster(d), md=iso.slice(5);
   return [D.feasts[md], D.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean);
 }
 const BYZ_TONE=n=>n?`, Tone ${["","I","II","III","IV","V","VI","VII","VIII"][n]}`:"";

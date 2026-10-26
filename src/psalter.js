@@ -7,7 +7,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let wesley=null;
 const W=()=>wesley||(wesley=fetch("data/bcp1784-psalter.json").then(r=>r.json()).catch(e=>{wesley=null;throw e;}));
-const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;};
+const today=window.LitDate.today;
 /* Hebrew (Prayer Book, King James) numbering to the Greek and Latin numbering of the Douay-Rheims */
 const vulg=n=>n<=8||n>=148?String(n):n===9||n===10?"9":n<=113?String(n-1):n===114||n===115?"113":n===116?"114–115":n<=146?String(n-1):"146–147";
 const GLORIA="Glory be to the Father, and to the Son: and to the Holy Ghost; As it was in the beginning, is now, and ever shall be: world without end. Amen.";

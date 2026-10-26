@@ -4,7 +4,7 @@
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback;}catch(e){return fallback;}};
 const write=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch(e){}};
-const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+const today=window.LitDate.today;
 let catalog,loading,days,open=false,returnHash='#today',returnScroll=0,returnFocus,routeSerial=0,input=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)?'touch':'keyboard',menu=false;
 let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio,guideReturn='#/sanctuary';
 let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});

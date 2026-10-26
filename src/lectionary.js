@@ -2,11 +2,10 @@
 (function(){
 "use strict";
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const DAY=864e5, date=s=>new Date(s+'T00:00:00Z'), iso=d=>d.toISOString().slice(0,10);
+const {DAY,iso}=window.LitDate, date=window.LitDate.toDate;
 const cache={};
 const json=p=>cache[p]||(cache[p]=fetch(p).then(r=>{if(!r.ok)throw Error(p);return r.json();}).catch(e=>{delete cache[p];throw e;}));
-function easter(y){const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),n=h+l-7*m+114;return new Date(Date.UTC(y,Math.floor(n/31)-1,n%31+1));}
-function advent(y){const x=new Date(Date.UTC(y,11,25));return new Date(+x-((x.getUTCDay()||7)+21)*DAY);}
+const {easter,advent}=window.LitDate;
 const sunday=d=>new Date(+d-d.getUTCDay()*DAY);
 const ord=['First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eighth'];
 const PB_ALIAS={"The Nativity of Our Lord: Christmas Day":"Christmas Day I","The Holy Name":"Holy Name","First Sunday after Christmas Day":"First Sunday after Christmas","Second Sunday after Christmas Day":"Second Sunday after Christmas","First Sunday after the Epiphany: The Baptism of our Lord":"First Sunday after Epiphany","Sunday of the Passion: Palm Sunday":"Palm Sunday: Passion","The Day of Pentecost: Whitsunday":"Pentecost","First Sunday after Pentecost: Trinity Sunday":"Trinity Sunday","Seventh Sunday of Easter: The Sunday after Ascension Day":"Seventh Sunday of Easter","Saint Andrew":"St. Andrew","Saint Thomas":"St. Thomas"};
