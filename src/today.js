@@ -69,6 +69,74 @@ const HOURS={
   byz:[["vespers","Vespers"],["compline","Compline"],["midnight","Midnight Office"],["orthros","Orthros (Matins)"],["first","First Hour"],["third","Third Hour"],["sixth","Sixth Hour"],["ninth","Ninth Hour"]],
 };
 const hoursFor=r=>HOURS[r]||HOURS.br;
+/* What kind of service a rite is, in its own tradition's words: shown in the breadcrumb and on the Sanctuary tiles. */
+function riteKind(type,id){
+  if(type!=="mass") return "Daily office";
+  if(/^(csbm|csbv|csbs|csbsm|csbse|byzv|byzm|byzh|byzc|wes84o|rcusv)$/.test(id)) return "Daily office";
+  if(id==="csbl") return "Litany";
+  if(id==="rcusp") return "Preparation";
+  if(/^(n|o|m|p|h|d|a|z)$/.test(id)) return "Mass";
+  if(/^(b|copt|arm)$/.test(id)) return "Divine Liturgy";
+  if(id==="adai") return "Holy Qurbana";
+  if(/^(rca|rcus|pres)$/.test(id)) return "Lord's Day service";
+  if(id==="csb") return "The Service";
+  if(/^(me08|wes84)$/.test(id)) return "Lord's Supper";
+  return "Holy Communion";
+}
+/* The tradition each rite belongs to, for the tradition-first questions, the day names and the Sanctuary emblems. */
+const FAMILY={wes84:"methodist",wes84o:"methodist",me08:"methodist",rca:"reformed",rcus:"reformed",rcusv:"reformed",rcusp:"reformed",pres:"reformed",
+  csb:"lutheran",csbm:"lutheran",csbv:"lutheran",csbl:"lutheran",csbs:"lutheran",csbsm:"lutheran",csbse:"lutheran",
+  bcp62:"anglican",bcp28:"anglican",bcp49:"anglican",bcp52:"anglican",bcp59:"anglican",bcp37:"anglican",bcp89:"anglican",bcp92:"anglican",bcp79:"anglican",dwdo:"catholic",
+  b:"eastern-orthodox",byz:"eastern-orthodox",byzv:"eastern-orthodox",byzm:"eastern-orthodox",byzh:"eastern-orthodox",byzc:"eastern-orthodox",adai:"oriental",copt:"oriental",arm:"oriental"};
+const familyOf=id=>FAMILY[id]||"catholic";
+const FAMILIES=[["catholic","Catholic","Roman Missal, 1962 Missal and Breviary, Ordinariate, Dominican, Ambrosian, Mozarabic"],
+  ["eastern-orthodox","Eastern Orthodox","Divine Liturgy, Vespers, Matins, the Hours and Compline · also Byzantine Catholic"],
+  ["oriental","Oriental Orthodox and the Church of the East","Coptic, Armenian and East Syriac liturgies"],
+  ["anglican","Anglican","The Prayer Books from 1549 to 1979"],
+  ["lutheran","Lutheran","The Common Service, Matins, Vespers, the Suffrages and the Litany"],
+  ["reformed","Reformed and Presbyterian","The Forms of Dort, Mercersburg and the Book of Common Worship"],
+  ["methodist","Methodist","Wesley's Sunday Service and the Methodist Episcopal Ritual"]];
+const famName=f=>(FAMILIES.find(x=>x[0]===f)||FAMILIES[0])[1];
+const getFave=()=>{ try{ const v=localStorage.getItem("lect-tradition"); return FAMILIES.some(f=>f[0]===v)?v:null; }catch(e){ return null; } };
+const setFave=f=>{ try{ localStorage.setItem("lect-tradition",f); }catch(e){} window.dispatchEvent(new CustomEvent("lect-tradition",{detail:f})); };
+/* each tradition's usual service, and its office for the time of day (none where the books keep no daily office) */
+const DEF_RITE={catholic:"n","eastern-orthodox":"b",oriental:"copt",anglican:"bcp62",lutheran:"csb",reformed:"rca",methodist:"wes84"};
+function defaultOffice(f){
+  const h=new Date().getHours();
+  if(f==="catholic") return {type:"office",rite:"br62",hour:suggestHour("br62")};
+  if(f==="eastern-orthodox") return {type:"office",rite:"byz",hour:suggestHour("byz")};
+  if(f==="anglican") return {type:"office",rite:"bcp28",hour:suggestHour("bcp28")};
+  if(f==="lutheran") return {type:"mass",rite:h<12?"csbm":"csbv",hour:null};
+  if(f==="methodist") return {type:"mass",rite:"wes84o",hour:null};
+  return null;
+}
+/* The Coptic date (the Alexandrian calendar of the Martyrs): 1 Thout falls on 11 September, or 12 September before a Gregorian leap year. */
+const COPT_MONTHS=["Thout","Paopi","Hathor","Koiak","Tobi","Meshir","Paremhat","Parmouti","Pashons","Paoni","Epip","Mesori","the Little Month"];
+function copticDate(iso){
+  const jd=Math.floor(toDate(iso).getTime()/864e5)+2440588, r=jd-1825030;
+  const y=Math.floor((4*r+1463)/1461), start=1825030+365*(y-1)+Math.floor(y/4), doy=jd-start;
+  return `${doy%30+1} ${COPT_MONTHS[Math.floor(doy/30)]} ${y} A.M.`;
+}
+const tcase=t=>String(t||"").toLowerCase().replace(/(^|\s)\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And|To|Our|With)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
+const WEEKDAY=iso=>new Intl.DateTimeFormat("en-GB",{weekday:"long",timeZone:"UTC"}).format(toDate(iso));
+/* The day as each calendar names it. */
+function dayNames(iso,day){
+  if(!day) return [];
+  const n=day.n||{}, m=day.m||{}, b=day.b||{}, o=day.o||{};
+  const trad=m.t?(m.feria&&m.note?`${m.t.replace(/ · Mass of the preceding Sunday/,"")} · ${m.note}`:m.t):"";
+  let pb=o.bcp?tcase(o.bcp):"";
+  if(pb&&toDate(iso).getUTCDay()!==0&&/Sunday/i.test(pb)) pb=`${WEEKDAY(iso)} · week of ${pb.replace(/^the /i,"the ")}`;
+  return [
+    {fam:"catholic",cal:"Roman Missal",name:n.t||"",rite:"n"},
+    {fam:"catholic",cal:"1962 Missal",name:trad,rite:"m"},
+    {fam:"eastern-orthodox",cal:"Byzantine",name:[b.t,b.s].filter(Boolean).join(" · "),rite:"b"},
+    {fam:"oriental",cal:"Coptic",name:copticDate(iso),rite:"copt"},
+    {fam:"anglican",cal:"Prayer Book",name:pb,rite:"bcp62"},
+    {fam:"lutheran",cal:"Lutheran",name:pb,rite:"csb"},
+    {fam:"methodist",cal:"Wesley",name:pb,rite:"wes84"},
+  ].filter(x=>x.name);
+}
+
 function suggestHour(rite){
   const h=new Date().getHours()+new Date().getMinutes()/60;
   const pick = h<5?"night": h<8?"morning": h<10.5?"mid1": h<13.5?"mid2": h<16.5?"mid3": h<20?"evening":"night";
@@ -146,14 +214,21 @@ function coverage(type,rite,hour){
   return null;
 }
 const covBadge=c=>c?`<span class="cov cov-${c[0]}">${COV_LABEL[c[0]]}</span>`:"";
+/* every service of one tradition, the Eucharist first, then the offices, the Litany and the preparation */
+const KIND_ORDER=k=>k==="Daily office"?1:k==="Litany"?2:k==="Preparation"?3:0;
+function famRites(f){
+  return [...MASS_RITES.map(r=>({type:"mass",...r})),...OFFICE_RITES.map(r=>({type:"office",...r}))].filter(r=>familyOf(r.id)===f)
+    .map((r,i)=>({...r,i,k:riteKind(r.type,r.id)})).sort((a,b)=>KIND_ORDER(a.k)-KIND_ORDER(b.k)||a.i-b.i);
+}
 function renderAsk(){
-  const typeHTML = choiceBtn("type","mass","Mass","A full guide to the Mass, with music",S.type==="mass")+choiceBtn("type","office","Divine Office","Liturgy of the Hours, Breviary, Daily Office",S.type==="office");
+  if(!S.fam) S.fam=S.rite?familyOf(S.rite):getFave();
+  const famHTML=FAMILIES.map(([id,n,d])=>choiceBtn("fam",id,n,d,S.fam===id)).join("");
   let riteHTML="", hourHTML="";
-  if(S.type){ const list=S.type==="mass"?MASS_RITES:OFFICE_RITES; riteHTML=list.map(r=>choiceBtn("rite",r.id,r.name,r.d,S.rite===r.id,covBadge(coverage(S.type,r.id,"vespers")))).join(""); }
-  const riteOK = S.type && (S.type==="mass"?MASS_RITES:OFFICE_RITES).some(r=>r.id===S.rite);
+  if(S.fam){ riteHTML=famRites(S.fam).map(r=>choiceBtn("rite",r.type+"|"+r.id,r.name,r.k+" · "+r.d,S.type===r.type&&S.rite===r.id,covBadge(coverage(r.type,r.id,"vespers")))).join(""); }
+  const riteOK = S.type && (S.type==="mass"?MASS_RITES:OFFICE_RITES).some(r=>r.id===S.rite) && familyOf(S.rite)===S.fam;
   if(S.type==="office" && riteOK){ const sug=suggestHour(S.rite); hourHTML=hoursFor(S.rite).map(([id,n])=>choiceBtn("hour",id,n,id===sug?"Suggested for now":"",S.hour===id)).join(""); }
   const TIMED=["timed","Timed session","Fit to a set length, from 15 minutes up · for study sessions"];
-  const LENGTHS=S.rite==="b"||ORD_ONLY(S.rite)?[["full",S.rite==="b"?"Full Liturgy":"Full Mass","As usually celebrated"],TIMED]:[["said","Said","Spoken, no music · shortest"],["sung","Sung, simple","Hymns and a chant Ordinary"],["chant","Full chant","Gregorian propers and Ordinary · longest"],TIMED];
+  const LENGTHS=S.rite==="b"||ORD_ONLY(S.rite)?[["full","Full "+(riteKind("mass",S.rite)==="Mass"?"Mass":riteKind("mass",S.rite)==="Divine Liturgy"?"Liturgy":"service"),"As usually celebrated"],TIMED]:[["said","Said","Spoken, no music · shortest"],["sung","Sung, simple","Hymns and a chant Ordinary"],["chant","Full chant","Gregorian propers and Ordinary · longest"],TIMED];
   let lenHTML=""; if(S.type==="mass"&&riteOK){ let st={}; try{ st=JSON.parse(localStorage.getItem("lect-mass-"+S.rite)||"null")||{}; }catch(e){}
     if(!S.len||!LENGTHS.some(x=>x[0]===S.len)) S.len=st.target?"timed":(S.rite==="b"||ORD_ONLY(S.rite)?"full":(st.preset&&st.preset!=="custom"?st.preset:"sung"));
     S.mins=S.mins||st.target||20;
@@ -164,19 +239,19 @@ function renderAsk(){
   $("#ask").innerHTML=`
     <form class="joinlive" id="joinForm" autocomplete="off"><label for="joinCode">Join a live session</label><input id="joinCode" name="code" inputmode="text" maxlength="12" placeholder="Code" aria-describedby="joinMsg"><button type="submit" class="ghost">Join</button><span class="note" id="joinMsg" aria-live="polite"></span></form>
     <ol class="steps">
-      <li class="step"><h3><span class="sn">1</span>What are you praying?</h3><div class="choices two">${typeHTML}</div></li>
-      ${S.type?`<li class="step"><h3><span class="sn">2</span>Which rite or use?</h3><div class="choices">${riteHTML}</div><p class="note covkey"><span class="cov cov-full">Complete text</span> every word is printed · <span class="cov cov-guide">Guided text</span> some prayers come from your own book (add them once with <b>Add text</b>) · <span class="cov cov-order">Order and readings</span> the structure and Scripture, with the prayers from your book</p></li>`:""}
+      <li class="step"><h3><span class="sn">1</span>Which tradition?</h3><div class="choices two">${famHTML}</div></li>
+      ${S.fam?`<li class="step"><h3><span class="sn">2</span>Which service?</h3><div class="choices">${riteHTML}</div><p class="note covkey"><span class="cov cov-full">Complete text</span> every word is printed · <span class="cov cov-guide">Guided text</span> some prayers come from your own book (add them once with <b>Add text</b>) · <span class="cov cov-order">Order and readings</span> the structure and Scripture, with the prayers from your book</p></li>`:""}
       ${S.type==="office"&&riteOK?`<li class="step"><h3><span class="sn">3</span>Which hour?</h3><div class="choices">${hourHTML}</div></li>`:""}
       ${S.type==="mass"&&riteOK?`<li class="step"><h3><span class="sn">3</span>How long${S.rite==="b"?"":", and with what music"}?</h3><div class="choices">${lenHTML}</div><p class="note">${S.len==="timed"?"The guide shortens the service step by step to fit: music first, then optional prayers, then the texts themselves, and lists what it left out. You can change the length on the next page.":"You can fine-tune hymns, chant settings, homily and Communion time, or set a time limit, on the next page."}</p></li>`:""}
       ${ready?`<li class="step"><h3><span class="sn">${S.type==="office"||S.type==="mass"?4:3}</span>For which day?</h3>
         <div class="dayrow"><input type="date" id="dayPick" value="${S.date||todayISO()}" min="2025-11-30" max="2030-11-30" aria-label="Date">
         <button type="button" class="ghost" data-day="0">Today</button><button type="button" class="ghost" data-day="1">Tomorrow</button><button type="button" class="ghost" data-day="sun">Next Sunday</button></div>
-        <button type="button" class="go" id="goBtn">Open the ${S.type==="mass"?"Mass":"hour"}</button></li>`:""}
+        <button type="button" class="go" id="goBtn">Open the ${S.type==="office"?"hour":riteKind("mass",S.rite)==="Mass"?"Mass":"service"}</button></li>`:""}
     </ol>`;
   $("#ask").querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{
     const g=b.dataset.g, v=b.dataset.v;
-    if(g==="type"){ if(S.type!==v){ S.rite=null; S.hour=null; } S.type=v; }
-    if(g==="rite"){ S.rite=v; if(S.type==="office" && !hoursFor(v).some(h=>h[0]===S.hour)) S.hour=suggestHour(v); }
+    if(g==="fam"){ if(S.fam!==v){ S.type=null; S.rite=null; S.hour=null; } S.fam=v; setFave(v); renderBand(); }
+    if(g==="rite"){ const [t,id]=v.split("|"); S.type=t; S.rite=id; if(t==="office" && !hoursFor(id).some(h=>h[0]===S.hour)) S.hour=suggestHour(id); }
     if(g==="hour"){ S.hour=v; }
     if(g==="len"){ S.len=v; }
     renderAsk();
@@ -556,12 +631,13 @@ async function renderSession(){
   await daysReady;
   const iso=S.date||todayISO();
   window.dispatchEvent(new CustomEvent("lect-session",{detail:{type:S.type,rite:S.rite,hour:S.hour,iso,label:(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite)?.name}}));
-  const crumbs=[S.type==="mass"?"Mass":"Divine Office", (S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name];
+  const rname=(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name, rk=riteKind(S.type,S.rite);
+  const crumbs=rname.toLowerCase().startsWith(rk.toLowerCase())?[rname]:[rk,rname];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
   const day=DAYS[iso];
   let head=`<div class="sesbar"><button type="button" class="ghost" id="backAsk">← Change</button><span class="crumbs">${crumbs.map(esc).join(" › ")}</span>
     <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous day">‹</button><span class="dlabel">${esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next day">›</button></span></div>`;
-  { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<p class="covline">${covBadge(c)} ${esc(c[1])}</p>`; }
+  { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<details class="covline"${matchMedia("(min-width:701px)").matches?" open":""}><summary>${covBadge(c)}<span class="covabout">About this text</span></summary>${esc(c[1])}</details>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
   else if(S.type==="mass"&&S.rite==="bcp79"){
@@ -840,18 +916,32 @@ async function renderBand(){
   await daysReady; const iso=todayISO(), day=DAYS[iso];
   if(!day){ el.hidden=true; return; }
   el.hidden=false;
-  const c=(day.n&&day.n.c)||"green", n=day.n||{}, m=day.m||{}, b=day.b||{};
-  const trad=m.t?(m.feria&&m.note?`${m.t.replace(/ · Mass of the preceding Sunday/,"")} · ${m.note}`:m.t):"";
-  const oRite=OFFICE_RITES.find(r=>r.id===(S.type==="office"&&S.rite?S.rite:"br62"))||OFFICE_RITES[0];
+  const c=(day.n&&day.n.c)||"green";
+  const fave=getFave(), F=fave||"catholic", names=dayNames(iso,day);
+  /* Anglican, Lutheran and Methodist books share the Prayer Book's names for the Sundays: one row serves all three. */
+  const rows=[], seen=new Set();
+  const order=[F,...FAMILIES.map(f=>f[0]).filter(f=>f!==F)];
+  order.forEach(f=>names.filter(x=>x.fam===f).forEach(x=>{
+    const pb=/^(anglican|lutheran|methodist)$/.test(x.fam);
+    const key=pb?"pb":x.cal; if(seen.has(key)) return; seen.add(key);
+    rows.push({cal:pb?(x.fam===F?x.cal:"Prayer Book"):x.cal,name:x.name,on:x.fam===F});
+  }));
+  const main=(names.find(x=>x.fam===F)||names[0]||{}).name||"";
+  const rite=(S.rite&&familyOf(S.rite)===F&&S.type==="mass"&&MASS_RITES.some(r=>r.id===S.rite))?S.rite:DEF_RITE[F];
+  const R=MASS_RITES.find(r=>r.id===rite)||MASS_RITES[0], off=defaultOffice(F);
+  const offName=off?((off.type==="office"?OFFICE_RITES:MASS_RITES).find(r=>r.id===off.rite)||{}).name:"";
+  const kind=riteKind("mass",rite);
   el.innerHTML=`<div class="tband" data-c="${esc(c)}" style="--lc:var(${LITC[c]||"--lit-green"})">
     <div><div class="tb-date">${esc(longDate(iso))}<span class="sw">${esc(c.charAt(0).toUpperCase()+c.slice(1))}</span></div>
-      <p class="tb-main">${esc(n.t||"")}</p>
-      <dl class="tb-days">${n.s?`<div><dt>Roman Missal</dt><dd>${esc(n.s)}</dd></div>`:""}${trad?`<div><dt>1962 Missal</dt><dd>${esc(trad)}</dd></div>`:""}${b.t?`<div><dt>Byzantine</dt><dd>${esc(b.t)}</dd></div>`:""}</dl></div>
-    <div class="tb-go"><button type="button" class="go" data-quick="mass">Pray today's Mass</button><button type="button" class="ghost" data-quick="office" title="${esc(oRite.name)}">Pray the hour now</button></div></div>`;
+      <p class="tb-main">${esc(main)}</p>
+      <dl class="tb-days">${rows.map(r=>`<div${r.on?' class="on"':""}><dt>${esc(r.cal)}</dt><dd>${esc(r.name)}</dd></div>`).join("")}</dl></div>
+    <div class="tb-go"><label class="tb-fam">Your tradition <select id="tbFam">${FAMILIES.map(([id,n])=>`<option value="${id}"${id===F?" selected":""}>${esc(n)}</option>`).join("")}</select></label>
+      <button type="button" class="go" data-quick="mass" title="${esc(R.name)}">Pray today${kind==="Mass"?"'s Mass":kind==="Divine Liturgy"?"'s Liturgy":""}<small>${esc(R.name)}</small></button>${off?`<button type="button" class="ghost" data-quick="office" title="${esc(offName)}">Pray the hour now<small>${esc(offName)}</small></button>`:""}</div></div>`;
+  el.querySelector("#tbFam").addEventListener("change",e=>{ setFave(e.target.value); S.fam=e.target.value; if(S.rite&&familyOf(S.rite)!==S.fam){ S.type=null; S.rite=null; S.hour=null; } render(); });
   el.querySelectorAll("[data-quick]").forEach(btn=>btn.addEventListener("click",()=>{
-    const t=btn.dataset.quick; S.date=todayISO();
-    if(t==="mass"){ if(S.type!=="mass"||!MASS_RITES.some(r=>r.id===S.rite)) S.rite="n"; S.type="mass"; }
-    else { if(S.type!=="office"||!OFFICE_RITES.some(r=>r.id===S.rite)) S.rite="br62"; S.type="office"; S.hour=suggestHour(S.rite); }
+    const t=btn.dataset.quick; S.date=todayISO(); S.fam=F;
+    if(t==="mass"){ S.type="mass"; S.rite=rite; }
+    else { S.type=off.type; S.rite=off.rite; S.hour=off.hour; }
     open();
   }));
 }
@@ -870,12 +960,12 @@ function render(){
   if(S.view==="ask") renderAsk(); else renderSession();
 }
 window.LectApp={
-  passage,
+  passage, riteKind, familyOf, dayNames, getFave, setFave, FAMILIES, DEF_RITE, defaultOffice, longDate,
   coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
   /* every rite the guide can open, with how much of its text is printed (the home page lists the complete ones and the
      work-in-progress page the rest) */
   rites(){ return [...MASS_RITES.map(r=>({type:"mass",hour:null,...r})),...OFFICE_RITES.map(r=>({type:"office",hour:suggestHour(r.id),...r}))]
-    .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
+    .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,kind:riteKind(r.type,r.id),cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
   follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session"; render(); },
   current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
@@ -883,5 +973,6 @@ window.LectApp={
 /* Sources, home and WIP all use the same coverage policy. */
 const covBody=document.getElementById('coverage-body');
 if(covBody)covBody.innerHTML=window.LectApp.rites().map(r=>`<tr><td>${esc(r.name)}</td><td>${covBadge([r.cov,r.note])}</td><td>${esc(r.note)}</td></tr>`).join('');
+window.addEventListener("lect-tradition",e=>{ if(S.view==="ask"&&e.detail!==S.fam){ S.fam=e.detail; if(S.rite&&familyOf(S.rite)!==S.fam){ S.type=null; S.rite=null; S.hour=null; } render(); } });
 loadPrefs(); S.date=todayISO(); render();
 })();

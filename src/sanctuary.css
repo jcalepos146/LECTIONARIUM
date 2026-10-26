@@ -13,7 +13,13 @@ body.san-open{overflow:hidden}
 #sanctuary h2{font-size:1.3em;color:var(--san-gold);margin:0 0 18px;font-weight:500}
 .san-toolbar{position:sticky;top:0;z-index:3;display:flex;gap:12px;padding:18px 4vw;background:var(--san-bg);border-bottom:1px solid var(--san-gold);flex-wrap:wrap}
 .san-toolbar button,.san-settings button,#sanctuary [data-action=retry]{background:var(--san-panel);border:1px solid var(--san-gold);padding:8px 18px;border-radius:3px}
-.san-toolbar button:nth-child(2){margin-right:auto}
+.san-toolbar [data-route="#/sanctuary"]{margin-right:auto}
+.san-toolbar [aria-current=page]{border-color:var(--san-gold);box-shadow:inset 0 -2px 0 var(--san-gold)}
+.san-short{display:none}
+.san-filter{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.san-filter button{background:var(--san-panel);border:1px solid var(--san-gold);border-radius:999px;padding:6px 14px;font-size:.85em;color:var(--san-muted)}
+.san-filter button[aria-pressed=true]{background:var(--san-gold);color:var(--san-bg)}
+.san-today h3.san-wip-fam{margin-top:18px}
 .san-content{padding:34px 5vw 100px;max-width:2200px;margin:auto;min-height:75vh}
 .san-eyebrow{text-transform:uppercase;letter-spacing:.13em;color:var(--san-gold);font-size:.8em}
 .san-lede{max-width:900px;color:var(--san-muted);font-size:1.15em}
@@ -43,7 +49,7 @@ body.san-open{overflow:hidden}
 .san-settings{display:flex;flex-direction:column;max-width:650px;gap:22px}
 #sanctuary details{margin:35px 0}#sanctuary summary{cursor:pointer;color:var(--san-gold)}
 @media(min-width:1800px){#sanctuary{font-size:calc(26px * var(--san-scale))}}
-@media(max-width:600px){.san-toolbar{gap:9px;padding:12px 16px}.san-toolbar button{padding:7px 10px;font-size:18px}.san-toolbar button:nth-child(2){margin-right:0}.san-content{padding:22px 22px 60px}.san-hero{display:block}.san-hero>div{width:160px}.san-facts{grid-template-columns:1fr}.san-prompts{font-size:16px}.san-grid{grid-template-columns:1fr}.san-tile{flex-basis:280px;width:280px}}
+@media(max-width:600px){.san-toolbar{gap:9px;padding:12px 16px}.san-toolbar button{padding:7px 10px;font-size:18px}.san-toolbar{flex-wrap:nowrap;gap:6px;padding:10px 12px}.san-toolbar button{padding:7px 9px;font-size:16px;white-space:nowrap}.san-toolbar [data-route="#/sanctuary"]{margin-right:auto}.san-long{display:none}.san-short{display:inline}.san-toolbar [data-action=exit]{display:none}.san-filter{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -22px;padding:0 22px 4px}.san-filter button{flex:none}.san-content{padding:22px 22px 60px}.san-hero{display:block}.san-hero>div{width:160px}.san-facts{grid-template-columns:1fr}.san-prompts{font-size:16px}.san-grid{grid-template-columns:1fr}.san-tile{flex-basis:280px;width:280px}}
 @media(prefers-reduced-motion:reduce){#sanctuary *,#sanctuary *::before,#sanctuary *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
 /* The Sanctuary skin: the classic page (the guides, the tabs, Sources) in the Sanctuary's palette and type while
@@ -77,3 +83,13 @@ body:not(.in-session) .san-guide-help{display:none}
 .lesson-calendar textarea { display:block; box-sizing:border-box; width:100%; max-width:100%; margin:.5rem 0; font:inherit; }
 .lesson-calendar input[type=date] { max-width:100%; font:inherit; }
 .lesson-calendar .reading { margin:1rem 0; }
+/* Print: one service on white paper, whatever the screen theme or skin; settings, timeline and navigation stay on screen. */
+@media print{
+ :root,:root[data-theme],:root[data-skin=sanctuary],:root[data-skin=sanctuary][data-skin-theme]{--paper:#fff;--leaf:#fff;--ink:#000;--muted:#333;--rule:#bbb;--rubric:#9b2318;--rubric-wash:#fff;--gold:#806022;color-scheme:light}
+ html body,:root[data-skin=sanctuary] body{background:#fff!important;background-image:none!important;color:#000;padding:0}
+ #san-bar,#sanctuary,#enter-sanctuary,.fsctl,.chirho,details.msettings,details.mrun,details.covline,#lessonCalendar,.san-guide-help,dialog{display:none!important}
+ header.top{padding:0 0 4pt} .kicker,.dek,.feats{display:none!important} h1.wordmark{font-size:16pt!important}
+ .sesbar{border:0;padding:0} .sesbar .crumbs,.sesbar .dlabel{font-size:10pt}
+ .dayname{font-size:20pt} .mbody{font-size:11pt}
+ @page{margin:15mm 16mm}
+}

@@ -41,12 +41,12 @@ class SanctuaryTests(unittest.TestCase):
     def test_keyboard_hierarchy_history_and_search(self):
         self.open('#/sanctuary');self.sanctuary().get_by_role('heading',name='Sanctuary',exact=True).wait_for()
         self.page.locator('[data-route="#/t/catholic"]').focus();self.page.keyboard.press('Enter')
-        self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
+        self.sanctuary().get_by_role('heading',name='Catholic',exact=True,level=1).wait_for()
         self.page.locator('[data-route="#/t/latin"]').focus();self.page.keyboard.press('Enter')
         self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for()
-        self.page.keyboard.press('Escape');self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
+        self.page.keyboard.press('Escape');self.sanctuary().get_by_role('heading',name='Catholic',exact=True,level=1).wait_for()
         self.page.go_back();self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for()
-        self.page.go_forward();self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
+        self.page.go_forward();self.sanctuary().get_by_role('heading',name='Catholic',exact=True,level=1).wait_for()
         self.page.keyboard.press('/');q=self.page.locator('#san-query');q.wait_for();q.fill('1928 United States')
         self.assertIn('1 results',self.page.locator('#san-count').inner_text())
         q.fill('Ukraine');self.page.locator('#san-results [data-route="#/t/catholic-ukrainian"]').wait_for()
@@ -63,16 +63,16 @@ class SanctuaryTests(unittest.TestCase):
     def test_keyboard_spatial_wrap_and_focus_trap(self):
         self.open('#/sanctuary');first=self.page.locator('.san-shelf').filter(has=self.page.get_by_role('heading',name='Today ·',exact=False)).locator('.san-tile').first
         first.wait_for();first.focus();self.page.keyboard.press('ArrowLeft')
-        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/oriental-coptic')
-        self.page.keyboard.press('ArrowRight');self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/roman-modern')
+        self.assertTrue(self.page.locator(':focus').get_attribute('data-launch').startswith('office|br62|'))
+        self.page.keyboard.press('ArrowRight');self.assertEqual(self.page.locator(':focus').get_attribute('data-launch'),'mass|n|')
         self.page.keyboard.press('ArrowDown');self.assertTrue(self.page.locator(':focus').evaluate('(e)=>e.closest("#sanctuary")!==null'))
-        self.page.locator('[data-action="back"]').focus();self.page.keyboard.press('Shift+Tab');self.assertTrue(self.page.locator(':focus').evaluate('(e)=>e.closest("#sanctuary")!==null'))
+        self.page.locator('.san-toolbar button').first.focus();self.page.keyboard.press('Shift+Tab');self.assertTrue(self.page.locator(':focus').evaluate('(e)=>e.closest("#sanctuary")!==null'))
     def test_gamepad(self):
         self.page.add_init_script('''window.testPad={connected:true,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false}))};navigator.getGamepads=()=>[window.testPad];''')
         self.open('#/sanctuary');self.page.locator('[data-route="#/t/catholic"]').wait_for();self.page.locator('[data-route="#/t/catholic"]').focus()
         def press(index):
             self.page.evaluate('(i)=>testPad.buttons[i].pressed=true',index);self.page.wait_for_timeout(90);self.page.evaluate('(i)=>testPad.buttons[i].pressed=false',index);self.page.wait_for_timeout(60)
-        press(0);self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
+        press(0);self.sanctuary().get_by_role('heading',name='Catholic',exact=True,level=1).wait_for()
         self.page.locator('[data-route="#/t/latin"]').click();self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for()
         press(13);self.assertEqual(self.page.locator(':focus').evaluate('(e)=>getComputedStyle(e).outlineStyle'),'solid');self.assertIn('A Select',self.page.locator('.san-prompts').inner_text())
         press(9);self.sanctuary().get_by_role('heading',name='Sanctuary menu').wait_for();press(1)
@@ -80,30 +80,30 @@ class SanctuaryTests(unittest.TestCase):
         press(1);self.sanctuary().get_by_role('heading',name='Sanctuary',exact=True).wait_for()
     def test_gamepad_stick_repeat_and_held_select(self):
         self.page.add_init_script('''window.testPad={connected:true,axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false}))};navigator.getGamepads=()=>[window.testPad];''')
-        self.open('#/sanctuary');self.page.locator('[data-route="#/t/roman-modern"]').wait_for()
+        self.open('#/sanctuary');self.page.locator('[data-launch="mass|n|"]').wait_for()
         # The home view focuses its first tile once it has rendered; start the stick only after that.
-        self.page.wait_for_function("document.activeElement?.dataset.route==='#/t/roman-modern'")
+        self.page.wait_for_function("document.activeElement?.dataset.launch==='mass|n|'")
         self.page.clock.pause_at(datetime.datetime(2026,10,21,17,tzinfo=datetime.timezone.utc))
         self.page.evaluate('testPad.axes[0]=1');self.page.clock.run_for(100)
-        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/roman-1962')
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-launch'),'mass|m|')
         self.page.clock.run_for(140)
-        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/roman-1962')
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-launch'),'mass|m|')
         self.page.clock.run_for(180)
-        self.assertEqual(self.page.locator(':focus').get_attribute('data-route'),'#/t/catholic-ruthenian')
+        self.assertEqual(self.page.locator(':focus').get_attribute('data-launch'),'mass|o|')
         self.page.evaluate('testPad.axes[0]=0;testPad.buttons[0].pressed=true');self.page.clock.run_for(700)
-        self.sanctuary().get_by_role('heading',name='Ruthenian Catholic Church',exact=True).wait_for()
+        self.page.wait_for_function("LectApp.current().rite==='o'")
         self.page.evaluate('testPad.buttons[0].pressed=false')
     def test_layouts_and_screenshots(self):
         output=pathlib.Path(os.environ.get('SCREENSHOT_DIR','/tmp/lectionarium-screenshots'));output.mkdir(parents=True,exist_ok=True)
         for width in [390,1920]:
             for theme in ['light','dark']:
                 self.page.set_viewport_size({'width':width,'height':1080 if width==1920 else 844});self.page.emulate_media(color_scheme=theme,reduced_motion='reduce')
-                self.open('#/t/catholic');self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
+                self.open('#/t/catholic');self.sanctuary().get_by_role('heading',name='Catholic',exact=True,level=1).wait_for()
                 self.assertTrue(self.page.evaluate('document.querySelector("#sanctuary").scrollWidth<=innerWidth'))
                 self.page.screenshot(path=str(output/f'sanctuary-{width}-{theme}.png'))
         self.page.locator('[data-action="menu"]').click();self.page.locator('[data-action="theme"]').click();self.assertEqual(self.sanctuary().get_attribute('data-theme'),'vellum')
     def test_existing_flow_add_text_live_and_breviary(self):
-        self.open();self.page.get_by_role('button',name="Pray today's Mass",exact=True).click()
+        self.open();self.page.get_by_role('button',name="Pray today's Mass").click()
         self.page.get_by_role('link',name='Concluding Rites',exact=True).wait_for()
         self.page.locator('.mt-btn').first.click();self.page.locator('#mtT').fill('Acceptance test prayer')
         self.page.get_by_role('button',name='Save',exact=True).click();self.page.get_by_text('Acceptance test prayer',exact=True).wait_for()
@@ -112,16 +112,16 @@ class SanctuaryTests(unittest.TestCase):
         self.page.wait_for_function("document.querySelector('#session').textContent.includes('generated with the Divinum Officium engine')")
         self.assertGreater(len(self.page.locator('#session').inner_text()),5000)
     def test_keyboard_only_home_tradition_church_and_back(self):
-        self.open('#/sanctuary');self.page.locator('[data-route="#/t/roman-modern"]').wait_for()
+        self.open('#/sanctuary');self.page.locator('[data-launch="mass|n|"]').wait_for()
         # Down from the Today shelf, past the list of complete texts, to the Traditions shelf.
         for _ in range(60):
             if self.page.locator(':focus').get_attribute('data-route')=='#/t/catholic': break
             self.page.keyboard.press('ArrowDown')
         self.page.keyboard.press('Enter')
-        self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
+        self.sanctuary().get_by_role('heading',name='Catholic',exact=True,level=1).wait_for()
         self.page.keyboard.press('ArrowDown');self.page.keyboard.press('Enter')
         self.sanctuary().get_by_role('heading',name='Latin Church',exact=True).wait_for()
-        self.page.keyboard.press('Escape');self.sanctuary().get_by_role('heading',name='Catholic',exact=True).wait_for()
+        self.page.keyboard.press('Escape');self.sanctuary().get_by_role('heading',name='Catholic',exact=True,level=1).wait_for()
         self.page.keyboard.press('Backspace');self.sanctuary().get_by_role('heading',name='Sanctuary',exact=True).wait_for()
     def test_lay_default_local_priest_mode_and_office(self):
         self.page.add_init_script("localStorage.setItem('lect-mass-m',JSON.stringify({veil:false}));localStorage.setItem('lect-view',JSON.stringify({role:'cel',only:true}));")
@@ -188,7 +188,9 @@ class SanctuaryTests(unittest.TestCase):
             self.assertNotIn('this is my Body',page.locator('.mbody').text_content())
             page.locator('#participation-mode').select_option('priest')
             page.wait_for_function("document.querySelector('.mbody').textContent.includes('this is my Body')")
-            self.assertIn('can. 1379',page.locator('.participation').text_content())
+            # The Prayer Book speaks of ministers and the words of institution, not of canon law.
+            self.assertIn('words of institution',page.locator('.participation').text_content())
+            self.assertNotIn('can. 1379',page.locator('.participation').text_content())
         finally:
             ctx.close()
     def test_priest_only_text_not_exported_or_read_aloud(self):
@@ -239,7 +241,7 @@ class SanctuaryTests(unittest.TestCase):
             init='window.LECT_PEER_OPTS='+json.dumps(options)+';'
             endpoint='https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js'
             self.context.route(endpoint,lambda route:route.fulfill(body=script,content_type='application/javascript'))
-            self.page.add_init_script(init);self.open();self.page.get_by_role('button',name="Pray today's Mass",exact=True).click()
+            self.page.add_init_script(init);self.open();self.page.get_by_role('button',name="Pray today's Mass").click()
             self.page.get_by_role('button',name='Live session',exact=True).click();self.page.locator('#lvHost').click()
             self.page.locator('.livecode').wait_for();code=self.page.locator('.livecode').inner_text()
             follower_context=self.browser.new_context(viewport={'width':1920,'height':1080})
@@ -286,8 +288,8 @@ class SanctuaryTests(unittest.TestCase):
     def test_guide_launch_from_scrolled_sources(self):
         self.open('#sources');self.page.evaluate('scrollTo(0,1200)')
         self.assertGreater(self.page.evaluate('scrollY'),0)
-        self.page.keyboard.press('s');self.page.locator('[data-route="#/t/roman-1962"]').wait_for()
-        self.page.locator('[data-route="#/t/roman-1962"]').click();self.page.locator('[data-pray="roman-1962:0"]').click()
+        self.page.keyboard.press('s');self.page.locator('.san-today [data-launch="mass|m|"]').wait_for()
+        self.page.locator('.san-today [data-launch="mass|m|"]').click()
         self.page.wait_for_function("LectApp.current().rite==='m' && !document.body.classList.contains('san-open')")
         self.page.wait_for_timeout(100);self.assertLess(self.page.evaluate('scrollY'),100)
     def test_monastic_chant_at_end_of_supported_range(self):
