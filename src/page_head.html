@@ -427,6 +427,20 @@ details.msettings>summary,details.mrun>summary{cursor:pointer;font-family:var(--
 details.msettings>summary .msum{color:var(--muted);letter-spacing:0;font-family:var(--f-body)}
 details.msettings[open]>summary,details.mrun[open]>summary{margin-bottom:8px}
 @media (max-width:700px){ body.in-session #enter-sanctuary,body.in-session nav.tabs{display:none} }
+/* Readings by day */
+.cd-fam{margin:22px 0 0}
+.cd-fam>h3{font-size:1.15rem;margin:0 0 8px;color:var(--rubric)}
+.cd-row{background:var(--leaf);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;margin:0 0 10px}
+.cd-row>header{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;justify-content:space-between}
+.cd-row h4{margin:0;font-family:var(--f-sc);letter-spacing:.04em;font-weight:600;font-size:.95rem;color:var(--muted)}
+.cd-open{font:inherit;font-size:.85rem;background:transparent;color:var(--rubric);border:1px solid var(--rubric);border-radius:8px;padding:4px 10px;cursor:pointer}
+.cd-name{font-family:var(--f-display);font-size:1.1rem;font-weight:700;margin:6px 0 4px}
+.cd-reads{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:4px}
+.cd-lab{display:inline-block;min-width:9em;color:var(--muted);font-size:.9rem}
+.cd-cite{font:inherit;background:none;border:0;padding:0;color:var(--rubric);text-decoration:underline dotted;cursor:pointer}
+.cd-text{margin:6px 0 8px;padding:8px 12px;border-left:3px solid var(--rule);font-size:.95rem}
+.cd-none{opacity:.75}
+@media (min-width:1000px){ .cd-fam{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px} .cd-fam>h3{grid-column:1/-1} }
 .covtab{border-collapse:collapse;width:100%;margin:6px 0 18px;font-size:.92rem} .covtab th,.covtab td{border-bottom:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:top} .covtab .cov{margin-right:6px}
 .reftag{display:inline-block;font-family:var(--f-sc);letter-spacing:.05em;font-size:.76rem;color:var(--lapis);border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-right:6px;vertical-align:1px}
 /* reading size */

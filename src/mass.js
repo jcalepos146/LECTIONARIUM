@@ -1578,4 +1578,5 @@ function officeControls(opts,chant){
     </div>${chant?`<label class="ck"><input type="checkbox" data-o="chant"${opts.chant?" checked":""}> Chant: antiphons and psalms in Gregorian chant (Latin), with notation and playback</label>`:""}<p class="note">Times are estimates for saying the hour at a steady pace; sung or choir recitation takes longer.</p></div>`;
 }
 window.LectMass={render};
+window.LectReformed={rca:rcaLessonDay, merc:mercDay};
 })();

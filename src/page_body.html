@@ -12,6 +12,7 @@
 
 <nav class="tabs" role="tablist" aria-label="Sections">
   <button role="tab" id="tab-today" aria-controls="today" aria-selected="true">Pray today</button>
+  <button role="tab" id="tab-day" aria-controls="day" aria-selected="false">Readings by day</button>
   <button role="tab" id="tab-compare" aria-controls="compare" aria-selected="false">Compare the year</button>
   <button role="tab" id="tab-lectionaries" aria-controls="lectionaries" aria-selected="false">Every lectionary</button>
   <button role="tab" id="tab-hybrid" aria-controls="hybrid" aria-selected="false">Hybrid proposal</button>
@@ -25,6 +26,16 @@
   <div id="tband"></div>
   <div id="ask"></div>
   <div id="session" hidden></div>
+</section>
+
+<!-- ============================================================ ONE DAY -->
+<section class="view" id="day" role="tabpanel" aria-labelledby="tab-day" hidden>
+  <p class="lede"><span class="reftag">Reference · citations</span> One date, every lectionary on this site: how each church names the day and what Scripture it appoints for the Eucharist, side by side. Open any of them as a service, or read a passage here.</p>
+  <div class="controls">
+    <div class="field"><label for="cdDate">Date</label><input type="date" id="cdDate" min="2025-11-30" max="2030-11-30"></div>
+    <div class="field"><span class="lbl">Go to</span><div class="seg"><button type="button" data-cd="-7">‹ Week</button><button type="button" data-cd="-1">‹ Day</button><button type="button" data-cd="0">Today</button><button type="button" data-cd="1">Day ›</button><button type="button" data-cd="7">Week ›</button></div></div>
+  </div>
+  <div id="cdOut" aria-live="polite"></div>
 </section>
 
 <!-- ============================================================ COMPARE -->

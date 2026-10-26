@@ -22,6 +22,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 | `src/p2p.js` | Peer-to-peer live sessions (PeerJS/WebRTC), used when the page is not inside Claude (`window.LectP2P`) |
 | `src/mytexts.js` | "Add text": the user's own copy of copyrighted texts, kept in localStorage (`window.LectTexts`) |
 | `src/today.js` | Pray-today questionnaire, today band, session page, Office text loaders, coverage labels (`window.LectApp`) |
+| `src/compareday.js` | Readings by day: one date, every lectionary on the site side by side, each opening as a service |
 | `src/assemble.py` | Concatenates the above into `index.html` with the Open Graph / Discord meta tags |
 
 ## Data (fetched at runtime)
