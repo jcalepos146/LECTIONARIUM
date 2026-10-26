@@ -660,10 +660,6 @@ async function lectItems(ctx,L){ const out=[];
   return out; }
 const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
 
-/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
-   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
-   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
-   takes the Sunday before it, except the four fixed days. */
 /* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
    Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
    without a festival keeps the propers of the Sunday before it. */
@@ -686,6 +682,10 @@ function mercDay(iso){
   const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
   return r(N-n<4?"ba"+(N-n+1):"trin"+n);
 }
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
 function rcaLessonDay(T,iso){
   const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
   const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
@@ -834,7 +834,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_coll:coll,_less:less};
   }
   { const local=window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});
-    const L=local||(rite==="copt"?await window.LectCalendar.appointments({...ctx,type:"mass"}):/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
+    const L=local||(/^(copt|adai)$/.test(rite)?await window.LectCalendar.appointments({...ctx,type:"mass"}):/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
     if(L)opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}};
   }
   for(const [id,from,upto] of R.parts(opts)){

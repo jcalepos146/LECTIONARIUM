@@ -1818,12 +1818,66 @@ async function coptic(c){
  else if(!items.length)note+=' This snapshot has Holy Week hours rather than a separate Liturgy appointment today. Choose an hour in the calendar reader; its readings are not inserted into the historical Mass.';
  return {src:'Coptic Orthodox Katameros',url,note,items,hours:Object.entries(table||{}).filter(([id])=>id!=='3').map(([id,rows])=>({title:COPT_HOURS[id],items:copticItems(rows,T)}))};
 }
+/* The East Syrian year (Maclean's Kalendar, 1894) on the Gregorian calendar with Gregorian Easter, as the Assyrian Church of
+   the East keeps it: Annunciation, Nativity, Epiphany (with the Rogation of the Ninevites), the Great Fast, the Resurrection,
+   the Apostles, Summer, Eliya and the Cross, Mar Mushi and the Hallowing of the Church. Returns the day's keys in the table. */
+function esyDay(isoS){
+ const d=date(isoS),y=d.getUTCFullYear(),E=easter(y),off=Math.round((d-E)/DAY),dow=d.getUTCDay(),md=isoS.slice(5);
+ const at=(m,dd)=>new Date(Date.UTC(y,m-1,dd)),wk=n=>new Date(+d+n*DAY),same=(a,b)=>+a===+b;
+ const FIX={'12-25':'nativity','01-06':'epiphany','04-24':'giwargis','07-03':'tuma','08-06':'transfig','09-13':'cross'};
+ const MOV={'-69':'nin1','-68':'nin2','-67':'nin3','-66':'nin4','-51':'departed','-49':'fast1','-48':'f1mon','-47':'f1tue','-46':'f1wed','-45':'f1thu','-44':'f1fri',
+  '-42':'fast2','-37':'f2fri','-35':'fast3','-30':'f3fri','-28':'fast4','-27':'f4mon','-26':'f4tue','-25':'f4wed','-24':'f4thu','-23':'f4fri','-21':'fast5','-16':'f5fri',
+  '-14':'fast6','-9':'f6fri','-7':'hosannas','-6':'f7mon','-5':'f7tue','-4':'f7wed','-3':'passover','-2':'passion','-1':'sabbath','0':'easter','1':'ww1','2':'ww2','3':'ww3',
+  '4':'ww4','5':'confessors','7':'res2','14':'res3','15':'hurmizd','19':'shmuni','21':'res4','28':'res5','35':'res6','39':'ascension','42':'postasc','49':'pentecost',
+  '54':'gold','56':'ap2','63':'ap3','70':'ap4','77':'ap5','84':'ap6','91':'ap7','96':'seventy','98':'su1','105':'su2','112':'su3','119':'su4','126':'su5','133':'su6',
+  '138':'shimun','140':'su7'};
+ const keys=[];
+ if(FIX[md])keys.push(FIX[md]);
+ if(MOV[off])keys.push(MOV[off]);
+ const A1=advent(y),H1=new Date(+A1-28*DAY);
+ if(!dow){
+  if(d>=A1&&d<at(12,25))keys.push('annun'+(Math.round((d-A1)/DAY/7)+1));
+  else if(d>=H1&&d<A1)keys.push('ha'+(Math.round((d-H1)/DAY/7)+1));
+  else if(md>='12-26'||md<'01-06'){const x=new Date(Date.UTC(md>='12-26'?y:y-1,11,25));keys.push('nat'+Math.ceil((d-x)/DAY/7));}
+  else if(off>=147&&d<H1){   /* Eliya and Mar Mushi: the fourth Sunday of Eliya is the first Sunday after the Cross */
+   const F=new Date(+E+147*DAY),cr=at(9,13),C=new Date(+cr+((7-cr.getUTCDay())%7||7)*DAY),k=Math.round((C-F)/DAY/7);
+   const seq=k<=0?['el1','el4','el5','el6','el7']:[...['el1','el2','el3','el5','el6','el7'].slice(0,k),'el4',...['el5','el6','el7'].filter((e,i)=>!['el1','el2','el3','el5','el6','el7'].slice(0,k).includes(e))];
+   seq.push('mo1','mo2','mo3','mo4');const i=Math.round((d-F)/DAY/7);keys.push(seq[Math.min(i,seq.length-1)]);
+  }
+  else if(off<=-56&&md>'01-06'){   /* the Sundays of the Epiphany, joined in Maclean's order when there are fewer than eight */
+   const ep=at(1,6),first=new Date(+ep+((7-ep.getUTCDay())%7||7)*DAY),S=Math.round((+E-56*DAY-first)/DAY/7)+1;
+   let g=[[1],[2],[3],[4],[5],[6],[7],[8]];const join=(a,b)=>{const ia=g.findIndex(x=>x.includes(a)),ib=g.findIndex(x=>x.includes(b));if(ia<0||ib<0||ia===ib)return;g[ia]=[...g[ia],...g[ib]];g.splice(ib,1);};
+   for(const [a,b] of [[7,8],[2,3],[4,5],[5,6],[1,2],[3,4],[6,7]]){if(g.length<=S)break;join(a,b);}
+   const grp=g[Math.round((d-first)/DAY/7)]||g[g.length-1];grp.forEach(n=>keys.push('epi'+n));
+  }
+ }else if(dow===5&&!keys.length){
+  const x=new Date(Date.UTC(md>='12-26'?y:y-1,11,25)),n1=new Date(+x+((7-x.getUTCDay())%7||7)*DAY),fri=new Date(+n1+5*DAY),ep=at(1,6);
+  const mary=fri<new Date(Date.UTC(x.getUTCFullYear()+1,0,6))?fri:new Date(+x+((5-x.getUTCDay()+7)%7||7)*DAY);
+  if(same(d,mary))keys.push('mary');
+  const bap=new Date(+ep+((5-ep.getUTCDay()+7)%7||7)*DAY);
+  if(same(d,bap))keys.push('baptist');
+  else if(d>bap&&off<-51){const first=new Date(+ep+((7-ep.getUTCDay())%7||7)*DAY),slot=Math.round((d-5*DAY-first)/DAY/7)+1;
+   const M=[null,'peterpaul','evangelists','stephen','greek','syrian','awa','martyrs'];if(M[slot])keys.push(M[slot]);}
+ }
+ return keys;
+}
+async function eastSyriac(c){
+ if((()=>{try{return localStorage.getItem('lect-calendar-adai')==='local';}catch(e){return false;}})()){const [src,url,note]=SOURCES.adai;return {src,url,note,items:[]};}
+ const T=await json('data/eastsyriac-1894.json'),keys=esyDay(c.iso),items=[],names=[];
+ const LAB={law:'The Law',proph:'The Prophecy',acts:'The Acts',ap:'The Apostle',gos:'The Gospel'};
+ for(const k of keys){let D=T.days[k];if(!D)continue;names.push(D.t);if(D.as)D={...T.days[D.as],t:D.t};
+  for(const col of ['law','proph','acts','ap','gos'])for(const cite of D[col]||[]){const dr=cite.endsWith('*');
+   items.push({lab:LAB[col],cite:cite.replace('*',''),num:dr?'v':'k',tr:dr?'dr':'kj',slot:col==='gos'?'gospel':'lessons'});}}
+ const note='The lessons of the Liturgy in A. J. Maclean’s East Syrian Daily Offices (1894), from the Urmi Lectionary of 1889, set on the Gregorian calendar with Gregorian Easter as the Assyrian Church of the East now keeps it. The Ancient Church of the East and the Chaldean Catholic Church keep other calendars, and current parish tables have revised some lessons: choose the local calendar to enter them.'+(names.length?'':' No lessons are appointed in the Liturgy for this day.');
+ return {src:'East Syrian Lectionary · Maclean 1894',url:'https://archive.org/details/eastsyriandailyo00macluoft/page/264',title:names.join(' · '),note,items};
+}
 const storageKey=c=>'lect-lessons:'+JSON.stringify([c.type||'mass',c.rite,c.hour||'',c.iso]);
 function local(c){try{const v=JSON.parse(localStorage.getItem(storageKey(c)));return Array.isArray(v)?v:[];}catch(e){return [];}}
 function custom(c){const rows=local(c);return rows.length?{src:'Your readings for '+c.iso,note:'Citations selected on this device for this rite, hour and date. Check them against your church calendar.',items:rows}:null;}
 async function appointments(c){
  if(c.rite==='bcp79')return c.type==='office'?pb79(c,true,/^ep/.test(c.hour||'')):calendarMode()==='1979'?pb79(c):currentEpiscopal(c);
  if(c.rite==='copt')return coptic(c);
+ if(c.rite==='adai')return eastSyriac(c);
  if(c.rite==='byz'||/^byz[vmhc]$/.test(c.rite))return byzantine(c,c.hour||c.rite);
  if(SOURCES[c.rite]){const [src,url,note]=SOURCES[c.rite];return {src,url,note,items:[]};}
  return null;
@@ -1841,6 +1895,11 @@ async function mount(el,c,reader,reload){
   out.insertAdjacentHTML('beforebegin',`<p><label>Calendar <select class="lesson-edition"><option value="current">Current Episcopal RCL · source calendar</option><option value="1979">Original 1979 Eucharistic table · historical study</option></select></label></p>`);
   const select=el.querySelector('.lesson-edition');select.value=calendarMode();
   select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-bcp79',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The calendar choice could not be saved.';}});
+ }
+ if(c.rite==='adai'){
+  out.insertAdjacentHTML('beforebegin','<p><label>Church calendar <select class="lesson-church"><option value="maclean">Church of the East · Maclean’s lectionary (1894)</option><option value="local">Current parish or Chaldean calendar · enter citations</option></select></label></p>');
+  const select=el.querySelector('.lesson-church');try{select.value=localStorage.getItem('lect-calendar-adai')==='local'?'local':'maclean';}catch(e){}
+  select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-adai',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The church calendar choice could not be saved.';}});
  }
  if(c.rite==='copt'){
   out.insertAdjacentHTML('beforebegin','<p><label>Church calendar <select class="lesson-church"><option value="orthodox">Coptic Orthodox · Katameros snapshot</option><option value="local">Coptic Catholic or local calendar · enter citations</option></select></label></p>');
@@ -1868,7 +1927,7 @@ async function mount(el,c,reader,reload){
  });
  el.querySelector('.lesson-clear').addEventListener('click',()=>{try{localStorage.removeItem(storageKey(c));reload();}catch(e){el.querySelector('.lesson-status').textContent='Local storage is unavailable.';}});
 }
-window.LectCalendar={pb79,psalm79,byzantine,appointments,custom,html,mount,officeKey,psalmRefs};
+window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,appointments,custom,html,mount,officeKey,psalmRefs};
 })();
 </script>
 <script>
@@ -2534,10 +2593,6 @@ async function lectItems(ctx,L){ const out=[];
   return out; }
 const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
 
-/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
-   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
-   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
-   takes the Sunday before it, except the four fixed days. */
 /* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
    Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
    without a festival keeps the propers of the Sunday before it. */
@@ -2560,6 +2615,10 @@ function mercDay(iso){
   const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
   return r(N-n<4?"ba"+(N-n+1):"trin"+n);
 }
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
 function rcaLessonDay(T,iso){
   const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
   const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
@@ -2708,7 +2767,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_coll:coll,_less:less};
   }
   { const local=window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});
-    const L=local||(rite==="copt"?await window.LectCalendar.appointments({...ctx,type:"mass"}):/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
+    const L=local||(/^(copt|adai)$/.test(rite)?await window.LectCalendar.appointments({...ctx,type:"mass"}):/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
     if(L)opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}};
   }
   for(const [id,from,upto] of R.parts(opts)){
@@ -4426,7 +4485,7 @@ function coverage(type,rite,hour){
     if(rite==="a") return ["order","The Ordinary and Canon of the Ambrosian Mass in Latin, with Cuthbert Atchley's 1909 English, which also gives the propers of the Epiphany and several proper prefaces as examples. The Ingressa, prayers, lessons, Psalmellus, Transitorium and the Milanese calendar come from your Missale Ambrosianum."];
     if(rite==="z") return ["order","The Ordinary of the Mozarabic Mass in a traditional English translation, after the Missale mixtum. The seven variable prayers, the Inlatio and the lessons come from the Missale Hispano-Mozarabicum."];
     if(rite==="bcp79") return ["guide","The 1979 Holy Eucharist, collect and proper preface are printed. The calendar reader links to the current Episcopal RCL; enter its citations for the date. The original 1979 Eucharistic readings remain an explicit historical study option. The Office has its own two-year table."];
-    if(rite==="adai") return ["guide","The Liturgy of the Holy Apostles Adai and Mari is printed in full, in the English made for the Archbishop of Canterbury's Assyrian Mission (1893). The lections, the Apostle and the Gospel of the day come from the East Syrian lectionary, which is not yet on this site."];
+    if(rite==="adai") return ["guide","The Liturgy of the Holy Apostles Adai and Mari is printed in full, in the English made for the Archbishop of Canterbury's Assyrian Mission (1893). The Law, the Prophecy, the Acts, the Apostle and the Gospel of the day are given from the East Syrian lectionary in A. J. Maclean's East Syrian Daily Offices (1894), set on the Gregorian calendar as the Assyrian Church of the East keeps it; current parish tables have revised some lessons, and the anthems and the Shuraya of the day come from the Khudhra."];
     if(rite==="copt") return ["guide","The Coptic Liturgy of St Basil is printed in full, in the Marquis of Bute's English (1882, reissued 1908). Current Coptic Orthodox Katameros readings are supplied for the supported dates, with separate Matins, Vespers and Holy Week hours in the calendar reader. Three unresolved source references are flagged. Local exceptions and Coptic Catholic appointments require your church calendar."];
     if(rite==="arm") return ["guide","The Divine Liturgy of the Armenian Church is printed in full, in the English of two Armenian priests (London, 1908). The Psalm, lessons and Gospel of the day come from the Armenian lectionary, which is not yet on this site."];
     if(rite==="me08") return ["full","The Order for the Administration of the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) is printed in full."];
