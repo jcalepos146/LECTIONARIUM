@@ -12,3 +12,7 @@ node_modules/
 # Optional .NET citation exporter build output
 tools/coptic-export/bin/
 tools/coptic-export/obj/
+
+# Share pages and cards: generated at publish time (.github/workflows/pages.yml)
+/t/
+_site/

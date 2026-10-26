@@ -1,7 +1,12 @@
 """Generate share stubs and church and tradition cards from the catalog and card.html.
-Run from any directory: python3 tools/build_traditions.py
+Run from any directory: python3 tools/build_traditions.py --out _site
 Needs Playwright and Chromium (PLAYWRIGHT_CHROMIUM overrides /usr/bin/chromium).
 Churches and traditions have individual cards; book editions inherit family artwork.
+
+The share pages (t/<id>/index.html) and cards (t/cards/<id>.jpg) are not kept in the repository: the
+Publish workflow (.github/workflows/pages.yml) generates them into the site it deploys. Without --out they are
+written into the working tree, where .gitignore keeps them out of commits. --check validates the catalog, the
+generated source list and the file budget.
 """
 import argparse, html, json, os, pathlib, re
 from urllib.parse import urlparse
@@ -41,7 +46,7 @@ def stub(n):
     url=BASE+'t/'+n['id']+'/'
     dest=BASE+'#/t/'+n['id']
     image_id=n['id'] if n['kind']!='book-edition' else FAMILY_ROOTS[n['family']]
-    image=BASE+'t/cards/'+image_id+'.png'
+    image=BASE+'t/cards/'+image_id+'.jpg'
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,16 +80,13 @@ def card(family, name):
     return template
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--entry',help='Recapture artwork for one entry ID');parser.add_argument('--family',choices=list(MARKS),help='Recapture artwork for one family');parser.add_argument('--metadata-only',action='store_true',help='Refresh stubs and source references without recapturing PNGs');parser.add_argument('--check',action='store_true',help='Validate catalog, stubs, card dimensions and file budget without writing');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--entry',help='Recapture artwork for one entry ID');parser.add_argument('--family',choices=list(MARKS),help='Recapture artwork for one family');parser.add_argument('--metadata-only',action='store_true',help='Refresh stubs and source references without recapturing PNGs');parser.add_argument('--check',action='store_true',help='Validate the catalog, source references and file budget without writing');parser.add_argument('--out',default=str(ROOT),help='Site directory to write t/ into (default: the working tree)');args=parser.parse_args()
+    OUT=pathlib.Path(args.out).resolve()
     rows=entries()
     if args.check:
         assert (ROOT/'src/tradition_sources.html').read_text()==sources_html(rows), 'Regenerate tradition source references'
-        for n in rows: assert (ROOT/'t'/n['id']/'index.html').read_text()==stub(n), n['id']
-        import struct
+        for n in rows: assert '<meta property="og:image"' in stub(n), n['id']
         art=[n for n in rows if n['kind']!='book-edition']
-        for n in art:
-            png=(ROOT/'t/cards'/f"{n['id']}.png").read_bytes()
-            assert png[:8]==b'\x89PNG\r\n\x1a\n' and struct.unpack('>II',png[16:24])==(1200,630)
         # Git ignored dependencies, caches, and .git are not part of the published site.
         import subprocess
         paths=[p for p in subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard'],cwd=ROOT,text=True).splitlines() if (ROOT/p).is_file()]
@@ -93,20 +95,18 @@ def main():
         return
     (ROOT/'src/tradition_sources.html').write_text(sources_html(rows))
     for n in rows:
-        p=ROOT/'t'/n['id']/'index.html';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(stub(n))
+        p=OUT/'t'/n['id']/'index.html';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(stub(n))
     if args.metadata_only: return
     from playwright.sync_api import sync_playwright
-    (ROOT/'t/cards').mkdir(parents=True,exist_ok=True)
+    (OUT/'t/cards').mkdir(parents=True,exist_ok=True)
     with sync_playwright() as p:
         browser=p.chromium.launch(executable_path=os.environ.get('PLAYWRIGHT_CHROMIUM','/usr/bin/chromium'),args=['--no-sandbox'])
         page=browser.new_page(viewport={'width':1200,'height':630},device_scale_factor=1)
         for n in rows:
             if n['kind']=='book-edition' or (args.family and n['family']!=args.family) or (args.entry and n['id']!=args.entry): continue
             page.set_content(card(n['family'],n['name']))
-            page.screenshot(path=str(ROOT/'t/cards'/f"{n['id']}.png"))
+            page.screenshot(path=str(OUT/'t/cards'/f"{n['id']}.jpg"),type='jpeg',quality=85)
         browser.close()
-    legacy=ROOT/'t/cards/oriental.png'
-    if legacy.exists(): legacy.unlink()
     print(f'Generated {len(rows)} share pages and {sum(n["kind"]!="book-edition" for n in rows)} individual cards')
 
 if __name__=='__main__': main()

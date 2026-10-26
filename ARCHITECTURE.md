@@ -105,8 +105,8 @@ Search and Classic view. Classic view removes the skin and the redirect.
 
 `tools/build_traditions.py` validates parent links, guide mappings and URLs, emits
 share stubs and captures original church and tradition artwork using the vellum/penwork from
-`tools/card.html`. `--check` verifies exact stub contents, PNG dimensions and the
-512-file project budget. Book editions inherit family artwork; source claims
+`tools/card.html`, as JPEG. The Publish workflow runs it with `--out _site` at deploy time, so `t/` is not kept in
+the repository. `--check` validates the catalog, the generated source list and the 512-file project budget. Book editions inherit family artwork; source claims
 require human review even if the generator and browser tests pass.
 
 `tests/test_sanctuary.py` covers lazy loading, routes/history, hierarchy, focus,
@@ -136,8 +136,7 @@ notation fails validation.
 
 `office_gen.py rechunk <key> <kilobytes>` consolidates an existing pack without
 renumbering text or row IDs; its output must be validated with `--baseline`
-before replacement. The br55/br62 packs use 4 MB shards to leave room for the
-individual catalog share pages within the 512-file site limit.
+before replacement. The br55/br62 packs use 4 MB shards to stay well within the 512-file site limit.
 
 ## Local participation mode
 

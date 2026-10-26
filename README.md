@@ -127,7 +127,7 @@ python3 src/assemble.py
 python3 -m pip install -r requirements-dev.txt
 npm ci --ignore-scripts --no-audit --no-fund
 # Supply Chromium at /usr/bin/chromium, or set PLAYWRIGHT_CHROMIUM.
-python3 tools/build_traditions.py
+python3 tools/build_traditions.py            # share pages and cards into ./t (ignored by git)
 python3 tools/build_traditions.py --check
 python3 -m unittest discover -s tests -v
 ```
@@ -156,8 +156,9 @@ Conservative copyright labels mean “not cleared for reproduction here”, not 
 legal conclusion that every part is protected.
 
 Each catalog entry has a generated `t/<id>/index.html` with its own title,
-description, canonical URL and redirect. Churches and traditions have individual 1200×630 cards; book editions inherit
-family artwork. The generator keeps the complete project below the 512-file limit.
+description, canonical URL and redirect. Churches and traditions have individual 1200×630 JPEG cards; book editions inherit
+family artwork. These pages are not committed: the Publish workflow (`.github/workflows/pages.yml`) generates them
+into the site it deploys to GitHub Pages, whose source must be set to "GitHub Actions".
 Cards use `tools/card.html`, with no church logos or insignia.
 
 The attached *Divine Liturgies Public Domain Companion* identifies
