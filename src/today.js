@@ -287,7 +287,8 @@ function renderAsk(){
     renderAsk();
   }));
   $("#ask").querySelectorAll("[data-mins]").forEach(b=>b.addEventListener("click",()=>{ S.mins=+b.dataset.mins; renderAsk(); }));
-  const jf=$("#joinForm"); if(jf) jf.addEventListener("submit",ev=>{ ev.preventDefault(); const c=$("#joinCode").value.trim(); if(!c) return;
+  const jf=$("#joinForm"); if(jf) jf.addEventListener("submit",async ev=>{ ev.preventDefault(); const c=$("#joinCode").value.trim(); if(!c) return;
+    try{ await window.LectLoad.service(); }catch(e){}   /* the live-session tools come with the service code */
     if(!window.LectTools){ $("#joinMsg").textContent="Live sessions are not available here."; return; }
     window.LectTools.join(c,msg=>{ const m=$("#joinMsg"); if(m) m.textContent=msg; }); });
   const dp=$("#dayPick"); if(dp) dp.addEventListener("change",()=>{ S.date=dp.value; });
@@ -355,8 +356,14 @@ function toVulgate(bk,c,v){
     if(c===147) return v<=11?["Ps",146,v]:["Ps",147,v-11];
     return ["Ps",c,v];
   }
-  return commonShift(bk,c,v,true);
+  // where the Douay-Rheims keeps the Hebrew division, the Hebrew numbers are already its own
+  if(HEB_ENG.some(r=>r[0]===bk&&r[1]===c&&r[2]<=v&&v<=r[3]&&!r[6])) return [bk,c,v];
+  const [b,cc,vv]=commonShift(bk,c,v,true), m=VERSEMAP.find(r=>r[0]===b&&r[1]===cc&&r[2]<=vv&&vv<=r[3]);
+  return m?[b,m[4],vv+m[5]]:[b,cc,vv];
 }
+/* King James to Douay-Rheims verse numbers where the Vulgate divides a chapter otherwise (tools/build_versemap.py):
+   [book, KJV chapter, first verse, last verse, Douay-Rheims chapter, verse offset]. */
+const VERSEMAP=[["Gen",5,32,32,5,-1],["Gen",49,33,33,49,-1],["Gen",50,23,26,50,-1],["Exod",40,16,24,40,-2],["Exod",40,27,35,40,-2],["Exod",40,37,37,40,-1],["Exod",40,38,38,40,-2],["Lev",26,4,4,26,-1],["Lev",26,46,46,26,-1],["Num",11,35,35,11,-1],["Num",12,9,9,12,-1],["Num",12,16,16,13,-15],["Num",13,1,33,13,1],["Num",20,23,23,20,-1],["Num",20,29,29,20,1],["Num",29,40,40,30,-39],["Num",30,2,3,30,1],["Num",30,6,10,30,1],["Num",30,13,16,30,1],["Josh",4,15,15,4,-1],["Josh",4,24,24,4,1],["Josh",5,15,15,5,1],["Josh",21,38,38,21,-1],["Josh",21,39,45,21,-2],["Judg",21,9,9,21,-1],["Judg",21,25,25,21,-1],["1 Sam",23,29,29,24,-28],["1 Sam",24,1,22,24,1],["2 Sam",13,39,39,13,-1],["1 Kgs",22,44,53,22,1],["1 Chr",11,34,34,11,-1],["1 Chr",11,47,47,11,-1],["1 Chr",20,8,8,20,-1],["Neh",3,32,32,3,-1],["Neh",12,34,47,12,-1],["Tob",1,3,3,1,-1],["Tob",1,10,12,1,1],["Tob",1,15,15,1,3],["Tob",1,16,16,1,4],["Tob",1,17,22,1,3],["Tob",2,9,9,2,1],["Tob",2,11,13,2,8],["Tob",3,11,11,3,1],["Tob",3,12,14,3,2],["Tob",3,16,16,3,7],["Tob",3,17,17,3,8],["Tob",4,2,2,4,-1],["Tob",4,5,5,4,1],["Tob",4,9,20,4,1],["Tob",4,21,21,4,2],["Tob",5,3,3,5,1],["Tob",5,5,9,5,2],["Tob",5,10,13,5,6],["Tob",5,15,16,5,5],["Tob",5,17,22,5,6],["Tob",6,3,8,6,1],["Tob",6,12,14,6,1],["Tob",6,16,16,6,2],["Tob",7,4,6,7,1],["Tob",7,9,9,7,1],["Tob",7,13,18,7,2],["Tob",8,5,7,8,2],["Tob",8,9,9,8,1],["Tob",8,10,13,8,2],["Tob",8,16,19,8,2],["Tob",8,21,21,8,3],["Tob",9,2,2,9,1],["Tob",9,5,5,9,1],["Tob",9,6,6,9,4],["Tob",10,4,4,10,-1],["Tob",11,11,15,11,2],["Tob",11,19,19,11,2],["Tob",13,6,6,13,1],["Tob",13,7,10,13,2],["Tob",13,12,16,13,4],["Tob",13,17,18,13,5],["Tob",14,2,2,14,1],["Tob",14,3,5,14,2],["Tob",14,9,9,14,2],["Tob",14,12,14,14,2],["Jdt",1,4,4,1,-1],["Jdt",1,10,13,1,-1],["Jdt",2,6,6,2,-1],["Jdt",2,11,11,2,-5],["Jdt",2,12,12,2,-6],["Jdt",2,14,14,2,-7],["Jdt",2,15,15,2,-8],["Jdt",2,17,18,2,-9],["Jdt",2,19,19,2,-8],["Jdt",2,20,22,2,-9],["Jdt",2,23,28,2,-10],["Jdt",3,4,4,3,1],["Jdt",3,6,6,3,2],["Jdt",3,7,7,3,3],["Jdt",3,8,8,3,4],["Jdt",4,4,9,4,-1],["Jdt",4,11,12,4,-2],["Jdt",4,15,15,4,1],["Jdt",5,10,13,5,-1],["Jdt",5,15,15,5,2],["Jdt",5,16,23,5,4],["Jdt",7,7,7,7,-1],["Jdt",7,10,10,7,-2],["Jdt",7,13,13,7,-4],["Jdt",7,16,16,7,-6],["Jdt",7,20,20,7,-9],["Jdt",7,21,21,7,-10],["Jdt",7,23,29,7,-11],["Jdt",7,30,30,7,-7],["Jdt",7,31,32,7,-8],["Jdt",8,10,12,8,-1],["Jdt",8,16,17,8,-1],["Jdt",8,20,22,8,-1],["Jdt",8,25,25,8,-1],["Jdt",8,31,32,8,-2],["Jdt",8,34,35,8,-1],["Jdt",8,36,36,8,-2],["Jdt",9,4,6,9,-1],["Jdt",9,7,7,9,2],["Jdt",9,8,8,9,3],["Jdt",9,9,14,9,5],["Jdt",10,4,4,10,-1],["Jdt",10,12,12,10,-1],["Jdt",10,17,19,10,-1],["Jdt",10,21,21,10,-2],["Jdt",10,23,23,10,-3],["Jdt",11,5,5,11,-1],["Jdt",11,6,10,11,-2],["Jdt",11,13,13,11,-1],["Jdt",11,16,17,11,-3],["Jdt",11,19,19,11,-4],["Jdt",11,20,23,11,-2],["Jdt",13,3,3,13,2],["Jdt",13,6,13,13,2],["Jdt",13,14,14,13,3],["Jdt",13,15,16,13,4],["Jdt",13,17,18,13,5],["Jdt",13,19,19,13,6],["Jdt",13,20,20,13,5],["Jdt",14,5,7,13,23],["Jdt",14,8,8,14,-7],["Jdt",14,11,11,14,-4],["Jdt",14,12,14,14,-1],["Jdt",14,16,19,14,-2],["Jdt",15,4,9,15,1],["Jdt",15,11,11,15,2],["Jdt",16,3,8,16,1],["Jdt",16,9,13,16,2],["Jdt",16,14,17,16,3],["Jdt",16,18,22,16,4],["Jdt",16,24,25,16,5],["1 Macc",1,4,11,1,1],["1 Macc",1,14,20,1,1],["1 Macc",1,21,21,1,2],["1 Macc",1,22,30,1,1],["1 Macc",1,31,34,1,2],["1 Macc",1,35,35,1,1],["1 Macc",1,37,41,1,2],["1 Macc",1,42,42,1,1],["1 Macc",1,43,45,1,2],["1 Macc",1,46,48,1,3],["1 Macc",1,49,51,1,2],["1 Macc",1,52,62,1,3],["1 Macc",1,63,63,1,2],["1 Macc",1,64,64,1,3],["1 Macc",13,53,53,13,1],["2 Macc",2,19,32,2,1],["2 Macc",15,37,39,15,1],["Job",16,5,22,16,1],["Job",40,2,5,39,30],["Job",40,6,24,40,-5],["Job",41,1,9,40,19],["Job",41,10,34,41,-9],["Job",42,17,17,42,-1],["Eccl",5,1,1,4,16],["Eccl",5,2,20,5,-1],["Eccl",6,12,12,7,-11],["Eccl",7,1,29,7,1],["Song",1,2,17,1,-1],["Song",6,1,1,5,16],["Song",6,2,13,6,-1],["Wis",2,4,4,2,-1],["Wis",5,15,23,5,1],["Wis",6,1,22,6,1],["Wis",6,23,25,6,2],["Wis",11,5,26,11,1],["Wis",17,10,21,17,-1],["Wis",19,13,21,19,-1],["Wis",19,22,22,19,-2],["Sir",1,3,3,1,-1],["Sir",1,14,14,1,2],["Sir",1,17,18,1,4],["Sir",1,19,20,1,5],["Sir",1,21,25,1,6],["Sir",1,26,27,1,7],["Sir",1,28,29,1,8],["Sir",1,30,30,1,9],["Sir",2,11,14,2,2],["Sir",2,15,17,2,3],["Sir",2,18,18,2,4],["Sir",3,1,8,3,1],["Sir",3,9,13,3,2],["Sir",3,14,15,3,1],["Sir",3,16,18,3,2],["Sir",3,20,23,3,1],["Sir",3,24,24,3,2],["Sir",3,26,26,3,1],["Sir",3,27,29,3,2],["Sir",3,30,31,3,3],["Sir",4,11,17,4,1],["Sir",4,18,18,4,2],["Sir",4,19,20,4,3],["Sir",4,21,22,4,4],["Sir",4,23,31,4,5],["Sir",5,7,7,5,1],["Sir",5,8,14,5,2],["Sir",5,15,15,5,3],["Sir",7,11,16,7,1],["Sir",7,17,30,7,2],["Sir",7,31,31,7,3],["Sir",7,32,36,7,4],["Sir",8,3,8,8,1],["Sir",8,9,9,8,2],["Sir",8,10,19,8,3],["Sir",9,9,9,9,3],["Sir",9,10,10,9,4],["Sir",9,11,13,9,5],["Sir",9,14,14,9,7],["Sir",9,16,16,9,6],["Sir",9,17,18,9,7],["Sir",10,10,10,10,1],["Sir",10,11,13,10,2],["Sir",10,14,17,10,3],["Sir",10,18,20,10,4],["Sir",10,22,31,10,3],["Sir",11,20,21,11,1],["Sir",11,22,23,11,2],["Sir",11,24,24,11,3],["Sir",11,25,34,11,2],["Sir",12,6,6,12,1],["Sir",12,14,15,12,-1],["Sir",12,18,18,12,1],["Sir",13,3,7,13,1],["Sir",13,8,8,13,2],["Sir",13,9,13,13,3],["Sir",13,14,22,13,4],["Sir",13,23,23,13,5],["Sir",13,24,26,13,6],["Sir",15,8,8,15,-1],["Sir",15,16,20,15,1],["Sir",16,2,2,16,-1],["Sir",16,4,14,16,1],["Sir",16,28,30,16,1],["Sir",17,2,2,17,1],["Sir",17,6,9,17,-1],["Sir",17,10,15,17,-2],["Sir",17,17,20,17,-3],["Sir",17,22,25,17,-4],["Sir",17,26,26,17,-3],["Sir",17,28,28,17,-2],["Sir",17,29,32,17,-1],["Sir",19,6,6,19,-1],["Sir",19,22,30,19,-3],["Sir",20,1,1,19,27],["Sir",20,2,2,20,-1],["Sir",20,16,17,20,1],["Sir",20,18,25,20,2],["Sir",20,27,27,20,1],["Sir",20,28,31,20,2],["Sir",21,3,11,21,1],["Sir",21,12,12,21,2],["Sir",21,13,28,21,3],["Sir",22,8,8,22,1],["Sir",22,12,13,22,1],["Sir",22,14,18,22,3],["Sir",22,19,23,22,5],["Sir",22,24,27,22,6],["Sir",23,11,11,23,1],["Sir",23,12,12,23,3],["Sir",23,13,14,23,4],["Sir",23,15,16,23,5],["Sir",23,17,17,23,6],["Sir",23,18,18,23,7],["Sir",23,19,19,23,8],["Sir",23,20,21,23,9],["Sir",23,22,28,23,10],["Sir",24,3,3,24,2],["Sir",24,4,6,24,3],["Sir",24,7,8,24,4],["Sir",24,9,10,24,5],["Sir",24,11,14,24,4],["Sir",24,15,15,24,5],["Sir",24,16,18,24,6],["Sir",24,19,20,24,7],["Sir",24,21,22,24,8],["Sir",24,23,23,24,9],["Sir",24,25,29,24,10],["Sir",24,30,31,24,11],["Sir",24,32,32,24,12],["Sir",24,33,34,24,13],["Sir",25,2,2,25,1],["Sir",25,3,7,25,2],["Sir",25,8,11,25,3],["Sir",25,12,12,25,4],["Sir",25,13,13,25,5],["Sir",25,14,14,25,6],["Sir",25,15,22,25,7],["Sir",25,23,23,25,8],["Sir",25,24,25,25,9],["Sir",25,26,26,25,10],["Sir",26,6,6,26,2],["Sir",26,7,14,26,3],["Sir",26,15,15,26,4],["Sir",26,16,18,26,5],["Sir",26,28,28,26,-2],["Sir",26,29,29,26,-1],["Sir",27,3,16,27,1],["Sir",27,18,20,27,2],["Sir",27,21,30,27,3],["Sir",28,7,7,28,1],["Sir",28,8,14,28,2],["Sir",28,15,26,28,4],["Sir",29,6,6,29,1],["Sir",29,7,13,29,3],["Sir",29,14,15,29,4],["Sir",29,16,16,29,5],["Sir",29,17,17,29,4],["Sir",29,18,18,29,5],["Sir",29,19,28,29,6],["Sir",30,2,2,30,-1],["Sir",30,20,23,30,1],["Sir",30,24,25,30,2],["Sir",31,13,13,31,1],["Sir",31,14,14,31,2],["Sir",31,16,20,31,3],["Sir",31,21,22,31,4],["Sir",31,23,26,31,5],["Sir",31,27,27,31,7],["Sir",31,28,28,31,8],["Sir",31,29,29,31,9],["Sir",31,30,31,31,10],["Sir",32,3,3,32,1],["Sir",32,4,6,32,2],["Sir",32,7,7,32,3],["Sir",32,9,18,32,4],["Sir",32,19,20,32,5],["Sir",32,21,24,32,4],["Sir",33,9,9,33,1],["Sir",33,14,14,33,1],["Sir",33,17,27,33,1],["Sir",33,28,28,33,2],["Sir",33,29,30,33,1],["Sir",34,5,5,34,1],["Sir",34,11,13,34,1],["Sir",34,14,15,34,2],["Sir",34,16,18,34,3],["Sir",34,20,22,34,4],["Sir",34,23,26,34,5],["Sir",35,2,12,35,2],["Sir",35,13,15,35,3],["Sir",35,17,18,35,4],["Sir",35,19,19,35,5],["Sir",35,20,20,35,6],["Sir",36,7,7,36,1],["Sir",36,8,26,36,2],["Sir",37,7,8,37,1],["Sir",37,9,11,37,2],["Sir",37,12,12,37,3],["Sir",37,13,16,37,4],["Sir",37,18,31,37,3],["Sir",38,18,28,38,1],["Sir",38,30,30,38,3],["Sir",38,31,32,38,4],["Sir",38,33,34,38,5],["Sir",39,5,5,39,1],["Sir",39,6,6,39,2],["Sir",39,7,9,39,3],["Sir",39,10,14,39,4],["Sir",39,15,22,39,5],["Sir",39,23,23,39,6],["Sir",39,24,28,39,5],["Sir",39,29,35,39,6],["Sir",40,27,29,40,1],["Sir",40,30,30,40,2],["Sir",41,2,2,41,1],["Sir",41,3,4,41,2],["Sir",41,5,15,41,3],["Sir",41,16,19,41,4],["Sir",41,20,21,41,5],["Sir",41,22,22,41,6],["Sir",41,24,24,42,-23],["Sir",42,22,25,42,1],["Sir",43,9,17,43,1],["Sir",43,18,29,43,2],["Sir",43,30,30,43,3],["Sir",43,31,33,43,4],["Sir",44,12,12,44,1],["Sir",44,18,21,44,1],["Sir",44,22,22,44,3],["Sir",45,6,9,45,1],["Sir",45,10,13,45,2],["Sir",45,14,15,45,3],["Sir",45,16,19,45,4],["Sir",45,20,23,45,5],["Sir",45,24,25,45,6],["Sir",45,26,26,45,5],["Sir",46,2,6,46,1],["Sir",46,7,12,46,2],["Sir",46,13,20,46,3],["Sir",47,5,8,47,1],["Sir",47,9,13,47,2],["Sir",47,14,18,47,1],["Sir",47,19,22,47,2],["Sir",47,23,23,47,5],["Sir",47,24,25,47,6],["Sir",48,12,15,48,1],["Sir",48,16,20,48,2],["Sir",48,21,25,48,3],["Sir",49,2,4,49,1],["Sir",49,5,15,49,2],["Sir",49,16,16,49,3],["Sir",50,10,12,50,1],["Sir",50,13,13,50,2],["Sir",50,14,14,50,1],["Sir",50,16,29,50,2],["Sir",51,2,3,51,1],["Sir",51,4,6,51,2],["Sir",51,7,8,51,3],["Sir",51,9,12,51,4],["Sir",51,13,17,51,5],["Sir",51,18,19,51,6],["Sir",51,20,20,51,7],["Sir",51,21,30,51,8],["Isa",13,22,22,14,-21],["Isa",45,24,25,45,1],["Isa",46,12,13,46,-1],["Jer",37,5,21,37,-1],["Bar",3,17,17,3,1],["Bar",3,35,37,3,1],["Bar",6,2,15,6,-1],["Bar",6,16,17,6,-2],["Bar",6,18,42,6,-1],["Bar",6,52,73,6,-1],["Ezek",2,10,10,2,-1],["Dan",3,24,30,3,67],["Dan",4,1,3,3,97],["Dan",4,4,37,4,-3],["Hos",10,15,15,11,-14],["Hos",13,16,16,14,-15],["Hos",14,1,9,14,1],["Amos",6,11,14,6,1],["Jonah",1,17,17,2,-16],["Jonah",2,1,10,2,1],["Mic",5,13,15,5,-1],["Hag",1,15,15,2,-14],["Hag",2,1,23,2,1],["Matt",17,15,27,17,-1],["Mark",4,41,41,4,-1],["Mark",9,1,1,8,38],["Mark",9,2,50,9,-1],["John",6,52,71,6,1],["John",11,57,57,11,-1],["Acts",7,56,60,7,-1],["Acts",14,7,28,14,-1],["Acts",19,41,41,19,-1],["2 Cor",1,24,24,1,-1],["2 Cor",13,13,14,13,-1],["1 Thess",4,12,18,4,-1],["2 Thess",2,11,17,2,-1]];
 /* Where the Hebrew chapter-and-verse numbering of a modern lectionary (NAB, NRSV) differs from the English (KJV):
    [book, Hebrew chapter, first verse, last verse, English chapter, verse offset, does the Douay-Rheims divide it as
    the English does?]. The last column was set by comparing the bundled Douay-Rheims and KJV chapter lengths; where
@@ -506,158 +513,7 @@ function lothPsalms(iso, H, day){
   });
 }
 
-/* ---------------------------------------------------------------- Byzantine fixed texts (traditional English, public domain) */
-const BYZ_TX={
- tris:[["cel","Blessed is our God, always, now and ever, and unto ages of ages."],["ppl","Amen."],
-   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times)"],
-   ["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
-   ["all","O most holy Trinity, have mercy on us. O Lord, cleanse us from our sins. O Master, pardon our transgressions. O Holy One, visit and heal our infirmities, for thy name's sake."],
-   ["all","Lord, have mercy. (Three times)"],["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
-   ["all","Our Father, who art in heaven, hallowed be thy name; thy kingdom come; thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil."],
-   ["cel","For thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages."],["ppl","Amen."]],
- creed:[["all","I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible. And in one Lord Jesus Christ, the Son of God, the only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father, by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified for us under Pontius Pilate, and suffered, and was buried; and rose again on the third day according to the Scriptures; and ascended into heaven, and sits at the right hand of the Father; and he shall come again with glory to judge the living and the dead; whose kingdom shall have no end. And in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father; who with the Father and the Son together is worshipped and glorified; who spoke by the prophets. In one holy, catholic and apostolic Church. I confess one baptism for the remission of sins. I look for the resurrection of the dead, and the life of the world to come. Amen."]],
- phos:[["all","Hail, gladdening Light, of his pure glory poured, who is the immortal Father, heavenly, blest, holiest of holies, Jesus Christ our Lord! Now we are come to the sun's hour of rest; the lights of evening round us shine; we hymn the Father, Son, and Holy Spirit divine. Worthiest art thou at all times to be sung with undefiled tongue, Son of our God, giver of life, alone: therefore in all the world thy glories, Lord, they own."]],
- vouch:[["all","Vouchsafe, O Lord, to keep us this evening without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. Blessed art thou, O Master; make me to understand thy statutes. Blessed art thou, O Holy One; enlighten me with thy statutes. Thy mercy, O Lord, endures for ever; despise not the works of thy hands. To thee belongs praise, to thee belongs song, to thee belongs glory, to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."]],
- godlord:[["cel","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","O give thanks unto the Lord, for he is good: for his mercy endureth for ever."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","All nations compassed me about: but in the name of the Lord will I destroy them."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","This is the Lord's doing, and it is marvellous in our eyes."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."]],
- fhp:[["cel","O Christ, the true Light, who enlightenest and sanctifiest every man that cometh into the world: let the light of thy countenance be signed upon us, that in it we may behold the light unapproachable; and direct our steps in the doing of thy commandments; through the intercessions of thy most pure Mother, and of all thy saints."],["ppl","Amen."]],
- doxo:[["cel","Glory to thee who hast shown us the light!"],["all","Glory to God in the highest, and on earth peace, good will towards men. We praise thee, we bless thee, we worship thee, we glorify thee, we give thanks to thee for thy great glory. O Lord, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ, and the Holy Spirit. O Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; thou that takest away the sins of the world, receive our prayer; thou that sittest at the right hand of the Father, have mercy on us. For thou only art holy, thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen."],
-   ["all","Every day will I bless thee, and praise thy name for ever, and for ever and ever. Vouchsafe, O Lord, to keep us this day without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. (Three times) Lord, thou hast been our refuge from generation to generation. I said: Lord, have mercy on me; heal my soul, for I have sinned against thee. Lord, I flee unto thee; teach me to do thy will, for thou art my God. For with thee is the fountain of life; in thy light shall we see light. Continue thy mercy unto them that know thee."],
-   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Holy Immortal, have mercy on us. Holy God, Holy Mighty, Holy Immortal, have mercy on us."]],
-};
-const byzTx=k=>`<div class="txt one">${BYZ_TX[k].map(([r,t])=>`<p data-r="${r}">${esc(t).replace(/\((Three times)\)/g,'<i class="rubi">($1)</i>')}</p>`).join("")}</div>`;
-/* psalms of the Byzantine hours, numbered as in the Septuagint (= the Douay-Rheims) */
-const BYZ_PS={vespers:{lic:[140,141,129,116]},compline:{ps:[50,69,142]},midnight:{ps:[50,118]},orthros:{six:[3,37,62,87,102,142],lauds:[148,149,150]},
-  first:{ps:[5,89,100]},third:{ps:[16,24,50]},sixth:{ps:[53,54,90]},ninth:{ps:[83,84,85]}};
-/* ---------------------------------------------------------------- hour orders */
-const ORDER={
- loth:{
-  or:["Introductory verse (or the Invitatory, if this is the first hour of the day)","Hymn","@psalms|Psalmody: three psalms or sections, each with antiphon","Verse","@first|First reading: Scripture, with responsory","Second reading: Fathers or saints, with responsory","Te Deum (Sundays outside Lent, solemnities, feasts)","Concluding prayer","Acclamation"],
-  lauds:["@invit|Invitatory (Psalm 95) or introductory verse","Hymn","@psalms|Psalmody: morning psalm, Old Testament canticle, psalm of praise","Short reading","Responsory","@bened|Gospel canticle: Benedictus (Luke 1:68-79)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
-  terce:["Introductory verse","Hymn","@psalms|Psalmody: three psalms or sections (current psalmody)","Short reading","Verse","Concluding prayer","Acclamation"],
-  vespers:["Introductory verse","Hymn","@psalms|Psalmody: two psalms and a New Testament canticle","Short reading","Responsory","@magn|Gospel canticle: Magnificat (Luke 1:46-55)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
-  compline:["Introductory verse","Examination of conscience and act of penitence","Hymn","@psalms|Psalmody","Short reading","Responsory: Into your hands, Lord","@nunc|Gospel canticle: Nunc dimittis (Luke 2:29-32)","Concluding prayer","Blessing","Antiphon to the Blessed Virgin Mary"]},
- dwdo:{
-  mattins:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@venite|Venite (Psalm 95), or the Easter Anthems in Eastertide","@psalms|The psalms appointed for the morning of this day of the month","First Lesson (Old Testament)","Te Deum laudamus, or Benedicite","Second Lesson (New Testament)","@bened|Benedictus (Luke 1:68-79)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Grace","Prayers and thanksgivings; the Grace"],
-  prime:["Opening versicles","Hymn Jam lucis orto sidere","Psalms (with the Quicunque vult on Sundays)","Chapter and responsory","Prayers (weekdays)","Collect for Grace","Conclusion"],
-  terce:["Opening versicles","Hymn","Psalm 119:33-80","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
-  sext:["Opening versicles","Hymn","Psalm 119:81-128","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
-  none:["Opening versicles","Hymn","Psalm 119:129-176","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
-  evensong:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@psalms|The psalms appointed for the evening of this day of the month","First Lesson (Old Testament)","@magn|Magnificat (Luke 1:46-55)","Second Lesson (New Testament)","@nunc|Nunc dimittis (Luke 2:29-32)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Aid against all Perils","Anthem; prayers and thanksgivings; the Grace"],
-  compline:["Opening sentence and confession","@psalms|Psalms (4, 31:1-6, 91, 134)","Short reading","@resp|Responsory: Into thy hands, O Lord","@nunc|Nunc dimittis","Prayers","Blessing"]},
- br:{
-  matins:["Pater, Ave, Credo; Domine labia mea","Invitatory (Psalm 94 Vulgate)","Hymn","Nocturns: psalms with antiphons; three lessons per nocturn (one nocturn on ferias)","Responsories","Te Deum (Sundays and feasts outside penitential seasons)"],
-  lauds:["Deus in adjutorium","Five psalms (the fourth an Old Testament canticle) with antiphons","Chapter","Hymn and versicle","@bened|Benedictus with antiphon","Collect; commemorations","Marian antiphon if the last hour said in choir"],
-  prime:["Deus in adjutorium","Hymn Jam lucis orto sidere","Psalms","Chapter, short responsory, versicle","Prayer","Martyrology and the Chapter Office"],
-  terce:["Deus in adjutorium","Hymn","Three psalms (or sections) under one antiphon","Chapter","Short responsory and versicle","Collect"],
-  vespers:["Deus in adjutorium","Five psalms with antiphons","Chapter","Hymn and versicle","@magn|Magnificat with antiphon","Collect; commemorations"],
-  compline:["Jube domne benedicere; short lesson (1 Pet 5:8-9)","Confiteor","Converte nos; Deus in adjutorium","Psalms under one antiphon","Hymn Te lucis ante terminum","@nunc|Chapter, short responsory, Nunc dimittis","Prayer Visita quaesumus","Blessing; seasonal Marian antiphon"]},
- byz:{
-  vespers:["@ps104|Opening blessing; Psalm 103 (104)","Great Litany","Kathisma of the Psalter","@lic|Lord, I have cried (Pss 140, 141, 129, 116) with stichera of the tone and the Menaion","@phos|Entrance; Phos hilaron (O Joyful Light)","Prokeimenon; Old Testament readings (paremias) on feasts","@vouch|Litanies; Vouchsafe, O Lord","Aposticha","@nunc|Song of Simeon (Luke 2:29-32)","@tris|Trisagion prayers","Apolytikion (troparion of the day); dismissal"],
-  compline:["@ps|Small Compline: Psalms 50, 69, 142","@creed|Doxology; Creed","Canon (if appointed)","@tris|Trisagion prayers","Kontakion of the day","Prayers; dismissal"],
-  midnight:["@ps|Psalm 50 and Psalm 118 (119)","@creed|Creed","@tris|Trisagion prayers","Troparia and prayers","Dismissal"],
-  orthros:["@six|Royal beginning; Six Psalms (3, 37, 62, 87, 102, 142)","@godlord|Great Litany; God is the Lord with the troparia","Kathismata of the Psalter","@eoth|On Sundays: Evlogitaria; Resurrection Gospel (eothinon)","@ps50|Psalm 50; canon","@magn|Magnificat with the Magnificat refrain (9th ode)","@lauds|Lauds (Pss 148-150) with stichera; Great Doxology","Litanies; Aposticha; dismissal"],
-  first:["@ps|Psalms 5, 89, 100","Troparion and kontakion of the day","@tris|Trisagion prayers","@fhp|Prayer of the First Hour (O Christ, the true Light)"],
-  third:["@ps|Psalms 16, 24, 50","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
-  sixth:["@ps|Psalms 53, 54, 90","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
-  ninth:["@ps|Psalms 83, 84, 85","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"]},
-};
-ORDER.loth.sext=ORDER.loth.terce; ORDER.loth.none=ORDER.loth.terce;
-ORDER.br.sext=ORDER.br.terce; ORDER.br.none=ORDER.br.terce;
-
-const DO_VERSION={br62:"Rubrics 1960 - 1960",br55:"Divino Afflatu - 1954",mon:"Monastic - 1963",op:"Ordo Praedicatorum - 1962"};
-/* ---------------------------------------------------------------- The Day-Hours (1877): Prime, Terce, Sext, None */
-function dhEnv(iso){
-  const d=toDate(iso), Y=d.getUTCFullYear(), E=easterY(Y), off=Math.round((d-E)/DAY), dow=d.getUTCDay();
-  const xmas=Date.UTC(Y,11,25), adv=new Date(xmas-(((new Date(xmas).getUTCDay())||7)+21)*DAY);
-  const advent=d>=adv&&d<new Date(xmas), lent=off>=-46&&off<-14, passion=off>=-14&&off<0;
-  return {sun:dow===0, wkd:dow!==0, sept:off>=-63&&off<=-4, septE:off>=-63&&off<0, easter:off>=0&&off<56,
-    advent, lent, passion, ord:!advent&&!lent&&!passion, penit:dow!==0&&off>=-46&&off<0};
-}
-function dhOk(it,env){ return !(it.if||[]).some(c=>c.startsWith("no")?env[c.slice(2,3).toLowerCase()+c.slice(3)]:!env[c]); }
-const DH_LP="Our Father, which art in heaven, Hallowed be thy Name. Thy kingdom come. Thy will be done, in earth as it is in heaven. Give us this day our daily bread. And forgive us our trespasses, As we forgive them that trespass against us. And lead us not into temptation; But deliver us from evil. Amen.";
-const DH_CREED="I believe in God the Father Almighty, Maker of heaven and earth: And in Jesus Christ his only Son our Lord, Who was conceived by the Holy Ghost, Born of the Virgin Mary, Suffered under Pontius Pilate, Was crucified, dead, and buried, He descended into hell; The third day he rose again from the dead, He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence he shall come to judge the quick and the dead. I believe in the Holy Ghost; The holy Catholick Church; The Communion of Saints; The Forgiveness of sins; The Resurrection of the body, And the life everlasting. Amen.";
-const DH_GLORIA=`<p data-r="all">Glory be to the Father, and to the Son : and to the Holy Ghost;</p><p data-r="all">As it was in the beginning, is now, and ever shall be : world without end. Amen.</p>`;
-const DH_DAYPS={1:"Ps 24",2:"Ps 25",3:"Ps 26",4:"Ps 23",5:"Ps 22"};
-async function dhItems(items,env,o){
-  let h="";
-  const ps=async ref=>(await o.blk(ref.replace("Ps ","Psalm "),ref,"cv"))+DH_GLORIA;
-  for(const it of items){
-    if(!dhOk(it,env)) continue;
-    const x=it.x;
-    switch(it.k){
-      case "r": h+=`<p class="rub">${esc(x)}</p>`; break;
-      case "v": h+=`<p data-r="cel"><span class="sp">℣.</span> ${esc(x)}</p>`; break;
-      case "r2": h+=`<p data-r="ppl"><span class="sp">℟.</span> ${esc(x)}</p>`; break;
-      case "a": h+=`<p data-r="all"><span class="sp">Ant.</span> ${esc(x)}</p>`; break;
-      case "c": h+=`<p data-r="lec">${esc(x)}</p>`; break;
-      case "o": h+=`<p data-r="cel">${esc(x)}</p>`; break;
-      case "p": h+=`<p data-r="cel" data-priest-only="1"><span class="sp">Priest.</span> ${esc(x)}</p>`; break;
-      case "l": case "s": h+=`<p data-r="all">${esc(x)}</p>`; break;
-      case "h": h+=`<p class="hymn" data-r="all">${x.map(esc).join("<br>")}</p>`; break;
-      case "slot":
-        if(it.n==="ps") h+=await ps(it.a);
-        else if(it.n==="day-ps"){ const r=DH_DAYPS[o.dow]; if(r) h+=await ps(r); }
-        else if(it.n==="gloria") h+=DH_GLORIA;
-        else if(it.n==="lords-prayer") h+=`<p data-r="all">${DH_LP}</p>`;
-        else if(it.n==="creed") h+=`<p data-r="all">${DH_CREED}</p>`;
-        else if(it.n==="preces") h+=await dhItems(o.preces,env,{...o,lent:it.a});
-        else if(it.n==="lent-ps"){ if(env.penit&&o.lent){ h+=`<p class="rub">In Lent is said here Psalm 51, ${o.lent==="67"?"preceded":"followed"} by Psalm ${o.lent}.</p>`; for(const r of (o.lent==="67"?["Ps 67","Ps 51"]:["Ps 51","Ps "+o.lent])) h+=await ps(r); } }
-        else if(it.n==="collect") h+=o.col?`<p class="cite">${esc(titleCase(o.nm))}</p><p data-r="cel">${esc(o.col)}</p>`:`<p class="cue">The Collect of the Day, from the Prayer Book or Divine Worship.</p>`;
-        break;
-    }
-  }
-  return h;
-}
-/* ---------------------------------------------------------------- 1662 offices and the generated Breviary */
-const bcpCache={};
-function bcpOffice(){ return bcpCache.o||(bcpCache.o=fetch("bcp-office.json").then(r=>r.json())); }
-const titleCase=t=>String(t).toLowerCase().replace(/(^|[\s-])([a-z])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\b(In|After|Before|The|Of|And)\b/g,w=>w.toLowerCase()).replace(/^./,c=>c.toUpperCase());
-function bcpItem(it){
-  const [k,t,r,lab]=it;
-  if(k==="rub") return `<p class="rub">${esc(t)}</p>`;
-  if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
-  if(k==="h") return `<h5 class="sub">${esc(t)}</h5>`;
-  return `<p data-r="${r||"all"}">${lab?`<span class="sp">${lab}</span> `:""}${esc(t)}</p>`;
-}
-const DO_KEY={br62:"br62",br55:"br55",mon:"mon",op:"op"};
-const doCache={};
-const doJSON=p=>doCache[p]||(doCache[p]=fetch(p).then(r=>{ if(!r.ok) throw new Error(p); return r.json(); }));
-async function doTable(base, man, kind, ids){
-  const ranges=man[kind==="l"?"lines":"rows"], need=new Set();
-  ids.forEach(id=>{ let lo=0,hi=ranges.length-1; while(lo<hi){ const mid=(lo+hi+1)>>1; if(ranges[mid][0]<=id) lo=mid; else hi=mid-1; } need.add(lo); });
-  const shards={}; await Promise.all([...need].map(async n=>{ shards[n]=await doJSON(`${base}/${kind}-${String(n).padStart(3,"0")}.json`); }));
-  return id=>{ for(const n of need){ const sh=shards[n]; if(id>=sh.start&&id<sh.start+sh.v.length) return sh.v[id-sh.start]; } return null; };
-}
-async function doHour(R,H,iso){
-  const key=DO_KEY[R], hour=DO_HOUR[H]; if(!key||!hour) return null;
-  const base=`breviary/${key}`;
-  let man, month;
-  try{ man=await doJSON(`${base}/manifest.json`); if(!(man.years||[]).includes(iso.slice(0,4))) return null; month=await doJSON(`${base}/y-${iso.slice(0,4)}.json`); }catch(e){ return null; }
-  const day=month[iso]; if(!day||!day[hour]) return null;
-  const variants=[day[hour], day["c:"+hour]].filter(Boolean);
-  const rowIds=[...new Set(variants.flatMap(v=>v[1]))];
-  const row=await doTable(base,man,"r",rowIds);
-  const lineIds=[...new Set(rowIds.flatMap(id=>{ const r=row(id); return r?r[0].concat(r[1]):[]; }))];
-  const line=await doTable(base,man,"l",lineIds);
-  const plain=h=>h.replace(/<[^>]+>/g,"").trim();
-  // one step per headed row; a row with no heading (a psalm continuing, a second lesson part) joins the step before it
-  const steps=v=>{ const out=[];
-    v[1].forEach(id=>{ const r=row(id); if(!r) return;
-      let la=r[0].map(line).join(""), en=r[1].map(line).join("");
-      const th=/<h5 class=sub>(.*?)<\/h5>/.exec(en)||/<h5 class=sub>(.*?)<\/h5>/.exec(la);
-      la=la.replace(/<h5 class=sub>.*?<\/h5>/,""); en=en.replace(/<h5 class=sub>.*?<\/h5>/,"");
-      const words=plain(en.replace(/<sup>.*?<\/sup>/g,"")).split(/\s+/).length;
-      const block=`<div class="txt two dooff"><div lang="la">${la}</div><div lang="en">${en}</div></div>`;
-      if(!th&&out.length){ const p=out[out.length-1]; p.slot+=block; p.min+=words/2.4/60; return; }
-      out.push({t:th?plain(th[1]):"Opening", slot:block, min:Math.max(0.2,words/2.4/60)});
-    });
-    return out; };
-  return {title:day[hour][0], steps:steps(day[hour]), chant:day["c:"+hour]?steps(day["c:"+hour]):null};
-}
-const DO_HOUR={matins:"Matutinum",lauds:"Laudes",prime:"Prima",terce:"Tertia",sext:"Sexta",none:"Nona",vespers:"Vespera",compline:"Completorium"};
-const UNIV_HOUR={or:"readings",lauds:"lauds",terce:"terce",sext:"sext",none:"none",vespers:"vespers",compline:"compline"};
 const doDate=iso=>{ const [y,m,d]=iso.split("-"); return `${m}-${d}-${y}`; };
-
 /* ---------------------------------------------------------------- session render */
 async function readingBlock(lab,cit,num,tr,added){
   let body;
@@ -845,135 +701,8 @@ async function renderSession(){
 }
 
 async function officeBody(iso, day){
-  const R=S.rite, H=S.hour, d=toDate(iso), dow=d.getUTCDay();
-  const hourName=hoursFor(R).find(x=>x[0]===H)[1];
-  const slots={};
-  const blk=(lab,cit,tr)=>readingBlock(lab,cit,"n",tr);
-  let h="";
-  const ord = R==="loth"?ORDER.loth[H]: R==="dwdo"?ORDER.dwdo[H]: R==="byz"?ORDER.byz[H]: ORDER.br[H];
-  if(R==="loth"){
-    h+=`<h2 class="dayname">${esc(day.n.t)}</h2><p class="daysub">Psalter Week ${psalterWeek(iso)} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The psalms and canticles of the four-week psalter are given in full in the Douay-Rheims, a public-domain translation from the Latin (the Liturgy of the Hours uses the Grail or Abbey Psalms, so the wording differs, and the psalms keep their Latin numbering in brackets). The hymns, antiphons, intercessions and prayers of the official books are copyrighted: press <b>Add text</b> beside any of them to fill it in from your own breviary, or <a href="https://universalis.com/${iso.replace(/-/g,"")}/${UNIV_HOUR[H]}.htm" target="_blank" rel="noopener">open today's ${esc(hourName)} at Universalis</a>. Solemnities and feasts have proper psalms.</p>`;
-    { let x=""; for(const ps of lothPsalms(iso,H,day)) x+=await blk(ps.lab,ps.cit,"dr"); slots.psalms=x||`<p class="note">No psalmody is listed for this hour.</p>`; }
-    if(H==="lauds"||H==="or") slots.invit=`<details class="canon"><summary>Invitatory: Psalm 95 (94), if this is the first hour of the day</summary>${await blk("Psalm 95 (94)","Ps 95","dr")}</details>`;
-    slots.bened=await blk("Benedictus","Luke 1:68-79","dr"); slots.magn=await blk("Magnificat","Luke 1:46-55","dr"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","dr");
-    if(H==="or"){ let LOH={}; try{ LOH=JSON.parse(document.getElementById("lect-extra").textContent).LOH; }catch(e){}
-      const c=day.nk && LOH[day.nk];
-      slots.first = (dow===0 && c && /\d/.test(c)) ? await blk("Biblical reading · one-year cycle",c,"dr") : `<p class="note">Weekday biblical readings follow the Office's own course; see Universalis for today's.</p>`; }
-  } else if(R==="bcp79"){
-    const B=await fetch("data/bcp1979.json").then(r=>r.json()), rite1=/1$/.test(H), C=B.collects[rite1?"t":"c"];
-    const D=window.LectPB79.day(iso,C), col=C[D.title]||C[D.season];
-    const dom=Math.min(30,d.getUTCDate()), eve=/^ep|compline/.test(H);
-    const L=window.LectCalendar.custom({type:"office",rite:R,hour:H,iso})||await window.LectCalendar.pb79({iso,day},true,eve);
-    const lessonHTML=await window.LectCalendar.html({readingBlock},L);
-    let psalmHTML="";for(const cite of L.psalms||[])psalmHTML+=await window.LectCalendar.psalm79(cite,"Appointed Psalm");
-    h+=`<h2 class="dayname">${esc(D.title)}</h2><p class="daysub">Day ${dom} of the month · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1979), with two-year Daily Office lessons in the King James Bible and appointed psalms from the 1979 Psalter. Where an appointment is missing, check your book; the monthly 1979 Psalter remains available. Noonday and Compline retain their fixed short lessons.</p>`;
-    const fill=name=>{
-      if(name==="psalms") return psalmHTML||B.psalter[(eve?"e":"m")+dom].map(p=>`<h5 class="sub">Psalm ${esc(p.n)}${p.latin?` <i>${esc(p.latin)}</i>`:""}</h5>`+p.v.map(([n,t])=>n?`<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`:`<p class="rub">${esc(t)}</p>`).join("")).join("");
-      if(name==="lessons") return lessonHTML;
-      if(name==="collect"&&col) return `<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(D.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("");
-      return "";
-    };
-    const steps=B.offices[H].map(st=>({t:st.t||hourName, slot:`<div class="txt">${window.LectPB79.items(st.items,fill)}</div>`}));
-    return {h, steps, hourName};
-  } else if(R==="bcp28"){
-    const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
-    h+=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1928), with the psalms of the day of the month. Take the lessons from the 1928 (1943) lectionary.</p>`;
-    const steps=[];
-    for(const st of B[H]){
-      let x="";
-      const its=st.items.map(bcpItem);
-      if(st.slot==="psalms"){ x+=its[0]||""; for(const p of bcpPsalms(iso,H==="ep")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); x+=its.slice(1).join(""); }
-      else x=its.join("");
-      if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The First Lesson":"The Second Lesson"} appointed for today in the 1928 Prayer Book lectionary.</p>`;
-      if(st.slot==="collect"&&pr){ const c=pr.sets[0].collect; x=its[0]+`<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(pr.t)}</p>`+c.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")+its.slice(1).join(""); }
-      steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
-    }
-    return {h, steps, hourName};
-  } else if(R==="dwdo"){
-    const on=(day.o&&day.o.s||"").startsWith("Divine Worship: ")?day.o.s.replace("Divine Worship: ",""):"";
-    h+=`<h2 class="dayname">${esc(on||day.o.t)}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
-    if(H==="mattins"||H==="evensong"){
-      h+=`<p class="callout">The text is the 1662 Book of Common Prayer, the traditional-language base of Divine Worship: Daily Office, with the psalms of the day from its Coverdale psalter. Divine Worship adapts some parts (the suffrages and the prayers for the Church, for example): follow your book where it differs. Take the lessons from the Divine Worship lectionary.</p>`;
-      const BO=await bcpOffice(), steps=[];
-      for(const st of BO[H]){
-        let x=st.items.length?`<div class="txt">${st.items.map(bcpItem).join("")}</div>`:"";
-        if(st.slot==="psalms"){ for(const p of bcpPsalms(iso,H==="evensong")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); }
-        if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The Old Testament lesson":"The New Testament lesson"} appointed for today in the Divine Worship lectionary.</p>`;
-        if(st.slot==="collect"){ const nm=day.o.bcp, c=nm&&BO.collects[nm]; if(c) x=`<div class="txt"><h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(titleCase(nm))}</p><p data-r="cel">${esc(c)}</p><p data-r="ppl"><span class="sp">℟.</span> Amen.</p></div>`+x; }
-        steps.push({t:st.t, slot:x});
-      }
-      return {h, steps, hourName};
-    }
-    if(/^(prime|terce|sext|none)$/.test(H)){
-      h+=`<p class="callout">The text is The Day-Hours of the Church of England (1877), which sets the old little hours in Prayer Book English, with the Coverdale psalms. It gives the Sunday and weekday forms; on feasts and in the great seasons it appoints proper antiphons and hymn endings, which you take from your book.</p>`;
-      const [DH,BO]=await Promise.all([fetch("data/dayhours.json").then(r=>r.json()),bcpOffice()]);
-      const env=dhEnv(iso), steps=[];
-      const nm=day.o.bcp, col=nm&&BO.collects[nm];
-      for(const st of DH.hours[H]){
-        if(!dhOk(st,env)) continue;
-        const x=await dhItems(st.items,env,{blk,col,nm,preces:DH.hours.preces[0].items,dow});
-        if(x) steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
-      }
-      return {h, steps, hourName};
-    }
-    h+=`<p class="callout">The psalms are given from the Coverdale psalter of the 1662 Book of Common Prayer. Take the other texts from your book.</p>`;
-    if(H==="compline"){ let x=""; for(const p of ["Ps 4","Ps 31:1-6","Ps 91","Ps 134"]) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); slots.psalms=x; }
-    slots.resp=`<div class="txt one"><p data-r="cel">Into thy hands, O Lord, I commend my spirit.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p><p data-r="cel">For thou hast redeemed me, O Lord, thou God of truth.</p><p data-r="ppl"><span class="sp">℟.</span> I commend my spirit.</p><p data-r="cel">Glory be to the Father, and to the Son, and to the Holy Ghost.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p></div>`;
-    slots.venite = d.getUTCDate()===19 ? `<p class="note">Psalm 95 falls in today's course, so the Jubilate (Psalm 100) replaces it.</p>`+await blk("Jubilate","Ps 100","cv") : await blk("Venite","Ps 95","cv");
-    slots.bened=await blk("Benedictus","Luke 1:68-79","kj"); slots.magn=await blk("Magnificat","Luke 1:46-55","kj"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","kj");
-  } else if(R==="byz"){
-    const tone=byzTone(iso), eo=eothinon(iso), b=day.b;
-    h+=`<h2 class="dayname">${esc(b?b.t:"Weekday")}</h2><p class="daysub">${tone?`Tone ${tone} of the Octoechos`:"Paschal or Holy Week propers"} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The psalms are given in full in the Douay-Rheims, numbered as in the Septuagint, with the fixed prayers in traditional English. The hymnody of the day (stichera, troparia, kontakia, canons) varies between churches and translations: press <b>Add text</b> to fill it in from your Horologion, Octoechos and Menaion.</p>`;
-    slots.ps104=await blk("Psalm 103 (104)","Ps 104","dr"); slots.nunc=await blk("Song of Simeon","Luke 2:29-32","dr"); slots.ps50=await blk("Psalm 50 (51)","Ps 51","dr");
-    { const P=BYZ_PS[H]||{}; for(const [slot,list] of Object.entries(P)){ let x=""; for(const n of list) x+=await readingBlock(`Psalm ${n}`,"Ps "+n,"v","dr"); slots[slot]=x; } }
-    /* Sunday tone hymns from Hapgood's Appendix A (1906, public domain); Saturday Vespers takes the coming Sunday's tone. */
-    const BZ=await fetch("data/byz-liturgy.json").then(r=>r.ok?r.json():null).catch(()=>null);
-    const sunTone=dow===0?tone:(dow===6&&H==="vespers")?byzTone(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)):null;
-    const TN=sunTone&&BZ&&BZ.tones?BZ.tones[sunTone]:null;
-    const hy=(lab,t)=>`<p class="rub">${esc(lab)}</p><p data-r="ppl">${esc(t)}</p>`;
-    const hapNote=`<p class="note">Sunday hymns of Tone ${sunTone}, from Isabel Hapgood's Service Book (1906).</p>`;
-    slots.godlord=byzTx("godlord")+(TN&&H==="orthros"?hy(`Troparion of the Resurrection, Tone ${sunTone} (twice)`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion)+hapNote:`<p class="note">Then the troparia of the day (Add text to fill them in from your Octoechos and Menaion).</p>`); slots.fhp=byzTx("fhp");
-    if(TN&&H==="vespers"){ slots.lic=(slots.lic||"")+`<h4 class="sub2">Stichera of the Resurrection, Tone ${sunTone}</h4>`+TN.lic.map(x=>`<p data-r="ppl">${esc(x)}</p>`).join("")+`<p class="note">Then the stichera of the Menaion. Glory… Both now…:</p>`+hy("Dogmatikon",TN.dogmatikon)+hapNote;
-      slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion</h4>`+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion); }
-    if(TN&&/^(first|third|sixth|ninth)$/.test(H)) slots.tris=(slots.tris||"")+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+hy(`Kontakion, Tone ${sunTone}`,TN.kontakion);
-    /* The Great Feasts from Hapgood's Special Services: Vespers is the vigil of the coming day's feast. */
-    { const fx=i=>{ if(!BZ||!BZ.feasts) return []; const d=toDate(i), off=fromEaster(d); return [BZ.feasts[i.slice(5)],BZ.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean); };
-      const TONE=n=>n?`, Tone ${n}`:"";
-      const FX=H==="vespers"?fx(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)).filter(f=>f.lic):fx(iso);
-      if(FX.length){
-        const note=`<p class="note">The hymns of ${esc(FX.map(f=>f.t).join(" and "))} are from the Special Services of Hapgood's Service Book (1906); the rest of the feast's hymnody is in your Menaion or Triodion.</p>`;
-        const tk=(kont)=>FX.map(f=>hy(`Troparion of the feast${TONE(f.troparion_tone)}`,f.troparion)+(kont&&f.kontakion?hy(`Kontakion of the feast${TONE(f.kontakion_tone)}`,f.kontakion):"")).join("");
-        if(H==="vespers"){
-          slots.lic=(slots.lic||"")+FX.map(f=>`<h4 class="sub2">Sticheron of the feast${TONE(f.lic_tone)}</h4><p data-r="ppl">${esc(f.lic)}</p>`+(f.lity?`<h4 class="sub2">At the Litiya${TONE(f.lity_tone)}</h4><p data-r="ppl">${esc(f.lity)}</p>`:"")).join("")+note;
-          slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion of the feast</h4>`+tk(false);
-        }
-        if(H==="orthros"){ slots.godlord=byzTx("godlord")+tk(false)+note; }
-        if(/^(first|third|sixth|ninth)$/.test(H)) slots.tris=tk(true)+note;
-      }
-      slots._fx=FX; }
-    if(H==="orthros"&&slots._fx.some(f=>f.exalt)) slots.magn=slots._fx.filter(f=>f.exalt).map(f=>`<h4 class="sub2">Magnification of the feast</h4><p data-r="ppl">${esc(f.exalt)}</p>`).join("")+`<p class="note">On the feast the magnification is sung before the Polyeleos Gospel; at the ninth ode the festal refrains replace More honourable than the Cherubim.</p>`+await blk("Magnificat","Luke 1:46-55","dr");
-    else if(H==="orthros") slots.magn=await blk("Magnificat","Luke 1:46-55","dr")+`<p class="note">Between the verses: More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, who without corruption gavest birth to God the Word, true Theotokos, we magnify thee.</p>`;
-    slots.tris=byzTx("tris")+(slots.tris||""); slots.creed=byzTx("creed"); slots.phos=byzTx("phos")+`<p class="note">Phos hilaron in John Keble's translation (1834).</p>`; slots.vouch=byzTx("vouch");
-    if(H==="orthros") slots.lauds=(slots.lauds||"")+`<h4 class="sub2">The Great Doxology</h4>`+byzTx("doxo");
-    slots.eoth = eo ? await blk(`Resurrection Gospel · Eothinon ${eo}`,EOTHINA[eo],"dr") : `<p class="note">${dow===0?"From Pascha to Pentecost the Sunday Gospels are proper to the Pentecostarion.":"Read on Sundays only."}</p>`;
-  } else {
-    const full=await doHour(R,H,iso);
-    if(full){
-      h+=`<h2 class="dayname">${esc(full.title||((R==="br55"?day.p:day.m)||{}).t||"")}</h2><p class="daysub">${esc(hourName)}</p>`;
-      h+=`<p class="callout">The full text of the hour in Latin and English, generated with the Divinum Officium engine (MIT licence) from its data. ${R==="mon"||R==="op"?"The Benedictine and Dominican calendars and psalters are followed.":""}${full.chant?" Turn on Chant above the order to sing the antiphons and psalms in Gregorian chant.":""}</p>`;
-      return {h, steps:full.steps, alt:full.chant, hourName};
-    }
-    const t=(R==="br55"?day.p:day.m)||{};
-    h+=`<h2 class="dayname">${esc(t.t||"")}</h2><p class="daysub">${esc(t.s||"")} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The full ${esc(hourName)} for this date, in Latin and English, is at <a href="https://www.divinumofficium.com/cgi-bin/horas/officium.pl?date1=${doDate(iso)}&version=${encodeURIComponent(DO_VERSION[R])}&command=pray${DO_HOUR[H]}&lang2=English" target="_blank" rel="noopener">Divinum Officium</a>. ${R==="mon"||R==="op"?"The day named above follows the Roman 1962 calendar; the Benedictine and Dominican calendars differ on some saints' days.":""}</p>`;
-    slots.bened=await blk("Benedictus","Luke 1:68-79","dr"); slots.magn=await blk("Magnificat","Luke 1:46-55","dr"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","dr");
-  }
-  const steps=(ord||[]).map(x=>{ const m=/^@(\w+)\|(.*)$/.exec(x); return m?{t:m[2],slot:slots[m[1]]||""}:{t:x}; });
-  return {h, steps, hourName};
+  await window.LectLoad.service();
+  return window.LectOffice.body(iso, day, {S, hoursFor, readingBlock, bcpPsalms, byzTone, eothinon, lothPsalms, psalterWeek, EOTHINA});
 }
 
 /* ---------------------------------------------------------------- top */

@@ -243,8 +243,7 @@ function chantWidget(title, gabc, meta){
   const html=`<figure class="music chantfig" id="${id}"><figcaption><span class="mt">${esc(title)}</span>${meta?`<span class="mm">${esc(meta)}</span>`:""}
     <span class="mctl"><button type="button" class="play" aria-label="Play ${esc(title)}">▶ Play</button><label class="tp">Pitch <select aria-label="Transpose"><option value="-3">−3</option><option value="-2">−2</option><option value="-1">−1</option><option value="0" selected>0</option><option value="1">+1</option><option value="2">+2</option><option value="3">+3</option></select></label></span></figcaption>
     <div class="score"></div></figure>`;
-  setTimeout(()=>{
-    const fig=document.getElementById(id); if(!fig) return;
+  whenShown(id,fig=>{
     let syl; try{ syl=parseGabc(gabc); }catch(e){ fig.querySelector(".score").innerHTML=`<p class="note">This chant couldn't be read.</p>`; return; }
     const score=fig.querySelector(".score"); let svg=renderChant(score,syl,{label:title});
     let lastW=score.clientWidth; const ro=window.ResizeObserver? new ResizeObserver(()=>{ if(Math.abs(score.clientWidth-lastW)>20){ lastW=score.clientWidth; svg=renderChant(score,syl,{label:title}); } }):null; if(ro) ro.observe(score);
@@ -259,8 +258,15 @@ function chantWidget(title, gabc, meta){
         ()=>{ btn.textContent="▶ Play"; ctl=null; svg.querySelectorAll(".syl.on").forEach(x=>x.classList.remove("on")); });
       if(ctl) btn.textContent="■ Stop";
     });
-  },0);
+  });
   return html;
+}
+/* A widget's markup is returned before the page puts it in the document, sometimes only after the rest of the
+   service has loaded: fill it in once it is there (checking for up to a minute). */
+function whenShown(id,fn,t0=Date.now()){
+  const el=document.getElementById(id);
+  if(el) return fn(el);
+  if(Date.now()-t0<60000) setTimeout(()=>whenShown(id,fn,t0),Date.now()-t0<2000?0:250);
 }
 function chantSeconds(gabc){ try{ return chantEvents(parseGabc(gabc),1,0).total; }catch(e){ return 60; } }
 
@@ -270,8 +276,7 @@ function hymnWidget(h, slot){
   const html=`<figure class="music hymnfig" id="${id}"><figcaption><span class="mt">${esc(h.t)}</span><span class="mm">Tune: ${esc(h.tune)} · ${verses} verse${verses>1?"s":""} · public domain (Open Hymnal)</span>
     <span class="mctl"><button type="button" class="play" aria-label="Play ${esc(h.t)}">▶ Play tune</button></span></figcaption>
     <div class="score"><p class="note">Loading notation…</p></div>${h.w&&h.w.length?`<div class="moreverses">${h.w.map(l=>esc(l)).join("<br>")}</div>`:""}</figure>`;
-  setTimeout(async()=>{
-    const fig=document.getElementById(id); if(!fig) return;
+  whenShown(id,async fig=>{
     const score=fig.querySelector(".score");
     const A=await loadAbcjs();
     if(A){ try{ score.innerHTML=""; A.renderAbc(score, h.abc.replace(/^%%MIDI.*$/gm,""), {responsive:"resize", add_classes:true, staffwidth:Math.max(300,score.clientWidth-20), paddingleft:0, paddingright:0, foregroundColor:getComputedStyle(document.body).color}); }catch(e){ score.innerHTML=lyricsOnly(h); } }
@@ -279,7 +284,7 @@ function hymnWidget(h, slot){
     const btn=fig.querySelector(".play"); let ctl=null;
     btn.addEventListener("click",()=>{ if(ctl){ ctl.stop(); return; }
       const {ev}=abcEvents(h.abc); ctl=playEvents(ev,"organ",null,()=>{ btn.textContent="▶ Play tune"; ctl=null; }); if(ctl) btn.textContent="■ Stop"; });
-  },0);
+  });
   return html;
 }
 function lyricsOnly(h){
@@ -744,10 +749,10 @@ const PB_BOOKS={
     notSaid:[], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
   /* The Scottish Liturgy (1929): its own seasons of Proper Prefaces (Advent, Lent, Passiontide, Maundy Thursday and
      the Scottish saints' days), picked by date; the 1662 propers stand in for the Scottish Book's own. */
-  bcp29:{file:"data/bcp-hc.json", part:"bcp1929", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
+  bcp29:{file:"data/bcp1929.json", showNotes:true, decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
     collectAt:/^Let us pray\.$/, epistleAt:/^Then the Presbyter, or some other Presbyter or Deacon, turning to the people, shall read the Epistle/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["General Rubrics","The Order for a Second Consecration","Post-Communions","Collects","Exhortations"], prefaceHead:p=>p, prefaceFn:scotPreface},
-  bcp18:{file:"data/bcp-hc.json", part:"bcp1918", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+  bcp18:{file:"data/bcp1918.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:null, epistleAt:/^Then shall be said the Collect of the day/, gospelAt:/^Then, the people all standing up/, collectBeforeEpistle:true,
     notSaid:["Rubrics before the Communion","Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
   bcp92:{file:"data/bcp-hc.json", part:"bcp1892", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
@@ -764,7 +769,13 @@ async function buildPB(ctx,opts,book){
   const set=pr?pr.sets[0]:null, same=pr&&pr.same?PBk.propers[pr.same]:null;
   const collect=set&&set.collect.length?set.collect:(same?same.sets[0].collect:[]);
   const AB=opts.abridge||0, out=[];
-  const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`:cue(`The ${lab} of the day, from the Prayer Book.`);
+  /* r.head: the book's own heading ("The Lesson", for a reading from the Old Testament, the Acts or the Revelation in the
+     Epistle's place); r.alt: the reading the book gives as "Or this". */
+  const reading=(lab,r,role)=>r?`<section class="reading"><header><span class="rl">${esc(r.head?r.head.replace(/^The /,""):lab)}</span><span class="rc">${esc(r.cite)}</span></header><div class="rtext">${r.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></section>`+
+    (r.alt?`<details class="fold"><summary>Or this ${esc((r.alt.head||lab).replace(/^The /,""))}: ${esc(r.alt.cite)}</summary><div class="rtext">${r.alt.text.map(t=>`<p data-r="${role}">${esc(t)}</p>`).join("")}</div></details>`:""):cue(`The ${lab} of the day, from the Prayer Book.`);
+  /* the book's optional collects and anthems for the day (an Additional Collect for Christmastide) and its rubrics */
+  const extras=set&&set.extra?set.extra.filter(e=>!/^At Morning Prayer/.test(e.head)).map(e=>`<details class="fold"><summary>${esc(e.head)}</summary>${e.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")}</details>`).join(""):"";
+  const dayNotes=C.showNotes&&pr&&pr.notes?pr.notes.map(n=>`<p class="note">${esc(n)}</p>`).join(""):"";
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
   /* Wesley prints the proper prefaces for the feast itself only, not its octave. */
   const d0=toDate(iso), off0=fromEaster(d0);
@@ -788,7 +799,7 @@ async function buildPB(ctx,opts,book){
     }
     if(st.slot==="collect"){
       const its=st.items, k=C.collectBeforeEpistle?at(its,C.epistleAt)-1:at(its,C.collectAt), ke=Math.max(k,at(its,C.epistleAt));
-      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}${PBk!==B?" · from the 1662 table, which this book follows; its own wording differs in places":""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""):cue("The Collect of the Day, from the Prayer Book.");
+      const coll=collect.length?`<h4 class="sub2">The Collect of the Day</h4><p class="cite">${esc(pr.t)}${same&&!(set&&set.collect.length)?` (the Collect of ${esc(same.t)})`:""}${PBk!==B?" · from the 1662 table, which this book follows; its own wording differs in places":""}</p>`+collect.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")+dayNotes+extras:cue("The Collect of the Day, from the Prayer Book.");
       const ep=AB>=3?abr("the Epistle"):reading("Epistle",set&&set.epistle,"lec");
       html=its.slice(0,k+1).map(pbItem).join("")+coll+its.slice(k+1,ke+1).map(pbItem).join("")+ep+its.slice(ke+1).map(pbItem).join("");
       secs+=(collect.length?collect.join(" ").split(/\s+/).length/2.4:20)+(AB>=3?0:(set&&set.epistle?set.epistle.text.join(" ").split(/\s+/).length/2.6:90));
@@ -972,51 +983,6 @@ async function lectItems(ctx,L){ const out=[];
   return out; }
 const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
 
-/* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
-   Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
-   without a festival keeps the propers of the Sunday before it. */
-function mercDay(iso){
-  const d=toDate(iso), Y=d.getUTCFullYear(), md=(d.getUTCMonth()+1)*100+d.getUTCDate(), dow=d.getUTCDay();
-  const off=Math.round((d-easterY(Y))/DAY);
-  const FIX={1225:"christmas",1226:"stephen",1227:"john",1228:"innocents",101:"circumcision",106:"epiphany"};
-  const MOV={"-46":"ash","-2":"goodfriday","-1":"eastereve","1":"eastermon","39":"ascension","50":"whitmonday"};
-  if(MOV[off]) return {k:MOV[off],fest:true};
-  if(FIX[md]&&(dow||md===1225||md===101||md===106)) return {k:FIX[md],fest:true};
-  const s=new Date(d-dow*DAY), SY=s.getUTCFullYear(), E=easterY(SY), so=Math.round((s-E)/DAY), A1=adv1Y(SY), smd=(s.getUTCMonth()+1)*100+s.getUTCDate();
-  const r=k=>({k,fest:false,weekday:!!dow});
-  if(s>=A1&&smd<1225) return r("adv"+(Math.round((s-A1)/DAY/7)+1));
-  if(smd>=1225) return r(smd===1225?"christmas":"xmas1");
-  if(smd<106) return r("xmas2");
-  if(so<-63){ const ep=Date.UTC(SY,0,6), first=ep+((7-new Date(ep).getUTCDay())%7||7)*DAY; return r(s<first?"epiphany":"epi"+Math.min(6,Math.round((s-first)/DAY/7)+1)); }
-  const PRE={"-63":"septuagesima","-56":"sexagesima","-49":"quinquagesima","-42":"lent1","-35":"lent2","-28":"lent3","-21":"lent4","-14":"lent5","-7":"palm","0":"easter","7":"easter1","14":"easter2","21":"easter3","28":"easter4","35":"easter5","42":"exaudi","49":"whitsunday","56":"trinity"};
-  if(PRE[so]) return r(PRE[so]);
-  if(so<56) return r("ash");
-  const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
-  return r(N-n<4?"ba"+(N-n+1):"trin"+n);
-}
-/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
-   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
-   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
-   takes the Sunday before it, except the four fixed days. */
-function rcaLessonDay(T,iso){
-  const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
-  const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
-  const d=toDate(iso), E=easterY(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=(d.getUTCMonth()+1)*100+d.getUTCDate();
-  if(md===1225) return pick(T.christmas.christmas,"Christmas");
-  if(md===101) return pick(T.christmas.circumcision,"The Circumcision");
-  if(off===-2) return pick(T.easter.goodfriday,"Good Friday");
-  if(off===39) return pick(T.easter.ascension,"Ascension Day");
-  const s=new Date(d-d.getUTCDay()*DAY), SY=s.getUTCFullYear(), so=Math.round((s-easterY(SY))/DAY), A1=adv1Y(SY), xm=new Date(Date.UTC(SY,11,25));
-  if(s>=A1&&s<xm){ const n=4-Math.round((s-A1)/DAY/7); return pick(T.christmas.before[n],`The ${N[n]} Sunday before Christmas`); }
-  if(s>=xm||so<-63){ const xs=s>=xm?xm:new Date(Date.UTC(SY-1,11,25)), n=Math.ceil((s-xs)/DAY/7);
-    return n<1?pick(T.christmas.christmas,"Christmas"):pick(T.christmas.after[n],`The ${N[n]} Sunday after Christmas`); }
-  if(so<0) return pick(T.easter.before[-so/7],`The ${N[-so/7]} Sunday before Easter`);
-  if(so===0) return pick(T.easter.easter,"Easter");
-  if(so<=35) return pick(T.easter.after[so/7],`The ${N[so/7]} Sunday after Easter`);
-  if(so===42) return pick(T.pentecost.before,"The Sunday before Pentecost");
-  if(so===49) return pick(T.pentecost.pentecost,"Pentecost");
-  return pick(T.pentecost.after[(so-49)/7],`The ${N[(so-49)/7]} Sunday after Pentecost`);
-}
 const ORDER_RITES={
   pres:{lect:"hist", parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
   me08:{lect:"hist", lectNote:"The 1908 Ritual's Lord's Supper has no lessons of its own and the book sets no table: these are the historic Epistle and Gospel of the day, as the 1662 Prayer Book that Wesley's order comes from appoints them.", parts:o=>[["me1908-supper"]]},
@@ -1093,7 +1059,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_coll:h};
   }
   if(R.rcaLessons){   /* the 1882 Liturgy's Order of Scripture Lessons: Christmas, Easter and Pentecost seasons */
-    const T=await J("data/rca1882-lessons.json"), L=rcaLessonDay(T,ctx.iso), less={};
+    const T=await J("data/rca1882-lessons.json"), L=window.LectCalendar.rcaLessonDay(T,ctx.iso), less={};
     if(L){
       const [ot,nt]=L.m;
       less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
@@ -1122,7 +1088,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_less:{...(opts._less||{}),...less}};
   }
   if(R.merc){   /* the Order of Worship's own Gospel, Epistle and Collect, and its Table of Scripture Lessons for Sundays */
-    const T=await J("data/mercersburg.json"), D=mercDay(ctx.iso), P=T.propers[D.k], p=t=>`<p data-r="cel">${esc(t)}</p>`, less={};
+    const T=await J("data/mercersburg.json"), D=window.LectCalendar.mercDay(ctx.iso), P=T.propers[D.k], p=t=>`<p data-r="cel">${esc(t)}</p>`, less={};
     const mine=!!window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});   /* a congregation's own selections replace the book's lessons */
     const head=P?`<p class="cite">${esc(P.t)}${D.weekday&&!D.fest?" · the propers of the Sunday":""}</p>`:"";
     if(P){
@@ -1948,5 +1914,914 @@ function officeControls(opts,chant){
     </div>${chant?`<label class="ck"><input type="checkbox" data-o="chant"${opts.chant?" checked":""}> Chant: antiphons and psalms in Gregorian chant (Latin), with notation and playback</label>`:""}<p class="note">Times are estimates for saying the hour at a steady pace; sung or choir recitation takes longer.</p></div>`;
 }
 window.LectMass={render};
-window.LectReformed={rca:rcaLessonDay, merc:mercDay};
+})();
+/* ================================================================ THE DAILY OFFICE
+   The builders of an hour of the Office (the Liturgy of the Hours, the Breviaries, the Prayer Book offices, the
+   Day-Hours and the Byzantine hours), split from today.js and loaded with the service code (window.LectLoad):
+   the Pray-today page needs them only when an hour is opened. today.js calls LectOffice.body(iso, day, env)
+   with the calendar helpers it keeps for the rest of the page. */
+(function(){
+"use strict";
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const {DAY,toDate,easter:easterY,fromEaster}=window.LitDate;
+const doDate=iso=>{ const [y,m,d]=iso.split("-"); return `${m}-${d}-${y}`; };
+/* ---------------------------------------------------------------- Byzantine fixed texts (traditional English, public domain) */
+const BYZ_TX={
+ tris:[["cel","Blessed is our God, always, now and ever, and unto ages of ages."],["ppl","Amen."],
+   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times)"],
+   ["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
+   ["all","O most holy Trinity, have mercy on us. O Lord, cleanse us from our sins. O Master, pardon our transgressions. O Holy One, visit and heal our infirmities, for thy name's sake."],
+   ["all","Lord, have mercy. (Three times)"],["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
+   ["all","Our Father, who art in heaven, hallowed be thy name; thy kingdom come; thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil."],
+   ["cel","For thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages."],["ppl","Amen."]],
+ creed:[["all","I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible. And in one Lord Jesus Christ, the Son of God, the only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father, by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified for us under Pontius Pilate, and suffered, and was buried; and rose again on the third day according to the Scriptures; and ascended into heaven, and sits at the right hand of the Father; and he shall come again with glory to judge the living and the dead; whose kingdom shall have no end. And in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father; who with the Father and the Son together is worshipped and glorified; who spoke by the prophets. In one holy, catholic and apostolic Church. I confess one baptism for the remission of sins. I look for the resurrection of the dead, and the life of the world to come. Amen."]],
+ phos:[["all","Hail, gladdening Light, of his pure glory poured, who is the immortal Father, heavenly, blest, holiest of holies, Jesus Christ our Lord! Now we are come to the sun's hour of rest; the lights of evening round us shine; we hymn the Father, Son, and Holy Spirit divine. Worthiest art thou at all times to be sung with undefiled tongue, Son of our God, giver of life, alone: therefore in all the world thy glories, Lord, they own."]],
+ vouch:[["all","Vouchsafe, O Lord, to keep us this evening without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. Blessed art thou, O Master; make me to understand thy statutes. Blessed art thou, O Holy One; enlighten me with thy statutes. Thy mercy, O Lord, endures for ever; despise not the works of thy hands. To thee belongs praise, to thee belongs song, to thee belongs glory, to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."]],
+ godlord:[["cel","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","O give thanks unto the Lord, for he is good: for his mercy endureth for ever."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","All nations compassed me about: but in the name of the Lord will I destroy them."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","This is the Lord's doing, and it is marvellous in our eyes."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."]],
+ fhp:[["cel","O Christ, the true Light, who enlightenest and sanctifiest every man that cometh into the world: let the light of thy countenance be signed upon us, that in it we may behold the light unapproachable; and direct our steps in the doing of thy commandments; through the intercessions of thy most pure Mother, and of all thy saints."],["ppl","Amen."]],
+ doxo:[["cel","Glory to thee who hast shown us the light!"],["all","Glory to God in the highest, and on earth peace, good will towards men. We praise thee, we bless thee, we worship thee, we glorify thee, we give thanks to thee for thy great glory. O Lord, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ, and the Holy Spirit. O Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; thou that takest away the sins of the world, receive our prayer; thou that sittest at the right hand of the Father, have mercy on us. For thou only art holy, thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen."],
+   ["all","Every day will I bless thee, and praise thy name for ever, and for ever and ever. Vouchsafe, O Lord, to keep us this day without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. (Three times) Lord, thou hast been our refuge from generation to generation. I said: Lord, have mercy on me; heal my soul, for I have sinned against thee. Lord, I flee unto thee; teach me to do thy will, for thou art my God. For with thee is the fountain of life; in thy light shall we see light. Continue thy mercy unto them that know thee."],
+   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Holy Immortal, have mercy on us. Holy God, Holy Mighty, Holy Immortal, have mercy on us."]],
+};
+const byzTx=k=>`<div class="txt one">${BYZ_TX[k].map(([r,t])=>`<p data-r="${r}">${esc(t).replace(/\((Three times)\)/g,'<i class="rubi">($1)</i>')}</p>`).join("")}</div>`;
+/* psalms of the Byzantine hours, numbered as in the Septuagint (= the Douay-Rheims) */
+const BYZ_PS={vespers:{lic:[140,141,129,116]},compline:{ps:[50,69,142]},midnight:{ps:[50,118]},orthros:{six:[3,37,62,87,102,142],lauds:[148,149,150]},
+  first:{ps:[5,89,100]},third:{ps:[16,24,50]},sixth:{ps:[53,54,90]},ninth:{ps:[83,84,85]}};
+/* ---------------------------------------------------------------- hour orders */
+const ORDER={
+ loth:{
+  or:["Introductory verse (or the Invitatory, if this is the first hour of the day)","Hymn","@psalms|Psalmody: three psalms or sections, each with antiphon","Verse","@first|First reading: Scripture, with responsory","Second reading: Fathers or saints, with responsory","Te Deum (Sundays outside Lent, solemnities, feasts)","Concluding prayer","Acclamation"],
+  lauds:["@invit|Invitatory (Psalm 95) or introductory verse","Hymn","@psalms|Psalmody: morning psalm, Old Testament canticle, psalm of praise","Short reading","Responsory","@bened|Gospel canticle: Benedictus (Luke 1:68-79)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
+  terce:["Introductory verse","Hymn","@psalms|Psalmody: three psalms or sections (current psalmody)","Short reading","Verse","Concluding prayer","Acclamation"],
+  vespers:["Introductory verse","Hymn","@psalms|Psalmody: two psalms and a New Testament canticle","Short reading","Responsory","@magn|Gospel canticle: Magnificat (Luke 1:46-55)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
+  compline:["Introductory verse","Examination of conscience and act of penitence","Hymn","@psalms|Psalmody","Short reading","Responsory: Into your hands, Lord","@nunc|Gospel canticle: Nunc dimittis (Luke 2:29-32)","Concluding prayer","Blessing","Antiphon to the Blessed Virgin Mary"]},
+ dwdo:{
+  mattins:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@venite|Venite (Psalm 95), or the Easter Anthems in Eastertide","@psalms|The psalms appointed for the morning of this day of the month","First Lesson (Old Testament)","Te Deum laudamus, or Benedicite","Second Lesson (New Testament)","@bened|Benedictus (Luke 1:68-79)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Grace","Prayers and thanksgivings; the Grace"],
+  prime:["Opening versicles","Hymn Jam lucis orto sidere","Psalms (with the Quicunque vult on Sundays)","Chapter and responsory","Prayers (weekdays)","Collect for Grace","Conclusion"],
+  terce:["Opening versicles","Hymn","Psalm 119:33-80","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
+  sext:["Opening versicles","Hymn","Psalm 119:81-128","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
+  none:["Opening versicles","Hymn","Psalm 119:129-176","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
+  evensong:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@psalms|The psalms appointed for the evening of this day of the month","First Lesson (Old Testament)","@magn|Magnificat (Luke 1:46-55)","Second Lesson (New Testament)","@nunc|Nunc dimittis (Luke 2:29-32)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Aid against all Perils","Anthem; prayers and thanksgivings; the Grace"],
+  compline:["Opening sentence and confession","@psalms|Psalms (4, 31:1-6, 91, 134)","Short reading","@resp|Responsory: Into thy hands, O Lord","@nunc|Nunc dimittis","Prayers","Blessing"]},
+ br:{
+  matins:["Pater, Ave, Credo; Domine labia mea","Invitatory (Psalm 94 Vulgate)","Hymn","Nocturns: psalms with antiphons; three lessons per nocturn (one nocturn on ferias)","Responsories","Te Deum (Sundays and feasts outside penitential seasons)"],
+  lauds:["Deus in adjutorium","Five psalms (the fourth an Old Testament canticle) with antiphons","Chapter","Hymn and versicle","@bened|Benedictus with antiphon","Collect; commemorations","Marian antiphon if the last hour said in choir"],
+  prime:["Deus in adjutorium","Hymn Jam lucis orto sidere","Psalms","Chapter, short responsory, versicle","Prayer","Martyrology and the Chapter Office"],
+  terce:["Deus in adjutorium","Hymn","Three psalms (or sections) under one antiphon","Chapter","Short responsory and versicle","Collect"],
+  vespers:["Deus in adjutorium","Five psalms with antiphons","Chapter","Hymn and versicle","@magn|Magnificat with antiphon","Collect; commemorations"],
+  compline:["Jube domne benedicere; short lesson (1 Pet 5:8-9)","Confiteor","Converte nos; Deus in adjutorium","Psalms under one antiphon","Hymn Te lucis ante terminum","@nunc|Chapter, short responsory, Nunc dimittis","Prayer Visita quaesumus","Blessing; seasonal Marian antiphon"]},
+ byz:{
+  vespers:["@ps104|Opening blessing; Psalm 103 (104)","Great Litany","Kathisma of the Psalter","@lic|Lord, I have cried (Pss 140, 141, 129, 116) with stichera of the tone and the Menaion","@phos|Entrance; Phos hilaron (O Joyful Light)","Prokeimenon; Old Testament readings (paremias) on feasts","@vouch|Litanies; Vouchsafe, O Lord","Aposticha","@nunc|Song of Simeon (Luke 2:29-32)","@tris|Trisagion prayers","Apolytikion (troparion of the day); dismissal"],
+  compline:["@ps|Small Compline: Psalms 50, 69, 142","@creed|Doxology; Creed","Canon (if appointed)","@tris|Trisagion prayers","Kontakion of the day","Prayers; dismissal"],
+  midnight:["@ps|Psalm 50 and Psalm 118 (119)","@creed|Creed","@tris|Trisagion prayers","Troparia and prayers","Dismissal"],
+  orthros:["@six|Royal beginning; Six Psalms (3, 37, 62, 87, 102, 142)","@godlord|Great Litany; God is the Lord with the troparia","Kathismata of the Psalter","@eoth|On Sundays: Evlogitaria; Resurrection Gospel (eothinon)","@ps50|Psalm 50; canon","@magn|Magnificat with the Magnificat refrain (9th ode)","@lauds|Lauds (Pss 148-150) with stichera; Great Doxology","Litanies; Aposticha; dismissal"],
+  first:["@ps|Psalms 5, 89, 100","Troparion and kontakion of the day","@tris|Trisagion prayers","@fhp|Prayer of the First Hour (O Christ, the true Light)"],
+  third:["@ps|Psalms 16, 24, 50","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
+  sixth:["@ps|Psalms 53, 54, 90","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
+  ninth:["@ps|Psalms 83, 84, 85","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"]},
+};
+ORDER.loth.sext=ORDER.loth.terce; ORDER.loth.none=ORDER.loth.terce;
+ORDER.br.sext=ORDER.br.terce; ORDER.br.none=ORDER.br.terce;
+
+const DO_VERSION={br62:"Rubrics 1960 - 1960",br55:"Divino Afflatu - 1954",mon:"Monastic - 1963",op:"Ordo Praedicatorum - 1962"};
+/* ---------------------------------------------------------------- The Day-Hours (1877): Prime, Terce, Sext, None */
+function dhEnv(iso){
+  const d=toDate(iso), Y=d.getUTCFullYear(), E=easterY(Y), off=Math.round((d-E)/DAY), dow=d.getUTCDay();
+  const xmas=Date.UTC(Y,11,25), adv=new Date(xmas-(((new Date(xmas).getUTCDay())||7)+21)*DAY);
+  const advent=d>=adv&&d<new Date(xmas), lent=off>=-46&&off<-14, passion=off>=-14&&off<0;
+  return {sun:dow===0, wkd:dow!==0, sept:off>=-63&&off<=-4, septE:off>=-63&&off<0, easter:off>=0&&off<56,
+    advent, lent, passion, ord:!advent&&!lent&&!passion, penit:dow!==0&&off>=-46&&off<0};
+}
+function dhOk(it,env){ return !(it.if||[]).some(c=>c.startsWith("no")?env[c.slice(2,3).toLowerCase()+c.slice(3)]:!env[c]); }
+const DH_LP="Our Father, which art in heaven, Hallowed be thy Name. Thy kingdom come. Thy will be done, in earth as it is in heaven. Give us this day our daily bread. And forgive us our trespasses, As we forgive them that trespass against us. And lead us not into temptation; But deliver us from evil. Amen.";
+const DH_CREED="I believe in God the Father Almighty, Maker of heaven and earth: And in Jesus Christ his only Son our Lord, Who was conceived by the Holy Ghost, Born of the Virgin Mary, Suffered under Pontius Pilate, Was crucified, dead, and buried, He descended into hell; The third day he rose again from the dead, He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence he shall come to judge the quick and the dead. I believe in the Holy Ghost; The holy Catholick Church; The Communion of Saints; The Forgiveness of sins; The Resurrection of the body, And the life everlasting. Amen.";
+const DH_GLORIA=`<p data-r="all">Glory be to the Father, and to the Son : and to the Holy Ghost;</p><p data-r="all">As it was in the beginning, is now, and ever shall be : world without end. Amen.</p>`;
+const DH_DAYPS={1:"Ps 24",2:"Ps 25",3:"Ps 26",4:"Ps 23",5:"Ps 22"};
+async function dhItems(items,env,o){
+  let h="";
+  const ps=async ref=>(await o.blk(ref.replace("Ps ","Psalm "),ref,"cv"))+DH_GLORIA;
+  for(const it of items){
+    if(!dhOk(it,env)) continue;
+    const x=it.x;
+    switch(it.k){
+      case "r": h+=`<p class="rub">${esc(x)}</p>`; break;
+      case "v": h+=`<p data-r="cel"><span class="sp">℣.</span> ${esc(x)}</p>`; break;
+      case "r2": h+=`<p data-r="ppl"><span class="sp">℟.</span> ${esc(x)}</p>`; break;
+      case "a": h+=`<p data-r="all"><span class="sp">Ant.</span> ${esc(x)}</p>`; break;
+      case "c": h+=`<p data-r="lec">${esc(x)}</p>`; break;
+      case "o": h+=`<p data-r="cel">${esc(x)}</p>`; break;
+      case "p": h+=`<p data-r="cel" data-priest-only="1"><span class="sp">Priest.</span> ${esc(x)}</p>`; break;
+      case "l": case "s": h+=`<p data-r="all">${esc(x)}</p>`; break;
+      case "h": h+=`<p class="hymn" data-r="all">${x.map(esc).join("<br>")}</p>`; break;
+      case "slot":
+        if(it.n==="ps") h+=await ps(it.a);
+        else if(it.n==="day-ps"){ const r=DH_DAYPS[o.dow]; if(r) h+=await ps(r); }
+        else if(it.n==="gloria") h+=DH_GLORIA;
+        else if(it.n==="lords-prayer") h+=`<p data-r="all">${DH_LP}</p>`;
+        else if(it.n==="creed") h+=`<p data-r="all">${DH_CREED}</p>`;
+        else if(it.n==="preces") h+=await dhItems(o.preces,env,{...o,lent:it.a});
+        else if(it.n==="lent-ps"){ if(env.penit&&o.lent){ h+=`<p class="rub">In Lent is said here Psalm 51, ${o.lent==="67"?"preceded":"followed"} by Psalm ${o.lent}.</p>`; for(const r of (o.lent==="67"?["Ps 67","Ps 51"]:["Ps 51","Ps "+o.lent])) h+=await ps(r); } }
+        else if(it.n==="collect") h+=o.col?`<p class="cite">${esc(titleCase(o.nm))}</p><p data-r="cel">${esc(o.col)}</p>`:`<p class="cue">The Collect of the Day, from the Prayer Book or Divine Worship.</p>`;
+        break;
+    }
+  }
+  return h;
+}
+/* ---------------------------------------------------------------- 1662 offices and the generated Breviary */
+const bcpCache={};
+function bcpOffice(){ return bcpCache.o||(bcpCache.o=fetch("bcp-office.json").then(r=>r.json())); }
+const titleCase=t=>String(t).toLowerCase().replace(/(^|[\s-])([a-z])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\b(In|After|Before|The|Of|And)\b/g,w=>w.toLowerCase()).replace(/^./,c=>c.toUpperCase());
+function bcpItem(it){
+  const [k,t,r,lab]=it;
+  if(k==="rub") return `<p class="rub">${esc(t)}</p>`;
+  if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
+  if(k==="h") return `<h5 class="sub">${esc(t)}</h5>`;
+  return `<p data-r="${r||"all"}">${lab?`<span class="sp">${lab}</span> `:""}${esc(t)}</p>`;
+}
+const DO_KEY={br62:"br62",br55:"br55",mon:"mon",op:"op"};
+const doCache={};
+const doJSON=p=>doCache[p]||(doCache[p]=fetch(p).then(r=>{ if(!r.ok) throw new Error(p); return r.json(); }));
+async function doTable(base, man, kind, ids){
+  const ranges=man[kind==="l"?"lines":"rows"], need=new Set();
+  ids.forEach(id=>{ let lo=0,hi=ranges.length-1; while(lo<hi){ const mid=(lo+hi+1)>>1; if(ranges[mid][0]<=id) lo=mid; else hi=mid-1; } need.add(lo); });
+  const shards={}; await Promise.all([...need].map(async n=>{ shards[n]=await doJSON(`${base}/${kind}-${String(n).padStart(3,"0")}.json`); }));
+  return id=>{ for(const n of need){ const sh=shards[n]; if(id>=sh.start&&id<sh.start+sh.v.length) return sh.v[id-sh.start]; } return null; };
+}
+async function doHour(R,H,iso){
+  const key=DO_KEY[R], hour=DO_HOUR[H]; if(!key||!hour) return null;
+  const base=`breviary/${key}`;
+  let man, month;
+  try{ man=await doJSON(`${base}/manifest.json`); if(!(man.years||[]).includes(iso.slice(0,4))) return null; month=await doJSON(`${base}/y-${iso.slice(0,4)}.json`); }catch(e){ return null; }
+  const day=month[iso]; if(!day||!day[hour]) return null;
+  const variants=[day[hour], day["c:"+hour]].filter(Boolean);
+  const rowIds=[...new Set(variants.flatMap(v=>v[1]))];
+  const row=await doTable(base,man,"r",rowIds);
+  const lineIds=[...new Set(rowIds.flatMap(id=>{ const r=row(id); return r?r[0].concat(r[1]):[]; }))];
+  const line=await doTable(base,man,"l",lineIds);
+  const plain=h=>h.replace(/<[^>]+>/g,"").trim();
+  // one step per headed row; a row with no heading (a psalm continuing, a second lesson part) joins the step before it
+  const steps=v=>{ const out=[];
+    v[1].forEach(id=>{ const r=row(id); if(!r) return;
+      let la=r[0].map(line).join(""), en=r[1].map(line).join("");
+      const th=/<h5 class=sub>(.*?)<\/h5>/.exec(en)||/<h5 class=sub>(.*?)<\/h5>/.exec(la);
+      la=la.replace(/<h5 class=sub>.*?<\/h5>/,""); en=en.replace(/<h5 class=sub>.*?<\/h5>/,"");
+      const words=plain(en.replace(/<sup>.*?<\/sup>/g,"")).split(/\s+/).length;
+      const block=`<div class="txt two dooff"><div lang="la">${la}</div><div lang="en">${en}</div></div>`;
+      if(!th&&out.length){ const p=out[out.length-1]; p.slot+=block; p.min+=words/2.4/60; return; }
+      out.push({t:th?plain(th[1]):"Opening", slot:block, min:Math.max(0.2,words/2.4/60)});
+    });
+    return out; };
+  return {title:day[hour][0], steps:steps(day[hour]), chant:day["c:"+hour]?steps(day["c:"+hour]):null};
+}
+const DO_HOUR={matins:"Matutinum",lauds:"Laudes",prime:"Prima",terce:"Tertia",sext:"Sexta",none:"Nona",vespers:"Vespera",compline:"Completorium"};
+const UNIV_HOUR={or:"readings",lauds:"lauds",terce:"terce",sext:"sext",none:"none",vespers:"vespers",compline:"compline"};
+
+
+async function officeBody(iso, day, env){
+  const {S, hoursFor, readingBlock, bcpPsalms, byzTone, eothinon, lothPsalms, psalterWeek, EOTHINA}=env;
+  const R=S.rite, H=S.hour, d=toDate(iso), dow=d.getUTCDay();
+  const hourName=hoursFor(R).find(x=>x[0]===H)[1];
+  const slots={};
+  const blk=(lab,cit,tr)=>readingBlock(lab,cit,"n",tr);
+  let h="";
+  const ord = R==="loth"?ORDER.loth[H]: R==="dwdo"?ORDER.dwdo[H]: R==="byz"?ORDER.byz[H]: ORDER.br[H];
+  if(R==="loth"){
+    h+=`<h2 class="dayname">${esc(day.n.t)}</h2><p class="daysub">Psalter Week ${psalterWeek(iso)} · ${esc(hourName)}</p>`;
+    h+=`<p class="callout">The psalms and canticles of the four-week psalter are given in full in the Douay-Rheims, a public-domain translation from the Latin (the Liturgy of the Hours uses the Grail or Abbey Psalms, so the wording differs, and the psalms keep their Latin numbering in brackets). The hymns, antiphons, intercessions and prayers of the official books are copyrighted: press <b>Add text</b> beside any of them to fill it in from your own breviary, or <a href="https://universalis.com/${iso.replace(/-/g,"")}/${UNIV_HOUR[H]}.htm" target="_blank" rel="noopener">open today's ${esc(hourName)} at Universalis</a>. Solemnities and feasts have proper psalms.</p>`;
+    { let x=""; for(const ps of lothPsalms(iso,H,day)) x+=await blk(ps.lab,ps.cit,"dr"); slots.psalms=x||`<p class="note">No psalmody is listed for this hour.</p>`; }
+    if(H==="lauds"||H==="or") slots.invit=`<details class="canon"><summary>Invitatory: Psalm 95 (94), if this is the first hour of the day</summary>${await blk("Psalm 95 (94)","Ps 95","dr")}</details>`;
+    slots.bened=await blk("Benedictus","Luke 1:68-79","dr"); slots.magn=await blk("Magnificat","Luke 1:46-55","dr"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","dr");
+    if(H==="or"){ let LOH={}; try{ LOH=JSON.parse(document.getElementById("lect-extra").textContent).LOH; }catch(e){}
+      const c=day.nk && LOH[day.nk];
+      slots.first = (dow===0 && c && /\d/.test(c)) ? await blk("Biblical reading · one-year cycle",c,"dr") : `<p class="note">Weekday biblical readings follow the Office's own course; see Universalis for today's.</p>`; }
+  } else if(R==="bcp79"){
+    const B=await fetch("data/bcp1979.json").then(r=>r.json()), rite1=/1$/.test(H), C=B.collects[rite1?"t":"c"];
+    const D=window.LectPB79.day(iso,C), col=C[D.title]||C[D.season];
+    const dom=Math.min(30,d.getUTCDate()), eve=/^ep|compline/.test(H);
+    const L=window.LectCalendar.custom({type:"office",rite:R,hour:H,iso})||await window.LectCalendar.pb79({iso,day},true,eve);
+    const lessonHTML=await window.LectCalendar.html({readingBlock},L);
+    let psalmHTML="";for(const cite of L.psalms||[])psalmHTML+=await window.LectCalendar.psalm79(cite,"Appointed Psalm");
+    h+=`<h2 class="dayname">${esc(D.title)}</h2><p class="daysub">Day ${dom} of the month · ${esc(hourName)}</p>`;
+    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1979), with two-year Daily Office lessons in the King James Bible and appointed psalms from the 1979 Psalter. Where an appointment is missing, check your book; the monthly 1979 Psalter remains available. Noonday and Compline retain their fixed short lessons.</p>`;
+    const fill=name=>{
+      if(name==="psalms") return psalmHTML||B.psalter[(eve?"e":"m")+dom].map(p=>`<h5 class="sub">Psalm ${esc(p.n)}${p.latin?` <i>${esc(p.latin)}</i>`:""}</h5>`+p.v.map(([n,t])=>n?`<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`:`<p class="rub">${esc(t)}</p>`).join("")).join("");
+      if(name==="lessons") return lessonHTML;
+      if(name==="collect"&&col) return `<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(D.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("");
+      return "";
+    };
+    const steps=B.offices[H].map(st=>({t:st.t||hourName, slot:`<div class="txt">${window.LectPB79.items(st.items,fill)}</div>`}));
+    return {h, steps, hourName};
+  } else if(R==="bcp28"){
+    const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
+    h+=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
+    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1928), with the psalms of the day of the month. Take the lessons from the 1928 (1943) lectionary.</p>`;
+    const steps=[];
+    for(const st of B[H]){
+      let x="";
+      const its=st.items.map(bcpItem);
+      if(st.slot==="psalms"){ x+=its[0]||""; for(const p of bcpPsalms(iso,H==="ep")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); x+=its.slice(1).join(""); }
+      else x=its.join("");
+      if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The First Lesson":"The Second Lesson"} appointed for today in the 1928 Prayer Book lectionary.</p>`;
+      if(st.slot==="collect"&&pr){ const c=pr.sets[0].collect; x=its[0]+`<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(pr.t)}</p>`+c.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")+its.slice(1).join(""); }
+      steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
+    }
+    return {h, steps, hourName};
+  } else if(R==="dwdo"){
+    const on=(day.o&&day.o.s||"").startsWith("Divine Worship: ")?day.o.s.replace("Divine Worship: ",""):"";
+    h+=`<h2 class="dayname">${esc(on||day.o.t)}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
+    if(H==="mattins"||H==="evensong"){
+      h+=`<p class="callout">The text is the 1662 Book of Common Prayer, the traditional-language base of Divine Worship: Daily Office, with the psalms of the day from its Coverdale psalter. Divine Worship adapts some parts (the suffrages and the prayers for the Church, for example): follow your book where it differs. Take the lessons from the Divine Worship lectionary.</p>`;
+      const BO=await bcpOffice(), steps=[];
+      for(const st of BO[H]){
+        let x=st.items.length?`<div class="txt">${st.items.map(bcpItem).join("")}</div>`:"";
+        if(st.slot==="psalms"){ for(const p of bcpPsalms(iso,H==="evensong")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); }
+        if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The Old Testament lesson":"The New Testament lesson"} appointed for today in the Divine Worship lectionary.</p>`;
+        if(st.slot==="collect"){ const nm=day.o.bcp, c=nm&&BO.collects[nm]; if(c) x=`<div class="txt"><h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(titleCase(nm))}</p><p data-r="cel">${esc(c)}</p><p data-r="ppl"><span class="sp">℟.</span> Amen.</p></div>`+x; }
+        steps.push({t:st.t, slot:x});
+      }
+      return {h, steps, hourName};
+    }
+    if(/^(prime|terce|sext|none)$/.test(H)){
+      h+=`<p class="callout">The text is The Day-Hours of the Church of England (1877), which sets the old little hours in Prayer Book English, with the Coverdale psalms. It gives the Sunday and weekday forms; on feasts and in the great seasons it appoints proper antiphons and hymn endings, which you take from your book.</p>`;
+      const [DH,BO]=await Promise.all([fetch("data/dayhours.json").then(r=>r.json()),bcpOffice()]);
+      const env=dhEnv(iso), steps=[];
+      const nm=day.o.bcp, col=nm&&BO.collects[nm];
+      for(const st of DH.hours[H]){
+        if(!dhOk(st,env)) continue;
+        const x=await dhItems(st.items,env,{blk,col,nm,preces:DH.hours.preces[0].items,dow});
+        if(x) steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
+      }
+      return {h, steps, hourName};
+    }
+    h+=`<p class="callout">The psalms are given from the Coverdale psalter of the 1662 Book of Common Prayer. Take the other texts from your book.</p>`;
+    if(H==="compline"){ let x=""; for(const p of ["Ps 4","Ps 31:1-6","Ps 91","Ps 134"]) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); slots.psalms=x; }
+    slots.resp=`<div class="txt one"><p data-r="cel">Into thy hands, O Lord, I commend my spirit.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p><p data-r="cel">For thou hast redeemed me, O Lord, thou God of truth.</p><p data-r="ppl"><span class="sp">℟.</span> I commend my spirit.</p><p data-r="cel">Glory be to the Father, and to the Son, and to the Holy Ghost.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p></div>`;
+    slots.venite = d.getUTCDate()===19 ? `<p class="note">Psalm 95 falls in today's course, so the Jubilate (Psalm 100) replaces it.</p>`+await blk("Jubilate","Ps 100","cv") : await blk("Venite","Ps 95","cv");
+    slots.bened=await blk("Benedictus","Luke 1:68-79","kj"); slots.magn=await blk("Magnificat","Luke 1:46-55","kj"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","kj");
+  } else if(R==="byz"){
+    const tone=byzTone(iso), eo=eothinon(iso), b=day.b;
+    h+=`<h2 class="dayname">${esc(b?b.t:"Weekday")}</h2><p class="daysub">${tone?`Tone ${tone} of the Octoechos`:"Paschal or Holy Week propers"} · ${esc(hourName)}</p>`;
+    h+=`<p class="callout">The psalms are given in full in the Douay-Rheims, numbered as in the Septuagint, with the fixed prayers in traditional English. The hymnody of the day (stichera, troparia, kontakia, canons) varies between churches and translations: press <b>Add text</b> to fill it in from your Horologion, Octoechos and Menaion.</p>`;
+    slots.ps104=await blk("Psalm 103 (104)","Ps 104","dr"); slots.nunc=await blk("Song of Simeon","Luke 2:29-32","dr"); slots.ps50=await blk("Psalm 50 (51)","Ps 51","dr");
+    { const P=BYZ_PS[H]||{}; for(const [slot,list] of Object.entries(P)){ let x=""; for(const n of list) x+=await readingBlock(`Psalm ${n}`,"Ps "+n,"v","dr"); slots[slot]=x; } }
+    /* Sunday tone hymns from Hapgood's Appendix A (1906, public domain); Saturday Vespers takes the coming Sunday's tone. */
+    const BZ=await fetch("data/byz-liturgy.json").then(r=>r.ok?r.json():null).catch(()=>null);
+    const sunTone=dow===0?tone:(dow===6&&H==="vespers")?byzTone(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)):null;
+    const TN=sunTone&&BZ&&BZ.tones?BZ.tones[sunTone]:null;
+    const hy=(lab,t)=>`<p class="rub">${esc(lab)}</p><p data-r="ppl">${esc(t)}</p>`;
+    const hapNote=`<p class="note">Sunday hymns of Tone ${sunTone}, from Isabel Hapgood's Service Book (1906).</p>`;
+    slots.godlord=byzTx("godlord")+(TN&&H==="orthros"?hy(`Troparion of the Resurrection, Tone ${sunTone} (twice)`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion)+hapNote:`<p class="note">Then the troparia of the day (Add text to fill them in from your Octoechos and Menaion).</p>`); slots.fhp=byzTx("fhp");
+    if(TN&&H==="vespers"){ slots.lic=(slots.lic||"")+`<h4 class="sub2">Stichera of the Resurrection, Tone ${sunTone}</h4>`+TN.lic.map(x=>`<p data-r="ppl">${esc(x)}</p>`).join("")+`<p class="note">Then the stichera of the Menaion. Glory… Both now…:</p>`+hy("Dogmatikon",TN.dogmatikon)+hapNote;
+      slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion</h4>`+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion); }
+    if(TN&&/^(first|third|sixth|ninth)$/.test(H)) slots.tris=(slots.tris||"")+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+hy(`Kontakion, Tone ${sunTone}`,TN.kontakion);
+    /* The Great Feasts from Hapgood's Special Services: Vespers is the vigil of the coming day's feast. */
+    { const fx=i=>{ if(!BZ||!BZ.feasts) return []; const d=toDate(i), off=fromEaster(d); return [BZ.feasts[i.slice(5)],BZ.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean); };
+      const TONE=n=>n?`, Tone ${n}`:"";
+      const FX=H==="vespers"?fx(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)).filter(f=>f.lic):fx(iso);
+      if(FX.length){
+        const note=`<p class="note">The hymns of ${esc(FX.map(f=>f.t).join(" and "))} are from the Special Services of Hapgood's Service Book (1906); the rest of the feast's hymnody is in your Menaion or Triodion.</p>`;
+        const tk=(kont)=>FX.map(f=>hy(`Troparion of the feast${TONE(f.troparion_tone)}`,f.troparion)+(kont&&f.kontakion?hy(`Kontakion of the feast${TONE(f.kontakion_tone)}`,f.kontakion):"")).join("");
+        if(H==="vespers"){
+          slots.lic=(slots.lic||"")+FX.map(f=>`<h4 class="sub2">Sticheron of the feast${TONE(f.lic_tone)}</h4><p data-r="ppl">${esc(f.lic)}</p>`+(f.lity?`<h4 class="sub2">At the Litiya${TONE(f.lity_tone)}</h4><p data-r="ppl">${esc(f.lity)}</p>`:"")).join("")+note;
+          slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion of the feast</h4>`+tk(false);
+        }
+        if(H==="orthros"){ slots.godlord=byzTx("godlord")+tk(false)+note; }
+        if(/^(first|third|sixth|ninth)$/.test(H)) slots.tris=tk(true)+note;
+      }
+      slots._fx=FX; }
+    if(H==="orthros"&&slots._fx.some(f=>f.exalt)) slots.magn=slots._fx.filter(f=>f.exalt).map(f=>`<h4 class="sub2">Magnification of the feast</h4><p data-r="ppl">${esc(f.exalt)}</p>`).join("")+`<p class="note">On the feast the magnification is sung before the Polyeleos Gospel; at the ninth ode the festal refrains replace More honourable than the Cherubim.</p>`+await blk("Magnificat","Luke 1:46-55","dr");
+    else if(H==="orthros") slots.magn=await blk("Magnificat","Luke 1:46-55","dr")+`<p class="note">Between the verses: More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, who without corruption gavest birth to God the Word, true Theotokos, we magnify thee.</p>`;
+    slots.tris=byzTx("tris")+(slots.tris||""); slots.creed=byzTx("creed"); slots.phos=byzTx("phos")+`<p class="note">Phos hilaron in John Keble's translation (1834).</p>`; slots.vouch=byzTx("vouch");
+    if(H==="orthros") slots.lauds=(slots.lauds||"")+`<h4 class="sub2">The Great Doxology</h4>`+byzTx("doxo");
+    slots.eoth = eo ? await blk(`Resurrection Gospel · Eothinon ${eo}`,EOTHINA[eo],"dr") : `<p class="note">${dow===0?"From Pascha to Pentecost the Sunday Gospels are proper to the Pentecostarion.":"Read on Sundays only."}</p>`;
+  } else {
+    const full=await doHour(R,H,iso);
+    if(full){
+      h+=`<h2 class="dayname">${esc(full.title||((R==="br55"?day.p:day.m)||{}).t||"")}</h2><p class="daysub">${esc(hourName)}</p>`;
+      h+=`<p class="callout">The full text of the hour in Latin and English, generated with the Divinum Officium engine (MIT licence) from its data. ${R==="mon"||R==="op"?"The Benedictine and Dominican calendars and psalters are followed.":""}${full.chant?" Turn on Chant above the order to sing the antiphons and psalms in Gregorian chant.":""}</p>`;
+      return {h, steps:full.steps, alt:full.chant, hourName};
+    }
+    const t=(R==="br55"?day.p:day.m)||{};
+    h+=`<h2 class="dayname">${esc(t.t||"")}</h2><p class="daysub">${esc(t.s||"")} · ${esc(hourName)}</p>`;
+    h+=`<p class="callout">The full ${esc(hourName)} for this date, in Latin and English, is at <a href="https://www.divinumofficium.com/cgi-bin/horas/officium.pl?date1=${doDate(iso)}&version=${encodeURIComponent(DO_VERSION[R])}&command=pray${DO_HOUR[H]}&lang2=English" target="_blank" rel="noopener">Divinum Officium</a>. ${R==="mon"||R==="op"?"The day named above follows the Roman 1962 calendar; the Benedictine and Dominican calendars differ on some saints' days.":""}</p>`;
+    slots.bened=await blk("Benedictus","Luke 1:68-79","dr"); slots.magn=await blk("Magnificat","Luke 1:46-55","dr"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","dr");
+  }
+  const steps=(ord||[]).map(x=>{ const m=/^@(\w+)\|(.*)$/.exec(x); return m?{t:m[2],slot:slots[m[1]]||""}:{t:x}; });
+  return {h, steps, hourName};
+}
+window.LectOffice={body:officeBody};
+})();
+/* ================================================================ SESSION TOOLS
+   Timer, live sessions (shared position for a group), role views, chat script export,
+   read-aloud and the printable booklet. Works on any page the Mass / Office guide renders. */
+(function(){
+"use strict";
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const mmss=sec=>{ sec=Math.max(0,Math.round(sec)); const h=Math.floor(sec/3600), m=Math.floor(sec%3600/60), s=sec%60; return (h?h+":"+String(m).padStart(2,"0"):m)+":"+String(s).padStart(2,"0"); };
+const ls={ get(k,d){ try{ const v=localStorage.getItem(k); return v==null?d:JSON.parse(v); }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} } };
+const P2P=!(window.claude&&window.claude.use)&&!!window.LectP2P;   // public build: sessions run browser to browser
+const cap=name=>(window.claude&&window.claude.use)?window.claude.use(name).catch(()=>null):P2P?window.LectP2P.use(name).catch(()=>null):Promise.resolve(null);
+
+let M=null, EL=null;                                   // current mount
+let VIEW=ls.get("lect-view",{role:"",only:false,follow:true});
+let RUN={key:"",on:false,acc:0,t0:0,h:null,cur:-1,active:false};    // local timer (host or solo)
+let LIVE={mode:null,code:"",unsub:null,doc:null,last:"",room:null,peers:0,peerList:[],myPeer:"",msg:"",cast:{},play:null,playTs:0,castSeen:"",me:{name:ls.get("lect-name",""),ready:false}};
+let SOUND={on:false};
+let PRES={open:false,i:0,slides:[],lang:"en",follow:true,part:-1};
+let SPEAK={on:false,paused:false,items:[],i:0,wait:null,rate:ls.get("lect-rate",1),mine:ls.get("lect-mine","wait")};
+let PANEL="";                                          // open panel: live | script | speak | ""
+
+/* ---------------------------------------------------------------- mount */
+function mount(el, m){
+  speakStop(); M=m; EL=el;
+  if(window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()&&VIEW.role==='cel'){VIEW.role="";VIEW.only=false;ls.set("lect-view",VIEW);}
+  const key=[m.ctx.rite,m.ctx.hour||"",m.ctx.iso].join("|");
+  if(RUN.key!==key){ stopTimer(); RUN={key,on:false,acc:0,t0:0,h:null,cur:-1,active:false}; }
+  RUN.cur=-1;
+  const speakOK="speechSynthesis" in window && typeof SpeechSynthesisUtterance!=="undefined";
+  const roleOpts=Object.entries(m.roles).filter(([k])=>k!=="cel"||!window.LectParticipation.catholicMass(m)||window.LectParticipation.isPriest()).map(([k,v])=>`<option value="${k}"${VIEW.role===k?" selected":""}>${esc(v)}</option>`).join("");
+  el.querySelector(".tools-timer").innerHTML=timerHTML();
+  el.querySelector(".tools-bar").innerHTML=`
+    <div class="tbar" role="toolbar" aria-label="Session tools">
+      <label class="sl tsel">My part <select id="tRole"><option value="">Everyone</option>${roleOpts}</select></label>
+      <label class="ck"><input type="checkbox" id="tOnly"${VIEW.only?" checked":""}${VIEW.role?"":" disabled"}> Only my parts</label>
+      <span class="tsp"></span>
+      <button type="button" class="tbtn ghost" data-panel="live" aria-expanded="${PANEL==="live"}">${LIVE.mode==="host"?"Live · hosting":LIVE.mode==="follow"?"Live · following":"Live session"}</button>
+      <button type="button" class="tbtn ghost" id="tPresent">Present</button>
+      <button type="button" class="tbtn ghost" data-panel="script" aria-expanded="${PANEL==="script"}">Chat script</button>
+      ${speakOK?`<button type="button" class="tbtn ghost" data-panel="speak" aria-expanded="${PANEL==="speak"}">Read aloud</button>`:""}
+      <button type="button" class="tbtn ghost" data-panel="print" aria-expanded="${PANEL==="print"}">Print or PDF</button>
+      <button type="button" class="tbtn ghost" id="tBook">Save booklet</button>
+    </div>
+    <div class="tpanel" id="tPanel"${PANEL?"":" hidden"}></div>`;
+  applyView();
+  el.querySelector("#tRole").addEventListener("change",e=>{ VIEW.role=e.target.value; if(VIEW.role==="cel"&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()){VIEW.role="";e.target.value="";} if(!VIEW.role) VIEW.only=false; ls.set("lect-view",VIEW); el.querySelector("#tOnly").disabled=!VIEW.role; el.querySelector("#tOnly").checked=VIEW.only; applyView(); presence(); if(PANEL==="script") renderPanel(); });
+  el.querySelector("#tOnly").addEventListener("change",e=>{ VIEW.only=e.target.checked; ls.set("lect-view",VIEW); applyView(); });
+  el.querySelectorAll("[data-panel]").forEach(b=>b.addEventListener("click",()=>{ PANEL=PANEL===b.dataset.panel?"":b.dataset.panel; el.querySelectorAll("[data-panel]").forEach(x=>x.setAttribute("aria-expanded",String(PANEL===x.dataset.panel))); renderPanel(); }));
+  el.querySelector("#tPresent").addEventListener("click",()=>presentOpen());
+  el.querySelector(".mbody").addEventListener("click",musicClick);
+  el.querySelector("#tBook").addEventListener("click",saveBooklet);
+  wireTimer();
+  renderPanel();
+  if(LIVE.mode==="host") hostPublish(false);
+  if(LIVE.mode==="follow" && LIVE.doc) applyRemote(LIVE.doc,true);
+  tick();
+  if(PRES.open) presentOpen(true);
+}
+
+/* ---------------------------------------------------------------- role views */
+function applyView(){
+  const body=EL&&EL.querySelector(".mbody"); if(!body) return;
+  if(VIEW.role) body.setAttribute("data-view",VIEW.role); else body.removeAttribute("data-view");
+  body.toggleAttribute("data-only",!!(VIEW.role&&VIEW.only));
+}
+
+/* ---------------------------------------------------------------- timer */
+function timerHTML(){
+  if(LIVE.mode==="follow") return `<span class="timer"><span class="tlive">Live</span><span class="tnow" id="tNow">Waiting for the host…</span><label class="ck tfollow"><input type="checkbox" id="tFollow"${VIEW.follow?" checked":""}> Follow along</label><button type="button" class="tbtn${SOUND.on?" ghost":""}" id="tSound" aria-pressed="${SOUND.on}">${SOUND.on?"Sound on":"Turn on sound"}</button><button type="button" class="tbtn ghost" id="tLeave">Leave</button></span>`;
+  return `<span class="timer${RUN.on||RUN.active?" live":""}"><button type="button" class="tbtn ghost" id="tPrev" aria-label="Previous part">‹</button><button type="button" class="tbtn" id="tStart" aria-pressed="${RUN.on}">${RUN.on?"Pause":RUN.acc?"Resume":"Start timer"}</button><button type="button" class="tbtn ghost" id="tNext" aria-label="Next part">›</button><button type="button" class="tbtn ghost" id="tReset"${RUN.on||RUN.active?"":" hidden"}>Reset</button><span class="tnow" id="tNow"></span>${LIVE.mode==="host"?`<span class="tlive">Live · ${esc(LIVE.code.toUpperCase())}${LIVE.peers>1?` · ${LIVE.peers-1} following`:""}</span>`:""}</span>`;
+}
+function elapsed(){
+  if(LIVE.mode==="follow"&&LIVE.doc){ const r=LIVE.doc.run||{}; return r.on?Math.max(0,(Date.now()-r.startedAt)/1000):(r.acc||0); }
+  return RUN.acc+(RUN.on?(performance.now()-RUN.t0)/1000:0);
+}
+function idxAt(e){ const st=M.starts; let i=st.length-1; while(i>0&&st[i]>e) i--; return i; }
+function tick(){
+  if(!EL||!M) return;
+  const tNow=EL.querySelector("#tNow"); if(!tNow) return;
+  const running=LIVE.mode==="follow"?!!(LIVE.doc&&LIVE.doc.run&&(LIVE.doc.run.on||LIVE.doc.run.active)):(RUN.on||RUN.active);
+  if(!running){ if(LIVE.mode!=="follow") tNow.textContent=""; highlight(-1); return; }
+  const e=elapsed(), i=idxAt(e), total=M.total;
+  if(i!==RUN.cur){ highlight(i); if(LIVE.mode==="follow"&&VIEW.follow) scrollToPart(i); RUN.cur=i; if(PRES.open&&PRES.follow&&!(LIVE.mode==="follow"&&LIVE.doc&&LIVE.doc.line>=0)) presentPart(i); if(LIVE.mode==="host") hostPublish(true); }
+  const next=i+1<M.starts.length?`next: ${M.parts[i+1].title} in ${mmss(M.starts[i+1]-e)}`:(e<total?`ends in ${mmss(total-e)}`:`over by ${mmss(e-total)}`);
+  const paused=LIVE.mode==="follow"?!LIVE.doc.run.on:!RUN.on;
+  tNow.textContent=`${mmss(e)} · ${M.parts[i].title} · ${paused?"paused":next}`;
+}
+function highlight(i){
+  EL.querySelectorAll(".runsheet li").forEach((r,k)=>r.classList.toggle("now",k===i));
+  EL.querySelectorAll(".mbody .mpart").forEach((s,k)=>s.classList.toggle("now",k===i));
+}
+function scrollToPart(i){ const s=EL.querySelector(`#mp-${i}`); if(s) s.scrollIntoView({behavior:"smooth",block:"start"}); }
+function stopTimer(){ if(RUN.h){ clearInterval(RUN.h); RUN.h=null; } }
+function ensureTicking(){ if(!RUN.h) RUN.h=setInterval(tick,1000); }
+function wireTimer(){
+  const q=s=>EL.querySelector(s);
+  if(LIVE.mode==="follow"){
+    q("#tFollow").addEventListener("change",e=>{ VIEW.follow=e.target.checked; ls.set("lect-view",VIEW); if(VIEW.follow&&RUN.cur>=0) scrollToPart(RUN.cur); presence(); });
+    q("#tLeave").addEventListener("click",leave);
+    q("#tSound").addEventListener("click",()=>{ if(SOUND.on){ SOUND.on=false; window.LectMusic&&window.LectMusic.stopAll(); } else { SOUND.on=!!(window.LectMusic&&window.LectMusic.unlock()); } redrawTimer(); if(SOUND.on&&LIVE.doc&&LIVE.doc.play&&LIVE.doc.play.on){ LIVE.playTs=0; applyPlay(LIVE.doc.play); } });
+    ensureTicking(); return;
+  }
+  const jump=dir=>{ const e=elapsed(); let i=idxAt(e); i=dir>0?Math.min(M.starts.length-1,i+1):(e-M.starts[i]>5?i:Math.max(0,i-1)); setElapsed(M.starts[i]); };
+  q("#tStart").addEventListener("click",()=>{ if(RUN.on){ RUN.acc=elapsed(); RUN.on=false; } else { RUN.t0=performance.now(); RUN.on=true; RUN.active=true; } redrawTimer(); hostPublish(true); });
+  q("#tReset").addEventListener("click",()=>{ RUN.on=false; RUN.acc=0; RUN.cur=-1; RUN.active=false; stopTimer(); redrawTimer(); hostPublish(true); });
+  q("#tPrev").addEventListener("click",()=>jump(-1));
+  q("#tNext").addEventListener("click",()=>jump(1));
+  if(RUN.on) ensureTicking();
+}
+function setElapsed(sec){ RUN.acc=sec; RUN.active=true; if(RUN.on) RUN.t0=performance.now(); RUN.cur=-1; redrawTimer(); scrollToPart(idxAt(sec)); hostPublish(true); }
+function redrawTimer(){ const slot=EL.querySelector(".tools-timer"); slot.innerHTML=timerHTML(); wireTimer(); if(RUN.on) ensureTicking(); RUN.cur=-1; tick(); }
+
+/* ---------------------------------------------------------------- live sessions (db + room) */
+const CODE_ALPHA="abcdefghjkmnpqrstuvwxyz23456789";
+const newCode=()=>Array.from({length:6},()=>CODE_ALPHA[Math.floor(Math.random()*CODE_ALPHA.length)]).join("");
+const normCode=c=>String(c||"").toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12);
+function config(){ return {type:M.isOffice?"office":"mass", rite:M.rite, hour:M.ctx.hour||null, iso:M.ctx.iso, opts:M.opts}; }
+async function host(){
+  const db=await cap("db");
+  if(!db){ LIVE.msg="Live sessions need this page opened in Claude, signed in. Share the page with your group so they can open it too."; renderPanel(); return; }
+  LIVE.mode="host"; LIVE.code=newCode(); LIVE.msg=""; LIVE.last=""; LIVE.cast={}; LIVE.play=null;
+  const ok=await hostPublish(true,true);
+  if(!ok){ LIVE.mode=null; renderPanel(); return; }
+  joinRoom(); redrawTimer(); renderPanel(); refreshBar();
+}
+let pubBusy=false, pubAgain=false;
+async function hostPublish(force, first){
+  if(LIVE.mode!=="host") return true;
+  const run={on:RUN.on, acc:RUN.on?0:RUN.acc, startedAt:RUN.on?Date.now()-elapsed()*1000:0, active:RUN.active};
+  const body={v:1, ...config(), run, idx:Math.max(0,idxAt(elapsed())), cast:LIVE.cast, play:LIVE.play, line:PRES.open?PRES.i:-1, ts:Date.now()};
+  const sig=JSON.stringify({...body,ts:0,run:{on:run.on,acc:Math.round(run.acc),s:Math.round(run.startedAt/1000)}});
+  if(!force&&sig===LIVE.last) return true;
+  if(sig===LIVE.last) return true;
+  if(pubBusy){ pubAgain=true; return true; }
+  pubBusy=true;
+  try{ const db=await cap("db"); await db.doc("live/"+LIVE.code).set(body); LIVE.last=sig; return true; }
+  catch(e){ LIVE.msg=P2P?"Could not start the session. Check your connection and try again; some school or office networks block direct browser connections.":e&&e.code==="invalid_argument"?"You can follow live sessions on this page but not host them: hosting needs Contributor access or higher.":"Could not reach the live session store. Try again in a moment."; if(first) LIVE.mode=null; renderPanel(); return false; }
+  finally{ pubBusy=false; if(pubAgain){ pubAgain=false; hostPublish(true); } }
+}
+async function endHost(){
+  const code=LIVE.code; LIVE.mode=null; LIVE.code=""; leaveRoom();
+  try{ const db=await cap("db"); if(db) await db.doc("live/"+code).delete(); }catch(e){}
+  redrawTimer(); renderPanel(); refreshBar();
+}
+async function join(code, report){
+  code=normCode(code); const say=m=>{ LIVE.msg=m; if(report) report(m); if(EL) renderPanel(); };
+  if(code.length<4){ say("Enter the code the host gave you."); return; }
+  const db=await cap("db");
+  if(!db){ say("Live sessions need this page opened in Claude, signed in."); return; }
+  if(LIVE.unsub){ LIVE.unsub(); LIVE.unsub=null; }
+  if(LIVE.mode==="host") await endHost();
+  say("Connecting…");
+  LIVE.mode="follow"; LIVE.code=code; LIVE.doc=null;
+  let seen=false;
+  LIVE.unsub=db.doc("live/"+code).onSnapshot(snap=>{
+    if(!snap.exists){ if(!seen){ say("No live session with that code. Check it with the host."); LIVE.mode=null; if(LIVE.unsub){ LIVE.unsub(); LIVE.unsub=null; } }
+      else { leave(); say("The host ended the session."); } return; }
+    seen=true; LIVE.msg=""; if(report) report("");
+    applyRemote(snap.data(), false);
+  }, err=>{ say("The live session stopped updating. Join again to reconnect."); });
+  joinRoom();
+}
+/* bring this page to the host's day, rite and settings, then follow the position */
+function applyRemote(d, fromMount){
+  if(!d||typeof d!=="object") return;
+  const run=(d.run&&typeof d.run==="object")?{on:!!d.run.on,acc:+d.run.acc||0,startedAt:+d.run.startedAt||0,active:!!d.run.active}:{on:false,acc:0,startedAt:0,active:false};
+  const safe={type:d.type==="office"?"office":"mass", rite:String(d.rite||"").slice(0,12), hour:d.hour?String(d.hour).slice(0,12):null, iso:/^\d{4}-\d{2}-\d{2}$/.test(d.iso)?d.iso:null, opts:(d.opts&&typeof d.opts==="object")?d.opts:{}, run};
+  if(safe.type==="mass")safe.opts={...safe.opts,veil:!window.LectParticipation.isPriest()};
+  safe.cast=(d.cast&&typeof d.cast==="object")?d.cast:{};
+  safe.play=(d.play&&typeof d.play==="object")?{i:+d.play.i|0,on:!!d.play.on,ts:+d.play.ts||0}:null;
+  safe.line=Number.isInteger(d.line)?d.line:-1;
+  LIVE.doc=safe;
+  const same=M&&M.following&&(M.isOffice?"office":"mass")===safe.type&&M.rite===safe.rite&&(M.ctx.hour||null)===safe.hour&&M.ctx.iso===safe.iso&&JSON.stringify(M.opts)===JSON.stringify({...M.opts,...safe.opts});
+  if(!fromMount&&!same&&safe.iso&&window.LectApp){ window.LectApp.follow(safe); return; }
+  RUN.cur=-1; ensureTicking(); tick();
+  applyCast(); if(safe.play) applyPlay(safe.play);
+  if(PRES.open&&PRES.follow&&safe.line>=0) presentGo(safe.line,true);
+}
+function applyCast(){
+  if(LIVE.mode!=="follow"||!LIVE.myPeer||!LIVE.doc) return;
+  const r=LIVE.doc.cast[LIVE.myPeer]; const key=LIVE.myPeer+":"+(r||"");
+  if(r===undefined||key===LIVE.castSeen) return;
+  LIVE.castSeen=key; if(r==="cel"&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()){ LIVE.msg="Priest-only parts cannot be assigned in lay study."; renderPanel(); return; } const role=M&&(r===""||M.roles[r])?r:null; if(role===null) return;
+  VIEW.role=role; if(!role) VIEW.only=false; ls.set("lect-view",VIEW);
+  const sel=EL&&EL.querySelector("#tRole"); if(sel) sel.value=role; const only=EL&&EL.querySelector("#tOnly"); if(only){ only.disabled=!role; only.checked=VIEW.only; }
+  applyView(); presence();
+  LIVE.msg=role?`The host gave you the part: ${M.roles[role]}.`:"The host set you to follow as everyone."; renderPanel();
+}
+/* synced music: the host's play or stop on a chant or hymn reaches every follower who turned sound on */
+function figs(){ return [...EL.querySelectorAll(".mbody figure.music")]; }
+function musicClick(e){
+  const btn=e.target.closest&&e.target.closest("figure.music .play"); if(!btn||LIVE.mode!=="host") return;
+  const i=figs().indexOf(btn.closest("figure.music")); if(i<0) return;
+  LIVE.play={i,on:btn.textContent.trim().startsWith("■"),ts:Date.now()}; hostPublish(true);
+}
+function applyPlay(p){
+  if(!p||p.ts===LIVE.playTs) return; LIVE.playTs=p.ts;
+  const f=figs()[p.i]; if(!f) return; const btn=f.querySelector(".play"); if(!btn) return;
+  if(!SOUND.on){ if(p.on){ LIVE.msg="The host started music. Press Turn on sound to hear it."; renderPanel(); const b=EL.querySelector("#tSound"); if(b) b.classList.add("pulse"); } return; }
+  const playing=btn.textContent.trim().startsWith("■");
+  if(p.on&&!playing){ btn.click(); if(VIEW.follow) f.scrollIntoView({behavior:"smooth",block:"center"}); }
+  if(!p.on&&playing) btn.click();
+}
+function leave(){
+  if(LIVE.unsub){ LIVE.unsub(); LIVE.unsub=null; }
+  const wasFollowing=LIVE.mode==="follow";
+  LIVE.mode=null; LIVE.doc=null; LIVE.code=""; leaveRoom();
+  if(wasFollowing&&window.LectApp){ const c=window.LectApp.current(); if(c.type) window.LectApp.follow(c); }
+}
+async function joinRoom(){
+  try{ const room=await cap("room"); if(!room||!LIVE.code) return; const r=await room.join("lect-"+LIVE.code); LIVE.room=r;
+    r.onPeers(ch=>{ LIVE.peers=ch.peers.length; LIVE.peerList=ch.peers.filter(p=>p.kind==="viewer"); const me=ch.peers.find(p=>p.sameTab); if(me&&me.peer!==LIVE.myPeer){ LIVE.myPeer=me.peer; applyCast(); } if(LIVE.mode==="host"){ const t=EL&&EL.querySelector(".tlive"); if(t) t.textContent=`Live · ${LIVE.code.toUpperCase()}${LIVE.peers>1?` · ${LIVE.peers-1} following`:""}`; } if(PANEL==="live") renderPanel(); }, ()=>{});
+    presence(); }catch(e){}
+}
+function presence(){ try{ if(LIVE.room) LIVE.room.presence({role:VIEW.role||"", host:LIVE.mode==="host", name:String(LIVE.me.name||"").slice(0,40), ready:!!LIVE.me.ready,priest:window.LectParticipation.isPriest()}); }catch(e){} }
+function leaveRoom(){ try{ if(LIVE.room) LIVE.room.leave(); }catch(e){} LIVE.room=null; LIVE.peers=0; }
+function liveOpts(){ return LIVE.mode==="follow"&&LIVE.doc?LIVE.doc.opts:null; }
+function refreshBar(){ const b=EL&&EL.querySelector('[data-panel="live"]'); if(b) b.textContent=LIVE.mode==="host"?"Live · hosting":LIVE.mode==="follow"?"Live · following":"Live session"; }
+
+/* ---------------------------------------------------------------- text extraction (script, read-aloud) */
+const ROLE_ORDER=["cel","srv","lec","ppl"];
+function speaker(r){
+  const t=(r||"").split(/\s+/).filter(Boolean), n=M.roles;
+  if(!t.length) return "";
+  if(t.includes("all")) return "All";
+  if(t.length>1&&t.includes("ppl")) return `${n[t.find(x=>x!=="ppl")]||""} and all`.trim();
+  return t.map(x=>n[x]||x).join(" and ");
+}
+function textOf(node){
+  const c=node.cloneNode(true);
+  c.querySelectorAll("sup, .mctl, button, select, label.tp, .sp").forEach(x=>x.remove());
+  return c.textContent.replace(/\s+/g," ").replace(/\s([,.;:!?])/g,"$1").trim();
+}
+function extract(lang,spoken=false){
+  const out=[], body=EL.querySelector(".mbody"); if(!body) return out;
+  const reserved=(node,role)=>window.LectParticipation.catholicMass(M)&&window.LectParticipation.priestOnly(node,role)&&(spoken||!window.LectParticipation.isPriest());
+  const walk=(node,role)=>{
+    if(reserved(node,role))return;
+    for(const el of node.children){
+      if(reserved(el,role))continue;
+      if(el.matches("[lang=la]")&&lang==="en"&&el.parentElement.classList.contains("two")) continue;
+      if(el.matches("[lang=en]")&&lang==="la"&&el.parentElement.classList.contains("two")) continue;
+      if(el.matches("h3")) continue;
+      if(el.matches("h4.sub2,h5.sub")){ out.push({k:"h2",t:textOf(el),el}); continue; }
+      if(el.matches("p.pos")){ out.push({k:"pos",t:[...el.querySelectorAll(".pg")].map(g=>textOf(g)).join(" · "),el}); continue; }
+      if(el.matches("p.abr")){ const c=el.cloneNode(true); const l=c.querySelector(".lbl"); if(l) l.remove(); out.push({k:"cue",t:"Shortened for time: "+textOf(c),el}); continue; }
+      if(el.matches("p.cue,p.rub,p.note,.homily:not([data-r])")){ out.push({k:"cue",t:textOf(el),el}); continue; }
+      if(el.matches("p.cite")){ out.push({k:"cite",t:textOf(el),el}); continue; }
+      if(el.matches("figure.music")){ const t=el.querySelector(".mt"); out.push({k:"music",t:t?t.textContent:"",el,r:role}); continue; }
+      if(el.matches("details")){ walk(el,role); continue; }
+      if(el.matches("section.reading")){ const h=el.querySelector("header"); out.push({k:"cite",t:h?textOf(h).replace(/\s*(\S+ \d.*)$/," — $1"):"",el}); const tx=el.querySelector(".rtext"); if(tx) out.push({k:"line",r:role||"lec",t:textOf(tx),el:tx}); continue; }
+      const r=el.getAttribute("data-r");
+      if(r!=null){ if(el.querySelector("[data-r]")||el.querySelector("section.reading,figure.music,h4,h5,p.cue,p.pos,ol")) { walk(el,r); continue; }
+        const t=textOf(el); if(t) out.push({k:"line",r,t,el}); continue; }
+      if(el.matches("p")){ if(el.querySelector("[data-r]")){ walk(el,role); continue; } const t=textOf(el); if(t) out.push({k:"line",r:role||"",t,el}); continue; }
+      if(el.children.length) walk(el,role);
+    }
+  };
+  body.querySelectorAll(":scope > section.mpart").forEach(sec=>{ out.push({k:"h",t:sec.querySelector("h3 span").textContent.trim(),el:sec}); walk(sec,""); });
+  return out;
+}
+const mineOf=(r,role)=>!role||!r||(" "+r+" ").includes(" "+role+" ")||(" "+r+" ").includes(" all ");
+
+/* ---------------------------------------------------------------- chat script */
+const FORMATS={discord:{label:"Discord (2,000 characters)",max:1900},minecraft:{label:"Minecraft chat (256 characters)",max:250},plain:{label:"Plain text",max:Infinity}};
+function scriptLines(fmt,opt){
+  const items=extract(opt.lang), L=[];
+  const role=opt.mine?VIEW.role:"";
+  for(const it of items){
+    if(it.k==="h"){ L.push(fmt==="discord"?`**__${it.t}__**`:fmt==="minecraft"?`== ${it.t} ==`:`\n${it.t.toUpperCase()}`); continue; }
+    if(it.k==="h2"){ L.push(fmt==="discord"?`**${it.t}**`:fmt==="minecraft"?`- ${it.t} -`:it.t); continue; }
+    if(it.k==="pos"){ if(opt.rubrics) L.push(fmt==="discord"?`*(${it.t})*`:`(${it.t})`); continue; }
+    if(it.k==="cue"){ if(opt.rubrics) L.push(fmt==="discord"?`*${it.t}*`:`(${it.t})`); continue; }
+    if(it.k==="cite"){ if(!role||mineOf("lec",role)) L.push(fmt==="discord"?`__${it.t}__`:it.t); continue; }
+    if(it.k==="music"){ if(opt.rubrics) L.push(fmt==="discord"?`♪ *Sung: ${it.t}*`:`(Sung: ${it.t})`); continue; }
+    if(it.k==="line"){ if(!mineOf(it.r,role)) continue; const sp=speaker(it.r);
+      L.push(sp?(fmt==="discord"?`**${sp}:** ${it.t}`:fmt==="minecraft"?`[${sp}] ${it.t}`:`${sp}: ${it.t}`):it.t); }
+  }
+  return L.filter(Boolean);
+}
+function splitLong(line,max){
+  if(line.length<=max) return [line];
+  const pre=(/^(\[[^\]]+\] |\*\*[^*]+:\*\* |[A-Z][^:]{0,30}: )/.exec(line)||[""])[0];
+  const parts=line.slice(pre.length).split(/(?<=[.;:!?])\s+/); const out=[]; let cur="";
+  for(let p of parts){
+    while((pre+p).length>max){ const cut=p.lastIndexOf(" ",max-pre.length-2)>20?p.lastIndexOf(" ",max-pre.length-2):max-pre.length-2; if(cur){ out.push(pre+cur); cur=""; } out.push(pre+p.slice(0,cut)+"…"); p=p.slice(cut).trim(); }
+    if((pre+cur+" "+p).length>max){ if(cur) out.push(pre+cur); cur=p; } else cur=cur?cur+" "+p:p;
+  }
+  if(cur) out.push(pre+cur);
+  return out;
+}
+function chunks(fmt,opt){
+  const max=FORMATS[fmt].max, lines=scriptLines(fmt,opt);
+  if(max===Infinity) return [lines.join("\n")];
+  if(fmt==="minecraft") return lines.flatMap(l=>splitLong(l,max));
+  const out=[]; let cur="";
+  for(const l of lines.flatMap(l=>splitLong(l,max))){ if((cur+"\n"+l).length>max){ if(cur) out.push(cur); cur=l; } else cur=cur?cur+"\n"+l:l; }
+  if(cur) out.push(cur);
+  return out;
+}
+async function copyText(t, ta){
+  try{ await navigator.clipboard.writeText(t); return true; }catch(e){}
+  try{ if(ta){ ta.focus(); ta.select(); return document.execCommand("copy"); } }catch(e){}
+  return false;
+}
+async function saveFile(name, data){
+  const d=await cap("downloads");
+  if(d){ try{ await d.save({filename:name,data}); return "saved"; }catch(e){ if(e&&e.code==="declined") return "declined"; } }
+  try{ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:name.endsWith(".html")?"text/html":"text/plain"})); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); return "saved"; }catch(e){ return "failed"; }
+}
+
+/* ---------------------------------------------------------------- read aloud */
+function voiceFor(lang){
+  const vs=speechSynthesis.getVoices(); const want=lang==="la"?["it","la","es"]:["en"];
+  for(const w of want){ const v=vs.find(x=>x.lang&&x.lang.toLowerCase().startsWith(w)); if(v) return v; }
+  return null;
+}
+function speakStart(lang){
+  speakStop();
+  const items=extract(lang,true).filter(it=>it.k==="line"||it.k==="cite"||it.k==="h");
+  let start=0; const e=RUN.cur>=0?RUN.cur:-1;
+  if(e>=0){ const sec=EL.querySelector(`#mp-${e}`); const k=items.findIndex(it=>it.el===sec); if(k>=0) start=k; }
+  SPEAK={...SPEAK,on:true,paused:false,items,i:start,lang};
+  speakNext();
+}
+function sentences(t){ const out=[]; t.split(/(?<=[.;:!?])\s+/).forEach(s=>{ while(s.length>220){ const c=s.lastIndexOf(" ",220); out.push(s.slice(0,c)); s=s.slice(c+1); } if(s) out.push(s); }); return out; }
+function speakNext(){
+  if(!SPEAK.on) return;
+  EL&&EL.querySelectorAll(".speaking").forEach(x=>x.classList.remove("speaking"));
+  if(SPEAK.i>=SPEAK.items.length){ speakStop(); renderPanel(); return; }
+  const it=SPEAK.items[SPEAK.i];
+  const target=it.el&&it.el.closest?it.el:null; if(target){ target.classList.add("speaking"); if(VIEW.follow||!LIVE.mode) target.scrollIntoView({behavior:"smooth",block:"center"}); }
+  const mine=it.k==="line"&&VIEW.role&&it.r&&(" "+it.r+" ").includes(" "+VIEW.role+" ");
+  if(mine&&SPEAK.mine!=="read"){
+    if(SPEAK.mine==="skip"){ SPEAK.i++; speakNext(); return; }
+    const secs=Math.max(2,it.t.split(/\s+/).length/2.4);
+    SPEAK.wait={until:Date.now()+secs*1000}; renderPanel();
+    SPEAK.waitT=setTimeout(()=>{ if(SPEAK.wait){ SPEAK.wait=null; SPEAK.i++; renderPanel(); speakNext(); } },secs*1000);
+    return;
+  }
+  const text=(it.k==="h"?it.t+".":it.t).replace(/[✠℟℣]\.?/g," ").replace(/\s+/g," ").trim();
+  const lang=SPEAK.lang==="la"||/[áéíóúýæœǽ]/i.test(text)?"la":"en";
+  const parts=sentences(text); let j=0;
+  const say=()=>{ if(!SPEAK.on) return; if(j>=parts.length){ SPEAK.i++; speakNext(); return; }
+    const u=new SpeechSynthesisUtterance(parts[j++]); const v=voiceFor(lang); if(v) u.voice=v; u.lang=v?v.lang:(lang==="la"?"it-IT":"en-US"); u.rate=SPEAK.rate; u.onend=say; u.onerror=say; speechSynthesis.speak(u); };
+  say();
+}
+function speakStop(){ SPEAK.on=false; SPEAK.wait=null; clearTimeout(SPEAK.waitT); try{ speechSynthesis.cancel(); }catch(e){} EL&&EL.querySelectorAll(".speaking").forEach(x=>x.classList.remove("speaking")); }
+function speakContinue(){ if(SPEAK.wait){ clearTimeout(SPEAK.waitT); SPEAK.wait=null; SPEAK.i++; renderPanel(); speakNext(); } }
+
+/* ---------------------------------------------------------------- print and booklet */
+function withDetailsOpen(fn){
+  const ds=[...EL.querySelectorAll(".mbody details")], was=ds.map(d=>d.open); ds.forEach(d=>d.open=true);
+  try{ return fn(); } finally{ setTimeout(()=>ds.forEach((d,i)=>d.open=was[i]),500); }
+}
+/* Print layout: the choices are classes on <html> that the print styles read (page_head.html), and the page's running
+   foot (the service and date, with page numbers) is an @page rule written for this service. They are set for the
+   print button and for the browser's own Print command alike. */
+const PRINT=Object.assign({lang:"both",ink:"red",size:"normal",notes:true},ls.get("lect-print",{}));
+function printPanel(){
+  const two=EL&&EL.querySelector('.mbody .two [lang="la"]');
+  const sel=(k,lab,opts)=>`<label class="sl tsel">${lab} <select data-print="${k}">${opts.map(([v,t])=>`<option value="${v}"${PRINT[k]===v?" selected":""}>${t}</option>`).join("")}</select></label>`;
+  return `<div class="trow2">${two?sel("lang","Texts",[["both","Latin and English"],["en","English only"],["la","Latin only"]]):""}
+    ${sel("ink","Rubrics",[["red","In red"],["black","In black (for copying)"]])}
+    ${sel("size","Type",[["normal","Regular"],["large","Large print"]])}
+    <label class="ck"><input type="checkbox" data-print="notes"${PRINT.notes?" checked":""}> Notes and sources</label></div>
+    <div class="trow2"><button type="button" class="tbtn" id="pPrint">Print</button></div>
+    <p class="note">To make a PDF, choose “Save as PDF” as the printer. Folded sections are printed open; the controls are left out.</p>`;
+}
+function printSetup(){
+  const H=document.documentElement, two=EL&&EL.querySelector('.mbody .two [lang="la"]');
+  H.classList.add("printing");
+  H.classList.toggle("print-en",!!two&&PRINT.lang==="en"); H.classList.toggle("print-la",!!two&&PRINT.lang==="la");
+  H.classList.toggle("print-mono",PRINT.ink==="black"); H.classList.toggle("print-large",PRINT.size==="large"); H.classList.toggle("print-nonotes",!PRINT.notes);
+  const q=s=>{ const e=document.querySelector("#session "+s); return e?e.textContent.trim():""; };
+  const foot=[q(".dayname"),q(".dlabel")].filter(Boolean).join(" · ").replace(/["\\\n]/g," ");
+  let st=document.getElementById("print-page"); if(!st){ st=document.createElement("style"); st.id="print-page"; document.head.appendChild(st); }
+  st.textContent=`@page{@bottom-left{content:"Lectionarium${foot?" · "+foot:""}"}}`;
+}
+function printDone(){ const H=document.documentElement; ["printing","print-en","print-la","print-mono","print-large","print-nonotes"].forEach(c=>H.classList.remove(c)); }
+window.addEventListener("beforeprint",()=>{ if(EL&&EL.isConnected&&!document.documentElement.classList.contains("printing")) printSetup(); });
+window.addEventListener("afterprint",()=>setTimeout(printDone,300));
+function printNow(){
+  printSetup();
+  withDetailsOpen(()=>{ try{ window.print(); }catch(e){} });
+  setTimeout(printDone,800);
+}
+function bookletHTML(){
+  const head=document.querySelector("#session .dayname"), sub=document.querySelector("#session .daysub"), crumbs=document.querySelector("#session .crumbs"), date=document.querySelector("#session .dlabel");
+  const body=EL.querySelector(".mbody").cloneNode(true);
+  body.querySelectorAll("button, select, .mctl, label.tp, .hsel, input").forEach(x=>x.remove());
+  body.querySelectorAll("details").forEach(d=>d.setAttribute("open",""));
+  body.querySelectorAll("[id]").forEach(x=>x.removeAttribute("id"));
+  body.removeAttribute("data-view"); body.removeAttribute("data-only");
+  const role=VIEW.role&&M.roles[VIEW.role];
+  const css=`body{font:16px/1.55 Georgia,"Times New Roman",serif;color:#1b1b1b;background:#fff;margin:0;padding:24px 16px}main{max-width:780px;margin:0 auto}
+h1{font-size:1.7rem;margin:0 0 4px}h3{font-size:1.25rem;border-top:2px solid #1b1b1b;padding-top:8px;margin:26px 0 8px;display:flex;justify-content:space-between;gap:12px}
+h3 .pmin{font-size:.8rem;color:#666;font-weight:normal}h4,h5{font-size:1rem;color:#8b1a1a;margin:14px 0 4px}
+.meta{color:#555;margin:0 0 16px}.rub,.rubi,.cue,.abr,.note{color:#8b1a1a;font-size:.92rem}.cue,.abr{font-style:italic}
+.txt.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.sp{color:#8b1a1a;font-weight:bold}.cross{color:#8b1a1a}
+.pos{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.85rem;margin:6px 0}.pb{border:1px solid #8b1a1a;color:#8b1a1a;border-radius:4px;padding:0 5px;font-weight:bold}
+.reading header{display:flex;justify-content:space-between;font-weight:bold;margin-top:10px}.reading .rc{color:#555;font-weight:normal}
+figure.music{margin:10px 0;break-inside:avoid}figure.music svg{max-width:100%;height:auto}figcaption .mm{color:#666;font-size:.8rem;margin-left:8px}
+ol.order{padding-left:1.3em}.homily{border:1px dashed #999;padding:6px 10px;border-radius:6px;font-size:.9rem;color:#555}
+.mine{background:#fbeaea}.legend{font-size:.85rem;color:#555}section{break-inside:auto}
+@media (max-width:640px){.txt.two{grid-template-columns:1fr}}@media print{body{padding:0}h3{break-after:avoid}}`;
+  if(role) body.querySelectorAll("[data-r]").forEach(x=>{ if(mineOf(x.getAttribute("data-r"),VIEW.role)) x.classList.add("mine"); });
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(head?head.textContent:"Lectionarium")}</title><style>${css}</style></head><body><main>
+<h1>${esc(head?head.textContent:"")}</h1><p class="meta">${esc([date&&date.textContent,crumbs&&crumbs.textContent,sub&&sub.textContent].filter(Boolean).join(" · "))}</p>
+${role?`<p class="legend">Highlighted: the ${esc(role.toLowerCase())}'s parts.</p>`:""}
+${window.LectParticipation.catholicMass(M)?'<p class="legend">Study reference. Priest-only prayers are not lay assigned parts; this booklet does not authorize a celebration.</p>':""}
+${body.innerHTML}
+<p class="meta" style="margin-top:28px">Made with Lectionarium. Texts: Divinum Officium (MIT), Douay-Rheims and King James Bibles, the 1662 Book of Common Prayer; chant from GregoBase (CC0); hymns from the Open Hymnal (public domain). Consult the approved liturgical books for celebration.</p>
+</main></body></html>`;
+}
+async function saveBooklet(){
+  const name=`lectionarium-${M.ctx.iso}-${M.isOffice?"office-"+M.rite+"-"+(M.ctx.hour||""):M.rite}.html`;
+  const html=withDetailsOpen(()=>bookletHTML());
+  const r=await saveFile(name,html);
+  const b=EL.querySelector("#tBook"); if(b){ const t=b.textContent; b.textContent=r==="saved"?"Booklet saved":r==="declined"?"Not saved":"Could not save"; setTimeout(()=>{ b.textContent=t; },2500); }
+}
+
+/* ---------------------------------------------------------------- connection check */
+let CHECK=[];
+async function runCheck(){
+  CHECK=[{ok:true,t:"Running…"}]; renderPanel(); const out=[];
+  const db=await cap("db");
+  out.push(db?{ok:true,t:P2P?"Live sessions run browser to browser on this page (no sign-in).":"Shared session store is available on this page."}:{ok:false,t:"No shared store: open this page in Claude while signed in. Pages opened from a saved file or outside Claude can't join."});
+  if(db){
+    try{ await db.doc("live/zz-check").get(); out.push({ok:true,t:P2P?"The connection server can be reached, so you can host and follow.":"Reading sessions works, so you can follow."}); }catch(e){ out.push({ok:false,t:P2P?"The connection server could not be reached. A firewall or blocker may be stopping it.":"Reading sessions failed ("+(e&&e.code||"error")+")."}); }
+    if(!P2P) try{ const ref=db.doc("live/zz-check-"+Math.random().toString(36).slice(2,8)); await ref.set({t:Date.now()}); await ref.delete(); out.push({ok:true,t:"Writing works, so you can host."}); }
+    catch(e){ out.push({ok:false,t:e&&e.code==="invalid_argument"?"You can follow but not host: hosting needs Contributor access or higher on this page.":"Writing failed ("+(e&&e.code||"error")+")."}); }
+  }
+  const room=await cap("room");
+  if(!room) out.push({ok:false,t:"Presence is unavailable here: the host won't see your name or ready status, but following still works."});
+  else { const c=await new Promise(res=>{ let done=false; const off=room.onConnection(v=>{ if(v&&!done){ done=true; res(true); off(); } },()=>{ if(!done){ done=true; res(false); } }); setTimeout(()=>{ if(!done){ done=true; res(room.connected()); try{ off(); }catch(e){} } },4000); });
+    out.push(c?{ok:true,t:"Presence is connected: names, ready status and part assignment work."}:{ok:false,t:"Presence did not connect within 4 seconds. Following still works; part assignment may not."}); }
+  const ac=window.AudioContext||window.webkitAudioContext; out.push(ac?{ok:true,t:"This browser can play the music."}:{ok:false,t:"This browser can't play audio."});
+  CHECK=out; renderPanel();
+}
+
+/* ---------------------------------------------------------------- presenter view */
+function slidesFrom(lang){
+  const items=extract(lang), out=[]; let dir=[], part=-1;
+  const secs=[...EL.querySelectorAll(".mbody > section.mpart")];
+  for(const it of items){
+    if(it.k==="h"){ part=secs.indexOf(it.el); out.push({k:"h",t:it.t,part,dir:[]}); dir=[]; continue; }
+    if(it.k==="pos"||it.k==="cue"){ dir.push(it.t); continue; }
+    if(it.k==="h2"){ dir.push(it.t); continue; }
+    if(it.k==="cite"){ out.push({k:"cite",t:it.t,part,dir,r:"lec"}); dir=[]; continue; }
+    if(it.k==="music"){ out.push({k:"music",t:"Sung: "+it.t,part,dir,r:it.r||"ppl"}); dir=[]; continue; }
+    if(it.k==="line"){
+      const chunks=[]; let cur=""; it.t.split(/(?<=[.;:!?])\s+/).forEach(x=>{ if((cur+" "+x).length>380&&cur){ chunks.push(cur); cur=x; } else cur=cur?cur+" "+x:x; }); if(cur) chunks.push(cur);
+      chunks.forEach((c,j)=>out.push({k:"line",t:c,part,dir:j?[]:dir,r:it.r,more:chunks.length>1?`${j+1}/${chunks.length}`:""})); dir=[];
+    }
+  }
+  return out;
+}
+function presentOpen(remount){
+  PRES.open=true;
+  const hasLa=!!EL.querySelector(".mbody [lang=la]");
+  if(!hasLa) PRES.lang="en";
+  PRES.slides=slidesFrom(PRES.lang);
+  let ov=document.getElementById("presenter");
+  if(!ov){ ov=document.createElement("div"); ov.id="presenter"; ov.className="presenter"; ov.setAttribute("role","dialog"); ov.setAttribute("aria-modal","true"); ov.setAttribute("aria-label","Presenter view"); document.body.appendChild(ov);
+    document.addEventListener("keydown",presentKey); }
+  ov.innerHTML=`<header class="pr-top"><span class="pr-part" id="prPart"></span><span class="pr-time" id="prTime"></span>
+      <span class="pr-ctl"><button type="button" class="tbtn ghost" id="prPrev" aria-label="Previous line">‹</button><span class="pr-n" id="prN"></span><button type="button" class="tbtn ghost" id="prNext" aria-label="Next line">›</button>
+      ${hasLa?`<button type="button" class="tbtn ghost" id="prLang">${PRES.lang==="la"?"English":"Latin"}</button>`:""}
+      <label class="ck"><input type="checkbox" id="prFollow"${PRES.follow?" checked":""}> Follow ${LIVE.mode==="follow"?"the host":"the timer"}</label>
+      <button type="button" class="tbtn ghost" id="prFull">Full screen</button><button type="button" class="tbtn" id="prClose">Close</button></span></header>
+    <main class="pr-main" aria-live="polite"><p class="pr-dir" id="prDir"></p><p class="pr-who" id="prWho"></p><div class="pr-text" id="prText"></div></main>
+    <footer class="pr-next"><span class="lbl">Next</span> <span id="prNextT"></span></footer>`;
+  ov.hidden=false; document.documentElement.classList.add("presenting");
+  const q=x=>ov.querySelector(x);
+  q("#prPrev").addEventListener("click",()=>presentGo(PRES.i-1));
+  q("#prNext").addEventListener("click",()=>presentGo(PRES.i+1));
+  q("#prClose").addEventListener("click",presentClose);
+  q("#prFollow").addEventListener("change",e=>{ PRES.follow=e.target.checked; });
+  q("#prFull").addEventListener("click",()=>{ try{ if(document.fullscreenElement) document.exitFullscreen(); else ov.requestFullscreen&&ov.requestFullscreen().catch(()=>{}); }catch(e){} });
+  q("#prLang")&&q("#prLang").addEventListener("click",()=>{ const cur=PRES.slides[PRES.i]; PRES.lang=PRES.lang==="la"?"en":"la"; const keep=cur?cur.part:-1; presentOpen(true); const k=PRES.slides.findIndex(x=>x.part===keep); presentGo(k<0?0:k,true); });
+  if(!remount){ const start=RUN.cur>=0?PRES.slides.findIndex(x=>x.part===RUN.cur):0; PRES.i=Math.max(0,start); }
+  if(LIVE.mode==="follow"&&LIVE.doc&&LIVE.doc.line>=0&&PRES.follow) PRES.i=LIVE.doc.line;
+  presentShow(); q("#prNext").focus();
+  if(LIVE.mode==="host") hostPublish(true);
+}
+function presentClose(){
+  PRES.open=false; const ov=document.getElementById("presenter"); if(ov) ov.hidden=true; document.documentElement.classList.remove("presenting");
+  try{ if(document.fullscreenElement) document.exitFullscreen(); }catch(e){}
+  const b=EL&&EL.querySelector("#tPresent"); if(b) b.focus();
+  if(LIVE.mode==="host") hostPublish(true);
+}
+function presentKey(e){
+  if(!PRES.open||e.target.closest&&e.target.closest("input,select,textarea")) return;
+  if(["ArrowRight","PageDown"," "].includes(e.key)){ e.preventDefault(); presentGo(PRES.i+1); }
+  else if(["ArrowLeft","PageUp"].includes(e.key)){ e.preventDefault(); presentGo(PRES.i-1); }
+  else if(e.key==="Escape"){ presentClose(); }
+}
+function presentPart(i){ const k=PRES.slides.findIndex(x=>x.part===i); if(k>=0) presentGo(k,true); }
+function presentGo(i,fromRemote){
+  if(!PRES.slides.length) return;
+  PRES.i=Math.max(0,Math.min(PRES.slides.length-1,i)); presentShow();
+  if(!fromRemote&&LIVE.mode==="host") hostPublish(true);
+}
+function presentShow(){
+  const ov=document.getElementById("presenter"); if(!ov||!PRES.slides.length) return;
+  const sl=PRES.slides[PRES.i], nx=PRES.slides[PRES.i+1];
+  const q=x=>ov.querySelector(x);
+  const partT=sl.part>=0&&M.parts[sl.part]?M.parts[sl.part].title:"";
+  q("#prPart").textContent=partT; q("#prN").textContent=`${PRES.i+1} / ${PRES.slides.length}`;
+  q("#prTime").textContent=(RUN.on||RUN.active||LIVE.mode==="follow")?mmss(elapsed()):"";
+  q("#prDir").textContent=(sl.dir||[]).join(" · ");
+  const mine=VIEW.role&&sl.r&&(" "+sl.r+" ").includes(" "+VIEW.role+" ");
+  q("#prWho").textContent=sl.k==="h"?"":(mine?"You · ":"")+(speaker(sl.r)||"");
+  const t=q("#prText"); t.textContent=sl.t; t.className="pr-text"+(sl.k==="h"?" h":"")+(mine?" mine":"")+(sl.t.length>260?" long":"")+(sl.k==="cite"||sl.k==="music"?" cite":"");
+  q("#prNextT").textContent=nx?((nx.k==="h"?"— ":"")+(speaker(nx.r)&&nx.k!=="h"?speaker(nx.r)+": ":"")+nx.t).slice(0,160)+(nx.t.length>160?"…":""):"End";
+}
+setInterval(()=>{ if(PRES.open){ const t=document.getElementById("prTime"); if(t) t.textContent=(RUN.on||RUN.active||LIVE.mode==="follow")?mmss(elapsed()):""; } },1000);
+
+/* ---------------------------------------------------------------- panels */
+function renderPanel(){
+  const p=EL&&EL.querySelector("#tPanel"); if(!p) return;
+  p.hidden=!PANEL;
+  if(PANEL==="live") p.innerHTML=livePanel();
+  else if(PANEL==="script") p.innerHTML=scriptPanel();
+  else if(PANEL==="speak") p.innerHTML=speakPanel();
+  else if(PANEL==="print") p.innerHTML=printPanel();
+  else p.innerHTML="";
+  wirePanel(p);
+}
+function livePanel(){
+  const msg=LIVE.msg?`<p class="note" role="status">${esc(LIVE.msg)}</p>`:"";
+  const check=`<details class="lvcheck"${CHECK.length?" open":""}><summary>Check the connection</summary><div class="trow2"><button type="button" class="tbtn ghost" id="lvCheck">Run check</button></div>${CHECK.length?`<ul class="checks">${CHECK.map(c=>`<li class="${c.ok?"ok":"bad"}"><b>${c.ok?"OK":"Problem"}</b> ${esc(c.t)}</li>`).join("")}</ul>`:""}</details>`;
+  if(LIVE.mode==="host"){
+    const others=LIVE.peerList.filter(p=>!p.sameTab), ready=others.filter(p=>p.presence&&p.presence.ready).length;
+    const roleSel=(peer,cur,priest)=>`<select data-cast="${esc(peer)}" aria-label="Part"><option value="">Everyone</option>${Object.entries(M.roles).filter(([k])=>k!=="cel"||!window.LectParticipation.catholicMass(M)||priest===true).map(([k,v])=>`<option value="${k}"${cur===k?" selected":""}>${esc(v)}</option>`).join("")}</select>`;
+    return `<h4 class="tph">Hosting a live session</h4>
+    <p class="livecode" aria-label="Session code">${esc(LIVE.code.toUpperCase())}</p>
+    <p>Anyone who can open this page joins with that code: Pray today → Join a live session. They see this ${esc(M.noun)}, your length and music settings, and the part you are on. Move everyone along with the timer and the ‹ › buttons; music you play here plays for everyone who turned sound on.</p>
+    ${others.length?`<table class="cast"><thead><tr><th>Who</th><th>Ready</th><th>Part</th></tr></thead><tbody>${others.map(p=>{ const pr=p.presence||{}; return `<tr><td class="who"></td><td>${pr.ready?"✓":"…"}</td><td>${roleSel(p.peer,LIVE.cast[p.peer]!==undefined?LIVE.cast[p.peer]:(pr.role||""),pr.priest)}</td></tr>`; }).join("")}</tbody></table><p class="note">${ready} of ${others.length} ready.</p>`:`<p class="note">Nobody has joined yet. ${P2P?"Send people this page's link and the code; they open the page, choose Live session and enter the code. Keep this tab open: the session runs from your browser.":"Followers must be signed in to Claude; people outside your organization need the page shared with them."}</p>`}
+    <div class="trow2"><button type="button" class="tbtn" id="lvCopy">Copy invite</button><button type="button" class="tbtn ghost" id="lvEnd">End session</button></div>${msg}${check}`;
+  }
+  if(LIVE.mode==="follow") return `<h4 class="tph">Following live session ${esc((LIVE.code||"").toUpperCase())}</h4>
+    <p>The page moves to the part the host is on. Turn off "Follow along" to read ahead. Turn on sound to hear the music the host plays.</p>
+    <div class="trow2"><label class="sl">Your name <input id="lvName" maxlength="40" value="${esc(LIVE.me.name)}" placeholder="Shown to the host"></label><label class="ck"><input type="checkbox" id="lvReady"${LIVE.me.ready?" checked":""}> I'm ready</label><button type="button" class="tbtn ghost" id="lvLeave">Leave</button></div>${msg}${check}`;
+  return `<h4 class="tph">Live session</h4>
+    <p>Host this ${esc(M.noun)} for a group: everyone who joins sees the same day, length and music, and follows the part you are on.</p>
+    <div class="trow2"><button type="button" class="tbtn" id="lvHost">Host with these settings</button></div>
+    <form class="joinlive inpanel" id="lvJoin" autocomplete="off"><label for="lvCode">Or join one</label><input id="lvCode" maxlength="12" placeholder="Code"><button type="submit" class="tbtn ghost">Join</button></form>${msg}${check}`;
+}
+function scriptPanel(){
+  const st=ls.get("lect-script",{fmt:"discord",rubrics:true,mine:false,lang:"en"});
+  const hasLa=!!EL.querySelector(".mbody [lang=la]");
+  const list=chunks(st.fmt,{...st,mine:st.mine&&!!VIEW.role});
+  return `<h4 class="tph">Chat script</h4>
+    <div class="trow2">
+      <label class="sl">Format <select id="scFmt">${Object.entries(FORMATS).map(([k,v])=>`<option value="${k}"${st.fmt===k?" selected":""}>${esc(v.label)}</option>`).join("")}</select></label>
+      ${hasLa?`<label class="sl">Text <select id="scLang"><option value="en"${st.lang!=="la"?" selected":""}>English</option><option value="la"${st.lang==="la"?" selected":""}>Latin</option></select></label>`:""}
+      <label class="ck"><input type="checkbox" id="scRub"${st.rubrics?" checked":""}> Directions and postures</label>
+      <label class="ck"><input type="checkbox" id="scMine"${st.mine&&VIEW.role?" checked":""}${VIEW.role?"":" disabled"}> Only my part${VIEW.role?` (${esc(M.roles[VIEW.role])})`:""}</label>
+    </div>
+    <p class="note">${list.length} message${list.length===1?"":"s"}. Paste them yourself, one at a time; nothing is sent for you.</p>
+    <div class="trow2"><button type="button" class="tbtn" id="scAll">Copy all</button><button type="button" class="tbtn ghost" id="scSave">Save as .txt</button></div>
+    <ol class="chunks">${list.map((c,i)=>`<li><textarea readonly rows="${Math.min(6,Math.max(2,Math.ceil(c.length/90)))}" aria-label="Message ${i+1}">${esc(c)}</textarea><button type="button" class="tbtn ghost" data-copy="${i}">Copy</button></li>`).join("")}</ol>`;
+}
+function speakPanel(){
+  const hasLa=!!EL.querySelector(".mbody [lang=la]");
+  const waiting=SPEAK.wait?`<p class="mineturn" role="status">Your line. <button type="button" class="tbtn" id="spCont">Continue</button></p>`:"";
+  return `<h4 class="tph">Read aloud</h4>
+    <p class="note">Uses this device's voices. Starts at the part the timer is on, or at the top.</p>
+    <div class="trow2">
+      <button type="button" class="tbtn" id="spPlay">${SPEAK.on?"Stop":"Start"}</button>
+      ${hasLa?`<label class="sl">Text <select id="spLang"><option value="en">English</option><option value="la">Latin (Italian voice)</option></select></label>`:""}
+      <label class="sl">Speed <select id="spRate">${[0.8,0.9,1,1.15,1.3].map(r=>`<option value="${r}"${+SPEAK.rate===r?" selected":""}>${r}×</option>`).join("")}</select></label>
+      ${VIEW.role?`<label class="sl">At my lines <select id="spMine"><option value="wait"${SPEAK.mine==="wait"?" selected":""}>Pause for me</option><option value="read"${SPEAK.mine==="read"?" selected":""}>Read them too</option><option value="skip"${SPEAK.mine==="skip"?" selected":""}>Skip them</option></select></label>`:`<span class="note">Pick "My part" to have it pause for your lines.</span>`}
+    </div>${waiting}`;
+}
+function wirePanel(p){
+  const q=s=>p.querySelector(s);
+  if(PANEL==="print"){
+    p.querySelectorAll("[data-print]").forEach(s=>s.addEventListener("change",()=>{ PRINT[s.dataset.print]=s.type==="checkbox"?s.checked:s.value; ls.set("lect-print",PRINT); }));
+    q("#pPrint").addEventListener("click",printNow);
+  }
+  if(PANEL==="live"){
+    q("#lvHost")&&q("#lvHost").addEventListener("click",host);
+    q("#lvEnd")&&q("#lvEnd").addEventListener("click",endHost);
+    q("#lvLeave")&&q("#lvLeave").addEventListener("click",()=>leave());
+    q("#lvCopy")&&q("#lvCopy").addEventListener("click",async e=>{ const t=`Join my live session in Lectionarium: open the page, choose Pray today → Join a live session, and enter ${LIVE.code.toUpperCase()}.`; const ok=await copyText(t); e.target.textContent=ok?"Copied":"Code: "+LIVE.code.toUpperCase(); setTimeout(()=>{ e.target.textContent="Copy invite"; },2500); });
+    q("#lvJoin")&&q("#lvJoin").addEventListener("submit",e=>{ e.preventDefault(); join(q("#lvCode").value); });
+    q("#lvCheck")&&q("#lvCheck").addEventListener("click",runCheck);
+    p.querySelectorAll("[data-cast]").forEach(sel=>sel.addEventListener("change",()=>{ LIVE.cast={...LIVE.cast,[sel.dataset.cast]:sel.value}; hostPublish(true); }));
+    /* names come from other viewers: set as text, never as markup */
+    const others=LIVE.peerList.filter(x=>!x.sameTab); p.querySelectorAll(".cast td.who").forEach((td,k)=>{ const pr=(others[k]&&others[k].presence)||{}; td.textContent=(typeof pr.name==="string"&&pr.name.trim())?pr.name.trim().slice(0,40):`Guest ${k+1}`; });
+    q("#lvName")&&q("#lvName").addEventListener("change",e=>{ LIVE.me.name=e.target.value.trim().slice(0,40); ls.set("lect-name",LIVE.me.name); presence(); });
+    q("#lvReady")&&q("#lvReady").addEventListener("change",e=>{ LIVE.me.ready=e.target.checked; presence(); });
+  }
+  if(PANEL==="script"){
+    const save=()=>{ const st={fmt:q("#scFmt").value,lang:q("#scLang")?q("#scLang").value:"en",rubrics:q("#scRub").checked,mine:q("#scMine").checked}; ls.set("lect-script",st); renderPanel(); };
+    ["#scFmt","#scLang","#scRub","#scMine"].forEach(s=>q(s)&&q(s).addEventListener("change",save));
+    p.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{ const ta=b.previousElementSibling; const ok=await copyText(ta.value,ta); b.textContent=ok?"Copied":"Select and copy"; b.closest("li").classList.add("done"); setTimeout(()=>{ b.textContent="Copy"; },2000); }));
+    q("#scAll").addEventListener("click",async e=>{ const all=[...p.querySelectorAll(".chunks textarea")].map(t=>t.value).join("\n\n"); const ok=await copyText(all); e.target.textContent=ok?"Copied":"Use Save instead"; setTimeout(()=>{ e.target.textContent="Copy all"; },2000); });
+    q("#scSave").addEventListener("click",async e=>{ const all=[...p.querySelectorAll(".chunks textarea")].map(t=>t.value).join("\n\n"); const r=await saveFile(`lectionarium-script-${M.ctx.iso}.txt`,all); e.target.textContent=r==="saved"?"Saved":"Not saved"; setTimeout(()=>{ e.target.textContent="Save as .txt"; },2000); });
+  }
+  if(PANEL==="speak"){
+    q("#spPlay").addEventListener("click",()=>{ if(SPEAK.on){ speakStop(); } else speakStart(q("#spLang")?q("#spLang").value:"en"); renderPanel(); });
+    q("#spRate").addEventListener("change",e=>{ SPEAK.rate=+e.target.value; ls.set("lect-rate",SPEAK.rate); });
+    q("#spMine")&&q("#spMine").addEventListener("change",e=>{ SPEAK.mine=e.target.value; ls.set("lect-mine",SPEAK.mine); });
+    q("#spCont")&&q("#spCont").addEventListener("click",speakContinue);
+  }
+}
+
+window.addEventListener("lect-participation",()=>{speakStop();if(PRES.open)presentClose();LIVE.castSeen="";if(M&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()&&VIEW.role==="cel"){VIEW.role="";VIEW.only=false;ls.set("lect-view",VIEW);}presence();});
+window.addEventListener("beforeunload",()=>{ try{ speechSynthesis.cancel(); }catch(e){} });
+window.LectTools={mount, join, liveOpts, leave, saveFile, printSetup, printDone};
 })();

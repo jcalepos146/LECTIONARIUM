@@ -4,10 +4,11 @@
    The core (the page, its service code, the icons, this year's calendar) is cached when the worker installs.
    Everything else is fetched from the network first, so a new deploy is seen at once, and kept in the data cache
    so that it still opens without a connection: a service, a Bible book or an Office pack once opened is available
-   offline afterwards. "Save for offline use" fetches the whole list ahead of time. */
+   offline afterwards. "Save for offline use" fetches the whole list ahead of time, and each Office pack on request. */
 const VERSION = /*VERSION*/"dev";
 const CORE = /*CORE*/[];
 const SAVE = /*SAVE*/[];
+const PACKS = /*PACKS*/{};
 const SHELL = "lect-shell-" + VERSION, DATA = "lect-data";
 
 self.addEventListener("install", e => {
@@ -47,22 +48,23 @@ self.addEventListener("fetch", e => {
   e.respondWith(networkFirst(req));
 });
 
-/* "Save for offline use": fetch every listed data file into the data cache, reporting progress on the port. */
+/* "Save for offline use": fetch every listed data file (or, with a pack, one Office's files) into the data cache,
+   reporting progress on the port. */
 self.addEventListener("message", e => {
   if (!e.data || e.data.type !== "save" || !e.ports[0]) return;
-  const port = e.ports[0], cache = caches.open(DATA);
+  const port = e.ports[0], cache = caches.open(DATA), LIST = e.data.pack ? PACKS[e.data.pack] || [] : SAVE;
   let done = 0, failed = 0;
   e.waitUntil((async () => {
-    const c = await cache, queue = SAVE.slice();
+    const c = await cache, queue = LIST.slice();
     const worker = async () => {
       while (queue.length) {
         const path = queue.shift();
         try { if (!(await c.match(path))) { const res = await fetch(path); if (!res.ok) throw new Error(res.status); await c.put(path, res); } }
         catch (err) { failed++; }
-        done++; port.postMessage({done, failed, total: SAVE.length});
+        done++; port.postMessage({done, failed, total: LIST.length});
       }
     };
     await Promise.all([worker(), worker(), worker(), worker()]);
-    port.postMessage({done, failed, total: SAVE.length, finished: true});
+    port.postMessage({done, failed, total: LIST.length, finished: true});
   })());
 });

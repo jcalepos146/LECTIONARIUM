@@ -189,6 +189,51 @@ function ambDay(isoS){
    naming the day's keys (several when two observances meet), whether a weekday takes its Sunday's lessons, and
    what to say when there are none. A church whose current calendar is not bundled offers it as a choice: SOURCES
    holds that calendar's link and note, and the choice is kept in localStorage under "lect-calendar-<rite>". */
+/* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
+   Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
+   without a festival keeps the propers of the Sunday before it. */
+function mercDay(iso){
+  const d=date(iso), Y=d.getUTCFullYear(), md=(d.getUTCMonth()+1)*100+d.getUTCDate(), dow=d.getUTCDay();
+  const off=Math.round((d-easter(Y))/DAY);
+  const FIX={1225:"christmas",1226:"stephen",1227:"john",1228:"innocents",101:"circumcision",106:"epiphany"};
+  const MOV={"-46":"ash","-2":"goodfriday","-1":"eastereve","1":"eastermon","39":"ascension","50":"whitmonday"};
+  if(MOV[off]) return {k:MOV[off],fest:true};
+  if(FIX[md]&&(dow||md===1225||md===101||md===106)) return {k:FIX[md],fest:true};
+  const s=new Date(d-dow*DAY), SY=s.getUTCFullYear(), E=easter(SY), so=Math.round((s-E)/DAY), A1=advent(SY), smd=(s.getUTCMonth()+1)*100+s.getUTCDate();
+  const r=k=>({k,fest:false,weekday:!!dow});
+  if(s>=A1&&smd<1225) return r("adv"+(Math.round((s-A1)/DAY/7)+1));
+  if(smd>=1225) return r(smd===1225?"christmas":"xmas1");
+  if(smd<106) return r("xmas2");
+  if(so<-63){ const ep=Date.UTC(SY,0,6), first=ep+((7-new Date(ep).getUTCDay())%7||7)*DAY; return r(s<first?"epiphany":"epi"+Math.min(6,Math.round((s-first)/DAY/7)+1)); }
+  const PRE={"-63":"septuagesima","-56":"sexagesima","-49":"quinquagesima","-42":"lent1","-35":"lent2","-28":"lent3","-21":"lent4","-14":"lent5","-7":"palm","0":"easter","7":"easter1","14":"easter2","21":"easter3","28":"easter4","35":"easter5","42":"exaudi","49":"whitsunday","56":"trinity"};
+  if(PRE[so]) return r(PRE[so]);
+  if(so<56) return r("ash");
+  const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
+  return r(N-n<4?"ba"+(N-n+1):"trin"+n);
+}
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
+function rcaLessonDay(T,iso){
+  const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
+  const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
+  const d=date(iso), E=easter(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=(d.getUTCMonth()+1)*100+d.getUTCDate();
+  if(md===1225) return pick(T.christmas.christmas,"Christmas");
+  if(md===101) return pick(T.christmas.circumcision,"The Circumcision");
+  if(off===-2) return pick(T.easter.goodfriday,"Good Friday");
+  if(off===39) return pick(T.easter.ascension,"Ascension Day");
+  const s=new Date(d-d.getUTCDay()*DAY), SY=s.getUTCFullYear(), so=Math.round((s-easter(SY))/DAY), A1=advent(SY), xm=new Date(Date.UTC(SY,11,25));
+  if(s>=A1&&s<xm){ const n=4-Math.round((s-A1)/DAY/7); return pick(T.christmas.before[n],`The ${N[n]} Sunday before Christmas`); }
+  if(s>=xm||so<-63){ const xs=s>=xm?xm:new Date(Date.UTC(SY-1,11,25)), n=Math.ceil((s-xs)/DAY/7);
+    return n<1?pick(T.christmas.christmas,"Christmas"):pick(T.christmas.after[n],`The ${N[n]} Sunday after Christmas`); }
+  if(so<0) return pick(T.easter.before[-so/7],`The ${N[-so/7]} Sunday before Easter`);
+  if(so===0) return pick(T.easter.easter,"Easter");
+  if(so<=35) return pick(T.easter.after[so/7],`The ${N[so/7]} Sunday after Easter`);
+  if(so===42) return pick(T.pentecost.before,"The Sunday before Pentecost");
+  if(so===49) return pick(T.pentecost.pentecost,"Pentecost");
+  return pick(T.pentecost.after[(so-49)/7],`The ${N[(so-49)/7]} Sunday after Pentecost`);
+}
 const TABLES={
  adai:{file:'data/eastsyriac-1894.json', src:'East Syrian Lectionary · Maclean 1894', num:'k', tr:'kj',
   calendar:iso=>({keys:esyDay(iso), empty:'No lessons are appointed in the Liturgy for this day.'}),
@@ -197,16 +242,34 @@ const TABLES={
  a:{file:'data/ambrosian-1954.json', src:'Ambrosian Missal · 1954', num:'v', tr:'dr',
   calendar:iso=>{const [k,weekday]=ambDay(iso);return {keys:k?[k]:[],weekday,empty:k===null&&date(iso).getUTCDay()===5?'The Fridays of Lent are aliturgical in the Ambrosian rite: no Mass is said.':'The 1954 Missal has no proper lessons for this day in the table here: the Mass of the saint or a votive Mass is said.'};},
   note:T=>'The lessons of the Ambrosian Missal of 1954 (the last edition before the reform), on its own calendar: '+T.method,
-  choice:{alt:'current', options:[['1954','Ambrosian Missal of 1954 · historical table'],['current','Current Ambrosian calendar (Milan) · enter citations']]}}
+  choice:{alt:'current', options:[['1954','Ambrosian Missal of 1954 · historical table'],['current','Current Ambrosian calendar (Milan) · enter citations']]}},
+ rca:{file:'data/rca1882-lessons.json', src:'Reformed Church in America Liturgy (1882) · Order of Scripture Lessons', num:'k', tr:'kj', own:true,
+  cols:{ot:'The Lesson from the Old Testament',nt:'The Lesson from the New Testament'},
+  read:(T,iso)=>{const L=rcaLessonDay(T,iso);return {days:L?[{t:L.t,r:[['ot',L.m[0]],['nt',L.m[1]]]}]:[],more:L?`Evening: ${L.e.join('; ')}.`:'',raw:L,empty:'The Order of Scripture Lessons appoints nothing for this day.'};},
+  note:()=>'The Order of Scripture Lessons of the Reformed Church in America’s Liturgy (1882).'},
+ rcus:{file:'data/mercersburg.json', src:'Mercersburg Order of Worship (1866)', num:'k', tr:'kj', own:true,
+  cols:{gos:'The Gospel',ep:'The Epistle'},
+  read:(T,iso)=>{const D=mercDay(iso),P=T.propers[D.k],L=T.lessons[D.k];
+   return {days:P?[{t:P.t,r:[['gos',P.g],['ep',P.e]]}]:[],weekday:D.weekday&&!D.fest,day:D,propers:P,lessons:L,
+    more:L?`Table of lessons, morning: ${L.m.join('; ')}; evening: ${L.e.join('; ')}.`:'',empty:'The Order of Worship has no propers for this day.'};},
+  note:()=>'The Gospel and Epistle of the Mercersburg Order of Worship (1866).'}
 };
+TABLES.rcusv=TABLES.rcus;
 const choiceOf=rite=>{const C=TABLES[rite]?.choice;if(!C)return null;try{return localStorage.getItem('lect-calendar-'+rite)===C.alt?C.alt:C.options[0][0];}catch(e){return C.options[0][0];}};
+/* One day of a table on its own calendar: {T, K, names, items:[{lab, cite, num, tr, slot}]}. A table either keys its
+   days by the calendar (calendar → keys into T.days) or reads its own data shape (read → days of {t, r}). */
+async function tableDay(rite,iso){
+ const L=TABLES[rite],T=await json(L.file),K=L.read?L.read(T,iso):L.calendar(iso),items=[],names=[];
+ const days=K.days||K.keys.map(k=>{const D=T.days[k];return D&&D.as?{...T.days[D.as],t:D.t}:D;});
+ for(const D of days){if(!D)continue;names.push(D.t);
+  for(const [col,cite,ver] of D.r||[]){if(!cite)continue;const dr=(ver||L.tr)==='dr';items.push({lab:(T.cols||L.cols)[col],cite,num:dr?'v':L.num,tr:dr?'dr':'kj',slot:/^gos/.test(col)?'gospel':'lessons'});}}
+ return {T,K,names,items};
+}
 /* The day's lessons from a table: {src, url, title, note, items:[{lab, cite, num, tr, slot}]} */
 async function fromTable(rite,c){
  const L=TABLES[rite];
  if(L.choice&&choiceOf(rite)===L.choice.alt){const [src,url,note]=SOURCES[rite];return {src,url,note,items:[]};}
- const T=await json(L.file),K=L.calendar(c.iso),items=[],names=[];
- for(const k of K.keys){let D=T.days[k];if(!D)continue;names.push(D.t);if(D.as)D={...T.days[D.as],t:D.t};
-  for(const [col,cite,ver] of D.r||[]){const dr=(ver||L.tr)==='dr';items.push({lab:T.cols[col],cite,num:dr?'v':L.num,tr:dr?'dr':'kj',slot:/^gos/.test(col)?'gospel':'lessons'});}}
+ const {T,K,names,items}=await tableDay(rite,c.iso);
  const title=names.join(' · ')+(names.length&&K.weekday?' (the Sunday)':'');
  const note=L.note(T)+(K.weekday&&names.length?' This weekday takes the lessons of the Sunday.':'')+(names.length?'':' '+K.empty);
  return {src:L.src,url:T.url,title,note:note.trim(),items};
@@ -218,7 +281,7 @@ function custom(c){const rows=local(c);return rows.length?{src:'Your readings fo
 async function appointments(c){
  if(c.rite==='bcp79')return c.type==='office'?pb79(c,true,/^ep/.test(c.hour||'')):calendarMode()==='1979'?pb79(c):currentEpiscopal(c);
  if(c.rite==='copt')return coptic(c);
- if(TABLES[c.rite])return fromTable(c.rite,c);
+ if(TABLES[c.rite]&&!TABLES[c.rite].own)return fromTable(c.rite,c);   /* own: the service prints the book's lessons itself */
  if(c.rite==='byz'||/^byz[vmhc]$/.test(c.rite))return byzantine(c,c.hour||c.rite);
  if(SOURCES[c.rite]){const [src,url,note]=SOURCES[c.rite];return {src,url,note,items:[]};}
  return null;
@@ -269,5 +332,5 @@ async function mount(el,c,reader,reload){
  });
  el.querySelector('.lesson-clear').addEventListener('click',()=>{try{localStorage.removeItem(storageKey(c));reload();}catch(e){el.querySelector('.lesson-status').textContent='Local storage is unavailable.';}});
 }
-window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,ambDay,ambrosian,fromTable,TABLES,appointments,custom,html,mount,officeKey,psalmRefs};
+window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,ambDay,mercDay,rcaLessonDay,ambrosian,fromTable,tableDay,TABLES,appointments,custom,html,mount,officeKey,psalmRefs};
 })();

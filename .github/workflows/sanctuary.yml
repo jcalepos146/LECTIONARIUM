@@ -37,6 +37,7 @@ jobs:
           python3 tools/build_traditions.py --check
           python3 tools/text_sources.py --md --check
           python3 tools/shard_bible.py --check
+          python3 tools/build_versemap.py --check
           python3 tools/byz_texts.py --check
           python3 tools/dayhours.py --check
           python3 tools/do_ordo.py --check

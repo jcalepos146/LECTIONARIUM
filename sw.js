@@ -4,10 +4,11 @@
    The core (the page, its service code, the icons, this year's calendar) is cached when the worker installs.
    Everything else is fetched from the network first, so a new deploy is seen at once, and kept in the data cache
    so that it still opens without a connection: a service, a Bible book or an Office pack once opened is available
-   offline afterwards. "Save for offline use" fetches the whole list ahead of time. */
-const VERSION = /*VERSION*/"0b7d2679a3";
-const CORE = /*CORE*/["./", "index.html", "service.js?v=85f4a5dc2e", "favicon.svg", "favicon-32.png", "apple-touch-icon.png"];
-const SAVE = /*SAVE*/["bible/cv/s0.json", "bible/dr/s0.json", "bible/dr/s1.json", "bible/dr/s10.json", "bible/dr/s11.json", "bible/dr/s12.json", "bible/dr/s13.json", "bible/dr/s2.json", "bible/dr/s3.json", "bible/dr/s4.json", "bible/dr/s5.json", "bible/dr/s6.json", "bible/dr/s7.json", "bible/dr/s8.json", "bible/dr/s9.json", "bible/kj/s0.json", "bible/kj/s1.json", "bible/kj/s10.json", "bible/kj/s11.json", "bible/kj/s12.json", "bible/kj/s13.json", "bible/kj/s2.json", "bible/kj/s3.json", "bible/kj/s4.json", "bible/kj/s5.json", "bible/kj/s6.json", "bible/kj/s7.json", "bible/kj/s8.json", "bible/kj/s9.json", "data/ambrosian-1954.json", "data/bcp-hc.json", "data/bcp1549.json", "data/bcp1552.json", "data/bcp1559.json", "data/bcp1662.json", "data/bcp1784-psalter.json", "data/bcp1784.json", "data/bcp1928.json", "data/bcp1979-lectionary.json", "data/bcp1979.json", "data/byz-liturgy.json", "data/coptic-lectionary.json", "data/dayhours.json", "data/eastsyriac-1894.json", "data/lutheran-csb.json", "data/mercersburg.json", "data/monastic-build.json", "data/orders.json", "data/ordo-rites.json", "data/rca1882-lessons.json", "data/text-sources.json", "data/traditions.json", "days/2026.json", "days/2027.json", "days/2028.json", "days/2029.json", "days/2030.json", "bcp-office.json", "chant.json", "hymns.json", "ordo.json", "propers-1962.json", "propers-pre55.json"];
+   offline afterwards. "Save for offline use" fetches the whole list ahead of time, and each Office pack on request. */
+const VERSION = /*VERSION*/"595606d25b";
+const CORE = /*CORE*/["./", "index.html", "service.js?v=6997455926", "favicon.svg", "favicon-32.png", "apple-touch-icon.png"];
+const SAVE = /*SAVE*/["bible/cv/s0.json", "bible/dr/s0.json", "bible/dr/s1.json", "bible/dr/s10.json", "bible/dr/s11.json", "bible/dr/s12.json", "bible/dr/s13.json", "bible/dr/s2.json", "bible/dr/s3.json", "bible/dr/s4.json", "bible/dr/s5.json", "bible/dr/s6.json", "bible/dr/s7.json", "bible/dr/s8.json", "bible/dr/s9.json", "bible/kj/s0.json", "bible/kj/s1.json", "bible/kj/s10.json", "bible/kj/s11.json", "bible/kj/s12.json", "bible/kj/s13.json", "bible/kj/s2.json", "bible/kj/s3.json", "bible/kj/s4.json", "bible/kj/s5.json", "bible/kj/s6.json", "bible/kj/s7.json", "bible/kj/s8.json", "bible/kj/s9.json", "data/ambrosian-1954.json", "data/bcp-hc.json", "data/bcp1549.json", "data/bcp1552.json", "data/bcp1559.json", "data/bcp1662.json", "data/bcp1784-psalter.json", "data/bcp1784.json", "data/bcp1918.json", "data/bcp1928.json", "data/bcp1929.json", "data/bcp1979-lectionary.json", "data/bcp1979.json", "data/byz-liturgy.json", "data/coptic-lectionary.json", "data/dayhours.json", "data/eastsyriac-1894.json", "data/lutheran-csb.json", "data/mercersburg.json", "data/monastic-build.json", "data/orders.json", "data/ordo-rites.json", "data/rca1882-lessons.json", "data/text-sources.json", "data/traditions.json", "days/2026.json", "days/2027.json", "days/2028.json", "days/2029.json", "days/2030.json", "bcp-office.json", "chant.json", "hymns.json", "ordo.json", "propers-1962.json", "propers-pre55.json"];
+const PACKS = /*PACKS*/{"br55": ["breviary/br55/l-000.json", "breviary/br55/l-001.json", "breviary/br55/l-002.json", "breviary/br55/l-003.json", "breviary/br55/l-004.json", "breviary/br55/manifest.json", "breviary/br55/r-000.json", "breviary/br55/y-2025.json", "breviary/br55/y-2026.json", "breviary/br55/y-2027.json", "breviary/br55/y-2028.json", "breviary/br55/y-2029.json", "breviary/br55/y-2030.json"], "br62": ["breviary/br62/l-000.json", "breviary/br62/l-001.json", "breviary/br62/l-002.json", "breviary/br62/l-003.json", "breviary/br62/manifest.json", "breviary/br62/r-000.json", "breviary/br62/y-2025.json", "breviary/br62/y-2026.json", "breviary/br62/y-2027.json", "breviary/br62/y-2028.json", "breviary/br62/y-2029.json", "breviary/br62/y-2030.json"], "mon": ["breviary/mon/l-000.json", "breviary/mon/l-001.json", "breviary/mon/l-002.json", "breviary/mon/l-003.json", "breviary/mon/l-004.json", "breviary/mon/l-005.json", "breviary/mon/l-006.json", "breviary/mon/manifest.json", "breviary/mon/r-000.json", "breviary/mon/r-001.json", "breviary/mon/y-2025.json", "breviary/mon/y-2026.json", "breviary/mon/y-2027.json", "breviary/mon/y-2028.json", "breviary/mon/y-2029.json", "breviary/mon/y-2030.json"], "op": ["breviary/op/l-000.json", "breviary/op/l-001.json", "breviary/op/l-002.json", "breviary/op/l-003.json", "breviary/op/l-004.json", "breviary/op/manifest.json", "breviary/op/r-000.json", "breviary/op/r-001.json", "breviary/op/y-2025.json", "breviary/op/y-2026.json", "breviary/op/y-2027.json", "breviary/op/y-2028.json", "breviary/op/y-2029.json", "breviary/op/y-2030.json"]};
 const SHELL = "lect-shell-" + VERSION, DATA = "lect-data";
 
 self.addEventListener("install", e => {
@@ -47,22 +48,23 @@ self.addEventListener("fetch", e => {
   e.respondWith(networkFirst(req));
 });
 
-/* "Save for offline use": fetch every listed data file into the data cache, reporting progress on the port. */
+/* "Save for offline use": fetch every listed data file (or, with a pack, one Office's files) into the data cache,
+   reporting progress on the port. */
 self.addEventListener("message", e => {
   if (!e.data || e.data.type !== "save" || !e.ports[0]) return;
-  const port = e.ports[0], cache = caches.open(DATA);
+  const port = e.ports[0], cache = caches.open(DATA), LIST = e.data.pack ? PACKS[e.data.pack] || [] : SAVE;
   let done = 0, failed = 0;
   e.waitUntil((async () => {
-    const c = await cache, queue = SAVE.slice();
+    const c = await cache, queue = LIST.slice();
     const worker = async () => {
       while (queue.length) {
         const path = queue.shift();
         try { if (!(await c.match(path))) { const res = await fetch(path); if (!res.ok) throw new Error(res.status); await c.put(path, res); } }
         catch (err) { failed++; }
-        done++; port.postMessage({done, failed, total: SAVE.length});
+        done++; port.postMessage({done, failed, total: LIST.length});
       }
     };
     await Promise.all([worker(), worker(), worker(), worker()]);
-    port.postMessage({done, failed, total: SAVE.length, finished: true});
+    port.postMessage({done, failed, total: LIST.length, finished: true});
   })());
 });

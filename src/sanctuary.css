@@ -90,6 +90,5 @@ body:not(.in-session) .san-guide-help{display:none}
  #san-bar,#sanctuary,#enter-sanctuary,.fsctl,.chirho,details.msettings,details.mrun,details.covline,#lessonCalendar,.san-guide-help,dialog{display:none!important}
  header.top{padding:0 0 4pt} .kicker,.dek,.feats{display:none!important} h1.wordmark{font-size:16pt!important}
  .sesbar{border:0;padding:0} .sesbar .crumbs,.sesbar .dlabel{font-size:10pt}
- .dayname{font-size:20pt} .mbody{font-size:11pt}
- @page{margin:15mm 16mm}
+ .dayname{font-size:20pt}
 }

@@ -41,7 +41,26 @@ class OfflineTests(unittest.TestCase):
         self.page.reload(); self.page.wait_for_load_state('domcontentloaded')
         # A rite never opened before this test, on a date in another year's file.
         self.session("{type:'mass',rite:'bcp62',iso:'2027-11-07'}", 'Collect')
+        badge = self.page.locator('#offline-badge')
+        badge.wait_for()
+        self.assertIn('every calendar, lectionary and Bible', badge.inner_text())
         self.context.set_offline(False)
+        self.page.wait_for_function("document.getElementById('offline-badge').hidden")
+
+    def test_an_office_pack_is_saved_on_its_own(self):
+        self.controlled()
+        packs = self.page.evaluate("LectOffline.packs().map(p=>p.key)")
+        self.assertEqual(sorted(packs), ['br55', 'br62', 'mon', 'op'])
+        done = self.page.evaluate("LectOffline.save(null,'op')")
+        self.assertTrue(done['finished']); self.assertEqual(done['failed'], 0); self.assertGreater(done['total'], 10)
+        self.assertTrue(self.page.evaluate("!!LectOffline.saved('op')&&!LectOffline.saved()"))
+        cached = self.page.evaluate("caches.open('lect-data').then(c=>c.keys()).then(k=>k.map(r=>new URL(r.url).pathname))")
+        self.assertTrue(any('/breviary/op/manifest.json' in u for u in cached))
+        self.assertFalse(any('/breviary/br62/' in u for u in cached))
+        # the footer panel lists the pack as saved
+        self.page.evaluate("document.getElementById('offline-use').open=true")
+        self.page.wait_for_function("document.querySelector('.offline-panel').innerText.includes('Dominican Office')")
+        self.assertRegex(self.page.locator('.offline-panel').inner_text(), r'Dominican Office \(about \d+ MB\) · saved')
 
 
 if __name__ == "__main__":

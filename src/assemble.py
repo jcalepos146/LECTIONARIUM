@@ -8,14 +8,14 @@ import sys, os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://jcalepos146.github.io/LECTIONARIUM/"
 REPO = "https://github.com/jcalepos146/LECTIONARIUM"
-SERVICE = ("music.js", "mass.js")   # the service builders: loaded on demand (window.LectLoad) in the published site
+SERVICE = ("music.js", "mass.js", "office.js", "tools.js")   # the service builders, the Office and the session tools: loaded on demand (window.LectLoad) in the published site
 def service_js():
     return "\n".join(open(f).read().rstrip("\n") for f in SERVICE) + "\n"
 def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False, split=False):
     d1='<script type="application/json" id="lect-data">'+open("pagedata.json").read().strip()+'</script>'
     d2='<script type="application/json" id="lect-extra">'+open("extradata.json").read().strip()+'</script>'
     parts=[open(head).read().rstrip("\n").replace("</style>", open("sanctuary.css").read()+"\n</style>"), open("page_body.html").read().rstrip("\n").replace('<section id="tradition-sources" aria-label="Tradition directory sources"></section>', '<section id="tradition-sources" aria-label="Tradition directory sources">'+open("tradition_sources.html").read()+"</section>"), d1, d2]
-    files=("page_script.js","music.js","participation.js","lectionary.js",mass)+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"compareday.js","psalter.js","sanctuary.js")
+    files=("page_script.js","music.js","participation.js","lectionary.js",mass,"office.js")+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"compareday.js","psalter.js","sanctuary.js")
     for f in files:
         if split and f in SERVICE:
             continue
@@ -25,19 +25,34 @@ def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False, sp
             code=code.replace('/*SERVICE-URL*/""','"service.js?v='+hashlib.md5(service_js().encode()).hexdigest()[:10]+'"')
         parts.append("<script>\n"+code+"\n</script>")
     return "\n".join(parts)+"\n"
+def offline_packs():
+    """The Office packs (breviary/<key>/) that "Save for offline use" can also fetch, one at a time: {key: {files, bytes}}."""
+    import glob
+    out = {}
+    for d in sorted(glob.glob("../breviary/*/")):
+        files = sorted(p[3:] for p in glob.glob(d + "*.json"))
+        out[d.rstrip("/").split("/")[-1]] = {"files": files, "bytes": sum(os.path.getsize("../" + f) for f in files)}
+    return out
 def offline_worker(page, svc):
     """sw.js: the offline worker (src/sw.js) with its version, core files and the data "Save for offline use" fetches.
-    The data is every calendar year, data file and Bible the site reads; the Office packs (breviary/, 72 MB) are cached
-    as they are opened instead."""
+    The data is every calendar year, data file and Bible the site reads; each Office pack (breviary/<key>/, 11-24 MB)
+    is saved on its own, when asked for, and is otherwise cached as it is opened."""
     import hashlib, json, glob
     root = ".."
     save = sorted(p[len(root) + 1:] for pat in ("days/*.json", "data/*.json", "bible/*/*.json") for p in glob.glob(f"{root}/{pat}"))
     save += [f for f in ("bcp-office.json", "chant.json", "hymns.json", "ordo.json", "propers-1962.json", "propers-pre55.json") if os.path.exists(f"{root}/{f}")]
     core = ["./", "index.html", "service.js?v=" + hashlib.md5(svc.encode()).hexdigest()[:10], "favicon.svg", "favicon-32.png", "apple-touch-icon.png"]
-    version = hashlib.md5((page + svc + json.dumps(save)).encode()).hexdigest()[:10]
+    P = offline_packs()
+    import re
+    listed = json.loads(re.sub(r"(\w+):", r'"\1":', re.search(r"const PACKS=(\{.*?\});", open("page_script.js").read()).group(1)))
+    actual = {k: round(v["bytes"] / 1e6) for k, v in P.items()}
+    if P and listed != actual:
+        raise SystemExit(f"page_script.js PACKS {listed} does not match breviary/ {actual}: update it")
+    packs = {k: v["files"] for k, v in P.items()}
+    version = hashlib.md5((page + svc + json.dumps(save) + json.dumps(packs)).encode()).hexdigest()[:10]
     s = open("sw.js").read()
-    for k, v in (("VERSION", json.dumps(version)), ("CORE", json.dumps(core)), ("SAVE", json.dumps(save))):
-        s = s.replace(f'/*{k}*/' + ('"dev"' if k == "VERSION" else "[]"), f"/*{k}*/" + v, 1)
+    for k, v in (("VERSION", json.dumps(version)), ("CORE", json.dumps(core)), ("SAVE", json.dumps(save)), ("PACKS", json.dumps(packs))):
+        s = s.replace(f'/*{k}*/' + {"VERSION": '"dev"', "PACKS": "{}"}.get(k, "[]"), f"/*{k}*/" + v, 1)
     return s
 GH_DESC = ("Pray the Eucharist and the daily office in Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed "
            "and Methodist rites, each with the Bible readings of its own lectionary for the day. Complete public-domain "

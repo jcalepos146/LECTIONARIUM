@@ -181,6 +181,9 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 :root:not([data-theme="light"]) .b-apostle{color:#B79AE0}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.88rem;margin:6px 0 4px}
 .src li{margin-bottom:6px}
+#offline-badge{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:10050;margin:0;max-width:min(92vw,560px);padding:6px 14px;border-radius:999px;background:var(--ink,#222);color:var(--paper,#fff);font-size:.82rem;line-height:1.35;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+#offline-badge[hidden]{display:none}
+.offline-use{margin-top:32px}.offline-use summary{cursor:pointer;color:var(--muted)}.offline-list{list-style:none;padding:0;margin:8px 0}.offline-list li{margin:6px 0}.offline-list button{min-width:5.5em;margin-right:6px;font:inherit;font-size:.9em;padding:3px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--leaf);color:var(--ink);cursor:pointer}
 footer{margin-top:40px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--rule);padding-top:12px}
 @media (prefers-reduced-motion:no-preference){ .row{transition:background .15s} .row:hover{background:color-mix(in srgb, var(--leaf) 60%, transparent)} }
 
@@ -348,10 +351,22 @@ span[data-r]{padding:0 2px}
 .livenote{margin:0;padding:8px 12px;border-radius:8px;background:var(--rubric-wash)}
 .tfollow{font-size:.86rem}
 .mpart.ostep{margin-top:14px;border-top-width:1px} .mpart.ostep>h3{font-size:1.1rem;margin-bottom:4px}
+@page{size:auto;margin:16mm 15mm 18mm;
+  @bottom-left{content:"Lectionarium";font:8pt Georgia,serif;color:#555}
+  @bottom-right{content:counter(page) " / " counter(pages);font:8pt Georgia,serif;color:#555}}
 @media print{
   nav.tabs,header.top p.lede,.tband,.feats,.sesbar button,.mctlbox,.tools-bar,.tools-timer,.runsheet,.cuts,.joinlive,.mctl,footer,#audioNote{display:none!important}
-  body{background:#fff;color:#000} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
-  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3{break-after:avoid} figure.music{break-inside:avoid}
+  header.top .dek,header.top svg.chirho,#enter-sanctuary,.offline-use,#offline-badge,.lesson-calendar,.mbody select,.mbody input,.mbody button,.score:has(>p.note:only-child){display:none!important}
+  html{font-size:11pt!important} body{background:#fff;color:#000;font-size:1rem!important} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
+  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3,.mbody h4{break-after:avoid} figure.music{break-inside:avoid}
+  .mbody p{orphans:3;widows:3} a{color:inherit;text-decoration:none}
+  html.print-en .two>[lang=la],html.print-la .two>[lang=en]{display:none!important}
+  html.print-en .two,html.print-la .two{grid-template-columns:1fr!important}
+  html.print-la .two>[lang=la],html.print-en .two>[lang=en]{border:0!important;padding-top:0!important}
+  html.print-mono{--rubric:#000!important;--gold:#000!important;--lit-red:#000!important}
+  html.print-mono .mbody .rub,html.print-mono .mbody .rubric{font-style:italic}
+  html.print-large{font-size:14pt!important}
+  html.print-nonotes .mbody p.note{display:none!important}
 }
 /* presenter, live cast, checks */
 .presenter{position:fixed;inset:0;z-index:50;background:var(--paper);color:var(--ink);display:grid;grid-template-rows:auto 1fr auto;padding:max(12px,env(safe-area-inset-top)) 16px max(12px,env(safe-area-inset-bottom))}
@@ -586,8 +601,7 @@ body:not(.in-session) .san-guide-help{display:none}
  #san-bar,#sanctuary,#enter-sanctuary,.fsctl,.chirho,details.msettings,details.mrun,details.covline,#lessonCalendar,.san-guide-help,dialog{display:none!important}
  header.top{padding:0 0 4pt} .kicker,.dek,.feats{display:none!important} h1.wordmark{font-size:16pt!important}
  .sesbar{border:0;padding:0} .sesbar .crumbs,.sesbar .dlabel{font-size:10pt}
- .dayname{font-size:20pt} .mbody{font-size:11pt}
- @page{margin:15mm 16mm}
+ .dayname{font-size:20pt}
 }
 
 </style>
@@ -1007,6 +1021,7 @@ body:not(.in-session) .san-guide-help{display:none}
   </div>
 </section>
 
+<details class="offline-use" id="offline-use"><summary>Offline use</summary><div class="offline-panel"></div></details>
 <footer>Lectionarium · public-domain texts in full, copyrighted texts cited · consult the approved liturgical books for celebration · <a href="https://github.com/jcalepos146/LECTIONARIUM">Source on GitHub</a></footer>
 </div>
 <script type="application/json" id="lect-data">{"T":{"Adv1":{"n":"1st Sunday of Advent","s":"advent","c":"violet","p":[["Epistle","Rom 13:11-14"],["Gospel","Luke 21:25-33"]],"m":[["Epistle","Rom 13:11-14"],["Gospel","Luke 21:25-33"]]},"Adv2":{"n":"2nd Sunday of Advent","s":"advent","c":"violet","p":[["Epistle","Rom 15:4-13"],["Gospel","Matt 11:2-10"]],"m":[["Epistle","Rom 15:4-13"],["Gospel","Matt 11:2-10"]]},"Adv3":{"n":"3rd Sunday of Advent (Gaudete)","s":"advent","c":"rose","p":[["Epistle","Phil 4:4-7"],["Gospel","John 1:19-28"]],"m":[["Epistle","Phil 4:4-7"],["Gospel","John 1:19-28"]]},"Adv4":{"n":"4th Sunday of Advent","s":"advent","c":"violet","p":[["Epistle","1 Cor 4:1-5"],["Gospel","Luke 3:1-6"]],"m":[["Epistle","1 Cor 4:1-5"],["Gospel","Luke 3:1-6"]]},"Christmas-Midnight":{"n":"Christmas · Mass at Midnight","s":"christmas","c":"white","p":[["Epistle","Titus 2:11-15"],["Gospel","Luke 2:1-14"]],"m":[["Epistle","Titus 2:11-15"],["Gospel","Luke 2:1-14"]]},"Christmas-Dawn":{"n":"Christmas · Mass at Dawn","s":"christmas","c":"white","p":[["Epistle","Titus 3:4-7"],["Gospel","Luke 2:15-20"]],"m":[["Epistle","Titus 3:4-7"],["Gospel","Luke 2:15-20"]]},"Christmas-Day":{"n":"Christmas · Mass during the Day","s":"christmas","c":"white","p":[["Epistle","Heb 1:1-12"],["Gospel","John 1:1-14"]],"m":[["Epistle","Heb 1:1-12"],["Gospel","John 1:1-14"]]},"SunOctChristmas":{"n":"Sunday within the Octave of Christmas","s":"christmas","c":"white","p":[["Epistle","Gal 4:1-7"],["Gospel","Luke 2:33-40"]],"m":[["Epistle","Gal 4:1-7"],["Gospel","Luke 2:33-40"]]},"Jan1":{"n":"Octave Day of Christmas (Circumcision)","s":"christmas","c":"white","p":[["Epistle","Titus 2:11-15"],["Gospel","Luke 2:21"]],"m":[["Epistle","Titus 2:11-15"],["Gospel","Luke 2:21"]]},"HolyName":{"n":"Most Holy Name of Jesus","s":"christmas","c":"white","p":[["Epistle","Acts 4:8-12"],["Gospel","Luke 2:21"]],"m":[["Epistle","Acts 4:8-12"],["Gospel","Luke 2:21"]]},"Epiphany":{"n":"Epiphany of the Lord","s":"epiphany","c":"white","p":[["Epistle","Isa 60:1-6"],["Gospel","Matt 2:1-12"]],"m":[["Epistle","Isa 60:1-6"],["Gospel","Matt 2:1-12"]]},"HolyFamily":{"n":"Holy Family (Sunday after Epiphany)","s":"epiphany","c":"white","p":[["Epistle","Col 3:12-17"],["Gospel","Luke 2:42-52"]],"m":[["Epistle","Col 3:12-17"],["Gospel","Luke 2:42-52"]]},"Epi2":{"n":"2nd Sunday after Epiphany","s":"epiphany","c":"green","p":[["Epistle","Rom 12:6-16"],["Gospel","John 2:1-11"]],"m":[["Epistle","Rom 12:6-16"],["Gospel","John 2:1-11"]]},"Epi3":{"n":"3rd Sunday after Epiphany","s":"epiphany","c":"green","p":[["Epistle","Rom 12:16-21"],["Gospel","Matt 8:1-13"]],"m":[["Epistle","Rom 12:16-21"],["Gospel","Matt 8:1-13"]]},"Epi4":{"n":"4th Sunday after Epiphany","s":"epiphany","c":"green","p":[["Epistle","Rom 13:8-10"],["Gospel","Matt 8:23-27"]],"m":[["Epistle","Rom 13:8-10"],["Gospel","Matt 8:23-27"]]},"Epi5":{"n":"5th Sunday after Epiphany","s":"epiphany","c":"green","p":[["Epistle","Col 3:12-17"],["Gospel","Matt 13:24-30"]],"m":[["Epistle","Col 3:12-17"],["Gospel","Matt 13:24-30"]]},"Epi6":{"n":"6th Sunday after Epiphany","s":"epiphany","c":"green","p":[["Epistle","1 Thess 1:2-10"],["Gospel","Matt 13:31-35"]],"m":[["Epistle","1 Thess 1:2-10"],["Gospel","Matt 13:31-35"]]},"Septuagesima":{"n":"Septuagesima Sunday","s":"gesima","c":"violet","p":[["Epistle","1 Cor 9:24-27; 10:1-5"],["Gospel","Matt 20:1-16"]],"m":[["Epistle","1 Cor 9:24-27; 10:1-5"],["Gospel","Matt 20:1-16"]]},"Sexagesima":{"n":"Sexagesima Sunday","s":"gesima","c":"violet","p":[["Epistle","2 Cor 11:19-33; 12:1-9"],["Gospel","Luke 8:4-15"]],"m":[["Epistle","2 Cor 11:19-33; 12:1-9"],["Gospel","Luke 8:4-15"]]},"Quinquagesima":{"n":"Quinquagesima Sunday","s":"gesima","c":"violet","p":[["Epistle","1 Cor 13:1-13"],["Gospel","Luke 18:31-43"]],"m":[["Epistle","1 Cor 13:1-13"],["Gospel","Luke 18:31-43"]]},"AshWed":{"n":"Ash Wednesday","s":"lent","c":"violet","p":[["Epistle","Joel 2:12-19"],["Gospel","Matt 6:16-21"]],"m":[["Epistle","Joel 2:12-19"],["Gospel","Matt 6:16-21"]]},"Lent1":{"n":"1st Sunday of Lent","s":"lent","c":"violet","p":[["Epistle","2 Cor 6:1-10"],["Gospel","Matt 4:1-11"]],"m":[["Epistle","2 Cor 6:1-10"],["Gospel","Matt 4:1-11"]]},"Lent2":{"n":"2nd Sunday of Lent","s":"lent","c":"violet","p":[["Epistle","1 Thess 4:1-7"],["Gospel","Matt 17:1-9"]],"m":[["Epistle","1 Thess 4:1-7"],["Gospel","Matt 17:1-9"]]},"Lent3":{"n":"3rd Sunday of Lent","s":"lent","c":"violet","p":[["Epistle","Eph 5:1-9"],["Gospel","Luke 11:14-28"]],"m":[["Epistle","Eph 5:1-9"],["Gospel","Luke 11:14-28"]]},"Lent4":{"n":"4th Sunday of Lent (Laetare)","s":"lent","c":"rose","p":[["Epistle","Gal 4:22-31"],["Gospel","John 6:1-15"]],"m":[["Epistle","Gal 4:22-31"],["Gospel","John 6:1-15"]]},"Lent5":{"n":"Passion Sunday","s":"lent","c":"violet","p":[["Epistle","Heb 9:11-15"],["Gospel","John 8:46-59"]],"m":[["Epistle","Heb 9:11-15"],["Gospel","John 8:46-59"]]},"PalmSunday":{"n":"Palm Sunday","s":"holyweek","c":"red","p":[["Lesson (blessing of palms)","Exod 15:27-16:7"],["Gospel (blessing of palms)","Matt 21:1-9"],["Epistle","Phil 2:5-11"],["Passion","Matt 26:1-27:66"]],"m":[["Gospel (blessing of palms)","Matt 21:1-9"],["Epistle","Phil 2:5-11"],["Passion","Matt 26:36-27:60"]]},"HolyThursday":{"n":"Holy Thursday · Mass of the Lord's Supper","s":"holyweek","c":"white","p":[["Epistle","1 Cor 11:20-32"],["Gospel","John 13:1-15"]],"m":[["Epistle","1 Cor 11:20-32"],["Gospel","John 13:1-15"]]},"GoodFriday":{"n":"Good Friday","s":"holyweek","c":"black","p":[["Lesson","Hos 6:1-6"],["Lesson","Exod 12:1-11"],["Passion","John 18:1-19:42"]],"m":[["Lesson","Hos 6:1-6"],["Lesson","Exod 12:1-11"],["Passion","John 18:1-19:42"]]},"EasterVigil":{"n":"Easter Vigil","s":"holyweek","c":"white","p":[["Prophecy 1","Gen 1:1-2:2"],["Prophecy 2","Gen 5-8 (selections)"],["Prophecy 3","Gen 22:1-19"],["Prophecy 4","Exod 14:24-15:1"],["Prophecy 5","Isa 54:17-55:11"],["Prophecy 6","Bar 3:9-38"],["Prophecy 7","Ezek 37:1-14"],["Prophecy 8","Isa 4:1-6"],["Prophecy 9","Exod 12:1-11"],["Prophecy 10","Jonah 3:1-10"],["Prophecy 11","Deut 31:22-30"],["Prophecy 12","Dan 3:1-24"],["Epistle","Col 3:1-4"],["Gospel","Matt 28:1-7"]],"m":[["Prophecy 1","Gen 1:1-2:2"],["Prophecy 2","Exod 14:24-15:1"],["Prophecy 3","Isa 4:2-6"],["Prophecy 4","Deut 31:22-30"],["Epistle","Col 3:1-4"],["Gospel","Matt 28:1-7"]]},"Easter":{"n":"Easter Sunday","s":"easter","c":"white","p":[["Epistle","1 Cor 5:7-8"],["Gospel","Mark 16:1-7"]],"m":[["Epistle","1 Cor 5:7-8"],["Gospel","Mark 16:1-7"]]},"Pasc1":{"n":"Low Sunday (1st after Easter)","s":"easter","c":"white","p":[["Epistle","1 John 5:4-10"],["Gospel","John 20:19-31"]],"m":[["Epistle","1 John 5:4-10"],["Gospel","John 20:19-31"]]},"Pasc2":{"n":"2nd Sunday after Easter","s":"easter","c":"white","p":[["Epistle","1 Pet 2:21-25"],["Gospel","John 10:11-16"]],"m":[["Epistle","1 Pet 2:21-25"],["Gospel","John 10:11-16"]]},"Pasc3":{"n":"3rd Sunday after Easter","s":"easter","c":"white","p":[["Epistle","1 Pet 2:11-19"],["Gospel","John 16:16-22"]],"m":[["Epistle","1 Pet 2:11-19"],["Gospel","John 16:16-22"]]},"Pasc4":{"n":"4th Sunday after Easter","s":"easter","c":"white","p":[["Epistle","Jas 1:17-21"],["Gospel","John 16:5-14"]],"m":[["Epistle","Jas 1:17-21"],["Gospel","John 16:5-14"]]},"Pasc5":{"n":"5th Sunday after Easter","s":"easter","c":"white","p":[["Epistle","Jas 1:22-27"],["Gospel","John 16:23-30"]],"m":[["Epistle","Jas 1:22-27"],["Gospel","John 16:23-30"]]},"Ascension":{"n":"Ascension of the Lord","s":"easter","c":"white","p":[["Epistle","Acts 1:1-11"],["Gospel","Mark 16:14-20"]],"m":[["Epistle","Acts 1:1-11"],["Gospel","Mark 16:14-20"]]},"SunAfterAscension":{"n":"Sunday after the Ascension","s":"easter","c":"white","p":[["Epistle","1 Pet 4:7-11"],["Gospel","John 15:26-27; 16:1-4"]],"m":[["Epistle","1 Pet 4:7-11"],["Gospel","John 15:26-27; 16:1-4"]]},"PentecostVigil":{"n":"Vigil of Pentecost","s":"easter","c":"red","p":[["Prophecy 1","Gen 22:1-19"],["Prophecy 2","Exod 14:24-15:1"],["Prophecy 3","Deut 31:22-30"],["Prophecy 4","Isa 4:1-6"],["Prophecy 5","Bar 3:9-38"],["Prophecy 6","Ezek 37:1-14"],["Epistle","Acts 19:1-8"],["Gospel","John 14:15-21"]],"m":[["Epistle","Acts 19:1-8"],["Gospel","John 14:15-21"]]},"Pentecost":{"n":"Pentecost Sunday","s":"easter","c":"red","p":[["Epistle","Acts 2:1-11"],["Gospel","John 14:23-31"]],"m":[["Epistle","Acts 2:1-11"],["Gospel","John 14:23-31"]]},"Trinity":{"n":"Most Holy Trinity","s":"pentecost","c":"white","p":[["Epistle","Rom 11:33-36"],["Gospel","Matt 28:18-20"]],"m":[["Epistle","Rom 11:33-36"],["Gospel","Matt 28:18-20"]]},"CorpusChristi":{"n":"Corpus Christi","s":"pentecost","c":"white","p":[["Epistle","1 Cor 11:23-29"],["Gospel","John 6:56-59"]],"m":[["Epistle","1 Cor 11:23-29"],["Gospel","John 6:56-59"]]},"SacredHeart":{"n":"Most Sacred Heart of Jesus","s":"pentecost","c":"white","p":[["Epistle","Eph 3:8-12, 14-19"],["Gospel","John 19:31-37"]],"m":[["Epistle","Eph 3:8-12, 14-19"],["Gospel","John 19:31-37"]]},"Pent2":{"n":"2nd Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","1 John 3:13-18"],["Gospel","Luke 14:16-24"]],"m":[["Epistle","1 John 3:13-18"],["Gospel","Luke 14:16-24"]]},"Pent3":{"n":"3rd Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","1 Pet 5:6-11"],["Gospel","Luke 15:1-10"]],"m":[["Epistle","1 Pet 5:6-11"],["Gospel","Luke 15:1-10"]]},"Pent4":{"n":"4th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Rom 8:18-23"],["Gospel","Luke 5:1-11"]],"m":[["Epistle","Rom 8:18-23"],["Gospel","Luke 5:1-11"]]},"Pent5":{"n":"5th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","1 Pet 3:8-15"],["Gospel","Matt 5:20-24"]],"m":[["Epistle","1 Pet 3:8-15"],["Gospel","Matt 5:20-24"]]},"Pent6":{"n":"6th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Rom 6:3-11"],["Gospel","Mark 8:1-9"]],"m":[["Epistle","Rom 6:3-11"],["Gospel","Mark 8:1-9"]]},"Pent7":{"n":"7th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Rom 6:19-23"],["Gospel","Matt 7:15-21"]],"m":[["Epistle","Rom 6:19-23"],["Gospel","Matt 7:15-21"]]},"Pent8":{"n":"8th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Rom 8:12-17"],["Gospel","Luke 16:1-9"]],"m":[["Epistle","Rom 8:12-17"],["Gospel","Luke 16:1-9"]]},"Pent9":{"n":"9th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","1 Cor 10:6-13"],["Gospel","Luke 19:41-47"]],"m":[["Epistle","1 Cor 10:6-13"],["Gospel","Luke 19:41-47"]]},"Pent10":{"n":"10th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","1 Cor 12:2-11"],["Gospel","Luke 18:9-14"]],"m":[["Epistle","1 Cor 12:2-11"],["Gospel","Luke 18:9-14"]]},"Pent11":{"n":"11th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","1 Cor 15:1-10"],["Gospel","Mark 7:31-37"]],"m":[["Epistle","1 Cor 15:1-10"],["Gospel","Mark 7:31-37"]]},"Pent12":{"n":"12th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","2 Cor 3:4-9"],["Gospel","Luke 10:23-37"]],"m":[["Epistle","2 Cor 3:4-9"],["Gospel","Luke 10:23-37"]]},"Pent13":{"n":"13th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Gal 3:16-22"],["Gospel","Luke 17:11-19"]],"m":[["Epistle","Gal 3:16-22"],["Gospel","Luke 17:11-19"]]},"Pent14":{"n":"14th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Gal 5:16-24"],["Gospel","Matt 6:24-33"]],"m":[["Epistle","Gal 5:16-24"],["Gospel","Matt 6:24-33"]]},"Pent15":{"n":"15th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Gal 5:25-26; 6:1-10"],["Gospel","Luke 7:11-16"]],"m":[["Epistle","Gal 5:25-26; 6:1-10"],["Gospel","Luke 7:11-16"]]},"Pent16":{"n":"16th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Eph 3:13-21"],["Gospel","Luke 14:1-11"]],"m":[["Epistle","Eph 3:13-21"],["Gospel","Luke 14:1-11"]]},"Pent17":{"n":"17th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Eph 4:1-6"],["Gospel","Matt 22:34-46"]],"m":[["Epistle","Eph 4:1-6"],["Gospel","Matt 22:34-46"]]},"Pent18":{"n":"18th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","1 Cor 1:4-8"],["Gospel","Matt 9:1-8"]],"m":[["Epistle","1 Cor 1:4-8"],["Gospel","Matt 9:1-8"]]},"Pent19":{"n":"19th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Eph 4:23-28"],["Gospel","Matt 22:1-14"]],"m":[["Epistle","Eph 4:23-28"],["Gospel","Matt 22:1-14"]]},"Pent20":{"n":"20th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Eph 5:15-21"],["Gospel","John 4:46-53"]],"m":[["Epistle","Eph 5:15-21"],["Gospel","John 4:46-53"]]},"Pent21":{"n":"21st Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Eph 6:10-17"],["Gospel","Matt 18:23-35"]],"m":[["Epistle","Eph 6:10-17"],["Gospel","Matt 18:23-35"]]},"Pent22":{"n":"22nd Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Phil 1:6-11"],["Gospel","Matt 22:15-21"]],"m":[["Epistle","Phil 1:6-11"],["Gospel","Matt 22:15-21"]]},"Pent23":{"n":"23rd Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Phil 3:17-21; 4:1-3"],["Gospel","Matt 9:18-26"]],"m":[["Epistle","Phil 3:17-21; 4:1-3"],["Gospel","Matt 9:18-26"]]},"Pent24":{"n":"24th Sunday after Pentecost","s":"pentecost","c":"green","p":[["Epistle","Col 1:9-14"],["Gospel","Matt 24:15-35"]],"m":[["Epistle","Col 1:9-14"],["Gospel","Matt 24:15-35"]]},"PentEpi3":{"n":"Resumed 3rd Sunday after Epiphany","s":"pentecost","c":"green","p":[["Epistle","Rom 12:16-21"],["Gospel","Matt 8:1-13"]],"m":[["Epistle","Rom 12:16-21"],["Gospel","Matt 8:1-13"]]},"PentEpi4":{"n":"Resumed 4th Sunday after Epiphany","s":"pentecost","c":"green","p":[["Epistle","Rom 13:8-10"],["Gospel","Matt 8:23-27"]],"m":[["Epistle","Rom 13:8-10"],["Gospel","Matt 8:23-27"]]},"PentEpi5":{"n":"Resumed 5th Sunday after Epiphany","s":"pentecost","c":"green","p":[["Epistle","Col 3:12-17"],["Gospel","Matt 13:24-30"]],"m":[["Epistle","Col 3:12-17"],["Gospel","Matt 13:24-30"]]},"PentEpi6":{"n":"Resumed 6th Sunday after Epiphany","s":"pentecost","c":"green","p":[["Epistle","1 Thess 1:2-10"],["Gospel","Matt 13:31-35"]],"m":[["Epistle","1 Thess 1:2-10"],["Gospel","Matt 13:31-35"]]},"Presentation":{"n":"Presentation of the Lord (Candlemas)","s":"sanctoral","c":"white","p":[["Epistle","Mal 3:1-4"],["Gospel","Luke 2:22-32"]],"m":[["Epistle","Mal 3:1-4"],["Gospel","Luke 2:22-32"]]},"StJoseph":{"n":"St Joseph","s":"sanctoral","c":"white","p":[["Epistle","Sir 45:1-6"],["Gospel","Matt 1:18-21"]],"m":[["Epistle","Sir 45:1-6"],["Gospel","Matt 1:18-21"]]},"Annunciation":{"n":"Annunciation","s":"sanctoral","c":"white","p":[["Epistle","Isa 7:10-15"],["Gospel","Luke 1:26-38"]],"m":[["Epistle","Isa 7:10-15"],["Gospel","Luke 1:26-38"]]},"JohnBaptist":{"n":"Nativity of St John the Baptist","s":"sanctoral","c":"white","p":[["Epistle","Isa 49:1-3; 49:5-7"],["Gospel","Luke 1:57-68"]],"m":[["Epistle","Isa 49:1-3; 49:5-7"],["Gospel","Luke 1:57-68"]]},"PeterPaul":{"n":"Sts Peter and Paul","s":"sanctoral","c":"red","p":[["Epistle","Acts 12:1-11"],["Gospel","Matt 16:13-19"]],"m":[["Epistle","Acts 12:1-11"],["Gospel","Matt 16:13-19"]]},"Transfiguration":{"n":"Transfiguration","s":"sanctoral","c":"white","p":[["Epistle","2 Pet 1:16-19"],["Gospel","Matt 17:1-9"]],"m":[["Epistle","2 Pet 1:16-19"],["Gospel","Matt 17:1-9"]]},"Assumption":{"n":"Assumption of the BVM","s":"sanctoral","c":"white","p":[["Epistle","Jdt 13:22-25; 15:10"],["Gospel","Luke 1:41-50"]],"m":[["Epistle","Jdt 13:22-25; 15:10"],["Gospel","Luke 1:41-50"]]},"ChristKing":{"n":"Christ the King (last Sunday of October)","s":"pentecost","c":"white","p":[["Epistle","Col 1:12-20"],["Gospel","John 18:33-37"]],"m":[["Epistle","Col 1:12-20"],["Gospel","John 18:33-37"]]},"AllSaints":{"n":"All Saints","s":"sanctoral","c":"white","p":[["Epistle","Rev 7:2-12"],["Gospel","Matt 5:1-12"]],"m":[["Epistle","Rev 7:2-12"],["Gospel","Matt 5:1-12"]]},"AllSouls":{"n":"All Souls (1st Mass)","s":"sanctoral","c":"black","p":[["Epistle","1 Cor 15:51-57"],["Gospel","John 5:25-29"]],"m":[["Epistle","1 Cor 15:51-57"],["Gospel","John 5:25-29"]]},"Immaculate":{"n":"Immaculate Conception","s":"sanctoral","c":"white","p":[["Epistle","Prov 8:22-35"],["Gospel","Luke 1:26-28"]],"m":[["Epistle","Prov 8:22-35"],["Gospel","Luke 1:26-28"]]}},"N":{"Adv1":{"n":"1st Sunday of Advent","A":{"first":["Isa 2:1-5"],"psalm":["Ps 122:1-2, 3-4a, 4b-5, 6-7, 8-9"],"second":["Rom 13:11-14"],"gospel":["Matt 24:37-44"]},"B":{"first":["Isa 63:16b-17, 19b; 64:2-7"],"psalm":["Ps 80:2-3, 15-16, 18-19"],"second":["1 Cor 1:3-9"],"gospel":["Mark 13:33-37"]},"C":{"first":["Jer 33:14-16"],"psalm":["Ps 25:4-5, 8-9, 10+14"],"second":["1 Thess 3:12-4:2"],"gospel":["Luke 21:25-28, 34-36"]}},"Adv2":{"n":"2nd Sunday of Advent","A":{"first":["Isa 11:1-10"],"psalm":["Ps 72:1-2, 7-8, 12-13, 17"],"second":["Rom 15:4-9"],"gospel":["Matt 3:1-12"]},"B":{"first":["Isa 40:1-5, 9-11"],"psalm":["Ps 85:9ab+10, 11-12, 13-14"],"second":["2 Pet 3:8-14"],"gospel":["Mark 1:1-8"]},"C":{"first":["Bar 5:1-9"],"psalm":["Ps 126:1-2a, 2b-3, 4-5, 6"],"second":["Phil 1:4-6, 8-11"],"gospel":["Luke 3:1-6"]}},"Adv3":{"n":"3rd Sunday of Advent","A":{"first":["Isa 35:1-6a, 10"],"psalm":["Ps 146:6c-7, 8-9a, 9b-10"],"second":["Jas 5:7-10"],"gospel":["Matt 11:2-11"]},"B":{"first":["Isa 61:1-2a, 10-11"],"psalm":["Luke 1:46-48, 49-50, 53-54"],"second":["1 Thess 5:16-24"],"gospel":["John 1:6-8, 19-28"]},"C":{"first":["Zeph 3:14-18a"],"psalm":["Isa 12:2-3, 4bcd, 5-6"],"second":["Phil 4:4-7"],"gospel":["Luke 3:10-18"]}},"Adv4":{"n":"4th Sunday of Advent","A":{"first":["Isa 7:10-14"],"psalm":["Ps 24:1-2, 3-4, 5-6"],"second":["Rom 1:1-7"],"gospel":["Matt 1:18-24"]},"B":{"first":["2 Sam 7:1-5, 8b-12, 14a, 16"],"psalm":["Ps 89:2-3, 4-5, 27+29"],"second":["Rom 16:25-27"],"gospel":["Luke 1:26-38"]},"C":{"first":["Mic 5:1-4a"],"psalm":["Ps 80:2-3, 15-16, 18-19"],"second":["Heb 10:5-10"],"gospel":["Luke 1:39-45"]}},"Christmas-Midnight":{"n":"Nativity · Mass at Night","A":{"first":["Isa 9:1-6"],"psalm":["Ps 96:1-2a, 2b-3, 11-12, 13"],"second":["Titus 2:11-14"],"gospel":["Luke 2:1-14"]},"B":{"first":["Isa 9:1-6"],"psalm":["Ps 96:1-2a, 2b-3, 11-12, 13"],"second":["Titus 2:11-14"],"gospel":["Luke 2:1-14"]},"C":{"first":["Isa 9:1-6"],"psalm":["Ps 96:1-2a, 2b-3, 11-12, 13"],"second":["Titus 2:11-14"],"gospel":["Luke 2:1-14"]}},"Christmas-Dawn":{"n":"Nativity · Mass at Dawn","A":{"first":["Isa 62:11-12"],"psalm":["Ps 97:1+6, 11-12"],"second":["Titus 3:4-7"],"gospel":["Luke 2:15-20"]},"B":{"first":["Isa 62:11-12"],"psalm":["Ps 97:1+6, 11-12"],"second":["Titus 3:4-7"],"gospel":["Luke 2:15-20"]},"C":{"first":["Isa 62:11-12"],"psalm":["Ps 97:1+6, 11-12"],"second":["Titus 3:4-7"],"gospel":["Luke 2:15-20"]}},"Christmas-Day":{"n":"Nativity · Mass during the Day","A":{"first":["Isa 52:7-10"],"psalm":["Ps 98:1, 2-3a, 3b-4, 5-6"],"second":["Heb 1:1-6"],"gospel":["John 1:1-18 or 1:1-5, 9-14"]},"B":{"first":["Isa 52:7-10"],"psalm":["Ps 98:1, 2-3a, 3b-4, 5-6"],"second":["Heb 1:1-6"],"gospel":["John 1:1-18 or 1:1-5, 9-14"]},"C":{"first":["Isa 52:7-10"],"psalm":["Ps 98:1, 2-3a, 3b-4, 5-6"],"second":["Heb 1:1-6"],"gospel":["John 1:1-18 or 1:1-5, 9-14"]}},"HolyFamily":{"n":"Holy Family","A":{"first":["Sir 3:3-7, 14-17a"],"psalm":["Ps 128:1-2, 3, 4-5"],"second":["Col 3:12-21 or 3:12-17"],"gospel":["Matt 2:13-15, 19-23"]},"B":{"first":["Sir 3:3-7, 14-17a","Gen 15:1-6; 21:1-3"],"psalm":["Ps 128:1-2, 3, 4-5","Ps 105:1-2, 3-4, 5-6, 8-9"],"second":["Col 3:12-21 or 3:12-17","Heb 11:8, 11-12, 17-19"],"gospel":["Luke 2:22-40 or 2:22, 39-40"]},"C":{"first":["Sir 3:3-7, 14-17a","1 Sam 1:20-22, 24-28"],"psalm":["Ps 128:1-2, 3, 4-5","Ps 84:2-3, 5-6, 9-10"],"second":["Col 3:12-21 or 3:12-17","1 John 3:1-2, 21-24"],"gospel":["Luke 2:41-52"]}},"Jan1":{"n":"Mary, Mother of God","A":{"first":["Num 6:22-27"],"psalm":["Ps 67:2-3, 5, 6+8"],"second":["Gal 4:4-7"],"gospel":["Luke 2:16-21"]},"B":{"first":["Num 6:22-27"],"psalm":["Ps 67:2-3, 5, 6+8"],"second":["Gal 4:4-7"],"gospel":["Luke 2:16-21"]},"C":{"first":["Num 6:22-27"],"psalm":["Ps 67:2-3, 5, 6+8"],"second":["Gal 4:4-7"],"gospel":["Luke 2:16-21"]}},"Epiphany":{"n":"Epiphany of the Lord","A":{"first":["Isa 60:1-6"],"psalm":["Ps 72:1-2, 7-8, 10-11, 12-13"],"second":["Eph 3:2-3a, 5-6"],"gospel":["Matt 2:1-12"]},"B":{"first":["Isa 60:1-6"],"psalm":["Ps 72:1-2, 7-8, 10-11, 12-13"],"second":["Eph 3:2-3a, 5-6"],"gospel":["Matt 2:1-12"]},"C":{"first":["Isa 60:1-6"],"psalm":["Ps 72:1-2, 7-8, 10-11, 12-13"],"second":["Eph 3:2-3a, 5-6"],"gospel":["Matt 2:1-12"]}},"Baptism":{"n":"Baptism of the Lord","A":{"first":["Isa 42:1-4, 6-7"],"psalm":["Ps 29:1-2, 3-4, 3b+9b-10"],"second":["Acts 10:34-38"],"gospel":["Matt 3:13-17"]},"B":{"first":["Isa 42:1-4, 6-7","Isa 55:1-11"],"psalm":["Ps 29:1-2, 3-4, 3b+9b-10","Isa 12:2-3, 4bcd, 5-6"],"second":["Acts 10:34-38","1 John 5:1-9"],"gospel":["Mark 1:7-11"]},"C":{"first":["Isa 42:1-4, 6-7","Isa 40:1-5, 9-11"],"psalm":["Ps 29:1-2, 3-4, 3b+9b-10","Ps 104:1b-2, 3-4, 24-25, 27-28, 29b-30"],"second":["Acts 10:34-38","Titus 2:11-14; 3:4-7"],"gospel":["Luke 3:15-16, 21-22"]}},"Lent1":{"n":"1st Sunday of Lent","A":{"first":["Gen 2:7-9; 3:1-7"],"psalm":["Ps 51:3-4, 5-6, 12-13, 14+17"],"second":["Rom 5:12-19 or 5:12, 17-19"],"gospel":["Matt 4:1-11"]},"B":{"first":["Gen 9:8-15"],"psalm":["Ps 25:4-5, 6-7, 8-9"],"second":["1 Pet 3:18-22"],"gospel":["Mark 1:12-15"]},"C":{"first":["Deut 26:4-10"],"psalm":["Ps 91:1-2, 10-11, 12-13, 14-15"],"second":["Rom 10:8-13"],"gospel":["Luke 4:1-13"]}},"Lent2":{"n":"2nd Sunday of Lent","A":{"first":["Gen 12:1-4a"],"psalm":["Ps 33:4-5, 18-19, 20+22"],"second":["2 Tim 1:8b-10"],"gospel":["Matt 17:1-9"]},"B":{"first":["Gen 22:1-2, 9a, 10-13, 15-18"],"psalm":["Ps 116:10+15, 16-17, 18-19"],"second":["Rom 8:31b-34"],"gospel":["Mark 9:2-10"]},"C":{"first":["Gen 15:5-12, 17-18"],"psalm":["Ps 27:1, 7-8a, 8b-9, 13-14"],"second":["Phil 3:17-4:1 or 3:20-4:1"],"gospel":["Luke 9:28b-36"]}},"Lent3":{"n":"3rd Sunday of Lent","A":{"first":["Exod 17:3-7"],"psalm":["Ps 95:1-2, 6-7b, 7c-9"],"second":["Rom 5:1-2, 5-8"],"gospel":["John 4:5-42 or 4:5-15, 19b-26, 39a, 40-42"]},"B":{"first":["Exod 20:1-17 or 20:1-3, 7-8, 12-17"],"psalm":["Ps 19:8, 9, 10, 11"],"second":["1 Cor 1:22-25"],"gospel":["John 2:13-25"]},"C":{"first":["Exod 3:1-8a, 13-15"],"psalm":["Ps 103:1-2, 3-4, 6-7, 8+11"],"second":["1 Cor 10:1-6, 10-12"],"gospel":["Luke 13:1-9"]}},"Lent4":{"n":"4th Sunday of Lent","A":{"first":["1 Sam 16:1b, 6-7, 10-13a"],"psalm":["Ps 23:1-3a, 3b-4, 5, 6"],"second":["Eph 5:8-14"],"gospel":["John 9:1-41 or 9:1, 6-9, 13-17, 34-38"]},"B":{"first":["2 Chr 36:14-16, 19-23"],"psalm":["Ps 137:1-2, 3, 4-5, 6"],"second":["Eph 2:4-10"],"gospel":["John 3:14-21"]},"C":{"first":["Josh 5:9a, 10-12"],"psalm":["Ps 34:2-3, 4-5, 6-7"],"second":["2 Cor 5:17-21"],"gospel":["Luke 15:1-3, 11-32"]}},"Lent5":{"n":"5th Sunday of Lent","A":{"first":["Ezek 37:12-14"],"psalm":["Ps 130:1-2, 3-4, 5-6, 7-8"],"second":["Rom 8:8-11"],"gospel":["John 11:1-45 or 11:3-7, 17, 20-27, 33b-45"]},"B":{"first":["Jer 31:31-34"],"psalm":["Ps 51:3-4, 12-13, 14-15"],"second":["Heb 5:7-9"],"gospel":["John 12:20-33"]},"C":{"first":["Isa 43:16-21"],"psalm":["Ps 126:1-2a, 2b-3, 4-5, 6"],"second":["Phil 3:8-14"],"gospel":["John 8:1-11"]}},"PalmSunday":{"n":"Palm Sunday of the Lord's Passion","A":{"first":["Isa 50:4-7"],"psalm":["Ps 22:8-9, 17-18, 19-20, 23-24"],"second":["Phil 2:6-11"],"gospel":["Matt 26:14-27:66 or 27:11-54"]},"B":{"first":["Isa 50:4-7"],"psalm":["Ps 22:8-9, 17-18, 19-20, 23-24"],"second":["Phil 2:6-11"],"gospel":["Mark 14:1-15:47 or 15:1-39"]},"C":{"first":["Isa 50:4-7"],"psalm":["Ps 22:8-9, 17-18, 19-20, 23-24"],"second":["Phil 2:6-11"],"gospel":["Luke 22:14-23:56 or 23:1-49"]}},"HolyThursday":{"n":"Holy Thursday · Lord's Supper","A":{"first":["Exod 12:1-8, 11-14"],"psalm":["Ps 116:12-13, 15-16, 17-18"],"second":["1 Cor 11:23-26"],"gospel":["John 13:1-15"]},"B":{"first":["Exod 12:1-8, 11-14"],"psalm":["Ps 116:12-13, 15-16, 17-18"],"second":["1 Cor 11:23-26"],"gospel":["John 13:1-15"]},"C":{"first":["Exod 12:1-8, 11-14"],"psalm":["Ps 116:12-13, 15-16, 17-18"],"second":["1 Cor 11:23-26"],"gospel":["John 13:1-15"]}},"GoodFriday":{"n":"Good Friday","A":{"first":["Isa 52:13-53:12"],"psalm":["Ps 31:2+6, 12-13, 15-16, 17+25"],"second":["Heb 4:14-16; 5:7-9"],"gospel":["John 18:1-19:42"]},"B":{"first":["Isa 52:13-53:12"],"psalm":["Ps 31:2+6, 12-13, 15-16, 17+25"],"second":["Heb 4:14-16; 5:7-9"],"gospel":["John 18:1-19:42"]},"C":{"first":["Isa 52:13-53:12"],"psalm":["Ps 31:2+6, 12-13, 15-16, 17+25"],"second":["Heb 4:14-16; 5:7-9"],"gospel":["John 18:1-19:42"]}},"EasterVigil":{"n":"Easter Vigil","A":{"first":["Gen 1:1-2:2 or 1:1, 26-31a","Gen 22:1-18 or 22:1-2, 9a, 10-13, 15-18","Exod 14:15-15:1","Isa 54:5-14","Isa 55:1-11","Bar 3:9-15, 3:32-4:4","Ezek 36:16-17a, 18-28","Bar 3:9-15, 32-4:4"],"psalm":["Ps 104 (or 33)","Ps 16","Exod 15","Ps 30","Isa 12","Ps 19","Ps 42-43 (or Isa 12, Ps 51)","Ps 118"],"second":["Rom 6:3-11"],"gospel":["Matt 28:1-10"]},"B":{"first":["Gen 1:1-2:2 or 1:1, 26-31a","Gen 22:1-18 or 22:1-2, 9a, 10-13, 15-18","Exod 14:15-15:1","Isa 54:5-14","Isa 55:1-11","Bar 3:9-15, 3:32-4:4","Ezek 36:16-17a, 18-28","Bar 3:9-15, 32-4:4"],"psalm":["Ps 104 (or 33)","Ps 16","Exod 15","Ps 30","Isa 12","Ps 19","Ps 42-43 (or Isa 12, Ps 51)","Ps 118"],"second":["Rom 6:3-11"],"gospel":["Mark 16:1-7"]},"C":{"first":["Gen 1:1-2:2 or 1:1, 26-31a","Gen 22:1-18 or 22:1-2, 9a, 10-13, 15-18","Exod 14:15-15:1","Isa 54:5-14","Isa 55:1-11","Bar 3:9-15, 3:32-4:4","Ezek 36:16-17a, 18-28","Bar 3:9-15, 32-4:4"],"psalm":["Ps 104 (or 33)","Ps 16","Exod 15","Ps 30","Isa 12","Ps 19","Ps 42-43 (or Isa 12, Ps 51)","Ps 118"],"second":["Rom 6:3-11"],"gospel":["Luke 24:1-12"]}},"Easter":{"n":"Easter Sunday","A":{"first":["Acts 10:34a, 37-43"],"psalm":["Ps 118:1-2, 16-17, 22-23"],"second":["Col 3:1-4 or 1 Cor 5:6b-8"],"gospel":["John 20:1-9"]},"B":{"first":["Acts 10:34a, 37-43"],"psalm":["Ps 118:1-2, 16-17, 22-23"],"second":["Col 3:1-4 or 1 Cor 5:6b-8"],"gospel":["John 20:1-9"]},"C":{"first":["Acts 10:34a, 37-43"],"psalm":["Ps 118:1-2, 16-17, 22-23"],"second":["Col 3:1-4 or 1 Cor 5:6b-8"],"gospel":["John 20:1-9"]}},"Easter2":{"n":"2nd Sunday of Easter","A":{"first":["Acts 2:42-47"],"psalm":["Ps 118:2-4, 13-15, 22-24"],"second":["1 Pet 1:3-9"],"gospel":["John 20:19-31"]},"B":{"first":["Acts 4:32-35"],"psalm":["Ps 118:2-4, 13-15, 22-24"],"second":["1 John 5:1-6"],"gospel":["John 20:19-31"]},"C":{"first":["Acts 5:12-16"],"psalm":["Ps 118:2-4, 13-15, 22-24"],"second":["Rev 1:9-11a, 12-13, 17-19"],"gospel":["John 20:19-31"]}},"Easter3":{"n":"3rd Sunday of Easter","A":{"first":["Acts 2:14, 22-33"],"psalm":["Ps 16:1-2a+5, 7-8, 9-10, 11"],"second":["1 Pet 1:17-21"],"gospel":["Luke 24:13-35"]},"B":{"first":["Acts 3:13-15, 17-19"],"psalm":["Ps 4:2, 4, 7-8, 9"],"second":["1 John 2:1-5a"],"gospel":["Luke 24:35-48"]},"C":{"first":["Acts 5:27-32, 40b-41"],"psalm":["Ps 30:2+4, 5-6, 11-12a+13b"],"second":["Rev 5:11-14"],"gospel":["John 21:1-19 or 21:1-14"]}},"Easter4":{"n":"4th Sunday of Easter","A":{"first":["Acts 2:14a, 36-41"],"psalm":["Ps 23:1-3a, 3b-4, 5, 6"],"second":["1 Pet 2:20b-25"],"gospel":["John 10:1-10"]},"B":{"first":["Acts 4:8-12"],"psalm":["Ps 118:1+8-9, 21-23, 26+21+29"],"second":["1 John 3:1-2"],"gospel":["John 10:11-18"]},"C":{"first":["Acts 13:14, 43-52"],"psalm":["Ps 100:1-2, 3, 5"],"second":["Rev 7:9, 14b-17"],"gospel":["John 10:27-30"]}},"Easter5":{"n":"5th Sunday of Easter","A":{"first":["Acts 6:1-7"],"psalm":["Ps 33:1-2, 4-5, 18-19"],"second":["1 Pet 2:4-9"],"gospel":["John 14:1-12"]},"B":{"first":["Acts 9:26-31"],"psalm":["Ps 22:26-27, 28+30, 31-32"],"second":["1 John 3:18-24"],"gospel":["John 15:1-8"]},"C":{"first":["Acts 14:21-27"],"psalm":["Ps 145:8-9, 10-11, 12-13"],"second":["Rev 21:1-5a"],"gospel":["John 13:31-33a, 34-35"]}},"Easter6":{"n":"6th Sunday of Easter","A":{"first":["Acts 8:5-8, 14-17"],"psalm":["Ps 66:1-3, 4-5, 6-7, 16+20"],"second":["1 Pet 3:15-18"],"gospel":["John 14:15-21"]},"B":{"first":["Acts 10:25-26, 34-35, 44-48"],"psalm":["Ps 98:1, 2-3a, 3b-4"],"second":["1 John 4:7-10"],"gospel":["John 15:9-17"]},"C":{"first":["Acts 15:1-2, 22-29"],"psalm":["Ps 67:2-3, 5, 6+8"],"second":["Rev 21:10-14, 22-23"],"gospel":["John 14:23-29"]}},"Ascension":{"n":"Ascension (Thursday)","A":{"first":["Acts 1:1-11"],"psalm":["Ps 47:2-3, 6-7, 8-9"],"second":["Eph 1:17-23"],"gospel":["Matt 28:16-20"]},"B":{"first":["Acts 1:1-11"],"psalm":["Ps 47:2-3, 6-7, 8-9"],"second":["Eph 1:17-23","Eph 4:1-13 or 4:1-7, 11-13"],"gospel":["Mark 16:15-20"]},"C":{"first":["Acts 1:1-11"],"psalm":["Ps 47:2-3, 6-7, 8-9"],"second":["Eph 1:17-23","Heb 9:24-28; 10:19-23"],"gospel":["Luke 24:46-53"]}},"Easter7":{"n":"7th Sunday of Easter","A":{"first":["Acts 1:12-14"],"psalm":["Ps 27:1, 4, 7-8"],"second":["1 Pet 4:13-16"],"gospel":["John 17:1-11a"]},"B":{"first":["Acts 1:15-17, 20a, 20c-26"],"psalm":["Ps 103:1-2, 11-12, 19-20"],"second":["1 John 4:11-16"],"gospel":["John 17:11b-19"]},"C":{"first":["Acts 7:55-60"],"psalm":["Ps 97:1-2, 6-7, 9"],"second":["Rev 22:12-14, 16-17, 20"],"gospel":["John 17:20-26"]}},"PentecostVigil":{"n":"Pentecost · Vigil Mass","A":{"first":["Gen 11:1-9","Exod 19:3-8a, 16-20b","Ezek 37:1-14","Joel 3:1-5"],"psalm":["Ps 104:1-2, 24+35, 27-28, 29b-30"],"second":["Rom 8:22-27"],"gospel":["John 7:37-39"]},"B":{"first":["Gen 11:1-9","Exod 19:3-8a, 16-20b","Ezek 37:1-14","Joel 3:1-5"],"psalm":["Ps 104:1-2, 24+35, 27-28, 29b-30"],"second":["Rom 8:22-27"],"gospel":["John 7:37-39"]},"C":{"first":["Gen 11:1-9","Exod 19:3-8a, 16-20b","Ezek 37:1-14","Joel 3:1-5"],"psalm":["Ps 104:1-2, 24+35, 27-28, 29b-30"],"second":["Rom 8:22-27"],"gospel":["John 7:37-39"]}},"Pentecost":{"n":"Pentecost Sunday","A":{"first":["Acts 2:1-11"],"psalm":["Ps 104:1+24, 29-30, 31+34"],"second":["1 Cor 12:3b-7, 12-13"],"gospel":["John 20:19-23"]},"B":{"first":["Acts 2:1-11"],"psalm":["Ps 104:1+24, 29-30, 31+34"],"second":["1 Cor 12:3b-7, 12-13","Gal 5:16-25"],"gospel":["John 20:19-23","John 15:26-27; 16:12-15"]},"C":{"first":["Acts 2:1-11"],"psalm":["Ps 104:1+24, 29-30, 31+34"],"second":["1 Cor 12:3b-7, 12-13","Rom 8:8-17"],"gospel":["John 20:19-23","John 14:15-16, 23b-26"]}},"OT2":{"n":"2nd Sunday in Ordinary Time","A":{"first":["Isa 49:3, 5-6"],"psalm":["Ps 40:2+4, 7-8a, 8b-9, 10"],"second":["1 Cor 1:1-3"],"gospel":["John 1:29-34"]},"B":{"first":["1 Sam 3:3b-10, 19"],"psalm":["Ps 40:2+4, 7-8a, 8b-9, 10"],"second":["1 Cor 6:13c-15a, 17-20"],"gospel":["John 1:35-42"]},"C":{"first":["Isa 62:1-5"],"psalm":["Ps 96:1-2a, 2b-3, 7-8, 9-10"],"second":["1 Cor 12:4-11"],"gospel":["John 2:1-11"]}},"OT3":{"n":"3rd Sunday in Ordinary Time","A":{"first":["Isa 8:23b-9:3"],"psalm":["Ps 27:1, 4, 13-14"],"second":["1 Cor 1:10-13, 17"],"gospel":["Matt 4:12-23 or 4:12-17"]},"B":{"first":["Jonah 3:1-5, 10"],"psalm":["Ps 25:4-5, 6-7, 8-9"],"second":["1 Cor 7:29-31"],"gospel":["Mark 1:14-20"]},"C":{"first":["Neh 8:2-4a, 5-6, 8-10"],"psalm":["Ps 19:8, 9, 10, 15"],"second":["1 Cor 12:12-30 or 12:12-14, 27"],"gospel":["Luke 1:1-4; 4:14-21","Luke 4:14-21 (with 1:1-4; see 69-C)"]}},"OT4":{"n":"4th Sunday in Ordinary Time","A":{"first":["Zeph 2:3; 3:12-13"],"psalm":["Ps 146:6c-7, 8-9a, 9b-10"],"second":["1 Cor 1:26-31"],"gospel":["Matt 5:1-12a"]},"B":{"first":["Deut 18:15-20"],"psalm":["Ps 95:1-2, 6-7b, 7c-9"],"second":["1 Cor 7:32-35"],"gospel":["Mark 1:21-28"]},"C":{"first":["Jer 1:4-5, 17-19"],"psalm":["Ps 71:1-2, 3-4, 5-6, 15+17"],"second":["1 Cor 12:31-13:13 or 13:4-13"],"gospel":["Luke 4:21-30"]}},"OT5":{"n":"5th Sunday in Ordinary Time","A":{"first":["Isa 58:7-10"],"psalm":["Ps 112:4-5, 6-7, 8-9"],"second":["1 Cor 2:1-5"],"gospel":["Matt 5:13-16"]},"B":{"first":["Job 7:1-4, 6-7"],"psalm":["Ps 147:1-2, 3-4, 5-6"],"second":["1 Cor 9:16-19, 22-23"],"gospel":["Mark 1:29-39"]},"C":{"first":["Isa 6:1-2a, 3-8"],"psalm":["Ps 138:1-2a, 2b-3, 4-5, 7-8"],"second":["1 Cor 15:1-11 or 15:3-8, 11"],"gospel":["Luke 5:1-11"]}},"OT6":{"n":"6th Sunday in Ordinary Time","A":{"first":["Sir 15:16-21"],"psalm":["Ps 119:1-2, 4-5, 17-18, 33-34"],"second":["1 Cor 2:6-10"],"gospel":["Matt 5:17-37 or 5:20-22a, 27-28, 33-34a, 37"]},"B":{"first":["Lev 13:1-2, 44-46"],"psalm":["Ps 32:1-2, 5, 11"],"second":["1 Cor 10:31-11:1"],"gospel":["Mark 1:40-45"]},"C":{"first":["Jer 17:5-8"],"psalm":["Ps 1:1-2, 3, 4+6"],"second":["1 Cor 15:12, 16-20"],"gospel":["Luke 6:17, 20-26"]}},"OT7":{"n":"7th Sunday in Ordinary Time","A":{"first":["Lev 19:1-2, 17-18"],"psalm":["Ps 103:1-2, 3-4, 8+10, 12-13"],"second":["1 Cor 3:16-23"],"gospel":["Matt 5:38-48"]},"B":{"first":["Isa 43:18-19, 21-22, 24b-25"],"psalm":["Ps 41:2-3, 4-5, 13-14"],"second":["2 Cor 1:18-22"],"gospel":["Mark 2:1-12"]},"C":{"first":["1 Sam 26:2, 7-9, 12-13, 22-23"],"psalm":["Ps 103:1-2, 3-4, 8+10, 12-13"],"second":["1 Cor 15:45-49"],"gospel":["Luke 6:27-38"]}},"OT8":{"n":"8th Sunday in Ordinary Time","A":{"first":["Isa 49:14-15"],"psalm":["Ps 62:2-3, 6-7, 8-9"],"second":["1 Cor 4:1-5"],"gospel":["Matt 6:24-34"]},"B":{"first":["Hos 2:16b, 17b, 21-22"],"psalm":["Ps 103:1-2, 3-4, 8+10, 12-13"],"second":["2 Cor 3:1b-6"],"gospel":["Mark 2:18-22"]},"C":{"first":["Sir 27:5-8"],"psalm":["Ps 92:2-3, 13-14, 15-16"],"second":["1 Cor 15:54-58"],"gospel":["Luke 6:39-45"]}},"OT9":{"n":"9th Sunday in Ordinary Time","A":{"first":["Deut 11:18, 26-28, 32"],"psalm":["Ps 31:2-3a, 3b-4, 17+25"],"second":["Rom 3:21-25, 28"],"gospel":["Matt 7:21-27"]},"B":{"first":["Deut 5:12-15"],"psalm":["Ps 81:3-4, 5-6, 7-8, 10-11"],"second":["2 Cor 4:6-11"],"gospel":["Mark 2:23-3:6 or 2:23-28"]},"C":{"first":["1 Kgs 8:41-43"],"psalm":["Ps 117:1, 2"],"second":["Gal 1:1-2, 6-10"],"gospel":["Luke 7:1-10"]}},"OT10":{"n":"10th Sunday in Ordinary Time","A":{"first":["Hos 6:3-6"],"psalm":["Ps 50:1+8, 12-13, 14-15"],"second":["Rom 4:18-25"],"gospel":["Matt 9:9-13"]},"B":{"first":["Gen 3:9-15"],"psalm":["Ps 130:1-2, 3-4, 5-6, 7-8"],"second":["2 Cor 4:13-5:1"],"gospel":["Mark 3:20-35"]},"C":{"first":["1 Kgs 17:17-24"],"psalm":["Ps 30:2+4, 5-6, 11-12a+13b"],"second":["Gal 1:11-19"],"gospel":["Luke 7:11-17"]}},"OT11":{"n":"11th Sunday in Ordinary Time","A":{"first":["Exod 19:2-6a"],"psalm":["Ps 100:1-2, 3, 5"],"second":["Rom 5:6-11"],"gospel":["Matt 9:36-10:8"]},"B":{"first":["Ezek 17:22-24"],"psalm":["Ps 92:2-3, 13-14, 15-16"],"second":["2 Cor 5:6-10"],"gospel":["Mark 4:26-34"]},"C":{"first":["2 Sam 12:7-10, 13"],"psalm":["Ps 32:1-2, 5, 7, 11"],"second":["Gal 2:16, 19-21"],"gospel":["Luke 7:36-8:3 or 7:36-50"]}},"OT12":{"n":"12th Sunday in Ordinary Time","A":{"first":["Jer 20:10-13"],"psalm":["Ps 69:8-10, 14+17, 33-35"],"second":["Rom 5:12-15"],"gospel":["Matt 10:26-33"]},"B":{"first":["Job 38:1, 8-11"],"psalm":["Ps 107:23-24, 25-26, 28-29, 30-31"],"second":["2 Cor 5:14-17"],"gospel":["Mark 4:35-41"]},"C":{"first":["Zech 12:10-11; 13:1"],"psalm":["Ps 63:2, 3-4, 5-6, 8-9"],"second":["Gal 3:26-29"],"gospel":["Luke 9:18-24"]}},"OT13":{"n":"13th Sunday in Ordinary Time","A":{"first":["2 Kgs 4:8-11, 14-16a"],"psalm":["Ps 89:2-3, 16-17, 18-19"],"second":["Rom 6:3-4, 8-11"],"gospel":["Matt 10:37-42"]},"B":{"first":["Wis 1:13-15; 2:23-24"],"psalm":["Ps 30:2+4, 5-6, 11-12a+13b"],"second":["2 Cor 8:7, 9, 13-15"],"gospel":["Mark 5:21-43 or 5:21-24, 35-43"]},"C":{"first":["1 Kgs 19:16b, 19-21"],"psalm":["Ps 16:1-2a+5, 7-8, 9-10, 11"],"second":["Gal 5:1, 13-18"],"gospel":["Luke 9:51-62"]}},"OT14":{"n":"14th Sunday in Ordinary Time","A":{"first":["Zech 9:9-10"],"psalm":["Ps 145:1-2, 8-9, 10-11, 13-14"],"second":["Rom 8:9, 11-13"],"gospel":["Matt 11:25-30"]},"B":{"first":["Ezek 2:2-5"],"psalm":["Ps 123:1-2a, 2bc, 3-4"],"second":["2 Cor 12:7-10"],"gospel":["Mark 6:1-6"]},"C":{"first":["Isa 66:10-14c"],"psalm":["Ps 66:1-3, 4-5, 6-7, 16+20"],"second":["Gal 6:14-18"],"gospel":["Luke 10:1-12, 17-20 or 10:1-9"]}},"OT15":{"n":"15th Sunday in Ordinary Time","A":{"first":["Isa 55:10-11"],"psalm":["Ps 65:10, 11, 12-13, 14"],"second":["Rom 8:18-23"],"gospel":["Matt 13:1-23 or 13:1-9"]},"B":{"first":["Amos 7:12-15"],"psalm":["Ps 85:9ab+10, 11-12, 13-14"],"second":["Eph 1:3-14 or 1:3-10"],"gospel":["Mark 6:7-13"]},"C":{"first":["Deut 30:10-14"],"psalm":["Ps 19:8, 9, 10, 11","Ps 69:14+17, 30-31, 33-34, 36a+37"],"second":["Col 1:15-20"],"gospel":["Luke 10:25-37"]}},"OT16":{"n":"16th Sunday in Ordinary Time","A":{"first":["Wis 12:13, 16-19"],"psalm":["Ps 86:5-6, 9-10, 15-16"],"second":["Rom 8:26-27"],"gospel":["Matt 13:24-43 or 13:24-30"]},"B":{"first":["Jer 23:1-6"],"psalm":["Ps 23:1-3a, 3b-4, 5, 6"],"second":["Eph 2:13-18"],"gospel":["Mark 6:30-34"]},"C":{"first":["Gen 18:1-10a"],"psalm":["Ps 15:2-3a, 3b-4, 5"],"second":["Col 1:24-28"],"gospel":["Luke 10:38-42"]}},"OT17":{"n":"17th Sunday in Ordinary Time","A":{"first":["1 Kgs 3:5, 7-12"],"psalm":["Ps 119:57+72, 76-77, 127-128, 129-130"],"second":["Rom 8:28-30"],"gospel":["Matt 13:44-52 or 13:44-46"]},"B":{"first":["2 Kgs 4:42-44"],"psalm":["Ps 145:10-11, 15-16, 17-18"],"second":["Eph 4:1-6"],"gospel":["John 6:1-15"]},"C":{"first":["Gen 18:20-32"],"psalm":["Ps 138:1-2a, 2b-3, 6-7a, 7b-8"],"second":["Col 2:12-14"],"gospel":["Luke 11:1-13"]}},"OT18":{"n":"18th Sunday in Ordinary Time","A":{"first":["Isa 55:1-3"],"psalm":["Ps 145:8-9, 15-16, 17-18"],"second":["Rom 8:35, 37-39"],"gospel":["Matt 14:13-21"]},"B":{"first":["Exod 16:2-4, 12-15"],"psalm":["Ps 78:3-4, 23-24, 25+54"],"second":["Eph 4:17, 20-24"],"gospel":["John 6:24-35"]},"C":{"first":["Eccl 1:2; 2:21-23"],"psalm":["Ps 90:3-4, 5-6, 12-13, 14+17"],"second":["Col 3:1-5, 9-11"],"gospel":["Luke 12:13-21"]}},"OT19":{"n":"19th Sunday in Ordinary Time","A":{"first":["1 Kgs 19:9a, 11-13a"],"psalm":["Ps 85:9ab+10, 11-12, 13-14"],"second":["Rom 9:1-5"],"gospel":["Matt 14:22-33"]},"B":{"first":["1 Kgs 19:4-8"],"psalm":["Ps 34:2-3, 4-5, 6-7, 8-9"],"second":["Eph 4:30-5:2"],"gospel":["John 6:41-51"]},"C":{"first":["Wis 18:6-9"],"psalm":["Ps 33:1+12, 18-19, 20-22"],"second":["Heb 11:1-2, 8-19 or 11:1-2, 8-12"],"gospel":["Luke 12:32-48 or 12:35-40"]}},"OT20":{"n":"20th Sunday in Ordinary Time","A":{"first":["Isa 56:1, 6-7"],"psalm":["Ps 67:2-3, 5, 6+8"],"second":["Rom 11:13-15, 29-32"],"gospel":["Matt 15:21-28"]},"B":{"first":["Prov 9:1-6"],"psalm":["Ps 34:2-3, 4-5, 6-7"],"second":["Eph 5:15-20"],"gospel":["John 6:51-58"]},"C":{"first":["Jer 38:4-6, 8-10"],"psalm":["Ps 40:2, 3, 4, 18"],"second":["Heb 12:1-4"],"gospel":["Luke 12:49-53"]}},"OT21":{"n":"21st Sunday in Ordinary Time","A":{"first":["Isa 22:19-23"],"psalm":["Ps 138:1-2a, 2b-3, 6+8"],"second":["Rom 11:33-36"],"gospel":["Matt 16:13-20"]},"B":{"first":["Josh 24:1-2a, 15-17, 18b"],"psalm":["Ps 34:2-3, 16-17, 18-19, 20-21"],"second":["Eph 5:21-32 or 5:2a, 25-32"],"gospel":["John 6:60-69"]},"C":{"first":["Isa 66:18-21"],"psalm":["Ps 117:1, 2"],"second":["Heb 12:5-7, 11-13"],"gospel":["Luke 13:22-30"]}},"OT22":{"n":"22nd Sunday in Ordinary Time","A":{"first":["Jer 20:7-9"],"psalm":["Ps 63:2, 3-4, 5-6, 8-9"],"second":["Rom 12:1-2"],"gospel":["Matt 16:21-27"]},"B":{"first":["Deut 4:1-2, 6-8"],"psalm":["Ps 15:2-3a, 3b-4a, 4b-5"],"second":["Jas 1:17-18, 21b-22, 27"],"gospel":["Mark 7:1-8, 14-15, 21-23"]},"C":{"first":["Sir 3:17-18, 20, 28-29"],"psalm":["Ps 68:4-5, 6-7, 10-11"],"second":["Heb 12:18-19, 22-24a"],"gospel":["Luke 14:1, 7-14"]}},"OT23":{"n":"23rd Sunday in Ordinary Time","A":{"first":["Ezek 33:7-9"],"psalm":["Ps 95:1-2, 6-7b, 7c-9"],"second":["Rom 13:8-10"],"gospel":["Matt 18:15-20"]},"B":{"first":["Isa 35:4-7a"],"psalm":["Ps 146:6c-7, 8-9a, 9b-10"],"second":["Jas 2:1-5"],"gospel":["Mark 7:31-37"]},"C":{"first":["Wis 9:13-18b"],"psalm":["Ps 90:3-4, 5-6, 12-13, 14+17"],"second":["Phlm 9-10, 12-17"],"gospel":["Luke 14:25-33"]}},"OT24":{"n":"24th Sunday in Ordinary Time","A":{"first":["Sir 27:30-28:7"],"psalm":["Ps 103:1-2, 3-4, 9-10, 11-12"],"second":["Rom 14:7-9"],"gospel":["Matt 18:21-35"]},"B":{"first":["Isa 50:4-9a"],"psalm":["Ps 116:1-2, 3-4, 5-6, 8-9"],"second":["Jas 2:14-18"],"gospel":["Mark 8:27-35"]},"C":{"first":["Exod 32:7-11, 13-14"],"psalm":["Ps 51:3-4, 12-13, 17+19"],"second":["1 Tim 1:12-17"],"gospel":["Luke 15:1-32 or 15:1-10"]}},"OT25":{"n":"25th Sunday in Ordinary Time","A":{"first":["Isa 55:6-9"],"psalm":["Ps 145:2-3, 8-9, 17-18"],"second":["Phil 1:20c-24, 27a"],"gospel":["Matt 20:1-16a"]},"B":{"first":["Wis 2:12, 17-20"],"psalm":["Ps 54:3-4, 5, 6-8"],"second":["Jas 3:16-4:3"],"gospel":["Mark 9:30-37"]},"C":{"first":["Amos 8:4-7"],"psalm":["Ps 113:1-2, 4-6, 7-8"],"second":["1 Tim 2:1-8"],"gospel":["Luke 16:1-13 or 16:10-13"]}},"OT26":{"n":"26th Sunday in Ordinary Time","A":{"first":["Ezek 18:25-28"],"psalm":["Ps 25:4-5, 6-7, 8-9"],"second":["Phil 2:1-11 or 2:1-5"],"gospel":["Matt 21:28-32"]},"B":{"first":["Num 11:25-29"],"psalm":["Ps 19:8, 10, 12-13, 14"],"second":["Jas 5:1-6"],"gospel":["Mark 9:38-43, 45, 47-48"]},"C":{"first":["Amos 6:1a, 4-7"],"psalm":["Ps 146:6c-7, 8-9a, 9b-10"],"second":["1 Tim 6:11-16"],"gospel":["Luke 16:19-31"]}},"OT27":{"n":"27th Sunday in Ordinary Time","A":{"first":["Isa 5:1-7"],"psalm":["Ps 80:9+12, 13-14, 15-16, 19-20"],"second":["Phil 4:6-9"],"gospel":["Matt 21:33-43"]},"B":{"first":["Gen 2:18-24"],"psalm":["Ps 128:1-2, 3, 4-5, 6"],"second":["Heb 2:9-11"],"gospel":["Mark 10:2-16 or 10:2-12"]},"C":{"first":["Hab 1:2-3; 2:2-4"],"psalm":["Ps 95:1-2, 6-7b, 7c-9"],"second":["2 Tim 1:6-8, 13-14"],"gospel":["Luke 17:5-10"]}},"OT28":{"n":"28th Sunday in Ordinary Time","A":{"first":["Isa 25:6-10a"],"psalm":["Ps 23:1-3a, 3b-4, 5, 6"],"second":["Phil 4:12-14, 19-20"],"gospel":["Matt 22:1-14 or 22:1-10"]},"B":{"first":["Wis 7:7-11"],"psalm":["Ps 90:12-13, 14-15, 16-17"],"second":["Heb 4:12-13"],"gospel":["Mark 10:17-30 or 10:17-27"]},"C":{"first":["2 Kgs 5:14-17"],"psalm":["Ps 98:1, 2-3a, 3b-4"],"second":["2 Tim 2:8-13"],"gospel":["Luke 17:11-19"]}},"OT29":{"n":"29th Sunday in Ordinary Time","A":{"first":["Isa 45:1, 4-6"],"psalm":["Ps 96:1+3, 4-5, 7-8, 9-10"],"second":["1 Thess 1:1-5b"],"gospel":["Matt 22:15-21"]},"B":{"first":["Isa 53:10-11"],"psalm":["Ps 33:4-5, 18-19, 20+22"],"second":["Heb 4:14-16"],"gospel":["Mark 10:35-45 or 10:42-45"]},"C":{"first":["Exod 17:8-13"],"psalm":["Ps 121:1-2, 3-4, 5-6, 7-8"],"second":["2 Tim 3:14-4:2"],"gospel":["Luke 18:1-8"]}},"OT30":{"n":"30th Sunday in Ordinary Time","A":{"first":["Exod 22:20-26"],"psalm":["Ps 18:2-3a, 3b-4, 47+51"],"second":["1 Thess 1:5c-10"],"gospel":["Matt 22:34-40"]},"B":{"first":["Jer 31:7-9"],"psalm":["Ps 126:1-2a, 2b-3, 4-5, 6"],"second":["Heb 5:1-6"],"gospel":["Mark 10:46-52"]},"C":{"first":["Sir 35:12-14, 16-18"],"psalm":["Ps 34:2-3, 17-18, 19+23"],"second":["2 Tim 4:6-8, 16-18"],"gospel":["Luke 18:9-14"]}},"OT31":{"n":"31st Sunday in Ordinary Time","A":{"first":["Mal 1:14b-2:2b, 8-10"],"psalm":["Ps 131:1, 2, 3"],"second":["1 Thess 2:7b-9, 13"],"gospel":["Matt 23:1-12"]},"B":{"first":["Deut 6:2-6"],"psalm":["Ps 18:2-3a, 3b-4, 47+51"],"second":["Heb 7:23-28"],"gospel":["Mark 12:28b-34"]},"C":{"first":["Wis 11:22-12:2"],"psalm":["Ps 145:1-2, 8-9, 10-11, 13b-14"],"second":["2 Thess 1:11-2:2"],"gospel":["Luke 19:1-10"]}},"OT32":{"n":"32nd Sunday in Ordinary Time","A":{"first":["Wis 6:12-16"],"psalm":["Ps 63:2, 3-4, 5-6, 7-8"],"second":["1 Thess 4:13-18 or 4:13-14"],"gospel":["Matt 25:1-13"]},"B":{"first":["1 Kgs 17:10-16"],"psalm":["Ps 146:6c-7, 8-9a, 9b-10"],"second":["Heb 9:24-28"],"gospel":["Mark 12:38-44 or 12:41-44"]},"C":{"first":["2 Macc 7:1-2, 9-14"],"psalm":["Ps 17:1, 5-6, 8+15"],"second":["2 Thess 2:16-3:5"],"gospel":["Luke 20:27-38 or 20:27, 34-38"]}},"OT33":{"n":"33rd Sunday in Ordinary Time","A":{"first":["Prov 31:10-13, 19-20, 30-31"],"psalm":["Ps 128:1-2, 3, 4-5"],"second":["1 Thess 5:1-6"],"gospel":["Matt 25:14-30 or 25:14-15, 19-21"]},"B":{"first":["Dan 12:1-3"],"psalm":["Ps 16:5+8, 9-10, 11"],"second":["Heb 10:11-14, 18"],"gospel":["Mark 13:24-32"]},"C":{"first":["Mal 3:19-20a"],"psalm":["Ps 98:5-6, 7-8, 9"],"second":["2 Thess 3:7-12"],"gospel":["Luke 21:5-19"]}},"ChristKing":{"n":"Christ the King (34th Sunday)","A":{"first":["Ezek 34:11-12, 15-17"],"psalm":["Ps 23:1-2a, 2b-3, 5, 6"],"second":["1 Cor 15:20-26, 28"],"gospel":["Matt 25:31-46"]},"B":{"first":["Dan 7:13-14"],"psalm":["Ps 93:1a, 1b-2, 5"],"second":["Rev 1:5-8"],"gospel":["John 18:33b-37"]},"C":{"first":["2 Sam 5:1-3"],"psalm":["Ps 122:1-2, 3-4a, 4b-5"],"second":["Col 1:12-20"],"gospel":["Luke 23:35-43"]}},"Trinity":{"n":"Most Holy Trinity","A":{"first":["Exod 34:4b-6, 8-9"],"psalm":["Dan 3:52, 53, 54, 55"],"second":["2 Cor 13:11-13"],"gospel":["John 3:16-18"]},"B":{"first":["Deut 4:32-34, 39-40"],"psalm":["Ps 33:4-5, 6+9, 18-19, 20+22"],"second":["Rom 8:14-17"],"gospel":["Matt 28:16-20"]},"C":{"first":["Prov 8:22-31"],"psalm":["Ps 8:4-5, 6-7, 8-9"],"second":["Rom 5:1-5"],"gospel":["John 16:12-15"]}},"CorpusChristi":{"n":"Body and Blood of Christ (Thursday)","A":{"first":["Deut 8:2-3, 14b-16a"],"psalm":["Ps 147:12-13, 14-15, 19-20"],"second":["1 Cor 10:16-17"],"gospel":["John 6:51-58"]},"B":{"first":["Exod 24:3-8"],"psalm":["Ps 116:12-13, 15-16, 17-18"],"second":["Heb 9:11-15"],"gospel":["Mark 14:12-16, 22-26"]},"C":{"first":["Gen 14:18-20"],"psalm":["Ps 110:1, 2, 3, 4"],"second":["1 Cor 11:23-26"],"gospel":["Luke 9:11b-17"]}},"SacredHeart":{"n":"Most Sacred Heart of Jesus","A":{"first":["Deut 7:6-11"],"psalm":["Ps 103:1-2, 3-4, 6-7, 8+10"],"second":["1 John 4:7-16"],"gospel":["Matt 11:25-30"]},"B":{"first":["Hos 11:1, 3-4, 8c-9"],"psalm":["Isa 12:2-3, 4bcd, 5-6"],"second":["Eph 3:8-12, 14-19"],"gospel":["John 19:31-37"]},"C":{"first":["Ezek 34:11-16"],"psalm":["Ps 23:1-3a, 3b-4, 5, 6"],"second":["Rom 5:5b-11"],"gospel":["Luke 15:3-7"]}},"AshWed":{"n":"Ash Wednesday","A":{"first":["Joel 2:12-18"],"psalm":["Ps 51:3-4, 5-6ab, 12-13, 14+17"],"second":["2 Cor 5:20-6:2"],"gospel":["Matt 6:1-6, 16-18"]},"B":{"first":["Joel 2:12-18"],"psalm":["Ps 51:3-4, 5-6ab, 12-13, 14+17"],"second":["2 Cor 5:20-6:2"],"gospel":["Matt 6:1-6, 16-18"]},"C":{"first":["Joel 2:12-18"],"psalm":["Ps 51:3-4, 5-6ab, 12-13, 14+17"],"second":["2 Cor 5:20-6:2"],"gospel":["Matt 6:1-6, 16-18"]}},"Presentation":{"n":"Presentation of the Lord","A":{"first":["Mal 3:1-4"],"psalm":["Ps 24:7, 8, 9, 10"],"second":["Heb 2:14-18"],"gospel":["Luke 2:22-40 or 2:22-32"]},"B":{"first":["Mal 3:1-4"],"psalm":["Ps 24:7, 8, 9, 10"],"second":["Heb 2:14-18"],"gospel":["Luke 2:22-40 or 2:22-32"]},"C":{"first":["Mal 3:1-4"],"psalm":["Ps 24:7, 8, 9, 10"],"second":["Heb 2:14-18"],"gospel":["Luke 2:22-40 or 2:22-32"]}},"StJoseph":{"n":"St Joseph","A":{"first":["2 Sam 7:4-5a, 12-14a, 16"],"psalm":["Ps 89:2-3, 4-5, 27, 29"],"second":["Rom 4:13, 16-18, 22"],"gospel":["Matt 1:16, 18-21, 24a or Luke 2:41-51a"]},"B":{"first":["2 Sam 7:4-5a, 12-14a, 16"],"psalm":["Ps 89:2-3, 4-5, 27, 29"],"second":["Rom 4:13, 16-18, 22"],"gospel":["Matt 1:16, 18-21, 24a or Luke 2:41-51a"]},"C":{"first":["2 Sam 7:4-5a, 12-14a, 16"],"psalm":["Ps 89:2-3, 4-5, 27, 29"],"second":["Rom 4:13, 16-18, 22"],"gospel":["Matt 1:16, 18-21, 24a or Luke 2:41-51a"]}},"Annunciation":{"n":"Annunciation","A":{"first":["Isa 7:10-14; 8:10"],"psalm":["Ps 40:7-8, 8-9, 10, 11"],"second":["Heb 10:4-10"],"gospel":["Luke 1:26-38"]},"B":{"first":["Isa 7:10-14; 8:10"],"psalm":["Ps 40:7-8, 8-9, 10, 11"],"second":["Heb 10:4-10"],"gospel":["Luke 1:26-38"]},"C":{"first":["Isa 7:10-14; 8:10"],"psalm":["Ps 40:7-8, 8-9, 10, 11"],"second":["Heb 10:4-10"],"gospel":["Luke 1:26-38"]}},"JohnBaptist":{"n":"Nativity of St John the Baptist","A":{"first":["Isa 49:1-6"],"psalm":["Ps 139:1-3, 13-14, 14-15"],"second":["Acts 13:22-26"],"gospel":["Luke 1:57-66, 80"]},"B":{"first":["Isa 49:1-6"],"psalm":["Ps 139:1-3, 13-14, 14-15"],"second":["Acts 13:22-26"],"gospel":["Luke 1:57-66, 80"]},"C":{"first":["Isa 49:1-6"],"psalm":["Ps 139:1-3, 13-14, 14-15"],"second":["Acts 13:22-26"],"gospel":["Luke 1:57-66, 80"]}},"PeterPaul":{"n":"Sts Peter and Paul","A":{"first":["Acts 12:1-11"],"psalm":["Ps 34:2-3, 4-5, 6-7, 8-9"],"second":["2 Tim 4:6-8, 17-18"],"gospel":["Matt 16:13-19"]},"B":{"first":["Acts 12:1-11"],"psalm":["Ps 34:2-3, 4-5, 6-7, 8-9"],"second":["2 Tim 4:6-8, 17-18"],"gospel":["Matt 16:13-19"]},"C":{"first":["Acts 12:1-11"],"psalm":["Ps 34:2-3, 4-5, 6-7, 8-9"],"second":["2 Tim 4:6-8, 17-18"],"gospel":["Matt 16:13-19"]}},"Transfiguration":{"n":"Transfiguration","A":{"first":["Dan 7:9-10, 13-14"],"psalm":["Ps 97:1-2, 5-6, 9"],"second":["2 Pet 1:16-19"],"gospel":["Matt 17:1-9"]},"B":{"first":["Dan 7:9-10, 13-14"],"psalm":["Ps 97:1-2, 5-6, 9"],"second":["2 Pet 1:16-19"],"gospel":["Mark 9:2-10"]},"C":{"first":["Dan 7:9-10, 13-14"],"psalm":["Ps 97:1-2, 5-6, 9"],"second":["2 Pet 1:16-19"],"gospel":["Luke 9:28b-36"]}},"Assumption":{"n":"Assumption","A":{"first":["Rev 11:19a; 12:1-6a, 10ab"],"psalm":["Ps 45:10, 11, 12, 16"],"second":["1 Cor 15:20-27"],"gospel":["Luke 1:39-56"]},"B":{"first":["Rev 11:19a; 12:1-6a, 10ab"],"psalm":["Ps 45:10, 11, 12, 16"],"second":["1 Cor 15:20-27"],"gospel":["Luke 1:39-56"]},"C":{"first":["Rev 11:19a; 12:1-6a, 10ab"],"psalm":["Ps 45:10, 11, 12, 16"],"second":["1 Cor 15:20-27"],"gospel":["Luke 1:39-56"]}},"AllSaints":{"n":"All Saints","A":{"first":["Rev 7:2-4, 9-14"],"psalm":["Ps 24:1-2, 3-4, 5-6"],"second":["1 John 3:1-3"],"gospel":["Matt 5:1-12a"]},"B":{"first":["Rev 7:2-4, 9-14"],"psalm":["Ps 24:1-2, 3-4, 5-6"],"second":["1 John 3:1-3"],"gospel":["Matt 5:1-12a"]},"C":{"first":["Rev 7:2-4, 9-14"],"psalm":["Ps 24:1-2, 3-4, 5-6"],"second":["1 John 3:1-3"],"gospel":["Matt 5:1-12a"]}},"AllSouls":{"n":"All Souls","A":{"first":["Wis 3:1-9 (or other options)"],"psalm":["Ps 23 (or 25, 27)"],"second":["Rom 5:5-11 (or other options)"],"gospel":["John 6:37-40 (or other options)"]},"B":{"first":["Wis 3:1-9 (or other options)"],"psalm":["Ps 23 (or 25, 27)"],"second":["Rom 5:5-11 (or other options)"],"gospel":["John 6:37-40 (or other options)"]},"C":{"first":["Wis 3:1-9 (or other options)"],"psalm":["Ps 23 (or 25, 27)"],"second":["Rom 5:5-11 (or other options)"],"gospel":["John 6:37-40 (or other options)"]}},"Immaculate":{"n":"Immaculate Conception","A":{"first":["Gen 3:9-15, 20"],"psalm":["Ps 98:1, 2-3, 3-4"],"second":["Eph 1:3-6, 11-12"],"gospel":["Luke 1:26-38"]},"B":{"first":["Gen 3:9-15, 20"],"psalm":["Ps 98:1, 2-3, 3-4"],"second":["Eph 1:3-6, 11-12"],"gospel":["Luke 1:26-38"]},"C":{"first":["Gen 3:9-15, 20"],"psalm":["Ps 98:1, 2-3, 3-4"],"second":["Eph 1:3-6, 11-12"],"gospel":["Luke 1:26-38"]}},"Christmas2":{"n":"2nd Sunday after the Nativity","A":{"first":["Sir 24:1-4, 12-16"],"psalm":["Ps 147:12-13, 14-15, 19-20"],"second":["Eph 1:3-6, 15-18"],"gospel":["John 1:1-18 or 1:1-5, 9-14"]},"B":{"first":["Sir 24:1-4, 12-16"],"psalm":["Ps 147:12-13, 14-15, 19-20"],"second":["Eph 1:3-6, 15-18"],"gospel":["John 1:1-18 or 1:1-5, 9-14"]},"C":{"first":["Sir 24:1-4, 12-16"],"psalm":["Ps 147:12-13, 14-15, 19-20"],"second":["Eph 1:3-6, 15-18"],"gospel":["John 1:1-18 or 1:1-5, 9-14"]}}},"H":{"Adv1":{"r":"Jer 33:14-16","b":"match","f":"Advent 1, Year C"},"Adv2":{"r":"Isa 35:1-6a, 10","b":"match","f":"Advent 3, Year A"},"Adv3":{"r":"Isa 61:1-2a, 10-11","b":"match","f":"Advent 3, Year B"},"Adv4":{"r":"Bar 5:1-9","b":"match","f":"Advent 2, Year C"},"Christmas-Midnight":{"r":"Isa 9:1-6","b":"match","f":"Christmas at Night"},"Christmas-Dawn":{"r":"Isa 62:11-12","b":"match","f":"Christmas at Dawn"},"Christmas-Day":{"r":"Isa 52:7-10","b":"match","f":"Christmas during the Day"},"SunOctChristmas":{"r":"Mal 3:1-4","b":"match","f":"Presentation of the Lord"},"Jan1":{"r":"Num 6:22-27","b":"match","f":"Mary, Mother of God"},"HolyName":{"r":"Exod 3:13-15","b":"chosen","f":"from Lent 3, Year C (Exod 3:1-8a, 13-15)"},"Epiphany":{"r":"Eph 3:2-3a, 5-6","b":"apostle","f":"Epiphany"},"HolyFamily":{"r":"Sir 3:3-7, 14-17a","b":"match","f":"Holy Family"},"Epi2":{"r":"Isa 62:1-5","b":"match","f":"Ordinary Time 2, Year C"},"Epi3":{"r":"Lev 13:1-2, 44-46","b":"parallel","f":"Ordinary Time 6, Year B"},"Epi4":{"r":"Job 38:1, 8-11","b":"parallel","f":"Ordinary Time 12, Year B"},"Epi5":{"r":"Wis 12:13, 16-19","b":"match","f":"Ordinary Time 16, Year A"},"Epi6":{"r":"Ezek 17:22-24","b":"parallel","f":"Ordinary Time 11, Year B"},"Septuagesima":{"r":"Isa 55:6-9","b":"match","f":"Ordinary Time 25, Year A"},"Sexagesima":{"r":"Isa 55:10-11","b":"parallel","f":"Ordinary Time 15, Year A"},"Quinquagesima":{"r":"Jer 31:7-9","b":"parallel","f":"Ordinary Time 30, Year B"},"AshWed":{"r":"2 Cor 5:20-6:2","b":"apostle","f":"Ash Wednesday"},"Lent1":{"r":"Gen 2:7-9; 3:1-7","b":"match","f":"Lent 1, Year A"},"Lent2":{"r":"Gen 12:1-4a","b":"match","f":"Lent 2, Year A"},"Lent3":{"r":"Jer 7:23-28","b":"match","f":"Lent, Week 3, Thursday"},"Lent4":{"r":"2 Kgs 4:42-44","b":"match","f":"Ordinary Time 17, Year B"},"Lent5":{"r":"Gen 17:3-9","b":"match","f":"Lent, Week 5, Thursday"},"PalmSunday":{"r":"Isa 50:4-7","b":"match","f":"Palm Sunday"},"HolyThursday":{"r":"Exod 12:1-8, 11-14","b":"match","f":"Holy Thursday"},"GoodFriday":{"r":"Isa 52:13-53:12","b":"match","f":"Good Friday"},"Easter":{"r":"Acts 10:34a, 37-43","b":"acts","f":"Easter Sunday"},"Pasc1":{"r":"Acts 2:42-47","b":"acts","f":"Easter 2, Year A"},"Pasc2":{"r":"Acts 2:14a, 36-41","b":"acts","f":"Easter 4, Year A"},"Pasc3":{"r":"Acts 2:14, 22-33","b":"acts","f":"Easter 3, Year A"},"Pasc4":{"r":"Acts 16:22-34","b":"acts","f":"Easter, Week 6, Tuesday"},"Pasc5":{"r":"Acts 4:23-31","b":"acts","f":"Easter, Week 2, Monday"},"Ascension":{"r":"Eph 1:17-23","b":"apostle","f":"Ascension"},"SunAfterAscension":{"r":"Acts 1:12-14","b":"acts","f":"Easter 7, Year A"},"Pentecost":{"r":"1 Cor 12:3b-7, 12-13","b":"apostle","f":"Pentecost"},"Trinity":{"r":"Deut 4:32-34, 39-40","b":"match","f":"Trinity, Year B"},"CorpusChristi":{"r":"Deut 8:2-3, 14b-16a","b":"chosen","f":"Corpus Christi, Year A"},"SacredHeart":{"r":"Hos 11:1, 3-4, 8c-9","b":"match","f":"Sacred Heart, Year B"},"Pent2":{"r":"Prov 9:1-6","b":"chosen","f":"Ordinary Time 20, Year B"},"Pent3":{"r":"Ezek 34:11-16","b":"chosen","f":"Sacred Heart, Year C"},"Pent4":{"r":"Isa 6:1-2a, 3-8","b":"match","f":"Ordinary Time 5, Year C"},"Pent5":{"r":"Sir 15:16-21","b":"match","f":"Ordinary Time 6, Year A"},"Pent6":{"r":"Exod 16:2-4, 12-15","b":"chosen","f":"Ordinary Time 18, Year B"},"Pent7":{"r":"Deut 11:18, 26-28, 32","b":"match","f":"Ordinary Time 9, Year A"},"Pent8":{"r":"Amos 8:4-7","b":"match","f":"Ordinary Time 25, Year C"},"Pent9":{"r":"Jer 7:1-11","b":"chosen","f":"Ordinary Time, Week 16, Saturday (Year II)"},"Pent10":{"r":"Sir 35:12-14, 16-18","b":"match","f":"Ordinary Time 30, Year C"},"Pent11":{"r":"Isa 35:4-7a","b":"match","f":"Ordinary Time 23, Year B"},"Pent12":{"r":"Deut 30:10-14","b":"match","f":"Ordinary Time 15, Year C"},"Pent13":{"r":"2 Kgs 5:14-17","b":"match","f":"Ordinary Time 28, Year C"},"Pent14":{"r":"Isa 49:14-15","b":"match","f":"Ordinary Time 8, Year A"},"Pent15":{"r":"1 Kgs 17:17-24","b":"match","f":"Ordinary Time 10, Year C"},"Pent16":{"r":"Sir 3:17-18, 20, 28-29","b":"match","f":"Ordinary Time 22, Year C"},"Pent17":{"r":"Deut 6:2-6","b":"parallel","f":"Ordinary Time 31, Year B"},"Pent18":{"r":"Isa 43:18-19, 21-22, 24b-25","b":"parallel","f":"Ordinary Time 7, Year B"},"Pent19":{"r":"Isa 25:6-10a","b":"match","f":"Ordinary Time 28, Year A"},"Pent20":{"r":"Isa 65:17-21","b":"match","f":"Lent, Week 4, Monday"},"Pent21":{"r":"Sir 27:30-28:7","b":"match","f":"Ordinary Time 24, Year A"},"Pent22":{"r":"Isa 45:1, 4-6","b":"match","f":"Ordinary Time 29, Year A"},"Pent23":{"r":"Wis 1:13-15; 2:23-24","b":"parallel","f":"Ordinary Time 13, Year B"},"Pent24":{"r":"Dan 12:1-3","b":"parallel","f":"Ordinary Time 33, Year B"},"Presentation":{"r":"Heb 2:14-18","b":"apostle","f":"Presentation"},"StJoseph":{"r":"Rom 4:13, 16-18, 22","b":"apostle","f":"St Joseph"},"Annunciation":{"r":"Heb 10:4-10","b":"apostle","f":"Annunciation"},"JohnBaptist":{"r":"Acts 13:22-26","b":"apostle","f":"John the Baptist"},"PeterPaul":{"r":"2 Tim 4:6-8, 17-18","b":"apostle","f":"Sts Peter and Paul"},"Transfiguration":{"r":"Dan 7:9-10, 13-14","b":"match","f":"Transfiguration"},"Assumption":{"r":"1 Cor 15:20-27","b":"apostle","f":"Assumption"},"ChristKing":{"r":"Dan 7:13-14","b":"match","f":"Christ the King, Year B"},"AllSaints":{"r":"Zeph 2:3; 3:12-13","b":"parallel","f":"Ordinary Time 4, Year A"},"AllSouls":{"r":"Wis 3:1-9","b":"match","f":"All Souls"},"Immaculate":{"r":"Eph 1:3-6, 11-12","b":"apostle","f":"Immaculate Conception"},"PentEpi3":{"r":"Lev 13:1-2, 44-46","b":"parallel","f":"Ordinary Time 6, Year B"},"PentEpi4":{"r":"Job 38:1, 8-11","b":"parallel","f":"Ordinary Time 12, Year B"},"PentEpi5":{"r":"Wis 12:13, 16-19","b":"match","f":"Ordinary Time 16, Year A"},"PentEpi6":{"r":"Ezek 17:22-24","b":"parallel","f":"Ordinary Time 11, Year B"}}}</script>
@@ -1032,7 +1047,7 @@ window.LitDate=(()=>{
    first time a service is opened and in the background once the page is idle. The standalone build inlines them,
    so service() resolves at once. */
 window.LectLoad=(()=>{
- const url="service.js?v=85f4a5dc2e"; let p=null;
+ const url="service.js?v=6997455926"; let p=null;
  function service(){
   if(window.LectMass||!url) return Promise.resolve();
   return p||(p=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=url; s.onload=()=>res(); s.onerror=()=>{ p=null; s.remove(); rej(new Error("The service code could not load.")); }; document.head.appendChild(s); }));
@@ -1042,21 +1057,49 @@ window.LectLoad=(()=>{
  return {service};
 })();
 /* Offline use (sw.js). The worker caches the page and whatever is opened; save() fetches every calendar year, data
-   file and Bible ahead of time. Browsers under automation (the tests) register it only when asked to. */
+   file and Bible ahead of time, and save(fn, key) one Office pack (breviary/<key>/). Browsers under automation (the
+   tests) register it only when asked to. A badge shows while the browser is offline, saying what is kept. */
 window.LectOffline=(()=>{
  const ok="serviceWorker" in navigator&&window.isSecureContext&&/^https?:$/.test(location.protocol);
  let wantTest=false; try{ wantTest=localStorage.getItem("lect-sw")==="1"; }catch(e){}
  const ready=ok&&(!navigator.webdriver||wantTest)?navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).catch(()=>null):Promise.resolve(null);
- let savedKey="lect-offline-saved";
- const saved=()=>{ try{ return localStorage.getItem(savedKey); }catch(e){ return null; } };
- async function save(onProgress){
+ /* The Office packs and their sizes in MB: assemble.py checks them against breviary/ when it writes sw.js. */
+ const PACKS={br62:20,br55:25,mon:19,op:11};
+ const PACK_NAMES={br62:"1962 Breviary",br55:"Pre-1955 Breviary",mon:"Monastic Office",op:"Dominican Office"};
+ const keyOf=pack=>"lect-offline-saved"+(pack?":"+pack:"");
+ const saved=pack=>{ try{ return localStorage.getItem(keyOf(pack)); }catch(e){ return null; } };
+ const listeners=new Set(), changed=()=>{ listeners.forEach(f=>{ try{ f(); }catch(e){} }); badge(); };
+ async function save(onProgress,pack){
   const reg=await ready; const sw=reg&&(reg.active||navigator.serviceWorker.controller);
   if(!sw) throw new Error("This browser cannot keep the site for offline use.");
   return new Promise(res=>{ const ch=new MessageChannel();
-   ch.port1.onmessage=e=>{ onProgress&&onProgress(e.data); if(e.data.finished){ try{ localStorage.setItem(savedKey,new Date().toISOString().slice(0,10)); }catch(err){} res(e.data); } };
-   sw.postMessage({type:"save"},[ch.port2]); });
+   ch.port1.onmessage=e=>{ onProgress&&onProgress(e.data); if(e.data.finished){ if(!e.data.failed){ try{ localStorage.setItem(keyOf(pack),new Date().toISOString().slice(0,10)); }catch(err){} } changed(); res(e.data); } };
+   sw.postMessage({type:"save",pack:pack||null},[ch.port2]); });
  }
- return {supported:ok, ready, save, saved};
+ const packs=()=>Object.keys(PACKS).map(k=>({key:k,name:PACK_NAMES[k]||k,mb:PACKS[k],saved:saved(k)}));
+ /* What is kept, in a sentence: for the badge and the settings. */
+ function summary(){
+  const s=saved(), P=packs().filter(p=>p.saved).map(p=>p.name);
+  return s?`Saved ${s}: every calendar, lectionary and Bible${P.length?", and the "+P.join(", "):""}.`:"Only the services and readings you have already opened are kept.";
+ }
+ function badge(){
+  let el=document.getElementById("offline-badge");
+  if(navigator.onLine!==false){ if(el) el.hidden=true; return; }
+  if(!el){ el=document.createElement("p"); el.id="offline-badge"; el.setAttribute("role","status"); document.body.appendChild(el); }
+  el.hidden=false; el.innerHTML=`<b>Offline</b> · ${summary().replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}`;
+ }
+ window.addEventListener("online",badge); window.addEventListener("offline",badge);
+ const start=()=>{ badge(); const d=document.getElementById("offline-use"); if(d) d.addEventListener("toggle",()=>{ if(d.open) panel(d.querySelector(".offline-panel")); }); };
+ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",start); else start();
+ /* The footer's "Offline use" panel: the main save and one button per Office pack. */
+ function panel(el){
+  if(!ok){ el.innerHTML='<p class="note">This browser cannot keep the site for offline use.</p>'; return; }
+  const row=(pack,label)=>`<li><button type="button" data-offline="${pack||""}">${saved(pack)?"Update":"Save"}</button> ${label}${saved(pack)?` · saved ${saved(pack)}`:""}</li>`;
+  el.innerHTML=`<p class="note">${summary()}</p><ul class="offline-list">${row("","Calendars, lectionaries, data and Bibles (about 24 MB)")}${packs().map(p=>row(p.key,`${p.name} (about ${p.mb} MB)`)).join("")}</ul>`;
+  el.querySelectorAll("button[data-offline]").forEach(b=>b.addEventListener("click",()=>{ const pack=b.dataset.offline||null; b.disabled=true;
+   save(p=>{ b.textContent=`${p.done} of ${p.total}`; },pack).then(p=>{ if(p.failed){ b.disabled=false; b.textContent="Try again"; b.title=`${p.failed} files could not be fetched`; } else panel(el); }).catch(err=>{ b.disabled=false; b.textContent=err.message; }); }));
+ }
+ return {supported:ok, ready, save, saved, packs, summary, panel, onChange:f=>listeners.add(f)};
 })();
 /* The day table (tools/build_days.py) is split by year into days/<year>.json; days/2026.json also holds
    Advent 2025. LectDays.load(iso) fetches the year of a date (and, in January or December, the year beside it,
@@ -1701,6 +1744,51 @@ function ambDay(isoS){
    naming the day's keys (several when two observances meet), whether a weekday takes its Sunday's lessons, and
    what to say when there are none. A church whose current calendar is not bundled offers it as a choice: SOURCES
    holds that calendar's link and note, and the choice is kept in localStorage under "lect-calendar-<rite>". */
+/* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
+   Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
+   without a festival keeps the propers of the Sunday before it. */
+function mercDay(iso){
+  const d=date(iso), Y=d.getUTCFullYear(), md=(d.getUTCMonth()+1)*100+d.getUTCDate(), dow=d.getUTCDay();
+  const off=Math.round((d-easter(Y))/DAY);
+  const FIX={1225:"christmas",1226:"stephen",1227:"john",1228:"innocents",101:"circumcision",106:"epiphany"};
+  const MOV={"-46":"ash","-2":"goodfriday","-1":"eastereve","1":"eastermon","39":"ascension","50":"whitmonday"};
+  if(MOV[off]) return {k:MOV[off],fest:true};
+  if(FIX[md]&&(dow||md===1225||md===101||md===106)) return {k:FIX[md],fest:true};
+  const s=new Date(d-dow*DAY), SY=s.getUTCFullYear(), E=easter(SY), so=Math.round((s-E)/DAY), A1=advent(SY), smd=(s.getUTCMonth()+1)*100+s.getUTCDate();
+  const r=k=>({k,fest:false,weekday:!!dow});
+  if(s>=A1&&smd<1225) return r("adv"+(Math.round((s-A1)/DAY/7)+1));
+  if(smd>=1225) return r(smd===1225?"christmas":"xmas1");
+  if(smd<106) return r("xmas2");
+  if(so<-63){ const ep=Date.UTC(SY,0,6), first=ep+((7-new Date(ep).getUTCDay())%7||7)*DAY; return r(s<first?"epiphany":"epi"+Math.min(6,Math.round((s-first)/DAY/7)+1)); }
+  const PRE={"-63":"septuagesima","-56":"sexagesima","-49":"quinquagesima","-42":"lent1","-35":"lent2","-28":"lent3","-21":"lent4","-14":"lent5","-7":"palm","0":"easter","7":"easter1","14":"easter2","21":"easter3","28":"easter4","35":"easter5","42":"exaudi","49":"whitsunday","56":"trinity"};
+  if(PRE[so]) return r(PRE[so]);
+  if(so<56) return r("ash");
+  const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
+  return r(N-n<4?"ba"+(N-n+1):"trin"+n);
+}
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
+function rcaLessonDay(T,iso){
+  const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
+  const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
+  const d=date(iso), E=easter(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=(d.getUTCMonth()+1)*100+d.getUTCDate();
+  if(md===1225) return pick(T.christmas.christmas,"Christmas");
+  if(md===101) return pick(T.christmas.circumcision,"The Circumcision");
+  if(off===-2) return pick(T.easter.goodfriday,"Good Friday");
+  if(off===39) return pick(T.easter.ascension,"Ascension Day");
+  const s=new Date(d-d.getUTCDay()*DAY), SY=s.getUTCFullYear(), so=Math.round((s-easter(SY))/DAY), A1=advent(SY), xm=new Date(Date.UTC(SY,11,25));
+  if(s>=A1&&s<xm){ const n=4-Math.round((s-A1)/DAY/7); return pick(T.christmas.before[n],`The ${N[n]} Sunday before Christmas`); }
+  if(s>=xm||so<-63){ const xs=s>=xm?xm:new Date(Date.UTC(SY-1,11,25)), n=Math.ceil((s-xs)/DAY/7);
+    return n<1?pick(T.christmas.christmas,"Christmas"):pick(T.christmas.after[n],`The ${N[n]} Sunday after Christmas`); }
+  if(so<0) return pick(T.easter.before[-so/7],`The ${N[-so/7]} Sunday before Easter`);
+  if(so===0) return pick(T.easter.easter,"Easter");
+  if(so<=35) return pick(T.easter.after[so/7],`The ${N[so/7]} Sunday after Easter`);
+  if(so===42) return pick(T.pentecost.before,"The Sunday before Pentecost");
+  if(so===49) return pick(T.pentecost.pentecost,"Pentecost");
+  return pick(T.pentecost.after[(so-49)/7],`The ${N[(so-49)/7]} Sunday after Pentecost`);
+}
 const TABLES={
  adai:{file:'data/eastsyriac-1894.json', src:'East Syrian Lectionary · Maclean 1894', num:'k', tr:'kj',
   calendar:iso=>({keys:esyDay(iso), empty:'No lessons are appointed in the Liturgy for this day.'}),
@@ -1709,16 +1797,34 @@ const TABLES={
  a:{file:'data/ambrosian-1954.json', src:'Ambrosian Missal · 1954', num:'v', tr:'dr',
   calendar:iso=>{const [k,weekday]=ambDay(iso);return {keys:k?[k]:[],weekday,empty:k===null&&date(iso).getUTCDay()===5?'The Fridays of Lent are aliturgical in the Ambrosian rite: no Mass is said.':'The 1954 Missal has no proper lessons for this day in the table here: the Mass of the saint or a votive Mass is said.'};},
   note:T=>'The lessons of the Ambrosian Missal of 1954 (the last edition before the reform), on its own calendar: '+T.method,
-  choice:{alt:'current', options:[['1954','Ambrosian Missal of 1954 · historical table'],['current','Current Ambrosian calendar (Milan) · enter citations']]}}
+  choice:{alt:'current', options:[['1954','Ambrosian Missal of 1954 · historical table'],['current','Current Ambrosian calendar (Milan) · enter citations']]}},
+ rca:{file:'data/rca1882-lessons.json', src:'Reformed Church in America Liturgy (1882) · Order of Scripture Lessons', num:'k', tr:'kj', own:true,
+  cols:{ot:'The Lesson from the Old Testament',nt:'The Lesson from the New Testament'},
+  read:(T,iso)=>{const L=rcaLessonDay(T,iso);return {days:L?[{t:L.t,r:[['ot',L.m[0]],['nt',L.m[1]]]}]:[],more:L?`Evening: ${L.e.join('; ')}.`:'',raw:L,empty:'The Order of Scripture Lessons appoints nothing for this day.'};},
+  note:()=>'The Order of Scripture Lessons of the Reformed Church in America’s Liturgy (1882).'},
+ rcus:{file:'data/mercersburg.json', src:'Mercersburg Order of Worship (1866)', num:'k', tr:'kj', own:true,
+  cols:{gos:'The Gospel',ep:'The Epistle'},
+  read:(T,iso)=>{const D=mercDay(iso),P=T.propers[D.k],L=T.lessons[D.k];
+   return {days:P?[{t:P.t,r:[['gos',P.g],['ep',P.e]]}]:[],weekday:D.weekday&&!D.fest,day:D,propers:P,lessons:L,
+    more:L?`Table of lessons, morning: ${L.m.join('; ')}; evening: ${L.e.join('; ')}.`:'',empty:'The Order of Worship has no propers for this day.'};},
+  note:()=>'The Gospel and Epistle of the Mercersburg Order of Worship (1866).'}
 };
+TABLES.rcusv=TABLES.rcus;
 const choiceOf=rite=>{const C=TABLES[rite]?.choice;if(!C)return null;try{return localStorage.getItem('lect-calendar-'+rite)===C.alt?C.alt:C.options[0][0];}catch(e){return C.options[0][0];}};
+/* One day of a table on its own calendar: {T, K, names, items:[{lab, cite, num, tr, slot}]}. A table either keys its
+   days by the calendar (calendar → keys into T.days) or reads its own data shape (read → days of {t, r}). */
+async function tableDay(rite,iso){
+ const L=TABLES[rite],T=await json(L.file),K=L.read?L.read(T,iso):L.calendar(iso),items=[],names=[];
+ const days=K.days||K.keys.map(k=>{const D=T.days[k];return D&&D.as?{...T.days[D.as],t:D.t}:D;});
+ for(const D of days){if(!D)continue;names.push(D.t);
+  for(const [col,cite,ver] of D.r||[]){if(!cite)continue;const dr=(ver||L.tr)==='dr';items.push({lab:(T.cols||L.cols)[col],cite,num:dr?'v':L.num,tr:dr?'dr':'kj',slot:/^gos/.test(col)?'gospel':'lessons'});}}
+ return {T,K,names,items};
+}
 /* The day's lessons from a table: {src, url, title, note, items:[{lab, cite, num, tr, slot}]} */
 async function fromTable(rite,c){
  const L=TABLES[rite];
  if(L.choice&&choiceOf(rite)===L.choice.alt){const [src,url,note]=SOURCES[rite];return {src,url,note,items:[]};}
- const T=await json(L.file),K=L.calendar(c.iso),items=[],names=[];
- for(const k of K.keys){let D=T.days[k];if(!D)continue;names.push(D.t);if(D.as)D={...T.days[D.as],t:D.t};
-  for(const [col,cite,ver] of D.r||[]){const dr=(ver||L.tr)==='dr';items.push({lab:T.cols[col],cite,num:dr?'v':L.num,tr:dr?'dr':'kj',slot:/^gos/.test(col)?'gospel':'lessons'});}}
+ const {T,K,names,items}=await tableDay(rite,c.iso);
  const title=names.join(' · ')+(names.length&&K.weekday?' (the Sunday)':'');
  const note=L.note(T)+(K.weekday&&names.length?' This weekday takes the lessons of the Sunday.':'')+(names.length?'':' '+K.empty);
  return {src:L.src,url:T.url,title,note:note.trim(),items};
@@ -1730,7 +1836,7 @@ function custom(c){const rows=local(c);return rows.length?{src:'Your readings fo
 async function appointments(c){
  if(c.rite==='bcp79')return c.type==='office'?pb79(c,true,/^ep/.test(c.hour||'')):calendarMode()==='1979'?pb79(c):currentEpiscopal(c);
  if(c.rite==='copt')return coptic(c);
- if(TABLES[c.rite])return fromTable(c.rite,c);
+ if(TABLES[c.rite]&&!TABLES[c.rite].own)return fromTable(c.rite,c);   /* own: the service prints the book's lessons itself */
  if(c.rite==='byz'||/^byz[vmhc]$/.test(c.rite))return byzantine(c,c.hour||c.rite);
  if(SOURCES[c.rite]){const [src,url,note]=SOURCES[c.rite];return {src,url,note,items:[]};}
  return null;
@@ -1781,7 +1887,7 @@ async function mount(el,c,reader,reload){
  });
  el.querySelector('.lesson-clear').addEventListener('click',()=>{try{localStorage.removeItem(storageKey(c));reload();}catch(e){el.querySelector('.lesson-status').textContent='Local storage is unavailable.';}});
 }
-window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,ambDay,ambrosian,fromTable,TABLES,appointments,custom,html,mount,officeKey,psalmRefs};
+window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,ambDay,mercDay,rcaLessonDay,ambrosian,fromTable,tableDay,TABLES,appointments,custom,html,mount,officeKey,psalmRefs};
 })();
 </script>
 <script>
@@ -1904,591 +2010,6 @@ window.LectP2P={
   use(name){ return name==="db"?Promise.resolve(db):name==="room"?Promise.resolve(room):Promise.reject(fail("unavailable")); },
   active:true
 };
-})();
-</script>
-<script>
-/* ================================================================ SESSION TOOLS
-   Timer, live sessions (shared position for a group), role views, chat script export,
-   read-aloud and the printable booklet. Works on any page the Mass / Office guide renders. */
-(function(){
-"use strict";
-const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const mmss=sec=>{ sec=Math.max(0,Math.round(sec)); const h=Math.floor(sec/3600), m=Math.floor(sec%3600/60), s=sec%60; return (h?h+":"+String(m).padStart(2,"0"):m)+":"+String(s).padStart(2,"0"); };
-const ls={ get(k,d){ try{ const v=localStorage.getItem(k); return v==null?d:JSON.parse(v); }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} } };
-const P2P=!(window.claude&&window.claude.use)&&!!window.LectP2P;   // public build: sessions run browser to browser
-const cap=name=>(window.claude&&window.claude.use)?window.claude.use(name).catch(()=>null):P2P?window.LectP2P.use(name).catch(()=>null):Promise.resolve(null);
-
-let M=null, EL=null;                                   // current mount
-let VIEW=ls.get("lect-view",{role:"",only:false,follow:true});
-let RUN={key:"",on:false,acc:0,t0:0,h:null,cur:-1,active:false};    // local timer (host or solo)
-let LIVE={mode:null,code:"",unsub:null,doc:null,last:"",room:null,peers:0,peerList:[],myPeer:"",msg:"",cast:{},play:null,playTs:0,castSeen:"",me:{name:ls.get("lect-name",""),ready:false}};
-let SOUND={on:false};
-let PRES={open:false,i:0,slides:[],lang:"en",follow:true,part:-1};
-let SPEAK={on:false,paused:false,items:[],i:0,wait:null,rate:ls.get("lect-rate",1),mine:ls.get("lect-mine","wait")};
-let PANEL="";                                          // open panel: live | script | speak | ""
-
-/* ---------------------------------------------------------------- mount */
-function mount(el, m){
-  speakStop(); M=m; EL=el;
-  if(window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()&&VIEW.role==='cel'){VIEW.role="";VIEW.only=false;ls.set("lect-view",VIEW);}
-  const key=[m.ctx.rite,m.ctx.hour||"",m.ctx.iso].join("|");
-  if(RUN.key!==key){ stopTimer(); RUN={key,on:false,acc:0,t0:0,h:null,cur:-1,active:false}; }
-  RUN.cur=-1;
-  const speakOK="speechSynthesis" in window && typeof SpeechSynthesisUtterance!=="undefined";
-  const roleOpts=Object.entries(m.roles).filter(([k])=>k!=="cel"||!window.LectParticipation.catholicMass(m)||window.LectParticipation.isPriest()).map(([k,v])=>`<option value="${k}"${VIEW.role===k?" selected":""}>${esc(v)}</option>`).join("");
-  el.querySelector(".tools-timer").innerHTML=timerHTML();
-  el.querySelector(".tools-bar").innerHTML=`
-    <div class="tbar" role="toolbar" aria-label="Session tools">
-      <label class="sl tsel">My part <select id="tRole"><option value="">Everyone</option>${roleOpts}</select></label>
-      <label class="ck"><input type="checkbox" id="tOnly"${VIEW.only?" checked":""}${VIEW.role?"":" disabled"}> Only my parts</label>
-      <span class="tsp"></span>
-      <button type="button" class="tbtn ghost" data-panel="live" aria-expanded="${PANEL==="live"}">${LIVE.mode==="host"?"Live · hosting":LIVE.mode==="follow"?"Live · following":"Live session"}</button>
-      <button type="button" class="tbtn ghost" id="tPresent">Present</button>
-      <button type="button" class="tbtn ghost" data-panel="script" aria-expanded="${PANEL==="script"}">Chat script</button>
-      ${speakOK?`<button type="button" class="tbtn ghost" data-panel="speak" aria-expanded="${PANEL==="speak"}">Read aloud</button>`:""}
-      <button type="button" class="tbtn ghost" id="tPrint">Print</button>
-      <button type="button" class="tbtn ghost" id="tBook">Save booklet</button>
-    </div>
-    <div class="tpanel" id="tPanel"${PANEL?"":" hidden"}></div>`;
-  applyView();
-  el.querySelector("#tRole").addEventListener("change",e=>{ VIEW.role=e.target.value; if(VIEW.role==="cel"&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()){VIEW.role="";e.target.value="";} if(!VIEW.role) VIEW.only=false; ls.set("lect-view",VIEW); el.querySelector("#tOnly").disabled=!VIEW.role; el.querySelector("#tOnly").checked=VIEW.only; applyView(); presence(); if(PANEL==="script") renderPanel(); });
-  el.querySelector("#tOnly").addEventListener("change",e=>{ VIEW.only=e.target.checked; ls.set("lect-view",VIEW); applyView(); });
-  el.querySelectorAll("[data-panel]").forEach(b=>b.addEventListener("click",()=>{ PANEL=PANEL===b.dataset.panel?"":b.dataset.panel; el.querySelectorAll("[data-panel]").forEach(x=>x.setAttribute("aria-expanded",String(PANEL===x.dataset.panel))); renderPanel(); }));
-  el.querySelector("#tPrint").addEventListener("click",printNow);
-  el.querySelector("#tPresent").addEventListener("click",()=>presentOpen());
-  el.querySelector(".mbody").addEventListener("click",musicClick);
-  el.querySelector("#tBook").addEventListener("click",saveBooklet);
-  wireTimer();
-  renderPanel();
-  if(LIVE.mode==="host") hostPublish(false);
-  if(LIVE.mode==="follow" && LIVE.doc) applyRemote(LIVE.doc,true);
-  tick();
-  if(PRES.open) presentOpen(true);
-}
-
-/* ---------------------------------------------------------------- role views */
-function applyView(){
-  const body=EL&&EL.querySelector(".mbody"); if(!body) return;
-  if(VIEW.role) body.setAttribute("data-view",VIEW.role); else body.removeAttribute("data-view");
-  body.toggleAttribute("data-only",!!(VIEW.role&&VIEW.only));
-}
-
-/* ---------------------------------------------------------------- timer */
-function timerHTML(){
-  if(LIVE.mode==="follow") return `<span class="timer"><span class="tlive">Live</span><span class="tnow" id="tNow">Waiting for the host…</span><label class="ck tfollow"><input type="checkbox" id="tFollow"${VIEW.follow?" checked":""}> Follow along</label><button type="button" class="tbtn${SOUND.on?" ghost":""}" id="tSound" aria-pressed="${SOUND.on}">${SOUND.on?"Sound on":"Turn on sound"}</button><button type="button" class="tbtn ghost" id="tLeave">Leave</button></span>`;
-  return `<span class="timer${RUN.on||RUN.active?" live":""}"><button type="button" class="tbtn ghost" id="tPrev" aria-label="Previous part">‹</button><button type="button" class="tbtn" id="tStart" aria-pressed="${RUN.on}">${RUN.on?"Pause":RUN.acc?"Resume":"Start timer"}</button><button type="button" class="tbtn ghost" id="tNext" aria-label="Next part">›</button><button type="button" class="tbtn ghost" id="tReset"${RUN.on||RUN.active?"":" hidden"}>Reset</button><span class="tnow" id="tNow"></span>${LIVE.mode==="host"?`<span class="tlive">Live · ${esc(LIVE.code.toUpperCase())}${LIVE.peers>1?` · ${LIVE.peers-1} following`:""}</span>`:""}</span>`;
-}
-function elapsed(){
-  if(LIVE.mode==="follow"&&LIVE.doc){ const r=LIVE.doc.run||{}; return r.on?Math.max(0,(Date.now()-r.startedAt)/1000):(r.acc||0); }
-  return RUN.acc+(RUN.on?(performance.now()-RUN.t0)/1000:0);
-}
-function idxAt(e){ const st=M.starts; let i=st.length-1; while(i>0&&st[i]>e) i--; return i; }
-function tick(){
-  if(!EL||!M) return;
-  const tNow=EL.querySelector("#tNow"); if(!tNow) return;
-  const running=LIVE.mode==="follow"?!!(LIVE.doc&&LIVE.doc.run&&(LIVE.doc.run.on||LIVE.doc.run.active)):(RUN.on||RUN.active);
-  if(!running){ if(LIVE.mode!=="follow") tNow.textContent=""; highlight(-1); return; }
-  const e=elapsed(), i=idxAt(e), total=M.total;
-  if(i!==RUN.cur){ highlight(i); if(LIVE.mode==="follow"&&VIEW.follow) scrollToPart(i); RUN.cur=i; if(PRES.open&&PRES.follow&&!(LIVE.mode==="follow"&&LIVE.doc&&LIVE.doc.line>=0)) presentPart(i); if(LIVE.mode==="host") hostPublish(true); }
-  const next=i+1<M.starts.length?`next: ${M.parts[i+1].title} in ${mmss(M.starts[i+1]-e)}`:(e<total?`ends in ${mmss(total-e)}`:`over by ${mmss(e-total)}`);
-  const paused=LIVE.mode==="follow"?!LIVE.doc.run.on:!RUN.on;
-  tNow.textContent=`${mmss(e)} · ${M.parts[i].title} · ${paused?"paused":next}`;
-}
-function highlight(i){
-  EL.querySelectorAll(".runsheet li").forEach((r,k)=>r.classList.toggle("now",k===i));
-  EL.querySelectorAll(".mbody .mpart").forEach((s,k)=>s.classList.toggle("now",k===i));
-}
-function scrollToPart(i){ const s=EL.querySelector(`#mp-${i}`); if(s) s.scrollIntoView({behavior:"smooth",block:"start"}); }
-function stopTimer(){ if(RUN.h){ clearInterval(RUN.h); RUN.h=null; } }
-function ensureTicking(){ if(!RUN.h) RUN.h=setInterval(tick,1000); }
-function wireTimer(){
-  const q=s=>EL.querySelector(s);
-  if(LIVE.mode==="follow"){
-    q("#tFollow").addEventListener("change",e=>{ VIEW.follow=e.target.checked; ls.set("lect-view",VIEW); if(VIEW.follow&&RUN.cur>=0) scrollToPart(RUN.cur); presence(); });
-    q("#tLeave").addEventListener("click",leave);
-    q("#tSound").addEventListener("click",()=>{ if(SOUND.on){ SOUND.on=false; window.LectMusic&&window.LectMusic.stopAll(); } else { SOUND.on=!!(window.LectMusic&&window.LectMusic.unlock()); } redrawTimer(); if(SOUND.on&&LIVE.doc&&LIVE.doc.play&&LIVE.doc.play.on){ LIVE.playTs=0; applyPlay(LIVE.doc.play); } });
-    ensureTicking(); return;
-  }
-  const jump=dir=>{ const e=elapsed(); let i=idxAt(e); i=dir>0?Math.min(M.starts.length-1,i+1):(e-M.starts[i]>5?i:Math.max(0,i-1)); setElapsed(M.starts[i]); };
-  q("#tStart").addEventListener("click",()=>{ if(RUN.on){ RUN.acc=elapsed(); RUN.on=false; } else { RUN.t0=performance.now(); RUN.on=true; RUN.active=true; } redrawTimer(); hostPublish(true); });
-  q("#tReset").addEventListener("click",()=>{ RUN.on=false; RUN.acc=0; RUN.cur=-1; RUN.active=false; stopTimer(); redrawTimer(); hostPublish(true); });
-  q("#tPrev").addEventListener("click",()=>jump(-1));
-  q("#tNext").addEventListener("click",()=>jump(1));
-  if(RUN.on) ensureTicking();
-}
-function setElapsed(sec){ RUN.acc=sec; RUN.active=true; if(RUN.on) RUN.t0=performance.now(); RUN.cur=-1; redrawTimer(); scrollToPart(idxAt(sec)); hostPublish(true); }
-function redrawTimer(){ const slot=EL.querySelector(".tools-timer"); slot.innerHTML=timerHTML(); wireTimer(); if(RUN.on) ensureTicking(); RUN.cur=-1; tick(); }
-
-/* ---------------------------------------------------------------- live sessions (db + room) */
-const CODE_ALPHA="abcdefghjkmnpqrstuvwxyz23456789";
-const newCode=()=>Array.from({length:6},()=>CODE_ALPHA[Math.floor(Math.random()*CODE_ALPHA.length)]).join("");
-const normCode=c=>String(c||"").toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12);
-function config(){ return {type:M.isOffice?"office":"mass", rite:M.rite, hour:M.ctx.hour||null, iso:M.ctx.iso, opts:M.opts}; }
-async function host(){
-  const db=await cap("db");
-  if(!db){ LIVE.msg="Live sessions need this page opened in Claude, signed in. Share the page with your group so they can open it too."; renderPanel(); return; }
-  LIVE.mode="host"; LIVE.code=newCode(); LIVE.msg=""; LIVE.last=""; LIVE.cast={}; LIVE.play=null;
-  const ok=await hostPublish(true,true);
-  if(!ok){ LIVE.mode=null; renderPanel(); return; }
-  joinRoom(); redrawTimer(); renderPanel(); refreshBar();
-}
-let pubBusy=false, pubAgain=false;
-async function hostPublish(force, first){
-  if(LIVE.mode!=="host") return true;
-  const run={on:RUN.on, acc:RUN.on?0:RUN.acc, startedAt:RUN.on?Date.now()-elapsed()*1000:0, active:RUN.active};
-  const body={v:1, ...config(), run, idx:Math.max(0,idxAt(elapsed())), cast:LIVE.cast, play:LIVE.play, line:PRES.open?PRES.i:-1, ts:Date.now()};
-  const sig=JSON.stringify({...body,ts:0,run:{on:run.on,acc:Math.round(run.acc),s:Math.round(run.startedAt/1000)}});
-  if(!force&&sig===LIVE.last) return true;
-  if(sig===LIVE.last) return true;
-  if(pubBusy){ pubAgain=true; return true; }
-  pubBusy=true;
-  try{ const db=await cap("db"); await db.doc("live/"+LIVE.code).set(body); LIVE.last=sig; return true; }
-  catch(e){ LIVE.msg=P2P?"Could not start the session. Check your connection and try again; some school or office networks block direct browser connections.":e&&e.code==="invalid_argument"?"You can follow live sessions on this page but not host them: hosting needs Contributor access or higher.":"Could not reach the live session store. Try again in a moment."; if(first) LIVE.mode=null; renderPanel(); return false; }
-  finally{ pubBusy=false; if(pubAgain){ pubAgain=false; hostPublish(true); } }
-}
-async function endHost(){
-  const code=LIVE.code; LIVE.mode=null; LIVE.code=""; leaveRoom();
-  try{ const db=await cap("db"); if(db) await db.doc("live/"+code).delete(); }catch(e){}
-  redrawTimer(); renderPanel(); refreshBar();
-}
-async function join(code, report){
-  code=normCode(code); const say=m=>{ LIVE.msg=m; if(report) report(m); if(EL) renderPanel(); };
-  if(code.length<4){ say("Enter the code the host gave you."); return; }
-  const db=await cap("db");
-  if(!db){ say("Live sessions need this page opened in Claude, signed in."); return; }
-  if(LIVE.unsub){ LIVE.unsub(); LIVE.unsub=null; }
-  if(LIVE.mode==="host") await endHost();
-  say("Connecting…");
-  LIVE.mode="follow"; LIVE.code=code; LIVE.doc=null;
-  let seen=false;
-  LIVE.unsub=db.doc("live/"+code).onSnapshot(snap=>{
-    if(!snap.exists){ if(!seen){ say("No live session with that code. Check it with the host."); LIVE.mode=null; if(LIVE.unsub){ LIVE.unsub(); LIVE.unsub=null; } }
-      else { leave(); say("The host ended the session."); } return; }
-    seen=true; LIVE.msg=""; if(report) report("");
-    applyRemote(snap.data(), false);
-  }, err=>{ say("The live session stopped updating. Join again to reconnect."); });
-  joinRoom();
-}
-/* bring this page to the host's day, rite and settings, then follow the position */
-function applyRemote(d, fromMount){
-  if(!d||typeof d!=="object") return;
-  const run=(d.run&&typeof d.run==="object")?{on:!!d.run.on,acc:+d.run.acc||0,startedAt:+d.run.startedAt||0,active:!!d.run.active}:{on:false,acc:0,startedAt:0,active:false};
-  const safe={type:d.type==="office"?"office":"mass", rite:String(d.rite||"").slice(0,12), hour:d.hour?String(d.hour).slice(0,12):null, iso:/^\d{4}-\d{2}-\d{2}$/.test(d.iso)?d.iso:null, opts:(d.opts&&typeof d.opts==="object")?d.opts:{}, run};
-  if(safe.type==="mass")safe.opts={...safe.opts,veil:!window.LectParticipation.isPriest()};
-  safe.cast=(d.cast&&typeof d.cast==="object")?d.cast:{};
-  safe.play=(d.play&&typeof d.play==="object")?{i:+d.play.i|0,on:!!d.play.on,ts:+d.play.ts||0}:null;
-  safe.line=Number.isInteger(d.line)?d.line:-1;
-  LIVE.doc=safe;
-  const same=M&&M.following&&(M.isOffice?"office":"mass")===safe.type&&M.rite===safe.rite&&(M.ctx.hour||null)===safe.hour&&M.ctx.iso===safe.iso&&JSON.stringify(M.opts)===JSON.stringify({...M.opts,...safe.opts});
-  if(!fromMount&&!same&&safe.iso&&window.LectApp){ window.LectApp.follow(safe); return; }
-  RUN.cur=-1; ensureTicking(); tick();
-  applyCast(); if(safe.play) applyPlay(safe.play);
-  if(PRES.open&&PRES.follow&&safe.line>=0) presentGo(safe.line,true);
-}
-function applyCast(){
-  if(LIVE.mode!=="follow"||!LIVE.myPeer||!LIVE.doc) return;
-  const r=LIVE.doc.cast[LIVE.myPeer]; const key=LIVE.myPeer+":"+(r||"");
-  if(r===undefined||key===LIVE.castSeen) return;
-  LIVE.castSeen=key; if(r==="cel"&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()){ LIVE.msg="Priest-only parts cannot be assigned in lay study."; renderPanel(); return; } const role=M&&(r===""||M.roles[r])?r:null; if(role===null) return;
-  VIEW.role=role; if(!role) VIEW.only=false; ls.set("lect-view",VIEW);
-  const sel=EL&&EL.querySelector("#tRole"); if(sel) sel.value=role; const only=EL&&EL.querySelector("#tOnly"); if(only){ only.disabled=!role; only.checked=VIEW.only; }
-  applyView(); presence();
-  LIVE.msg=role?`The host gave you the part: ${M.roles[role]}.`:"The host set you to follow as everyone."; renderPanel();
-}
-/* synced music: the host's play or stop on a chant or hymn reaches every follower who turned sound on */
-function figs(){ return [...EL.querySelectorAll(".mbody figure.music")]; }
-function musicClick(e){
-  const btn=e.target.closest&&e.target.closest("figure.music .play"); if(!btn||LIVE.mode!=="host") return;
-  const i=figs().indexOf(btn.closest("figure.music")); if(i<0) return;
-  LIVE.play={i,on:btn.textContent.trim().startsWith("■"),ts:Date.now()}; hostPublish(true);
-}
-function applyPlay(p){
-  if(!p||p.ts===LIVE.playTs) return; LIVE.playTs=p.ts;
-  const f=figs()[p.i]; if(!f) return; const btn=f.querySelector(".play"); if(!btn) return;
-  if(!SOUND.on){ if(p.on){ LIVE.msg="The host started music. Press Turn on sound to hear it."; renderPanel(); const b=EL.querySelector("#tSound"); if(b) b.classList.add("pulse"); } return; }
-  const playing=btn.textContent.trim().startsWith("■");
-  if(p.on&&!playing){ btn.click(); if(VIEW.follow) f.scrollIntoView({behavior:"smooth",block:"center"}); }
-  if(!p.on&&playing) btn.click();
-}
-function leave(){
-  if(LIVE.unsub){ LIVE.unsub(); LIVE.unsub=null; }
-  const wasFollowing=LIVE.mode==="follow";
-  LIVE.mode=null; LIVE.doc=null; LIVE.code=""; leaveRoom();
-  if(wasFollowing&&window.LectApp){ const c=window.LectApp.current(); if(c.type) window.LectApp.follow(c); }
-}
-async function joinRoom(){
-  try{ const room=await cap("room"); if(!room||!LIVE.code) return; const r=await room.join("lect-"+LIVE.code); LIVE.room=r;
-    r.onPeers(ch=>{ LIVE.peers=ch.peers.length; LIVE.peerList=ch.peers.filter(p=>p.kind==="viewer"); const me=ch.peers.find(p=>p.sameTab); if(me&&me.peer!==LIVE.myPeer){ LIVE.myPeer=me.peer; applyCast(); } if(LIVE.mode==="host"){ const t=EL&&EL.querySelector(".tlive"); if(t) t.textContent=`Live · ${LIVE.code.toUpperCase()}${LIVE.peers>1?` · ${LIVE.peers-1} following`:""}`; } if(PANEL==="live") renderPanel(); }, ()=>{});
-    presence(); }catch(e){}
-}
-function presence(){ try{ if(LIVE.room) LIVE.room.presence({role:VIEW.role||"", host:LIVE.mode==="host", name:String(LIVE.me.name||"").slice(0,40), ready:!!LIVE.me.ready,priest:window.LectParticipation.isPriest()}); }catch(e){} }
-function leaveRoom(){ try{ if(LIVE.room) LIVE.room.leave(); }catch(e){} LIVE.room=null; LIVE.peers=0; }
-function liveOpts(){ return LIVE.mode==="follow"&&LIVE.doc?LIVE.doc.opts:null; }
-function refreshBar(){ const b=EL&&EL.querySelector('[data-panel="live"]'); if(b) b.textContent=LIVE.mode==="host"?"Live · hosting":LIVE.mode==="follow"?"Live · following":"Live session"; }
-
-/* ---------------------------------------------------------------- text extraction (script, read-aloud) */
-const ROLE_ORDER=["cel","srv","lec","ppl"];
-function speaker(r){
-  const t=(r||"").split(/\s+/).filter(Boolean), n=M.roles;
-  if(!t.length) return "";
-  if(t.includes("all")) return "All";
-  if(t.length>1&&t.includes("ppl")) return `${n[t.find(x=>x!=="ppl")]||""} and all`.trim();
-  return t.map(x=>n[x]||x).join(" and ");
-}
-function textOf(node){
-  const c=node.cloneNode(true);
-  c.querySelectorAll("sup, .mctl, button, select, label.tp, .sp").forEach(x=>x.remove());
-  return c.textContent.replace(/\s+/g," ").replace(/\s([,.;:!?])/g,"$1").trim();
-}
-function extract(lang,spoken=false){
-  const out=[], body=EL.querySelector(".mbody"); if(!body) return out;
-  const reserved=(node,role)=>window.LectParticipation.catholicMass(M)&&window.LectParticipation.priestOnly(node,role)&&(spoken||!window.LectParticipation.isPriest());
-  const walk=(node,role)=>{
-    if(reserved(node,role))return;
-    for(const el of node.children){
-      if(reserved(el,role))continue;
-      if(el.matches("[lang=la]")&&lang==="en"&&el.parentElement.classList.contains("two")) continue;
-      if(el.matches("[lang=en]")&&lang==="la"&&el.parentElement.classList.contains("two")) continue;
-      if(el.matches("h3")) continue;
-      if(el.matches("h4.sub2,h5.sub")){ out.push({k:"h2",t:textOf(el),el}); continue; }
-      if(el.matches("p.pos")){ out.push({k:"pos",t:[...el.querySelectorAll(".pg")].map(g=>textOf(g)).join(" · "),el}); continue; }
-      if(el.matches("p.abr")){ const c=el.cloneNode(true); const l=c.querySelector(".lbl"); if(l) l.remove(); out.push({k:"cue",t:"Shortened for time: "+textOf(c),el}); continue; }
-      if(el.matches("p.cue,p.rub,p.note,.homily:not([data-r])")){ out.push({k:"cue",t:textOf(el),el}); continue; }
-      if(el.matches("p.cite")){ out.push({k:"cite",t:textOf(el),el}); continue; }
-      if(el.matches("figure.music")){ const t=el.querySelector(".mt"); out.push({k:"music",t:t?t.textContent:"",el,r:role}); continue; }
-      if(el.matches("details")){ walk(el,role); continue; }
-      if(el.matches("section.reading")){ const h=el.querySelector("header"); out.push({k:"cite",t:h?textOf(h).replace(/\s*(\S+ \d.*)$/," — $1"):"",el}); const tx=el.querySelector(".rtext"); if(tx) out.push({k:"line",r:role||"lec",t:textOf(tx),el:tx}); continue; }
-      const r=el.getAttribute("data-r");
-      if(r!=null){ if(el.querySelector("[data-r]")||el.querySelector("section.reading,figure.music,h4,h5,p.cue,p.pos,ol")) { walk(el,r); continue; }
-        const t=textOf(el); if(t) out.push({k:"line",r,t,el}); continue; }
-      if(el.matches("p")){ if(el.querySelector("[data-r]")){ walk(el,role); continue; } const t=textOf(el); if(t) out.push({k:"line",r:role||"",t,el}); continue; }
-      if(el.children.length) walk(el,role);
-    }
-  };
-  body.querySelectorAll(":scope > section.mpart").forEach(sec=>{ out.push({k:"h",t:sec.querySelector("h3 span").textContent.trim(),el:sec}); walk(sec,""); });
-  return out;
-}
-const mineOf=(r,role)=>!role||!r||(" "+r+" ").includes(" "+role+" ")||(" "+r+" ").includes(" all ");
-
-/* ---------------------------------------------------------------- chat script */
-const FORMATS={discord:{label:"Discord (2,000 characters)",max:1900},minecraft:{label:"Minecraft chat (256 characters)",max:250},plain:{label:"Plain text",max:Infinity}};
-function scriptLines(fmt,opt){
-  const items=extract(opt.lang), L=[];
-  const role=opt.mine?VIEW.role:"";
-  for(const it of items){
-    if(it.k==="h"){ L.push(fmt==="discord"?`**__${it.t}__**`:fmt==="minecraft"?`== ${it.t} ==`:`\n${it.t.toUpperCase()}`); continue; }
-    if(it.k==="h2"){ L.push(fmt==="discord"?`**${it.t}**`:fmt==="minecraft"?`- ${it.t} -`:it.t); continue; }
-    if(it.k==="pos"){ if(opt.rubrics) L.push(fmt==="discord"?`*(${it.t})*`:`(${it.t})`); continue; }
-    if(it.k==="cue"){ if(opt.rubrics) L.push(fmt==="discord"?`*${it.t}*`:`(${it.t})`); continue; }
-    if(it.k==="cite"){ if(!role||mineOf("lec",role)) L.push(fmt==="discord"?`__${it.t}__`:it.t); continue; }
-    if(it.k==="music"){ if(opt.rubrics) L.push(fmt==="discord"?`♪ *Sung: ${it.t}*`:`(Sung: ${it.t})`); continue; }
-    if(it.k==="line"){ if(!mineOf(it.r,role)) continue; const sp=speaker(it.r);
-      L.push(sp?(fmt==="discord"?`**${sp}:** ${it.t}`:fmt==="minecraft"?`[${sp}] ${it.t}`:`${sp}: ${it.t}`):it.t); }
-  }
-  return L.filter(Boolean);
-}
-function splitLong(line,max){
-  if(line.length<=max) return [line];
-  const pre=(/^(\[[^\]]+\] |\*\*[^*]+:\*\* |[A-Z][^:]{0,30}: )/.exec(line)||[""])[0];
-  const parts=line.slice(pre.length).split(/(?<=[.;:!?])\s+/); const out=[]; let cur="";
-  for(let p of parts){
-    while((pre+p).length>max){ const cut=p.lastIndexOf(" ",max-pre.length-2)>20?p.lastIndexOf(" ",max-pre.length-2):max-pre.length-2; if(cur){ out.push(pre+cur); cur=""; } out.push(pre+p.slice(0,cut)+"…"); p=p.slice(cut).trim(); }
-    if((pre+cur+" "+p).length>max){ if(cur) out.push(pre+cur); cur=p; } else cur=cur?cur+" "+p:p;
-  }
-  if(cur) out.push(pre+cur);
-  return out;
-}
-function chunks(fmt,opt){
-  const max=FORMATS[fmt].max, lines=scriptLines(fmt,opt);
-  if(max===Infinity) return [lines.join("\n")];
-  if(fmt==="minecraft") return lines.flatMap(l=>splitLong(l,max));
-  const out=[]; let cur="";
-  for(const l of lines.flatMap(l=>splitLong(l,max))){ if((cur+"\n"+l).length>max){ if(cur) out.push(cur); cur=l; } else cur=cur?cur+"\n"+l:l; }
-  if(cur) out.push(cur);
-  return out;
-}
-async function copyText(t, ta){
-  try{ await navigator.clipboard.writeText(t); return true; }catch(e){}
-  try{ if(ta){ ta.focus(); ta.select(); return document.execCommand("copy"); } }catch(e){}
-  return false;
-}
-async function saveFile(name, data){
-  const d=await cap("downloads");
-  if(d){ try{ await d.save({filename:name,data}); return "saved"; }catch(e){ if(e&&e.code==="declined") return "declined"; } }
-  try{ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:name.endsWith(".html")?"text/html":"text/plain"})); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); return "saved"; }catch(e){ return "failed"; }
-}
-
-/* ---------------------------------------------------------------- read aloud */
-function voiceFor(lang){
-  const vs=speechSynthesis.getVoices(); const want=lang==="la"?["it","la","es"]:["en"];
-  for(const w of want){ const v=vs.find(x=>x.lang&&x.lang.toLowerCase().startsWith(w)); if(v) return v; }
-  return null;
-}
-function speakStart(lang){
-  speakStop();
-  const items=extract(lang,true).filter(it=>it.k==="line"||it.k==="cite"||it.k==="h");
-  let start=0; const e=RUN.cur>=0?RUN.cur:-1;
-  if(e>=0){ const sec=EL.querySelector(`#mp-${e}`); const k=items.findIndex(it=>it.el===sec); if(k>=0) start=k; }
-  SPEAK={...SPEAK,on:true,paused:false,items,i:start,lang};
-  speakNext();
-}
-function sentences(t){ const out=[]; t.split(/(?<=[.;:!?])\s+/).forEach(s=>{ while(s.length>220){ const c=s.lastIndexOf(" ",220); out.push(s.slice(0,c)); s=s.slice(c+1); } if(s) out.push(s); }); return out; }
-function speakNext(){
-  if(!SPEAK.on) return;
-  EL&&EL.querySelectorAll(".speaking").forEach(x=>x.classList.remove("speaking"));
-  if(SPEAK.i>=SPEAK.items.length){ speakStop(); renderPanel(); return; }
-  const it=SPEAK.items[SPEAK.i];
-  const target=it.el&&it.el.closest?it.el:null; if(target){ target.classList.add("speaking"); if(VIEW.follow||!LIVE.mode) target.scrollIntoView({behavior:"smooth",block:"center"}); }
-  const mine=it.k==="line"&&VIEW.role&&it.r&&(" "+it.r+" ").includes(" "+VIEW.role+" ");
-  if(mine&&SPEAK.mine!=="read"){
-    if(SPEAK.mine==="skip"){ SPEAK.i++; speakNext(); return; }
-    const secs=Math.max(2,it.t.split(/\s+/).length/2.4);
-    SPEAK.wait={until:Date.now()+secs*1000}; renderPanel();
-    SPEAK.waitT=setTimeout(()=>{ if(SPEAK.wait){ SPEAK.wait=null; SPEAK.i++; renderPanel(); speakNext(); } },secs*1000);
-    return;
-  }
-  const text=(it.k==="h"?it.t+".":it.t).replace(/[✠℟℣]\.?/g," ").replace(/\s+/g," ").trim();
-  const lang=SPEAK.lang==="la"||/[áéíóúýæœǽ]/i.test(text)?"la":"en";
-  const parts=sentences(text); let j=0;
-  const say=()=>{ if(!SPEAK.on) return; if(j>=parts.length){ SPEAK.i++; speakNext(); return; }
-    const u=new SpeechSynthesisUtterance(parts[j++]); const v=voiceFor(lang); if(v) u.voice=v; u.lang=v?v.lang:(lang==="la"?"it-IT":"en-US"); u.rate=SPEAK.rate; u.onend=say; u.onerror=say; speechSynthesis.speak(u); };
-  say();
-}
-function speakStop(){ SPEAK.on=false; SPEAK.wait=null; clearTimeout(SPEAK.waitT); try{ speechSynthesis.cancel(); }catch(e){} EL&&EL.querySelectorAll(".speaking").forEach(x=>x.classList.remove("speaking")); }
-function speakContinue(){ if(SPEAK.wait){ clearTimeout(SPEAK.waitT); SPEAK.wait=null; SPEAK.i++; renderPanel(); speakNext(); } }
-
-/* ---------------------------------------------------------------- print and booklet */
-function withDetailsOpen(fn){
-  const ds=[...EL.querySelectorAll(".mbody details")], was=ds.map(d=>d.open); ds.forEach(d=>d.open=true);
-  try{ return fn(); } finally{ setTimeout(()=>ds.forEach((d,i)=>d.open=was[i]),500); }
-}
-function printNow(){
-  document.documentElement.classList.add("printing");
-  withDetailsOpen(()=>{ try{ window.print(); }catch(e){} });
-  setTimeout(()=>document.documentElement.classList.remove("printing"),800);
-}
-function bookletHTML(){
-  const head=document.querySelector("#session .dayname"), sub=document.querySelector("#session .daysub"), crumbs=document.querySelector("#session .crumbs"), date=document.querySelector("#session .dlabel");
-  const body=EL.querySelector(".mbody").cloneNode(true);
-  body.querySelectorAll("button, select, .mctl, label.tp, .hsel, input").forEach(x=>x.remove());
-  body.querySelectorAll("details").forEach(d=>d.setAttribute("open",""));
-  body.querySelectorAll("[id]").forEach(x=>x.removeAttribute("id"));
-  body.removeAttribute("data-view"); body.removeAttribute("data-only");
-  const role=VIEW.role&&M.roles[VIEW.role];
-  const css=`body{font:16px/1.55 Georgia,"Times New Roman",serif;color:#1b1b1b;background:#fff;margin:0;padding:24px 16px}main{max-width:780px;margin:0 auto}
-h1{font-size:1.7rem;margin:0 0 4px}h3{font-size:1.25rem;border-top:2px solid #1b1b1b;padding-top:8px;margin:26px 0 8px;display:flex;justify-content:space-between;gap:12px}
-h3 .pmin{font-size:.8rem;color:#666;font-weight:normal}h4,h5{font-size:1rem;color:#8b1a1a;margin:14px 0 4px}
-.meta{color:#555;margin:0 0 16px}.rub,.rubi,.cue,.abr,.note{color:#8b1a1a;font-size:.92rem}.cue,.abr{font-style:italic}
-.txt.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.sp{color:#8b1a1a;font-weight:bold}.cross{color:#8b1a1a}
-.pos{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.85rem;margin:6px 0}.pb{border:1px solid #8b1a1a;color:#8b1a1a;border-radius:4px;padding:0 5px;font-weight:bold}
-.reading header{display:flex;justify-content:space-between;font-weight:bold;margin-top:10px}.reading .rc{color:#555;font-weight:normal}
-figure.music{margin:10px 0;break-inside:avoid}figure.music svg{max-width:100%;height:auto}figcaption .mm{color:#666;font-size:.8rem;margin-left:8px}
-ol.order{padding-left:1.3em}.homily{border:1px dashed #999;padding:6px 10px;border-radius:6px;font-size:.9rem;color:#555}
-.mine{background:#fbeaea}.legend{font-size:.85rem;color:#555}section{break-inside:auto}
-@media (max-width:640px){.txt.two{grid-template-columns:1fr}}@media print{body{padding:0}h3{break-after:avoid}}`;
-  if(role) body.querySelectorAll("[data-r]").forEach(x=>{ if(mineOf(x.getAttribute("data-r"),VIEW.role)) x.classList.add("mine"); });
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(head?head.textContent:"Lectionarium")}</title><style>${css}</style></head><body><main>
-<h1>${esc(head?head.textContent:"")}</h1><p class="meta">${esc([date&&date.textContent,crumbs&&crumbs.textContent,sub&&sub.textContent].filter(Boolean).join(" · "))}</p>
-${role?`<p class="legend">Highlighted: the ${esc(role.toLowerCase())}'s parts.</p>`:""}
-${window.LectParticipation.catholicMass(M)?'<p class="legend">Study reference. Priest-only prayers are not lay assigned parts; this booklet does not authorize a celebration.</p>':""}
-${body.innerHTML}
-<p class="meta" style="margin-top:28px">Made with Lectionarium. Texts: Divinum Officium (MIT), Douay-Rheims and King James Bibles, the 1662 Book of Common Prayer; chant from GregoBase (CC0); hymns from the Open Hymnal (public domain). Consult the approved liturgical books for celebration.</p>
-</main></body></html>`;
-}
-async function saveBooklet(){
-  const name=`lectionarium-${M.ctx.iso}-${M.isOffice?"office-"+M.rite+"-"+(M.ctx.hour||""):M.rite}.html`;
-  const html=withDetailsOpen(()=>bookletHTML());
-  const r=await saveFile(name,html);
-  const b=EL.querySelector("#tBook"); if(b){ const t=b.textContent; b.textContent=r==="saved"?"Booklet saved":r==="declined"?"Not saved":"Could not save"; setTimeout(()=>{ b.textContent=t; },2500); }
-}
-
-/* ---------------------------------------------------------------- connection check */
-let CHECK=[];
-async function runCheck(){
-  CHECK=[{ok:true,t:"Running…"}]; renderPanel(); const out=[];
-  const db=await cap("db");
-  out.push(db?{ok:true,t:P2P?"Live sessions run browser to browser on this page (no sign-in).":"Shared session store is available on this page."}:{ok:false,t:"No shared store: open this page in Claude while signed in. Pages opened from a saved file or outside Claude can't join."});
-  if(db){
-    try{ await db.doc("live/zz-check").get(); out.push({ok:true,t:P2P?"The connection server can be reached, so you can host and follow.":"Reading sessions works, so you can follow."}); }catch(e){ out.push({ok:false,t:P2P?"The connection server could not be reached. A firewall or blocker may be stopping it.":"Reading sessions failed ("+(e&&e.code||"error")+")."}); }
-    if(!P2P) try{ const ref=db.doc("live/zz-check-"+Math.random().toString(36).slice(2,8)); await ref.set({t:Date.now()}); await ref.delete(); out.push({ok:true,t:"Writing works, so you can host."}); }
-    catch(e){ out.push({ok:false,t:e&&e.code==="invalid_argument"?"You can follow but not host: hosting needs Contributor access or higher on this page.":"Writing failed ("+(e&&e.code||"error")+")."}); }
-  }
-  const room=await cap("room");
-  if(!room) out.push({ok:false,t:"Presence is unavailable here: the host won't see your name or ready status, but following still works."});
-  else { const c=await new Promise(res=>{ let done=false; const off=room.onConnection(v=>{ if(v&&!done){ done=true; res(true); off(); } },()=>{ if(!done){ done=true; res(false); } }); setTimeout(()=>{ if(!done){ done=true; res(room.connected()); try{ off(); }catch(e){} } },4000); });
-    out.push(c?{ok:true,t:"Presence is connected: names, ready status and part assignment work."}:{ok:false,t:"Presence did not connect within 4 seconds. Following still works; part assignment may not."}); }
-  const ac=window.AudioContext||window.webkitAudioContext; out.push(ac?{ok:true,t:"This browser can play the music."}:{ok:false,t:"This browser can't play audio."});
-  CHECK=out; renderPanel();
-}
-
-/* ---------------------------------------------------------------- presenter view */
-function slidesFrom(lang){
-  const items=extract(lang), out=[]; let dir=[], part=-1;
-  const secs=[...EL.querySelectorAll(".mbody > section.mpart")];
-  for(const it of items){
-    if(it.k==="h"){ part=secs.indexOf(it.el); out.push({k:"h",t:it.t,part,dir:[]}); dir=[]; continue; }
-    if(it.k==="pos"||it.k==="cue"){ dir.push(it.t); continue; }
-    if(it.k==="h2"){ dir.push(it.t); continue; }
-    if(it.k==="cite"){ out.push({k:"cite",t:it.t,part,dir,r:"lec"}); dir=[]; continue; }
-    if(it.k==="music"){ out.push({k:"music",t:"Sung: "+it.t,part,dir,r:it.r||"ppl"}); dir=[]; continue; }
-    if(it.k==="line"){
-      const chunks=[]; let cur=""; it.t.split(/(?<=[.;:!?])\s+/).forEach(x=>{ if((cur+" "+x).length>380&&cur){ chunks.push(cur); cur=x; } else cur=cur?cur+" "+x:x; }); if(cur) chunks.push(cur);
-      chunks.forEach((c,j)=>out.push({k:"line",t:c,part,dir:j?[]:dir,r:it.r,more:chunks.length>1?`${j+1}/${chunks.length}`:""})); dir=[];
-    }
-  }
-  return out;
-}
-function presentOpen(remount){
-  PRES.open=true;
-  const hasLa=!!EL.querySelector(".mbody [lang=la]");
-  if(!hasLa) PRES.lang="en";
-  PRES.slides=slidesFrom(PRES.lang);
-  let ov=document.getElementById("presenter");
-  if(!ov){ ov=document.createElement("div"); ov.id="presenter"; ov.className="presenter"; ov.setAttribute("role","dialog"); ov.setAttribute("aria-modal","true"); ov.setAttribute("aria-label","Presenter view"); document.body.appendChild(ov);
-    document.addEventListener("keydown",presentKey); }
-  ov.innerHTML=`<header class="pr-top"><span class="pr-part" id="prPart"></span><span class="pr-time" id="prTime"></span>
-      <span class="pr-ctl"><button type="button" class="tbtn ghost" id="prPrev" aria-label="Previous line">‹</button><span class="pr-n" id="prN"></span><button type="button" class="tbtn ghost" id="prNext" aria-label="Next line">›</button>
-      ${hasLa?`<button type="button" class="tbtn ghost" id="prLang">${PRES.lang==="la"?"English":"Latin"}</button>`:""}
-      <label class="ck"><input type="checkbox" id="prFollow"${PRES.follow?" checked":""}> Follow ${LIVE.mode==="follow"?"the host":"the timer"}</label>
-      <button type="button" class="tbtn ghost" id="prFull">Full screen</button><button type="button" class="tbtn" id="prClose">Close</button></span></header>
-    <main class="pr-main" aria-live="polite"><p class="pr-dir" id="prDir"></p><p class="pr-who" id="prWho"></p><div class="pr-text" id="prText"></div></main>
-    <footer class="pr-next"><span class="lbl">Next</span> <span id="prNextT"></span></footer>`;
-  ov.hidden=false; document.documentElement.classList.add("presenting");
-  const q=x=>ov.querySelector(x);
-  q("#prPrev").addEventListener("click",()=>presentGo(PRES.i-1));
-  q("#prNext").addEventListener("click",()=>presentGo(PRES.i+1));
-  q("#prClose").addEventListener("click",presentClose);
-  q("#prFollow").addEventListener("change",e=>{ PRES.follow=e.target.checked; });
-  q("#prFull").addEventListener("click",()=>{ try{ if(document.fullscreenElement) document.exitFullscreen(); else ov.requestFullscreen&&ov.requestFullscreen().catch(()=>{}); }catch(e){} });
-  q("#prLang")&&q("#prLang").addEventListener("click",()=>{ const cur=PRES.slides[PRES.i]; PRES.lang=PRES.lang==="la"?"en":"la"; const keep=cur?cur.part:-1; presentOpen(true); const k=PRES.slides.findIndex(x=>x.part===keep); presentGo(k<0?0:k,true); });
-  if(!remount){ const start=RUN.cur>=0?PRES.slides.findIndex(x=>x.part===RUN.cur):0; PRES.i=Math.max(0,start); }
-  if(LIVE.mode==="follow"&&LIVE.doc&&LIVE.doc.line>=0&&PRES.follow) PRES.i=LIVE.doc.line;
-  presentShow(); q("#prNext").focus();
-  if(LIVE.mode==="host") hostPublish(true);
-}
-function presentClose(){
-  PRES.open=false; const ov=document.getElementById("presenter"); if(ov) ov.hidden=true; document.documentElement.classList.remove("presenting");
-  try{ if(document.fullscreenElement) document.exitFullscreen(); }catch(e){}
-  const b=EL&&EL.querySelector("#tPresent"); if(b) b.focus();
-  if(LIVE.mode==="host") hostPublish(true);
-}
-function presentKey(e){
-  if(!PRES.open||e.target.closest&&e.target.closest("input,select,textarea")) return;
-  if(["ArrowRight","PageDown"," "].includes(e.key)){ e.preventDefault(); presentGo(PRES.i+1); }
-  else if(["ArrowLeft","PageUp"].includes(e.key)){ e.preventDefault(); presentGo(PRES.i-1); }
-  else if(e.key==="Escape"){ presentClose(); }
-}
-function presentPart(i){ const k=PRES.slides.findIndex(x=>x.part===i); if(k>=0) presentGo(k,true); }
-function presentGo(i,fromRemote){
-  if(!PRES.slides.length) return;
-  PRES.i=Math.max(0,Math.min(PRES.slides.length-1,i)); presentShow();
-  if(!fromRemote&&LIVE.mode==="host") hostPublish(true);
-}
-function presentShow(){
-  const ov=document.getElementById("presenter"); if(!ov||!PRES.slides.length) return;
-  const sl=PRES.slides[PRES.i], nx=PRES.slides[PRES.i+1];
-  const q=x=>ov.querySelector(x);
-  const partT=sl.part>=0&&M.parts[sl.part]?M.parts[sl.part].title:"";
-  q("#prPart").textContent=partT; q("#prN").textContent=`${PRES.i+1} / ${PRES.slides.length}`;
-  q("#prTime").textContent=(RUN.on||RUN.active||LIVE.mode==="follow")?mmss(elapsed()):"";
-  q("#prDir").textContent=(sl.dir||[]).join(" · ");
-  const mine=VIEW.role&&sl.r&&(" "+sl.r+" ").includes(" "+VIEW.role+" ");
-  q("#prWho").textContent=sl.k==="h"?"":(mine?"You · ":"")+(speaker(sl.r)||"");
-  const t=q("#prText"); t.textContent=sl.t; t.className="pr-text"+(sl.k==="h"?" h":"")+(mine?" mine":"")+(sl.t.length>260?" long":"")+(sl.k==="cite"||sl.k==="music"?" cite":"");
-  q("#prNextT").textContent=nx?((nx.k==="h"?"— ":"")+(speaker(nx.r)&&nx.k!=="h"?speaker(nx.r)+": ":"")+nx.t).slice(0,160)+(nx.t.length>160?"…":""):"End";
-}
-setInterval(()=>{ if(PRES.open){ const t=document.getElementById("prTime"); if(t) t.textContent=(RUN.on||RUN.active||LIVE.mode==="follow")?mmss(elapsed()):""; } },1000);
-
-/* ---------------------------------------------------------------- panels */
-function renderPanel(){
-  const p=EL&&EL.querySelector("#tPanel"); if(!p) return;
-  p.hidden=!PANEL;
-  if(PANEL==="live") p.innerHTML=livePanel();
-  else if(PANEL==="script") p.innerHTML=scriptPanel();
-  else if(PANEL==="speak") p.innerHTML=speakPanel();
-  else p.innerHTML="";
-  wirePanel(p);
-}
-function livePanel(){
-  const msg=LIVE.msg?`<p class="note" role="status">${esc(LIVE.msg)}</p>`:"";
-  const check=`<details class="lvcheck"${CHECK.length?" open":""}><summary>Check the connection</summary><div class="trow2"><button type="button" class="tbtn ghost" id="lvCheck">Run check</button></div>${CHECK.length?`<ul class="checks">${CHECK.map(c=>`<li class="${c.ok?"ok":"bad"}"><b>${c.ok?"OK":"Problem"}</b> ${esc(c.t)}</li>`).join("")}</ul>`:""}</details>`;
-  if(LIVE.mode==="host"){
-    const others=LIVE.peerList.filter(p=>!p.sameTab), ready=others.filter(p=>p.presence&&p.presence.ready).length;
-    const roleSel=(peer,cur,priest)=>`<select data-cast="${esc(peer)}" aria-label="Part"><option value="">Everyone</option>${Object.entries(M.roles).filter(([k])=>k!=="cel"||!window.LectParticipation.catholicMass(M)||priest===true).map(([k,v])=>`<option value="${k}"${cur===k?" selected":""}>${esc(v)}</option>`).join("")}</select>`;
-    return `<h4 class="tph">Hosting a live session</h4>
-    <p class="livecode" aria-label="Session code">${esc(LIVE.code.toUpperCase())}</p>
-    <p>Anyone who can open this page joins with that code: Pray today → Join a live session. They see this ${esc(M.noun)}, your length and music settings, and the part you are on. Move everyone along with the timer and the ‹ › buttons; music you play here plays for everyone who turned sound on.</p>
-    ${others.length?`<table class="cast"><thead><tr><th>Who</th><th>Ready</th><th>Part</th></tr></thead><tbody>${others.map(p=>{ const pr=p.presence||{}; return `<tr><td class="who"></td><td>${pr.ready?"✓":"…"}</td><td>${roleSel(p.peer,LIVE.cast[p.peer]!==undefined?LIVE.cast[p.peer]:(pr.role||""),pr.priest)}</td></tr>`; }).join("")}</tbody></table><p class="note">${ready} of ${others.length} ready.</p>`:`<p class="note">Nobody has joined yet. ${P2P?"Send people this page's link and the code; they open the page, choose Live session and enter the code. Keep this tab open: the session runs from your browser.":"Followers must be signed in to Claude; people outside your organization need the page shared with them."}</p>`}
-    <div class="trow2"><button type="button" class="tbtn" id="lvCopy">Copy invite</button><button type="button" class="tbtn ghost" id="lvEnd">End session</button></div>${msg}${check}`;
-  }
-  if(LIVE.mode==="follow") return `<h4 class="tph">Following live session ${esc((LIVE.code||"").toUpperCase())}</h4>
-    <p>The page moves to the part the host is on. Turn off "Follow along" to read ahead. Turn on sound to hear the music the host plays.</p>
-    <div class="trow2"><label class="sl">Your name <input id="lvName" maxlength="40" value="${esc(LIVE.me.name)}" placeholder="Shown to the host"></label><label class="ck"><input type="checkbox" id="lvReady"${LIVE.me.ready?" checked":""}> I'm ready</label><button type="button" class="tbtn ghost" id="lvLeave">Leave</button></div>${msg}${check}`;
-  return `<h4 class="tph">Live session</h4>
-    <p>Host this ${esc(M.noun)} for a group: everyone who joins sees the same day, length and music, and follows the part you are on.</p>
-    <div class="trow2"><button type="button" class="tbtn" id="lvHost">Host with these settings</button></div>
-    <form class="joinlive inpanel" id="lvJoin" autocomplete="off"><label for="lvCode">Or join one</label><input id="lvCode" maxlength="12" placeholder="Code"><button type="submit" class="tbtn ghost">Join</button></form>${msg}${check}`;
-}
-function scriptPanel(){
-  const st=ls.get("lect-script",{fmt:"discord",rubrics:true,mine:false,lang:"en"});
-  const hasLa=!!EL.querySelector(".mbody [lang=la]");
-  const list=chunks(st.fmt,{...st,mine:st.mine&&!!VIEW.role});
-  return `<h4 class="tph">Chat script</h4>
-    <div class="trow2">
-      <label class="sl">Format <select id="scFmt">${Object.entries(FORMATS).map(([k,v])=>`<option value="${k}"${st.fmt===k?" selected":""}>${esc(v.label)}</option>`).join("")}</select></label>
-      ${hasLa?`<label class="sl">Text <select id="scLang"><option value="en"${st.lang!=="la"?" selected":""}>English</option><option value="la"${st.lang==="la"?" selected":""}>Latin</option></select></label>`:""}
-      <label class="ck"><input type="checkbox" id="scRub"${st.rubrics?" checked":""}> Directions and postures</label>
-      <label class="ck"><input type="checkbox" id="scMine"${st.mine&&VIEW.role?" checked":""}${VIEW.role?"":" disabled"}> Only my part${VIEW.role?` (${esc(M.roles[VIEW.role])})`:""}</label>
-    </div>
-    <p class="note">${list.length} message${list.length===1?"":"s"}. Paste them yourself, one at a time; nothing is sent for you.</p>
-    <div class="trow2"><button type="button" class="tbtn" id="scAll">Copy all</button><button type="button" class="tbtn ghost" id="scSave">Save as .txt</button></div>
-    <ol class="chunks">${list.map((c,i)=>`<li><textarea readonly rows="${Math.min(6,Math.max(2,Math.ceil(c.length/90)))}" aria-label="Message ${i+1}">${esc(c)}</textarea><button type="button" class="tbtn ghost" data-copy="${i}">Copy</button></li>`).join("")}</ol>`;
-}
-function speakPanel(){
-  const hasLa=!!EL.querySelector(".mbody [lang=la]");
-  const waiting=SPEAK.wait?`<p class="mineturn" role="status">Your line. <button type="button" class="tbtn" id="spCont">Continue</button></p>`:"";
-  return `<h4 class="tph">Read aloud</h4>
-    <p class="note">Uses this device's voices. Starts at the part the timer is on, or at the top.</p>
-    <div class="trow2">
-      <button type="button" class="tbtn" id="spPlay">${SPEAK.on?"Stop":"Start"}</button>
-      ${hasLa?`<label class="sl">Text <select id="spLang"><option value="en">English</option><option value="la">Latin (Italian voice)</option></select></label>`:""}
-      <label class="sl">Speed <select id="spRate">${[0.8,0.9,1,1.15,1.3].map(r=>`<option value="${r}"${+SPEAK.rate===r?" selected":""}>${r}×</option>`).join("")}</select></label>
-      ${VIEW.role?`<label class="sl">At my lines <select id="spMine"><option value="wait"${SPEAK.mine==="wait"?" selected":""}>Pause for me</option><option value="read"${SPEAK.mine==="read"?" selected":""}>Read them too</option><option value="skip"${SPEAK.mine==="skip"?" selected":""}>Skip them</option></select></label>`:`<span class="note">Pick "My part" to have it pause for your lines.</span>`}
-    </div>${waiting}`;
-}
-function wirePanel(p){
-  const q=s=>p.querySelector(s);
-  if(PANEL==="live"){
-    q("#lvHost")&&q("#lvHost").addEventListener("click",host);
-    q("#lvEnd")&&q("#lvEnd").addEventListener("click",endHost);
-    q("#lvLeave")&&q("#lvLeave").addEventListener("click",()=>leave());
-    q("#lvCopy")&&q("#lvCopy").addEventListener("click",async e=>{ const t=`Join my live session in Lectionarium: open the page, choose Pray today → Join a live session, and enter ${LIVE.code.toUpperCase()}.`; const ok=await copyText(t); e.target.textContent=ok?"Copied":"Code: "+LIVE.code.toUpperCase(); setTimeout(()=>{ e.target.textContent="Copy invite"; },2500); });
-    q("#lvJoin")&&q("#lvJoin").addEventListener("submit",e=>{ e.preventDefault(); join(q("#lvCode").value); });
-    q("#lvCheck")&&q("#lvCheck").addEventListener("click",runCheck);
-    p.querySelectorAll("[data-cast]").forEach(sel=>sel.addEventListener("change",()=>{ LIVE.cast={...LIVE.cast,[sel.dataset.cast]:sel.value}; hostPublish(true); }));
-    /* names come from other viewers: set as text, never as markup */
-    const others=LIVE.peerList.filter(x=>!x.sameTab); p.querySelectorAll(".cast td.who").forEach((td,k)=>{ const pr=(others[k]&&others[k].presence)||{}; td.textContent=(typeof pr.name==="string"&&pr.name.trim())?pr.name.trim().slice(0,40):`Guest ${k+1}`; });
-    q("#lvName")&&q("#lvName").addEventListener("change",e=>{ LIVE.me.name=e.target.value.trim().slice(0,40); ls.set("lect-name",LIVE.me.name); presence(); });
-    q("#lvReady")&&q("#lvReady").addEventListener("change",e=>{ LIVE.me.ready=e.target.checked; presence(); });
-  }
-  if(PANEL==="script"){
-    const save=()=>{ const st={fmt:q("#scFmt").value,lang:q("#scLang")?q("#scLang").value:"en",rubrics:q("#scRub").checked,mine:q("#scMine").checked}; ls.set("lect-script",st); renderPanel(); };
-    ["#scFmt","#scLang","#scRub","#scMine"].forEach(s=>q(s)&&q(s).addEventListener("change",save));
-    p.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",async()=>{ const ta=b.previousElementSibling; const ok=await copyText(ta.value,ta); b.textContent=ok?"Copied":"Select and copy"; b.closest("li").classList.add("done"); setTimeout(()=>{ b.textContent="Copy"; },2000); }));
-    q("#scAll").addEventListener("click",async e=>{ const all=[...p.querySelectorAll(".chunks textarea")].map(t=>t.value).join("\n\n"); const ok=await copyText(all); e.target.textContent=ok?"Copied":"Use Save instead"; setTimeout(()=>{ e.target.textContent="Copy all"; },2000); });
-    q("#scSave").addEventListener("click",async e=>{ const all=[...p.querySelectorAll(".chunks textarea")].map(t=>t.value).join("\n\n"); const r=await saveFile(`lectionarium-script-${M.ctx.iso}.txt`,all); e.target.textContent=r==="saved"?"Saved":"Not saved"; setTimeout(()=>{ e.target.textContent="Save as .txt"; },2000); });
-  }
-  if(PANEL==="speak"){
-    q("#spPlay").addEventListener("click",()=>{ if(SPEAK.on){ speakStop(); } else speakStart(q("#spLang")?q("#spLang").value:"en"); renderPanel(); });
-    q("#spRate").addEventListener("change",e=>{ SPEAK.rate=+e.target.value; ls.set("lect-rate",SPEAK.rate); });
-    q("#spMine")&&q("#spMine").addEventListener("change",e=>{ SPEAK.mine=e.target.value; ls.set("lect-mine",SPEAK.mine); });
-    q("#spCont")&&q("#spCont").addEventListener("click",speakContinue);
-  }
-}
-
-window.addEventListener("lect-participation",()=>{speakStop();if(PRES.open)presentClose();LIVE.castSeen="";if(M&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()&&VIEW.role==="cel"){VIEW.role="";VIEW.only=false;ls.set("lect-view",VIEW);}presence();});
-window.addEventListener("beforeunload",()=>{ try{ speechSynthesis.cancel(); }catch(e){} });
-window.LectTools={mount, join, liveOpts, leave, saveFile};
 })();
 </script>
 <script>
@@ -2871,7 +2392,8 @@ function renderAsk(){
     renderAsk();
   }));
   $("#ask").querySelectorAll("[data-mins]").forEach(b=>b.addEventListener("click",()=>{ S.mins=+b.dataset.mins; renderAsk(); }));
-  const jf=$("#joinForm"); if(jf) jf.addEventListener("submit",ev=>{ ev.preventDefault(); const c=$("#joinCode").value.trim(); if(!c) return;
+  const jf=$("#joinForm"); if(jf) jf.addEventListener("submit",async ev=>{ ev.preventDefault(); const c=$("#joinCode").value.trim(); if(!c) return;
+    try{ await window.LectLoad.service(); }catch(e){}   /* the live-session tools come with the service code */
     if(!window.LectTools){ $("#joinMsg").textContent="Live sessions are not available here."; return; }
     window.LectTools.join(c,msg=>{ const m=$("#joinMsg"); if(m) m.textContent=msg; }); });
   const dp=$("#dayPick"); if(dp) dp.addEventListener("change",()=>{ S.date=dp.value; });
@@ -2939,8 +2461,14 @@ function toVulgate(bk,c,v){
     if(c===147) return v<=11?["Ps",146,v]:["Ps",147,v-11];
     return ["Ps",c,v];
   }
-  return commonShift(bk,c,v,true);
+  // where the Douay-Rheims keeps the Hebrew division, the Hebrew numbers are already its own
+  if(HEB_ENG.some(r=>r[0]===bk&&r[1]===c&&r[2]<=v&&v<=r[3]&&!r[6])) return [bk,c,v];
+  const [b,cc,vv]=commonShift(bk,c,v,true), m=VERSEMAP.find(r=>r[0]===b&&r[1]===cc&&r[2]<=vv&&vv<=r[3]);
+  return m?[b,m[4],vv+m[5]]:[b,cc,vv];
 }
+/* King James to Douay-Rheims verse numbers where the Vulgate divides a chapter otherwise (tools/build_versemap.py):
+   [book, KJV chapter, first verse, last verse, Douay-Rheims chapter, verse offset]. */
+const VERSEMAP=[["Gen",5,32,32,5,-1],["Gen",49,33,33,49,-1],["Gen",50,23,26,50,-1],["Exod",40,16,24,40,-2],["Exod",40,27,35,40,-2],["Exod",40,37,37,40,-1],["Exod",40,38,38,40,-2],["Lev",26,4,4,26,-1],["Lev",26,46,46,26,-1],["Num",11,35,35,11,-1],["Num",12,9,9,12,-1],["Num",12,16,16,13,-15],["Num",13,1,33,13,1],["Num",20,23,23,20,-1],["Num",20,29,29,20,1],["Num",29,40,40,30,-39],["Num",30,2,3,30,1],["Num",30,6,10,30,1],["Num",30,13,16,30,1],["Josh",4,15,15,4,-1],["Josh",4,24,24,4,1],["Josh",5,15,15,5,1],["Josh",21,38,38,21,-1],["Josh",21,39,45,21,-2],["Judg",21,9,9,21,-1],["Judg",21,25,25,21,-1],["1 Sam",23,29,29,24,-28],["1 Sam",24,1,22,24,1],["2 Sam",13,39,39,13,-1],["1 Kgs",22,44,53,22,1],["1 Chr",11,34,34,11,-1],["1 Chr",11,47,47,11,-1],["1 Chr",20,8,8,20,-1],["Neh",3,32,32,3,-1],["Neh",12,34,47,12,-1],["Tob",1,3,3,1,-1],["Tob",1,10,12,1,1],["Tob",1,15,15,1,3],["Tob",1,16,16,1,4],["Tob",1,17,22,1,3],["Tob",2,9,9,2,1],["Tob",2,11,13,2,8],["Tob",3,11,11,3,1],["Tob",3,12,14,3,2],["Tob",3,16,16,3,7],["Tob",3,17,17,3,8],["Tob",4,2,2,4,-1],["Tob",4,5,5,4,1],["Tob",4,9,20,4,1],["Tob",4,21,21,4,2],["Tob",5,3,3,5,1],["Tob",5,5,9,5,2],["Tob",5,10,13,5,6],["Tob",5,15,16,5,5],["Tob",5,17,22,5,6],["Tob",6,3,8,6,1],["Tob",6,12,14,6,1],["Tob",6,16,16,6,2],["Tob",7,4,6,7,1],["Tob",7,9,9,7,1],["Tob",7,13,18,7,2],["Tob",8,5,7,8,2],["Tob",8,9,9,8,1],["Tob",8,10,13,8,2],["Tob",8,16,19,8,2],["Tob",8,21,21,8,3],["Tob",9,2,2,9,1],["Tob",9,5,5,9,1],["Tob",9,6,6,9,4],["Tob",10,4,4,10,-1],["Tob",11,11,15,11,2],["Tob",11,19,19,11,2],["Tob",13,6,6,13,1],["Tob",13,7,10,13,2],["Tob",13,12,16,13,4],["Tob",13,17,18,13,5],["Tob",14,2,2,14,1],["Tob",14,3,5,14,2],["Tob",14,9,9,14,2],["Tob",14,12,14,14,2],["Jdt",1,4,4,1,-1],["Jdt",1,10,13,1,-1],["Jdt",2,6,6,2,-1],["Jdt",2,11,11,2,-5],["Jdt",2,12,12,2,-6],["Jdt",2,14,14,2,-7],["Jdt",2,15,15,2,-8],["Jdt",2,17,18,2,-9],["Jdt",2,19,19,2,-8],["Jdt",2,20,22,2,-9],["Jdt",2,23,28,2,-10],["Jdt",3,4,4,3,1],["Jdt",3,6,6,3,2],["Jdt",3,7,7,3,3],["Jdt",3,8,8,3,4],["Jdt",4,4,9,4,-1],["Jdt",4,11,12,4,-2],["Jdt",4,15,15,4,1],["Jdt",5,10,13,5,-1],["Jdt",5,15,15,5,2],["Jdt",5,16,23,5,4],["Jdt",7,7,7,7,-1],["Jdt",7,10,10,7,-2],["Jdt",7,13,13,7,-4],["Jdt",7,16,16,7,-6],["Jdt",7,20,20,7,-9],["Jdt",7,21,21,7,-10],["Jdt",7,23,29,7,-11],["Jdt",7,30,30,7,-7],["Jdt",7,31,32,7,-8],["Jdt",8,10,12,8,-1],["Jdt",8,16,17,8,-1],["Jdt",8,20,22,8,-1],["Jdt",8,25,25,8,-1],["Jdt",8,31,32,8,-2],["Jdt",8,34,35,8,-1],["Jdt",8,36,36,8,-2],["Jdt",9,4,6,9,-1],["Jdt",9,7,7,9,2],["Jdt",9,8,8,9,3],["Jdt",9,9,14,9,5],["Jdt",10,4,4,10,-1],["Jdt",10,12,12,10,-1],["Jdt",10,17,19,10,-1],["Jdt",10,21,21,10,-2],["Jdt",10,23,23,10,-3],["Jdt",11,5,5,11,-1],["Jdt",11,6,10,11,-2],["Jdt",11,13,13,11,-1],["Jdt",11,16,17,11,-3],["Jdt",11,19,19,11,-4],["Jdt",11,20,23,11,-2],["Jdt",13,3,3,13,2],["Jdt",13,6,13,13,2],["Jdt",13,14,14,13,3],["Jdt",13,15,16,13,4],["Jdt",13,17,18,13,5],["Jdt",13,19,19,13,6],["Jdt",13,20,20,13,5],["Jdt",14,5,7,13,23],["Jdt",14,8,8,14,-7],["Jdt",14,11,11,14,-4],["Jdt",14,12,14,14,-1],["Jdt",14,16,19,14,-2],["Jdt",15,4,9,15,1],["Jdt",15,11,11,15,2],["Jdt",16,3,8,16,1],["Jdt",16,9,13,16,2],["Jdt",16,14,17,16,3],["Jdt",16,18,22,16,4],["Jdt",16,24,25,16,5],["1 Macc",1,4,11,1,1],["1 Macc",1,14,20,1,1],["1 Macc",1,21,21,1,2],["1 Macc",1,22,30,1,1],["1 Macc",1,31,34,1,2],["1 Macc",1,35,35,1,1],["1 Macc",1,37,41,1,2],["1 Macc",1,42,42,1,1],["1 Macc",1,43,45,1,2],["1 Macc",1,46,48,1,3],["1 Macc",1,49,51,1,2],["1 Macc",1,52,62,1,3],["1 Macc",1,63,63,1,2],["1 Macc",1,64,64,1,3],["1 Macc",13,53,53,13,1],["2 Macc",2,19,32,2,1],["2 Macc",15,37,39,15,1],["Job",16,5,22,16,1],["Job",40,2,5,39,30],["Job",40,6,24,40,-5],["Job",41,1,9,40,19],["Job",41,10,34,41,-9],["Job",42,17,17,42,-1],["Eccl",5,1,1,4,16],["Eccl",5,2,20,5,-1],["Eccl",6,12,12,7,-11],["Eccl",7,1,29,7,1],["Song",1,2,17,1,-1],["Song",6,1,1,5,16],["Song",6,2,13,6,-1],["Wis",2,4,4,2,-1],["Wis",5,15,23,5,1],["Wis",6,1,22,6,1],["Wis",6,23,25,6,2],["Wis",11,5,26,11,1],["Wis",17,10,21,17,-1],["Wis",19,13,21,19,-1],["Wis",19,22,22,19,-2],["Sir",1,3,3,1,-1],["Sir",1,14,14,1,2],["Sir",1,17,18,1,4],["Sir",1,19,20,1,5],["Sir",1,21,25,1,6],["Sir",1,26,27,1,7],["Sir",1,28,29,1,8],["Sir",1,30,30,1,9],["Sir",2,11,14,2,2],["Sir",2,15,17,2,3],["Sir",2,18,18,2,4],["Sir",3,1,8,3,1],["Sir",3,9,13,3,2],["Sir",3,14,15,3,1],["Sir",3,16,18,3,2],["Sir",3,20,23,3,1],["Sir",3,24,24,3,2],["Sir",3,26,26,3,1],["Sir",3,27,29,3,2],["Sir",3,30,31,3,3],["Sir",4,11,17,4,1],["Sir",4,18,18,4,2],["Sir",4,19,20,4,3],["Sir",4,21,22,4,4],["Sir",4,23,31,4,5],["Sir",5,7,7,5,1],["Sir",5,8,14,5,2],["Sir",5,15,15,5,3],["Sir",7,11,16,7,1],["Sir",7,17,30,7,2],["Sir",7,31,31,7,3],["Sir",7,32,36,7,4],["Sir",8,3,8,8,1],["Sir",8,9,9,8,2],["Sir",8,10,19,8,3],["Sir",9,9,9,9,3],["Sir",9,10,10,9,4],["Sir",9,11,13,9,5],["Sir",9,14,14,9,7],["Sir",9,16,16,9,6],["Sir",9,17,18,9,7],["Sir",10,10,10,10,1],["Sir",10,11,13,10,2],["Sir",10,14,17,10,3],["Sir",10,18,20,10,4],["Sir",10,22,31,10,3],["Sir",11,20,21,11,1],["Sir",11,22,23,11,2],["Sir",11,24,24,11,3],["Sir",11,25,34,11,2],["Sir",12,6,6,12,1],["Sir",12,14,15,12,-1],["Sir",12,18,18,12,1],["Sir",13,3,7,13,1],["Sir",13,8,8,13,2],["Sir",13,9,13,13,3],["Sir",13,14,22,13,4],["Sir",13,23,23,13,5],["Sir",13,24,26,13,6],["Sir",15,8,8,15,-1],["Sir",15,16,20,15,1],["Sir",16,2,2,16,-1],["Sir",16,4,14,16,1],["Sir",16,28,30,16,1],["Sir",17,2,2,17,1],["Sir",17,6,9,17,-1],["Sir",17,10,15,17,-2],["Sir",17,17,20,17,-3],["Sir",17,22,25,17,-4],["Sir",17,26,26,17,-3],["Sir",17,28,28,17,-2],["Sir",17,29,32,17,-1],["Sir",19,6,6,19,-1],["Sir",19,22,30,19,-3],["Sir",20,1,1,19,27],["Sir",20,2,2,20,-1],["Sir",20,16,17,20,1],["Sir",20,18,25,20,2],["Sir",20,27,27,20,1],["Sir",20,28,31,20,2],["Sir",21,3,11,21,1],["Sir",21,12,12,21,2],["Sir",21,13,28,21,3],["Sir",22,8,8,22,1],["Sir",22,12,13,22,1],["Sir",22,14,18,22,3],["Sir",22,19,23,22,5],["Sir",22,24,27,22,6],["Sir",23,11,11,23,1],["Sir",23,12,12,23,3],["Sir",23,13,14,23,4],["Sir",23,15,16,23,5],["Sir",23,17,17,23,6],["Sir",23,18,18,23,7],["Sir",23,19,19,23,8],["Sir",23,20,21,23,9],["Sir",23,22,28,23,10],["Sir",24,3,3,24,2],["Sir",24,4,6,24,3],["Sir",24,7,8,24,4],["Sir",24,9,10,24,5],["Sir",24,11,14,24,4],["Sir",24,15,15,24,5],["Sir",24,16,18,24,6],["Sir",24,19,20,24,7],["Sir",24,21,22,24,8],["Sir",24,23,23,24,9],["Sir",24,25,29,24,10],["Sir",24,30,31,24,11],["Sir",24,32,32,24,12],["Sir",24,33,34,24,13],["Sir",25,2,2,25,1],["Sir",25,3,7,25,2],["Sir",25,8,11,25,3],["Sir",25,12,12,25,4],["Sir",25,13,13,25,5],["Sir",25,14,14,25,6],["Sir",25,15,22,25,7],["Sir",25,23,23,25,8],["Sir",25,24,25,25,9],["Sir",25,26,26,25,10],["Sir",26,6,6,26,2],["Sir",26,7,14,26,3],["Sir",26,15,15,26,4],["Sir",26,16,18,26,5],["Sir",26,28,28,26,-2],["Sir",26,29,29,26,-1],["Sir",27,3,16,27,1],["Sir",27,18,20,27,2],["Sir",27,21,30,27,3],["Sir",28,7,7,28,1],["Sir",28,8,14,28,2],["Sir",28,15,26,28,4],["Sir",29,6,6,29,1],["Sir",29,7,13,29,3],["Sir",29,14,15,29,4],["Sir",29,16,16,29,5],["Sir",29,17,17,29,4],["Sir",29,18,18,29,5],["Sir",29,19,28,29,6],["Sir",30,2,2,30,-1],["Sir",30,20,23,30,1],["Sir",30,24,25,30,2],["Sir",31,13,13,31,1],["Sir",31,14,14,31,2],["Sir",31,16,20,31,3],["Sir",31,21,22,31,4],["Sir",31,23,26,31,5],["Sir",31,27,27,31,7],["Sir",31,28,28,31,8],["Sir",31,29,29,31,9],["Sir",31,30,31,31,10],["Sir",32,3,3,32,1],["Sir",32,4,6,32,2],["Sir",32,7,7,32,3],["Sir",32,9,18,32,4],["Sir",32,19,20,32,5],["Sir",32,21,24,32,4],["Sir",33,9,9,33,1],["Sir",33,14,14,33,1],["Sir",33,17,27,33,1],["Sir",33,28,28,33,2],["Sir",33,29,30,33,1],["Sir",34,5,5,34,1],["Sir",34,11,13,34,1],["Sir",34,14,15,34,2],["Sir",34,16,18,34,3],["Sir",34,20,22,34,4],["Sir",34,23,26,34,5],["Sir",35,2,12,35,2],["Sir",35,13,15,35,3],["Sir",35,17,18,35,4],["Sir",35,19,19,35,5],["Sir",35,20,20,35,6],["Sir",36,7,7,36,1],["Sir",36,8,26,36,2],["Sir",37,7,8,37,1],["Sir",37,9,11,37,2],["Sir",37,12,12,37,3],["Sir",37,13,16,37,4],["Sir",37,18,31,37,3],["Sir",38,18,28,38,1],["Sir",38,30,30,38,3],["Sir",38,31,32,38,4],["Sir",38,33,34,38,5],["Sir",39,5,5,39,1],["Sir",39,6,6,39,2],["Sir",39,7,9,39,3],["Sir",39,10,14,39,4],["Sir",39,15,22,39,5],["Sir",39,23,23,39,6],["Sir",39,24,28,39,5],["Sir",39,29,35,39,6],["Sir",40,27,29,40,1],["Sir",40,30,30,40,2],["Sir",41,2,2,41,1],["Sir",41,3,4,41,2],["Sir",41,5,15,41,3],["Sir",41,16,19,41,4],["Sir",41,20,21,41,5],["Sir",41,22,22,41,6],["Sir",41,24,24,42,-23],["Sir",42,22,25,42,1],["Sir",43,9,17,43,1],["Sir",43,18,29,43,2],["Sir",43,30,30,43,3],["Sir",43,31,33,43,4],["Sir",44,12,12,44,1],["Sir",44,18,21,44,1],["Sir",44,22,22,44,3],["Sir",45,6,9,45,1],["Sir",45,10,13,45,2],["Sir",45,14,15,45,3],["Sir",45,16,19,45,4],["Sir",45,20,23,45,5],["Sir",45,24,25,45,6],["Sir",45,26,26,45,5],["Sir",46,2,6,46,1],["Sir",46,7,12,46,2],["Sir",46,13,20,46,3],["Sir",47,5,8,47,1],["Sir",47,9,13,47,2],["Sir",47,14,18,47,1],["Sir",47,19,22,47,2],["Sir",47,23,23,47,5],["Sir",47,24,25,47,6],["Sir",48,12,15,48,1],["Sir",48,16,20,48,2],["Sir",48,21,25,48,3],["Sir",49,2,4,49,1],["Sir",49,5,15,49,2],["Sir",49,16,16,49,3],["Sir",50,10,12,50,1],["Sir",50,13,13,50,2],["Sir",50,14,14,50,1],["Sir",50,16,29,50,2],["Sir",51,2,3,51,1],["Sir",51,4,6,51,2],["Sir",51,7,8,51,3],["Sir",51,9,12,51,4],["Sir",51,13,17,51,5],["Sir",51,18,19,51,6],["Sir",51,20,20,51,7],["Sir",51,21,30,51,8],["Isa",13,22,22,14,-21],["Isa",45,24,25,45,1],["Isa",46,12,13,46,-1],["Jer",37,5,21,37,-1],["Bar",3,17,17,3,1],["Bar",3,35,37,3,1],["Bar",6,2,15,6,-1],["Bar",6,16,17,6,-2],["Bar",6,18,42,6,-1],["Bar",6,52,73,6,-1],["Ezek",2,10,10,2,-1],["Dan",3,24,30,3,67],["Dan",4,1,3,3,97],["Dan",4,4,37,4,-3],["Hos",10,15,15,11,-14],["Hos",13,16,16,14,-15],["Hos",14,1,9,14,1],["Amos",6,11,14,6,1],["Jonah",1,17,17,2,-16],["Jonah",2,1,10,2,1],["Mic",5,13,15,5,-1],["Hag",1,15,15,2,-14],["Hag",2,1,23,2,1],["Matt",17,15,27,17,-1],["Mark",4,41,41,4,-1],["Mark",9,1,1,8,38],["Mark",9,2,50,9,-1],["John",6,52,71,6,1],["John",11,57,57,11,-1],["Acts",7,56,60,7,-1],["Acts",14,7,28,14,-1],["Acts",19,41,41,19,-1],["2 Cor",1,24,24,1,-1],["2 Cor",13,13,14,13,-1],["1 Thess",4,12,18,4,-1],["2 Thess",2,11,17,2,-1]];
 /* Where the Hebrew chapter-and-verse numbering of a modern lectionary (NAB, NRSV) differs from the English (KJV):
    [book, Hebrew chapter, first verse, last verse, English chapter, verse offset, does the Douay-Rheims divide it as
    the English does?]. The last column was set by comparing the bundled Douay-Rheims and KJV chapter lengths; where
@@ -3090,158 +2618,7 @@ function lothPsalms(iso, H, day){
   });
 }
 
-/* ---------------------------------------------------------------- Byzantine fixed texts (traditional English, public domain) */
-const BYZ_TX={
- tris:[["cel","Blessed is our God, always, now and ever, and unto ages of ages."],["ppl","Amen."],
-   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times)"],
-   ["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
-   ["all","O most holy Trinity, have mercy on us. O Lord, cleanse us from our sins. O Master, pardon our transgressions. O Holy One, visit and heal our infirmities, for thy name's sake."],
-   ["all","Lord, have mercy. (Three times)"],["all","Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."],
-   ["all","Our Father, who art in heaven, hallowed be thy name; thy kingdom come; thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil."],
-   ["cel","For thine is the kingdom, and the power, and the glory, of the Father, and of the Son, and of the Holy Spirit, now and ever, and unto ages of ages."],["ppl","Amen."]],
- creed:[["all","I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible. And in one Lord Jesus Christ, the Son of God, the only-begotten, begotten of the Father before all ages; Light of Light, true God of true God; begotten, not made; of one essence with the Father, by whom all things were made; who for us men and for our salvation came down from heaven, and was incarnate of the Holy Spirit and the Virgin Mary, and became man; and was crucified for us under Pontius Pilate, and suffered, and was buried; and rose again on the third day according to the Scriptures; and ascended into heaven, and sits at the right hand of the Father; and he shall come again with glory to judge the living and the dead; whose kingdom shall have no end. And in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father; who with the Father and the Son together is worshipped and glorified; who spoke by the prophets. In one holy, catholic and apostolic Church. I confess one baptism for the remission of sins. I look for the resurrection of the dead, and the life of the world to come. Amen."]],
- phos:[["all","Hail, gladdening Light, of his pure glory poured, who is the immortal Father, heavenly, blest, holiest of holies, Jesus Christ our Lord! Now we are come to the sun's hour of rest; the lights of evening round us shine; we hymn the Father, Son, and Holy Spirit divine. Worthiest art thou at all times to be sung with undefiled tongue, Son of our God, giver of life, alone: therefore in all the world thy glories, Lord, they own."]],
- vouch:[["all","Vouchsafe, O Lord, to keep us this evening without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. Blessed art thou, O Master; make me to understand thy statutes. Blessed art thou, O Holy One; enlighten me with thy statutes. Thy mercy, O Lord, endures for ever; despise not the works of thy hands. To thee belongs praise, to thee belongs song, to thee belongs glory, to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen."]],
- godlord:[["cel","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","O give thanks unto the Lord, for he is good: for his mercy endureth for ever."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","All nations compassed me about: but in the name of the Lord will I destroy them."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."],["cel","This is the Lord's doing, and it is marvellous in our eyes."],["all","God is the Lord, and hath appeared unto us: blessed is he that cometh in the name of the Lord."]],
- fhp:[["cel","O Christ, the true Light, who enlightenest and sanctifiest every man that cometh into the world: let the light of thy countenance be signed upon us, that in it we may behold the light unapproachable; and direct our steps in the doing of thy commandments; through the intercessions of thy most pure Mother, and of all thy saints."],["ppl","Amen."]],
- doxo:[["cel","Glory to thee who hast shown us the light!"],["all","Glory to God in the highest, and on earth peace, good will towards men. We praise thee, we bless thee, we worship thee, we glorify thee, we give thanks to thee for thy great glory. O Lord, heavenly King, God the Father Almighty; O Lord, the only-begotten Son, Jesus Christ, and the Holy Spirit. O Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy on us; thou that takest away the sins of the world, receive our prayer; thou that sittest at the right hand of the Father, have mercy on us. For thou only art holy, thou only art the Lord, Jesus Christ, to the glory of God the Father. Amen."],
-   ["all","Every day will I bless thee, and praise thy name for ever, and for ever and ever. Vouchsafe, O Lord, to keep us this day without sin. Blessed art thou, O Lord, the God of our fathers, and praised and glorified is thy name for ever. Amen. Let thy mercy, O Lord, be upon us, as we have set our hope on thee. Blessed art thou, O Lord; teach me thy statutes. (Three times) Lord, thou hast been our refuge from generation to generation. I said: Lord, have mercy on me; heal my soul, for I have sinned against thee. Lord, I flee unto thee; teach me to do thy will, for thou art my God. For with thee is the fountain of life; in thy light shall we see light. Continue thy mercy unto them that know thee."],
-   ["all","Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Three times) Glory to the Father, and to the Son, and to the Holy Spirit, now and ever, and unto ages of ages. Amen. Holy Immortal, have mercy on us. Holy God, Holy Mighty, Holy Immortal, have mercy on us."]],
-};
-const byzTx=k=>`<div class="txt one">${BYZ_TX[k].map(([r,t])=>`<p data-r="${r}">${esc(t).replace(/\((Three times)\)/g,'<i class="rubi">($1)</i>')}</p>`).join("")}</div>`;
-/* psalms of the Byzantine hours, numbered as in the Septuagint (= the Douay-Rheims) */
-const BYZ_PS={vespers:{lic:[140,141,129,116]},compline:{ps:[50,69,142]},midnight:{ps:[50,118]},orthros:{six:[3,37,62,87,102,142],lauds:[148,149,150]},
-  first:{ps:[5,89,100]},third:{ps:[16,24,50]},sixth:{ps:[53,54,90]},ninth:{ps:[83,84,85]}};
-/* ---------------------------------------------------------------- hour orders */
-const ORDER={
- loth:{
-  or:["Introductory verse (or the Invitatory, if this is the first hour of the day)","Hymn","@psalms|Psalmody: three psalms or sections, each with antiphon","Verse","@first|First reading: Scripture, with responsory","Second reading: Fathers or saints, with responsory","Te Deum (Sundays outside Lent, solemnities, feasts)","Concluding prayer","Acclamation"],
-  lauds:["@invit|Invitatory (Psalm 95) or introductory verse","Hymn","@psalms|Psalmody: morning psalm, Old Testament canticle, psalm of praise","Short reading","Responsory","@bened|Gospel canticle: Benedictus (Luke 1:68-79)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
-  terce:["Introductory verse","Hymn","@psalms|Psalmody: three psalms or sections (current psalmody)","Short reading","Verse","Concluding prayer","Acclamation"],
-  vespers:["Introductory verse","Hymn","@psalms|Psalmody: two psalms and a New Testament canticle","Short reading","Responsory","@magn|Gospel canticle: Magnificat (Luke 1:46-55)","Intercessions","Lord's Prayer","Concluding prayer","Dismissal"],
-  compline:["Introductory verse","Examination of conscience and act of penitence","Hymn","@psalms|Psalmody","Short reading","Responsory: Into your hands, Lord","@nunc|Gospel canticle: Nunc dimittis (Luke 2:29-32)","Concluding prayer","Blessing","Antiphon to the Blessed Virgin Mary"]},
- dwdo:{
-  mattins:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@venite|Venite (Psalm 95), or the Easter Anthems in Eastertide","@psalms|The psalms appointed for the morning of this day of the month","First Lesson (Old Testament)","Te Deum laudamus, or Benedicite","Second Lesson (New Testament)","@bened|Benedictus (Luke 1:68-79)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Grace","Prayers and thanksgivings; the Grace"],
-  prime:["Opening versicles","Hymn Jam lucis orto sidere","Psalms (with the Quicunque vult on Sundays)","Chapter and responsory","Prayers (weekdays)","Collect for Grace","Conclusion"],
-  terce:["Opening versicles","Hymn","Psalm 119:33-80","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
-  sext:["Opening versicles","Hymn","Psalm 119:81-128","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
-  none:["Opening versicles","Hymn","Psalm 119:129-176","Chapter and responsory","Week-day Prayers (weekdays)","Collect of the Day","Conclusion"],
-  evensong:["Opening sentence; Confession and Absolution (required in public worship)","Preces: O Lord, open thou our lips","@psalms|The psalms appointed for the evening of this day of the month","First Lesson (Old Testament)","@magn|Magnificat (Luke 1:46-55)","Second Lesson (New Testament)","@nunc|Nunc dimittis (Luke 2:29-32)","Apostles' Creed","Lesser Litany and Lord's Prayer","Suffrages","Collect of the Day; Collect for Peace; Collect for Aid against all Perils","Anthem; prayers and thanksgivings; the Grace"],
-  compline:["Opening sentence and confession","@psalms|Psalms (4, 31:1-6, 91, 134)","Short reading","@resp|Responsory: Into thy hands, O Lord","@nunc|Nunc dimittis","Prayers","Blessing"]},
- br:{
-  matins:["Pater, Ave, Credo; Domine labia mea","Invitatory (Psalm 94 Vulgate)","Hymn","Nocturns: psalms with antiphons; three lessons per nocturn (one nocturn on ferias)","Responsories","Te Deum (Sundays and feasts outside penitential seasons)"],
-  lauds:["Deus in adjutorium","Five psalms (the fourth an Old Testament canticle) with antiphons","Chapter","Hymn and versicle","@bened|Benedictus with antiphon","Collect; commemorations","Marian antiphon if the last hour said in choir"],
-  prime:["Deus in adjutorium","Hymn Jam lucis orto sidere","Psalms","Chapter, short responsory, versicle","Prayer","Martyrology and the Chapter Office"],
-  terce:["Deus in adjutorium","Hymn","Three psalms (or sections) under one antiphon","Chapter","Short responsory and versicle","Collect"],
-  vespers:["Deus in adjutorium","Five psalms with antiphons","Chapter","Hymn and versicle","@magn|Magnificat with antiphon","Collect; commemorations"],
-  compline:["Jube domne benedicere; short lesson (1 Pet 5:8-9)","Confiteor","Converte nos; Deus in adjutorium","Psalms under one antiphon","Hymn Te lucis ante terminum","@nunc|Chapter, short responsory, Nunc dimittis","Prayer Visita quaesumus","Blessing; seasonal Marian antiphon"]},
- byz:{
-  vespers:["@ps104|Opening blessing; Psalm 103 (104)","Great Litany","Kathisma of the Psalter","@lic|Lord, I have cried (Pss 140, 141, 129, 116) with stichera of the tone and the Menaion","@phos|Entrance; Phos hilaron (O Joyful Light)","Prokeimenon; Old Testament readings (paremias) on feasts","@vouch|Litanies; Vouchsafe, O Lord","Aposticha","@nunc|Song of Simeon (Luke 2:29-32)","@tris|Trisagion prayers","Apolytikion (troparion of the day); dismissal"],
-  compline:["@ps|Small Compline: Psalms 50, 69, 142","@creed|Doxology; Creed","Canon (if appointed)","@tris|Trisagion prayers","Kontakion of the day","Prayers; dismissal"],
-  midnight:["@ps|Psalm 50 and Psalm 118 (119)","@creed|Creed","@tris|Trisagion prayers","Troparia and prayers","Dismissal"],
-  orthros:["@six|Royal beginning; Six Psalms (3, 37, 62, 87, 102, 142)","@godlord|Great Litany; God is the Lord with the troparia","Kathismata of the Psalter","@eoth|On Sundays: Evlogitaria; Resurrection Gospel (eothinon)","@ps50|Psalm 50; canon","@magn|Magnificat with the Magnificat refrain (9th ode)","@lauds|Lauds (Pss 148-150) with stichera; Great Doxology","Litanies; Aposticha; dismissal"],
-  first:["@ps|Psalms 5, 89, 100","Troparion and kontakion of the day","@tris|Trisagion prayers","@fhp|Prayer of the First Hour (O Christ, the true Light)"],
-  third:["@ps|Psalms 16, 24, 50","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
-  sixth:["@ps|Psalms 53, 54, 90","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"],
-  ninth:["@ps|Psalms 83, 84, 85","Troparion and kontakion of the day","@tris|Trisagion prayers","Prayer of the hour"]},
-};
-ORDER.loth.sext=ORDER.loth.terce; ORDER.loth.none=ORDER.loth.terce;
-ORDER.br.sext=ORDER.br.terce; ORDER.br.none=ORDER.br.terce;
-
-const DO_VERSION={br62:"Rubrics 1960 - 1960",br55:"Divino Afflatu - 1954",mon:"Monastic - 1963",op:"Ordo Praedicatorum - 1962"};
-/* ---------------------------------------------------------------- The Day-Hours (1877): Prime, Terce, Sext, None */
-function dhEnv(iso){
-  const d=toDate(iso), Y=d.getUTCFullYear(), E=easterY(Y), off=Math.round((d-E)/DAY), dow=d.getUTCDay();
-  const xmas=Date.UTC(Y,11,25), adv=new Date(xmas-(((new Date(xmas).getUTCDay())||7)+21)*DAY);
-  const advent=d>=adv&&d<new Date(xmas), lent=off>=-46&&off<-14, passion=off>=-14&&off<0;
-  return {sun:dow===0, wkd:dow!==0, sept:off>=-63&&off<=-4, septE:off>=-63&&off<0, easter:off>=0&&off<56,
-    advent, lent, passion, ord:!advent&&!lent&&!passion, penit:dow!==0&&off>=-46&&off<0};
-}
-function dhOk(it,env){ return !(it.if||[]).some(c=>c.startsWith("no")?env[c.slice(2,3).toLowerCase()+c.slice(3)]:!env[c]); }
-const DH_LP="Our Father, which art in heaven, Hallowed be thy Name. Thy kingdom come. Thy will be done, in earth as it is in heaven. Give us this day our daily bread. And forgive us our trespasses, As we forgive them that trespass against us. And lead us not into temptation; But deliver us from evil. Amen.";
-const DH_CREED="I believe in God the Father Almighty, Maker of heaven and earth: And in Jesus Christ his only Son our Lord, Who was conceived by the Holy Ghost, Born of the Virgin Mary, Suffered under Pontius Pilate, Was crucified, dead, and buried, He descended into hell; The third day he rose again from the dead, He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence he shall come to judge the quick and the dead. I believe in the Holy Ghost; The holy Catholick Church; The Communion of Saints; The Forgiveness of sins; The Resurrection of the body, And the life everlasting. Amen.";
-const DH_GLORIA=`<p data-r="all">Glory be to the Father, and to the Son : and to the Holy Ghost;</p><p data-r="all">As it was in the beginning, is now, and ever shall be : world without end. Amen.</p>`;
-const DH_DAYPS={1:"Ps 24",2:"Ps 25",3:"Ps 26",4:"Ps 23",5:"Ps 22"};
-async function dhItems(items,env,o){
-  let h="";
-  const ps=async ref=>(await o.blk(ref.replace("Ps ","Psalm "),ref,"cv"))+DH_GLORIA;
-  for(const it of items){
-    if(!dhOk(it,env)) continue;
-    const x=it.x;
-    switch(it.k){
-      case "r": h+=`<p class="rub">${esc(x)}</p>`; break;
-      case "v": h+=`<p data-r="cel"><span class="sp">℣.</span> ${esc(x)}</p>`; break;
-      case "r2": h+=`<p data-r="ppl"><span class="sp">℟.</span> ${esc(x)}</p>`; break;
-      case "a": h+=`<p data-r="all"><span class="sp">Ant.</span> ${esc(x)}</p>`; break;
-      case "c": h+=`<p data-r="lec">${esc(x)}</p>`; break;
-      case "o": h+=`<p data-r="cel">${esc(x)}</p>`; break;
-      case "p": h+=`<p data-r="cel" data-priest-only="1"><span class="sp">Priest.</span> ${esc(x)}</p>`; break;
-      case "l": case "s": h+=`<p data-r="all">${esc(x)}</p>`; break;
-      case "h": h+=`<p class="hymn" data-r="all">${x.map(esc).join("<br>")}</p>`; break;
-      case "slot":
-        if(it.n==="ps") h+=await ps(it.a);
-        else if(it.n==="day-ps"){ const r=DH_DAYPS[o.dow]; if(r) h+=await ps(r); }
-        else if(it.n==="gloria") h+=DH_GLORIA;
-        else if(it.n==="lords-prayer") h+=`<p data-r="all">${DH_LP}</p>`;
-        else if(it.n==="creed") h+=`<p data-r="all">${DH_CREED}</p>`;
-        else if(it.n==="preces") h+=await dhItems(o.preces,env,{...o,lent:it.a});
-        else if(it.n==="lent-ps"){ if(env.penit&&o.lent){ h+=`<p class="rub">In Lent is said here Psalm 51, ${o.lent==="67"?"preceded":"followed"} by Psalm ${o.lent}.</p>`; for(const r of (o.lent==="67"?["Ps 67","Ps 51"]:["Ps 51","Ps "+o.lent])) h+=await ps(r); } }
-        else if(it.n==="collect") h+=o.col?`<p class="cite">${esc(titleCase(o.nm))}</p><p data-r="cel">${esc(o.col)}</p>`:`<p class="cue">The Collect of the Day, from the Prayer Book or Divine Worship.</p>`;
-        break;
-    }
-  }
-  return h;
-}
-/* ---------------------------------------------------------------- 1662 offices and the generated Breviary */
-const bcpCache={};
-function bcpOffice(){ return bcpCache.o||(bcpCache.o=fetch("bcp-office.json").then(r=>r.json())); }
-const titleCase=t=>String(t).toLowerCase().replace(/(^|[\s-])([a-z])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\b(In|After|Before|The|Of|And)\b/g,w=>w.toLowerCase()).replace(/^./,c=>c.toUpperCase());
-function bcpItem(it){
-  const [k,t,r,lab]=it;
-  if(k==="rub") return `<p class="rub">${esc(t)}</p>`;
-  if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
-  if(k==="h") return `<h5 class="sub">${esc(t)}</h5>`;
-  return `<p data-r="${r||"all"}">${lab?`<span class="sp">${lab}</span> `:""}${esc(t)}</p>`;
-}
-const DO_KEY={br62:"br62",br55:"br55",mon:"mon",op:"op"};
-const doCache={};
-const doJSON=p=>doCache[p]||(doCache[p]=fetch(p).then(r=>{ if(!r.ok) throw new Error(p); return r.json(); }));
-async function doTable(base, man, kind, ids){
-  const ranges=man[kind==="l"?"lines":"rows"], need=new Set();
-  ids.forEach(id=>{ let lo=0,hi=ranges.length-1; while(lo<hi){ const mid=(lo+hi+1)>>1; if(ranges[mid][0]<=id) lo=mid; else hi=mid-1; } need.add(lo); });
-  const shards={}; await Promise.all([...need].map(async n=>{ shards[n]=await doJSON(`${base}/${kind}-${String(n).padStart(3,"0")}.json`); }));
-  return id=>{ for(const n of need){ const sh=shards[n]; if(id>=sh.start&&id<sh.start+sh.v.length) return sh.v[id-sh.start]; } return null; };
-}
-async function doHour(R,H,iso){
-  const key=DO_KEY[R], hour=DO_HOUR[H]; if(!key||!hour) return null;
-  const base=`breviary/${key}`;
-  let man, month;
-  try{ man=await doJSON(`${base}/manifest.json`); if(!(man.years||[]).includes(iso.slice(0,4))) return null; month=await doJSON(`${base}/y-${iso.slice(0,4)}.json`); }catch(e){ return null; }
-  const day=month[iso]; if(!day||!day[hour]) return null;
-  const variants=[day[hour], day["c:"+hour]].filter(Boolean);
-  const rowIds=[...new Set(variants.flatMap(v=>v[1]))];
-  const row=await doTable(base,man,"r",rowIds);
-  const lineIds=[...new Set(rowIds.flatMap(id=>{ const r=row(id); return r?r[0].concat(r[1]):[]; }))];
-  const line=await doTable(base,man,"l",lineIds);
-  const plain=h=>h.replace(/<[^>]+>/g,"").trim();
-  // one step per headed row; a row with no heading (a psalm continuing, a second lesson part) joins the step before it
-  const steps=v=>{ const out=[];
-    v[1].forEach(id=>{ const r=row(id); if(!r) return;
-      let la=r[0].map(line).join(""), en=r[1].map(line).join("");
-      const th=/<h5 class=sub>(.*?)<\/h5>/.exec(en)||/<h5 class=sub>(.*?)<\/h5>/.exec(la);
-      la=la.replace(/<h5 class=sub>.*?<\/h5>/,""); en=en.replace(/<h5 class=sub>.*?<\/h5>/,"");
-      const words=plain(en.replace(/<sup>.*?<\/sup>/g,"")).split(/\s+/).length;
-      const block=`<div class="txt two dooff"><div lang="la">${la}</div><div lang="en">${en}</div></div>`;
-      if(!th&&out.length){ const p=out[out.length-1]; p.slot+=block; p.min+=words/2.4/60; return; }
-      out.push({t:th?plain(th[1]):"Opening", slot:block, min:Math.max(0.2,words/2.4/60)});
-    });
-    return out; };
-  return {title:day[hour][0], steps:steps(day[hour]), chant:day["c:"+hour]?steps(day["c:"+hour]):null};
-}
-const DO_HOUR={matins:"Matutinum",lauds:"Laudes",prime:"Prima",terce:"Tertia",sext:"Sexta",none:"Nona",vespers:"Vespera",compline:"Completorium"};
-const UNIV_HOUR={or:"readings",lauds:"lauds",terce:"terce",sext:"sext",none:"none",vespers:"vespers",compline:"compline"};
 const doDate=iso=>{ const [y,m,d]=iso.split("-"); return `${m}-${d}-${y}`; };
-
 /* ---------------------------------------------------------------- session render */
 async function readingBlock(lab,cit,num,tr,added){
   let body;
@@ -3429,135 +2806,8 @@ async function renderSession(){
 }
 
 async function officeBody(iso, day){
-  const R=S.rite, H=S.hour, d=toDate(iso), dow=d.getUTCDay();
-  const hourName=hoursFor(R).find(x=>x[0]===H)[1];
-  const slots={};
-  const blk=(lab,cit,tr)=>readingBlock(lab,cit,"n",tr);
-  let h="";
-  const ord = R==="loth"?ORDER.loth[H]: R==="dwdo"?ORDER.dwdo[H]: R==="byz"?ORDER.byz[H]: ORDER.br[H];
-  if(R==="loth"){
-    h+=`<h2 class="dayname">${esc(day.n.t)}</h2><p class="daysub">Psalter Week ${psalterWeek(iso)} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The psalms and canticles of the four-week psalter are given in full in the Douay-Rheims, a public-domain translation from the Latin (the Liturgy of the Hours uses the Grail or Abbey Psalms, so the wording differs, and the psalms keep their Latin numbering in brackets). The hymns, antiphons, intercessions and prayers of the official books are copyrighted: press <b>Add text</b> beside any of them to fill it in from your own breviary, or <a href="https://universalis.com/${iso.replace(/-/g,"")}/${UNIV_HOUR[H]}.htm" target="_blank" rel="noopener">open today's ${esc(hourName)} at Universalis</a>. Solemnities and feasts have proper psalms.</p>`;
-    { let x=""; for(const ps of lothPsalms(iso,H,day)) x+=await blk(ps.lab,ps.cit,"dr"); slots.psalms=x||`<p class="note">No psalmody is listed for this hour.</p>`; }
-    if(H==="lauds"||H==="or") slots.invit=`<details class="canon"><summary>Invitatory: Psalm 95 (94), if this is the first hour of the day</summary>${await blk("Psalm 95 (94)","Ps 95","dr")}</details>`;
-    slots.bened=await blk("Benedictus","Luke 1:68-79","dr"); slots.magn=await blk("Magnificat","Luke 1:46-55","dr"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","dr");
-    if(H==="or"){ let LOH={}; try{ LOH=JSON.parse(document.getElementById("lect-extra").textContent).LOH; }catch(e){}
-      const c=day.nk && LOH[day.nk];
-      slots.first = (dow===0 && c && /\d/.test(c)) ? await blk("Biblical reading · one-year cycle",c,"dr") : `<p class="note">Weekday biblical readings follow the Office's own course; see Universalis for today's.</p>`; }
-  } else if(R==="bcp79"){
-    const B=await fetch("data/bcp1979.json").then(r=>r.json()), rite1=/1$/.test(H), C=B.collects[rite1?"t":"c"];
-    const D=window.LectPB79.day(iso,C), col=C[D.title]||C[D.season];
-    const dom=Math.min(30,d.getUTCDate()), eve=/^ep|compline/.test(H);
-    const L=window.LectCalendar.custom({type:"office",rite:R,hour:H,iso})||await window.LectCalendar.pb79({iso,day},true,eve);
-    const lessonHTML=await window.LectCalendar.html({readingBlock},L);
-    let psalmHTML="";for(const cite of L.psalms||[])psalmHTML+=await window.LectCalendar.psalm79(cite,"Appointed Psalm");
-    h+=`<h2 class="dayname">${esc(D.title)}</h2><p class="daysub">Day ${dom} of the month · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1979), with two-year Daily Office lessons in the King James Bible and appointed psalms from the 1979 Psalter. Where an appointment is missing, check your book; the monthly 1979 Psalter remains available. Noonday and Compline retain their fixed short lessons.</p>`;
-    const fill=name=>{
-      if(name==="psalms") return psalmHTML||B.psalter[(eve?"e":"m")+dom].map(p=>`<h5 class="sub">Psalm ${esc(p.n)}${p.latin?` <i>${esc(p.latin)}</i>`:""}</h5>`+p.v.map(([n,t])=>n?`<p data-r="all"><sup>${n}</sup> ${esc(t)}</p>`:`<p class="rub">${esc(t)}</p>`).join("")).join("");
-      if(name==="lessons") return lessonHTML;
-      if(name==="collect"&&col) return `<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(D.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("");
-      return "";
-    };
-    const steps=B.offices[H].map(st=>({t:st.t||hourName, slot:`<div class="txt">${window.LectPB79.items(st.items,fill)}</div>`}));
-    return {h, steps, hourName};
-  } else if(R==="bcp28"){
-    const B=await fetch("data/bcp1928.json").then(r=>r.json()), pr=day.o&&day.o.bcp&&B.propers[day.o.bcp];
-    h+=`<h2 class="dayname">${esc(pr?pr.t:(day.o&&day.o.t)||"")}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The text is the Book of Common Prayer of the Episcopal Church (1928), with the psalms of the day of the month. Take the lessons from the 1928 (1943) lectionary.</p>`;
-    const steps=[];
-    for(const st of B[H]){
-      let x="";
-      const its=st.items.map(bcpItem);
-      if(st.slot==="psalms"){ x+=its[0]||""; for(const p of bcpPsalms(iso,H==="ep")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); x+=its.slice(1).join(""); }
-      else x=its.join("");
-      if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The First Lesson":"The Second Lesson"} appointed for today in the 1928 Prayer Book lectionary.</p>`;
-      if(st.slot==="collect"&&pr){ const c=pr.sets[0].collect; x=its[0]+`<h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(pr.t)}</p>`+c.map(t=>`<p data-r="cel">${esc(t)}</p>`).join("")+its.slice(1).join(""); }
-      steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
-    }
-    return {h, steps, hourName};
-  } else if(R==="dwdo"){
-    const on=(day.o&&day.o.s||"").startsWith("Divine Worship: ")?day.o.s.replace("Divine Worship: ",""):"";
-    h+=`<h2 class="dayname">${esc(on||day.o.t)}</h2><p class="daysub">Day ${Math.min(30,d.getUTCDate())} of the month · ${esc(hourName)}</p>`;
-    if(H==="mattins"||H==="evensong"){
-      h+=`<p class="callout">The text is the 1662 Book of Common Prayer, the traditional-language base of Divine Worship: Daily Office, with the psalms of the day from its Coverdale psalter. Divine Worship adapts some parts (the suffrages and the prayers for the Church, for example): follow your book where it differs. Take the lessons from the Divine Worship lectionary.</p>`;
-      const BO=await bcpOffice(), steps=[];
-      for(const st of BO[H]){
-        let x=st.items.length?`<div class="txt">${st.items.map(bcpItem).join("")}</div>`:"";
-        if(st.slot==="psalms"){ for(const p of bcpPsalms(iso,H==="evensong")) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); }
-        if(st.slot==="lesson1"||st.slot==="lesson2") x+=`<p class="cue">${st.slot==="lesson1"?"The Old Testament lesson":"The New Testament lesson"} appointed for today in the Divine Worship lectionary.</p>`;
-        if(st.slot==="collect"){ const nm=day.o.bcp, c=nm&&BO.collects[nm]; if(c) x=`<div class="txt"><h5 class="sub">The Collect of the Day</h5><p class="cite">${esc(titleCase(nm))}</p><p data-r="cel">${esc(c)}</p><p data-r="ppl"><span class="sp">℟.</span> Amen.</p></div>`+x; }
-        steps.push({t:st.t, slot:x});
-      }
-      return {h, steps, hourName};
-    }
-    if(/^(prime|terce|sext|none)$/.test(H)){
-      h+=`<p class="callout">The text is The Day-Hours of the Church of England (1877), which sets the old little hours in Prayer Book English, with the Coverdale psalms. It gives the Sunday and weekday forms; on feasts and in the great seasons it appoints proper antiphons and hymn endings, which you take from your book.</p>`;
-      const [DH,BO]=await Promise.all([fetch("data/dayhours.json").then(r=>r.json()),bcpOffice()]);
-      const env=dhEnv(iso), steps=[];
-      const nm=day.o.bcp, col=nm&&BO.collects[nm];
-      for(const st of DH.hours[H]){
-        if(!dhOk(st,env)) continue;
-        const x=await dhItems(st.items,env,{blk,col,nm,preces:DH.hours.preces[0].items,dow});
-        if(x) steps.push({t:st.t, slot:`<div class="txt">${x}</div>`});
-      }
-      return {h, steps, hourName};
-    }
-    h+=`<p class="callout">The psalms are given from the Coverdale psalter of the 1662 Book of Common Prayer. Take the other texts from your book.</p>`;
-    if(H==="compline"){ let x=""; for(const p of ["Ps 4","Ps 31:1-6","Ps 91","Ps 134"]) x+=await blk(p.replace("Ps ","Psalm "),p,"cv"); slots.psalms=x; }
-    slots.resp=`<div class="txt one"><p data-r="cel">Into thy hands, O Lord, I commend my spirit.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p><p data-r="cel">For thou hast redeemed me, O Lord, thou God of truth.</p><p data-r="ppl"><span class="sp">℟.</span> I commend my spirit.</p><p data-r="cel">Glory be to the Father, and to the Son, and to the Holy Ghost.</p><p data-r="ppl"><span class="sp">℟.</span> Into thy hands, O Lord, I commend my spirit.</p></div>`;
-    slots.venite = d.getUTCDate()===19 ? `<p class="note">Psalm 95 falls in today's course, so the Jubilate (Psalm 100) replaces it.</p>`+await blk("Jubilate","Ps 100","cv") : await blk("Venite","Ps 95","cv");
-    slots.bened=await blk("Benedictus","Luke 1:68-79","kj"); slots.magn=await blk("Magnificat","Luke 1:46-55","kj"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","kj");
-  } else if(R==="byz"){
-    const tone=byzTone(iso), eo=eothinon(iso), b=day.b;
-    h+=`<h2 class="dayname">${esc(b?b.t:"Weekday")}</h2><p class="daysub">${tone?`Tone ${tone} of the Octoechos`:"Paschal or Holy Week propers"} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The psalms are given in full in the Douay-Rheims, numbered as in the Septuagint, with the fixed prayers in traditional English. The hymnody of the day (stichera, troparia, kontakia, canons) varies between churches and translations: press <b>Add text</b> to fill it in from your Horologion, Octoechos and Menaion.</p>`;
-    slots.ps104=await blk("Psalm 103 (104)","Ps 104","dr"); slots.nunc=await blk("Song of Simeon","Luke 2:29-32","dr"); slots.ps50=await blk("Psalm 50 (51)","Ps 51","dr");
-    { const P=BYZ_PS[H]||{}; for(const [slot,list] of Object.entries(P)){ let x=""; for(const n of list) x+=await readingBlock(`Psalm ${n}`,"Ps "+n,"v","dr"); slots[slot]=x; } }
-    /* Sunday tone hymns from Hapgood's Appendix A (1906, public domain); Saturday Vespers takes the coming Sunday's tone. */
-    const BZ=await fetch("data/byz-liturgy.json").then(r=>r.ok?r.json():null).catch(()=>null);
-    const sunTone=dow===0?tone:(dow===6&&H==="vespers")?byzTone(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)):null;
-    const TN=sunTone&&BZ&&BZ.tones?BZ.tones[sunTone]:null;
-    const hy=(lab,t)=>`<p class="rub">${esc(lab)}</p><p data-r="ppl">${esc(t)}</p>`;
-    const hapNote=`<p class="note">Sunday hymns of Tone ${sunTone}, from Isabel Hapgood's Service Book (1906).</p>`;
-    slots.godlord=byzTx("godlord")+(TN&&H==="orthros"?hy(`Troparion of the Resurrection, Tone ${sunTone} (twice)`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion)+hapNote:`<p class="note">Then the troparia of the day (Add text to fill them in from your Octoechos and Menaion).</p>`); slots.fhp=byzTx("fhp");
-    if(TN&&H==="vespers"){ slots.lic=(slots.lic||"")+`<h4 class="sub2">Stichera of the Resurrection, Tone ${sunTone}</h4>`+TN.lic.map(x=>`<p data-r="ppl">${esc(x)}</p>`).join("")+`<p class="note">Then the stichera of the Menaion. Glory… Both now…:</p>`+hy("Dogmatikon",TN.dogmatikon)+hapNote;
-      slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion</h4>`+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+`<p class="note">Glory…: the troparion of the saint, if any. Both now…:</p>`+hy("Theotokion",TN.theotokion); }
-    if(TN&&/^(first|third|sixth|ninth)$/.test(H)) slots.tris=(slots.tris||"")+hy(`Troparion of the Resurrection, Tone ${sunTone}`,TN.troparion)+hy(`Kontakion, Tone ${sunTone}`,TN.kontakion);
-    /* The Great Feasts from Hapgood's Special Services: Vespers is the vigil of the coming day's feast. */
-    { const fx=i=>{ if(!BZ||!BZ.feasts) return []; const d=toDate(i), off=fromEaster(d); return [BZ.feasts[i.slice(5)],BZ.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean); };
-      const TONE=n=>n?`, Tone ${n}`:"";
-      const FX=H==="vespers"?fx(new Date(toDate(iso).getTime()+DAY).toISOString().slice(0,10)).filter(f=>f.lic):fx(iso);
-      if(FX.length){
-        const note=`<p class="note">The hymns of ${esc(FX.map(f=>f.t).join(" and "))} are from the Special Services of Hapgood's Service Book (1906); the rest of the feast's hymnody is in your Menaion or Triodion.</p>`;
-        const tk=(kont)=>FX.map(f=>hy(`Troparion of the feast${TONE(f.troparion_tone)}`,f.troparion)+(kont&&f.kontakion?hy(`Kontakion of the feast${TONE(f.kontakion_tone)}`,f.kontakion):"")).join("");
-        if(H==="vespers"){
-          slots.lic=(slots.lic||"")+FX.map(f=>`<h4 class="sub2">Sticheron of the feast${TONE(f.lic_tone)}</h4><p data-r="ppl">${esc(f.lic)}</p>`+(f.lity?`<h4 class="sub2">At the Litiya${TONE(f.lity_tone)}</h4><p data-r="ppl">${esc(f.lity)}</p>`:"")).join("")+note;
-          slots.nunc=(slots.nunc||"")+`<h4 class="sub2">Apolytikion of the feast</h4>`+tk(false);
-        }
-        if(H==="orthros"){ slots.godlord=byzTx("godlord")+tk(false)+note; }
-        if(/^(first|third|sixth|ninth)$/.test(H)) slots.tris=tk(true)+note;
-      }
-      slots._fx=FX; }
-    if(H==="orthros"&&slots._fx.some(f=>f.exalt)) slots.magn=slots._fx.filter(f=>f.exalt).map(f=>`<h4 class="sub2">Magnification of the feast</h4><p data-r="ppl">${esc(f.exalt)}</p>`).join("")+`<p class="note">On the feast the magnification is sung before the Polyeleos Gospel; at the ninth ode the festal refrains replace More honourable than the Cherubim.</p>`+await blk("Magnificat","Luke 1:46-55","dr");
-    else if(H==="orthros") slots.magn=await blk("Magnificat","Luke 1:46-55","dr")+`<p class="note">Between the verses: More honourable than the Cherubim, and beyond compare more glorious than the Seraphim, who without corruption gavest birth to God the Word, true Theotokos, we magnify thee.</p>`;
-    slots.tris=byzTx("tris")+(slots.tris||""); slots.creed=byzTx("creed"); slots.phos=byzTx("phos")+`<p class="note">Phos hilaron in John Keble's translation (1834).</p>`; slots.vouch=byzTx("vouch");
-    if(H==="orthros") slots.lauds=(slots.lauds||"")+`<h4 class="sub2">The Great Doxology</h4>`+byzTx("doxo");
-    slots.eoth = eo ? await blk(`Resurrection Gospel · Eothinon ${eo}`,EOTHINA[eo],"dr") : `<p class="note">${dow===0?"From Pascha to Pentecost the Sunday Gospels are proper to the Pentecostarion.":"Read on Sundays only."}</p>`;
-  } else {
-    const full=await doHour(R,H,iso);
-    if(full){
-      h+=`<h2 class="dayname">${esc(full.title||((R==="br55"?day.p:day.m)||{}).t||"")}</h2><p class="daysub">${esc(hourName)}</p>`;
-      h+=`<p class="callout">The full text of the hour in Latin and English, generated with the Divinum Officium engine (MIT licence) from its data. ${R==="mon"||R==="op"?"The Benedictine and Dominican calendars and psalters are followed.":""}${full.chant?" Turn on Chant above the order to sing the antiphons and psalms in Gregorian chant.":""}</p>`;
-      return {h, steps:full.steps, alt:full.chant, hourName};
-    }
-    const t=(R==="br55"?day.p:day.m)||{};
-    h+=`<h2 class="dayname">${esc(t.t||"")}</h2><p class="daysub">${esc(t.s||"")} · ${esc(hourName)}</p>`;
-    h+=`<p class="callout">The full ${esc(hourName)} for this date, in Latin and English, is at <a href="https://www.divinumofficium.com/cgi-bin/horas/officium.pl?date1=${doDate(iso)}&version=${encodeURIComponent(DO_VERSION[R])}&command=pray${DO_HOUR[H]}&lang2=English" target="_blank" rel="noopener">Divinum Officium</a>. ${R==="mon"||R==="op"?"The day named above follows the Roman 1962 calendar; the Benedictine and Dominican calendars differ on some saints' days.":""}</p>`;
-    slots.bened=await blk("Benedictus","Luke 1:68-79","dr"); slots.magn=await blk("Magnificat","Luke 1:46-55","dr"); slots.nunc=await blk("Nunc dimittis","Luke 2:29-32","dr");
-  }
-  const steps=(ord||[]).map(x=>{ const m=/^@(\w+)\|(.*)$/.exec(x); return m?{t:m[2],slot:slots[m[1]]||""}:{t:x}; });
-  return {h, steps, hourName};
+  await window.LectLoad.service();
+  return window.LectOffice.body(iso, day, {S, hoursFor, readingBlock, bcpPsalms, byzTone, eothinon, lothPsalms, psalterWeek, EOTHINA});
 }
 
 /* ---------------------------------------------------------------- top */
@@ -3649,12 +2899,9 @@ const shift=(iso,n)=>new Date(Date.parse(iso+"T00:00:00Z")+n*864e5).toISOString(
 const tcase=t=>String(t||"").toLowerCase().replace(/(^|\s)\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And|To|Our|With)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
 const R=(lab,cite,num,tr)=>({lab,cite,num:num||"k",tr:tr||"kj"});
 
-/* A lectionary of the shared layer (LectCalendar.fromTable): its own calendar's lessons, ignoring a local choice. */
-async function table(rite,iso){ const L=window.LectCalendar.TABLES[rite]; if(!L) return null;
-  const T=await J(L.file), K=L.calendar(iso), reads=[], names=[];
-  for(const k of K.keys){ let D=T.days[k]; if(!D) continue; names.push(D.t); if(D.as) D={...T.days[D.as],t:D.t};
-    for(const [col,cite,ver] of D.r||[]){ const dr=(ver||L.tr)==="dr"; reads.push(R(T.cols[col],cite,dr?"v":L.num,dr?"dr":"kj")); } }
-  return {name:names.join(" · ")+(names.length&&K.weekday?" (the Sunday's lessons)":""),reads,note:reads.length?"":K.empty}; }
+/* A lectionary of the shared layer (LectCalendar.tableDay): its own calendar's lessons, ignoring a local choice. */
+async function table(rite,iso){ const {K,names,items}=await window.LectCalendar.tableDay(rite,iso);
+  return {name:names.join(" · ")+(names.length&&K.weekday?" (the Sunday's lessons)":""),reads:items.map(x=>R(x.lab,x.cite,x.num,x.tr)),note:items.length?K.more||"":K.empty}; }
 /* Each source: tradition, book, the rite it opens, and a function giving {name, reads, note} for a date. */
 const SOURCES=[
  {fam:"catholic",book:"Roman Missal · Lectionary for Mass",rite:"n",get:async(iso,day)=>day.n&&{name:day.n.t,reads:(day.n.r||[]).map(x=>R(x[0],x[1],"n","dr"))}},
@@ -3673,10 +2920,8 @@ const SOURCES=[
  {fam:"lutheran",book:"Common Service Book (1917-19)",rite:"csb",get:async iso=>{const B=await J("data/lutheran-csb.json"),C=window.LectCSB.day(iso,B.days),P=C&&C.day;if(!P)return null;
    const S=P.sets[P.sets.length-1];return {name:P.t+(C.weekday?" (the Sunday's propers)":""),reads:[S.epistle&&R("The Epistle",S.epistle.ref||S.epistle.cite),S.gospel&&R("The Gospel",S.gospel.ref||S.gospel.cite)].filter(Boolean),printed:[S.epistle&&S.epistle.cite,S.gospel&&S.gospel.cite].filter(Boolean)};}},
  {fam:"methodist",book:"Wesley's Sunday Service (1784)",rite:"wes84",get:async(iso,day,days)=>pb("data/bcp1784.json",iso,day,days)},
- {fam:"reformed",book:"Reformed Church in America Liturgy (1882) · Order of Scripture Lessons",rite:"rca",get:async iso=>{const T=await J("data/rca1882-lessons.json"),L=window.LectReformed.rca(T,iso);
-   return L&&{name:L.t,reads:[R("Old Testament",L.m[0]),R("New Testament",L.m[1])],note:`Evening: ${L.e.join("; ")}.`};}},
- {fam:"reformed",book:"Mercersburg Order of Worship (1866)",rite:"rcus",get:async iso=>{const T=await J("data/mercersburg.json"),D=window.LectReformed.merc(iso),P=T.propers[D.k];if(!P)return null;
-   const L=T.lessons[D.k];return {name:P.t+(D.weekday&&!D.fest?" (the Sunday's propers)":""),reads:[R("The Gospel",P.g),R("The Epistle",P.e)],note:L?`Table of lessons, morning: ${L.m.join("; ")}; evening: ${L.e.join("; ")}.`:""};}}
+ {fam:"reformed",book:"Reformed Church in America Liturgy (1882) · Order of Scripture Lessons",rite:"rca",get:iso=>table("rca",iso)},
+ {fam:"reformed",book:"Mercersburg Order of Worship (1866)",rite:"rcus",get:iso=>table("rcus",iso)}
 ];
 const FAMS={catholic:"Catholic","eastern-orthodox":"Eastern Orthodox and Byzantine Catholic",oriental:"Oriental Orthodox and the Church of the East",anglican:"Anglican",lutheran:"Lutheran",methodist:"Methodist",reformed:"Reformed"};
 /* The Prayer Book cites its lessons as printed ("Rom. 13, 8."): the Bible text needs the plain form, so the KJV opening verse is enough to read from. */
@@ -3948,7 +3193,7 @@ function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=pare
 function results(q){const words=q.toLocaleLowerCase().split(/\s+/).filter(Boolean);return catalog.filter(n=>words.every(w=>[n.name,...n.also_called,...n.regions,...n.books.map(b=>b.title)].join(' ').toLocaleLowerCase().includes(w)));}
 function search(){return `<h1>All churches and books</h1><label for="san-query">Search names, alternative names, books or countries</label><input id="san-query" type="search" autocomplete="off" placeholder="Try 1928, Ruthenian, or Scotland"><p id="san-count" role="status"></p><div id="san-results" class="san-grid"></div>`;}
 function updateSearch(q){const found=results(q);root.querySelector('#san-count').textContent=`${found.length} results`;root.querySelector('#san-results').innerHTML=found.map(n=>nodeTile(n)).join('')||'<p>No matches. Try another name or year.</p>';}
-function menuHTML(){return `<h1>Sanctuary menu</h1><div class="san-settings"><button data-action="size">Text size · ${Math.round(prefs.size*100)}%</button><button data-action="theme">Theme · ${esc(prefs.theme)}</button><button data-action="sound">Sound · ${prefs.sound?'on':'off'}</button>${window.LectOffline&&window.LectOffline.supported?`<button data-action="offline">${window.LectOffline.saved()?'Saved for offline use · '+esc(window.LectOffline.saved())+' · update':'Save for offline use (about 24 MB)'}</button>`:''}<button data-action="dismiss">Return to browsing</button><button data-action="exit">Switch to classic view</button></div>`;}
+function menuHTML(){return `<h1>Sanctuary menu</h1><div class="san-settings"><button data-action="size">Text size · ${Math.round(prefs.size*100)}%</button><button data-action="theme">Theme · ${esc(prefs.theme)}</button><button data-action="sound">Sound · ${prefs.sound?'on':'off'}</button>${window.LectOffline&&window.LectOffline.supported?`<button data-action="offline">${window.LectOffline.saved()?'Saved for offline use · '+esc(window.LectOffline.saved())+' · update':'Save for offline use (about 24 MB)'}</button>`+window.LectOffline.packs().map(p=>`<button data-action="offline" data-pack="${esc(p.key)}">${p.saved?esc(p.name)+' saved · '+esc(p.saved)+' · update':'Save the '+esc(p.name)+' (about '+p.mb+' MB)'}</button>`).join(''):''}<button data-action="dismiss">Return to browsing</button><button data-action="exit">Switch to classic view</button></div>`;}
 async function render(){
  if(!isRoute(location.hash)){leave();return;}
  const hash=location.hash;if(!open)enter();saveFocus();previousRoute=hash;
@@ -3968,7 +3213,7 @@ function launch(s,label,family){if(!s)return;guideReturn=location.hash;saveFocus
 root.addEventListener('click',e=>{const b=e.target.closest('[data-study]');if(!b)return;returnScroll=0;returnFocus=bar.querySelector('[data-bar="study"]');close('#'+b.dataset.study);document.getElementById('tab-'+b.dataset.study)?.click();});
 root.addEventListener('click',e=>{const b=e.target.closest('[data-tfilter]');if(!b)return;e.stopPropagation();const f=b.dataset.tfilter;write('lect-today-filter',f);if(f!=='all'&&window.LectApp?.setFave)window.LectApp.setFave(f);focusByRoute.set('#/sanctuary','');render().then(()=>focus(root.querySelector(`[data-tfilter="${f}"]`)));},true);
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
-root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'offline':{b.disabled=true;b.textContent='Saving for offline use…';window.LectOffline.save(p=>{b.textContent=`Saving for offline use · ${p.done} of ${p.total}`;}).then(p=>{b.disabled=false;b.textContent=p.failed?`Saved, but ${p.failed} files could not be fetched · try again`:`Saved for offline use · ${window.LectOffline.saved()} · update`;}).catch(err=>{b.disabled=false;b.textContent=err.message;});break;}case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
+root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'offline':{const pk=b.dataset.pack||null;b.disabled=true;b.textContent='Saving for offline use…';window.LectOffline.save(p=>{b.textContent=`Saving for offline use · ${p.done} of ${p.total}`;},pk).then(p=>{b.disabled=false;b.textContent=p.failed?`Saved, but ${p.failed} files could not be fetched · try again`:`Saved for offline use · ${window.LectOffline.saved(pk)} · update`;}).catch(err=>{b.disabled=false;b.textContent=err.message;});break;}case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('click',e=>{if(e.detail===0)activeInput('keyboard');setHome('sanctuary');returnHash=location.hash||'#today';go('#/sanctuary');});

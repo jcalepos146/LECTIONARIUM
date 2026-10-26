@@ -39,7 +39,10 @@ def build(year, path):
                 step["items"].append(it)
         hc.append(step)
     propers = EXTRA["propers"].get(year, {})
-    src = "transcribed from the Internet Archive scan" if year == "1784" else "text from the Society of Archbishop Justus (justus.anglican.org)"
+    src = ("transcribed from the Internet Archive scan" if year == "1784" else
+           "text from the Society of Archbishop Justus (justus.anglican.org); the Collects, Epistles and Gospels checked against the scan of the book (tools/scot1929.py)" if year == "1929" else
+           "text from the Society of Archbishop Justus (justus.anglican.org); the Collects, Epistles and Gospels are the 1662 table with this book's changes, read from its scan (tools/canada1918.py)" if year == "1918" else
+           "text from the Society of Archbishop Justus (justus.anglican.org)")
     out = {"source": f"{o['book']}: {o['title']}. Public domain; {src}", "hc": hc, "propers": propers}
     if year == "1784":
         out["fallback"] = "sunday"   # the book keeps only the Sundays and chief feasts: other days take the Sunday's propers

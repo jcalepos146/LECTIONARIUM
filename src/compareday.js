@@ -11,12 +11,9 @@ const shift=(iso,n)=>new Date(Date.parse(iso+"T00:00:00Z")+n*864e5).toISOString(
 const tcase=t=>String(t||"").toLowerCase().replace(/(^|\s)\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And|To|Our|With)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
 const R=(lab,cite,num,tr)=>({lab,cite,num:num||"k",tr:tr||"kj"});
 
-/* A lectionary of the shared layer (LectCalendar.fromTable): its own calendar's lessons, ignoring a local choice. */
-async function table(rite,iso){ const L=window.LectCalendar.TABLES[rite]; if(!L) return null;
-  const T=await J(L.file), K=L.calendar(iso), reads=[], names=[];
-  for(const k of K.keys){ let D=T.days[k]; if(!D) continue; names.push(D.t); if(D.as) D={...T.days[D.as],t:D.t};
-    for(const [col,cite,ver] of D.r||[]){ const dr=(ver||L.tr)==="dr"; reads.push(R(T.cols[col],cite,dr?"v":L.num,dr?"dr":"kj")); } }
-  return {name:names.join(" · ")+(names.length&&K.weekday?" (the Sunday's lessons)":""),reads,note:reads.length?"":K.empty}; }
+/* A lectionary of the shared layer (LectCalendar.tableDay): its own calendar's lessons, ignoring a local choice. */
+async function table(rite,iso){ const {K,names,items}=await window.LectCalendar.tableDay(rite,iso);
+  return {name:names.join(" · ")+(names.length&&K.weekday?" (the Sunday's lessons)":""),reads:items.map(x=>R(x.lab,x.cite,x.num,x.tr)),note:items.length?K.more||"":K.empty}; }
 /* Each source: tradition, book, the rite it opens, and a function giving {name, reads, note} for a date. */
 const SOURCES=[
  {fam:"catholic",book:"Roman Missal · Lectionary for Mass",rite:"n",get:async(iso,day)=>day.n&&{name:day.n.t,reads:(day.n.r||[]).map(x=>R(x[0],x[1],"n","dr"))}},
@@ -35,10 +32,8 @@ const SOURCES=[
  {fam:"lutheran",book:"Common Service Book (1917-19)",rite:"csb",get:async iso=>{const B=await J("data/lutheran-csb.json"),C=window.LectCSB.day(iso,B.days),P=C&&C.day;if(!P)return null;
    const S=P.sets[P.sets.length-1];return {name:P.t+(C.weekday?" (the Sunday's propers)":""),reads:[S.epistle&&R("The Epistle",S.epistle.ref||S.epistle.cite),S.gospel&&R("The Gospel",S.gospel.ref||S.gospel.cite)].filter(Boolean),printed:[S.epistle&&S.epistle.cite,S.gospel&&S.gospel.cite].filter(Boolean)};}},
  {fam:"methodist",book:"Wesley's Sunday Service (1784)",rite:"wes84",get:async(iso,day,days)=>pb("data/bcp1784.json",iso,day,days)},
- {fam:"reformed",book:"Reformed Church in America Liturgy (1882) · Order of Scripture Lessons",rite:"rca",get:async iso=>{const T=await J("data/rca1882-lessons.json"),L=window.LectReformed.rca(T,iso);
-   return L&&{name:L.t,reads:[R("Old Testament",L.m[0]),R("New Testament",L.m[1])],note:`Evening: ${L.e.join("; ")}.`};}},
- {fam:"reformed",book:"Mercersburg Order of Worship (1866)",rite:"rcus",get:async iso=>{const T=await J("data/mercersburg.json"),D=window.LectReformed.merc(iso),P=T.propers[D.k];if(!P)return null;
-   const L=T.lessons[D.k];return {name:P.t+(D.weekday&&!D.fest?" (the Sunday's propers)":""),reads:[R("The Gospel",P.g),R("The Epistle",P.e)],note:L?`Table of lessons, morning: ${L.m.join("; ")}; evening: ${L.e.join("; ")}.`:""};}}
+ {fam:"reformed",book:"Reformed Church in America Liturgy (1882) · Order of Scripture Lessons",rite:"rca",get:iso=>table("rca",iso)},
+ {fam:"reformed",book:"Mercersburg Order of Worship (1866)",rite:"rcus",get:iso=>table("rcus",iso)}
 ];
 const FAMS={catholic:"Catholic","eastern-orthodox":"Eastern Orthodox and Byzantine Catholic",oriental:"Oriental Orthodox and the Church of the East",anglican:"Anglican",lutheran:"Lutheran",methodist:"Methodist",reformed:"Reformed"};
 /* The Prayer Book cites its lessons as printed ("Rom. 13, 8."): the Bible text needs the plain form, so the KJV opening verse is enough to read from. */

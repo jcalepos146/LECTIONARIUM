@@ -158,6 +158,9 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 :root:not([data-theme="light"]) .b-apostle{color:#B79AE0}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.88rem;margin:6px 0 4px}
 .src li{margin-bottom:6px}
+#offline-badge{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:10050;margin:0;max-width:min(92vw,560px);padding:6px 14px;border-radius:999px;background:var(--ink,#222);color:var(--paper,#fff);font-size:.82rem;line-height:1.35;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+#offline-badge[hidden]{display:none}
+.offline-use{margin-top:32px}.offline-use summary{cursor:pointer;color:var(--muted)}.offline-list{list-style:none;padding:0;margin:8px 0}.offline-list li{margin:6px 0}.offline-list button{min-width:5.5em;margin-right:6px;font:inherit;font-size:.9em;padding:3px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--leaf);color:var(--ink);cursor:pointer}
 footer{margin-top:40px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--rule);padding-top:12px}
 @media (prefers-reduced-motion:no-preference){ .row{transition:background .15s} .row:hover{background:color-mix(in srgb, var(--leaf) 60%, transparent)} }
 
@@ -325,10 +328,22 @@ span[data-r]{padding:0 2px}
 .livenote{margin:0;padding:8px 12px;border-radius:8px;background:var(--rubric-wash)}
 .tfollow{font-size:.86rem}
 .mpart.ostep{margin-top:14px;border-top-width:1px} .mpart.ostep>h3{font-size:1.1rem;margin-bottom:4px}
+@page{size:auto;margin:16mm 15mm 18mm;
+  @bottom-left{content:"Lectionarium";font:8pt Georgia,serif;color:#555}
+  @bottom-right{content:counter(page) " / " counter(pages);font:8pt Georgia,serif;color:#555}}
 @media print{
   nav.tabs,header.top p.lede,.tband,.feats,.sesbar button,.mctlbox,.tools-bar,.tools-timer,.runsheet,.cuts,.joinlive,.mctl,footer,#audioNote{display:none!important}
-  body{background:#fff;color:#000} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
-  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3{break-after:avoid} figure.music{break-inside:avoid}
+  header.top .dek,header.top svg.chirho,#enter-sanctuary,.offline-use,#offline-badge,.lesson-calendar,.mbody select,.mbody input,.mbody button,.score:has(>p.note:only-child){display:none!important}
+  html{font-size:11pt!important} body{background:#fff;color:#000;font-size:1rem!important} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
+  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3,.mbody h4{break-after:avoid} figure.music{break-inside:avoid}
+  .mbody p{orphans:3;widows:3} a{color:inherit;text-decoration:none}
+  html.print-en .two>[lang=la],html.print-la .two>[lang=en]{display:none!important}
+  html.print-en .two,html.print-la .two{grid-template-columns:1fr!important}
+  html.print-la .two>[lang=la],html.print-en .two>[lang=en]{border:0!important;padding-top:0!important}
+  html.print-mono{--rubric:#000!important;--gold:#000!important;--lit-red:#000!important}
+  html.print-mono .mbody .rub,html.print-mono .mbody .rubric{font-style:italic}
+  html.print-large{font-size:14pt!important}
+  html.print-nonotes .mbody p.note{display:none!important}
 }
 /* presenter, live cast, checks */
 .presenter{position:fixed;inset:0;z-index:50;background:var(--paper);color:var(--ink);display:grid;grid-template-rows:auto 1fr auto;padding:max(12px,env(safe-area-inset-top)) 16px max(12px,env(safe-area-inset-bottom))}
