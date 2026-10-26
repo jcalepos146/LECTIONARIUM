@@ -48,6 +48,9 @@ class NavigationTests(unittest.TestCase):
         self.open('#/t/latin/roman-1962');self.page.locator('[data-pray="roman-1962:0"]').click()
         self.page.locator('.mbody .mpart').first.wait_for()
         self.page.clock.pause_at(datetime.datetime(2026,10,21,17,tzinfo=datetime.timezone.utc))
+        # Pausing the fake clock can drop the frame the poll loop was waiting on; a connect event restarts it,
+        # as a controller's first input does in a browser.
+        self.page.evaluate("dispatchEvent(new Event('gamepadconnected'))")
         self.page.locator('[data-bar="home"]').focus();self.page.evaluate('testPad.buttons[13].pressed=true');self.page.clock.run_for(100)
         self.assertEqual(self.page.locator(':focus').get_attribute('id'),'mp-0')
         self.page.clock.run_for(400);self.assertNotEqual(self.page.locator(':focus').get_attribute('id'),'mp-0')

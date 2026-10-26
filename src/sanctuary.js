@@ -49,7 +49,8 @@ function back(){if(menu){menu=false;render();return;}const bits=location.hash.sl
 function close(hash=returnHash){go(isRoute(hash)?'#today':hash||'#today');}
 function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();startPolling();}
 function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);gameFrame=0;startPolling();menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
-function saveFocus(){const el=document.activeElement;if(root.contains(el))focusByRoute.set(previousRoute,el.dataset.route||el.dataset.pray||el.id||el.dataset.action);}
+const focusKey=el=>el.dataset.route||el.dataset.pray||el.dataset.launch||el.id||el.dataset.action;
+function saveFocus(){const el=document.activeElement;if(root.contains(el)&&focusKey(el))focusByRoute.set(previousRoute,focusKey(el));}
 function focus(el){if(!el)return;el.focus({preventScroll:true});el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});}
 function controls(){return [...root.querySelectorAll('button:not([disabled]),input,a[href],select,summary')].filter(e=>e.getClientRects().length);}
 function move(direction){const list=controls(),cur=document.activeElement;if(!list.length)return;if(!list.includes(cur)){focus(list[0]);return;}
@@ -147,8 +148,8 @@ async function render(){
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
  try{await load();if(serial!==routeSerial)return;let body;
   if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/study')body=study();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
-  if(serial!==routeSerial)return;root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
-  const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>(e.dataset.route||e.dataset.pray||e.id||e.dataset.action)===saved);
+  if(serial!==routeSerial)return;saveFocus();root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
+  const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>focusKey(e)===saved);
   if(!saved)root.scrollTop=0;
   focus(el||root.querySelector('#san-query')||root.querySelector('.san-settings button')||(hash==='#/wip'?root.querySelector('.san-wip-open'):null)||(hash.startsWith('#/t/')?controls()[0]:root.querySelector('.san-tile'))||controls()[0]);
  }catch(e){if(serial!==routeSerial)return;root.innerHTML=shell('<h1>The library could not load</h1><p>Check your connection and try again.</p><button data-action="retry">Try again</button>');focus(root.querySelector('[data-action="retry"]'));}
@@ -178,11 +179,14 @@ window.addEventListener('keydown',e=>{
  else if(e.key==='Enter'&&e.target===root){e.preventDefault();controls()[0]?.click();}
  else if(e.key==='Tab'){const list=controls(),i=list.indexOf(document.activeElement);if((e.shiftKey&&i<=0)||(!e.shiftKey&&i===list.length-1)){e.preventDefault();focus(e.shiftKey?list.at(-1):list[0]);}}
 });
+/* The controller is polled once a frame only while one is connected: the loop stops when no pad is found, and a
+   gamepadconnected event (Chrome sends it on the pad's first input) starts it again from scratch. */
 function startPolling(){if(!gameFrame&&(open||homePref==='sanctuary'))gameFrame=requestAnimationFrame(pollGamepad);}
+window.addEventListener('gamepadconnected',()=>{cancelAnimationFrame(gameFrame);gameFrame=0;startPolling();});
 function pollGamepad(now){gameFrame=0;let pads=[];try{pads=navigator.getGamepads?.()||[];}catch(e){}const pad=[...pads].find(p=>p&&p.connected!==false);let action='';if(pad){const pressed=i=>pad.buttons[i]?.pressed;
  action=pressed(0)?'select':pressed(1)?'back':pressed(3)?'search':pressed(9)?'menu':pressed(12)||pad.axes[1]<-.55?'up':pressed(13)||pad.axes[1]>.55?'down':pressed(14)||pad.axes[0]<-.55?'left':pressed(15)||pad.axes[0]>.55?'right':'';
  if(action&&(open||guideActive())){activeInput('gamepad');const directional=['up','down','left','right'].includes(action);if(action!==lastGameAction||(directional&&now>=gameRepeatAt)){const changed=action!==lastGameAction;gameRepeatAt=now+(changed?360:140);if(directional){if(open)move(action);else guideMove(action);}else if(action==='select')document.activeElement?.click();else if(action==='back'){if(open)back();else go(guideReturn);}else if(action==='search')go('#/search');else {menu=!menu;if(open)render();else go('#/sanctuary');}}}}
- lastGameAction=action;startPolling();
+ lastGameAction=action;if(pad)startPolling();
 }
 window.addEventListener('lect-session',e=>{const s=e.detail;if(!s?.rite)return;const known=catalog?.find(n=>n.supported.some(v=>v.type===s.type&&v.rite===s.rite));const session={...s,label:known?.name||s.label||s.rite,family:known?.family||'catholic'};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);});
 window.addEventListener('hashchange',e=>{if(isRoute(location.hash)&&!open){try{const old=new URL(e.oldURL).hash;if(!isRoute(old))returnHash=old||'#today';}catch(err){}}render();});
