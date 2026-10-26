@@ -397,6 +397,16 @@ function pbItem(it){
   if(k==="h") return `<h4 class="sub2">${esc(t)}</h4>`;
   return `<p data-r="${r||"all"}">${lab?`<span class="sp">${lab}</span> `:""}${inl(t)}</p>`;
 }
+function scotPreface(s,iso){
+  const d=toDate(iso), E=easterY(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=iso.slice(5);
+  if(md>="12-25"||md<="01-05") return "upon christmas day"; if(md>="01-06"&&md<="01-13") return "upon the epiphany";
+  if(off===-3) return "upon maundy thursday"; if(off>=-46&&off<=-15) return "from ash wednesday"; if(off>=-14&&off<=-4) return "from passion sunday";
+  if(off>=0&&off<39) return "upon easter day"; if(off>=39&&off<49) return "upon ascension day"; if(off>=49&&off<56) return "upon pentecost"; if(off===56) return "trinity";
+  if(md==="02-02") return "purification"; if(md==="03-25") return "annunciation"; if(md==="08-06") return "transfiguration";
+  if(["11-01","06-24","06-09","01-13","03-17","09-16","11-16"].includes(md)) return "all saints";
+  if(["11-30","12-21","01-25","02-24","04-25","05-01","06-11","06-29","07-25","08-24","09-21","10-18","10-28"].includes(md)) return "apostles";
+  if(s==="advent") return "advent"; return "";
+}
 const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=Math.round((toDate(iso)-E)/DAY);
   if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
 /* Holy Week has no o.bcp in days.json: name its days by their distance from Easter, as the 1662 book heads them. */
@@ -438,6 +448,11 @@ const PB_BOOKS={
   wes84:{file:"data/bcp1784.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", prefaceDayOnly:true,
     collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[or/, gospelAt:/^The holy Gospel is written/,
     notSaid:[], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
+  /* The Scottish Liturgy (1929): its own seasons of Proper Prefaces (Advent, Lent, Passiontide, Maundy Thursday and
+     the Scottish saints' days), picked by date; the 1662 propers stand in for the Scottish Book's own. */
+  bcp29:{file:"data/bcp1929.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
+    collectAt:/^Let us pray\.$/, epistleAt:/^Then the Presbyter, or some other Presbyter or Deacon, turning to the people, shall read the Epistle/, gospelAt:/^Glory be to thee, O Lord/,
+    notSaid:["General Rubrics","The Order for a Second Consecration","Post-Communions","Collects","Exhortations"], prefaceHead:p=>p, prefaceFn:scotPreface},
   bcp18:{file:"data/bcp1918.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:null, epistleAt:/^Then shall be said the Collect of the day/, gospelAt:/^Then, the people all standing up/, collectBeforeEpistle:true,
     notSaid:["Rubrics before the Communion","Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
@@ -459,7 +474,7 @@ async function buildPB(ctx,opts,book){
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
   /* Wesley prints the proper prefaces for the feast itself only, not its octave. */
   const d0=toDate(iso), off0=Math.round((d0-easterY(d0.getUTCFullYear()))/DAY);
-  const pref=C.prefaceDayOnly?((d0.getUTCMonth()===11&&d0.getUTCDate()===25)?"Christmas":({0:"Easter",39:"Ascension",49:"Whitsuntide",56:"Trinity Sunday"})[off0]||""):PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
+  const pref=C.prefaceFn?C.prefaceFn(season(iso,day),iso):C.prefaceDayOnly?((d0.getUTCMonth()===11&&d0.getUTCDate()===25)?"Christmas":({0:"Easter",39:"Ascension",49:"Whitsuntide",56:"Trinity Sunday"})[off0]||""):PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
   const at=(its,re)=>re?its.findIndex(x=>re.test(x[1])):-1;
   for(const st of B.hc){
     let html="", secs=spoken(st.items)/2.4;

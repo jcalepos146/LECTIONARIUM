@@ -46,6 +46,7 @@ const MASS_RITES=[
   {id:"bcp59",name:"Holy Communion (1559 Prayer Book)",d:"Church of England · the Elizabethan book, the service in full",tr:"kj",ord:1},
   {id:"bcp37",name:"Holy Communion (1637 Scottish Prayer Book)",d:"Church of Scotland (Laud's Prayer Book) · the service in full",tr:"kj",ord:1},
   {id:"bcp89",name:"Holy Communion (1789 Prayer Book)",d:"Episcopal Church (USA), the first American book · the service in full",tr:"kj",ord:1},
+  {id:"bcp29",name:"Scottish Liturgy (1929)",d:"Scottish Episcopal Church · the Scottish Communion Office of the 1929 Prayer Book, the service in full",tr:"kj",ord:1},
   {id:"bcp18",name:"Holy Communion (Canada 1918)",d:"Church of England in Canada · the first Canadian Prayer Book, the service in full",tr:"kj",ord:1},
   {id:"bcp92",name:"Holy Communion (1892 Prayer Book)",d:"Episcopal Church (USA) · the revision before 1928, the service in full",tr:"kj",ord:1},
   {id:"bcp62bap",name:"Publick Baptism of Infants (1662 Prayer Book)",d:"Church of England · the Ministration of Publick Baptism of Infants, to be used in the Church, with its 1662 rubrics",tr:"kj",ord:1},
@@ -99,7 +100,7 @@ function riteKind(type,id){
 /* The tradition each rite belongs to, for the tradition-first questions, the day names and the Sanctuary emblems. */
 const FAMILY={wes84bap:"methodist",wes84mat:"methodist",wes84bur:"methodist",csbbap:"lutheran",csbmat:"lutheran",csbbur:"lutheran",wes84:"methodist",wes84o:"methodist",me08:"methodist",rca:"reformed",rcus:"reformed",rcusv:"reformed",rcusp:"reformed",pres:"reformed",
   csb:"lutheran",csbm:"lutheran",csbv:"lutheran",csbl:"lutheran",csbs:"lutheran",csbsm:"lutheran",csbse:"lutheran",
-  bcp62:"anglican",bcp62bap:"anglican",bcp62mat:"anglican",bcp62bur:"anglican",bcp28:"anglican",bcp49:"anglican",bcp52:"anglican",bcp59:"anglican",bcp37:"anglican",bcp89:"anglican",bcp92:"anglican",bcp18:"anglican",bcp79:"anglican",dwdo:"catholic",
+  bcp62:"anglican",bcp62bap:"anglican",bcp62mat:"anglican",bcp62bur:"anglican",bcp28:"anglican",bcp49:"anglican",bcp52:"anglican",bcp59:"anglican",bcp37:"anglican",bcp89:"anglican",bcp92:"anglican",bcp18:"anglican",bcp29:"anglican",bcp79:"anglican",dwdo:"catholic",
   b:"eastern-orthodox",byz:"eastern-orthodox",byzv:"eastern-orthodox",byzm:"eastern-orthodox",byzh:"eastern-orthodox",byzc:"eastern-orthodox",adai:"oriental",copt:"oriental",arm:"oriental"};
 const familyOf=id=>FAMILY[id]||"catholic";
 const FAMILIES=[["catholic","Catholic","Roman Missal, 1962 Missal and Breviary, Ordinariate, Dominican, Ambrosian, Mozarabic"],
@@ -214,6 +215,7 @@ function coverage(type,rite,hour){
     if(rite==="bcp59") return ["full","The Order for the Administration of the Lordes Supper in the Elizabethan Prayer Book (1559) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
     if(rite==="bcp37") return ["guide","The Order of the Administration of the Lords Supper in the Scottish Prayer Book of 1637 is printed in full, in the spelling of the book. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
     if(rite==="bcp89") return ["guide","The Order for the Administration of the Lord's Supper in the first American Prayer Book (1789) is printed in full. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
+    if(rite==="bcp29") return ["guide","The Scottish Liturgy of the 1929 Scottish Book of Common Prayer is printed in full: the Consecration with its Oblation and Invocation comes before the Intercession, and the Peace, the Confession and the Communion follow. The Proper Preface follows the book's own seasons. The Collect, Epistle and Gospel of the day are given from the 1662 table; the Scottish Book's own propers differ on some days, so check your Prayer Book."];
     if(rite==="bcp18") return ["guide","The Order for the Administration of the Lord's Supper in the Canadian Prayer Book of 1918 is printed in full. It keeps the 1662 service, adding the permission to say our Lord's Summary of the Law in place of the Ten Commandments (except once on Sundays and great festivals) and a Proper Preface for the Epiphany. The Collect, Epistle and Gospel of the day are given from the 1662 table, which the book keeps; check its few new propers in your Prayer Book."];
     if(rite==="bcp92") return ["guide","The Order for the Administration of the Lord's Supper in the American Prayer Book of 1892 is printed in full. The Collect, Epistle and Gospel of the day are given from the 1662 table, which this book follows closely; its own wording differs in places, so check your Prayer Book."];
     if(rite==="bcp28") return ["full","The 1928 Order for Holy Communion is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
@@ -653,7 +655,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp18:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp18:"kj",bcp29:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -771,6 +773,9 @@ async function renderSession(){
   }
   else if(S.type==="mass"&&S.rite==="bcp89"){
     body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (1789)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer of the Protestant Episcopal Church in the United States of America (1789), public domain, as transcribed by the Society of Archbishop Justus. The Collect, Epistle and Gospel of the day are given from the 1662 Prayer Book, whose table this book follows closely.</p></footer>`;
+  }
+  else if(S.type==="mass"&&S.rite==="bcp29"){
+    body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Scottish Book of Common Prayer (1929)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Scottish Liturgy (the Scottish Communion Office) of the Scottish Book of Common Prayer (1929), public domain in the United States, proofread from the Internet Archive scan of the separately printed Liturgy (a later impression naming the Queen). The Collect, Epistle and Gospel of the day are given from the 1662 Prayer Book.</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="bcp18"){
     body=`<h2 class="dayname">${esc((day.o&&day.o.t)||"")}</h2><p class="daysub">The Book of Common Prayer (Canada, 1918)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Book of Common Prayer according to the Use of the Church of England in the Dominion of Canada (1918), public domain, from the Society of Archbishop Justus transcription checked against its typeset edition. The Collect, Epistle and Gospel of the day are given from the 1662 Prayer Book, whose table this book keeps.</p></footer>`;
