@@ -2133,13 +2133,12 @@
       ],
       "rite": "new",
       "service": "Lord's Day worship and forms",
-      "now": "The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper and its Order of Scripture Lessons for the day, and the Mercersburg Order of Worship (1866) Morning and Evening Service, Litany and Holy Communion with its Preparation, in full",
+      "now": "The Presbyterian Book of Common Worship (1906) Morning Service and Lord's Supper, and the Reformed Church in America Liturgy (1882) Order of Public Worship with the Form of Dort for the Lord's Supper and its Order of Scripture Lessons for the day, and the Mercersburg Order of Worship (1866) Morning and Evening Service, Litany and Holy Communion with its Preparation, in full The Mercersburg services now carry the book's own Gospels, Epistles, Collects and Festival Prayers for the church year and its Table of Scripture Lessons for Sundays.",
       "missing": [
         "the other Dort forms (baptism, discipline, ordination, marriage) in English",
         "metrical psalters",
         "Westminster Directory",
         "the rest of the Book of Common Worship (Evening Service, sacraments, Treasury of Prayers)",
-        "Reformed Church in the United States orders",
         "current denominational forms"
       ],
       "plan": "Reformed worship is mostly an order plus psalms: build a Lord's Day order from the Directory or the 1906 Book of Common Worship and draw psalms from the 1650 Scottish Psalter, the 1912 Psalter and the Genevan psalms. The English Dort forms come from the 19th-century Reformed Dutch printings. Several bodies publish their current forms free on the web (URCNA, CRCNA) or their Directory for Worship as a free PDF (OPC, PCA), but none states a reuse licence; cite them and ask.",

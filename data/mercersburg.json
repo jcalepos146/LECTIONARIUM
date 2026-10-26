@@ -1,0 +1,1154 @@
+{
+ "source": "Order of Worship for the Reformed Church in the United States (Mercersburg): 'The Gospels, Epistles, and Collects for the Church Year' and the 'Table of Scripture Lessons for Sundays'. Public domain. The propers were transcribed from the Internet Archive scans of the 1869 and 1867 printings (cu31924029475203, orderofworshipfo00refo, ordwors00refo), compared word by word across the three; the lesson table was read from the page images. Citations are the book's, in King James numbering; 'ga' and 'ea' are the alternatives it prints in parentheses. In the table 'to v. N' ends before verse N and 'v. N' runs to the end of the chapter.",
+ "notes": {
+  "trinity": "Instead of a Festival Prayer on Trinity Sunday, the Te Deum is sung."
+ },
+ "propers": {
+  "adv1": {
+   "t": "First Sunday in Advent",
+   "g": "Matt 21:8-11",
+   "ga": "John 1:1-18",
+   "e": "Rom 13:11-14",
+   "ea": "1 John 1:1-2:2",
+   "c": "Almighty God, give us grace that we may cast away the works of darkness, and put upon us the armor of light, now in the time of this mortal life, in which Thy Son Jesus Christ came to visit us in great humility; that in the last day, when He shall come again in His glorious majesty, to judge both the quick and the dead, we may rise to the life immortal, through Him who liveth and reigneth with Thee and the Holy Ghost, now and forever. Amen.",
+   "f": [
+    "Almighty God, Father of all mercies, we Thine unworthy servants do render Thee unfeigned thanks, that after man, created in Thine own image, had, through the fraud and malice of Satan, fallen under the power of the curse, Thou didst not leave him to perish in helpless misery, but didst provide a Deliverer and proclaim to the fathers, by the mouths of the prophets and holy men of old, the Advent of Thy Son, the Hope of Israel, the Desire of all nations, the Redeemer of the world: to whom be glory forever and ever. Amen.",
+    "God of all grace and comfort, who hast not appointed us unto wrath, but to obtain salvation by our Lord Jesus Christ, aid us, we beseech Thee, at this time, to repent heartily and truly of all our sins, and so to humble ourselves, that, when He cometh, we may be prepared to receive Him with childlike faith, and join in the glad cry: Hosanna to the Son of David! Blessed is He that cometh in the name of the Lord. Amen."
+   ]
+  },
+  "adv2": {
+   "t": "Second Sunday in Advent",
+   "g": "Luke 21:25-33",
+   "ga": "Matt 25:1-13",
+   "e": "Rom 15:4-13",
+   "ea": "Heb 10:1-9",
+   "c": "Cleanse our conscience, we beseech Thee, Almighty God, by the daily visitation of Thy grace; that when Thy Son, our Lord Jesus Christ, shall come, He may find us fit for His appearing, and ready to meet Him without spot, in the company of all His saints: who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "adv3": {
+   "t": "Third Sunday in Advent",
+   "g": "Matt 11:2-10",
+   "ga": "Luke 17:20-37",
+   "e": "1 Cor 4:1-5",
+   "ea": "1 Thess 5:1-8",
+   "c": "Incline, O Lord, we beseech Thee, Thine ear to our prayers, and visit the darkness of our mind with the dayspring from on high; that at the second coming of Thy Son to judge the world, we may hasten with joy to meet Him, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "adv4": {
+   "t": "Fourth Sunday in Advent",
+   "g": "John 1:19-34",
+   "ga": "John 3:22-36",
+   "e": "Phil 4:4-7",
+   "ea": "Gal 3:21-29",
+   "c": "Arise, O Lord, we beseech Thee, and show unto us speedily the power of Thy glorious salvation; that we, being redeemed from our sins, and delivered out of the hands of our enemies, may be enabled to serve Thee without fear, in holiness and righteousness before Thee, all the days of our life; through the mediation of Thy Son, our Lord and Saviour Jesus Christ, to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "christmas": {
+   "t": "Christmas Day: the Nativity of our Lord",
+   "g": "John 1:1-14",
+   "ga": "Luke 2:1-20",
+   "e": "Heb 1:1-12",
+   "ea": "Phil 2:5-11",
+   "c": "Almighty and everlasting God, who hast given us Thy only begotten Son to take our nature upon Him, and as at this time to be born of a pure virgin; grant that we, being regenerate and made Thy children by adoption and grace, may daily be renewed by Thy Holy Spirit after the image of this same blessed and glorious Christ: who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen.",
+   "f": [
+    "O Thou only begotten Son of God, who in the fulness of time coming forth from the bosom of the Father, wast made flesh and didst dwell among us, full of grace and truth, we bless Thee for Thy conception by the Holy Ghost and for Thy birth of the blessed Virgin, whereby Thou hast become the true seed of Abraham and didst take upon Thyself all our sins and infirmities, that we might have salvation from sin and eternal life in Thee. With the multitude of angels who proclaimed Thy joyous Advent, and with Thy people among all nations we unite in saying, Glory to God in the highest, and on earth peace, good-will toward men. Amen.",
+    "O God, merciful Father, vouchsafe unto us, we humbly beseech Thee, the continual help of Thy grace, that we may acknowledge and confess Thine incarnate Son as our true and only Lord and Saviour, and that receiving Him with childlike faith we may ever feed on His precious body and blood as the true meat and drink of our souls unto everlasting life. Amen."
+   ]
+  },
+  "stephen": {
+   "t": "St. Stephen's Day",
+   "g": "Matt 23:34-39",
+   "ga": "",
+   "e": "Acts 6:8-7:60",
+   "ea": "",
+   "c": "As we honor on this day, O Lord God, the memory of Thy blessed martyr, St. Stephen, grant unto us grace, we beseech Thee, to follow his faith and charity; that however sorely tried by the contradiction of sinners, we may be able, like him, to look steadfastly up into heaven, and to commend even our enemies to the pardoning mercy of our only Mediator and Advocate, Jesus Christ: to whom with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "john": {
+   "t": "St. John the Evangelist's Day",
+   "g": "John 21:19-24",
+   "ga": "",
+   "e": "1 John 1:1-10",
+   "ea": "",
+   "c": "Shine graciously upon Thy Church, we beseech Thee, O Lord; that being enlightened by the doctrine and filled with the mind of Thy blessed Apostle and Evangelist, Saint John, whom Jesus loved, it may come at last into Thy beatific presence and enjoy the rewards of everlasting life; through Jesus Christ our Lord, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "innocents": {
+   "t": "The Innocents' Day",
+   "g": "Matt 2:13-18",
+   "ga": "",
+   "e": "Rev 14:1-5",
+   "ea": "",
+   "c": "O God, who out of the mouths of babes and sucklings hast ordained strength, and whose praise the slaughtered infants of Bethlehem proclaimed, not by speaking, but by dying; mortify and kill in us, we beseech Thee, all evil propensities and wrong desires, and so strengthen us by Thy grace, that the same holy faith, which we own with our tongues, we may confess also by the innocency of our lives: to the glory of Thy great name, through Jesus Christ our Lord. Amen."
+  },
+  "xmas1": {
+   "t": "First Sunday after Christmas",
+   "g": "Matt 1:18-25",
+   "ga": "Luke 2:23-35",
+   "e": "Gal 4:1-7",
+   "ea": "1 John 4:1-10",
+   "c": "Most merciful God, who hast so loved the world as to give Thine only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life; vouchsafe unto us, we humbly pray Thee, the precious gift of faith, whereby we may know that the Son of God is come, and being always rooted and grounded in the mystery of the Word made flesh, may have power to overcome the world, and gain the blessed immortality of heaven: through the merits of this same incarnate Christ, who liveth and reigneth with Thee, in the unity of the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "circumcision": {
+   "t": "The Circumcision of Christ: New Year's Day",
+   "g": "Luke 2:15-21",
+   "ga": "Ps 90",
+   "e": "Col 2:8-17",
+   "ea": "Heb 11:8-16",
+   "c": "Almighty and most merciful God, by whose will Thy well-beloved Son, the Saviour of the world, was circumcised in His spotless flesh, to put honor on the law which He had come to fulfil; grant unto us, we beseech Thee, the true circumcision of the spirit, whereby being inwardly purged from all worldly and carnal lusts, we may offer ourselves unto Thee a living sacrifice, holy and acceptable through Jesus Christ: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "xmas2": {
+   "t": "Second Sunday after Christmas",
+   "g": "Luke 2:33-40",
+   "ga": "",
+   "e": "Rom 6:12-18",
+   "ea": "",
+   "c": "Almighty and everlasting God, who by Thine only begotten Son hast made us to be a new creation for Thyself, and hast bathed us in the new light of Thine Incarnate Word; preserve in us, we beseech Thee, the works of Thy mercy, and cleanse us from all our ancient stains; that by the assistance of Thy grace we may be found in His form, in whom our substance dwells with Thee; through Jesus Christ our Lord. Amen."
+  },
+  "epiphany": {
+   "t": "The Epiphany",
+   "g": "Matt 2:1-12",
+   "ga": "Isa 60:1-15",
+   "e": "Eph 3:1-12",
+   "ea": "Rom 15:8-12",
+   "c": "O God, who by the leading of a star didst manifest Thy only-begotten Son to the Gentiles; mercifully grant that we, who have now come to know Thee here by faith, may be conducted to the full vision of Thy glory hereafter in heaven; through Jesus Christ our Lord, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "epi1": {
+   "t": "First Sunday after the Epiphany",
+   "g": "Luke 2:41-52",
+   "ga": "Matt 3:13-17",
+   "e": "Rom 12:1-5",
+   "ea": "Rom 6:3-11",
+   "c": "Receive, O Lord, with compassionate kindness, the prayers of Thy suppliant people, and bestow upon them plenteously the aids of Thy heavenly grace; that they may both know what things they ought to do, and be strong also to do what they know; through Jesus Christ our Lord, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "epi2": {
+   "t": "Second Sunday after the Epiphany",
+   "g": "John 2:1-11",
+   "ga": "Luke 4:1-13",
+   "e": "Rom 12:6-16",
+   "ea": "Heb 2:14-18",
+   "c": "O God, the Fountain of all truth and grace, who hast called us out of darkness into marvellous light by the glorious gospel of Thy Son; grant unto us power, we beseech Thee, to walk worthy of this vocation, with all lowliness and meekness, endeavoring to keep the unity of the spirit in the bond of peace; that we may have our fruit unto holiness, and the end everlasting life; through Jesus Christ our Lord. Amen."
+  },
+  "epi3": {
+   "t": "Third Sunday after the Epiphany",
+   "g": "Matt 8:1-13",
+   "ga": "Mark 1:14-22",
+   "e": "Rom 12:17-21",
+   "ea": "1 Cor 1:17-25",
+   "c": "Almighty and everlasting God, look mercifully, we beseech Thee, upon our great weakness; and in the midst of the manifold trials and dangers which beset us on all sides, stretch forth the right hand of Thy majesty for our protection and help; through Jesus Christ our Saviour, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "epi4": {
+   "t": "Fourth Sunday after the Epiphany",
+   "g": "Matt 8:23-27",
+   "ga": "Luke 4:14-24",
+   "e": "Rom 13:1-7",
+   "ea": "2 Cor 4:1-6",
+   "c": "O God, who hast founded the earth upon the seas, and established it upon the floods, and whose word is forever settled in heaven; grant unto us grace, we beseech Thee, to look beyond the things which are seen and temporal to the things which are not seen and eternal; that walking by faith more than by sight, we may not be unduly moved by any occasions in this world, but be able to endure unto the end in the way of life; through Jesus Christ our Lord, who is the same yesterday, and to-day, and forever, Amen."
+  },
+  "epi5": {
+   "t": "Fifth Sunday after the Epiphany",
+   "g": "Matt 13:24-30",
+   "ga": "Matt 13:1-9",
+   "e": "Col 3:12-17",
+   "ea": "1 Pet 1:22-25",
+   "c": "O Lord, we beseech Thee to keep Thy Church and household continually in Thy true religion; that they who do lean only upon the hope of Thy heavenly grace, may evermore be defended by Thy mighty power; through Jesus Christ our Lord, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "epi6": {
+   "t": "Sixth Sunday after the Epiphany",
+   "g": "Matt 17:1-9",
+   "ga": "Matt 13:44-52",
+   "e": "1 John 3:1-10",
+   "ea": "1 Pet 2:1-10",
+   "c": "O God, whose blessed Son was manifested that He might destroy the works of the devil, and make us the sons of God, and heirs of eternal life; enable us, we beseech Thee, having this hope, to purify ourselves, even as He is pure; that when He shall appear again with power and great glory, we may be made like unto Him in His eternal and glorious kingdom: where He liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "septuagesima": {
+   "t": "Third Sunday before Lent: Septuagesima",
+   "g": "Matt 20:1-16",
+   "ga": "Matt 14:22-33",
+   "e": "1 Cor 9:24-10:5",
+   "ea": "Rom 8:31-39",
+   "c": "O Lord, we beseech Thee favorably to hear the prayers of Thy people; that we who are justly punished for our offences, may be mercifully delivered by Thy goodness, for the glory of Thy name; through Jesus Christ our Saviour, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "sexagesima": {
+   "t": "Second Sunday before Lent: Sexagesima",
+   "g": "Luke 8:4-15",
+   "ga": "John 10:1-18",
+   "e": "2 Cor 11:19-12:9",
+   "ea": "1 Pet 2:17-25",
+   "c": "Almighty and everlasting God, the Creator of the ends of the earth, who givest power to the faint, and strength to them that have no might; look mercifully, we beseech Thee, on our low estate, and cause Thy grace to triumph in our weakness; that we may arise and follow in the way of righteousness those who by their faith and patience already inherit the promises; through Jesus Christ our Lord. Amen."
+  },
+  "quinquagesima": {
+   "t": "Sunday before Lent: Quinquagesima, or Estomihi",
+   "g": "Luke 18:31-43",
+   "ga": "Matt 16:21-23",
+   "e": "1 Cor 13:1-13",
+   "ea": "1 Pet 4:12-19",
+   "c": "O Lord, who hast taught us that all our doings without charity are nothing worth; send Thy Holy Ghost, and pour into our hearts that most excellent gift of charity, the very bond of perfectness, and of all virtues; without which, whosoever liveth is counted dead before Thee. Grant this for Thine only Son Jesus Christ's sake. Amen."
+  },
+  "ash": {
+   "t": "First Day in Lent: Ash-Wednesday",
+   "g": "Matt 6:16-21",
+   "ga": "Ps 51",
+   "e": "Joel 2:12-18",
+   "ea": "Rev 3:14-22",
+   "c": "Almighty and everlasting God, who hatest nothing that Thou hast made, and dost forgive the sins of all those who are penitent; create and make in us new and contrite hearts, that we, worthily lamenting our sins and acknowledging our wretchedness, may obtain of Thee, the God of all mercy, perfect remission and forgiveness; through Jesus Christ our Lord. Amen."
+  },
+  "lent1": {
+   "t": "First Sunday in Lent: Invocavit",
+   "g": "Matt 4:1-11",
+   "ga": "Matt 6:1-21",
+   "e": "2 Cor 6:1-10",
+   "ea": "Eph 6:10-20",
+   "c": "We beseech Thee, O Lord, by the mystery of our Saviour's fasting and temptation, to arm us with the same mind that was in Him toward all evil and sin; and give us grace to keep our bodies in such holy discipline, that our minds may be always ready to resist Satan, and obey the motions of Thy Holy Spirit; through Jesus Christ our Lord. Amen."
+  },
+  "lent2": {
+   "t": "Second Sunday in Lent: Reminiscere",
+   "g": "Matt 15:21-28",
+   "ga": "Luke 11:29-36",
+   "e": "1 Thess 4:1-8",
+   "ea": "Heb 2:1-4",
+   "c": "Almighty God, who seest the helpless misery of our fallen life; vouchsafe unto us, we humbly beseech Thee, both the outward and inward defence of Thy guardian care; that we may be shielded from the evils which assault the body, and be kept pure from all thoughts that harm and pollute the soul; through Jesus Christ our Lord. Amen."
+  },
+  "lent3": {
+   "t": "Third Sunday in Lent: Oculi",
+   "g": "Luke 11:14-28",
+   "ga": "Matt 12:22-32",
+   "e": "Eph 5:1-9",
+   "ea": "Heb 10:26-31",
+   "c": "Almighty God, who hast been the hope and confidence of Thy people in all ages; mercifully regard, we beseech Thee, the prayer with which we cry unto Thee out of the depths, and stretch forth the right hand of Thy majesty for our salvation and defence; through Jesus Christ our Lord. Amen."
+  },
+  "lent4": {
+   "t": "Fourth Sunday in Lent: Laetare",
+   "g": "John 6:1-14",
+   "ga": "John 6:47-59",
+   "e": "Gal 4:21-31",
+   "ea": "1 John 5:11-21",
+   "c": "O Lord God, merciful and gracious, long-suffering and abundant in goodness and truth; enter not into judgment with Thy servants, we beseech Thee, but be pleased of Thy great kindness to grant, that we who are now righteously afflicted and bowed down by the sense of our sins, may be refreshed and lifted up with the joy of Thy salvation; through Jesus Christ our Lord. Amen."
+  },
+  "lent5": {
+   "t": "Fifth Sunday in Lent: Judica",
+   "g": "John 8:46-59",
+   "ga": "John 12:20-32",
+   "e": "Heb 9:11-15",
+   "ea": "2 Cor 5:14-21",
+   "c": "Almighty and most merciful God, who hast given Thy Son to die for our sins, and to obtain forgiveness and redemption for us through His own blood; let the merit of this spotless sacrifice, we beseech Thee, purge our consciences from dead works, that we may serve Thee, the living God, and receive the promise of eternal inheritance in Christ Jesus our Lord: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "palm": {
+   "t": "Sixth Sunday in Lent: Palm Sunday, Palmarum",
+   "g": "John 12:1-16",
+   "ga": "Luke 19:28-46",
+   "e": "Phil 2:5-10",
+   "ea": "Rev 1:4-8",
+   "c": "Almighty and everlasting God, whose Son, our Saviour Jesus Christ, for an example of humility to the world, took upon Him our flesh and endured the passion of the cross; mercifully grant, we beseech Thee, that we may be counted worthy to have part, both in the fellowship of His sufferings and in the glorious power of His resurrection: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "goodfriday": {
+   "t": "Good Friday",
+   "g": "John 19:1-37",
+   "ga": "Matt 27:33-54",
+   "e": "Heb 10:1-25",
+   "ea": "Isa 53",
+   "c": "O righteous and holy God, who has manifested toward us Thine unfathomable love, in not sparing Thine own Son, but delivering Him up for us all; by the memory of His bitter death, by the awful mystery of His sorrows in the garden and upon the cross, we humbly beseech Thee to have mercy upon us and upon all men, and to make known Thy saving health among the nations, that He may see the travail of His soul and be satisfied: to whom with Thee and the Holy Ghost, be honor and glory, world without end. Amen.",
+   "f": [
+    "Lord Jesus Christ! Thou holy and spotless Lamb of God, who didst take upon Thyself the curse of sin which was due to us, with all the heavenly host of the redeemed, we unite in ascribing unto Thee power, and riches, and wisdom, and strength, and honor, and glory, and blessing. We bless Thee for all the burdens Thou hast borne, for all the tears Thou hast wept, for all the pains Thou hast suffered, for every drop of blood Thou hast shed, for every word of comfort Thou hast spoken on the cross, for every conflict with the powers of darkness, and for Thine eternal victory over the terrors of death and the pains of hell. Amen.",
+    "O most merciful Father, who of Thy tender compassion towards us guilty sinners, didst give Thine only-begotten Son to be an offering for our sins, grant us grace, we humbly beseech Thee, that, being engrafted into Him by Thy Spirit and made partakers of His sufferings and His death, we may crucify the corrupt inclinations of the flesh, die daily unto the world, and lead holy and unblamable lives. Cleaving unto His cross in all the temptations of life, may we hold fast the profession of our faith without wavering, and finally attain unto the resurrection of the dead, through the merits of this same once crucified, but now risen and exalted Saviour. Amen."
+   ]
+  },
+  "eastereve": {
+   "t": "Easter Eve",
+   "g": "Matt 27:57-66",
+   "ga": "",
+   "e": "1 Pet 3:17-22",
+   "ea": "",
+   "c": "O Almighty God, who, by the descent of our Saviour Jesus Christ into hades, and His rising again from the dead, hast given assurance that the spirits of those who sleep in Him do abide in joy and felicity; grant unto us, we beseech Thee, such steadfast faith and lively hope, that we may purify ourselves as He is pure; and that we, with Thy whole redeemed Church, may speedily attain unto the resurrection of the dead, when our mortal bodies shall put on immortality and incorruption, and we shall be changed into the likeness of His glorious body: who liveth and reigneth with Thee and the Holy Ghost, one God, world without end. Amen."
+  },
+  "easter": {
+   "t": "Easter Day",
+   "g": "John 20:1-10",
+   "ga": "Matt 28:1-10",
+   "e": "Col 3:1-11",
+   "ea": "1 Cor 15:1-20",
+   "c": "Almighty God, who through the resurrection of Thine only begotten Son Jesus Christ, hast overcome death, and opened unto us the gate of everlasting life; assist and support in us, we beseech Thee, the aspirations of Thy heavenly grace, that dying unto sin always, and living unto righteousness, we may at last triumph over death and the grave, in the full image of our risen Lord: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen.",
+   "f": [
+    "O Thou God and Father of our Lord Jesus Christ, we render Thee most humble and hearty thanks, that, when He had descended into the grave, Thou didst not suffer Thy Holy One to see corruption, nor leave His soul in hades, but didst show unto Him the path of life, and raise Him from the dead, and set Him at Thine own right hand in the heavenly places. Grant us grace, we beseech Thee, to apprehend with true faith the glorious mystery of our Saviour's resurrection, and fill our hearts with joy and a lively hope, that amid all the sorrows, trials and temptations of our mortal state, and in the hour of death, we may derive strength and comfort from this sure pledge of an inheritance incorruptible and undefiled and that fadeth not away. Amen.",
+    "O Thou Prince of Life and First-Begotten of the dead, whom not having seen we love, breathe upon us that we may receive the Holy Ghost, to abide with us continually both as the seal of our adoption, and as an earnest of the promised possession. Give us power to walk in the Spirit that we may not fulfill the lusts of the flesh, but mortify our members which are upon the earth and purify ourselves even as Thou art pure, so that at Thy second coming to judge the world in righteousness, we also may appear with Thee, having our vile bodies changed into the fashion of Thine own glorious body, according to the working whereby Thou art able even to subdue all things unto Thyself: who art God over all, blessed forever. Amen."
+   ]
+  },
+  "eastermon": {
+   "t": "Monday in Easter Week",
+   "g": "Luke 24:13-35",
+   "ga": "John 20:11-18",
+   "e": "Acts 10:34-43",
+   "ea": "1 Cor 15:51-58",
+   "c": "Almighty God, who from the tomb of our Lord Jesus Christ hast caused the light of Eternal Life to shine upon the world; be pleased, at this season of solemn joy, to shed abroad Thy love in our hearts by the Holy Ghost, and to inflame them with heavenly desires; that we may continually seek the things which are above, where Christ sitteth at Thy right hand, and so, abiding in purity of heart and mind, may at length attain unto Thine everlasting kingdom, there to dwell in the glorious light of Thy presence, world without end; through the same Jesus Christ our Lord. Amen."
+  },
+  "easter1": {
+   "t": "First Sunday after Easter: Quasimodogeniti, or Dominica in Albis",
+   "g": "John 20:19-31",
+   "ga": "Luke 24:36-47",
+   "e": "1 John 5:4-12",
+   "ea": "2 Tim 2:7-13",
+   "c": "Almighty God, who hast brought again from the dead our Lord Jesus, the glorious Prince of salvation, with everlasting victory over hell and the grave; grant unto us power, we beseech Thee, to rise with Him to newness of life, that we may overcome the world with the victory of faith, and have part at last in the resurrection of the just; through the merits of this same risen Saviour, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "easter2": {
+   "t": "Second Sunday after Easter: Misericordias Domini",
+   "g": "John 10:11-16",
+   "ga": "John 21:15-19",
+   "e": "1 Pet 2:20-25",
+   "ea": "Rev 7:13-17",
+   "c": "O God, who, of Thine abundant mercy, hast begotten us again unto a lively hope, by the resurrection of Jesus Christ from the dead; let Thy great love constrain us, we beseech Thee, to rise up, forsake all, and follow Him; that as we have been redeemed by His blood, so we may walk also in the light of His holy example, and be joined to Him evermore as the Shepherd and Bishop of our souls: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "easter3": {
+   "t": "Third Sunday after Easter: Jubilate",
+   "g": "John 16:16-22",
+   "ga": "Matt 10:16-20",
+   "e": "1 Pet 2:11-19",
+   "ea": "Acts 4:8-20",
+   "c": "God of all truth and grace, who hast caused the Sun of Righteousness to arise upon a dark and benighted world, in bringing up Thy Holy One from the grave; be pleased graciously so to illuminate the souls of Thy people with the beams of heavenly wisdom, that they may continually walk in Thy light, and know both to avoid evil and to follow after that which is good; through Jesus Christ our Lord, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "easter4": {
+   "t": "Fourth Sunday after Easter: Cantate",
+   "g": "John 16:5-15",
+   "ga": "Matt 10:24-33",
+   "e": "Jas 1:16-21",
+   "ea": "1 Thess 2:9-13",
+   "c": "O God, the Father of lights, from whom cometh down every good and perfect gift, and who art Thyself the only satisfying portion of the souls which Thou hast made; grant us grace, we beseech Thee, to raise our thoughts and affections from earth to heaven, and to breathe continually after Thy presence; that so, in the midst of all worldly vanity and change, our hearts may surely there be fixed, where alone are to be found true joys and everlasting peace; through Jesus Christ our Lord. Amen."
+  },
+  "easter5": {
+   "t": "Fifth Sunday after Easter: Rogate",
+   "g": "John 16:23-33",
+   "ga": "Luke 11:9-13",
+   "e": "Jas 1:22-27",
+   "ea": "1 Tim 2:1-6",
+   "c": "Vouchsafe unto us, O Lord, the inspirations of Thy salutary grace, and quicken us according to Thy word; that knowing what is right, and approving that which is good, we may, by patient continuance in well-doing, seek for glory and honor and immortality; and so finally, having escaped the corruption that is in the world through lust, find an entrance ministered unto us abundantly into the everlasting kingdom of our Lord and Saviour Jesus Christ: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "ascension": {
+   "t": "Ascension Day",
+   "g": "Mark 16:14-20",
+   "ga": "Luke 24:49-53",
+   "e": "Acts 1:1-11",
+   "ea": "Eph 1:15-23",
+   "c": "Almighty and everlasting God, who on this day didst glorify Thy Son Jesus, by receiving Him up into heaven, and setting Him at Thine own right hand, far above all principality, and power, and might, and dominion, and every name that is named, not only in this world, but also in that which is to come; work in us, we beseech Thee, such firm and abiding faith in this mystery as may raise us in heart and mind above all things here below, to dwell with Christ in heavenly places, and to possess in Him our true life; so that when He shall appear again, according to His word, we also may appear with Him in glory everlasting: to whom, with Thee and the Holy Ghost, be all worship and praise, world without end. Amen.",
+   "f": [
+    "O Lord Jesus Christ, Thou conqueror of death and hell, who from the depths of Thy humiliation didst pass into the heavens, and art crowned with glory and honor as King of saints and eternal High Priest over the house of God; let Thy all-powerful intercessions prevail on our behalf, that, being delivered from the curse of sin, we may receive grace and strength to follow Thee with patient endurance through the sorrows and pains of earth and the darkness of the grave, and, having thus shared in Thy sufferings here, become partakers also of Thy joy and glory in the everlasting kingdom of the Father. Amen."
+   ]
+  },
+  "exaudi": {
+   "t": "Sunday after Ascension Day: Exaudi",
+   "g": "John 15:26-16:1",
+   "ga": "John 7:33-39",
+   "e": "1 Pet 4:7-11",
+   "ea": "Acts 19:1-7",
+   "c": "O God, the King of glory, who through the resurrection and ascension of our Lord Jesus Christ, hast opened the kingdom of heaven to all believers; leave us not orphans, we beseech Thee, in our weary mortal state, but send unto us the Holy Ghost, the Comforter; who may guide us always in the way of truth and peace, and bring us in the end to those mansions of rest in which Christ now dwells and reigns: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "whitsunday": {
+   "t": "Whitsunday: Pentecost",
+   "g": "John 14:15-31",
+   "ga": "Joel 2:28-32",
+   "e": "Acts 2:1-11",
+   "ea": "Acts 2:22-41",
+   "c": "God of all peace and consolation, who didst gloriously fulfill the great promise of the Gospel, by sending down Thy Holy Ghost on the day of Pentecost, to establish the Church as the home of his continual presence and power among men; mercifully grant unto us, we beseech Thee, this same gift of the Spirit, to renew, illuminate, refresh, and sanctify our dying souls, to be over us and around us like the light and dew of heaven, and to be in us evermore as a well of water springing up into everlasting life; through Jesus Christ our Lord, to whom with Thee, and the Holy Ghost, ever one God, be honor and glory, world without end. Amen.",
+   "f": [
+    "O Holy Ghost, Spirit of the Father and the Son, who by Thy quickening energy hast raised us up to a new life in Christ Jesus, and dost in mercy to our infirmities condescend to dwell in our mortal bodies as Thy consecrated temples; bring forth in our hearts and lives, we beseech Thee, the fruits of love, joy, peace, long-suffering, gentleness, faith, meekness and temperance; that so walking in Thee with all holy obedience we may stand firm in the knowledge and love of the truth against the wiles of the Devil, overcome the world, and be glorified in the fellowship of the Father and the Son: to whom with Thee who art coequal and coeternal God, we ascribe all honor, thanksgiving and praise. Amen."
+   ]
+  },
+  "whitmonday": {
+   "t": "Whitmonday",
+   "g": "John 3:16-21",
+   "ga": "John 4:13-24",
+   "e": "Acts 10:34-48",
+   "ea": "",
+   "c": "Most glorious and blessed God, who through the Holy Ghost, hast made Thy One Catholic Church to be the Body of Christ, the fulness of Him that filleth all in all; we humbly beseech Thee to grant unto us, and to all Thy people, such strong and steadfast faith in this great mystery of grace, that being safely defended from all heresy and schism, we may ever abide in the unity of the Spirit, and so grow up into Him in all things which is the Head, even Christ: to whom, with Thee and the Holy Ghost, ever one God, be all honor and praise, world without end. Amen."
+  },
+  "trinity": {
+   "t": "Trinity Sunday",
+   "g": "John 3:1-15",
+   "ga": "Matt 28:18-20",
+   "e": "Rev 4:1-11",
+   "ea": "1 John 5:1-12",
+   "c": "O God, the Creator and Saviour of the world, who hast made Thyself known in the work of man's redemption, as the Mystery of the ever adorable Trinity, Father, Son, and Holy Ghost, Three in One and One in Three; reveal in us, we beseech Thee, the full power of this faith, into which we have been planted by baptism; that being born of water and of the Spirit, we may by a life of holiness be formed into Thine image here, and rise to Thy blissful presence hereafter: there to join, with the song of the seraphim in praising Thee, world without end. Amen."
+  },
+  "trin1": {
+   "t": "First Sunday after Trinity",
+   "g": "Luke 16:19-31",
+   "ga": "Matt 16:13-20",
+   "e": "1 John 4:7-21",
+   "ea": "Eph 2:19-22",
+   "c": "O God, the strength of all them that put their trust in Thee, who hast not appointed us unto wrath, but to obtain salvation by our Lord Jesus Christ; because through the weakness of our mortal nature we can do no good thing without Thee, we beseech Thee to grant us the help of Thy grace, and to breathe into us that divine charity which is the fulfilling of the law; that in keeping Thy commandments we may please Thee both in will and deed, and be counted worthy, after the sufferings of this life, to reign with Christ in heaven: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin2": {
+   "t": "Second Sunday after Trinity",
+   "g": "Luke 14:16-24",
+   "ga": "Matt 18:11-20",
+   "e": "1 John 3:13-24",
+   "ea": "Eph 4:4-16",
+   "c": "Almighty and everlasting God, the source of all life and joy, who, by the glad sound of the gospel, hast called us to have part in Thy kingdom and glory; shine powerfully into our hearts, we beseech Thee, by Thy word and Spirit, and draw us with the cords of Thy constraining grace; that we may heartily choose that good part which shall not be taken away from us, and give all diligence to make our calling and election sure; through Jesus Christ our Lord. Amen."
+  },
+  "trin3": {
+   "t": "Third Sunday after Trinity",
+   "g": "Luke 15:1-10",
+   "ga": "John 15:1-14",
+   "e": "1 Pet 5:5-11",
+   "ea": "1 Cor 12:12-27",
+   "c": "O God, the Lord, strong to deliver and mighty to save, who hast been the refuge and dwelling-place of Thy people in all generations; perfect and fulfill in us, we beseech Thee, the work of Thy converting grace, and be pleased to confirm us in every good purpose and deed; that having been called into the way of righteousness, we may have power to continue steadfastly in the same until the day of Jesus Christ: to whom, with Thee and the Holy Ghost, be all honor and praise, world without end. Amen."
+  },
+  "trin4": {
+   "t": "Fourth Sunday after Trinity",
+   "g": "Luke 6:36-42",
+   "ga": "John 3:1-8",
+   "e": "Rom 8:18-23",
+   "ea": "Gal 3:26-29",
+   "c": "O God, whose favor is life, and in whose presence there is fulness of peace and joy; vouchsafe unto us, we beseech Thee, such an abiding sense of the reality and glory of those things which Thou hast prepared for them that love Thee, as may serve to raise us above the vanity of this present world, both in its pleasures and in its necessary trials and pains; so that under Thy guidance and help all things here shall work together for our everlasting salvation; through Jesus Christ our Lord. Amen."
+  },
+  "trin5": {
+   "t": "Fifth Sunday after Trinity",
+   "g": "Luke 5:1-11",
+   "ga": "John 6:47-59",
+   "e": "1 Pet 3:8-15",
+   "ea": "Acts 2:41-47",
+   "c": "Cause Thy Church to arise and shine, O Lord, and let her ministers be clothed with righteousness and salvation; that Thy word which is in their hands may not return unto Thee void, but have free course and be glorified in the world; prospering in the thing whereunto Thou hast sent it, and prevailing mightily to turn men from darkness to light, and from the power of Satan unto God, that they may receive forgiveness of sins, and inheritance among them which are sanctified by faith that is in Christ: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin6": {
+   "t": "Sixth Sunday after Trinity",
+   "g": "Matt 5:20-26",
+   "ga": "Matt 11:25-30",
+   "e": "Rom 6:3-11",
+   "ea": "Rom 3:19-28",
+   "c": "Almighty and everlasting God, through whose mercy we are saved by the washing of regeneration and renewing of the Holy Ghost; let this grace reign in us, we beseech Thee, as the power of a new heavenly life; whereby denying ungodliness and worldly lusts, we may live soberly, righteously, and godly, in this present world; looking for the glorious appearing of our Saviour Jesus Christ, who gave Himself for us, that He might redeem us from all iniquity, and purify unto Himself a peculiar people, zealous of good works: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin7": {
+   "t": "Seventh Sunday after Trinity",
+   "g": "Mark 8:1-9",
+   "ga": "Luke 15:11-32",
+   "e": "Rom 6:19-23",
+   "ea": "Acts 9:1-9",
+   "c": "Almighty God, the Former of our bodies and Father of our spirits, in whom we live, move and have our being; shed abroad Thy love in our hearts, we beseech Thee, and cause the comfort of Thy heavenly grace to abound in us, as the earnest and pledge of joys to come; that casting away all anxious thought for the transitory things of this world, we may seek first Thy kingdom and righteousness, and labor only for that meat which endureth unto everlasting life; through Jesus Christ our Lord. Amen."
+  },
+  "trin8": {
+   "t": "Eighth Sunday after Trinity",
+   "g": "Matt 7:15-21",
+   "ga": "Luke 18:9-14",
+   "e": "Rom 8:12-17",
+   "ea": "Phil 3:3-11",
+   "c": "O God, who hast given unto us exceeding great and precious promises, that by them we might be partakers of the divine nature, having escaped the corruption that is in the world through lust; enable us, we beseech Thee, with all diligence to add to our faith virtue, knowledge, temperance, patience, godliness, brotherly kindness and charity; that, these things being in us, and abounding, we may neither be barren nor unfruitful in the knowledge of our Lord Jesus Christ: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin9": {
+   "t": "Ninth Sunday after Trinity",
+   "g": "Luke 16:1-9",
+   "ga": "Matt 8:5-13",
+   "e": "1 Cor 10:1-13",
+   "ea": "1 Pet 1:3-9",
+   "c": "O Lord God, our Sun, by whom light is sown for the righteous, and gladness for the upright in heart; illuminate our minds, we beseech Thee, by Thy heavenly grace, and fill them with the pure wisdom which cometh from above; that we may walk before Thee in simplicity and godly sincerity all our days, not taking counsel of the world or of the flesh, but aiming and endeavoring in all things only to know and do Thy will; through Jesus Christ our Lord. Amen."
+  },
+  "trin10": {
+   "t": "Tenth Sunday after Trinity",
+   "g": "Luke 19:41-47",
+   "ga": "Matt 17:14-21",
+   "e": "1 Cor 12:1-11",
+   "ea": "Heb 11:32-12:2",
+   "c": "O God, the Father of our Lord Jesus Christ, who hast called us to renounce and forsake the world, in the service of our once crucified but now risen and gloriously exalted Saviour; be pleased, we beseech Thee, graciously so to unite our souls to Him by holy sympathy and love, that we may offer ourselves, in fellowship with His cross, a willing sacrifice to Thee on the altar of the gospel, and count it all joy to suffer for his name: who liveth and reigneth, with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "trin11": {
+   "t": "Eleventh Sunday after Trinity",
+   "g": "Luke 18:9-14",
+   "ga": "Luke 12:32-40",
+   "e": "1 Cor 15:1-11",
+   "ea": "Rom 8:16-26",
+   "c": "O God, the High and Holy One, who inhabitest eternity, and dwellest with him also who is of a contrite and humble spirit, to revive the spirit of the humble, and to revive the heart of the contrite ones; glorify Thy grace, we beseech Thee, in the midst of our manifold infirmities and sins, and through all temptation hold us up by Thy mighty hand; that the trial of our faith, being much more precious than of gold that perisheth, though it be tried with fire, may be found unto praise, and honor, and glory, at the appearing of Jesus Christ: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin12": {
+   "t": "Twelfth Sunday after Trinity",
+   "g": "Mark 7:31-37",
+   "ga": "Matt 22:34-40",
+   "e": "2 Cor 3:4-11",
+   "ea": "John 4:15-21",
+   "c": "O God, who didst will Thine Only Begotten Son to learn obedience by the things which He suffered, that being thus made perfect He might become the Author of eternal salvation unto all that obey Him; work in us, we beseech Thee, such inward conformity with His holy patience, as may cause us to have part also in His glorious power; that so, walking not after the flesh but after the Spirit, we may be able to serve Thee all our days in newness of mind and life; through Jesus Christ our Lord. Amen."
+  },
+  "trin13": {
+   "t": "Thirteenth Sunday after Trinity",
+   "g": "Luke 10:23-37",
+   "ga": "",
+   "e": "Gal 3:16-22",
+   "ea": "1 Cor 13:1-13",
+   "c": "Almighty and everlasting God, whose faithfulness reacheth unto the clouds, and whose mercy endureth for ever; be pleased to confirm and fulfil in us, we humbly beseech Thee, the covenant of Thy grace, made sure from the beginning of the world in Christ Jesus our Lord; that we may be found in Him, not having our own righteousness which is of the law, but that which is through the faith of Christ, even the righteousness of God which is by faith in Jesus Christ unto all and upon all them that believe: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin14": {
+   "t": "Fourteenth Sunday after Trinity",
+   "g": "Luke 17:11-19",
+   "ga": "Matt 5:43-48",
+   "e": "Gal 5:16-24",
+   "ea": "Rom 12:14-21",
+   "c": "O God, who hast delivered us from the power of darkness and translated us into the kingdom of Thy dear Son, in whom we have redemption through His blood, even the forgiveness of sins; enable us by Thy grace, we earnestly beseech Thee, so to walk in the Spirit that we may not fulfil the lusts of the flesh; considering ourselves to be dead henceforth unto sin, but alive unto God through Jesus Christ our Lord: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin15": {
+   "t": "Fifteenth Sunday after Trinity",
+   "g": "Matt 6:24-34",
+   "ga": "Matt 5:13-20",
+   "e": "Gal 5:25-6:10",
+   "ea": "Jas 2:14-26",
+   "c": "O God, our Father in heaven, in whose presence there is fulness of joy, and at whose right hand there are pleasures for evermore; mercifully fix our hearts on things above, and free them from all undue care and thought for the things of the present transitory world; that whilst we are here in the body, we may sow, not to the flesh, but to the Spirit, and in the end reap life everlasting; through Jesus Christ our Lord. Amen."
+  },
+  "trin16": {
+   "t": "Sixteenth Sunday after Trinity",
+   "g": "Luke 7:11-17",
+   "ga": "Mark 12:41-44",
+   "e": "Eph 3:13-21",
+   "ea": "2 Cor 9:5-15",
+   "c": "O God, the Father of our Lord Jesus Christ, of whom the whole family in heaven and earth is named; we beseech Thee, according to the riches of Thy glory to strengthen us with might by Thy Spirit in the inner man, that Christ may dwell in our hearts by faith; so that, being rooted and grounded in love, we may be able to comprehend with all saints what is the breadth, and length, and depth, and height, and to know the love of Christ which passeth knowledge: to whom with Thee and the Holy Ghost be honor and glory, world without end. Amen."
+  },
+  "trin17": {
+   "t": "Seventeenth Sunday after Trinity",
+   "g": "Luke 14:1-11",
+   "ga": "Mark 10:35-45",
+   "e": "Eph 4:1-6",
+   "ea": "Phil 2:1-5",
+   "c": "Almighty and everlasting God, who didst send Thy Son into the world, not to be ministered unto, but to minister, and to give his life a ransom for many; dispose and assist us by Thy grace, most heartily we beseech Thee, to follow the example of His great humility and heavenly-minded love; that with all lowliness and meekness, and patient continuance in good works, we may adorn the Gospel of God our Saviour, and possess in our souls that true peace which the world can neither give nor take away; through Jesus Christ our Lord. Amen."
+  },
+  "trin18": {
+   "t": "Eighteenth Sunday after Trinity",
+   "g": "Matt 22:34-46",
+   "ga": "Luke 9:18-26",
+   "e": "1 Cor 1:4-9",
+   "ea": "2 Cor 4:8-18",
+   "c": "Almighty God, our heavenly Father, who hast given unto us all things that pertain unto life and godliness through the glorious revelation of the Gospel; cause Thy word to dwell in us richly, we beseech Thee, and fill us with the knowledge of Thy will in all wisdom and spiritual understanding, that we may walk worthy of the Lord unto all pleasing, being fruitful in every good work, and increasing in the knowledge of God; through Jesus Christ our Lord. Amen."
+  },
+  "trin19": {
+   "t": "Nineteenth Sunday after Trinity",
+   "g": "Matt 9:1-8",
+   "ga": "Matt 5:3-12",
+   "e": "Eph 4:17-32",
+   "ea": "2 Pet 1:1-11",
+   "c": "O Lord, our Maker and Redeemer, the Holy One of Israel, who hast stretched forth the heavens, and laid the foundations of the earth; be pleased graciously to confirm and carry forward Thy glorious work of salvation in our hearts, causing old things to pass away and all things to become new; that looking always above and beyond this world, we may have our conversation in heaven, from whence also we look for the Saviour, the Lord Jesus Christ: who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "trin20": {
+   "t": "Twentieth Sunday after Trinity",
+   "g": "Matt 22:1-14",
+   "ga": "Mark 13:32-37",
+   "e": "Eph 5:15-21",
+   "ea": "Heb 10:32-39",
+   "c": "O God, the Father everlasting, whom the glorious hosts of heaven obey, and in whose presence patriarchs, prophets, apostles, martyrs, with all the spirits of the just made perfect, continually do live; fix the eye of our faith, we beseech Thee, with clear and full vision, on the great cloud of witnesses with which we are thus compassed about in the heavenly world; that laying aside every weight, and the sin which doth so easily beset us, we may run with patience the race that is set before us, and obtain at last the crown of everlasting life; through Jesus Christ our Lord. Amen."
+  },
+  "trin21": {
+   "t": "Twenty-first Sunday after Trinity",
+   "g": "John 4:46-54",
+   "ga": "Luke 16:19-31",
+   "e": "Eph 6:10-20",
+   "ea": "Rom 5:12-21",
+   "c": "Almighty and most merciful God, whose name is a strong tower, into which the righteous runneth and is safe; lift up the standard of Thy Spirit, we beseech Thee, against the power of the enemy coming in upon us like a flood, and clothe us with the full armor of righteousness on the right hand and on the left; that we may be able to fight manfully the good fight of faith, and so finish our course with joy, in the great day when Christ, the righteous Judge, shall appear: who liveth and reigneth with Thee, in the unity of the Holy Ghost, ever one God, world without end. Amen."
+  },
+  "trin22": {
+   "t": "Twenty-second Sunday after Trinity",
+   "g": "Matt 18:21-35",
+   "ga": "John 11:19-27",
+   "e": "Phil 1:3-11",
+   "ea": "1 Cor 15:35-50",
+   "c": "O God, by whose wise and righteous order the whole creation groaneth and travaileth in pain together until now, as having been made subject to vanity by reason of sin; graciously help the infirmities of Thy people, we humbly beseech Thee, and raise them up through the strong power of Christian hope; that we also, who have received the first fruits of the Spirit, may not seek our rest in this mortal state, but inwardly long after that which is far better, to be with Christ in heaven: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "trin23": {
+   "t": "Twenty-third Sunday after Trinity",
+   "g": "Matt 22:15-22",
+   "ga": "Matt 25:31-46",
+   "e": "Phil 3:17-21",
+   "ea": "Rev 20:11-15",
+   "c": "O God, to whom both power and mercy belong, and who renderest to every man according to his work; give us grace, we beseech Thee, to set Thy presence before us in all our ways, and to seek continually those things which are well pleasing in Thy sight; that we may pass through the world as pilgrims and strangers, in all holy conversation and godliness, looking for and hastening unto the second advent of the Lord Jesus, when He shall come to be glorified in His saints, and admired in all them that believe: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "ba4": {
+   "t": "The Fourth Sunday before Advent",
+   "g": "Matt 9:18-26",
+   "ga": "John 5:24-29",
+   "e": "Col 1:9-14",
+   "ea": "Rev 22:1-21",
+   "c": "Almighty and most merciful God, who didst cause Thy Son to descend into the bosom of the grave, that He might destroy him that had the power of death, and deliver them who through fear of death were all their lifetime subject to bondage; work in us, we beseech Thee, such holy mortification to all the things of this world, and such lively apprehension of things unseen and eternal, as may prepare us to die without anxiety or dismay, knowing that if our earthly house of this tabernacle be dissolved, we have a building of God, a house not made with hands, eternal in the heavens; through Jesus Christ our Lord. Amen."
+  },
+  "ba3": {
+   "t": "The Third Sunday before Advent",
+   "g": "Matt 24:15-28",
+   "ga": "John 14:1-4",
+   "e": "1 Thess 4:13-18",
+   "ea": "Rev 7:13-17",
+   "c": "Almighty and everlasting God, the Fountain of all life and power, who hast promised to bring up again from the dead the bodies of them which sleep in Jesus; gather not our souls with sinners, we beseech Thee, but make us to be numbered with Thy saints in glory everlasting; that having been joined with them in one communion here, we may also share hereafter their joyful triumph, in the resurrection at the last day; through the same Jesus Christ, our risen and glorified Lord. Amen."
+  },
+  "ba2": {
+   "t": "The Second Sunday before Advent",
+   "g": "Matt 25:31-46",
+   "ga": "Matt 19:27-30",
+   "e": "2 Thess 1:3-10",
+   "ea": "Rev 21:1-8",
+   "c": "O God, who hast appointed a day in the which Thou wilt judge the world in righteousness, by that Man whom Thou hast ordained, giving assurance thereof unto all in that thou hast raised Him from the dead; grant unto us grace, we beseech Thee, to keep in mind always the power and coming of our Lord Jesus Christ, and to wait continually for His revelation from heaven; that having boldly confessed Him before men, we also may be openly acknowledged and confessed by Him when all flesh shall appear in His presence: to whom, with Thee and the Holy Ghost, be honor and glory, world without end. Amen."
+  },
+  "ba1": {
+   "t": "The Sunday before Advent",
+   "g": "Matt 25:1-13",
+   "ga": "John 17:20-26",
+   "e": "2 Pet 3:3-14",
+   "ea": "Rev 7:2-12",
+   "c": "Almighty and everlasting God, by whose word the heavens and the earth, which are now, are kept in store, reserved unto fire against the day of judgment and perdition of ungodly men; make us, we beseech Thee, to be such manner of persons in all holy conversation and godliness, as they ought to be who look for such things; that when this frame of nature shall be dissolved, we may be counted worthy to behold and enjoy, according to Thy promise, the new heavens and the new earth, wherein dwelleth righteousness; through the merits and mediation of Thy Son Jesus Christ, who liveth and reigneth with Thee and the Holy Ghost, ever one God, world without end. Amen."
+  }
+ },
+ "lessons": {
+  "adv1": {
+   "m": [
+    "Isa 1",
+    "Luke 1:1-38"
+   ],
+   "e": [
+    "Isa 2",
+    "Rom 10"
+   ]
+  },
+  "adv2": {
+   "m": [
+    "Isa 5",
+    "Luke 1:39-80"
+   ],
+   "e": [
+    "Isa 24",
+    "Rom 12"
+   ]
+  },
+  "adv3": {
+   "m": [
+    "Isa 25",
+    "Luke 3:1-18"
+   ],
+   "e": [
+    "Isa 28:1-22",
+    "Rom 14"
+   ]
+  },
+  "adv4": {
+   "m": [
+    "Isa 30",
+    "Matt 3:1-12"
+   ],
+   "e": [
+    "Isa 32",
+    "1 Cor 1"
+   ]
+  },
+  "xmas1": {
+   "m": [
+    "Isa 35",
+    "Luke 2:25-52"
+   ],
+   "e": [
+    "Isa 40",
+    "1 Cor 2"
+   ]
+  },
+  "xmas2": {
+   "m": [
+    "Isa 41",
+    "Mark 1:1-15"
+   ],
+   "e": [
+    "Isa 42",
+    "Heb 2"
+   ]
+  },
+  "epi1": {
+   "m": [
+    "Isa 44",
+    "Matt 2:13-23"
+   ],
+   "e": [
+    "Isa 45",
+    "1 Cor 3"
+   ]
+  },
+  "epi2": {
+   "m": [
+    "Isa 51",
+    "John 1:29-51"
+   ],
+   "e": [
+    "Isa 52:1-12",
+    "1 Cor 13"
+   ]
+  },
+  "epi3": {
+   "m": [
+    "Isa 54",
+    "Matt 4:12-25"
+   ],
+   "e": [
+    "Isa 55",
+    "2 Cor 4"
+   ]
+  },
+  "epi4": {
+   "m": [
+    "Isa 57",
+    "Luke 4:14-32"
+   ],
+   "e": [
+    "Isa 59",
+    "2 Cor 5"
+   ]
+  },
+  "epi5": {
+   "m": [
+    "Isa 61",
+    "Matt 5"
+   ],
+   "e": [
+    "Isa 62",
+    "Gal 2"
+   ]
+  },
+  "epi6": {
+   "m": [
+    "Isa 65",
+    "Matt 6"
+   ],
+   "e": [
+    "Isa 66",
+    "Gal 3"
+   ]
+  },
+  "septuagesima": {
+   "m": [
+    "Jer 5",
+    "Matt 7"
+   ],
+   "e": [
+    "Jer 22",
+    "Eph 1"
+   ]
+  },
+  "sexagesima": {
+   "m": [
+    "Jer 35",
+    "Luke 7:19-50"
+   ],
+   "e": [
+    "Jer 36",
+    "Eph 2"
+   ]
+  },
+  "quinquagesima": {
+   "m": [
+    "Lam 1",
+    "Mark 6:1-29"
+   ],
+   "e": [
+    "Lam 3:1-36",
+    "Eph 3"
+   ]
+  },
+  "lent1": {
+   "m": [
+    "Jer 7",
+    "Matt 10"
+   ],
+   "e": [
+    "Jer 9",
+    "Eph 4"
+   ]
+  },
+  "lent2": {
+   "m": [
+    "Ezek 14",
+    "Luke 10:1-24"
+   ],
+   "e": [
+    "Ezek 18",
+    "Eph 5"
+   ]
+  },
+  "lent3": {
+   "m": [
+    "Ezek 20:1-26",
+    "Mark 9:1-29"
+   ],
+   "e": [
+    "Ezek 20:27-49",
+    "Eph 6"
+   ]
+  },
+  "lent4": {
+   "m": [
+    "Mic 6",
+    "Luke 19:28-48"
+   ],
+   "e": [
+    "Hab 3",
+    "Phil 1"
+   ]
+  },
+  "lent5": {
+   "m": [
+    "Hag 2:1-9",
+    "Luke 21"
+   ],
+   "e": [
+    "Zech 13",
+    "Phil 3"
+   ]
+  },
+  "palm": {
+   "m": [
+    "Dan 9",
+    "Matt 26"
+   ],
+   "e": [
+    "Mal 3-4",
+    "Heb 5:1-10"
+   ]
+  },
+  "easter": {
+   "m": [
+    "Exod 12:1-36",
+    "Rom 6"
+   ],
+   "e": [
+    "Exod 12:37-51",
+    "Acts 2:22-47"
+   ]
+  },
+  "easter1": {
+   "m": [
+    "Isa 43",
+    "Acts 1"
+   ],
+   "e": [
+    "Isa 48",
+    "1 Cor 15"
+   ]
+  },
+  "easter2": {
+   "m": [
+    "Hos 13",
+    "Acts 3"
+   ],
+   "e": [
+    "Hos 14",
+    "Col 1"
+   ]
+  },
+  "easter3": {
+   "m": [
+    "Joel 3:9-21",
+    "Acts 5"
+   ],
+   "e": [
+    "Mic 4",
+    "Col 3"
+   ]
+  },
+  "easter4": {
+   "m": [
+    "Mic 5",
+    "Acts 6"
+   ],
+   "e": [
+    "Nah 1",
+    "1 Thess 3"
+   ]
+  },
+  "easter5": {
+   "m": [
+    "Zech 8",
+    "Acts 8:5-40"
+   ],
+   "e": [
+    "Zech 10",
+    "1 Thess 4"
+   ]
+  },
+  "exaudi": {
+   "m": [
+    "Joel 2",
+    "John 17"
+   ],
+   "e": [
+    "Zeph 3",
+    "2 Thess 3:1-16"
+   ]
+  },
+  "whitsunday": {
+   "m": [
+    "Deut 16:1-17",
+    "Acts 4:1-35"
+   ],
+   "e": [
+    "Isa 11",
+    "Acts 19:1-20"
+   ]
+  },
+  "trinity": {
+   "m": [
+    "Gen 1",
+    "Matt 3"
+   ],
+   "e": [
+    "Gen 2",
+    "1 John 5"
+   ]
+  },
+  "trin1": {
+   "m": [
+    "Gen 3",
+    "Acts 9:1-31"
+   ],
+   "e": [
+    "Gen 6",
+    "1 Tim 6"
+   ]
+  },
+  "trin2": {
+   "m": [
+    "Gen 9:1-19",
+    "Acts 10"
+   ],
+   "e": [
+    "Gen 15:1-18",
+    "2 Tim 2"
+   ]
+  },
+  "trin3": {
+   "m": [
+    "Gen 37",
+    "Acts 11"
+   ],
+   "e": [
+    "Gen 42",
+    "2 Tim 3; 4:1-8"
+   ]
+  },
+  "trin4": {
+   "m": [
+    "Gen 43",
+    "Acts 14"
+   ],
+   "e": [
+    "Gen 45",
+    "Titus 2; 3:1-9"
+   ]
+  },
+  "trin5": {
+   "m": [
+    "Gen 49",
+    "Acts 15"
+   ],
+   "e": [
+    "Gen 50",
+    "Heb 10"
+   ]
+  },
+  "trin6": {
+   "m": [
+    "Exod 3",
+    "Acts 17"
+   ],
+   "e": [
+    "Exod 5",
+    "Heb 11"
+   ]
+  },
+  "trin7": {
+   "m": [
+    "Exod 9",
+    "Acts 20"
+   ],
+   "e": [
+    "Exod 10",
+    "Heb 12"
+   ]
+  },
+  "trin8": {
+   "m": [
+    "Exod 14",
+    "Acts 24"
+   ],
+   "e": [
+    "Exod 15",
+    "Heb 13"
+   ]
+  },
+  "trin9": {
+   "m": [
+    "Num 16",
+    "Acts 26"
+   ],
+   "e": [
+    "Num 22",
+    "Jas 1"
+   ]
+  },
+  "trin10": {
+   "m": [
+    "Num 23",
+    "Acts 28"
+   ],
+   "e": [
+    "Num 24",
+    "Jas 2"
+   ]
+  },
+  "trin11": {
+   "m": [
+    "Deut 4:1-40",
+    "Matt 18"
+   ],
+   "e": [
+    "Deut 5",
+    "Jas 3"
+   ]
+  },
+  "trin12": {
+   "m": [
+    "Deut 6",
+    "Matt 20"
+   ],
+   "e": [
+    "Deut 7",
+    "Jas 4"
+   ]
+  },
+  "trin13": {
+   "m": [
+    "Deut 8",
+    "Matt 23"
+   ],
+   "e": [
+    "Deut 9",
+    "Jas 5"
+   ]
+  },
+  "trin14": {
+   "m": [
+    "Deut 33",
+    "Matt 25"
+   ],
+   "e": [
+    "Deut 34",
+    "1 Pet 1"
+   ]
+  },
+  "trin15": {
+   "m": [
+    "Josh 23",
+    "Mark 4"
+   ],
+   "e": [
+    "Josh 24",
+    "1 Pet 2"
+   ]
+  },
+  "trin16": {
+   "m": [
+    "Judg 4",
+    "Mark 13"
+   ],
+   "e": [
+    "Judg 5",
+    "1 Pet 3"
+   ]
+  },
+  "trin17": {
+   "m": [
+    "1 Sam 12",
+    "Luke 13"
+   ],
+   "e": [
+    "1 Sam 17",
+    "1 Pet 4"
+   ]
+  },
+  "trin18": {
+   "m": [
+    "2 Sam 12",
+    "Luke 15"
+   ],
+   "e": [
+    "2 Sam 19",
+    "1 Pet 5"
+   ]
+  },
+  "trin19": {
+   "m": [
+    "1 Kgs 8:1-21",
+    "Luke 20"
+   ],
+   "e": [
+    "1 Kgs 8:22-61",
+    "2 Pet 1"
+   ]
+  },
+  "trin20": {
+   "m": [
+    "1 Kgs 17",
+    "John 3"
+   ],
+   "e": [
+    "1 Kgs 18",
+    "2 Pet 2"
+   ]
+  },
+  "trin21": {
+   "m": [
+    "2 Kgs 5",
+    "John 7"
+   ],
+   "e": [
+    "2 Kgs 19",
+    "2 Pet 3"
+   ]
+  },
+  "trin22": {
+   "m": [
+    "Dan 6",
+    "John 8"
+   ],
+   "e": [
+    "Dan 7",
+    "1 John 1"
+   ]
+  },
+  "trin23": {
+   "m": [
+    "Prov 1",
+    "John 9"
+   ],
+   "e": [
+    "Prov 2",
+    "1 John 2"
+   ]
+  },
+  "ba4": {
+   "m": [
+    "Prov 3",
+    "John 10"
+   ],
+   "e": [
+    "Prov 8",
+    "1 John 3"
+   ]
+  },
+  "ba3": {
+   "m": [
+    "Prov 11",
+    "John 11"
+   ],
+   "e": [
+    "Prov 12",
+    "Jude"
+   ]
+  },
+  "ba2": {
+   "m": [
+    "Prov 13",
+    "John 15"
+   ],
+   "e": [
+    "Prov 14",
+    "Rev 1"
+   ]
+  },
+  "ba1": {
+   "m": [
+    "Prov 15",
+    "John 16"
+   ],
+   "e": [
+    "Prov 16",
+    "Rev 22"
+   ]
+  }
+ }
+}
