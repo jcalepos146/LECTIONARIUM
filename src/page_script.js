@@ -27,6 +27,23 @@ window.LectLoad=(()=>{
  if(url) window.addEventListener("load",()=>idle(()=>service().catch(()=>{})));
  return {service};
 })();
+/* Offline use (sw.js). The worker caches the page and whatever is opened; save() fetches every calendar year, data
+   file and Bible ahead of time. Browsers under automation (the tests) register it only when asked to. */
+window.LectOffline=(()=>{
+ const ok="serviceWorker" in navigator&&window.isSecureContext&&/^https?:$/.test(location.protocol);
+ let wantTest=false; try{ wantTest=localStorage.getItem("lect-sw")==="1"; }catch(e){}
+ const ready=ok&&(!navigator.webdriver||wantTest)?navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).catch(()=>null):Promise.resolve(null);
+ let savedKey="lect-offline-saved";
+ const saved=()=>{ try{ return localStorage.getItem(savedKey); }catch(e){ return null; } };
+ async function save(onProgress){
+  const reg=await ready; const sw=reg&&(reg.active||navigator.serviceWorker.controller);
+  if(!sw) throw new Error("This browser cannot keep the site for offline use.");
+  return new Promise(res=>{ const ch=new MessageChannel();
+   ch.port1.onmessage=e=>{ onProgress&&onProgress(e.data); if(e.data.finished){ try{ localStorage.setItem(savedKey,new Date().toISOString().slice(0,10)); }catch(err){} res(e.data); } };
+   sw.postMessage({type:"save"},[ch.port2]); });
+ }
+ return {supported:ok, ready, save, saved};
+})();
 /* The day table (tools/build_days.py) is split by year into days/<year>.json; days/2026.json also holds
    Advent 2025. LectDays.load(iso) fetches the year of a date (and, in January or December, the year beside it,
    for look-ups of the nearest Sunday) into one shared map, and resolves to that map. */

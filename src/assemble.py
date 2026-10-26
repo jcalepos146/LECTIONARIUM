@@ -25,6 +25,20 @@ def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False, sp
             code=code.replace('/*SERVICE-URL*/""','"service.js?v='+hashlib.md5(service_js().encode()).hexdigest()[:10]+'"')
         parts.append("<script>\n"+code+"\n</script>")
     return "\n".join(parts)+"\n"
+def offline_worker(page, svc):
+    """sw.js: the offline worker (src/sw.js) with its version, core files and the data "Save for offline use" fetches.
+    The data is every calendar year, data file and Bible the site reads; the Office packs (breviary/, 72 MB) are cached
+    as they are opened instead."""
+    import hashlib, json, glob
+    root = ".."
+    save = sorted(p[len(root) + 1:] for pat in ("days/*.json", "data/*.json", "bible/*/*.json") for p in glob.glob(f"{root}/{pat}"))
+    save += [f for f in ("bcp-office.json", "chant.json", "hymns.json", "ordo.json", "propers-1962.json", "propers-pre55.json") if os.path.exists(f"{root}/{f}")]
+    core = ["./", "index.html", "service.js?v=" + hashlib.md5(svc.encode()).hexdigest()[:10], "favicon.svg", "favicon-32.png", "apple-touch-icon.png"]
+    version = hashlib.md5((page + svc + json.dumps(save)).encode()).hexdigest()[:10]
+    s = open("sw.js").read()
+    for k, v in (("VERSION", json.dumps(version)), ("CORE", json.dumps(core)), ("SAVE", json.dumps(save))):
+        s = s.replace(f'/*{k}*/' + ('"dev"' if k == "VERSION" else "[]"), f"/*{k}*/" + v, 1)
+    return s
 GH_DESC = ("Pray the Eucharist and the daily office in Catholic, Orthodox, Oriental, Anglican, Lutheran, Reformed "
            "and Methodist rites, each with the Bible readings of its own lectionary for the day. Complete public-domain "
            "texts where they exist, a clearly marked guide where they do not. Fit a service to any length and pray it "
@@ -70,3 +84,4 @@ if "--standalone" in sys.argv:
 else:
     out = gh(BASE, REPO); open("../index.html", "w").write(out); print("index.html", len(out.encode()), "bytes")
     svc = service_js(); open("../service.js", "w").write(svc); print("service.js", len(svc.encode()), "bytes")
+    sw = offline_worker(out, svc); open("../sw.js", "w").write(sw); print("sw.js", len(sw.encode()), "bytes")

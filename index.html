@@ -1041,6 +1041,23 @@ window.LectLoad=(()=>{
  if(url) window.addEventListener("load",()=>idle(()=>service().catch(()=>{})));
  return {service};
 })();
+/* Offline use (sw.js). The worker caches the page and whatever is opened; save() fetches every calendar year, data
+   file and Bible ahead of time. Browsers under automation (the tests) register it only when asked to. */
+window.LectOffline=(()=>{
+ const ok="serviceWorker" in navigator&&window.isSecureContext&&/^https?:$/.test(location.protocol);
+ let wantTest=false; try{ wantTest=localStorage.getItem("lect-sw")==="1"; }catch(e){}
+ const ready=ok&&(!navigator.webdriver||wantTest)?navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).catch(()=>null):Promise.resolve(null);
+ let savedKey="lect-offline-saved";
+ const saved=()=>{ try{ return localStorage.getItem(savedKey); }catch(e){ return null; } };
+ async function save(onProgress){
+  const reg=await ready; const sw=reg&&(reg.active||navigator.serviceWorker.controller);
+  if(!sw) throw new Error("This browser cannot keep the site for offline use.");
+  return new Promise(res=>{ const ch=new MessageChannel();
+   ch.port1.onmessage=e=>{ onProgress&&onProgress(e.data); if(e.data.finished){ try{ localStorage.setItem(savedKey,new Date().toISOString().slice(0,10)); }catch(err){} res(e.data); } };
+   sw.postMessage({type:"save"},[ch.port2]); });
+ }
+ return {supported:ok, ready, save, saved};
+})();
 /* The day table (tools/build_days.py) is split by year into days/<year>.json; days/2026.json also holds
    Advent 2025. LectDays.load(iso) fetches the year of a date (and, in January or December, the year beside it,
    for look-ups of the nearest Sunday) into one shared map, and resolves to that map. */
@@ -3931,7 +3948,7 @@ function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=pare
 function results(q){const words=q.toLocaleLowerCase().split(/\s+/).filter(Boolean);return catalog.filter(n=>words.every(w=>[n.name,...n.also_called,...n.regions,...n.books.map(b=>b.title)].join(' ').toLocaleLowerCase().includes(w)));}
 function search(){return `<h1>All churches and books</h1><label for="san-query">Search names, alternative names, books or countries</label><input id="san-query" type="search" autocomplete="off" placeholder="Try 1928, Ruthenian, or Scotland"><p id="san-count" role="status"></p><div id="san-results" class="san-grid"></div>`;}
 function updateSearch(q){const found=results(q);root.querySelector('#san-count').textContent=`${found.length} results`;root.querySelector('#san-results').innerHTML=found.map(n=>nodeTile(n)).join('')||'<p>No matches. Try another name or year.</p>';}
-function menuHTML(){return `<h1>Sanctuary menu</h1><div class="san-settings"><button data-action="size">Text size · ${Math.round(prefs.size*100)}%</button><button data-action="theme">Theme · ${esc(prefs.theme)}</button><button data-action="sound">Sound · ${prefs.sound?'on':'off'}</button><button data-action="dismiss">Return to browsing</button><button data-action="exit">Switch to classic view</button></div>`;}
+function menuHTML(){return `<h1>Sanctuary menu</h1><div class="san-settings"><button data-action="size">Text size · ${Math.round(prefs.size*100)}%</button><button data-action="theme">Theme · ${esc(prefs.theme)}</button><button data-action="sound">Sound · ${prefs.sound?'on':'off'}</button>${window.LectOffline&&window.LectOffline.supported?`<button data-action="offline">${window.LectOffline.saved()?'Saved for offline use · '+esc(window.LectOffline.saved())+' · update':'Save for offline use (about 24 MB)'}</button>`:''}<button data-action="dismiss">Return to browsing</button><button data-action="exit">Switch to classic view</button></div>`;}
 async function render(){
  if(!isRoute(location.hash)){leave();return;}
  const hash=location.hash;if(!open)enter();saveFocus();previousRoute=hash;
@@ -3951,7 +3968,7 @@ function launch(s,label,family){if(!s)return;guideReturn=location.hash;saveFocus
 root.addEventListener('click',e=>{const b=e.target.closest('[data-study]');if(!b)return;returnScroll=0;returnFocus=bar.querySelector('[data-bar="study"]');close('#'+b.dataset.study);document.getElementById('tab-'+b.dataset.study)?.click();});
 root.addEventListener('click',e=>{const b=e.target.closest('[data-tfilter]');if(!b)return;e.stopPropagation();const f=b.dataset.tfilter;write('lect-today-filter',f);if(f!=='all'&&window.LectApp?.setFave)window.LectApp.setFave(f);focusByRoute.set('#/sanctuary','');render().then(()=>focus(root.querySelector(`[data-tfilter="${f}"]`)));},true);
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
-root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
+root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'offline':{b.disabled=true;b.textContent='Saving for offline use…';window.LectOffline.save(p=>{b.textContent=`Saving for offline use · ${p.done} of ${p.total}`;}).then(p=>{b.disabled=false;b.textContent=p.failed?`Saved, but ${p.failed} files could not be fetched · try again`:`Saved for offline use · ${window.LectOffline.saved()} · update`;}).catch(err=>{b.disabled=false;b.textContent=err.message;});break;}case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));
 document.getElementById('enter-sanctuary').addEventListener('click',e=>{if(e.detail===0)activeInput('keyboard');setHome('sanctuary');returnHash=location.hash||'#today';go('#/sanctuary');});
