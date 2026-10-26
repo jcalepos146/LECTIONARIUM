@@ -418,6 +418,15 @@ html.presenting body{overflow:hidden}
 .covkey{margin:10px 0 0;line-height:2}
 .covline{margin:10px 0 2px;padding:8px 12px;background:var(--leaf);border:1px solid var(--rule);border-radius:8px;font-size:.95rem;color:var(--ink)}
 .covline .cov{margin-right:6px}
+details.covline>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.9rem}
+details.covline>summary::-webkit-details-marker{display:none}
+details.covline>summary .covabout::after{content:" ▾"}
+details.covline[open]>summary{margin-bottom:6px}
+details.msettings,details.mrun{margin:8px 0}
+details.msettings>summary,details.mrun>summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.04em;color:var(--rubric);padding:8px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--leaf)}
+details.msettings>summary .msum{color:var(--muted);letter-spacing:0;font-family:var(--f-body)}
+details.msettings[open]>summary,details.mrun[open]>summary{margin-bottom:8px}
+@media (max-width:700px){ body.in-session #enter-sanctuary,body.in-session nav.tabs{display:none} }
 .covtab{border-collapse:collapse;width:100%;margin:6px 0 18px;font-size:.92rem} .covtab th,.covtab td{border-bottom:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:top} .covtab .cov{margin-right:6px}
 .reftag{display:inline-block;font-family:var(--f-sc);letter-spacing:.05em;font-size:.76rem;color:var(--lapis);border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-right:6px;vertical-align:1px}
 /* reading size */

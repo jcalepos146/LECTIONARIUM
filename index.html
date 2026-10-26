@@ -441,6 +441,15 @@ html.presenting body{overflow:hidden}
 .covkey{margin:10px 0 0;line-height:2}
 .covline{margin:10px 0 2px;padding:8px 12px;background:var(--leaf);border:1px solid var(--rule);border-radius:8px;font-size:.95rem;color:var(--ink)}
 .covline .cov{margin-right:6px}
+details.covline>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.9rem}
+details.covline>summary::-webkit-details-marker{display:none}
+details.covline>summary .covabout::after{content:" ▾"}
+details.covline[open]>summary{margin-bottom:6px}
+details.msettings,details.mrun{margin:8px 0}
+details.msettings>summary,details.mrun>summary{cursor:pointer;font-family:var(--f-sc);letter-spacing:.04em;color:var(--rubric);padding:8px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--leaf)}
+details.msettings>summary .msum{color:var(--muted);letter-spacing:0;font-family:var(--f-body)}
+details.msettings[open]>summary,details.mrun[open]>summary{margin-bottom:8px}
+@media (max-width:700px){ body.in-session #enter-sanctuary,body.in-session nav.tabs{display:none} }
 .covtab{border-collapse:collapse;width:100%;margin:6px 0 18px;font-size:.92rem} .covtab th,.covtab td{border-bottom:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:top} .covtab .cov{margin-right:6px}
 .reftag{display:inline-block;font-family:var(--f-sc);letter-spacing:.05em;font-size:.76rem;color:var(--lapis);border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-right:6px;vertical-align:1px}
 /* reading size */
@@ -544,6 +553,16 @@ body:not(.in-session) .san-guide-help{display:none}
 .lesson-calendar textarea { display:block; box-sizing:border-box; width:100%; max-width:100%; margin:.5rem 0; font:inherit; }
 .lesson-calendar input[type=date] { max-width:100%; font:inherit; }
 .lesson-calendar .reading { margin:1rem 0; }
+/* Print: one service on white paper, whatever the screen theme or skin; settings, timeline and navigation stay on screen. */
+@media print{
+ :root,:root[data-theme],:root[data-skin=sanctuary],:root[data-skin=sanctuary][data-skin-theme]{--paper:#fff;--leaf:#fff;--ink:#000;--muted:#333;--rule:#bbb;--rubric:#9b2318;--rubric-wash:#fff;--gold:#806022;color-scheme:light}
+ html body,:root[data-skin=sanctuary] body{background:#fff!important;background-image:none!important;color:#000;padding:0}
+ #san-bar,#sanctuary,#enter-sanctuary,.fsctl,.chirho,details.msettings,details.mrun,details.covline,#lessonCalendar,.san-guide-help,dialog{display:none!important}
+ header.top{padding:0 0 4pt} .kicker,.dek,.feats{display:none!important} h1.wordmark{font-size:16pt!important}
+ .sesbar{border:0;padding:0} .sesbar .crumbs,.sesbar .dlabel{font-size:10pt}
+ .dayname{font-size:20pt} .mbody{font-size:11pt}
+ @page{margin:15mm 16mm}
+}
 
 </style>
 </head>
@@ -3340,7 +3359,10 @@ async function render(el, ctx){
     window.LectMusic&&window.LectMusic.stopAll();
     const auto=isOffice?"":defaultMass(ctx.iso,ctx.day,rite);
     const ctl=following?`<div class="mctlbox"><p class="note livenote">Following a live session: the host sets the length and music.</p></div>`:(isOffice?officeControls(opts,!!ctx.office.alt):controls(rite,opts,ctx.iso,ctx.day,auto));
-    el.innerHTML=(isOffice?"":window.LectParticipation.controls(rite))+ctl+`<div class="mtotal" aria-live="polite">Building the ${noun}…</div><div class="mbody"></div>`;
+    /* Phones open on the service itself: the settings and the timeline fold away (and keep whatever the reader chose). */
+    const wide=matchMedia("(min-width:701px)").matches, was=k=>{ const d=el.querySelector("details."+k); return d?d.open:wide; };
+    const sOpen=was("msettings"), rOpen=was("mrun");
+    el.innerHTML=`<details class="msettings"${sOpen?" open":""}><summary>Settings<span class="msum"> · ${isOffice?"length and music":following?"live session":"length, music and participation"}</span></summary>${(isOffice?"":window.LectParticipation.controls(rite))+ctl}</details><div class="mtotal" aria-live="polite">Building the ${noun}…</div><div class="mbody"></div>`;
     let F;
     try{ F=await fit(opts); }
     catch(e){ F={parts:[sec(`Could not build the ${noun}`,0,cue("Some of the data for this day failed to load. Try again, or choose another day."))],tot:0,full:0,cuts:[],adds:[],tgt:0,o:opts}; console.error(e); }
@@ -3349,7 +3371,7 @@ async function render(el, ctx){
     const status=!tgt?"":tot<=tgt+0.49?`<span class="tg ok">Fits ${tgt} min${cuts.length?` · shortened from ${Math.round(full)}`:""}</span>`:`<span class="tg over">Shortest this ${noun} goes is about ${Math.round(tot)} min</span>`;
     const changes=cuts.length||adds.length?`<details class="cuts"><summary>${cuts.length?`What was shortened (${cuts.length} step${cuts.length>1?"s":""})`:"What was lengthened"}</summary><ol>${cuts.concat(adds).map(c=>`<li>${esc(c)}</li>`).join("")}</ol>${tgt&&tot<tgt-1.5&&!cuts.length?`<p class="note">Still about ${Math.round(tgt-tot)} min short: ${isOffice?"the hour is shorter than that.":"add hymns or chant above to fill it."}</p>`:""}</details>`:"";
     el.querySelector(".mtotal").innerHTML=`<div class="tophead"><span class="tt">About ${Math.max(1,Math.round(tot))} minute${Math.round(tot)===1?"":"s"}</span>${status}<span class="tools-timer"></span></div>
-      <ol class="runsheet">${parts.map((p,i)=>`<li data-i="${i}"${(p.min||0)<0.1?" hidden":""}><time>${mmss(starts[i])}</time> <a href="#mp-${i}">${esc(p.title)}</a> <b>${(p.min||0)<0.5?"&lt;1":Math.round(p.min)}′</b></li>`).join("")}</ol>${changes}<div class="tools-bar"></div>`;
+      <details class="mrun"${rOpen?" open":""}><summary>Timeline · ${parts.filter(p=>(p.min||0)>=0.1).length} parts</summary><ol class="runsheet">${parts.map((p,i)=>`<li data-i="${i}"${(p.min||0)<0.1?" hidden":""}><time>${mmss(starts[i])}</time> <a href="#mp-${i}">${esc(p.title)}</a> <b>${(p.min||0)<0.5?"&lt;1":Math.round(p.min)}′</b></li>`).join("")}</ol>${changes}</details><div class="tools-bar"></div>`;
     el.querySelector(".mbody").innerHTML=parts.map((p,i)=>p.html.replace('<section class="mpart','<section id="mp-'+i+'" data-i="'+i+'" class="mpart')).join("");
     if(window.LectTexts) window.LectTexts.decorate(el.querySelector(".mbody"),ctx,()=>draw());
     window.LectParticipation.annotate(el,isOffice);
@@ -4821,12 +4843,13 @@ async function renderSession(){
   await daysReady;
   const iso=S.date||todayISO();
   window.dispatchEvent(new CustomEvent("lect-session",{detail:{type:S.type,rite:S.rite,hour:S.hour,iso,label:(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite)?.name}}));
-  const crumbs=[riteKind(S.type,S.rite), (S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name];
+  const rname=(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name, rk=riteKind(S.type,S.rite);
+  const crumbs=rname.toLowerCase().startsWith(rk.toLowerCase())?[rname]:[rk,rname];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
   const day=DAYS[iso];
   let head=`<div class="sesbar"><button type="button" class="ghost" id="backAsk">← Change</button><span class="crumbs">${crumbs.map(esc).join(" › ")}</span>
     <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous day">‹</button><span class="dlabel">${esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next day">›</button></span></div>`;
-  { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<p class="covline">${covBadge(c)} ${esc(c[1])}</p>`; }
+  { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<details class="covline"${matchMedia("(min-width:701px)").matches?" open":""}><summary>${covBadge(c)}<span class="covabout">About this text</span></summary>${esc(c[1])}</details>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
   else if(S.type==="mass"&&S.rite==="bcp79"){

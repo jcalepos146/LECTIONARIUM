@@ -631,12 +631,13 @@ async function renderSession(){
   await daysReady;
   const iso=S.date||todayISO();
   window.dispatchEvent(new CustomEvent("lect-session",{detail:{type:S.type,rite:S.rite,hour:S.hour,iso,label:(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite)?.name}}));
-  const crumbs=[riteKind(S.type,S.rite), (S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name];
+  const rname=(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name, rk=riteKind(S.type,S.rite);
+  const crumbs=rname.toLowerCase().startsWith(rk.toLowerCase())?[rname]:[rk,rname];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
   const day=DAYS[iso];
   let head=`<div class="sesbar"><button type="button" class="ghost" id="backAsk">← Change</button><span class="crumbs">${crumbs.map(esc).join(" › ")}</span>
     <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous day">‹</button><span class="dlabel">${esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next day">›</button></span></div>`;
-  { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<p class="covline">${covBadge(c)} ${esc(c[1])}</p>`; }
+  { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<details class="covline"${matchMedia("(min-width:701px)").matches?" open":""}><summary>${covBadge(c)}<span class="covabout">About this text</span></summary>${esc(c[1])}</details>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
   else if(S.type==="mass"&&S.rite==="bcp79"){

@@ -83,3 +83,13 @@ body:not(.in-session) .san-guide-help{display:none}
 .lesson-calendar textarea { display:block; box-sizing:border-box; width:100%; max-width:100%; margin:.5rem 0; font:inherit; }
 .lesson-calendar input[type=date] { max-width:100%; font:inherit; }
 .lesson-calendar .reading { margin:1rem 0; }
+/* Print: one service on white paper, whatever the screen theme or skin; settings, timeline and navigation stay on screen. */
+@media print{
+ :root,:root[data-theme],:root[data-skin=sanctuary],:root[data-skin=sanctuary][data-skin-theme]{--paper:#fff;--leaf:#fff;--ink:#000;--muted:#333;--rule:#bbb;--rubric:#9b2318;--rubric-wash:#fff;--gold:#806022;color-scheme:light}
+ html body,:root[data-skin=sanctuary] body{background:#fff!important;background-image:none!important;color:#000;padding:0}
+ #san-bar,#sanctuary,#enter-sanctuary,.fsctl,.chirho,details.msettings,details.mrun,details.covline,#lessonCalendar,.san-guide-help,dialog{display:none!important}
+ header.top{padding:0 0 4pt} .kicker,.dek,.feats{display:none!important} h1.wordmark{font-size:16pt!important}
+ .sesbar{border:0;padding:0} .sesbar .crumbs,.sesbar .dlabel{font-size:10pt}
+ .dayname{font-size:20pt} .mbody{font-size:11pt}
+ @page{margin:15mm 16mm}
+}
