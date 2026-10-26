@@ -17,19 +17,27 @@ function priestOnly(el,role=''){
 }
 function setMode(value){mode=value==='priest'?'priest':'lay';put(KEY,mode);put(ASKED,'1');window.dispatchEvent(new Event('lect-participation'));}
 const WARNING='Simulating the words of consecration, or any other sacrament, is a grave offence under canon law (cf. Code of Canon Law, can. 1379), and doing so in a public setting gives scandal. These texts are for study and for supervised practice in priestly formation. They do not authorize anyone to celebrate.';
-function controls(){return `<div class="mctlbox participation"><label class="sl" for="participation-mode">Participation <select id="participation-mode"><option value="lay"${!isPriest()?' selected':''}>Lay study</option><option value="priest"${isPriest()?' selected':''}>Priest or seminarian</option></select></label><p class="note">${isPriest()?'Priest or seminarian: the words of consecration are shown. '+WARNING:'Lay study: follow the readings and responses. The words of consecration are not shown, and priest-only texts are references, not assigned parts. Do not attempt the Eucharistic celebration or imitate its priest-only actions.'} Read-aloud omits priest-only prayers in either mode. <a href="#sources" data-canon-link>Canonical guidance</a></p></div>`;}
+/* Wording follows the tradition: Catholic and Orthodox liturgies speak of priests and of consecration; the
+   Prayer Book, Lutheran, Methodist and Reformed orders of ministers and of the words of institution. */
+let protestant=false;
+const W=()=>protestant?{cons:'the words of institution',clergy:'Minister or ordinand',who:'ministers and to those preparing for ordination',q:'Are you an ordained minister, or preparing for ordination?',warn:'These texts are for study. The Lord\u2019s Supper is celebrated by those whom their Church has called and ordained to it; do not imitate it in a public setting. Ministers should celebrate from the authorised book of their Church.'}
+ :{cons:'the words of consecration',clergy:'Priest or seminarian',who:'priests and to seminarians preparing for ordination',q:'Are you a priest, or studying as a seminarian?',warn:WARNING};
+const PROT=/^(bcp\d\d|csb[a-z]*|me08|wes84o?|rca|rcus[vp]?|pres)$/;
+function setRite(rite){protestant=PROT.test(rite||'');}
+function controls(rite){if(rite!==undefined)setRite(rite);const w=W();return `<div class="mctlbox participation"><label class="sl" for="participation-mode">Participation <select id="participation-mode"><option value="lay"${!isPriest()?' selected':''}>Lay study</option><option value="priest"${isPriest()?' selected':''}>${w.clergy}</option></select></label><p class="note">${isPriest()?w.clergy+': '+w.cons+' are shown. '+w.warn:'Lay study: follow the readings and responses. '+w.cons[0].toUpperCase()+w.cons.slice(1)+' are not shown, and the '+(protestant?'minister\u2019s':'priest-only')+' texts are references, not assigned parts.'+(protestant?'':' Do not attempt the Eucharistic celebration or imitate its priest-only actions.')} Read-aloud omits ${protestant?'the minister\u2019s':'priest-only'} prayers in either mode.${protestant?'':' <a href="#sources" data-canon-link>Canonical guidance</a>'}</p></div>`;}
+const veilText=()=>{const w=W();return w.cons[0].toUpperCase()+w.cons.slice(1)+' are not shown in lay study. Follow in silence; do not voice the '+(protestant?'minister\u2019s':'priest\u2019s')+' prayer or imitate '+(protestant?'the institution':'the consecration')+'. ('+(protestant?'Ministers and ordinands':'Priests and seminarians')+': choose Participation \u203a '+w.clergy+'.)';};
 /* The first-time question. It never blocks the page: the guide is already drawn in lay study behind it. */
 let dlg=null;
 function ask(){
  if(get(ASKED)||dlg||typeof document==='undefined')return;
  dlg=document.createElement('dialog');dlg.className='pq';dlg.setAttribute('aria-labelledby','pq-h');
- const step1=`<h2 id="pq-h">Are you a priest, or studying as a seminarian?</h2>
-  <p>Some liturgies on this site contain the words of consecration. They are shown only to priests and to seminarians preparing for ordination.</p>
+ const step1=`<h2 id="pq-h">${W().q}</h2>
+  <p>Some liturgies on this site contain ${W().cons}. They are shown only to ${W().who}.</p>
   <div class="pq-btns"><button type="button" class="tbtn" data-pq="yes">Yes</button><button type="button" class="tbtn pq-alt" data-pq="no">No</button></div>
   <p class="pq-small">You can change this at any time with the Participation setting above each liturgy.</p>`;
  const step2=`<h2 id="pq-h">Before you continue</h2>
-  <p class="pq-warn">${WARNING}</p>
-  <p>Priests should celebrate from the approved books of their Church; this site is a study aid.</p>
+  <p class="pq-warn">${W().warn}</p>
+  <p>${protestant?'This site is a study aid.':'Priests should celebrate from the approved books of their Church; this site is a study aid.'}</p>
   <div class="pq-btns"><button type="button" class="tbtn" data-pq="ok">I understand: show the full texts</button><button type="button" class="tbtn pq-alt" data-pq="back">Back</button></div>`;
  dlg.innerHTML=step1;
  const done=v=>{dlg.close();dlg.remove();dlg=null;setMode(v);};
@@ -71,5 +79,5 @@ function annotate(el,isOffice){
  if(!isPriest())el.querySelectorAll('.mbody details.canon').forEach(n=>{n.open=false;const s=n.querySelector('summary');if(s)s.textContent='Priest-only Canon · study reference';});
 }
 document.addEventListener('click',e=>{if(e.target.closest('[data-canon-link]')){e.preventDefault();if(dlg){dlg.close();dlg.remove();dlg=null;}document.getElementById('tab-sources').click();requestAnimationFrame(()=>document.getElementById('canonical-guidance').scrollIntoView({block:'start'}));}});
-window.LectParticipation={isPriest,setMode,catholicMass,priestOnly,controls,annotate,ask,WARNING};
+window.LectParticipation={isPriest,setMode,catholicMass,priestOnly,controls,annotate,ask,setRite,veilText,WARNING};
 })();

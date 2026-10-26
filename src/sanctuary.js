@@ -5,7 +5,7 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback;}catch(e){return fallback;}};
 const write=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch(e){}};
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
-let catalog,loading,days,open=false,returnHash='#today',returnScroll=0,returnFocus,routeSerial=0,input='keyboard',menu=false;
+let catalog,loading,days,open=false,returnHash='#today',returnScroll=0,returnFocus,routeSerial=0,input=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)?'touch':'keyboard',menu=false;
 let focusByRoute=new Map(),previousRoute='',gameFrame=0,lastGameAction='',gameRepeatAt=0,audio,guideReturn='#/sanctuary';
 let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});
 /* The Sanctuary is the default view. "Classic view" is the economical page; the choice is remembered. While the
@@ -35,7 +35,13 @@ function coverage(s){return window.LectApp.coverage(s.type,s.rite,s.hour);}
 function tile(id,title,subtitle='',family='catholic',chip='',action='route'){
  return `<button class="san-tile" data-${action}="${esc(id)}"><span class="san-art">${emblem(family)}${chip?`<span class="san-chip">${esc(chip)}</span>`:''}</span><span class="san-tile-title">${esc(title)}</span>${subtitle?`<span class="san-subtitle">${esc(subtitle)}</span>`:''}</button>`;
 }
-function nodeTile(n,subtitle){return tile('#/t/'+n.id,n.name,subtitle??n.kind,n.family,n.supported.length?'Guides available':'Explore');}
+const KIND={rite:'Tradition',church:'Church',use:'Use','book-edition':'Book',jurisdiction:'Jurisdiction'};
+const descendants=n=>{const kids=catalog.filter(c=>c.parent===n.id);return kids.concat(...kids.map(descendants));};
+/* What a tile can open: complete texts, guided texts, churches to explore, or nothing yet. */
+function nodeCov(n){const all=rites(),cov=n.supported.map(s=>all.find(r=>r.type===s.type&&r.rite===s.rite)?.cov).filter(Boolean);
+ if(cov.includes('full'))return 'Complete text';if(cov.length)return 'Guided';return descendants(n).some(d=>d.supported.length)?'Explore':'Coming later';}
+function nodeSub(n){const k=KIND[n.kind]||'';const c=new Set(n.supported.map(s=>s.type+s.rite)).size;return c?`${k} · ${c} service${c>1?'s':''}`:k;}
+function nodeTile(n,subtitle){return tile('#/t/'+n.id,n.name,subtitle??nodeSub(n),n.family,nodeCov(n));}
 function shelf(title,tiles,empty=''){return `<section class="san-shelf"><h2>${esc(title)}</h2>${tiles?`<div class="san-row" aria-label="${esc(title)}">${tiles}</div>`:`<p class="san-muted">${esc(empty)}</p>`}</section>`;}
 function parentOf(n){return n&&n.parent?catalog.find(x=>x.id===n.parent):null;}
 function go(hash){if(location.hash===hash)render();else location.hash=hash;}
@@ -68,15 +74,17 @@ function guideMove(direction){
 }
 async function load(){if(catalog)return;if(!loading)loading=fetch('data/traditions.json').then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json();}).then(j=>{catalog=j;}).catch(e=>{loading=null;throw e;});return loading;}
 /* The rites the guide can open, from LectApp, with the tradition each belongs to (for its emblem). */
-const RITE_FAMILY={wes84:'methodist',wes84o:'methodist',me08:'methodist',rca:'reformed',rcus:'reformed',rcusv:'reformed',rcusp:'reformed',pres:'reformed',
- csb:'lutheran',csbm:'lutheran',csbv:'lutheran',csbl:'lutheran',csbs:'lutheran',csbsm:'lutheran',csbse:'lutheran',
- bcp62:'anglican',bcp28:'anglican',bcp49:'anglican',bcp52:'anglican',bcp59:'anglican',bcp37:'anglican',bcp89:'anglican',bcp92:'anglican',bcp79:'anglican',
- b:'eastern-orthodox',byz:'eastern-orthodox',byzv:'eastern-orthodox',byzm:'eastern-orthodox',byzh:'eastern-orthodox',byzc:'eastern-orthodox',adai:'oriental',copt:'oriental',arm:'oriental'};
+const RITE_FAMILY=new Proxy({},{get:(o,id)=>typeof id==='string'&&window.LectApp?.familyOf?window.LectApp.familyOf(id):'catholic'});
 const FAMILY_NAME={catholic:'Catholic','eastern-orthodox':'Eastern Orthodox',oriental:'Oriental Orthodox and the Church of the East','old-catholic':'Old Catholic',anglican:'Anglican',lutheran:'Lutheran',reformed:'Reformed and Presbyterian',methodist:'Methodist'};
 function rites(){try{return window.LectApp.rites();}catch(e){return [];}}
-function riteTile(r){return `<button class="san-tile" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}"><span class="san-art">${emblem(RITE_FAMILY[r.rite]||'catholic')}<span class="san-chip">${esc(r.covLabel)}</span></span><span class="san-tile-title">${esc(r.name)}</span><span class="san-subtitle">${esc((r.type==='mass'?'Eucharist':'Daily office')+' · '+r.d)}</span></button>`;}
+const kindOf=s=>{try{return window.LectApp.riteKind(s.type,s.rite);}catch(e){return '';}};
+const HOUR_NAME={or:'Office of Readings',lauds:'Lauds',terce:'Terce',sext:'Sext',none:'None',vespers:'Vespers',compline:'Compline',matins:'Matins',prime:'Prime',mattins:'Mattins',evensong:'Evensong',mp:'Morning Prayer',ep:'Evening Prayer',mp1:'Morning Prayer',mp2:'Morning Prayer',ep1:'Evening Prayer',ep2:'Evening Prayer',noonday:'Noonday Prayer',orthros:'Orthros',midnight:'Midnight Office',first:'First Hour',third:'Third Hour',sixth:'Sixth Hour',ninth:'Ninth Hour'};
+const hourName=s=>HOUR_NAME[s.hour]||s.hour;
+const COV_SHORT={full:'Complete text',guide:'Guided',order:'Order and readings'};
+function riteTile(r,subtitle){return `<button class="san-tile" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}"><span class="san-art">${emblem(RITE_FAMILY[r.rite]||'catholic')}<span class="san-chip">${esc(COV_SHORT[r.cov]||r.covLabel)}</span></span><span class="san-tile-title">${esc(r.name)}</span><span class="san-subtitle">${esc(subtitle||r.kind+' · '+r.d)}</span></button>`;}
+const nice=iso=>{try{return window.LectApp.longDate(iso);}catch(e){return iso;}};
 function completeList(list){const order=['catholic','eastern-orthodox','oriental','anglican','lutheran','reformed','methodist'];const fam=r=>RITE_FAMILY[r.rite]||'catholic';
- return order.filter(f=>list.some(r=>fam(r)===f)).map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f])}</h3><ul class="san-wip san-complete">${list.filter(r=>fam(r)===f).map(r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button><p>${esc((r.type==='mass'?'Eucharist':'Daily office')+' · '+r.d)}</p></li>`).join('')}</ul>`).join('');}
+ return order.filter(f=>list.some(r=>fam(r)===f)).map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f])}</h3><ul class="san-wip san-complete">${list.filter(r=>fam(r)===f).map(r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button><p>${esc(r.kind+' · '+r.d)}</p></li>`).join('')}</ul>`).join('');}
 function wip(){const all=rites(),guide=all.filter(r=>r.cov==='guide'),order=all.filter(r=>r.cov==='order');
  const row=r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button> <span class="san-chip">${esc(r.covLabel)}</span><p>${esc(r.note)}</p></li>`;
  const none=catalog.filter(n=>!n.supported.length&&!catalog.some(c=>c.parent===n.id));
@@ -90,19 +98,40 @@ function study(){return `<p class="san-eyebrow">Study</p><h1>Study the liturgy</
 async function home(){
  if(!days){try{const r=await fetch('days.json');if(!r.ok)throw Error();days=await r.json();}catch(e){days={};}}
  const iso=today(),d=days[iso];
- const tc=t=>String(t||'').toLowerCase().replace(/(^|[\s-])\w/g,m=>m.toUpperCase()).replace(/\b(In|Of|The|After|Before|And)\b/g,m=>m.toLowerCase()).replace(/^./,m=>m.toUpperCase());
- const dayTiles=['roman-modern','roman-1962','catholic-ruthenian','anglican-1662-england','common-service','sunday-service-1784','dort-forms','oriental-coptic'].map(id=>catalog.find(n=>n.id===id)).filter(Boolean).map(n=>{const rite=n.supported[0].rite;const v=/^bcp|^csb|^wes/.test(rite)?(d?.o?.bcp?tc(d.o.bcp):''):d?.[rite];const label=typeof v==='string'?v:Array.isArray(v)?v.filter(x=>typeof x==='string').join(' · '):v?.name||v?.title||v?.t||'';return nodeTile(n,label|| (d?'Open the guide for today’s readings':'Date outside the supported calendar'));}).join('');
+ const A=window.LectApp,all=rites(),fave=A.getFave?A.getFave():null;
+ const filter=read('lect-today-filter',fave||'all');
+ const names=d&&A.dayNames?A.dayNames(iso,d):[];
+ const byRite=(type,id)=>all.find(r=>r.type===type&&r.rite===id);
+ /* Each tradition's services for today, named as its own calendar names the day. */
+ const TODAY={catholic:['n','m','o'],'eastern-orthodox':['b','byzv'],oriental:['copt','arm','adai'],anglican:['bcp62','bcp28','bcp79'],lutheran:['csb'],reformed:['rca','rcus','pres'],methodist:['wes84']};
+ const famTiles=f=>{const out=[];
+  TODAY[f].forEach(id=>{const r=byRite('mass',id);if(!r)return;const nm=names.find(x=>x.rite===id)||names.find(x=>x.fam===f&&f!=='catholic'&&f!=='oriental');
+   out.push(riteTile(r,nm?nm.name:(f==='reformed'&&new Date(iso+'T12:00Z').getUTCDay()===0?'The Lord’s Day':r.kind)));});
+  const off=A.defaultOffice?A.defaultOffice(f):null;if(off){const r=byRite(off.type,off.rite);if(r)out.push(riteTile({...r,hour:off.hour},'Pray the hour now · '+r.kind));}
+  return out.join('');};
+ const fams=A.FAMILIES||[];
+ const shown=filter==='all'?[...fams.filter(f=>f[0]===fave),...fams.filter(f=>f[0]!==fave)]:fams.filter(f=>f[0]===filter);
+ const chips=`<div class="san-filter" role="group" aria-label="Show traditions"><button data-tfilter="all" aria-pressed="${filter==='all'}">All</button>${fams.map(([id,n])=>`<button data-tfilter="${id}" aria-pressed="${filter===id}">${esc(n.replace(' and the Church of the East',''))}${id===fave?' ★':''}</button>`).join('')}</div>`;
+ const todayShelf=`<section class="san-shelf san-today"><h2>Today · ${esc(nice(iso))}</h2>${chips}${d?shown.map(([id,n])=>`<h3 class="san-wip-fam">${esc(n)}</h3><div class="san-row" aria-label="${esc(n)}">${famTiles(id)}</div>`).join(''):'<p class="san-muted">This date is outside the calendar the site covers (30 November 2025 to 30 November 2030).</p>'}</section>`;
  return `<p class="san-eyebrow">A place to begin</p><h1>Sanctuary</h1><p class="san-lede">Explore traditions, find a book, and return to prayer.</p>`+
- shelf('Continue',recent.slice(0,8).map((r,i)=>tile(String(i),r.label,`${r.iso} · ${r.hour||'Mass'}`,r.family||'catholic',coverage(r),'resume')).join(''),'Your recent guides will appear here, stored only in this browser.')+
- shelf('Today · '+iso,dayTiles)+(()=>{const full=rites().filter(r=>r.cov==='full');return `<section class="san-shelf"><h2>Complete texts · ${full.length}</h2><p class="san-muted">Every word of these services is printed here.</p>${completeList(full)}</section>`+shelf('Work in progress',tile('#/wip','Not yet complete',`${rites().filter(r=>r.cov!=='full').length} rites with text still to come, and the churches with no service yet`,'catholic','WIP'));})()+shelf('Traditions',catalog.filter(n=>!n.parent).map(n=>nodeTile(n)).join(''))+
+ shelf('Continue',recent.slice(0,8).map((r,i)=>tile(String(i),r.label,`${nice(r.iso)} · ${r.hour?hourName(r):kindOf(r)}`,r.family||RITE_FAMILY[r.rite]||'catholic',coverage(r),'resume')).join(''),'Your recent guides will appear here, stored only in this browser.')+
+ todayShelf+(()=>{const full=rites().filter(r=>r.cov==='full');return `<section class="san-shelf"><h2>Complete texts · ${full.length}</h2><p class="san-muted">Every word of these services is printed here.</p>${completeList(full)}</section>`+shelf('Work in progress',tile('#/wip','Not yet complete',`${rites().filter(r=>r.cov!=='full').length} rites with text still to come, and the churches with no service yet`,'catholic','WIP'));})()+shelf('Traditions',catalog.filter(n=>!n.parent).map(n=>nodeTile(n)).join(''))+
  shelf('Study',tile('#/study','Study the liturgy','Calendars, lectionaries, comparisons and sources','anglican'))+
  shelf('Explore',tile('#/search','All churches and books','Search names, places, and editions','anglican'));
 }
+const CAL={gregorian:'Gregorian calendar',julian:'Julian calendar (Old Style)','revised-julian':'Revised Julian calendar for fixed feasts; Pascha by the Julian reckoning'};
+const FAM_CAL={catholic:'Gregorian calendar in the Latin Church; the Eastern Catholic churches keep the Gregorian or the Julian calendar by local custom.','eastern-orthodox':'Fixed feasts by the Julian or the Revised Julian calendar, as each church keeps; Pascha by the Julian reckoning.',oriental:'Each church keeps its own calendar: the Coptic and Ethiopian calendars of the Martyrs, the Armenian, Syriac and East Syriac reckonings.','old-catholic':'Gregorian calendar.',anglican:'Gregorian calendar (the 1662 book and its predecessors were first printed for the Julian).',lutheran:'Gregorian calendar.',reformed:'Gregorian calendar; many Reformed churches keep only the Lord’s Day and a few evangelical feasts.',methodist:'Gregorian calendar.'};
+/* A node without its own entry takes the calendar or books of the church above it. */
+function calendarOf(n){for(let x=n;x;x=parentOf(x))if(x.calendar)return CAL[x.calendar]||x.calendar;return FAM_CAL[n.family]||'';}
+const GENERIC=/consult the local ordo|does not compute|establishes affiliation|require local verification/i;
+const noteOf=n=>GENERIC.test(n.calendar_note||'')?'':n.calendar_note;
+function booksOf(n){for(let x=n;x;x=parentOf(x))if(x.books.length)return x.books;return [];}
+const STATUS={'public-domain':'Public domain','open-licence':'Open licence',copyright:'In copyright'};
 function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=parentOf(n);
  return `<p class="san-eyebrow">${esc(n.kind)}${parent?' · '+esc(parent.name):''}</p><div class="san-hero"><div>${emblem(n.family)}</div><section><h1>${esc(n.name)}</h1><p class="san-lede">${esc(n.self_description)}</p></section></div>
- <dl class="san-facts"><div><dt>Calendar</dt><dd>${esc(n.calendar||'Varies by locality')}<p>${esc(n.calendar_note)}</p></dd></div><div><dt>Lectionary</dt><dd>${esc(n.lectionary)}</dd></div><div><dt>Books</dt><dd>${n.books.length?n.books.map(b=>`<p><a href="${esc(b.source)}" target="_blank" rel="noopener">${esc(b.title)}${b.year?' · '+b.year:''}</a> <span class="san-chip">${esc(b.status)}</span><small>${esc(b.rights_note)}</small></p>`).join(''):'See the sources for local books; no edition asserted here.'}</dd></div></dl>
+ <dl class="san-facts"><div><dt>Calendar</dt><dd>${esc(calendarOf(n))}${noteOf(n)?`<p>${esc(noteOf(n))}</p>`:''}</dd></div><div><dt>Lectionary</dt><dd>${esc(n.lectionary)}</dd></div>${booksOf(n).length?`<div><dt>Books</dt><dd>${booksOf(n).map(b=>`<p><a href="${esc(b.source)}" target="_blank" rel="noopener">${esc(b.title)}${b.year?' · '+b.year:''}</a> <span class="san-chip">${esc(STATUS[b.status]||b.status)}</span><small>${esc(b.rights_note)}</small></p>`).join('')}${n.books.length?'':`<p class="san-muted">The books of ${esc(parentOf(n)?.name||'this tradition')}.</p>`}</dd></div>`:''}</dl>
  ${children.length?shelf('Churches, uses and books',children.map(c=>nodeTile(c)).join('')):''}
- ${n.supported.length?shelf('Pray now',n.supported.map((s,i)=>tile(n.id+':'+i,s.label,`${s.type==='office'?s.hour:'Mass'} · ${today()}`,n.family,coverage(s),'pray')).join('')):!children.length?`<section class="san-coming"><h2>Coming later</h2><p>No service guide is mapped to this entry yet.</p><p>${esc(n.pd_texts_available.join(' · ')||'An edition with verified public-domain or open-licence texts, a sourced calendar and a lectionary would make a guide possible.')}</p></section>`:''}
+ ${n.supported.length?shelf('Pray now',n.supported.map((s,i)=>tile(n.id+':'+i,s.label,`${s.type==='office'?hourName(s):kindOf(s)} · today`,n.family,coverage(s),'pray')).join('')):!children.length?`<section class="san-coming"><h2>Coming later</h2><p>No service guide is mapped to this entry yet.</p><p>${esc(n.pd_texts_available.join(' · ')||'An edition with verified public-domain or open-licence texts, a sourced calendar and a lectionary would make a guide possible.')}</p></section>`:''}
  <details><summary>Sources and rights review</summary><p>${esc(n.source_review)}</p><ul>${n.sources.map(u=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul></details>`;
 }
 function results(q){const words=q.toLocaleLowerCase().split(/\s+/).filter(Boolean);return catalog.filter(n=>words.every(w=>[n.name,...n.also_called,...n.regions,...n.books.map(b=>b.title)].join(' ').toLocaleLowerCase().includes(w)));}
@@ -113,7 +142,8 @@ async function render(){
  if(!isRoute(location.hash)){leave();return;}
  const hash=location.hash;if(!open)enter();saveFocus();previousRoute=hash;
  const serial=++routeSerial;
- const shell=body=>`<header class="san-toolbar"><button data-action="back" aria-label="Back">← Back</button><button data-route="#/sanctuary">Sanctuary</button><button data-route="#/search" aria-label="Search">Search /</button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Switch to the classic view">Classic view</button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
+ const atHome=hash==='#/sanctuary'&&!menu;
+ const shell=body=>`<header class="san-toolbar">${atHome?'':'<button data-action="back" aria-label="Back">←<span class="san-long"> Back</span></button>'}<button data-route="#/sanctuary"${atHome?' aria-current="page"':''}>Sanctuary</button><button data-route="#/search" aria-label="Search">Search<span class="san-long"> /</span></button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Switch to the classic view"><span class="san-long">Classic view</span><span class="san-short">Classic</span></button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
  try{await load();if(serial!==routeSerial)return;let body;
   if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/study')body=study();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
@@ -125,6 +155,7 @@ async function render(){
 }
 function launch(s,label,family){if(!s)return;guideReturn=location.hash;saveFocus();const session={...s,iso:s.iso||today(),label,family};recent=[session,...recent.filter(r=>!(r.rite===session.rite&&r.hour===session.hour&&r.iso===session.iso))].slice(0,8);write('lect-sanctuary-recent',recent);returnScroll=0;returnFocus=bar.querySelector('[data-bar="home"]');close('#today');document.getElementById('tab-today').click();window.LectApp.follow(session);}
 root.addEventListener('click',e=>{const b=e.target.closest('[data-study]');if(!b)return;returnScroll=0;returnFocus=bar.querySelector('[data-bar="study"]');close('#'+b.dataset.study);document.getElementById('tab-'+b.dataset.study)?.click();});
+root.addEventListener('click',e=>{const b=e.target.closest('[data-tfilter]');if(!b)return;e.stopPropagation();const f=b.dataset.tfilter;write('lect-today-filter',f);if(f!=='all'&&window.LectApp?.setFave)window.LectApp.setFave(f);focusByRoute.set('#/sanctuary','');render().then(()=>focus(root.querySelector(`[data-tfilter="${f}"]`)));},true);
 root.addEventListener('input',e=>{if(e.target.id==='san-query')updateSearch(e.target.value);});
 root.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sound();if(b.dataset.route)go(b.dataset.route);else if(b.dataset.pray){const [id,i]=b.dataset.pray.split(':');const n=catalog.find(n=>n.id===id);launch(n.supported[+i],n.name+' · '+n.supported[+i].label,n.family);}else if(b.dataset.resume!==undefined){const r=recent[+b.dataset.resume];launch(r,r.label,r.family);}else if(b.dataset.launch){const [type,rite,hour]=b.dataset.launch.split('|');const r=rites().find(x=>x.type===type&&x.rite===rite);launch({type,rite,hour:hour||null},r?r.name:rite,RITE_FAMILY[rite]||'catholic');}else switch(b.dataset.action){case'back':back();break;case'exit':setHome('classic');close();break;case'menu':menu=true;render();break;case'dismiss':menu=false;render();break;case'size':prefs.size=prefs.size>=1.2?1:Math.round((prefs.size+.1)*10)/10;render();break;case'theme':prefs.theme=prefs.theme==='night'?'vellum':'night';render();break;case'sound':prefs.sound=!prefs.sound;render();break;case'retry':render();break;}});
 root.addEventListener('pointerdown',e=>activeInput(e.pointerType==='touch'?'touch':'mouse'));

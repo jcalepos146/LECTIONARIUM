@@ -130,7 +130,7 @@ const words=lines=>(lines||[]).join(" ").replace(/[!&$]\S*/g," ").split(/\s+/).f
 function cue(text){ return `<p class="cue">${esc(text)}</p>`; }
 function abr(list){ list=[].concat(list).filter(Boolean); return list.length?`<p class="abr"><span class="lbl">Shortened for time</span> ${list.map(esc).join(" · ")}</p>`:""; }
 const VEIL="The words of consecration are not shown in lay study. Follow in silence; do not voice the priest’s prayer or imitate the consecration. (Priests and seminarians: choose Participation › Priest or seminarian.)";
-const veilCue=()=>`<p class="cue veiled" data-priest-only>${esc(VEIL)}</p>`;
+const veilCue=()=>`<p class="cue veiled" data-priest-only>${esc(window.LectParticipation&&window.LectParticipation.veilText?window.LectParticipation.veilText():VEIL)}</p>`;
 /* The words of consecration in the prayer-book and Eastern texts that carry no explicit marker: the institution
    narrative as said over the gifts, and the Byzantine epiclesis. Lessons (Maundy Thursday's epistle) never pass here. */
 const CONS_RE=/\b(this is my (bod(y|ye|ie)|blou?de?)|this cup is the new (testament|covenant)|this is the new (testament|covenant) in my blood|this is my blood of the new)|make this bread the precious body|make that which is in this chalice|this bread is in very truth the precious body|this chalice, in very truth the precious blood|transmuting them by thy holy spirit/i;
@@ -1435,7 +1435,7 @@ async function render(el, ctx){
   const isOffice=!!ctx.office, rite=isOffice?"office-"+ctx.office.rite:ctx.rite, store=isOffice?rite+"-"+ctx.office.hour:rite;
   const following=!!ctx.liveOpts;
   let opts=following?{...loadOpts(store),...clone(ctx.liveOpts)}:loadOpts(store);
-  const noun=isOffice?"hour":rite==="b"?"Liturgy":"Mass";
+  const noun=isOffice?"hour":/^(b|copt|arm|adai)$/.test(rite)?"Liturgy":/^(n|o|m|p|h|d|a|z)$/.test(rite)?"Mass":/^(csbm|csbv|csbs|csbsm|csbse|byzv|byzm|byzh|byzc|wes84o|rcusv|csbl|rcusp)$/.test(rite)?"office":"service";
   const build=async(o)=>{ USED=new Set(); ROLE="cel";
     if(isOffice) return buildOffice(ctx,o);
     if(rite==="m") return buildTrad(ctx,"1962",o);
@@ -1480,12 +1480,12 @@ async function render(el, ctx){
     return {parts,tot,full,cuts,adds,tgt,o};
   };
   const draw=async()=>{
-    if(!isOffice) opts.veil=!window.LectParticipation.isPriest();
+    if(!isOffice){ opts.veil=!window.LectParticipation.isPriest(); window.LectParticipation.setRite(rite); }
     VEILING=!!opts.veil&&!isOffice;
     window.LectMusic&&window.LectMusic.stopAll();
     const auto=isOffice?"":defaultMass(ctx.iso,ctx.day,rite);
     const ctl=following?`<div class="mctlbox"><p class="note livenote">Following a live session: the host sets the length and music.</p></div>`:(isOffice?officeControls(opts,!!ctx.office.alt):controls(rite,opts,ctx.iso,ctx.day,auto));
-    el.innerHTML=(isOffice?"":window.LectParticipation.controls())+ctl+`<div class="mtotal" aria-live="polite">Building the ${noun}…</div><div class="mbody"></div>`;
+    el.innerHTML=(isOffice?"":window.LectParticipation.controls(rite))+ctl+`<div class="mtotal" aria-live="polite">Building the ${noun}…</div><div class="mbody"></div>`;
     let F;
     try{ F=await fit(opts); }
     catch(e){ F={parts:[sec(`Could not build the ${noun}`,0,cue("Some of the data for this day failed to load. Try again, or choose another day."))],tot:0,full:0,cuts:[],adds:[],tgt:0,o:opts}; console.error(e); }

@@ -373,9 +373,14 @@ html.presenting body{overflow:hidden}
 .tb-go .go{white-space:nowrap}
 .tb-go .ghost{font:inherit;font-family:var(--f-sc);letter-spacing:.05em;background:transparent;color:var(--rubric);border:1px solid var(--rubric);border-radius:8px;padding:9px 18px;cursor:pointer;white-space:nowrap}
 .tb-go .ghost:hover{background:var(--rubric-wash)}
+.tb-go small{display:block;font-family:var(--f-body,inherit);font-size:.72rem;letter-spacing:0;text-transform:none;opacity:.85;margin-top:2px;white-space:normal;max-width:16em}
+.tb-fam{display:grid;gap:3px;font-family:var(--f-sc);letter-spacing:.04em;color:var(--muted);font-size:.8rem}
+.tb-fam select{font:inherit;font-size:.95rem;letter-spacing:0;color:var(--ink);background:var(--leaf);border:1px solid var(--rule);border-radius:8px;padding:6px 8px}
+.tb-days div.on dt{color:var(--rubric)}
+.tb-days div.on dd{font-weight:600}
 .feats{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 0;font-family:var(--f-sc);letter-spacing:.05em;font-size:.84rem;color:var(--muted)}
 .feats li:not(:last-child)::after{content:"✠";color:var(--rubric);margin:0 10px;font-size:.75em;vertical-align:1px}
-@media (max-width:640px){ .tband{grid-template-columns:1fr;padding:16px 16px 16px 22px} .tb-go{grid-template-columns:1fr 1fr} .tb-go .go,.tb-go .ghost{white-space:normal;padding:10px 8px} .tb-days dt{min-width:6.2em} }
+@media (max-width:640px){ .tband{grid-template-columns:1fr;padding:16px 16px 16px 22px} .tb-go{grid-template-columns:1fr 1fr}.tb-fam{grid-column:1/-1} .tb-go .go,.tb-go .ghost{white-space:normal;padding:10px 8px} .tb-days dt{min-width:6.2em} }
 
 /* manuscript touches */
 .choice,.tband{box-shadow:inset 0 0 0 3px var(--leaf),inset 0 0 0 4px var(--rule)}

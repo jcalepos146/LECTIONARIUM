@@ -12,7 +12,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Each Church keeps its own lectionary: the Roman Lectionary for Mass in the Latin Church, the Apostol and Gospel in the Byzantine churches, and the Coptic, Ge'ez, Syriac and Armenian lectionaries in the others.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -32,7 +32,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Lectionary for Mass (1969; second edition 1981): a three-year Sunday cycle (Years A, B and C) and a two-year weekday cycle. The 1962 Missal and the older uses keep a one-year cycle of Epistles and Gospels.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -52,7 +52,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -72,7 +72,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Coptic Katameros, and in the Ethiopian and Eritrean churches the Ge'ez lectionary: a Pauline Epistle, a Catholic Epistle, Acts and the Gospel at every Liturgy.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -92,7 +92,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The West Syriac lectionary: Old Testament lessons, Acts or a Catholic Epistle, St Paul and the Gospel at the Holy Qurbono, by a church year that begins with the Sundays of the Consecration and Renewal of the Church.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -112,7 +112,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The East Syriac lectionary: the Law, the Prophets, the Apostle and the Gospel at the Holy Qurbana on Sundays and feasts, by the weeks of the church year (Annunciation, Epiphany, the Great Fast, the Resurrection, the Apostles, Summer, Elijah and the Cross, Moses and the Dedication of the Church).",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -134,7 +134,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -218,7 +218,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -302,7 +302,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -389,7 +389,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -473,7 +473,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -557,7 +557,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -640,7 +640,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -724,7 +724,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -809,7 +809,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -893,7 +893,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -977,7 +977,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -1065,7 +1065,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -1149,7 +1149,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -1232,7 +1232,7 @@
     ],
     "calendar": null,
     "calendar_note": "Local fixed-feast and Paschal calendars vary. The available practice guide uses Gregorian Pascha and the Slavic reading order; it does not compute this church’s local calendar.",
-    "lectionary": "Byzantine Apostol and Gospel; local Greek and Slavic arrangements differ.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Divine Liturgy and Horologion (local edition)",
@@ -1316,7 +1316,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Katameros: for every day a Pauline Epistle, a Catholic Epistle, Acts and the Gospel at the Liturgy, with a psalm and Gospel at Vespers and Matins; the annual readings follow the Coptic months, with separate books for Lent, Holy Week and the Fifty Days.",
     "books": [
       {
         "title": "The Coptic Morning Service for the Lord's Day",
@@ -1357,7 +1357,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Ge'ez lectionary: a Pauline Epistle, a Catholic Epistle, Acts, a psalm verse and the Gospel at every Qeddase, by the Ethiopian calendar of feasts and fasts.",
     "books": [],
     "supported": [],
     "pd_texts_available": [
@@ -1382,7 +1382,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Ge'ez lectionary: a Pauline Epistle, a Catholic Epistle, Acts, a psalm verse and the Gospel at every Qeddase, by the Ethiopian calendar of feasts and fasts.",
     "books": [],
     "supported": [],
     "pd_texts_available": [
@@ -1408,7 +1408,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The West Syriac lectionary: Old Testament lessons, Acts or a Catholic Epistle, St Paul and the Gospel at the Holy Qurbono, by a church year that begins with the Sundays of the Consecration and Renewal of the Church.",
     "books": [],
     "supported": [],
     "pd_texts_available": [
@@ -1433,7 +1433,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Maronite lectionary: an Epistle and a Gospel for each Sunday and feast, by a church year that begins with the Sundays of the Consecration and Renewal of the Church.",
     "books": [],
     "supported": [],
     "pd_texts_available": [
@@ -1458,7 +1458,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The West Syriac lectionary: Old Testament lessons, Acts or a Catholic Epistle, St Paul and the Gospel at the Holy Qurbono, by a church year that begins with the Sundays of the Consecration and Renewal of the Church.",
     "books": [],
     "supported": [],
     "pd_texts_available": [
@@ -1483,7 +1483,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The East Syriac lectionary: the Law, the Prophets, the Apostle and the Gospel at the Holy Qurbana on Sundays and feasts, by the weeks of the church year (Annunciation, Epiphany, the Great Fast, the Resurrection, the Apostles, Summer, Elijah and the Cross, Moses and the Dedication of the Church).",
     "books": [
       {
         "title": "The Liturgy of the Holy Apostles Adai and Mari",
@@ -1524,7 +1524,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The East Syriac lectionary: the Law, the Prophets, the Apostle and the Gospel at the Holy Qurbana on Sundays and feasts, by the weeks of the church year (Annunciation, Epiphany, the Great Fast, the Resurrection, the Apostles, Summer, Elijah and the Cross, Moses and the Dedication of the Church).",
     "books": [],
     "supported": [],
     "pd_texts_available": [
@@ -1550,7 +1550,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Armenian lectionary (Tonatsuyts): a psalm, Old Testament lessons on great days, an Epistle and the Gospel at the Badarak, by the Armenian calendar of feasts and fasts.",
     "books": [
       {
         "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia",
@@ -1592,7 +1592,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Lectionary for Mass (1981): on Sundays an Old Testament reading, a psalm, an Epistle and the Gospel in a three-year cycle (Years A, B and C); on weekdays a two-year cycle (Years I and II). The Liturgy of the Hours has its own cycle of Scripture at the Office of Readings.",
     "books": [
       {
         "title": "Roman Missal",
@@ -1637,7 +1637,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Missale Romanum of 1962: a one-year cycle of Epistle and Gospel for each Sunday and feast, with more lessons on Ember days and the ferias of Lent. The Breviary reads Scripture at Matins by the season.",
     "books": [
       {
         "title": "Missale Romanum",
@@ -1678,7 +1678,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The one-year cycle of Epistles and Gospels of the Missale Romanum before the reform of 1955, with the older Holy Week and its twelve prophecies at the Easter Vigil.",
     "books": [
       {
         "title": "Missale Romanum",
@@ -1722,7 +1722,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Divine Worship: The Missal uses the Roman Lectionary for Mass (three-year Sunday and two-year weekday cycles) with the Ordinariate calendar. The Daily Office has its own tables of psalms and lessons.",
     "books": [
       {
         "title": "Divine Worship",
@@ -1764,7 +1764,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Ambrosian lectionary: a Lesson (usually from the Old Testament), an Epistle and the Gospel at every Mass. The current Lezionario Ambrosiano (2008) arranges them in a three-year Sunday cycle.",
     "books": [],
     "supported": [
       {
@@ -1791,7 +1791,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Liber Commicus: a prophetic reading from the Old Testament, the Apostle and the Gospel at every Mass, revised for the Missale Hispano-Mozarabicum in the 1990s.",
     "books": [],
     "supported": [
       {
@@ -1818,7 +1818,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Missale Bracarense keeps a one-year cycle of Epistles and Gospels close to the Roman, with propers of its own.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -1838,7 +1838,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Carthusian Missal: a one-year cycle of Epistles and Gospels, with the order's own propers and calendar.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -1858,7 +1858,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Dominican Missal: a one-year cycle of Epistles and Gospels close to the Roman, with Dominican feasts and some pericopes of its own.",
     "books": [],
     "supported": [
       {
@@ -1891,7 +1891,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Premonstratensian Missal: a one-year cycle of Epistles and Gospels, with the order's own propers and feasts.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -1911,7 +1911,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Historical rite or use; current calendar and permission to celebrate require local verification.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Carmelite Missal of the Holy Sepulchre: a one-year cycle of Epistles and Gospels, with the order's own propers and feasts.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -1931,7 +1931,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Roman Lectionary for Mass, with its three-year Sunday cycle, proclaimed within the Zaire Use's own Order of Mass.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -1951,7 +1951,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Benedictine Office reads Scripture at Matins through the year, and the whole Psalter each week, as the Rule of St Benedict directs.",
     "books": [],
     "supported": [
       {
@@ -1978,7 +1978,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "This site's proposal: the traditional one-year Epistles and Gospels, with an added prophecy from the Old Testament on Sundays and feasts.",
     "books": [],
     "supported": [
       {
@@ -2005,7 +2005,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2063,7 +2063,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2098,7 +2098,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2134,7 +2134,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2170,7 +2170,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2205,7 +2205,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2272,7 +2272,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2307,7 +2307,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2342,7 +2342,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2377,7 +2377,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2412,7 +2412,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2447,7 +2447,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2482,7 +2482,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2517,7 +2517,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2553,7 +2553,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2588,7 +2588,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2626,7 +2626,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -2695,7 +2695,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2718,7 +2718,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2743,7 +2743,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2764,7 +2764,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The one-year cycle of Epistles and Gospels, from the Roman Missal (the Liturgy of St Gregory) or the Prayer Book (the Liturgy of St Tikhon).",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2784,7 +2784,7 @@
     "regions": [],
     "calendar": "julian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2804,7 +2804,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Each church keeps its own lectionary: the Coptic Katameros, the Syriac and Malankara lectionaries, the Armenian Tonatsuyts, the Ge'ez lectionary of Ethiopia and Eritrea, and the East Syriac lectionary of the Church of the East.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2827,7 +2827,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Katameros: for every day a Pauline Epistle, a Catholic Epistle, Acts and the Gospel at the Liturgy, with a psalm and Gospel at Vespers and Matins; the annual readings follow the Coptic months, with separate books for Lent, Holy Week and the Fifty Days.",
     "books": [
       {
         "title": "The Coptic Morning Service for the Lord's Day",
@@ -2861,14 +2861,14 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Syriac Orthodox Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "The Syriac Orthodox Church of Antioch keeps the West Syriac rite: the Holy Qurbono with its many anaphoras, chiefly that of St James, prayed in Syriac and the languages of its people. No service guide for it is on this site yet.",
     "also_called": [],
     "regions": [
       "Syria"
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The West Syriac lectionary: Old Testament lessons, Acts or a Catholic Epistle, St Paul and the Gospel at the Holy Qurbono, by a church year that begins with the Sundays of the Consecration and Renewal of the Church.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2884,14 +2884,14 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Armenian Apostolic Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "The Armenian Apostolic Church keeps the Armenian rite. Its Divine Liturgy (Badarak) is on this site in an English translation of 1908; the readings of the day come from the current Armenian calendar.",
     "also_called": [],
     "regions": [
       "Armenia"
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Armenian lectionary (Tonatsuyts): a psalm, Old Testament lessons on great days, an Epistle and the Gospel at the Badarak, by the Armenian calendar of feasts and fasts.",
     "books": [
       {
         "title": "The Divine Liturgy of the Holy Apostolic Church of Armenia",
@@ -2925,14 +2925,14 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Ethiopian Orthodox Tewahedo Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "The Ethiopian Orthodox Tewahedo Church keeps the Ge'ez rite, with fourteen anaphoras, its own calendar and the long fasts of the Ethiopian year. No service guide for it is on this site yet.",
     "also_called": [],
     "regions": [
       "Ethiopia"
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Ge'ez lectionary: a Pauline Epistle, a Catholic Epistle, Acts, a psalm verse and the Gospel at every Qeddase, by the Ethiopian calendar of feasts and fasts.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2948,14 +2948,14 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Eritrean Orthodox Tewahedo Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "The Eritrean Orthodox Tewahedo Church, autocephalous since 1993, keeps the Ge'ez rite it shares with the Ethiopian Church. No service guide for it is on this site yet.",
     "also_called": [],
     "regions": [
       "Eritrea"
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Ge'ez lectionary: a Pauline Epistle, a Catholic Epistle, Acts, a psalm verse and the Gospel at every Qeddase, by the Ethiopian calendar of feasts and fasts.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -2971,14 +2971,14 @@
     "family": "oriental",
     "parent": "oriental-orthodox",
     "kind": "church",
-    "self_description": "Malankara Orthodox Syrian Church preserves its own liturgical tradition. Consult its authorized books and calendar; no guide is mapped to it here.",
+    "self_description": "The Malankara Orthodox Syrian Church of India keeps the West Syriac rite, received from Antioch, in Malayalam, Syriac and English. No service guide for it is on this site yet.",
     "also_called": [],
     "regions": [
       "India"
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The West Syriac lectionary: Old Testament lessons, Acts or a Catholic Epistle, St Paul and the Gospel at the Holy Qurbono, by a church year that begins with the Sundays of the Consecration and Renewal of the Church.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -3003,7 +3003,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The East Syriac lectionary: the Law, the Prophets, the Apostle and the Gospel at the Holy Qurbana on Sundays and feasts, by the weeks of the church year (Annunciation, Epiphany, the Great Fast, the Resurrection, the Apostles, Summer, Elijah and the Cross, Moses and the Dedication of the Church).",
     "books": [
       {
         "title": "The Liturgy of the Holy Apostles Adai and Mari",
@@ -3044,7 +3044,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The East Syriac lectionary: the Law, the Prophets, the Apostle and the Gospel at the Holy Qurbana on Sundays and feasts, by the weeks of the church year (Annunciation, Epiphany, the Great Fast, the Resurrection, the Apostles, Summer, Elijah and the Cross, Moses and the Dedication of the Church).",
     "books": [
       {
         "title": "The Liturgy of the Holy Apostles Adai and Mari",
@@ -3083,7 +3083,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -3105,7 +3105,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -3131,7 +3131,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -3152,7 +3152,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Prayer Book gives a Collect, Epistle and Gospel for each Sunday and holy day at Holy Communion, and a table of lessons with the Psalter for Morning and Evening Prayer. Most recent books use the Revised Common Lectionary.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -3175,7 +3175,7 @@
     ],
     "calendar": "julian",
     "calendar_note": "The original edition predates the British calendar reform of 1752 and uses the Julian calendar. Later authorized printings of the 1662 book use the reformed calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days (largely from the Sarum Missal), and a Kalendar of daily lessons that reads the Old Testament through once a year and the New Testament three times, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · England 1549",
@@ -3215,7 +3215,7 @@
     ],
     "calendar": "julian",
     "calendar_note": "The original edition predates the British calendar reform of 1752 and uses the Julian calendar. Later authorized printings of the 1662 book use the reformed calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days (largely from the Sarum Missal), and a Kalendar of daily lessons that reads the Old Testament through once a year and the New Testament three times, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · England 1552",
@@ -3255,7 +3255,7 @@
     ],
     "calendar": "julian",
     "calendar_note": "The original edition predates the British calendar reform of 1752 and uses the Julian calendar. Later authorized printings of the 1662 book use the reformed calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days (largely from the Sarum Missal), and a Kalendar of daily lessons that reads the Old Testament through once a year and the New Testament three times, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · England 1559",
@@ -3295,7 +3295,7 @@
     ],
     "calendar": "julian",
     "calendar_note": "The original edition predates the British calendar reform of 1752 and uses the Julian calendar. Later authorized printings of the 1662 book use the reformed calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days (largely from the Sarum Missal), and a Kalendar of daily lessons that reads the Old Testament through once a year and the New Testament three times, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · England 1604",
@@ -3328,7 +3328,7 @@
     ],
     "calendar": "julian",
     "calendar_note": "The original edition predates the British calendar reform of 1752 and uses the Julian calendar. Later authorized printings of the 1662 book use the reformed calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days (largely from the Sarum Missal), and a Kalendar of daily lessons that reads the Old Testament through once a year and the New Testament three times, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · England 1662",
@@ -3370,7 +3370,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The 1662 Collects, Epistles and Gospels, with some new and alternative propers, and the revised tables of lessons of the 1920s.",
     "books": [
       {
         "title": "Book of Common Prayer · England 1928 (proposed)",
@@ -3403,7 +3403,7 @@
     ],
     "calendar": "julian",
     "calendar_note": "The original edition predates the British calendar reform of 1752 and uses the Julian calendar. Later authorized printings of the 1662 book use the reformed calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days (largely from the Sarum Missal), and a Kalendar of daily lessons that reads the Old Testament through once a year and the New Testament three times, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · Scotland 1637",
@@ -3443,7 +3443,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Communion Office only: the Collect, Epistle and Gospel are taken from the Prayer Book.",
     "books": [
       {
         "title": "Scottish Communion Office",
@@ -3476,7 +3476,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · Scotland 1929",
@@ -3509,7 +3509,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · United States 1789",
@@ -3550,7 +3550,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · United States 1892",
@@ -3593,7 +3593,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · United States 1928",
@@ -3647,7 +3647,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "A three-year Sunday lectionary (since 2007 the Revised Common Lectionary) and a two-year Daily Office lectionary.",
     "books": [
       {
         "title": "Book of Common Prayer · United States 1979",
@@ -3706,7 +3706,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · Canada 1918",
@@ -3739,7 +3739,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · Canada 1962",
@@ -3771,7 +3771,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · Ireland 1878",
@@ -3804,7 +3804,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · Ireland 1926",
@@ -3837,7 +3837,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Revised Common Lectionary, with a daily lectionary for Morning and Evening Prayer.",
     "books": [
       {
         "title": "Book of Common Prayer · Ireland 2004",
@@ -3868,7 +3868,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Book of Common Prayer · South Africa 1954",
@@ -3899,7 +3899,7 @@
     ],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book's own Collects, Epistles and Gospels for Sundays and holy days, and a table of daily lessons for Morning and Evening Prayer, with the Psalter read through each month.",
     "books": [
       {
         "title": "Supplement to the Indian Book of Common Prayer",
@@ -3928,7 +3928,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "A three-year Sunday lectionary based on the Revised Common Lectionary, and a Daily Office lectionary that reads most of the Bible in a year.",
     "books": [
       {
         "title": "ACNA Book of Common Prayer",
@@ -3956,7 +3956,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Revised Common Lectionary for the Principal Service, with Second and Third Service lectionaries and a weekday lectionary.",
     "books": [
       {
         "title": "Common Worship",
@@ -3986,7 +3986,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "The historical edition is identified here; later printings and local church calendars can differ. This entry does not compute an edition-specific calendar.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The one-year cycle of Epistles and Gospels in Prayer Book English, set within the propers of the Roman Missal.",
     "books": [
       {
         "title": "Anglican Missal",
@@ -4014,7 +4014,7 @@
     "regions": [],
     "calendar": "gregorian",
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The one-year cycle of Epistles and Gospels in Prayer Book English, set within the propers of the Roman Missal.",
     "books": [
       {
         "title": "English Missal",
@@ -4042,7 +4042,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The historic one-year series of Epistles and Gospels, inherited from the medieval church; most Lutheran churches now use a three-year lectionary, and many keep the one-year series as an option.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4057,7 +4057,7 @@
     "family": "lutheran",
     "parent": "lutheran",
     "kind": "church",
-    "self_description": "Lutheran Church—Missouri Synod is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "self_description": "The Lutheran Church—Missouri Synod, founded in 1847 by Saxon and other German immigrants, is a confessional Lutheran church in the United States. Its worship book is Lutheran Service Book (2006), which is in copyright.",
     "also_called": [
       "LCMS"
     ],
@@ -4066,7 +4066,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Lutheran Service Book (2006): a three-year lectionary and the historic one-year lectionary, either of which a congregation may use.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4081,7 +4081,7 @@
     "family": "lutheran",
     "parent": "lutheran",
     "kind": "church",
-    "self_description": "Wisconsin Evangelical Lutheran Synod is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "self_description": "The Wisconsin Evangelical Lutheran Synod, founded in 1850, is a confessional Lutheran church in the United States. Its worship book is Christian Worship: Hymnal (2021), which is in copyright.",
     "also_called": [
       "WELS"
     ],
@@ -4090,7 +4090,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Christian Worship (2021): a three-year Sunday lectionary and the historic one-year series.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4105,7 +4105,7 @@
     "family": "lutheran",
     "parent": "lutheran",
     "kind": "church",
-    "self_description": "Evangelical Lutheran Synod is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "self_description": "The Evangelical Lutheran Synod, of Norwegian heritage and reorganized in 1918, is a confessional Lutheran church in the United States. Its worship book is the Evangelical Lutheran Hymnary (1996), which is in copyright.",
     "also_called": [
       "ELS"
     ],
@@ -4114,7 +4114,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The historic one-year series and a three-year series, as the congregation chooses.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4129,7 +4129,7 @@
     "family": "lutheran",
     "parent": "lutheran",
     "kind": "church",
-    "self_description": "Evangelical Lutheran Church in America is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "self_description": "The Evangelical Lutheran Church in America, formed in 1988, is the largest Lutheran church in the United States. Its worship book is Evangelical Lutheran Worship (2006), which is in copyright.",
     "also_called": [
       "ELCA"
     ],
@@ -4138,7 +4138,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Evangelical Lutheran Worship (2006): the Revised Common Lectionary.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4153,7 +4153,7 @@
     "family": "lutheran",
     "parent": "lutheran",
     "kind": "church",
-    "self_description": "North American Lutheran Church is a Lutheran church body. Consult its own worship resources for authorized local practice.",
+    "self_description": "The North American Lutheran Church, formed in 2010, is a Lutheran church in the United States and Canada. Its congregations use several Lutheran service books, all in copyright.",
     "also_called": [
       "NALC"
     ],
@@ -4163,7 +4163,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Revised Common Lectionary, with the historic one-year series in some congregations.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4183,7 +4183,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "A three-year lectionary and the historic one-year lectionary, either of which a congregation may use.",
     "books": [
       {
         "title": "Lutheran Service Book",
@@ -4211,7 +4211,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Lutheran Hymnal (1941): the historic one-year series of Introits, Collects, Epistles, Graduals and Gospels.",
     "books": [
       {
         "title": "The Lutheran Hymnal",
@@ -4240,7 +4240,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The historic one-year series of Introits, Collects, Epistles, Graduals and Gospels, which this site prints for each Sunday and festival from the Common Service Book (1917-19).",
     "books": [
       {
         "title": "Common Service",
@@ -4323,7 +4323,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Swedish Evangeliebok: historically a one-year series of Epistles and Gospels, with later series of alternative texts.",
     "books": [
       {
         "title": "Church of Sweden · historic orders",
@@ -4351,7 +4351,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Scripture is ordinarily chosen by the minister and read through in course, as Calvin and the Westminster Directory direct. Some books (the Reformed Church in America, Mercersburg) give a table of lessons, and many churches now use the Revised Common Lectionary.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4377,7 +4377,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily preaching through books of the Bible, and the Heidelberg Catechism is preached through on the Lord's Day over the year.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4400,7 +4400,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily preaching through books of the Bible, and the Heidelberg Catechism is preached through on the Lord's Day over the year.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4423,7 +4423,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily preaching through books of the Bible, and the Heidelberg Catechism is preached through on the Lord's Day over the year.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4445,7 +4445,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily preaching through books of the Bible, and the Heidelberg Catechism is preached through on the Lord's Day over the year.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4467,7 +4467,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily preaching through books of the Bible, and the Heidelberg Catechism is preached through on the Lord's Day over the year.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4492,7 +4492,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily preaching through books of the Bible, and the Heidelberg Catechism is preached through on the Lord's Day over the year.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4517,7 +4517,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily reading and preaching through books of the Bible, as the Westminster Directory advises.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4541,7 +4541,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily reading and preaching through books of the Bible, as the Westminster Directory advises.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4566,7 +4566,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Revised Common Lectionary, in the Book of Common Worship (2018), with a daily lectionary.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4589,7 +4589,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily reading and preaching through books of the Bible, as the Westminster Directory advises.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4612,7 +4612,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The minister chooses the Scripture, ordinarily reading and preaching through books of the Bible, as the Westminster Directory advises.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4632,7 +4632,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Order of Scripture Lessons in the Liturgy of the Reformed Church in America (1882), for each Sunday, which this site gives in the King James Version.",
     "books": [
       {
         "title": "Liturgical Forms of Dort",
@@ -4673,7 +4673,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Order of Worship (1866): an Epistle and Gospel for each Sunday and festival of the church year, and a table of morning and evening lessons.",
     "books": [
       {
         "title": "Order of Worship for the Reformed Church in the United States (partial edition)",
@@ -4723,7 +4723,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "A metrical psalter for singing; it sets no lessons, which the minister chooses.",
     "books": [
       {
         "title": "Genevan Psalter",
@@ -4753,7 +4753,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "A metrical psalter for singing; it sets no lessons, which the minister chooses.",
     "books": [
       {
         "title": "The Psalter",
@@ -4783,7 +4783,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Directory (1645) directs that both Testaments be read in order, ordinarily a chapter of each at every meeting, as the minister judges.",
     "books": [
       {
         "title": "Westminster Directory for Public Worship",
@@ -4813,7 +4813,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "A metrical psalter for singing; it sets no lessons, which the minister chooses.",
     "books": [
       {
         "title": "Scottish Metrical Psalter",
@@ -4843,7 +4843,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The book sets no lectionary: the Psalter portion and the lessons are chosen by the minister.",
     "books": [
       {
         "title": "Book of Common Worship",
@@ -4886,7 +4886,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Byzantine lectionary: the Apostol (Acts and the Epistles) and the Gospel for every day, in a yearly cycle that begins at Pascha (John, then Matthew, Luke and Mark), with Old Testament readings at Vespers on feasts and in Lent, and the eleven Resurrection Gospels at Sunday Matins.",
     "books": [
       {
         "title": "Service Book of the Holy Orthodox-Catholic Apostolic (Greco-Russian) Church",
@@ -4912,7 +4912,7 @@
     "family": "old-catholic",
     "parent": "union-utrecht",
     "kind": "church",
-    "self_description": "Old Catholic Church of the Netherlands is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "self_description": "The Old Catholic Church of the Netherlands, heir of the Church of Utrecht that parted from Rome in 1723, is the senior member of the Union of Utrecht. It worships in Dutch from its own service books, which are in copyright.",
     "also_called": [
       "Oud-Katholieke Kerk van Nederland"
     ],
@@ -4921,7 +4921,7 @@
     ],
     "calendar": null,
     "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
-    "lectionary": "Consult the local authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4936,7 +4936,7 @@
     "family": "old-catholic",
     "parent": "union-utrecht",
     "kind": "church",
-    "self_description": "Catholic Diocese of the Old Catholics in Germany is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "self_description": "The Catholic Diocese of the Old Catholics in Germany is a member church of the Union of Utrecht, the communion of Old Catholic churches that separated from Rome over papal authority, chiefly after the First Vatican Council. It worships in the vernacular from its own service books, which are in copyright.",
     "also_called": [
       "Katholisches Bistum der Alt-Katholiken in Deutschland"
     ],
@@ -4945,7 +4945,7 @@
     ],
     "calendar": null,
     "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
-    "lectionary": "Consult the local authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4960,7 +4960,7 @@
     "family": "old-catholic",
     "parent": "union-utrecht",
     "kind": "church",
-    "self_description": "Christian Catholic Church of Switzerland is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "self_description": "The Christian Catholic Church of Switzerland is a member church of the Union of Utrecht, the communion of Old Catholic churches that separated from Rome over papal authority, chiefly after the First Vatican Council. It worships in the vernacular from its own service books, which are in copyright.",
     "also_called": [
       "Christkatholische Kirche der Schweiz"
     ],
@@ -4969,7 +4969,7 @@
     ],
     "calendar": null,
     "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
-    "lectionary": "Consult the local authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -4984,7 +4984,7 @@
     "family": "old-catholic",
     "parent": "union-utrecht",
     "kind": "church",
-    "self_description": "Old Catholic Church of Austria is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "self_description": "The Old Catholic Church of Austria is a member church of the Union of Utrecht, the communion of Old Catholic churches that separated from Rome over papal authority, chiefly after the First Vatican Council. It worships in the vernacular from its own service books, which are in copyright.",
     "also_called": [
       "Altkatholische Kirche Österreichs"
     ],
@@ -4993,7 +4993,7 @@
     ],
     "calendar": null,
     "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
-    "lectionary": "Consult the local authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -5008,7 +5008,7 @@
     "family": "old-catholic",
     "parent": "union-utrecht",
     "kind": "church",
-    "self_description": "Old Catholic Church in the Czech Republic is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship.",
+    "self_description": "The Old Catholic Church in the Czech Republic is a member church of the Union of Utrecht, the communion of Old Catholic churches that separated from Rome over papal authority, chiefly after the First Vatican Council. It worships in the vernacular from its own service books, which are in copyright.",
     "also_called": [
       "Starokatolická církev v České republice"
     ],
@@ -5017,7 +5017,7 @@
     ],
     "calendar": null,
     "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
-    "lectionary": "Consult the local authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -5032,7 +5032,7 @@
     "family": "old-catholic",
     "parent": "union-utrecht",
     "kind": "church",
-    "self_description": "Polish Catholic Church is listed as an independent member church in the Union of Utrecht’s official directory. Consult the church’s own service books and local calendar for worship. This is distinct from the Polish National Catholic Church in North America.",
+    "self_description": "The Polish Catholic Church is a member church of the Union of Utrecht, the communion of Old Catholic churches that separated from Rome over papal authority, chiefly after the First Vatican Council. It worships in the vernacular from its own service books, which are in copyright. It is distinct from the Polish National Catholic Church in North America.",
     "also_called": [
       "Kościół Polskokatolicki"
     ],
@@ -5041,7 +5041,7 @@
     ],
     "calendar": null,
     "calendar_note": "The member directory establishes affiliation, not the local liturgical calendar.",
-    "lectionary": "Consult the local authorized service book.",
+    "lectionary": "Each national church sets its own lectionary in its own language; most now follow a three-year Sunday cycle of the Roman or ecumenical kind.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -5061,7 +5061,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Wesley's Sunday Service (1784) kept the Prayer Book's Sunday Epistles and Gospels and proper lessons; most Methodist churches now use the Revised Common Lectionary.",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -5077,7 +5077,7 @@
     "family": "methodist",
     "parent": "methodist",
     "kind": "church",
-    "self_description": "The United Methodist Church is a Methodist church body. Consult its own worship resources for authorized local practice; its current Book of Worship and Hymnal are in copyright.",
+    "self_description": "The United Methodist Church, formed in 1968, is a Methodist church with conferences worldwide. Its current Book of Worship (1992) and Hymnal (1989) are in copyright; the older Methodist rituals they descend from are on this site.",
     "also_called": [
       "UMC"
     ],
@@ -5089,7 +5089,7 @@
     ],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Revised Common Lectionary, in The United Methodist Book of Worship (1992).",
     "books": [],
     "supported": [],
     "pd_texts_available": [],
@@ -5109,7 +5109,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "Wesley's own Collects, Epistles and Gospels for each Sunday and chief feast, and a table of proper lessons for Sundays; the book keeps no saints' days.",
     "books": [
       {
         "title": "The Sunday Service of the Methodists in North America",
@@ -5152,7 +5152,7 @@
     "regions": [],
     "calendar": null,
     "calendar_note": "Calendar practice varies by jurisdiction and locality; consult the local ordo.",
-    "lectionary": "Consult the local church calendar and authorized service book.",
+    "lectionary": "The Ritual sets no lectionary: the lessons are chosen by the minister.",
     "books": [
       {
         "title": "Ritual of the Methodist Episcopal Church",
