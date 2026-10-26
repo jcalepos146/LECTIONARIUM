@@ -59,6 +59,7 @@ async function pb(file,iso,day,days){
 let serial=0;
 async function render(iso){
  const out=$("#cdOut"); if(!out) return; const my=++serial;
+ try{ await window.LectLoad.service(); }catch(e){}
  $("#cdDate").value=iso; out.innerHTML=`<p class="note">Gathering the lectionaries for ${esc(window.LectApp.longDate(iso))}…</p>`;
  const days=await window.LectDays.load(iso);
  const day=days[iso]||{};

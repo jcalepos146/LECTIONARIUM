@@ -670,6 +670,7 @@ const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bc
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
+  try{ await window.LectLoad.service(); }catch(e){}
   const iso=S.date||todayISO();
   window.dispatchEvent(new CustomEvent("lect-session",{detail:{type:S.type,rite:S.rite,hour:S.hour,iso,label:(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite)?.name}}));
   const rname=(S.type==="mass"?MASS_RITES:OFFICE_RITES).find(r=>r.id===S.rite).name, rk=riteKind(S.type,S.rite);

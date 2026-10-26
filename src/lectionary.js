@@ -39,6 +39,7 @@ async function psalm79(cite,lab='Psalm'){
  return `<section class="reading"><header><span class="rl">${esc(lab)}</span><span class="rc">${esc(cite)}</span></header><p class="cite">Book of Common Prayer (1979) Psalter</p><p class="scripture">${verses.map(([n,t])=>`<sup>${n}</sup> ${esc(t)}`).join(' ')}</p></section>`;
 }
 async function pb79(ctx,office=false,eve=false){
+ await window.LectLoad.service();   /* pb79Day, the 1979 calendar, lives with the service builders */
  const T=await json('data/bcp1979-lectionary.json'),B=await json('data/bcp1979.json'),d=date(ctx.iso),y=d.getUTCFullYear(),ly=y+(d>=advent(y)?1:0),cycle='ABC'[(ly+2)%3],year=ly%2?'1':'2';
  const title=window.LectPB79.day(ctx.iso,B.collects.c).title,label=pbLabel(title);
  let row,refs=[],ps=[];

@@ -33,7 +33,7 @@ jobs:
         run: |
           for source in src/*.js; do node --check "$source"; done
           python3 src/assemble.py
-          git diff --exit-code -- index.html
+          git diff --exit-code -- index.html service.js
           python3 tools/build_traditions.py --check
           python3 tools/text_sources.py --md --check
           python3 tools/shard_bible.py --check

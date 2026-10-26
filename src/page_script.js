@@ -14,6 +14,19 @@ window.LitDate=(()=>{
  const sundayOf=x=>{ const d=typeof x==="string"?toDate(x):x; return add(d,-d.getUTCDay()); };
  return {DAY,U,toDate,iso,add,today,easter,advent,fromEaster,sundayOf};
 })();
+/* The service builders (music.js and mass.js) are a separate file in the published site, service.js, fetched the
+   first time a service is opened and in the background once the page is idle. The standalone build inlines them,
+   so service() resolves at once. */
+window.LectLoad=(()=>{
+ const url=/*SERVICE-URL*/""; let p=null;
+ function service(){
+  if(window.LectMass||!url) return Promise.resolve();
+  return p||(p=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=url; s.onload=()=>res(); s.onerror=()=>{ p=null; s.remove(); rej(new Error("The service code could not load.")); }; document.head.appendChild(s); }));
+ }
+ const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));
+ if(url) window.addEventListener("load",()=>idle(()=>service().catch(()=>{})));
+ return {service};
+})();
 /* The day table (tools/build_days.py) is split by year into days/<year>.json; days/2026.json also holds
    Advent 2025. LectDays.load(iso) fetches the year of a date (and, in January or December, the year beside it,
    for look-ups of the nearest Sunday) into one shared map, and resolves to that map. */
