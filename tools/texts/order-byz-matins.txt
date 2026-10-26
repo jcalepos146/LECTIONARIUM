@@ -199,6 +199,7 @@ Choir. Amen.
 3. O give thanks unto the Lord, for he is gracious, for his mercy endureth forever. Alleluia. (Thrice.)
 4. O give thanks unto the God of heaven ; for his mercy endureth forever. Alleluia. (Thrice.)
 ¶ And if it be a Great Feast, or other appointed Saint's Day, the proper Great Exaltation shall be chanted, first by the Priest and the Deacon, and then by the Choir, before the Holy Image of the Day, as the Priest censeth it where it lieth on the folding-stand.
+@hymn: The Great Exaltation of the Feast
 ¶ Then shall be sung the Hymns (Troparia), with the Refrain; but only on the  Lord's Day.
 Choir. Refrain: Blessed art thou, O Lord : teach me thy statutes.
 The company of the Angels was amazed, when they beheld thee numbered among the dead, yet thyself, O Saviour, destroying the power of death, and with thee raising up Adam and releasing all men from Hell.

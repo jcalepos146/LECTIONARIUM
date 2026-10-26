@@ -109,14 +109,32 @@ def compile_text(text):
     return parts, errors
 
 
+FEAST_KEYS = {"lic", "lity", "troparion", "kontakion", "exalt", "ant2", "introit", "trisagion", "prokeimenon", "alleluia", "meet", "communion"}
+
+
 def compile_tones(text):
-    tones, cur, errors = {}, None, []
+    tones, feasts, cur, feast, errors = {}, {}, None, None, []
     for n, line in enumerate(text.split("\n"), 1):
         if not line or line.startswith("#") and not line.startswith("## ") or re.fullmatch(r"=\d+", line):
             continue
         m = re.fullmatch(r"## tone([1-8])", line)
         if m:
-            cur = tones.setdefault(m.group(1), {"lic": []}); continue
+            cur, feast = tones.setdefault(m.group(1), {"lic": []}), None; continue
+        m = re.fullmatch(r"## feast (\d\d-\d\d|p-?\d+) \| (.+)", line)
+        if m:
+            if m.group(1) in feasts:
+                errors.append(f"tones line {n}: feast {m.group(1)} repeated")
+            cur, feast = None, feasts.setdefault(m.group(1), {"t": m.group(2)}); continue
+        if feast is not None:
+            m = re.fullmatch(r"([a-z0-9]+)(?: ([1-8]))?: (.+)", line)
+            if not m or m.group(1) not in FEAST_KEYS or m.group(1) in feast:
+                errors.append(f"tones line {n}: cannot parse feast line"); continue
+            feast[m.group(1)] = m.group(3)
+            if m.group(2):
+                feast[m.group(1) + "_tone"] = int(m.group(2))
+            if re.search(r"[{}|\\^~]|\s[;:,.!?]", m.group(3)):
+                errors.append(f"tones line {n}: suspicious characters")
+            continue
         m = re.fullmatch(r"(lic|dogmatikon|troparion|theotokion|kontakion): (.+)", line)
         if not m or cur is None:
             errors.append(f"tones line {n}: cannot parse"); continue
@@ -129,12 +147,15 @@ def compile_tones(text):
             errors.append(f"tone {k}: incomplete")
     if len(tones) != 8:
         errors.append("expected eight tones")
-    return tones, errors
+    for k, f in feasts.items():
+        if "troparion" not in f:
+            errors.append(f"feast {k}: no troparion")
+    return tones, feasts, errors
 
 
 def main():
     parts, errors = compile_text(SRC.read_text(encoding="utf-8"))
-    tones, terr = compile_tones(TONES.read_text(encoding="utf-8"))
+    tones, feasts, terr = compile_tones(TONES.read_text(encoding="utf-8"))
     errors += terr
     for e in errors:
         print("ERROR", e)
@@ -146,6 +167,7 @@ def main():
         "rights": "Public domain (published 1906).",
         "parts": parts,
         "tones": tones,
+        "feasts": feasts,
     }
     out = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     keys = [p["key"] for p in parts]
