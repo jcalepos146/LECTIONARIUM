@@ -648,7 +648,8 @@ const LECT={
 async function lectItems(ctx,L){ const out=[];
   for(const it of (L&&L.items)||[]){
     let html;
-    if(it.text) html=`<section class="reading"><header><span class="rl">${esc(it.lab)}</span><span class="rc">${esc(it.cite)}</span></header><div class="rtext">${it.text.map(t=>`<p data-r="lec">${esc(t)}</p>`).join("")}</div></section>`;
+    if(it.issue) html=`<p class="note">${esc(it.lab)} · ${esc(it.cite)}: ${esc(it.issue)}</p>`;
+    else if(it.text) html=`<section class="reading"><header><span class="rl">${esc(it.lab)}</span><span class="rc">${esc(it.cite)}</span></header><div class="rtext">${it.text.map(t=>`<p data-r="lec">${esc(t)}</p>`).join("")}</div></section>`;
     else html=await RB(ctx,it.lab,it.cite,it.num||"k",it.tr||"kj");
     let slot=typeof it.slot==="string"?it.slot==="gospel"?/Gospel/i:it.slot==="psalter"?/Psalm|Psalter|Kathisma/i:/Epistle|Lesson|Lection|Apostle|Paul|Prophet/i:it.slot||null;
     if(ctx.rite==="copt"&&it.slot){slot=/^Ps /.test(it.cite)?/Psalm before/:/^(Matt|Mark|Luke|John) /.test(it.cite)?/^The Gospel of the day/:/^Acts /.test(it.cite)?/Acts/:/^(Jas|[123] (Pet|John)|Jude) /.test(it.cite)?/Catholic/:/S\. Paul/;}
@@ -791,7 +792,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_coll:coll,_less:less};
   }
   { const local=window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});
-    const L=local||(/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
+    const L=local||(rite==="copt"?await window.LectCalendar.appointments({...ctx,type:"mass"}):/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
     if(L)opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}};
   }
   for(const [id,from,upto] of R.parts(opts)){
@@ -810,6 +811,7 @@ async function buildOrders(ctx,opts,rite){
   /* an order with no place for the lessons (a Lord's Supper that follows the preaching service): the day's lessons first */
   if(opts._lect&&opts._lect.items.length&&opts._lect.items.every(x=>!x.used)){ const I=opts._lect.items;
     out.unshift(sec("The Lessons of the Day",I.reduce((a,x)=>a+x.secs,0)/60,`<div class="txt one">${lectHead(opts._lect.L)}<p class="note">${esc(R.lectNote||"The order itself has no lessons: these are the lessons of the day, for the service of the Word that goes before it.")}</p>${I.map(x=>x.html).join("")}</div>`)); }
+  if(rite==="copt"&&opts._lect&&!opts._lect.items.length)out.unshift(sec("Calendar readings",0,lectHead(opts._lect.L)));
   return out;
 }
 
@@ -880,8 +882,8 @@ async function buildPB79(ctx,opts){
   const C=B.collects[form], day=pb79Day(iso,C), col=C[day.title]||C[day.season];
   const pre=pb79Preface(B.prefaces[rite]||{}, col&&col.preface, sun, iso);
   const pop=(opts.pop79||"I");
-  const lessons=window.LectCalendar.custom({...ctx,type:"mass"})||await window.LectCalendar.pb79(ctx);
-  const lessonHTML=await window.LectCalendar.html(ctx,{...lessons,items:[...lessons.items.slice(0,1),...(lessons.psalms||[]).map(cite=>({lab:"Psalm",cite,num:"k",tr:"kj"})),...lessons.items.slice(1)]});
+  const lessons=window.LectCalendar.custom({...ctx,type:"mass"})||await window.LectCalendar.appointments({...ctx,type:"mass"});
+  const lessonHTML=await window.LectCalendar.html(ctx,{...lessons,items:[...lessons.items.slice(0,1),...(lessons.psalms||[]).map(cite=>({lab:"Psalm",cite,tr:"bcp79"})),...lessons.items.slice(1)]});
   const out=[];
   for(const st of B["he"+rite]){
     let secs=pbWords(st.items)/2.4, extra=0;

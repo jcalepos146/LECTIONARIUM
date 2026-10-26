@@ -600,7 +600,7 @@
         "Ambrosian lectionary",
         "Ambrosian Office"
       ],
-      "plan": "Start with the Mass: Latin Ordinary from Divinum Officium and the 1909 English Ordinary and Canon. Propers and lectionary come from the 1904 Manuale Ambrosianum (medieval) and the 1712 Missal, labelled as the pre-1976 use. The current 1976/1981 Missal and 2008 lectionary are in copyright. The Ambrosian calendar needs its own computation before any day is mapped.",
+      "plan": "Keep the historical Ordinary and Canon explicitly labeled. The user selected current church calendars: import and verify the current Milan Ambrosian appointments, with six-week Advent and its own cycle alignment, after reviewing citation-table reuse terms. The current church source is linked in the reader; the 1712 Missal and medieval Manuale are historical comparisons.",
       "sources": [
         {
           "url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoA.txt",
@@ -695,7 +695,7 @@
         "lectionary",
         "Office"
       ],
-      "plan": "The 1500 Cisneros books reprinted in Migne (Patrologia Latina 85-86) give the Missale mixtum and Breviarium gothicum complete; the Liber comicus gives the old lectionary. The restored Missale Hispano-Mozarabicum (1991-94) differs and is in copyright, so label the guide 'Cisneros use'.",
+      "plan": "Keep the historical Ordinary explicitly labeled. The user selected current church calendars: verify the modern Missale Hispano-Mozarabicum and Liber Commicus with the current ordo and establish reuse terms. Toledo current rite information is linked, but is not a daily reading table. Cisneros and Migne remain historical comparisons.",
       "sources": [
         {
           "url": "https://github.com/DivinumOfficium/divinum-officium/blob/master/web/www/missa/Latin/Ordo/OrdoM.txt",
@@ -928,15 +928,15 @@
       ],
       "rite": "copt (new builders for the rest)",
       "service": "Liturgy",
-      "now": "The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt)",
+      "now": "The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt); the shared reader offers a Coptic Orthodox citation snapshot and a separate Catholic/local profile requiring its own appointments",
       "missing": [
         "Ethiopic Liturgy",
         "Coptic Liturgies of St Gregory and St Cyril",
         "Coptic Morning Incense office",
         "Agpeya (hours)",
-        "Katameros (lectionary)"
+        "Coptic Catholic Katameros appointments and local exceptions"
       ],
-      "plan": "Brightman gives the Coptic and Ethiopic liturgies in English; Bute's Coptic Morning Service adds the rest of the Sunday office. The hours and the Katameros have not been found in a public-domain English edition.",
+      "plan": "Brightman gives the Coptic and Ethiopic liturgies in English; Bute's Coptic Morning Service adds the rest of the Sunday office. The hours and the Katameros have not been found in a public-domain English edition. A community-maintained Coptic Orthodox citation dataset is now imported for all supported dates; it is not a Catholic calendar or a modern translation license.",
       "sources": [
         {
           "ia": "liturgieseastern01unknuoft",
@@ -998,7 +998,7 @@
       ],
       "blockers": [
         "Agpeya in public-domain English: not located",
-        "Katameros (Coptic lectionary) data: not located"
+        "Coptic Catholic calendar and appointment verification remain; the Orthodox snapshot does not establish Catholic appointments"
       ]
     },
     {
@@ -1241,10 +1241,10 @@
       ],
       "rite": "new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders",
       "service": "Daily Office and Holy Communion",
-      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate; Holy Communion in full with the Introit, collect, epistle and gospel of the day from the Prayer Books of 1549, 1552 and 1559, and in full (the day's collect, epistle and gospel cited) from those of 1637, 1789 and 1892",
+      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate; Holy Communion in full with the Introit, collect, epistle and gospel of the day from the Prayer Books of 1549, 1552 and 1559, and in full (the day's collect, epistle and gospel cited) from those of 1637, 1789 and 1892; the current 1979 two-year Office lessons and appointed 1979 Psalter are included, with an explicit original Eucharistic-table option and a link to the current Episcopal RCL",
       "missing": [
         "1928 lectionary tables",
-        "1979 Daily Office Lectionary and the Revised Common Lectionary (the RCL is copyrighted)",
+        "Automatic current Episcopal RCL table and feast transfers (reuse terms must be established)",
         "other national books"
       ],
       "plan": "The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.",
@@ -1817,14 +1817,14 @@
       ],
       "rite": "new (shared builders with the Eastern Catholic churches of the same tradition)",
       "service": "Liturgy and Office",
-      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt). Church of the East: the Liturgy of Adai and Mari in full (1893 English, rite adai)",
+      "now": "Armenian: the Divine Liturgy in full (1908 English, rite arm). Coptic: the Liturgy of St Basil in full (Bute, rite copt). Church of the East: the Liturgy of Adai and Mari in full (1893 English, rite adai); Coptic Orthodox Katameros citations for 2025-11-30 through 2030-11-30, including separate Matins, Vespers and Holy Week hours; three unresolved references are flagged",
       "missing": [
         "liturgies",
         "hours",
         "lectionaries",
         "calendars (Coptic, Ethiopian, Armenian)"
       ],
-      "plan": "Reuse the Alexandrian, West Syriac, East Syriac and Armenian sources above; Orthodox and Catholic forms differ mainly in commemorations and the filioque. The Assyrian Church of the East also uses the Urmia Takhsa.",
+      "plan": "Use current church calendars, with separate Orthodox, Catholic and local profiles. The Coptic Orthodox snapshot is imported; Armenian Apostolic and Assyrian annual tables are linked pending verified imports. Historical service orders retain their edition labels and are not presented as modern approved texts.",
       "sources": [
         {
           "ia": "liturgieseastern01unknuoft",
@@ -1895,10 +1895,21 @@
             "Coptic rubrics and hymn structure"
           ],
           "rights": "reference"
+        },
+        {
+          "url": "https://github.com/pierresaid/katameros-api/tree/62094eb045f067f6082edfc230a993c3d3e64668",
+          "title": "Katameros API, pinned community calendar implementation",
+          "lang": "citations",
+          "format": "code and citation-only snapshot",
+          "fills": [
+            "Coptic Orthodox reading appointments for all supported dates"
+          ],
+          "rights": "open",
+          "note": "MIT, Copyright (c) 2022 katameros; license retained. No modern Bible, prayer or Synaxarium text imported. Not a Coptic Catholic calendar."
         }
       ],
       "blockers": [
-        "Agpeya, Katameros, Shehimo, Armenian Book of Hours and Ethiopian Book of Hours in public-domain English: not located",
+        "Agpeya, Shehimo, Armenian and Ethiopian Hours in public-domain English: not located; Coptic snapshot needs three reference resolutions and independent complete review",
         "Hudra (1960s Trichur edition): check before use"
       ]
     },
