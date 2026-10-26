@@ -47,6 +47,9 @@ const MASS_RITES=[
   {id:"bcp37",name:"Holy Communion (1637 Scottish Prayer Book)",d:"Church of Scotland (Laud's Prayer Book) · the service in full",tr:"kj",ord:1},
   {id:"bcp89",name:"Holy Communion (1789 Prayer Book)",d:"Episcopal Church (USA), the first American book · the service in full",tr:"kj",ord:1},
   {id:"bcp92",name:"Holy Communion (1892 Prayer Book)",d:"Episcopal Church (USA) · the revision before 1928, the service in full",tr:"kj",ord:1},
+  {id:"bcp62bap",name:"Publick Baptism of Infants (1662 Prayer Book)",d:"Church of England · the Ministration of Publick Baptism of Infants, to be used in the Church, with its 1662 rubrics",tr:"kj",ord:1},
+  {id:"bcp62mat",name:"Solemnization of Matrimony (1662 Prayer Book)",d:"Church of England · the Form of Solemnization of Matrimony, from the Banns to the duties of man and wife",tr:"kj",ord:1},
+  {id:"bcp62bur",name:"Burial of the Dead (1662 Prayer Book)",d:"Church of England · the Order for the Burial of the Dead, with its psalms and lesson",tr:"kj",ord:1},
   {id:"bcp79",name:"Holy Eucharist (1979 Prayer Book)",d:"Episcopal Church · Rites One and Two, Prayers A to D, with the collect of the day",tr:"kj",ord:1},
 ];
 const OFFICE_RITES=[
@@ -75,6 +78,9 @@ function riteKind(type,id){
   if(/^(csbm|csbv|csbs|csbsm|csbse|byzv|byzm|byzh|byzc|wes84o|rcusv)$/.test(id)) return "Daily office";
   if(id==="csbl") return "Litany";
   if(id==="rcusp") return "Preparation";
+  if(/bap$/.test(id)) return "Baptism";
+  if(/mat$/.test(id)) return "Matrimony";
+  if(/bur$/.test(id)) return "Burial";
   if(/^(n|o|m|p|h|d|a|z)$/.test(id)) return "Mass";
   if(/^(b|copt|arm)$/.test(id)) return "Divine Liturgy";
   if(id==="adai") return "Holy Qurbana";
@@ -86,7 +92,7 @@ function riteKind(type,id){
 /* The tradition each rite belongs to, for the tradition-first questions, the day names and the Sanctuary emblems. */
 const FAMILY={wes84:"methodist",wes84o:"methodist",me08:"methodist",rca:"reformed",rcus:"reformed",rcusv:"reformed",rcusp:"reformed",pres:"reformed",
   csb:"lutheran",csbm:"lutheran",csbv:"lutheran",csbl:"lutheran",csbs:"lutheran",csbsm:"lutheran",csbse:"lutheran",
-  bcp62:"anglican",bcp28:"anglican",bcp49:"anglican",bcp52:"anglican",bcp59:"anglican",bcp37:"anglican",bcp89:"anglican",bcp92:"anglican",bcp79:"anglican",dwdo:"catholic",
+  bcp62:"anglican",bcp62bap:"anglican",bcp62mat:"anglican",bcp62bur:"anglican",bcp28:"anglican",bcp49:"anglican",bcp52:"anglican",bcp59:"anglican",bcp37:"anglican",bcp89:"anglican",bcp92:"anglican",bcp79:"anglican",dwdo:"catholic",
   b:"eastern-orthodox",byz:"eastern-orthodox",byzv:"eastern-orthodox",byzm:"eastern-orthodox",byzh:"eastern-orthodox",byzc:"eastern-orthodox",adai:"oriental",copt:"oriental",arm:"oriental"};
 const familyOf=id=>FAMILY[id]||"catholic";
 const FAMILIES=[["catholic","Catholic","Roman Missal, 1962 Missal and Breviary, Ordinariate, Dominican, Ambrosian, Mozarabic"],
@@ -194,6 +200,7 @@ function coverage(type,rite,hour){
     if(rite==="csbm") return ["full","Matins from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csbv") return ["full","Vespers from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csb") return ["full","The Service of the Common Service Book (1917-19) is printed in full, with the Introit, Collect, Epistle, Gradual and Gospel of the day. The hymns are not included."];
+    if(OCCASIONAL[rite]) return ["full",OCCASIONAL[rite].cov];
     if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="bcp49") return ["full","The Supper of the Lord and the Holy Communion in the first Prayer Book of Edward VI (1549) is printed in full, in the spelling of the book, with the Introit, Collect, Epistle and Gospel of the day."];
     if(rite==="bcp52") return ["full","The Order for the Administration of the Lordes Supper in the second Prayer Book of Edward VI (1552) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
@@ -214,8 +221,15 @@ function coverage(type,rite,hour){
   return null;
 }
 const covBadge=c=>c?`<span class="cov cov-${c[0]}">${COV_LABEL[c[0]]}</span>`:"";
+/* Occasional services: baptism, marriage and burial, from books already on the site. They keep no calendar: the date
+   only fills in the Collect or psalm where a book appoints one. */
+const OCCASIONAL={
+  bcp62bap:{title:"Publick Baptism of Infants",sub:"The Book of Common Prayer (1662)",cov:"The Ministration of Publick Baptism of Infants from the 1662 Prayer Book is printed in full, with the 1662 rubrics.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread, with the 1662 rubrics restored from a London printing of 1800 where current printings revise them. Crown copyright in the United Kingdom; public domain elsewhere."},
+  bcp62mat:{title:"The Solemnization of Matrimony",sub:"The Book of Common Prayer (1662)",cov:"The Form of Solemnization of Matrimony from the 1662 Prayer Book is printed in full, with both psalms and the duties of man and wife.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread, with the 1662 rubrics on the Banns and the Sermon restored from a London printing of 1800. Crown copyright in the United Kingdom; public domain elsewhere."},
+  bcp62bur:{title:"The Burial of the Dead",sub:"The Book of Common Prayer (1662)",cov:"The Order for the Burial of the Dead from the 1662 Prayer Book is printed in full, with Psalms 39 and 90 and the lesson from 1 Corinthians 15.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread against the Coverdale psalter and the King James Bible. Crown copyright in the United Kingdom; public domain elsewhere."}
+};
 /* every service of one tradition, the Eucharist first, then the offices, the Litany and the preparation */
-const KIND_ORDER=k=>k==="Daily office"?1:k==="Litany"?2:k==="Preparation"?3:0;
+const KIND_ORDER=k=>k==="Daily office"?1:k==="Litany"?2:k==="Preparation"?3:/^(Baptism|Matrimony|Burial)$/.test(k)?4:0;
 function famRites(f){
   return [...MASS_RITES.map(r=>({type:"mass",...r})),...OFFICE_RITES.map(r=>({type:"office",...r}))].filter(r=>familyOf(r.id)===f)
     .map((r,i)=>({...r,i,k:riteKind(r.type,r.id)})).sort((a,b)=>KIND_ORDER(a.k)-KIND_ORDER(b.k)||a.i-b.i);
@@ -661,6 +675,10 @@ async function renderSession(){
   }
   else if(S.type==="mass"&&S.rite==="rcusv"){
     body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Evening Service · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
+  }
+  else if(S.type==="mass"&&OCCASIONAL[S.rite]){
+    const O=OCCASIONAL[S.rite];
+    body=`<h2 class="dayname">${esc(O.title)}</h2><p class="daysub">${esc(O.sub)}</p><div id="massGuide"></div><footer class="sesfoot"><p>${esc(O.foot)}</p></footer>`;
   }
   else if(S.type==="mass"&&S.rite==="rcusp"){
     body=`<h2 class="dayname">The Lord's Day</h2><p class="daysub">Preparation for the Holy Communion · Order of Worship, Reformed Church in the United States (Mercersburg, 1866)</p><div id="massGuide"></div><footer class="sesfoot"><p>The Order of Worship for the Reformed Church in the United States (Philadelphia, 1866), public domain, transcribed from the Internet Archive scan and checked against the later editions.</p></footer>`;
