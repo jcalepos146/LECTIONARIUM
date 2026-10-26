@@ -718,6 +718,12 @@ const ORDER_RITES={
   bcp62bap:{parts:o=>[["bcp1662-baptism"]]},
   bcp62mat:{parts:o=>[["bcp1662-matrimony"]]},
   bcp62bur:{parts:o=>[["bcp1662-burial"]]},
+  wes84bap:{parts:o=>[["wes1784-baptism"]]},
+  wes84mat:{parts:o=>[["wes1784-matrimony"]]},
+  wes84bur:{parts:o=>[["wes1784-burial"]]},
+  csbbap:{parts:o=>[["csb-baptism"]]},
+  csbmat:{parts:o=>[["csb-matrimony"]]},
+  csbbur:{parts:o=>[["csb-burial"]]},
   csbm:{lect:"csb", parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{lect:"csb", parts:o=>[["csb-vespers"]], csbCollect:true}
 };

@@ -4317,6 +4317,24 @@
         "rite": "csbse",
         "hour": null,
         "label": "Evening Suffrages"
+      },
+      {
+        "type": "mass",
+        "rite": "csbbap",
+        "hour": null,
+        "label": "Baptism of Infants"
+      },
+      {
+        "type": "mass",
+        "rite": "csbmat",
+        "hour": null,
+        "label": "Marriage"
+      },
+      {
+        "type": "mass",
+        "rite": "csbbur",
+        "hour": null,
+        "label": "Burial of the Dead"
       }
     ],
     "pd_texts_available": [
@@ -5149,6 +5167,24 @@
         "rite": "wes84o",
         "hour": null,
         "label": "Morning and Evening Prayer, and the Litany (1784)"
+      },
+      {
+        "type": "mass",
+        "rite": "wes84bap",
+        "hour": null,
+        "label": "Baptism of Infants"
+      },
+      {
+        "type": "mass",
+        "rite": "wes84mat",
+        "hour": null,
+        "label": "Matrimony"
+      },
+      {
+        "type": "mass",
+        "rite": "wes84bur",
+        "hour": null,
+        "label": "Burial of the Dead"
       }
     ],
     "pd_texts_available": [

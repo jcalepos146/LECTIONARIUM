@@ -1929,7 +1929,7 @@
       ],
       "rite": "new",
       "service": "Divine Service and Matins/Vespers, Litany, Suffrages",
-      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics; Matins, Vespers, the Litany and the Suffrages with the collect of the day",
+      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics; Matins, Vespers, the Litany and the Suffrages with the collect of the day The Common Service Book's Orders for the Baptism of Infants, Marriage and the Burial of the Dead in full.",
       "missing": [
         "Swedish High Mass",
         "current Nordic service books"
@@ -2345,13 +2345,13 @@
       ],
       "rite": "wes84 (Wesley's Sunday Service 1784, the Lord's Supper with its collects, epistles and gospels, shown by the Prayer Book builder); me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders); wes84o (Wesley's Morning and Evening Prayer and Litany, shown by buildOrders)",
       "service": "Lord's Supper, Morning Prayer and occasional services",
-      "now": "The Lord's Supper from Wesley's Sunday Service (1784) in full with its Sunday collects, epistles and gospels, and its Morning and Evening Prayer and Litany with the Select Psalms, the collects and the table of Sunday lessons; the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full",
+      "now": "The Lord's Supper from Wesley's Sunday Service (1784) in full with its Sunday collects, epistles and gospels, and its Morning and Evening Prayer and Litany with the Select Psalms, the collects and the table of Sunday lessons; the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full Wesley's Baptism of Infants, Matrimony and Burial of the Dead in full.",
       "missing": [
-        "Wesley's Sunday Service (1784): the occasional services (baptism, matrimony, burial, ordinal)",
         "the rest of the Methodist ritual (baptism, reception, matrimony, burial)",
         "Moravian liturgies",
         "Congregational orders",
-        "Holiness church rituals"
+        "Holiness church rituals",
+        "Wesley's Sunday Service (1784): Baptism of those of riper years, the Communion of the Sick, the ordinal"
       ],
       "plan": "Wesley's 1784 Sunday Service is the root of Methodist liturgy and public domain; the 1908 Methodist Episcopal Ritual and the 1920 Moravian Hymnal and Liturgies cover the 20th-century forms. Current Free Methodist and Nazarene books are free PDFs whose rituals are in copyright. These families are not in the Sanctuary catalog yet, so add them there before building guides.",
       "sources": [
