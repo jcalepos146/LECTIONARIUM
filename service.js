@@ -752,7 +752,7 @@ const PB_BOOKS={
   bcp29:{file:"data/bcp1929.json", showNotes:true, decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
     collectAt:/^Let us pray\.$/, epistleAt:/^Then the Presbyter, or some other Presbyter or Deacon, turning to the people, shall read the Epistle/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["General Rubrics","The Order for a Second Consecration","Post-Communions","Collects","Exhortations"], prefaceHead:p=>p, prefaceFn:scotPreface},
-  bcp18:{file:"data/bcp-hc.json", part:"bcp1918", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+  bcp18:{file:"data/bcp1918.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:null, epistleAt:/^Then shall be said the Collect of the day/, gospelAt:/^Then, the people all standing up/, collectBeforeEpistle:true,
     notSaid:["Rubrics before the Communion","Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
   bcp92:{file:"data/bcp-hc.json", part:"bcp1892", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
