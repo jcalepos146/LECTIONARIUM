@@ -17,7 +17,7 @@ class NavigationTests(unittest.TestCase):
         self.page.add_init_script("localStorage.setItem('lect-home','\"sanctuary\"')")
         self.open('#/sanctuary');self.page.locator('[data-route="#/study"]').click()
         self.sanctuary().get_by_role('heading',name='Study the liturgy',exact=True).wait_for()
-        self.assertEqual(self.page.locator('[data-study]').count(),7)
+        self.assertEqual(self.page.locator('[data-study]').count(),8)
         self.page.locator('[data-study="sources"]').click()
         self.page.wait_for_function("location.hash==='#sources' && !document.body.classList.contains('san-open')")
         self.assertTrue(self.page.locator('#sources').is_visible());self.assertFalse(self.page.locator('.tabs').is_visible())

@@ -960,7 +960,9 @@ function render(){
   if(S.view==="ask") renderAsk(); else renderSession();
 }
 window.LectApp={
-  passage, riteKind, familyOf, dayNames, getFave, setFave, FAMILIES, DEF_RITE, defaultOffice, longDate,
+  passage, riteKind, familyOf,
+  /* the psalms of a date: the Prayer Book's course by the day of the month, and the Liturgy of the Hours' four-week psalter */
+  async psalmsOfDay(iso){ await daysReady; const day=DAYS[iso]||{}; return {bcp:{m:bcpPsalms(iso,false),e:bcpPsalms(iso,true)},loth:{lauds:lothPsalms(iso,"lauds",day),vespers:lothPsalms(iso,"vespers",day),week:psalterWeek(iso)}}; }, dayNames, getFave, setFave, FAMILIES, DEF_RITE, defaultOffice, longDate,
   coverage(type,rite,hour){ return COV_LABEL[coverage(type,rite,hour)?.[0]]||"Guided text"; },
   /* every rite the guide can open, with how much of its text is printed (the home page lists the complete ones and the
      work-in-progress page the rest) */

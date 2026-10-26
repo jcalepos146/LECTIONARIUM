@@ -173,7 +173,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.86rem;border-top:1px solid 
 .choice .ct{font-family:var(--f-display);font-weight:700;font-size:1.08rem}
 .choice .cd{font-size:.88rem;color:var(--muted)}
 .dayrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
-input[type=date]{font:inherit;background:var(--leaf);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:7px 10px}
+input[type=date],#psNum{font:inherit;background:var(--leaf);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:7px 10px}
 .ghost{font:inherit;background:none;border:1px solid var(--rule);color:var(--ink);border-radius:6px;padding:6px 11px;cursor:pointer}
 .ghost:hover{border-color:var(--rubric);color:var(--rubric)}
 .go{font:inherit;font-family:var(--f-sc);letter-spacing:.05em;font-size:1.02rem;background:var(--rubric);color:var(--leaf);border:0;border-radius:8px;padding:11px 20px;cursor:pointer}
@@ -440,6 +440,18 @@ details.msettings[open]>summary,details.mrun[open]>summary{margin-bottom:8px}
 .cd-cite{font:inherit;background:none;border:0;padding:0;color:var(--rubric);text-decoration:underline dotted;cursor:pointer}
 .cd-text{margin:6px 0 8px;padding:8px 12px;border-left:3px solid var(--rule);font-size:.95rem}
 .cd-none{opacity:.75}
+/* Psalter */
+.ps-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:start}
+.ps-col{background:var(--leaf);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;min-width:0}
+.ps-col h3{font-size:1.1rem;margin:0 0 4px;color:var(--rubric)}
+.ps-col h4{font-family:var(--f-sc);letter-spacing:.04em;font-size:.95rem;margin:14px 0 4px;color:var(--rubric)}
+.ps-col p{margin:0 0 6px}
+.ps-col .gp{font-style:italic;color:var(--muted)}
+.field[hidden]{display:none}
+#psNum{width:7em}
+.ps-nav{display:flex;gap:8px;justify-content:space-between;margin:0 0 10px}
+.ps-nav .ghost{font:inherit;background:transparent;color:var(--rubric);border:1px solid var(--rubric);border-radius:8px;padding:6px 12px;cursor:pointer}
+.ps-nav .ghost[disabled]{opacity:.4;cursor:default}
 @media (min-width:1000px){ .cd-fam{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px} .cd-fam>h3{grid-column:1/-1} }
 .covtab{border-collapse:collapse;width:100%;margin:6px 0 18px;font-size:.92rem} .covtab th,.covtab td{border-bottom:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:top} .covtab .cov{margin-right:6px}
 .reftag{display:inline-block;font-family:var(--f-sc);letter-spacing:.05em;font-size:.76rem;color:var(--lapis);border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-right:6px;vertical-align:1px}

@@ -18,6 +18,7 @@
   <button role="tab" id="tab-hybrid" aria-controls="hybrid" aria-selected="false">Hybrid proposal</button>
   <button role="tab" id="tab-changes" aria-controls="changes" aria-selected="false">1955 vs 1962</button>
   <button role="tab" id="tab-office" aria-controls="office" aria-selected="false">Divine Office</button>
+  <button role="tab" id="tab-psalter" aria-controls="psalter" aria-selected="false">Psalter</button>
   <button role="tab" id="tab-sources" aria-controls="sources" aria-selected="false">Sources</button>
 </nav>
 
@@ -36,6 +37,18 @@
     <div class="field"><span class="lbl">Go to</span><div class="seg"><button type="button" data-cd="-7">‹ Week</button><button type="button" data-cd="-1">‹ Day</button><button type="button" data-cd="0">Today</button><button type="button" data-cd="1">Day ›</button><button type="button" data-cd="7">Week ›</button></div></div>
   </div>
   <div id="cdOut" aria-live="polite"></div>
+</section>
+
+<!-- ============================================================ PSALTER -->
+<section class="view" id="psalter" role="tabpanel" aria-labelledby="tab-psalter" hidden>
+  <p class="lede"><span class="reftag">Read</span> The Psalter as the churches pray it: the psalms of the day in the Prayer Book's monthly course, in John Wesley's selection for the Methodists and in the four-week psalter of the Liturgy of the Hours, or any psalm in the Coverdale, Douay-Rheims and King James versions side by side.</p>
+  <div class="controls">
+    <div class="field"><span class="lbl" id="psModeLbl">Show</span><div class="seg" role="group" aria-labelledby="psModeLbl"><button type="button" data-psmode="day" aria-pressed="true">Psalms of the day</button><button type="button" data-psmode="one" aria-pressed="false">One psalm, three versions</button></div></div>
+    <div class="field" data-psfor="day"><label for="psDate">Date</label><input type="date" id="psDate" min="2025-11-30" max="2030-11-30"></div>
+    <div class="field" data-psfor="day"><span class="lbl" id="psWhenLbl">Office</span><div class="seg" role="group" aria-labelledby="psWhenLbl"><button type="button" data-pswhen="m" aria-pressed="true">Morning</button><button type="button" data-pswhen="e" aria-pressed="false">Evening</button></div></div>
+    <div class="field" data-psfor="one" hidden><label for="psNum">Psalm (Hebrew and Prayer Book numbering)</label><input type="number" id="psNum" min="1" max="150" value="23" inputmode="numeric"></div>
+  </div>
+  <div id="psOut" aria-live="polite"></div>
 </section>
 
 <!-- ============================================================ COMPARE -->
