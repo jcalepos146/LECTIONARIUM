@@ -351,7 +351,7 @@ const ORDO_ONLY={
     ["Postcommunion and Dismissal",/^!When the priest has purified/,/^!When the priest has purified/],
     ["Last Gospel",/^!Turning towards the Gospel side/,/^!Turning towards the Gospel side/],
     ["Prayers after Low Mass",/^!To be said kneeling/,/^!To be said kneeling/]]},
-  a:{key:"a",lat:true,name:"Ambrosian",byHead:{_start:"Preparation and prayers at the altar steps",Ingressa:"Ingressa",Gloria:"Gloria and Prayer over the People","Lectio (Prokeimenon).":"Prophecy, Psalmellus and Epistle",Evangelium:"Gospel","Antiphona post Evangelium":"Antiphon after the Gospel and Offertory",Credo:"Creed",Prefatio:"Preface and Sanctus","Incipit Canon.":"Canon, Lord's Prayer and Communion",Transitorium:"Transitorium",Postcommunio:"Postcommunion and Dismissal"}},
+  a:{key:"a",lat:true,appt:true,name:"Ambrosian",byHead:{_start:"Preparation and prayers at the altar steps",Ingressa:"Ingressa",Gloria:"Gloria and Prayer over the People","Lectio (Prokeimenon).":"Prophecy, Psalmellus and Epistle",Evangelium:"Gospel","Antiphona post Evangelium":"Antiphon after the Gospel and Offertory",Credo:"Creed",Prefatio:"Preface and Sanctus","Incipit Canon.":"Canon, Lord's Prayer and Communion",Transitorium:"Transitorium",Postcommunio:"Postcommunion and Dismissal"}},
   z:{key:"mz",lat:false,name:"Mozarabic",byHead:{_start:"Preparation and prayers at the altar steps",Gloria:"Gloria",COLLECT:"Collect",Lesson:"Lessons and Epistle","The GOSPEL":"Gospel, Lauda and Offertory",Lavabo:"Lavabo and the first prayer (Missa)","II. PRAYER":"Second prayer: the Diptychs","III. PRAYER":"Third prayer: Post Nomina","IV. PRAYER":"Fourth prayer: Ad Pacem; the Inlatio and Sanctus","V. PRAYER":"Fifth prayer: Post Sanctus and the Institution","VI. PRAYER":"Sixth prayer: Post Pridie; the Creed","AD CONFRACTIONEM, varying.":"The Fraction","VII. PRAYER":"Seventh prayer: the Lord's Prayer and Communion","The COMMUNION, which varies.":"Communion and Dismissal"}},
 };
 const ordoClean=l=>{ let x=String(l).replace(/\t/g," ").replace(/^!x!!?/,"!").replace(/^!x!/,""); if(/^!\[:.*:\]$/.test(x.trim())||/^!\*/.test(x.trim())) return ""; if(/^\[.*\]$/.test(x.trim())) x="!"+x.trim().slice(1,-1); if(/^!\[/.test(x)) x="!"+x.slice(2).replace(/\]$/,""); if(x.trim()==="...") x="!(The proper text of the day.)"; if(x.trim()==="[INSERT PREFACE HERE]") x="!(The Preface of the day.)"; return x; };
@@ -369,7 +369,7 @@ async function buildOrdoOnly(ctx,opts){
   if(opts.lastGospel===false) parts=parts.filter(p=>p.t!=="Last Gospel");
   const out=[];
   /* the day's lessons, from the lectionary of the rite (or the nearest one, labelled), at the part that reads them */
-  const LL=window.LectCalendar.custom({...ctx,type:"mass"})||(cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null), LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
+  const LL=window.LectCalendar.custom({...ctx,type:"mass"})||(cfg.appt?await window.LectCalendar.appointments({...ctx,type:"mass"}):cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null), LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
   for(const p of parts){
     let la=p.la, en=p.en, html="";
     { const pick=LI.filter(x=>!x.used&&(x.slot?x.slot.test(p.t):/Epistle|Lesson|Prophecy|Gospel/.test(p.t)));
@@ -396,6 +396,16 @@ function pbItem(it){
   if(k==="cite") return `<p class="cite">${esc(t)}</p>`;
   if(k==="h") return `<h4 class="sub2">${esc(t)}</h4>`;
   return `<p data-r="${r||"all"}">${lab?`<span class="sp">${lab}</span> `:""}${inl(t)}</p>`;
+}
+function scotPreface(s,iso){
+  const d=toDate(iso), E=easterY(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=iso.slice(5);
+  if(md>="12-25"||md<="01-05") return "upon christmas day"; if(md>="01-06"&&md<="01-13") return "upon the epiphany";
+  if(off===-3) return "upon maundy thursday"; if(off>=-46&&off<=-15) return "from ash wednesday"; if(off>=-14&&off<=-4) return "from passion sunday";
+  if(off>=0&&off<39) return "upon easter day"; if(off>=39&&off<49) return "upon ascension day"; if(off>=49&&off<56) return "upon pentecost"; if(off===56) return "trinity";
+  if(md==="02-02") return "purification"; if(md==="03-25") return "annunciation"; if(md==="08-06") return "transfiguration";
+  if(["11-01","06-24","06-09","01-13","03-17","09-16","11-16"].includes(md)) return "all saints";
+  if(["11-30","12-21","01-25","02-24","04-25","05-01","06-11","06-29","07-25","08-24","09-21","10-18","10-28"].includes(md)) return "apostles";
+  if(s==="advent") return "advent"; return "";
 }
 const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=Math.round((toDate(iso)-E)/DAY);
   if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
@@ -438,6 +448,14 @@ const PB_BOOKS={
   wes84:{file:"data/bcp1784.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", prefaceDayOnly:true,
     collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[or/, gospelAt:/^The holy Gospel is written/,
     notSaid:[], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
+  /* The Scottish Liturgy (1929): its own seasons of Proper Prefaces (Advent, Lent, Passiontide, Maundy Thursday and
+     the Scottish saints' days), picked by date; the 1662 propers stand in for the Scottish Book's own. */
+  bcp29:{file:"data/bcp1929.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
+    collectAt:/^Let us pray\.$/, epistleAt:/^Then the Presbyter, or some other Presbyter or Deacon, turning to the people, shall read the Epistle/, gospelAt:/^Glory be to thee, O Lord/,
+    notSaid:["General Rubrics","The Order for a Second Consecration","Post-Communions","Collects","Exhortations"], prefaceHead:p=>p, prefaceFn:scotPreface},
+  bcp18:{file:"data/bcp1918.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+    collectAt:null, epistleAt:/^Then shall be said the Collect of the day/, gospelAt:/^Then, the people all standing up/, collectBeforeEpistle:true,
+    notSaid:["Rubrics before the Communion","Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
   bcp92:{file:"data/bcp1892.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the Day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p}
@@ -456,7 +474,7 @@ async function buildPB(ctx,opts,book){
   const spoken=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/).filter(Boolean).length;
   /* Wesley prints the proper prefaces for the feast itself only, not its octave. */
   const d0=toDate(iso), off0=Math.round((d0-easterY(d0.getUTCFullYear()))/DAY);
-  const pref=C.prefaceDayOnly?((d0.getUTCMonth()===11&&d0.getUTCDate()===25)?"Christmas":({0:"Easter",39:"Ascension",49:"Whitsuntide",56:"Trinity Sunday"})[off0]||""):PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
+  const pref=C.prefaceFn?C.prefaceFn(season(iso,day),iso):C.prefaceDayOnly?((d0.getUTCMonth()===11&&d0.getUTCDate()===25)?"Christmas":({0:"Easter",39:"Ascension",49:"Whitsuntide",56:"Trinity Sunday"})[off0]||""):PB_PREFACE(season(iso,day),iso), prefH=C.prefaceHead(pref).toLowerCase();
   const at=(its,re)=>re?its.findIndex(x=>re.test(x[1])):-1;
   for(const st of B.hc){
     let html="", secs=spoken(st.items)/2.4;
@@ -718,6 +736,12 @@ const ORDER_RITES={
   bcp62bap:{parts:o=>[["bcp1662-baptism"]]},
   bcp62mat:{parts:o=>[["bcp1662-matrimony"]]},
   bcp62bur:{parts:o=>[["bcp1662-burial"]]},
+  wes84bap:{parts:o=>[["wes1784-baptism"]]},
+  wes84mat:{parts:o=>[["wes1784-matrimony"]]},
+  wes84bur:{parts:o=>[["wes1784-burial"]]},
+  csbbap:{parts:o=>[["csb-baptism"]]},
+  csbmat:{parts:o=>[["csb-matrimony"]]},
+  csbbur:{parts:o=>[["csb-burial"]]},
   csbm:{lect:"csb", parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{lect:"csb", parts:o=>[["csb-vespers"]], csbCollect:true}
 };
@@ -725,8 +749,8 @@ ORDER_RITES.csbl={parts:o=>[["csb-litany"]], csbCollect:true};
 ORDER_RITES.csbs={parts:o=>[["csb-suffrages"]], csbCollect:true};
 ORDER_RITES.csbsm={lect:"csb", parts:o=>[["csb-suffrages-morning"]], csbCollect:true};
 ORDER_RITES.csbse={lect:"csb", parts:o=>[["csb-suffrages-evening"]], csbCollect:true};
-ORDER_RITES.byzv={parts:o=>[["byz-vespers"]], optional:["The Litiya","The Blessing of the Loaves"], optLabel:"The Litiya and the blessing of the loaves left out"};
-ORDER_RITES.byzm={parts:o=>[["byz-matins"]], optional:["The Opening, when Matins is said apart from the Vigil"], optLabel:"The opening for Matins said apart from the Vigil left out"};
+ORDER_RITES.byzv={byzFeast:"v", parts:o=>[["byz-vespers"]], optional:["The Litiya","The Blessing of the Loaves"], optLabel:"The Litiya and the blessing of the loaves left out"};
+ORDER_RITES.byzm={byzFeast:"m", parts:o=>[["byz-matins"]], optional:["The Opening, when Matins is said apart from the Vigil"], optLabel:"The opening for Matins said apart from the Vigil left out"};
 ORDER_RITES.byzc={parts:o=>[["byz-compline"]]};
 /* Wesley's Sunday Service (1784): Morning and Evening Prayer for the Lord's Day and the Litany for Wednesdays and Fridays,
    with the book's Collect of the day and its table of proper lessons (data/bcp1784.json). */
@@ -781,6 +805,27 @@ async function buildOrders(ctx,opts,rite){
       less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
     }
     opts={...opts,_less:less};
+  }
+  if(R.byzFeast){   /* Hapgood's hymns of the Sunday tone and of the Great Feasts; Great Vespers is the vigil of the next day */
+    const D=await J("data/byz-liturgy.json"), V=R.byzFeast==="v", less={};
+    const day=V?new Date(toDate(ctx.iso).getTime()+DAY).toISOString().slice(0,10):ctx.iso;
+    const FX=byzFeasts(day,D).filter(f=>!V||f.lic), sun=toDate(day).getUTCDay()===0, tone=sun?byzToneOf(day):0, T=tone&&D.tones?D.tones[tone]:null;
+    const hy=(lab,t)=>`<p class="rub">${esc(lab)}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(t)}</p>`;
+    const src=FX.length?cue(`The hymns of ${FX.map(f=>f.t).join(" and ")} are from the Special Services of Hapgood's Service Book.`):"";
+    const resTrop=T&&!FX.some(f=>f.t==="Holy Pascha")?hy(`Troparion of the Resurrection, Tone ${tone}`,T.troparion):"";
+    const fTrop=FX.map(f=>hy(`Troparion of ${f.t}${BYZ_TONE(f.troparion_tone)}`,f.troparion)).join("");
+    if(V){
+      let st="";
+      if(T) st+=`<h4 class="sub2">Stichera of the Resurrection, Tone ${tone}</h4>`+T.lic.map(x=>`<p data-r="ppl">${inl(x)}</p>`).join("");
+      for(const f of FX) st+=`<h4 class="sub2">Sticheron of ${esc(f.t)}${BYZ_TONE(f.lic_tone)}</h4><p data-r="ppl">${inl(f.lic)}</p>`;
+      if(st) less["hymn:The Stikhiry of the Tone"]=[st+cue("Then the other stichera of the day from the Octoechos and Menaion.")+src,3];
+      less["hymn:The Canticles of the Litiya"]=FX.some(f=>f.lity)?[FX.filter(f=>f.lity).map(f=>`<h4 class="sub2">Sticheron at the Litiya${BYZ_TONE(f.lity_tone)}</h4><p data-r="ppl">${inl(f.lity)}</p>`).join(""),1.5]:["",0];
+      less["hymn:The Hymn of the Feast"]=FX.length?[cue("On the feast, in place of the hymn above (thrice):")+fTrop,1]:T?[cue("On the eve of the Lord's Day, in place of the hymn above:")+resTrop+hy("Theotokion",T.theotokion),1]:["",0];
+    } else {
+      if(FX.length||T) less["hymn:The Hymns (Troparia) of the Feast, or of the Saint, or of the Tone, and the Hymn to the Birth-giver of God"]=[resTrop+fTrop+(T&&!FX.length?hy("Theotokion",T.theotokion):cue("Then the Hymn to the Birth-giver of God of the tone."))+src,1.5];
+      less["hymn:The Great Exaltation of the Feast"]=FX.some(f=>f.exalt)?[FX.filter(f=>f.exalt).map(f=>hy("The Great Exaltation",f.exalt)).join(""),1]:["",0];
+    }
+    opts={...opts,_less:{...(opts._less||{}),...less}};
   }
   if(R.merc){   /* the Order of Worship's own Gospel, Epistle and Collect, and its Table of Scripture Lessons for Sundays */
     const T=await J("data/mercersburg.json"), D=mercDay(ctx.iso), P=T.propers[D.k], p=t=>`<p data-r="cel">${esc(t)}</p>`, less={};
@@ -1231,12 +1276,21 @@ function byzEnv(iso,kind){
   const d=toDate(iso), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY), sun=d.getUTCDay()===0, pascha=off>=0&&off<=38;
   return {kind,pascha,departed:!sun&&!pascha,tone:sun?byzToneOf(iso):0,sun,illum:off>=-25&&off<=-4};
 }
+/* Hapgood's propers of the Great Feasts (data/byz-liturgy.json "feasts"), by fixed date or by distance from Pascha;
+   Bright Week keeps the Paschal hymns. Two may meet (the Annunciation in Holy Week): both are returned. */
+function byzFeasts(iso,D){
+  if(!D||!D.feasts) return [];
+  const d=toDate(iso), off=Math.round((d-easterY(d.getUTCFullYear()))/DAY), md=iso.slice(5);
+  return [D.feasts[md], D.feasts["p"+(off>=0&&off<7?0:off)]].filter(Boolean);
+}
+const BYZ_TONE=n=>n?`, Tone ${["","I","II","III","IV","V","VI","VII","VIII"][n]}`:"";
 function byzOk(it,env){ return (it.if||[]).every(c=>c==="chrys"?env.kind==="chrys":c==="basil"?env.kind==="basil":c==="pascha"?env.pascha:c==="departed"?env.departed:c==="feast"?env.feast:c==="illumination"?env.illum:/^tone\d$/.test(c)?env.tone===+c.slice(4):false); }
 async function byzFull(ctx,kind,veil,AB){
   let D; try{ D=await J("data/byz-liturgy.json"); }catch(e){ return null; }
   const env=byzEnv(ctx.iso,kind), b=ctx.day.b, out=Array(9).fill(""), MAP=kind==="pres"?BYZ_PRES:BYZ_PART;
   const rd=b?b.r:[], vesp=rd.filter(x=>/^Vespers/.test(x[0]));
   env.feast=rd.some(x=>/^Gospel/.test(x[0]));
+  const FX=kind==="pres"?[]:byzFeasts(ctx.iso,D), FXN=FX.length?cue("The hymns of the feast are from the Special Services in Hapgood's Service Book."):"";
   for(const part of D.parts){
     const n=MAP[part.key]; if(n===undefined||(part.key==="after"&&AB>=1)) continue;
     let h="", quiet=[];
@@ -1250,9 +1304,19 @@ async function byzFull(ctx,kind,veil,AB){
       if(it.t==="r"&&quiet.length&&quietNext(i)){ quiet.push(it); continue; }
       if(it.t==="r"&&!quiet.length&&quietNext(i)&&/secretly|privately|low voice|to himself|silently/i.test(it.x)){ quiet.push(it); continue; }
       flush();
-      if(it.t==="r"){ h+=`<p class="rub">${inl(it.x)}</p>`; continue; }
+      if(it.t==="r"){ h+=`<p class="rub">${inl(it.x)}</p>`; if(/^Here shall be sung the Second Antiphon/.test(it.x)) h+=FX.filter(f=>f.ant2).map(f=>`<p class="rub">On ${esc(f.t)}, the refrain of the second festal antiphon:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(f.ant2)}</p>`).join(""); continue; }
       if(it.t==="slot"){
-        if(it.n==="troparia"){
+        if(it.n==="troparia"&&FX.length){
+          const T=env.tone&&D.tones?D.tones[env.tone]:null;
+          if(T&&!FX.some(f=>f.t==="Holy Pascha")) h+=`<p class="rub">Troparion of the Resurrection, Tone ${env.tone}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(T.troparion)}</p>`;
+          for(const f of FX) h+=`<p class="rub">Troparion of ${esc(f.t)}${BYZ_TONE(f.troparion_tone)}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(f.troparion)}</p>`;
+          for(const f of FX) if(f.kontakion) h+=`<p class="rub">Kontakion of ${esc(f.t)}${BYZ_TONE(f.kontakion_tone)}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(f.kontakion)}</p>`;
+          if(FX.some(f=>!f.kontakion)) h+=cue("Hapgood gives no kontakion for this feast: take it from your church's books.");
+          h+=FXN;
+        }
+        else if(it.n==="prokeimenon"&&FX.some(f=>f.prokeimenon)){ for(const f of FX) if(f.prokeimenon) h+=`<p class="rub">Prokeimenon of the feast${BYZ_TONE(f.prokeimenon_tone)}:</p><p data-r="lec"><span class="sp">Reader.</span> ${inl(f.prokeimenon)}</p>`; }
+        else if(it.n==="alleluia"&&FX.some(f=>f.alleluia)){ for(const f of FX) if(f.alleluia) h+=`<p class="rub">Alleluia of the feast${BYZ_TONE(f.alleluia_tone)}, with the verse:</p><p data-r="lec"><span class="sp">Reader.</span> ${inl(f.alleluia)}</p>`; }
+        else if(it.n==="troparia"){
           const T=env.tone&&D.tones?D.tones[env.tone]:null;
           if(T) h+=`<p class="rub">Troparion of the Resurrection, Tone ${env.tone}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(T.troparion)}</p>`+cue("Then the troparion of the temple and of the saint of the day, from your church's books.")+`<p class="rub">Kontakion of the Resurrection, Tone ${env.tone}:</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(T.kontakion)}</p>`+cue("Then the other kontakia of the day, ending with the kontakion of the Birth-giver of God.");
           else h+=cue("Troparia and kontakia of the day: from the Octoechos, Menaion or Triodion (your church's books).");
@@ -1266,6 +1330,14 @@ async function byzFull(ctx,kind,veil,AB){
         else if(/^prokeimenon\d$/.test(it.n)) h+=cue("Prokeimenon of the day from the Triodion.");
         else if(it.n==="gospel"&&!b) h+=cue("Today's Apostol and Gospel follow the weekday lectionary; see the Byzantine lectionary.");
         continue;
+      }
+      /* the feast's own hymns where the book appoints a substitute */
+      if(FX.length&&it.t==="s"){
+        const sub=(key,lab)=>FX.filter(f=>f[key]).map(f=>`<p class="rub">${lab} (${esc(f.t)}):</p><p data-r="ppl"><span class="sp">Choir.</span> ${inl(f[key])}</p>`).join("");
+        if(/^Meet is it, in truth/.test(it.x)&&FX.some(f=>f.meet)){ h+=sub("meet","In place of Meet is it"); continue; }
+        if(/^O Holy God, Holy Mighty.*Five times/.test(it.x)&&FX.some(f=>f.trisagion)){ h+=sub("trisagion","In place of the Thrice-Holy"); continue; }
+        if(/^Praise ye the Lord from heaven/.test(it.x)&&FX.some(f=>f.communion)){ h+=sub("communion","The Communion Hymn of the feast"); continue; }
+        if(/^O come, let us worship and fall down before Christ/.test(it.x)&&FX.some(f=>f.introit)){ h+=`<p data-r="ppl"><span class="sp">Choir.</span> ${inl(it.x)}</p>`+sub("introit","The Introit of the feast"); continue; }
       }
       if(it.i||(veil&&it.w==="P"&&CONS_RE.test(it.x||""))){ h+=veil?veilCue():`<p class="emph" data-r="cel"><span class="sp">Priest.</span> ${inl(it.x)}</p>`; continue; }
       const [role,lab]=BYZ_WHO[it.w];

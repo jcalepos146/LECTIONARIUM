@@ -3504,9 +3504,16 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp29",
+        "hour": null,
+        "label": "The Scottish Liturgy"
+      }
+    ],
     "pd_texts_available": [
-      "1929 edition: verify the exact scan and territory before extraction."
+      "The Scottish Liturgy (Scottish Communion Office), 1929: transcribed from the Internet Archive scan scottishliturgyf0000epis and proofread against the page images."
     ],
     "sources": [
       "https://justus.anglican.org/resources/bcp/Scotland.htm",
@@ -3734,9 +3741,16 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp18",
+        "hour": null,
+        "label": "Holy Communion"
+      }
+    ],
     "pd_texts_available": [
-      "1918 edition: verify the exact scan and territory before extraction."
+      "The Order for the Administration of the Lord's Supper or Holy Communion: transcribed (Justus HTML checked against the Justus typeset edition)."
     ],
     "sources": [
       "https://justus.anglican.org/resources/bcp/canada.htm",
@@ -4317,6 +4331,24 @@
         "rite": "csbse",
         "hour": null,
         "label": "Evening Suffrages"
+      },
+      {
+        "type": "mass",
+        "rite": "csbbap",
+        "hour": null,
+        "label": "Baptism of Infants"
+      },
+      {
+        "type": "mass",
+        "rite": "csbmat",
+        "hour": null,
+        "label": "Marriage"
+      },
+      {
+        "type": "mass",
+        "rite": "csbbur",
+        "hour": null,
+        "label": "Burial of the Dead"
       }
     ],
     "pd_texts_available": [
@@ -5149,6 +5181,24 @@
         "rite": "wes84o",
         "hour": null,
         "label": "Morning and Evening Prayer, and the Litany (1784)"
+      },
+      {
+        "type": "mass",
+        "rite": "wes84bap",
+        "hour": null,
+        "label": "Baptism of Infants"
+      },
+      {
+        "type": "mass",
+        "rite": "wes84mat",
+        "hour": null,
+        "label": "Matrimony"
+      },
+      {
+        "type": "mass",
+        "rite": "wes84bur",
+        "hour": null,
+        "label": "Burial of the Dead"
       }
     ],
     "pd_texts_available": [

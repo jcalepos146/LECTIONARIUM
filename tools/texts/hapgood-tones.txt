@@ -82,3 +82,176 @@ dogmatikon: The King of heaven, because of his love toward mankind, hath appeare
 troparion: Thou didst descend from on high, O Tender-hearted One; thou didst endure the three-days' burial, that thou mightest free us from our passions, O our Life and Resurrection. Glory, O Lord, to thee.
 theotokion: Thou who for our sake wast born of a Virgin, and didst suffer crucifixion, O Good One, and didst despoil Death through death, and as God didst reveal Resurrection: Despise not those whom thou hast created with thine own hand; show forth thy love for mankind, O Merciful One; accept the Birth-giver of God who bare thee, and who entreateth thee for us; and save thy despairing people, O our Saviour.
 kontakion: When thou didst rise again from the tomb, thou didst waken the dead and didst raise up Adam. Eve also exulteth in thy Resurrection, and all the ends of the earth do celebrate the festival of thy rising again from the dead, O All-Compassionate One.
+
+# The Great Feasts: Hapgood, "Special Services", pp. 164-266 (leaves n203-n305). Each feast is keyed
+# by its fixed date (MM-DD) or by its distance from Pascha (p-7 is Palm Sunday). Fields:
+#   lic: a sticheron at Lord, I have cried;  lity: the sticheron at the Litiya;
+#   troparion / kontakion (with the tone where the book prints one);  exalt: the Matins magnification;
+#   ant2: the refrain of the second antiphon;  introit;  trisagion: the hymn sung in its place;
+#   prokeimenon / alleluia (with tone);  meet: the hymn in place of "Meet is it";  communion.
+# Hapgood gives no kontakion for the Dormition, and only the hymns noted for Holy Week.
+
+## feast 09-08 | The Nativity of the Most Holy Birth-giver of God
+lic 6: To-day hath God who sitteth on supersensual thrones prepared for himself upon earth a holy throne. He who in wisdom established the heavens hath, in his love toward mankind, made a living heaven; for from a barren root hath he made to bourgeon forth to us a life-bearing garden, even his Mother. Thou who art the God of wonders, and the hope of the hopeless, O Lord, glory to thee.
+lity 8: On this blessed illustrious day of our Feast, let us sound the spiritual trumpets: for she who is of the seed of David is born this day as the Mother of Life, dispersing darkness; who also is the renewal of Adam and the recall of Eve, the fountain of incorruption, and the annihilation of corruption; through whom, also, we have become godlike, and have been delivered from death. And unto her, with Gabriel, let us cry, O ye faithful: Hail, thou that art full of grace! The Lord is with thee, for thy sake giving unto us great mercy.
+troparion 4: Thy holy Nativity, O virgin Birth-giver of God, hath proclaimed joy unto all the universe; for from thee is risen the Sun of Righteousness, even Christ our God. And having destroyed the curse, he hath bestowed a blessing; and having brought Death to naught, he hath given unto us life eternal.
+exalt: We magnify thee, O most holy Virgin, and do homage to thy holy Parents, and exalt thy glorious Nativity.
+kontakion: Joachim and Anna were delivered from the reproach of childlessness, and Adam and Eve from the corruption of death, at thy holy Nativity, O All-pure One. This do thy people celebrate, being redeemed from the guilt of transgressions, when they cry unto thee: The barren giveth birth to the Birth-giver of God and the Nourisher of our Life.
+introit: The Hymn for the Day.
+prokeimenon 4: My soul doth magnify the Lord, and my spirit hath rejoiced in God my Saviour.
+alleluia 8: Hearken, O Daughter, and behold, and incline thine ear.
+meet: Alien to mothers is virginity, and strange unto virgins is child-birth; in thee, O Birth-giver of God, were both achieved. Wherefore all we nations of the earth unceasingly do magnify thee.
+communion: I will take the cup of salvation, and call upon the Name of the Lord.
+
+## feast 09-14 | The Elevation of the Precious Cross of the Lord
+lic 6: The Cross, being set up, doth command every created being to sing the most pure Passion of him who was lifted up thereon. For having upon the same slain him who had slain us, he endowed with life those who were slain, and adorned them, and vouchsafed that they might dwell in heaven, forasmuch as he is compassionate, through the rich abundance of his goodness. Wherefore, rejoicing, let us exalt his Name, and magnify his exceeding condescension.
+lity 1: To-day, of a truth, hath the sacredly prophetic saying of David received its fulfilment; for lo! we visibly bow down before the footstool of thine all-spotless feet, and putting our trust under the shadow of thy wings, O all-bountiful One, we cry aloud unto thee: Lift thou up the light of thy countenance upon us. Exalt thou the horn of thine Orthodox people through thy precious Cross, O greatly merciful Christ.
+troparion 1: O Lord, save thy people and bless thine inheritance, granting victory over enemies unto our Sovereign, N., and through thy Cross preserving thine Estate.
+exalt: We magnify thee, O life-giving Christ, and do homage to thy holy Cross, whereby thou hast saved us from the works of the enemy.
+ant2: Save, O Son of God, who wast crucified in the flesh, us who sing unto thee. Alleluia.
+introit: O magnify the Lord our God, and fall down before his footstool, for he is holy.
+trisagion: Thy Cross do we adore, O Master, and thy holy Resurrection do we glorify.
+kontakion: Do thou who, of thine own good will, upon the Cross wast lifted up, bestow thy bounties upon the new State which is called by thy Name, O Christ, our God; make glad with thy might our most God-fearing (Emperor, King, or President), N., granting victory over his adversaries unto him who hath thine aid, which is a panoply of peace, a trophy invincible.
+prokeimenon 7: O magnify the Lord our God, and fall down before his footstool, for he is holy.
+communion: The light of thy countenance hath been showed upon us, O Lord.
+
+## feast 11-21 | The Entrance of the Most Holy Birth-giver of God into the Temple
+lic 1: To-day let us faithful exult, singing unto the Lord in psalms and songs, and doing honour unto his holy Tabernacle, the Ark imbued with life, which containeth the uncontainable Word: for in wise supernatural is she brought unto the Lord, being still of tender age in the flesh, and Zacharias, the High Priest, doth with joy receive her, as the abode of God.
+lity 4: To-day is the Tabernacle which containeth God, even the Birth-giver of God, brought into the temple of the Lord, and Zacharias receiveth the same: To-day doth the Holy of Holies rejoice, and the Angelic Choir doth mystically triumph. With them also keeping festival to-day, let us cry aloud with Gabriel: Hail, thou that art full of grace! The Lord most merciful is with thee.
+troparion: To-day is the foreshadowing of the beneficence of God which is to come, and the heralding of man's salvation. The Virgin is clearly manifested in the temple of God, and in anticipation announceth Christ unto all men. Unto her let us, also, cry aloud: Hail, thou who art the fulfilment of the Creator's providence!
+exalt: We magnify thee, O all-holy Virgin, Maiden chosen by the Lord, and do homage to thy Presentation in the temple of the Lord.
+kontakion: The all-pure Temple of the Saviour, the most precious Bridal-chamber and Virgin, the Treasure-house of the glory of God, to-day is led into the temple of the Lord, bringing with her the grace which is in the Divine Spirit; whom also the Angels of God do celebrate in song: This is the Abode of Heaven.
+introit: The Hymn for the Day.
+prokeimenon 4: My soul doth magnify the Lord, and my spirit hath rejoiced in God my Saviour.
+alleluia 8: Hearken, O daughter, and behold, and incline thine ear.
+meet: Let no hand profane in anywise touch the living Ark of God, but let the lips of the faithful unceasingly singing the Salutation of the Angel to the Birth-giver of God, cry aloud with rejoicing: Hail, thou that art full of grace, the Lord is with thee!
+communion: I will take the cup of salvation, and call upon the Name of the Lord.
+
+## feast 12-25 | The Nativity of Christ
+lic 2: O come, let us rejoice in the Lord, as we declare this present mystery: The partition wall of disunion hath been destroyed, the flaming sword is turned back, and the Cherubim withdraw from the Tree of Life, and I partake of the food of Paradise, whence, because of disobedience, I was expelled. For the Image Immutable of the Father, the Image of his Eternity, taketh the form of a servant, having come forth from a Mother unwedded, yet having suffered no change: for that which he was, that he remaineth, being very God; and that which he was not he hath assumed, becoming very man because of his love toward mankind. Unto him let us cry aloud: O God, who wast born of a Virgin, have mercy upon us.
+lity 1: Let heaven and earth to-day prophetically exult, and let Angels and men spiritually rejoice: for God hath revealed himself in the flesh unto those who were in darkness and sat in the shadow, and hath been born of a Virgin. The cavern and the manger have received him; Shepherds proclaim the marvel, and Magi from the Orient bring gifts unto Bethlehem. And we, also, with lips unworthy, do bring unto him praise in Angelic wise: Glory be to God on high, and on earth peace: for the Hope of the nations is come, and having come hath saved us from bondage to the enemy.
+troparion 4: Thy Nativity, O Christ our God, hath arisen upon the world as the light of wisdom. For at it, they who worshipped the stars were, by a Star, taught to adore thee, the Sun of Righteousness, and to know thee, the Orient from on high. O Lord, glory to thee.
+exalt: We magnify thee, O Life-giving Christ, who for our sakes now art born in the flesh of the Virgin Mary, unwedded and most pure.
+kontakion: To-day a Virgin bringeth forth the Supersubstantial, and earth offereth a cavern to the Unapproachable; Angels together with the Shepherds sing praises; the Wise Men journey on with the Star. For, for our sakes, God, who is before all the ages, is born a little Child.
+ant2: O Son of God, who wast born of a Virgin, save us who sing unto thee: Alleluia.
+introit: Out of the womb, before the morning star have I begotten thee: the Lord hath sworn and will not repent: thou art a Priest forever, after the order of Melchizidech.
+trisagion: As many as are baptized into Christ have put on Christ. Alleluia.
+prokeimenon 8: Let all the earth worship thee, and hymn thee, yea, let it hymn thy Name, O Most Highest.
+meet: Magnify, O my soul, the Virgin, the all-pure Birth-giver of God, more honourable and more glorious than the hosts on high. A mystery strange and most glorious I behold: The cavern, Heaven; the Virgin, the Cherubimic Throne; the manger, the receptacle wherein lieth Christ our God, whom nothing may contain. Him, therefore, do we magnify, praising him in song.
+communion: The Lord hath sent deliverance unto his people.
+
+## feast 01-06 | The Epiphany (Theophany) of our Lord
+lic 2: The Forerunner, beholding our Illuminator who illumineth every man, coming to be baptized, rejoiceth in his soul; and he trembleth, and with his hand doth he point Him out to the people, saying: Lo, this is he who redeemeth Israel, setting us free from corruption. O Christ our God, the Sinless One, glory to thee!
+lity 8: To-day is creation illumined, to-day do all things both heavenly and earthly rejoice. Angels and men are intermingled; for whithersoever the King cometh, there also cometh orderliness. Let us make haste then unto Jordan, and we shall all behold John, as he baptizeth the head not made with hands and sinless. Wherefore, singing the song of the Apostles, let us cry with one accord: The grace of God, which is saving unto all men, hath manifested itself, illumining the faithful and bestowing upon the same great mercy.
+troparion 1: When in Jordan thou wast baptized, O Lord, the worship of the Trinity was made manifest. For the voice of the Father bare witness unto thee, calling thee his beloved Son, and the Spirit, in the form of a dove, confirmed the steadfastness of that word. O Christ our God, who didst manifest thyself, and dost enlighten the world, glory to thee.
+exalt: We magnify thee, O life-giving Christ, for our sakes now baptized of John in the waters of the Jordan.
+kontakion: To-day hast thou revealed thyself unto the universe, and thy Light, O Lord, hath showed a sign unto us, who with understanding sing unto thee: Thou art come, and hast revealed thyself, O Light Unapproachable.
+ant2: O Son of God, who wast baptized in Jordan, save us who sing unto thee, Alleluia.
+introit: Blessed is he that cometh in the Name of the Lord. God is the Lord, and hath revealed himself unto us.
+trisagion: As many as have been baptized into Christ have put on Christ.
+prokeimenon 4: Blessed is he that cometh in the Name of the Lord. God is the Lord, and hath revealed himself unto us.
+alleluia 4: Offer thanks unto the Lord, ye sons of God.
+meet: Magnify, O my soul, her who is more honourable than the hosts on high, even the most pure Virgin Birth-giver of God. No tongue hath power worthily to praise thee, and even the supra-mundane mind is perplexed how to hymn thee, O Birth-giver of God. But inasmuch as thou art gracious, accept thou our faith; and our God-inspired love thou knowest. For thou art the Intercessor of Christians. We magnify thee.
+communion: The saving grace of God hath manifested itself unto all men.
+
+## feast 02-02 | The Meeting of the Lord
+lic 1: Let us also come: with hymns divine let us meet Christ and receive him whose salvation Simeon beheld. For this is he of whom David prophesied: This is he who spake by the prophets; who for our sakes became incarnate, and proclaimed the law. Him let us worship.
+lity 1: The Ancient of Days, who of old gave the Law unto Moses, on Sinai, to-day is seen as a little Child; and in accordance with the Law, as the creator of the Law, fulfilling the Law, is brought into the temple, and given to an aged man. And Simeon the Righteous, having received him, and perceived the fulfilment of the promises accomplished, cried aloud with joy: Mine eyes have seen the mystery hidden from eternity in these latter days revealed, the light which destroyeth the darkness of unbelieving heathen, and giveth glory unto newly chosen Israel. Wherefore, release thou thy servant from the bonds of this flesh unto the life which waxeth not old, marvellous and unending; granting unto the world great mercy.
+troparion 1: Hail, O Virgin Birth-giver of God: for from thee hath shone forth the Sun of Righteousness, Christ our God, who giveth light to those who are in darkness. And rejoice, thou aged, righteous man, that didst receive in thine arms the Redeemer of our souls, who giveth unto us resurrection.
+exalt: We magnify thee, O life-giving Christ, and we do homage to thy Mother most pure, by whom thou hast now been brought into the Temple of the Lord, according to the Law.
+kontakion: Thou who by thy birth didst sanctify the Virgin's womb, and didst bless the arms of Simeon, as it was meet, having preserved us in anticipation from condemnation, hast now also saved us, O Christ-God. But grant tranquillity amid the alarms of war unto our Emperor, whom thou hast adopted into thy love, O thou who alone lovest mankind.
+prokeimenon 4: My soul doth magnify the Lord, and my spirit hath rejoiced in God my Saviour.
+alleluia 8: Lord, now lettest thou thy servant depart in peace, according to thy word.
+communion: I will take the cup of salvation, and call upon the Name of the Lord.
+
+## feast 03-25 | The Annunciation of the Most Holy Birth-giver of God
+lic 6: Gabriel, when he revealed unto thee, O Maiden, the counsel of God which was from everlasting, did stand before thee, saluting thee, and proclaiming: Hail, O Earth Unsown! Hail, O Bush which Burned, yet was not consumed! Hail, O Abyss Unfathomable! Hail, O Bridge which leadeth unto heaven, and Ladder lofty, which Jacob saw! Hail, O Pot Divine of Manna! Hail, O Abrogation of the curse! Hail, O Recall of Adam! The Lord is with thee.
+lity 1: In the sixth month was the Chieftain of the Archangels sent unto thee, a Virgin undefiled, to announce unto thee the word of salvation and to proclaim unto thee: Hail, thou who art made glad, the Lord is with thee! Thou shalt bear the Son of the Father who was before the ages, and he shall save his people from their sins.
+troparion 4: To-day is the crown of our salvation, and the manifestation of that mystery which is from everlasting: The Son of God becometh the son of a Virgin, and Gabriel announceth the glad tidings of grace. Wherefore let us also cry aloud with him unto the Birth-giver of God: Hail, thou that art full of grace, the Lord is with thee!
+exalt: The song of the Archangel sing we unto thee, O Pure One: Hail, thou that art full of grace, the Lord is with thee!
+kontakion: We, thy servants, in that we have been delivered from calamities, do offer unto thee, O Birth-giver of God, who as victorious Chieftain warrest for us, songs of triumph and thanksgiving: Do thou also, in that thou hast might invincible, free us from all assaults, that we may cry unto thee: Hail, O Bride unwedded!
+prokeimenon 4: Proclaim ye, from day unto day, the glad tidings of the salvation of our God.
+meet: O Earth, proclaim the great gladness! and ye Heavens, praise ye the glory of God! Let no hand profane in anywise touch the living Ark of God, but let the lips of the faithful unceasingly singing the Salutation of the Angel to the Birth-giver of God, cry aloud with rejoicing: Hail, thou that art full of grace, the Lord is with thee!
+communion: For the Lord hath chosen Zion: he hath desired it for his habitation.
+
+## feast p-7 | The Entrance of the Lord into Jerusalem (Palm Sunday)
+lic 6: To-day hath the grace of the Holy Spirit assembled us together, and taking up thy cross let us all say: Blessed is he that cometh in the Name of the Lord. Hosanna in the highest!
+lity 1: The all-holy Spirit, which taught the Apostles to speak in other and strange tongues, the same commandeth the Hebrew children devoid of guile to cry in words: Hosanna in the highest! Blessed is the King of Israel who cometh.
+troparion: Thou didst raise Lazarus from the dead, O Christ our God, making certain the universal resurrection, before thy Passion. For which cause we also, like unto the children, bearing the emblems of victory, cry aloud unto thee, the Conqueror of Death: Hosanna in the highest! Blessed is he that cometh in the Name of the Lord.
+exalt: We magnify thee, O Life-giving Christ! Hosanna in the highest! And we cry aloud unto thee: Blessed is he that cometh in the Name of the Lord.
+kontakion: O Christ-God, who in heaven art borne upon the throne, and on earth upon the foal of an ass, thou didst accept the praises of the Angels, and the hymns of the children that cried unto thee: Blessed art thou who art come to recall Adam from the dead!
+ant2: Save, O Son of God, who didst sit upon the foal of an ass, us who sing unto thee: Alleluia.
+introit: Blessed is he that cometh in the Name of the Lord: we have blessed ye from the house of the Lord. God is the Lord, and hath revealed himself unto us.
+communion: Blessed is he that cometh in the Name of the Lord. God is the Lord, and hath revealed himself unto us.
+
+## feast p-3 | Great and Holy Thursday
+troparion 8: When the glorious disciples were illumined by the Washing at the Supper, then was the impious Judas, ailing with covetousness, darkened. And to the unjust judges doth he betray thee, the just Judge. Behold his money beloved, for the sake of which he hanged himself. Flee the insatiate soul which dared such things against the Master. O Lord who art good above all men, glory to thee.
+kontakion 2: The Traitor, having taken bread in his hand, privily stretcheth forth the same, and taketh a price for him who with his hands had made man; and Judas, the slave and the deceiver, remaineth reprobate.
+
+## feast p-2 | Great and Holy Friday
+troparion 8: When the glorious disciples were illumined by the Washing at the Supper, then was the impious Judas, ailing with covetousness, darkened. And to the unjust judges doth he betray thee, the just Judge. Behold his money beloved, for the sake of which he hanged himself. Flee the insatiate soul which dared such things against the Master. O Lord who art good above all men, glory to thee.
+kontakion 8: Come, all ye, let us sing him who was crucified for us. For him did Mary behold on the Tree, and say: Even though thou sufferest crucifixion, yet art thou my Son and my God.
+
+## feast p-1 | Great and Holy Saturday
+troparion: Noble Joseph, when he had taken thy pure Body from the Tree, did wrap it in fine linen and spices, and sorrowing did lay it in a new sepulchre.
+kontakion: The Immortal One who imprisoned the deep is beheld dead, and, wrapped with spices and a winding-sheet, is laid in the tomb as he were mortal; and the women have come to anoint him with spices, weeping bitterly and crying: This is the blessed Saturday whereon Christ, having fallen asleep, shall rise again on the third day.
+
+## feast p0 | Holy Pascha
+troparion: Christ is risen from the dead, trampling down Death by death, and upon those in the tomb bestowing life.
+exalt: The Angel cried unto her who is full of grace: Hail, O Pure Virgin! And again, I say: Hail! Thy Son is risen from his three days' sojourn in the grave, and hath raised up the dead: Rejoice, O ye people! Shine, shine, O New Jerusalem! for the glory of the Lord is risen upon thee. Keep high holiday now and be glad, O Zion! And rejoice thou, O pure Birth-giver of God, in the rising again of him whom thou didst bear!
+kontakion: Though thou didst descend into the grave, O Deathless One, yet didst thou annihilate the power of Hell, and didst rise again as conqueror, O Christ our God, announcing unto the Myrrh-bearing Women: Rejoice! and giving grace unto thine Apostles, and bestowing Resurrection upon the fallen.
+ant2: O Son of God, who rose again from the dead on the third day, save us who sing unto thee, Alleluia.
+introit: Bless the Lord in his temples, the Lord from the sources of Israel.
+trisagion: As many as have been baptized into Christ have put on Christ.
+prokeimenon 8: This is the day which the Lord hath made: we will rejoice and be glad in it.
+alleluia 4: Thou, O Lord, art risen, and hast been bountiful to Zion.
+meet: The Angel cried unto her who is full of grace: Hail, O Pure Virgin! And again, I say: Hail! Thy Son is risen from his three days' sojourn in the grave, and hath raised up the dead: Rejoice, O ye people! Shine, shine, O New Jerusalem! for the glory of the Lord is risen upon thee. Keep high holiday now and be glad, O Zion! And rejoice thou, O pure Birth-giver of God, in the rising again of him whom thou didst bear!
+communion: Receive ye the Body of Christ; taste ye of the Fountain of Life.
+
+## feast p39 | The Ascension of our Lord Jesus Christ
+lic 6: The Lord hath ascended into heaven, that he may send the Comforter unto the world. The heavens have prepared his throne, the clouds his ascension. The Angels marvel, beholding a man exalted over them. The Father awaiteth him whom, as coeternal, he hath in his bosom; and the Holy Spirit commandeth all his Angels: Lift up your gates, ye Princes; clap your hands, all ye people, for Christ is ascended up to the place where he was before.
+lity 1: Being ascended up into heaven, whence also thou hadst come down, leave us not comfortless, O Lord. But let thy Spirit come, bearing peace unto the world, and show the works of thy might upon the sons of men, O Lord who lovest mankind.
+troparion 1: Thou art ascended up into glory, O Christ our God, having made joyful thy disciples by the promise of thy Holy Spirit, the blessing which was announced unto them. For thou art the Son of God, the Redeemer of the world.
+exalt: We magnify thee, O life-giving Christ, and do homage to thy divine Ascension into heaven in thy holy flesh.
+kontakion: When thou hadst accomplished thy dispensation to usward, and hadst united things earthly with things heavenly, thou didst ascend into glory, O Christ our God, yet in no wise departing but abiding uninterruptedly with us, and crying unto those who love thee: I am with you, and none shall prevail against you.
+ant2: Save, O Son of God who art ascended up in glory, those who sing unto thee: Alleluia.
+introit: God is gone up with a merry noise, and the Lord with the sound of the trump.
+prokeimenon 7: Be thou exalted in heaven, O God, and thy glory above all the earth.
+meet: Thee, who above understanding and speech didst become the Mother of God, and ineffably didst bring forth in time him who knoweth not time, we faithful, with one accord, do magnify.
+communion: God is gone up with a merry noise, and the Lord with the sound of the trump.
+
+## feast p49 | Pentecost
+lic 1: Let us celebrate Pentecost, and the coming of the Spirit, and the appointed day of the promise, and the fulfilment of hope, and the mystery which is as great as it is precious. Wherefore unto thee, O Lord, the Maker of all things, do we cry: Glory to thee.
+lity 8: When thou didst send thy Spirit, O Lord, while the Apostles sat, then were the Hebrew children affrighted with dread as they gazed; for they heard them speak one to another in strange tongues, as the Spirit gave them utterance. For though unlearned they were made wise, and bringing the Gentiles unto the faith, proclaimed things divine. Wherefore, we also do cry unto thee, O Lord, who hast revealed thyself upon earth, and hast saved us from guile: Glory to thee.
+troparion 8: Blessed art thou, O Christ our God, who hast revealed fishers most wise, sending down upon them the Holy Spirit, and thereby catching the universe as in a net. O Christ our God, who lovest mankind, glory to thee.
+exalt: We magnify thee, O life-giving Christ, and do homage to thine all-holy Spirit, whom thou didst send from the Father upon thy disciples divine.
+kontakion: When the Most High confounded the tongues, he dispersed the nations: but when he distributed the tongues of fire, he called all men unto unity. Wherefore, with one accord, we glorify the All-holy Spirit.
+ant2: Save, O blessed Comforter, us who sing unto thee. Alleluia.
+introit: Exalted be thou, O Lord, in thy power. We will praise and sing thy mighty acts.
+trisagion: As many as have been baptized into Christ have put on Christ.
+prokeimenon 8: Their voice is gone out into all the earth, and their words to the end of the world.
+alleluia 1: By the word of the Lord were the heavens made, and all the host of them by the word of his mouth.
+meet: Hail, O Queen, thou glory of motherhood and maidenhood! For every mouth, however eloquent and sweet of speech, is incapable of worthily singing thy praise; and every mind reeleth when it would fain understand thy birth-giving. For which cause, with one accord, we glorify thee.
+communion: Thy good Spirit shall guide me into the land of righteousness.
+
+## feast 08-06 | The Transfiguration of the Lord
+lic 4: Before thy Crucifixion, O Christ, the Mount became like unto the heavens, and a cloud was outspread like a canopy, while thou wast transfigured, and while the Father bare witness unto thee. There was Peter, together with James and John, inasmuch as they desired to be with thee at the time of thy betrayal also; that, having beheld thy marvels, they might not be affrighted at thy sufferings. Make us also worthy to adore the same in peace, for the sake of thy great mercy.
+lity 2: Thou who didst illumine the whole universe with thy light, wast transfigured on a high mountain, O Good One, manifesting unto thy disciples thy power, inasmuch as thou deliverest the world from transgression: For which cause we cry aloud unto thee: O merciful Lord, save thou our souls.
+troparion 7: Thou wast transfigured upon the Mount, O Christ-God, revealing unto thy disciples thy glory in so far as they were able to bear it. Let thy light everlasting illumine us sinners also; through the prayers of the Birth-giver of God. O Light-giver, glory to thee!
+exalt: We magnify thee, O life-giving Christ, and we do homage to the exceedingly glorious Transfiguration of thy Body most pure.
+kontakion 7: Upon the Mount wast thou transfigured, and thy disciples, in so far as they were qualified, beheld thy glory, O Christ-God; that when they should see thee crucified they might comprehend that thy suffering was voluntary, and proclaim it unto the world: For thou art, of a truth, the effulgence of the Father.
+ant2: O Son of God who wast transfigured upon the Mount, save us who sing unto thee. Alleluia.
+introit: O Lord, send forth thy light and thy truth, and they shall instruct me and shall lead me unto thy holy hill.
+prokeimenon 4: O Lord, how marvellous are thy works: in wisdom hast thou made them all.
+alleluia 8: The heavens are thine, and the earth is thine.
+meet: Thy birth-giving was shown to be without defilement; God came forth from thy loins, manifested himself as a bearer of the flesh upon earth, and dwelt among men: Wherefore we all do magnify thee, O Birth-giver of God.
+
+## feast 08-15 | The Falling-asleep of the Most Holy Birth-giver of God
+lic 1: O marvel wonderful! The Source of life is laid in the grave, and the tomb becometh the ladder unto heaven. Rejoice, O Gethsemane, thou holy abode of the Birth-giver of God! In that we have Gabriel for our chieftain, let us cry aloud, ye faithful: Hail, thou that art full of grace! The Lord is with thee, through thee granting unto the world great mercy.
+lity 5: Sing, O ye people, sing the Mother of our God; for to-day she doth yield up her all-radiant soul into the palms most pure of Him who, without seed, was incarnate of her: Whom, also, she doth unceasingly entreat that he will give unto the world peace and great mercy.
+troparion 1: In Birth-giving thou didst preserve thy virginity; in thy Falling-asleep thou hast not forsaken the world, O Birth-giver of God. Thou hast passed over into life, thou who art the Mother of Life, and through thine intercessions dost deliver our souls from death.
+exalt: We magnify thee, O Mother all-undefiled of Christ our God, and we glorify thine all-glorious Falling-asleep.
+prokeimenon 3: My soul doth magnify the Lord, and my spirit hath rejoiced in God my Saviour.
+alleluia 2: Arise, O Lord, in thy rest, thou, and the tabernacle of thy holiness.
+meet: The laws of Nature were conquered in thee, O Virgin pure; for in birth-giving was virginity preserved, and with death is life conjoined. Thou who, after birth-giving, a Virgin didst remain, though dead, art yet alive, O Birth-giver of God, and savest always thine inheritance.
+communion: I will take the cup of salvation, and call upon the Name of the Lord.

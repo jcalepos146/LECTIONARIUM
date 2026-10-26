@@ -593,12 +593,12 @@
       ],
       "rite": "new",
       "service": "Mass and Office",
-      "now": "order (Ordinary and Canon in Latin and English, Atchley 1909)",
+      "now": "order (Ordinary and Canon in Latin and English, Atchley 1909); the lessons of the 1954 Missale Ambrosianum on its own calendar",
       "missing": [
         "Ambrosian propers",
-        "Ambrosian calendar (six-week Advent)",
-        "Ambrosian lectionary",
-        "Ambrosian Office"
+        "Ambrosian Office",
+        "current Milan lectionary (cycles)",
+        "weekday lessons outside Lent"
       ],
       "plan": "Keep the historical Ordinary and Canon explicitly labeled. The user selected current church calendars: import and verify the current Milan Ambrosian appointments, with six-week Advent and its own cycle alignment, after reviewing citation-table reuse terms. The current church source is linked in the reader; the 1712 Missal and medieval Manuale are historical comparisons.",
       "sources": [
@@ -673,6 +673,18 @@
           ],
           "rights": "permission",
           "note": "Archdiocese of Milan."
+        },
+        {
+          "ia": "missale-ambrosianum-1954",
+          "title": "Missale Ambrosianum, editio quinta post typica",
+          "year": 1954,
+          "lang": "la",
+          "fills": [
+            "lectionary (citations aligned against the Clementine Vulgate)",
+            "Ambrosian calendar"
+          ],
+          "rights": "reference",
+          "note": "Only the chapter-and-verse citations are taken (data/ambrosian-1954.json); the text is read in the Douay-Rheims."
         }
       ],
       "blockers": [
@@ -1241,11 +1253,12 @@
       ],
       "rite": "new: one builder per book, reusing the 1662 Mattins/Evensong/Communion builders",
       "service": "Daily Office and Holy Communion",
-      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate; Holy Communion in full with the Introit, collect, epistle and gospel of the day from the Prayer Books of 1549, 1552 and 1559, and in full (the day's collect, epistle and gospel cited) from those of 1637, 1789 and 1892; the current 1979 two-year Office lessons and appointed 1979 Psalter are included, with an explicit original Eucharistic-table option and a link to the current Episcopal RCL",
+      "now": "US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate; Holy Communion in full with the Introit, collect, epistle and gospel of the day from the Prayer Books of 1549, 1552 and 1559, and in full (the day's collect, epistle and gospel cited) from those of 1637, 1789 and 1892, Canada 1918 and the Scottish Liturgy of 1929; the current 1979 two-year Office lessons and appointed 1979 Psalter are included, with an explicit original Eucharistic-table option and a link to the current Episcopal RCL",
       "missing": [
         "1928 lectionary tables",
         "Automatic current Episcopal RCL table and feast transfers (reuse terms must be established)",
-        "other national books"
+        "other national books",
+        "Ireland 1878 (only a Google Books scan, which needs a person to download)"
       ],
       "plan": "The Society of Archbishop Justus has typed transcriptions of almost every historical book. Import in order of use: US 1928, US 1979, England 1662 Communion, US 1892/1789, Canada 1918, Ireland 1926, Scotland 1929, then the 16th-17th-century books for study. Check each transcription against a scan.",
       "sources": [
@@ -1374,14 +1387,15 @@
           "rights": "pd"
         },
         {
-          "url": "https://justus.anglican.org/resources/bcp/Scotland/Scottish_BCP1929.pdf",
-          "title": "Scotland 1929",
+          "title": "Scotland 1929: The Scottish Liturgy (separately printed)",
           "year": 1929,
           "lang": "en",
           "fills": [
-            "complete book"
+            "Scottish Liturgy (Communion Office)"
           ],
-          "rights": "pd"
+          "rights": "pd",
+          "ia": "scottishliturgyf0000epis",
+          "note": "The Justus PDF of this title is A. C. Don's 1949 history of the book, not the book itself."
         },
         {
           "url": "https://justus.anglican.org/resources/bcp/Canada/1918.htm",
@@ -1929,7 +1943,7 @@
       ],
       "rite": "new",
       "service": "Divine Service and Matins/Vespers, Litany, Suffrages",
-      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics; Matins, Vespers, the Litany and the Suffrages with the collect of the day",
+      "now": "The Common Service in full (Common Service Book, 1917-19) with the Introit, Collect, Epistle, Gradual and Gospel of the day by the book's calendar rubrics; Matins, Vespers, the Litany and the Suffrages with the collect of the day The Common Service Book's Orders for the Baptism of Infants, Marriage and the Burial of the Dead in full.",
       "missing": [
         "Swedish High Mass",
         "current Nordic service books"
@@ -2345,13 +2359,13 @@
       ],
       "rite": "wes84 (Wesley's Sunday Service 1784, the Lord's Supper with its collects, epistles and gospels, shown by the Prayer Book builder); me08 (the 1908 Methodist Episcopal Lord's Supper, shown by buildOrders); wes84o (Wesley's Morning and Evening Prayer and Litany, shown by buildOrders)",
       "service": "Lord's Supper, Morning Prayer and occasional services",
-      "now": "The Lord's Supper from Wesley's Sunday Service (1784) in full with its Sunday collects, epistles and gospels, and its Morning and Evening Prayer and Litany with the Select Psalms, the collects and the table of Sunday lessons; the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full",
+      "now": "The Lord's Supper from Wesley's Sunday Service (1784) in full with its Sunday collects, epistles and gospels, and its Morning and Evening Prayer and Litany with the Select Psalms, the collects and the table of Sunday lessons; the Lord's Supper from the Ritual of the Methodist Episcopal Church (1908) in full Wesley's Baptism of Infants, Matrimony and Burial of the Dead in full.",
       "missing": [
-        "Wesley's Sunday Service (1784): the occasional services (baptism, matrimony, burial, ordinal)",
         "the rest of the Methodist ritual (baptism, reception, matrimony, burial)",
         "Moravian liturgies",
         "Congregational orders",
-        "Holiness church rituals"
+        "Holiness church rituals",
+        "Wesley's Sunday Service (1784): Baptism of those of riper years, the Communion of the Sick, the ordinal"
       ],
       "plan": "Wesley's 1784 Sunday Service is the root of Methodist liturgy and public domain; the 1908 Methodist Episcopal Ritual and the 1920 Moravian Hymnal and Liturgies cover the 20th-century forms. Current Free Methodist and Nazarene books are free PDFs whose rituals are in copyright. These families are not in the Sanctuary catalog yet, so add them there before building guides.",
       "sources": [

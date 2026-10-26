@@ -260,6 +260,7 @@ Deacon. Let us bow our heads unto the Lord.
 ¶ Then, as all bow their heads, the Priest reciteth the following Prayer, so that all may hear:
 Priest. O most merciful Master, Lord Jesus Christ our God, through the prayers of our all-undefiled Lady, the Birth-giver of God and ever-virgin Mary (and thence as in the preceding prayer, ending with): and of all thy Saints: Make our prayer acceptable; grant us remission of our transgressions; hide us under the shadow of thy wings; drive far from us every foe and adversary; make our life peaceful, O Lord. Have mercy upon us and upon thy world; and save our souls: for thou art gracious and lovest mankind.
 ¶ Here are sung the appointed Canticles (Stikhiry) in the proper Tone, or Echos of the Feast; and so singing we return to the centre of the Temple, where in special vessels the bread, wine, oil and wheat are already prepared.
+@hymn: The Canticles of the Litiya
 
 = The Song of Simeon
 ## The Song of Simeon
@@ -274,6 +275,7 @@ Priest. For thine is the kingdom, and the power, and the glory, of the Father, a
 Choir. Amen.
 ¶ Then shall be sung the Hymn (Troparion) of the Feast. The book gives, for a Sunday or an ordinary day, the Hymn to the Birth-giver of God:
 + Hail, O Virgin Birth-giver of the Lord! Mary full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb. For thou hast borne the Saviour of our souls.
+@hymn: The Hymn of the Feast
 
 = The Blessing of the Loaves
 ## The Blessing of the Loaves, Wheat, Wine and Oil

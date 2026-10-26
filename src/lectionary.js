@@ -88,7 +88,7 @@ function byzantine(ctx,hour){
 const SOURCES={
  adai:['Assyrian Church of the East · current parish calendar','https://www.maryosipparish.org/documents/assyrian/propers2026.html','The linked Mar Yosip parish table covers Sundays and principal feasts in 2026. Its readings have not been imported. Enter the citations for the selected date. Ancient Church of the East and Chaldean Catholic calendars require their own source. The service text below is historical.'],
  arm:['Armenian Apostolic Church · current Prelacy calendar','https://westernprelacy.org/daily-bible-readings/','Use the current annual readings prepared by the Eastern Prelacy. Its appointments have not been imported. Armenian Catholic and other local calendars require their own source. The service text below is historical.'],
- a:['Archdiocese of Milan · current Ambrosian calendar','https://www.chiesadimilano.it/letture-rito-ambrosiano','Use Milan’s current dated Ambrosian readings, including its own six-week Advent and cycles. The automatic table is not yet imported. The ordinary below is historical; current calendar readings do not make it the modern approved service.'],
+ a:['Archdiocese of Milan · current Ambrosian calendar','https://www.chiesadimilano.it/letture-rito-ambrosiano','Use Milan’s current dated Ambrosian readings, including its own six-week Advent and cycles; they are not bundled here, so enter them below. The ordinary below is historical; current calendar readings do not make it the modern approved service.'],
  z:['Toledo · current Hispano-Mozarabic calendar','https://www.catedralprimada.es/culto/rito-hispano-mozarabe/','Use the current Missale Hispano-Mozarabicum and Liber Commicus with your church’s ordo. The Toledo link provides current rite information, not a complete daily reading table. Verified automatic readings remain to be imported. The ordinary below is historical.'],
  rcus:['RCUS · congregation’s Scripture selections','https://rcus.org/worship/','The service below prints the Mercersburg book’s own Gospel, Epistle and Collect and its Sunday lessons. The current RCUS Directory of Worship leaves Scripture to the minister and congregation: enter a congregation’s selections below to use them instead.']
 };
@@ -161,6 +161,43 @@ async function eastSyriac(c){
  const note='The lessons of the Liturgy in A. J. Maclean’s East Syrian Daily Offices (1894), from the Urmi Lectionary of 1889, set on the Gregorian calendar with Gregorian Easter as the Assyrian Church of the East now keeps it. The Ancient Church of the East and the Chaldean Catholic Church keep other calendars, and current parish tables have revised some lessons: choose the local calendar to enter them.'+(names.length?'':' No lessons are appointed in the Liturgy for this day.');
  return {src:'East Syrian Lectionary · Maclean 1894',url:'https://archive.org/details/eastsyriandailyo00macluoft/page/264',title:names.join(' · '),note,items};
 }
+/* The Ambrosian year of the 1954 Missal: six Sundays of Advent from the second Sunday before the Roman Advent; the Sundays
+   after Pentecost until the Beheading of St John (29 August), then the Sundays after the Beheading, the Sundays of October
+   (the third is the Dedication of the Cathedral) and the Sundays after the Dedication; the last Sunday of October is Christ
+   the King. Weekdays in Lent have their own lessons; other weekdays take the Sunday's. Returns [key, of-the-Sunday?]. */
+function ambDay(isoS){
+ const d=date(isoS),y=d.getUTCFullYear(),E=easter(y),off=Math.round((d-E)/DAY),dow=d.getUTCDay(),md=isoS.slice(5);
+ const at=(m,dd)=>new Date(Date.UTC(y,m-1,dd)),after=(x)=>new Date(+x+((7-x.getUTCDay())%7||7)*DAY),wk=(a,b)=>Math.round((a-b)/DAY/7);
+ const FIX={'12-25':'xmas','01-01':'circ','01-06':'epi'},MOV={'-7':'palm','-6':'hw1','-5':'hw2','-4':'hw3','-3':'hw4','-1':'hs','0':'easter','39':'asc','42':'ascsun','49':'pent','56':'trin','60':'corpus'};
+ if(FIX[md])return [FIX[md],false];
+ if(MOV[off])return [MOV[off],false];
+ if(off>=1&&off<=6)return ['ew'+off,false];
+ if(off>=-41&&off<=-15&&dow!==0&&dow!==5)return ['lent'+(Math.floor((off+42)/7)+1)+'-'+dow,false];
+ if(off>=-41&&off<=-15&&dow===5)return [null,false];   /* the Fridays of Lent are aliturgical */
+ const sun=new Date(+d-dow*DAY),so=Math.round((sun-E)/DAY),smd=iso(sun).slice(5),sy=sun.getUTCFullYear();
+ const A1=new Date(+advent(sy)-14*DAY),key=(()=>{
+  if(sun>=A1&&smd<'12-25')return 'adv'+(wk(sun,A1)+1);
+  if(smd>='12-26'||smd<='01-05')return 'xsun';
+  if(so<=-63-1&&smd>'01-06'){const f=after(new Date(Date.UTC(sy,0,6)));return 'epi'+Math.min(6,wk(sun,f)+1);}
+  const S={'-63':'sept','-56':'sexa','-49':'quinq','-42':'lent1','-35':'lent2','-28':'lent3','-21':'lent4','-14':'lent5','7':'east1','14':'east2','21':'east3','28':'east4','35':'east5'}[so];
+  if(S)return S;
+  if(so>=63){const D1=after(new Date(Date.UTC(sy,7,29))),O1=new Date(Date.UTC(sy,9,1+(7-new Date(Date.UTC(sy,9,1)).getUTCDay())%7)),O3=new Date(+O1+14*DAY);
+   const lastOct=new Date(Date.UTC(sy,9,31-new Date(Date.UTC(sy,9,31)).getUTCDay()));
+   if(sun<D1)return 'pent'+Math.min(15,(so-49)/7);
+   if(sun<O1)return 'dec'+Math.min(5,wk(sun,D1)+1);
+   if(sun<=O3)return 'oct'+(wk(sun,O1)+1);
+   if(+sun===+lastOct)return 'ck';
+   return 'ded'+Math.min(3,wk(sun,O3));}
+  return null;})();
+ return [key,dow!==0];
+}
+async function ambrosian(c){
+ if((()=>{try{return localStorage.getItem('lect-calendar-a')==='current';}catch(e){return false;}})()){const [src,url,note]=SOURCES.a;return {src,url,note,items:[]};}
+ const T=await json('data/ambrosian-1954.json'),[k,weekday]=ambDay(c.iso),D=k&&T.days[k];
+ const note='The lessons of the Ambrosian Missal of 1954 (the last edition before the reform), on its own calendar: '+T.method+(weekday?' This weekday takes the lessons of the Sunday.':'');
+ if(!D)return {src:'Ambrosian Missal · 1954',url:T.url,note:k===null&&new Date(c.iso+'T00:00:00Z').getUTCDay()===5?'The Fridays of Lent are aliturgical in the Ambrosian rite: no Mass is said.':'The 1954 Missal has no proper lessons for this day in the table here: the Mass of the saint or a votive Mass is said.',items:[]};
+ return {src:'Ambrosian Missal · 1954',url:T.url,title:D.t+(weekday?' (the Sunday)':''),note,items:D.r.map(([lab,cite])=>({lab:T.cols[lab],cite,num:'v',tr:'dr',slot:lab==='gos'?'gospel':'lessons'}))};
+}
 const storageKey=c=>'lect-lessons:'+JSON.stringify([c.type||'mass',c.rite,c.hour||'',c.iso]);
 function local(c){try{const v=JSON.parse(localStorage.getItem(storageKey(c)));return Array.isArray(v)?v:[];}catch(e){return [];}}
 function custom(c){const rows=local(c);return rows.length?{src:'Your readings for '+c.iso,note:'Citations selected on this device for this rite, hour and date. Check them against your church calendar.',items:rows}:null;}
@@ -168,6 +205,7 @@ async function appointments(c){
  if(c.rite==='bcp79')return c.type==='office'?pb79(c,true,/^ep/.test(c.hour||'')):calendarMode()==='1979'?pb79(c):currentEpiscopal(c);
  if(c.rite==='copt')return coptic(c);
  if(c.rite==='adai')return eastSyriac(c);
+ if(c.rite==='a')return ambrosian(c);
  if(c.rite==='byz'||/^byz[vmhc]$/.test(c.rite))return byzantine(c,c.hour||c.rite);
  if(SOURCES[c.rite]){const [src,url,note]=SOURCES[c.rite];return {src,url,note,items:[]};}
  return null;
@@ -190,6 +228,11 @@ async function mount(el,c,reader,reload){
   out.insertAdjacentHTML('beforebegin','<p><label>Church calendar <select class="lesson-church"><option value="maclean">Church of the East · Maclean’s lectionary (1894)</option><option value="local">Current parish or Chaldean calendar · enter citations</option></select></label></p>');
   const select=el.querySelector('.lesson-church');try{select.value=localStorage.getItem('lect-calendar-adai')==='local'?'local':'maclean';}catch(e){}
   select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-adai',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The church calendar choice could not be saved.';}});
+ }
+  if(c.rite==='a'){
+  out.insertAdjacentHTML('beforebegin','<p><label>Calendar <select class="lesson-church"><option value="1954">Ambrosian Missal of 1954 · historical table</option><option value="current">Current Ambrosian calendar (Milan) · enter citations</option></select></label></p>');
+  const select=el.querySelector('.lesson-church');try{select.value=localStorage.getItem('lect-calendar-a')==='current'?'current':'1954';}catch(e){}
+  select.addEventListener('change',()=>{try{localStorage.setItem('lect-calendar-a',select.value);reload();}catch(e){el.querySelector('.lesson-status').textContent='The calendar choice could not be saved.';}});
  }
  if(c.rite==='copt'){
   out.insertAdjacentHTML('beforebegin','<p><label>Church calendar <select class="lesson-church"><option value="orthodox">Coptic Orthodox · Katameros snapshot</option><option value="local">Coptic Catholic or local calendar · enter citations</option></select></label></p>');
@@ -217,5 +260,5 @@ async function mount(el,c,reader,reload){
  });
  el.querySelector('.lesson-clear').addEventListener('click',()=>{try{localStorage.removeItem(storageKey(c));reload();}catch(e){el.querySelector('.lesson-status').textContent='Local storage is unavailable.';}});
 }
-window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,appointments,custom,html,mount,officeKey,psalmRefs};
+window.LectCalendar={pb79,psalm79,byzantine,eastSyriac,esyDay,ambDay,ambrosian,appointments,custom,html,mount,officeKey,psalmRefs};
 })();
