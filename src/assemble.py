@@ -23,8 +23,6 @@ def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False, sp
         if split and f=="page_script.js":
             import hashlib
             code=code.replace('/*SERVICE-URL*/""','"service.js?v='+hashlib.md5(service_js().encode()).hexdigest()[:10]+'"')
-            import json
-            code=code.replace('/*OFFLINE-PACKS*/{}','/*OFFLINE-PACKS*/'+json.dumps({k:round(v["bytes"]/1e6) for k,v in offline_packs().items()}))
         parts.append("<script>\n"+code+"\n</script>")
     return "\n".join(parts)+"\n"
 def offline_packs():
@@ -44,7 +42,13 @@ def offline_worker(page, svc):
     save = sorted(p[len(root) + 1:] for pat in ("days/*.json", "data/*.json", "bible/*/*.json") for p in glob.glob(f"{root}/{pat}"))
     save += [f for f in ("bcp-office.json", "chant.json", "hymns.json", "ordo.json", "propers-1962.json", "propers-pre55.json") if os.path.exists(f"{root}/{f}")]
     core = ["./", "index.html", "service.js?v=" + hashlib.md5(svc.encode()).hexdigest()[:10], "favicon.svg", "favicon-32.png", "apple-touch-icon.png"]
-    packs = {k: v["files"] for k, v in offline_packs().items()}
+    P = offline_packs()
+    import re
+    listed = json.loads(re.sub(r"(\w+):", r'"\1":', re.search(r"const PACKS=(\{.*?\});", open("page_script.js").read()).group(1)))
+    actual = {k: round(v["bytes"] / 1e6) for k, v in P.items()}
+    if P and listed != actual:
+        raise SystemExit(f"page_script.js PACKS {listed} does not match breviary/ {actual}: update it")
+    packs = {k: v["files"] for k, v in P.items()}
     version = hashlib.md5((page + svc + json.dumps(save) + json.dumps(packs)).encode()).hexdigest()[:10]
     s = open("sw.js").read()
     for k, v in (("VERSION", json.dumps(version)), ("CORE", json.dumps(core)), ("SAVE", json.dumps(save)), ("PACKS", json.dumps(packs))):

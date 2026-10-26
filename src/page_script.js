@@ -34,7 +34,8 @@ window.LectOffline=(()=>{
  const ok="serviceWorker" in navigator&&window.isSecureContext&&/^https?:$/.test(location.protocol);
  let wantTest=false; try{ wantTest=localStorage.getItem("lect-sw")==="1"; }catch(e){}
  const ready=ok&&(!navigator.webdriver||wantTest)?navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).catch(()=>null):Promise.resolve(null);
- const PACKS=/*OFFLINE-PACKS*/{};   /* key: megabytes */
+ /* The Office packs and their sizes in MB: assemble.py checks them against breviary/ when it writes sw.js. */
+ const PACKS={br62:20,br55:25,mon:19,op:11};
  const PACK_NAMES={br62:"1962 Breviary",br55:"Pre-1955 Breviary",mon:"Monastic Office",op:"Dominican Office"};
  const keyOf=pack=>"lect-offline-saved"+(pack?":"+pack:"");
  const saved=pack=>{ try{ return localStorage.getItem(keyOf(pack)); }catch(e){ return null; } };
