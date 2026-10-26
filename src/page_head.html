@@ -328,10 +328,22 @@ span[data-r]{padding:0 2px}
 .livenote{margin:0;padding:8px 12px;border-radius:8px;background:var(--rubric-wash)}
 .tfollow{font-size:.86rem}
 .mpart.ostep{margin-top:14px;border-top-width:1px} .mpart.ostep>h3{font-size:1.1rem;margin-bottom:4px}
+@page{size:auto;margin:16mm 15mm 18mm;
+  @bottom-left{content:"Lectionarium";font:8pt Georgia,serif;color:#555}
+  @bottom-right{content:counter(page) " / " counter(pages);font:8pt Georgia,serif;color:#555}}
 @media print{
   nav.tabs,header.top p.lede,.tband,.feats,.sesbar button,.mctlbox,.tools-bar,.tools-timer,.runsheet,.cuts,.joinlive,.mctl,footer,#audioNote{display:none!important}
-  body{background:#fff;color:#000} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
-  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3{break-after:avoid} figure.music{break-inside:avoid}
+  header.top .dek,header.top svg.chirho,#enter-sanctuary,.offline-use,#offline-badge,.lesson-calendar,.mbody select,.mbody input,.mbody button,.score:has(>p.note:only-child){display:none!important}
+  html{font-size:11pt!important} body{background:#fff;color:#000;font-size:1rem!important} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
+  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3,.mbody h4{break-after:avoid} figure.music{break-inside:avoid}
+  .mbody p{orphans:3;widows:3} a{color:inherit;text-decoration:none}
+  html.print-en .two>[lang=la],html.print-la .two>[lang=en]{display:none!important}
+  html.print-en .two,html.print-la .two{grid-template-columns:1fr!important}
+  html.print-la .two>[lang=la],html.print-en .two>[lang=en]{border:0!important;padding-top:0!important}
+  html.print-mono{--rubric:#000!important;--gold:#000!important;--lit-red:#000!important}
+  html.print-mono .mbody .rub,html.print-mono .mbody .rubric{font-style:italic}
+  html.print-large{font-size:14pt!important}
+  html.print-nonotes .mbody p.note{display:none!important}
 }
 /* presenter, live cast, checks */
 .presenter{position:fixed;inset:0;z-index:50;background:var(--paper);color:var(--ink);display:grid;grid-template-rows:auto 1fr auto;padding:max(12px,env(safe-area-inset-top)) 16px max(12px,env(safe-area-inset-bottom))}

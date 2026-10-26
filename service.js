@@ -243,8 +243,7 @@ function chantWidget(title, gabc, meta){
   const html=`<figure class="music chantfig" id="${id}"><figcaption><span class="mt">${esc(title)}</span>${meta?`<span class="mm">${esc(meta)}</span>`:""}
     <span class="mctl"><button type="button" class="play" aria-label="Play ${esc(title)}">▶ Play</button><label class="tp">Pitch <select aria-label="Transpose"><option value="-3">−3</option><option value="-2">−2</option><option value="-1">−1</option><option value="0" selected>0</option><option value="1">+1</option><option value="2">+2</option><option value="3">+3</option></select></label></span></figcaption>
     <div class="score"></div></figure>`;
-  setTimeout(()=>{
-    const fig=document.getElementById(id); if(!fig) return;
+  whenShown(id,fig=>{
     let syl; try{ syl=parseGabc(gabc); }catch(e){ fig.querySelector(".score").innerHTML=`<p class="note">This chant couldn't be read.</p>`; return; }
     const score=fig.querySelector(".score"); let svg=renderChant(score,syl,{label:title});
     let lastW=score.clientWidth; const ro=window.ResizeObserver? new ResizeObserver(()=>{ if(Math.abs(score.clientWidth-lastW)>20){ lastW=score.clientWidth; svg=renderChant(score,syl,{label:title}); } }):null; if(ro) ro.observe(score);
@@ -259,8 +258,15 @@ function chantWidget(title, gabc, meta){
         ()=>{ btn.textContent="▶ Play"; ctl=null; svg.querySelectorAll(".syl.on").forEach(x=>x.classList.remove("on")); });
       if(ctl) btn.textContent="■ Stop";
     });
-  },0);
+  });
   return html;
+}
+/* A widget's markup is returned before the page puts it in the document, sometimes only after the rest of the
+   service has loaded: fill it in once it is there (checking for up to a minute). */
+function whenShown(id,fn,t0=Date.now()){
+  const el=document.getElementById(id);
+  if(el) return fn(el);
+  if(Date.now()-t0<60000) setTimeout(()=>whenShown(id,fn,t0),Date.now()-t0<2000?0:250);
 }
 function chantSeconds(gabc){ try{ return chantEvents(parseGabc(gabc),1,0).total; }catch(e){ return 60; } }
 
@@ -270,8 +276,7 @@ function hymnWidget(h, slot){
   const html=`<figure class="music hymnfig" id="${id}"><figcaption><span class="mt">${esc(h.t)}</span><span class="mm">Tune: ${esc(h.tune)} · ${verses} verse${verses>1?"s":""} · public domain (Open Hymnal)</span>
     <span class="mctl"><button type="button" class="play" aria-label="Play ${esc(h.t)}">▶ Play tune</button></span></figcaption>
     <div class="score"><p class="note">Loading notation…</p></div>${h.w&&h.w.length?`<div class="moreverses">${h.w.map(l=>esc(l)).join("<br>")}</div>`:""}</figure>`;
-  setTimeout(async()=>{
-    const fig=document.getElementById(id); if(!fig) return;
+  whenShown(id,async fig=>{
     const score=fig.querySelector(".score");
     const A=await loadAbcjs();
     if(A){ try{ score.innerHTML=""; A.renderAbc(score, h.abc.replace(/^%%MIDI.*$/gm,""), {responsive:"resize", add_classes:true, staffwidth:Math.max(300,score.clientWidth-20), paddingleft:0, paddingright:0, foregroundColor:getComputedStyle(document.body).color}); }catch(e){ score.innerHTML=lyricsOnly(h); } }
@@ -279,7 +284,7 @@ function hymnWidget(h, slot){
     const btn=fig.querySelector(".play"); let ctl=null;
     btn.addEventListener("click",()=>{ if(ctl){ ctl.stop(); return; }
       const {ev}=abcEvents(h.abc); ctl=playEvents(ev,"organ",null,()=>{ btn.textContent="▶ Play tune"; ctl=null; }); if(ctl) btn.textContent="■ Stop"; });
-  },0);
+  });
   return html;
 }
 function lyricsOnly(h){

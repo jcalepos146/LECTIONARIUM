@@ -351,10 +351,22 @@ span[data-r]{padding:0 2px}
 .livenote{margin:0;padding:8px 12px;border-radius:8px;background:var(--rubric-wash)}
 .tfollow{font-size:.86rem}
 .mpart.ostep{margin-top:14px;border-top-width:1px} .mpart.ostep>h3{font-size:1.1rem;margin-bottom:4px}
+@page{size:auto;margin:16mm 15mm 18mm;
+  @bottom-left{content:"Lectionarium";font:8pt Georgia,serif;color:#555}
+  @bottom-right{content:counter(page) " / " counter(pages);font:8pt Georgia,serif;color:#555}}
 @media print{
   nav.tabs,header.top p.lede,.tband,.feats,.sesbar button,.mctlbox,.tools-bar,.tools-timer,.runsheet,.cuts,.joinlive,.mctl,footer,#audioNote{display:none!important}
-  body{background:#fff;color:#000} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
-  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3{break-after:avoid} figure.music{break-inside:avoid}
+  header.top .dek,header.top svg.chirho,#enter-sanctuary,.offline-use,#offline-badge,.lesson-calendar,.mbody select,.mbody input,.mbody button,.score:has(>p.note:only-child){display:none!important}
+  html{font-size:11pt!important} body{background:#fff;color:#000;font-size:1rem!important} .mbody [data-r]{opacity:1!important;background:none!important;box-shadow:none!important}
+  .mtotal{border:0;padding:0;background:none} .mpart{break-inside:auto} .mpart>h3,.mbody h4{break-after:avoid} figure.music{break-inside:avoid}
+  .mbody p{orphans:3;widows:3} a{color:inherit;text-decoration:none}
+  html.print-en .two>[lang=la],html.print-la .two>[lang=en]{display:none!important}
+  html.print-en .two,html.print-la .two{grid-template-columns:1fr!important}
+  html.print-la .two>[lang=la],html.print-en .two>[lang=en]{border:0!important;padding-top:0!important}
+  html.print-mono{--rubric:#000!important;--gold:#000!important;--lit-red:#000!important}
+  html.print-mono .mbody .rub,html.print-mono .mbody .rubric{font-style:italic}
+  html.print-large{font-size:14pt!important}
+  html.print-nonotes .mbody p.note{display:none!important}
 }
 /* presenter, live cast, checks */
 .presenter{position:fixed;inset:0;z-index:50;background:var(--paper);color:var(--ink);display:grid;grid-template-rows:auto 1fr auto;padding:max(12px,env(safe-area-inset-top)) 16px max(12px,env(safe-area-inset-bottom))}
@@ -589,8 +601,7 @@ body:not(.in-session) .san-guide-help{display:none}
  #san-bar,#sanctuary,#enter-sanctuary,.fsctl,.chirho,details.msettings,details.mrun,details.covline,#lessonCalendar,.san-guide-help,dialog{display:none!important}
  header.top{padding:0 0 4pt} .kicker,.dek,.feats{display:none!important} h1.wordmark{font-size:16pt!important}
  .sesbar{border:0;padding:0} .sesbar .crumbs,.sesbar .dlabel{font-size:10pt}
- .dayname{font-size:20pt} .mbody{font-size:11pt}
- @page{margin:15mm 16mm}
+ .dayname{font-size:20pt}
 }
 
 </style>
@@ -1036,7 +1047,7 @@ window.LitDate=(()=>{
    first time a service is opened and in the background once the page is idle. The standalone build inlines them,
    so service() resolves at once. */
 window.LectLoad=(()=>{
- const url="service.js?v=4a409105f7"; let p=null;
+ const url="service.js?v=12334e8b7d"; let p=null;
  function service(){
   if(window.LectMass||!url) return Promise.resolve();
   return p||(p=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=url; s.onload=()=>res(); s.onerror=()=>{ p=null; s.remove(); rej(new Error("The service code could not load.")); }; document.head.appendChild(s); }));
@@ -2041,7 +2052,7 @@ function mount(el, m){
       <button type="button" class="tbtn ghost" id="tPresent">Present</button>
       <button type="button" class="tbtn ghost" data-panel="script" aria-expanded="${PANEL==="script"}">Chat script</button>
       ${speakOK?`<button type="button" class="tbtn ghost" data-panel="speak" aria-expanded="${PANEL==="speak"}">Read aloud</button>`:""}
-      <button type="button" class="tbtn ghost" id="tPrint">Print</button>
+      <button type="button" class="tbtn ghost" data-panel="print" aria-expanded="${PANEL==="print"}">Print or PDF</button>
       <button type="button" class="tbtn ghost" id="tBook">Save booklet</button>
     </div>
     <div class="tpanel" id="tPanel"${PANEL?"":" hidden"}></div>`;
@@ -2049,7 +2060,6 @@ function mount(el, m){
   el.querySelector("#tRole").addEventListener("change",e=>{ VIEW.role=e.target.value; if(VIEW.role==="cel"&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()){VIEW.role="";e.target.value="";} if(!VIEW.role) VIEW.only=false; ls.set("lect-view",VIEW); el.querySelector("#tOnly").disabled=!VIEW.role; el.querySelector("#tOnly").checked=VIEW.only; applyView(); presence(); if(PANEL==="script") renderPanel(); });
   el.querySelector("#tOnly").addEventListener("change",e=>{ VIEW.only=e.target.checked; ls.set("lect-view",VIEW); applyView(); });
   el.querySelectorAll("[data-panel]").forEach(b=>b.addEventListener("click",()=>{ PANEL=PANEL===b.dataset.panel?"":b.dataset.panel; el.querySelectorAll("[data-panel]").forEach(x=>x.setAttribute("aria-expanded",String(PANEL===x.dataset.panel))); renderPanel(); }));
-  el.querySelector("#tPrint").addEventListener("click",printNow);
   el.querySelector("#tPresent").addEventListener("click",()=>presentOpen());
   el.querySelector(".mbody").addEventListener("click",musicClick);
   el.querySelector("#tBook").addEventListener("click",saveBooklet);
@@ -2357,10 +2367,37 @@ function withDetailsOpen(fn){
   const ds=[...EL.querySelectorAll(".mbody details")], was=ds.map(d=>d.open); ds.forEach(d=>d.open=true);
   try{ return fn(); } finally{ setTimeout(()=>ds.forEach((d,i)=>d.open=was[i]),500); }
 }
+/* Print layout: the choices are classes on <html> that the print styles read (page_head.html), and the page's running
+   foot (the service and date, with page numbers) is an @page rule written for this service. They are set for the
+   print button and for the browser's own Print command alike. */
+const PRINT=Object.assign({lang:"both",ink:"red",size:"normal",notes:true},ls.get("lect-print",{}));
+function printPanel(){
+  const two=EL&&EL.querySelector('.mbody .two [lang="la"]');
+  const sel=(k,lab,opts)=>`<label class="sl tsel">${lab} <select data-print="${k}">${opts.map(([v,t])=>`<option value="${v}"${PRINT[k]===v?" selected":""}>${t}</option>`).join("")}</select></label>`;
+  return `<div class="trow2">${two?sel("lang","Texts",[["both","Latin and English"],["en","English only"],["la","Latin only"]]):""}
+    ${sel("ink","Rubrics",[["red","In red"],["black","In black (for copying)"]])}
+    ${sel("size","Type",[["normal","Regular"],["large","Large print"]])}
+    <label class="ck"><input type="checkbox" data-print="notes"${PRINT.notes?" checked":""}> Notes and sources</label></div>
+    <div class="trow2"><button type="button" class="tbtn" id="pPrint">Print</button></div>
+    <p class="note">To make a PDF, choose “Save as PDF” as the printer. Folded sections are printed open; the controls are left out.</p>`;
+}
+function printSetup(){
+  const H=document.documentElement, two=EL&&EL.querySelector('.mbody .two [lang="la"]');
+  H.classList.add("printing");
+  H.classList.toggle("print-en",!!two&&PRINT.lang==="en"); H.classList.toggle("print-la",!!two&&PRINT.lang==="la");
+  H.classList.toggle("print-mono",PRINT.ink==="black"); H.classList.toggle("print-large",PRINT.size==="large"); H.classList.toggle("print-nonotes",!PRINT.notes);
+  const q=s=>{ const e=document.querySelector("#session "+s); return e?e.textContent.trim():""; };
+  const foot=[q(".dayname"),q(".dlabel")].filter(Boolean).join(" · ").replace(/["\\\n]/g," ");
+  let st=document.getElementById("print-page"); if(!st){ st=document.createElement("style"); st.id="print-page"; document.head.appendChild(st); }
+  st.textContent=`@page{@bottom-left{content:"Lectionarium${foot?" · "+foot:""}"}}`;
+}
+function printDone(){ const H=document.documentElement; ["printing","print-en","print-la","print-mono","print-large","print-nonotes"].forEach(c=>H.classList.remove(c)); }
+window.addEventListener("beforeprint",()=>{ if(EL&&EL.isConnected&&!document.documentElement.classList.contains("printing")) printSetup(); });
+window.addEventListener("afterprint",()=>setTimeout(printDone,300));
 function printNow(){
-  document.documentElement.classList.add("printing");
+  printSetup();
   withDetailsOpen(()=>{ try{ window.print(); }catch(e){} });
-  setTimeout(()=>document.documentElement.classList.remove("printing"),800);
+  setTimeout(printDone,800);
 }
 function bookletHTML(){
   const head=document.querySelector("#session .dayname"), sub=document.querySelector("#session .daysub"), crumbs=document.querySelector("#session .crumbs"), date=document.querySelector("#session .dlabel");
@@ -2501,6 +2538,7 @@ function renderPanel(){
   if(PANEL==="live") p.innerHTML=livePanel();
   else if(PANEL==="script") p.innerHTML=scriptPanel();
   else if(PANEL==="speak") p.innerHTML=speakPanel();
+  else if(PANEL==="print") p.innerHTML=printPanel();
   else p.innerHTML="";
   wirePanel(p);
 }
@@ -2553,6 +2591,10 @@ function speakPanel(){
 }
 function wirePanel(p){
   const q=s=>p.querySelector(s);
+  if(PANEL==="print"){
+    p.querySelectorAll("[data-print]").forEach(s=>s.addEventListener("change",()=>{ PRINT[s.dataset.print]=s.type==="checkbox"?s.checked:s.value; ls.set("lect-print",PRINT); }));
+    q("#pPrint").addEventListener("click",printNow);
+  }
   if(PANEL==="live"){
     q("#lvHost")&&q("#lvHost").addEventListener("click",host);
     q("#lvEnd")&&q("#lvEnd").addEventListener("click",endHost);
@@ -2583,7 +2625,7 @@ function wirePanel(p){
 
 window.addEventListener("lect-participation",()=>{speakStop();if(PRES.open)presentClose();LIVE.castSeen="";if(M&&window.LectParticipation.catholicMass(M)&&!window.LectParticipation.isPriest()&&VIEW.role==="cel"){VIEW.role="";VIEW.only=false;ls.set("lect-view",VIEW);}presence();});
 window.addEventListener("beforeunload",()=>{ try{ speechSynthesis.cancel(); }catch(e){} });
-window.LectTools={mount, join, liveOpts, leave, saveFile};
+window.LectTools={mount, join, liveOpts, leave, saveFile, printSetup, printDone};
 })();
 </script>
 <script>
