@@ -56,6 +56,7 @@ def parse(cit):
 
 
 HEB_ENG = json.loads(re.search(r"const HEB_ENG=(\[.*?\]);", TODAY).group(1))
+VERSEMAP = json.loads(re.search(r"const VERSEMAP=(\[.*?\]);", TODAY).group(1))
 
 
 def common_shift(bk, c, v, dr=False):
@@ -80,7 +81,13 @@ def to_vulgate(bk, c, v):
         if 117 <= c <= 146: return "Ps", c - 1, v
         if c == 147: return ("Ps", 146, v) if v <= 11 else ("Ps", 147, v - 11)
         return "Ps", c, v
-    return common_shift(bk, c, v, True)
+    if any(b == bk and hc == c and a <= v <= z and not vg for b, hc, a, z, ec, d, vg in HEB_ENG):
+        return bk, c, v
+    b, cc, vv = common_shift(bk, c, v, True)
+    for r in VERSEMAP:
+        if r[0] == b and r[1] == cc and r[2] <= vv <= r[3]:
+            return b, r[4], vv + r[5]
+    return b, cc, vv
 
 
 def has(tr, f, c, v):
