@@ -3734,9 +3734,16 @@
         "rights_note": "Public-domain status here refers to the original edition in the United States. Historical edition only; later editorial additions, typography and music require separate review."
       }
     ],
-    "supported": [],
+    "supported": [
+      {
+        "type": "mass",
+        "rite": "bcp18",
+        "hour": null,
+        "label": "Holy Communion"
+      }
+    ],
     "pd_texts_available": [
-      "1918 edition: verify the exact scan and territory before extraction."
+      "The Order for the Administration of the Lord's Supper or Holy Communion: transcribed (Justus HTML checked against the Justus typeset edition)."
     ],
     "sources": [
       "https://justus.anglican.org/resources/bcp/canada.htm",
