@@ -972,51 +972,6 @@ async function lectItems(ctx,L){ const out=[];
   return out; }
 const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
 
-/* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
-   Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
-   without a festival keeps the propers of the Sunday before it. */
-function mercDay(iso){
-  const d=toDate(iso), Y=d.getUTCFullYear(), md=(d.getUTCMonth()+1)*100+d.getUTCDate(), dow=d.getUTCDay();
-  const off=Math.round((d-easterY(Y))/DAY);
-  const FIX={1225:"christmas",1226:"stephen",1227:"john",1228:"innocents",101:"circumcision",106:"epiphany"};
-  const MOV={"-46":"ash","-2":"goodfriday","-1":"eastereve","1":"eastermon","39":"ascension","50":"whitmonday"};
-  if(MOV[off]) return {k:MOV[off],fest:true};
-  if(FIX[md]&&(dow||md===1225||md===101||md===106)) return {k:FIX[md],fest:true};
-  const s=new Date(d-dow*DAY), SY=s.getUTCFullYear(), E=easterY(SY), so=Math.round((s-E)/DAY), A1=adv1Y(SY), smd=(s.getUTCMonth()+1)*100+s.getUTCDate();
-  const r=k=>({k,fest:false,weekday:!!dow});
-  if(s>=A1&&smd<1225) return r("adv"+(Math.round((s-A1)/DAY/7)+1));
-  if(smd>=1225) return r(smd===1225?"christmas":"xmas1");
-  if(smd<106) return r("xmas2");
-  if(so<-63){ const ep=Date.UTC(SY,0,6), first=ep+((7-new Date(ep).getUTCDay())%7||7)*DAY; return r(s<first?"epiphany":"epi"+Math.min(6,Math.round((s-first)/DAY/7)+1)); }
-  const PRE={"-63":"septuagesima","-56":"sexagesima","-49":"quinquagesima","-42":"lent1","-35":"lent2","-28":"lent3","-21":"lent4","-14":"lent5","-7":"palm","0":"easter","7":"easter1","14":"easter2","21":"easter3","28":"easter4","35":"easter5","42":"exaudi","49":"whitsunday","56":"trinity"};
-  if(PRE[so]) return r(PRE[so]);
-  if(so<56) return r("ash");
-  const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
-  return r(N-n<4?"ba"+(N-n+1):"trin"+n);
-}
-/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
-   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
-   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
-   takes the Sunday before it, except the four fixed days. */
-function rcaLessonDay(T,iso){
-  const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
-  const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
-  const d=toDate(iso), E=easterY(d.getUTCFullYear()), off=Math.round((d-E)/DAY), md=(d.getUTCMonth()+1)*100+d.getUTCDate();
-  if(md===1225) return pick(T.christmas.christmas,"Christmas");
-  if(md===101) return pick(T.christmas.circumcision,"The Circumcision");
-  if(off===-2) return pick(T.easter.goodfriday,"Good Friday");
-  if(off===39) return pick(T.easter.ascension,"Ascension Day");
-  const s=new Date(d-d.getUTCDay()*DAY), SY=s.getUTCFullYear(), so=Math.round((s-easterY(SY))/DAY), A1=adv1Y(SY), xm=new Date(Date.UTC(SY,11,25));
-  if(s>=A1&&s<xm){ const n=4-Math.round((s-A1)/DAY/7); return pick(T.christmas.before[n],`The ${N[n]} Sunday before Christmas`); }
-  if(s>=xm||so<-63){ const xs=s>=xm?xm:new Date(Date.UTC(SY-1,11,25)), n=Math.ceil((s-xs)/DAY/7);
-    return n<1?pick(T.christmas.christmas,"Christmas"):pick(T.christmas.after[n],`The ${N[n]} Sunday after Christmas`); }
-  if(so<0) return pick(T.easter.before[-so/7],`The ${N[-so/7]} Sunday before Easter`);
-  if(so===0) return pick(T.easter.easter,"Easter");
-  if(so<=35) return pick(T.easter.after[so/7],`The ${N[so/7]} Sunday after Easter`);
-  if(so===42) return pick(T.pentecost.before,"The Sunday before Pentecost");
-  if(so===49) return pick(T.pentecost.pentecost,"Pentecost");
-  return pick(T.pentecost.after[(so-49)/7],`The ${N[(so-49)/7]} Sunday after Pentecost`);
-}
 const ORDER_RITES={
   pres:{lect:"hist", parts:o=>o.supper==="yes"?[["bcw1906-morning",null,"Hymn and Sermon"],["bcw1906-communion"]]:[["bcw1906-morning"]], supper:true},
   me08:{lect:"hist", lectNote:"The 1908 Ritual's Lord's Supper has no lessons of its own and the book sets no table: these are the historic Epistle and Gospel of the day, as the 1662 Prayer Book that Wesley's order comes from appoints them.", parts:o=>[["me1908-supper"]]},
@@ -1093,7 +1048,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_coll:h};
   }
   if(R.rcaLessons){   /* the 1882 Liturgy's Order of Scripture Lessons: Christmas, Easter and Pentecost seasons */
-    const T=await J("data/rca1882-lessons.json"), L=rcaLessonDay(T,ctx.iso), less={};
+    const T=await J("data/rca1882-lessons.json"), L=window.LectCalendar.rcaLessonDay(T,ctx.iso), less={};
     if(L){
       const [ot,nt]=L.m;
       less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
@@ -1122,7 +1077,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_less:{...(opts._less||{}),...less}};
   }
   if(R.merc){   /* the Order of Worship's own Gospel, Epistle and Collect, and its Table of Scripture Lessons for Sundays */
-    const T=await J("data/mercersburg.json"), D=mercDay(ctx.iso), P=T.propers[D.k], p=t=>`<p data-r="cel">${esc(t)}</p>`, less={};
+    const T=await J("data/mercersburg.json"), D=window.LectCalendar.mercDay(ctx.iso), P=T.propers[D.k], p=t=>`<p data-r="cel">${esc(t)}</p>`, less={};
     const mine=!!window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});   /* a congregation's own selections replace the book's lessons */
     const head=P?`<p class="cite">${esc(P.t)}${D.weekday&&!D.fest?" · the propers of the Sunday":""}</p>`:"";
     if(P){
@@ -1948,5 +1903,4 @@ function officeControls(opts,chant){
     </div>${chant?`<label class="ck"><input type="checkbox" data-o="chant"${opts.chant?" checked":""}> Chant: antiphons and psalms in Gregorian chant (Latin), with notation and playback</label>`:""}<p class="note">Times are estimates for saying the hour at a steady pace; sung or choir recitation takes longer.</p></div>`;
 }
 window.LectMass={render};
-window.LectReformed={rca:rcaLessonDay, merc:mercDay};
 })();

@@ -5,8 +5,8 @@
    Everything else is fetched from the network first, so a new deploy is seen at once, and kept in the data cache
    so that it still opens without a connection: a service, a Bible book or an Office pack once opened is available
    offline afterwards. "Save for offline use" fetches the whole list ahead of time. */
-const VERSION = /*VERSION*/"0b7d2679a3";
-const CORE = /*CORE*/["./", "index.html", "service.js?v=85f4a5dc2e", "favicon.svg", "favicon-32.png", "apple-touch-icon.png"];
+const VERSION = /*VERSION*/"5069b83aea";
+const CORE = /*CORE*/["./", "index.html", "service.js?v=4a409105f7", "favicon.svg", "favicon-32.png", "apple-touch-icon.png"];
 const SAVE = /*SAVE*/["bible/cv/s0.json", "bible/dr/s0.json", "bible/dr/s1.json", "bible/dr/s10.json", "bible/dr/s11.json", "bible/dr/s12.json", "bible/dr/s13.json", "bible/dr/s2.json", "bible/dr/s3.json", "bible/dr/s4.json", "bible/dr/s5.json", "bible/dr/s6.json", "bible/dr/s7.json", "bible/dr/s8.json", "bible/dr/s9.json", "bible/kj/s0.json", "bible/kj/s1.json", "bible/kj/s10.json", "bible/kj/s11.json", "bible/kj/s12.json", "bible/kj/s13.json", "bible/kj/s2.json", "bible/kj/s3.json", "bible/kj/s4.json", "bible/kj/s5.json", "bible/kj/s6.json", "bible/kj/s7.json", "bible/kj/s8.json", "bible/kj/s9.json", "data/ambrosian-1954.json", "data/bcp-hc.json", "data/bcp1549.json", "data/bcp1552.json", "data/bcp1559.json", "data/bcp1662.json", "data/bcp1784-psalter.json", "data/bcp1784.json", "data/bcp1928.json", "data/bcp1979-lectionary.json", "data/bcp1979.json", "data/byz-liturgy.json", "data/coptic-lectionary.json", "data/dayhours.json", "data/eastsyriac-1894.json", "data/lutheran-csb.json", "data/mercersburg.json", "data/monastic-build.json", "data/orders.json", "data/ordo-rites.json", "data/rca1882-lessons.json", "data/text-sources.json", "data/traditions.json", "days/2026.json", "days/2027.json", "days/2028.json", "days/2029.json", "days/2030.json", "bcp-office.json", "chant.json", "hymns.json", "ordo.json", "propers-1962.json", "propers-pre55.json"];
 const SHELL = "lect-shell-" + VERSION, DATA = "lect-data";
 
