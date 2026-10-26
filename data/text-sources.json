@@ -593,12 +593,12 @@
       ],
       "rite": "new",
       "service": "Mass and Office",
-      "now": "order (Ordinary and Canon in Latin and English, Atchley 1909)",
+      "now": "order (Ordinary and Canon in Latin and English, Atchley 1909); the lessons of the 1954 Missale Ambrosianum on its own calendar",
       "missing": [
         "Ambrosian propers",
-        "Ambrosian calendar (six-week Advent)",
-        "Ambrosian lectionary",
-        "Ambrosian Office"
+        "Ambrosian Office",
+        "current Milan lectionary (cycles)",
+        "weekday lessons outside Lent"
       ],
       "plan": "Keep the historical Ordinary and Canon explicitly labeled. The user selected current church calendars: import and verify the current Milan Ambrosian appointments, with six-week Advent and its own cycle alignment, after reviewing citation-table reuse terms. The current church source is linked in the reader; the 1712 Missal and medieval Manuale are historical comparisons.",
       "sources": [
@@ -673,6 +673,18 @@
           ],
           "rights": "permission",
           "note": "Archdiocese of Milan."
+        },
+        {
+          "ia": "missale-ambrosianum-1954",
+          "title": "Missale Ambrosianum, editio quinta post typica",
+          "year": 1954,
+          "lang": "la",
+          "fills": [
+            "lectionary (citations aligned against the Clementine Vulgate)",
+            "Ambrosian calendar"
+          ],
+          "rights": "reference",
+          "note": "Only the chapter-and-verse citations are taken (data/ambrosian-1954.json); the text is read in the Douay-Rheims."
         }
       ],
       "blockers": [

@@ -351,7 +351,7 @@ const ORDO_ONLY={
     ["Postcommunion and Dismissal",/^!When the priest has purified/,/^!When the priest has purified/],
     ["Last Gospel",/^!Turning towards the Gospel side/,/^!Turning towards the Gospel side/],
     ["Prayers after Low Mass",/^!To be said kneeling/,/^!To be said kneeling/]]},
-  a:{key:"a",lat:true,name:"Ambrosian",byHead:{_start:"Preparation and prayers at the altar steps",Ingressa:"Ingressa",Gloria:"Gloria and Prayer over the People","Lectio (Prokeimenon).":"Prophecy, Psalmellus and Epistle",Evangelium:"Gospel","Antiphona post Evangelium":"Antiphon after the Gospel and Offertory",Credo:"Creed",Prefatio:"Preface and Sanctus","Incipit Canon.":"Canon, Lord's Prayer and Communion",Transitorium:"Transitorium",Postcommunio:"Postcommunion and Dismissal"}},
+  a:{key:"a",lat:true,appt:true,name:"Ambrosian",byHead:{_start:"Preparation and prayers at the altar steps",Ingressa:"Ingressa",Gloria:"Gloria and Prayer over the People","Lectio (Prokeimenon).":"Prophecy, Psalmellus and Epistle",Evangelium:"Gospel","Antiphona post Evangelium":"Antiphon after the Gospel and Offertory",Credo:"Creed",Prefatio:"Preface and Sanctus","Incipit Canon.":"Canon, Lord's Prayer and Communion",Transitorium:"Transitorium",Postcommunio:"Postcommunion and Dismissal"}},
   z:{key:"mz",lat:false,name:"Mozarabic",byHead:{_start:"Preparation and prayers at the altar steps",Gloria:"Gloria",COLLECT:"Collect",Lesson:"Lessons and Epistle","The GOSPEL":"Gospel, Lauda and Offertory",Lavabo:"Lavabo and the first prayer (Missa)","II. PRAYER":"Second prayer: the Diptychs","III. PRAYER":"Third prayer: Post Nomina","IV. PRAYER":"Fourth prayer: Ad Pacem; the Inlatio and Sanctus","V. PRAYER":"Fifth prayer: Post Sanctus and the Institution","VI. PRAYER":"Sixth prayer: Post Pridie; the Creed","AD CONFRACTIONEM, varying.":"The Fraction","VII. PRAYER":"Seventh prayer: the Lord's Prayer and Communion","The COMMUNION, which varies.":"Communion and Dismissal"}},
 };
 const ordoClean=l=>{ let x=String(l).replace(/\t/g," ").replace(/^!x!!?/,"!").replace(/^!x!/,""); if(/^!\[:.*:\]$/.test(x.trim())||/^!\*/.test(x.trim())) return ""; if(/^\[.*\]$/.test(x.trim())) x="!"+x.trim().slice(1,-1); if(/^!\[/.test(x)) x="!"+x.slice(2).replace(/\]$/,""); if(x.trim()==="...") x="!(The proper text of the day.)"; if(x.trim()==="[INSERT PREFACE HERE]") x="!(The Preface of the day.)"; return x; };
@@ -369,7 +369,7 @@ async function buildOrdoOnly(ctx,opts){
   if(opts.lastGospel===false) parts=parts.filter(p=>p.t!=="Last Gospel");
   const out=[];
   /* the day's lessons, from the lectionary of the rite (or the nearest one, labelled), at the part that reads them */
-  const LL=window.LectCalendar.custom({...ctx,type:"mass"})||(cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null), LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
+  const LL=window.LectCalendar.custom({...ctx,type:"mass"})||(cfg.appt?await window.LectCalendar.appointments({...ctx,type:"mass"}):cfg.lect&&LECT[cfg.lect]?await LECT[cfg.lect](ctx,opts):null), LI=LL?await lectItems(ctx,LL):[]; let lectHeaded=false;
   for(const p of parts){
     let la=p.la, en=p.en, html="";
     { const pick=LI.filter(x=>!x.used&&(x.slot?x.slot.test(p.t):/Epistle|Lesson|Prophecy|Gospel/.test(p.t)));

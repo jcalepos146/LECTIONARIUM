@@ -17,6 +17,8 @@ const SOURCES=[
  {fam:"catholic",book:"Divine Worship: The Missal (Ordinariate)",rite:"o",get:async(iso,day)=>day.o&&{name:day.o.s&&/Divine Worship:/.test(day.o.s)?day.o.s.replace(/^Divine Worship: /,""):day.o.t,reads:(day.o.r||[]).map(x=>R(x[0],x[1],"n","kj")),same:"n"}},
  {fam:"catholic",book:"Roman Missal of 1962",rite:"m",get:async(iso,day)=>day.m&&{name:day.m.t,reads:(day.m.r||[]).map(x=>R(x[0],x[1],x[2]||"v","dr"))}},
  {fam:"catholic",book:"Roman Missal before 1955",rite:"p",get:async(iso,day)=>day.p&&{name:day.p.t,reads:(day.p.r||[]).map(x=>R(x[0],x[1],x[2]||"v","dr")),same:"m"}},
+ {fam:"catholic",book:"Ambrosian Missal of 1954 (Milan)",rite:"a",get:async iso=>{const L=await window.LectCalendar.ambrosian({rite:"a",type:"mass",iso});
+   return L&&{name:L.title||"",reads:(L.items||[]).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items.length?"":L.note};}},
  {fam:"eastern-orthodox",book:"Byzantine Apostol and Gospel",rite:"b",get:async(iso,day)=>day.b&&{name:[day.b.t,day.b.s].filter(Boolean).join(" · "),reads:(day.b.r||[]).map(x=>R(x[0],x[1],"n","dr"))}},
  {fam:"oriental",book:"Coptic Orthodox Katameros",rite:"copt",get:async iso=>{const L=await window.LectCalendar.appointments({rite:"copt",type:"mass",iso});
    const nm=(window.LectApp.dayNames(iso,{})||[]).find(x=>x.fam==="oriental");return L&&{name:nm?nm.name:"",reads:(L.items||[]).filter(x=>!x.issue).map(x=>R(x.lab,x.cite,x.num,x.tr)),note:L.items&&!L.items.length?"No Liturgy appointment in the snapshot for this date.":""};}},
@@ -67,7 +69,7 @@ async function render(iso){
     <p class="cd-name">${esc(v.name||"")}</p>
     ${dup?`<p class="note">The same readings as the ${esc(twin.s.book)}.</p>`:v.reads.length?`<ul class="cd-reads">${v.reads.map((x,i)=>`<li><span class="cd-lab">${esc(x.lab)}</span> <button type="button" class="cd-cite" data-i="${i}" aria-expanded="false">${esc(v.printed&&v.printed[i]&&v.printed[i]!==x.cite?v.printed[i]:x.cite)}</button><div class="cd-text" hidden></div></li>`).join("")}</ul>`:""}
     ${v.note?`<p class="note">${esc(v.note)}</p>`:""}</article>`;}).join("")}</section>`).join("");
- out.innerHTML=html+`<p class="note">The Armenian lectionary, the Ambrosian and Mozarabic lectionaries and the Revised Common Lectionary are not yet on this site. Dates follow the Gregorian calendar throughout; churches that keep the Julian calendar read these lessons thirteen days later.</p>`;
+ out.innerHTML=html+`<p class="note">The Armenian lectionary, the Mozarabic lectionary and the Revised Common Lectionary are not yet on this site. Dates follow the Gregorian calendar throughout; churches that keep the Julian calendar read these lessons thirteen days later.</p>`;
  out.querySelectorAll(".cd-open").forEach(b=>b.addEventListener("click",()=>{ const r=b.dataset.rite; document.getElementById("tab-today").click(); window.LectApp.follow({type:"mass",rite:r,hour:null,iso}); }));
  out.querySelectorAll(".cd-cite").forEach(b=>b.addEventListener("click",async()=>{
    const art=b.closest(".cd-row"), fam=b.closest(".cd-fam"), book=art.querySelector("h4").textContent;

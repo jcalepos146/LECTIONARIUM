@@ -93,7 +93,8 @@ class CurrentCalendarTests(unittest.TestCase):
         self.assertIn('Armenian Apostolic',rows[0]['src']);self.assertIn('Armenian Catholic',rows[0]['note'])
         # The Church of the East reads Maclean's lectionary (1894) on the Gregorian calendar; a local calendar can be chosen.
         self.assertIn('Maclean',rows[1]['src']);self.assertIn('Assyrian Church of the East',rows[1]['note']);self.assertTrue(rows[1]['items'])
-        self.assertIn('current Ambrosian',rows[2]['src']);self.assertIn('not yet imported',rows[2]['note'])
+        # Milan reads the 1954 Ambrosian Missal's lessons on its own calendar (2026-10-25 is the last Sunday of October: Christ the King).
+        self.assertIn('Ambrosian Missal',rows[2]['src']);self.assertIn('Christ the King',rows[2]['title']);self.assertEqual([x['cite'] for x in rows[2]['items']][-1],'John 18:34-37')
         self.assertIn('not a complete daily reading table',rows[3]['note'])
         self.assertIn('Directory of Worship',rows[4]['note'])
-        self.assertTrue(all(not r['items'] for i,r in enumerate(rows) if i!=1))
+        self.assertTrue(all(not r['items'] for i,r in enumerate(rows) if i not in (1,2)))

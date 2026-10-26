@@ -29,7 +29,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 4 | [divine-worship-office](#divine-worship-office) | full (Prime, Terce, Sext and None from the Day-Hours, 1877) | 2 | 0 | Divine Worship: Daily Office (2020/21): permission |
 | 5 | [byzantine-catholic](#byzantine-catholic) | order (Liturgy), guide (Office) | 13 | 0 | Byzantine Daily Worship, the Ruthenian Divine Liturgy (2007) and current UGCC books: permission from the issuing eparchies |
 | 6 | [dominican-mass](#dominican-mass) | order (Ordinary in Latin and English) | 2 | 0 | nothing |
-| 7 | [ambrosian](#ambrosian) | order (Ordinary and Canon in Latin and English, Atchley 1909) | 6 | 0 | current Ambrosian Missal and Lectionary: Archdiocese of Milan permission |
+| 7 | [ambrosian](#ambrosian) | order (Ordinary and Canon in Latin and English, Atchley 1909); the lessons of the 1954 Missale Ambrosianum on its own calendar | 6 | 0 | current Ambrosian Missal and Lectionary: Archdiocese of Milan permission |
 | 8 | [mozarabic](#mozarabic) | order (English Ordinary) | 6 | 0 | Missale Hispano-Mozarabicum (1991-94): Archdiocese of Toledo permission |
 | 9 | [braga](#braga) | none | 1 | 0 | Braga breviary: not located |
 | 10 | [religious-order-uses](#religious-order-uses) | none | 4 | 0 | Premonstratensian and Carmelite breviaries: not located; modern Carthusian books: not public |
@@ -170,9 +170,9 @@ Divinum Officium already carries the Dominican Ordinary and the 1962 Dominican c
 
 ### 7. ambrosian
 
-Catalog: `ambrosian` · rite `new` · Mass and Office · now **order (Ordinary and Canon in Latin and English, Atchley 1909)**
+Catalog: `ambrosian` · rite `new` · Mass and Office · now **order (Ordinary and Canon in Latin and English, Atchley 1909); the lessons of the 1954 Missale Ambrosianum on its own calendar**
 
-Missing: Ambrosian propers; Ambrosian calendar (six-week Advent); Ambrosian lectionary; Ambrosian Office.
+Missing: Ambrosian propers; Ambrosian Office; current Milan lectionary (cycles); weekday lessons outside Lent.
 
 Keep the historical Ordinary and Canon explicitly labeled. The user selected current church calendars: import and verify the current Milan Ambrosian appointments, with six-week Advent and its own cycle alignment, after reviewing citation-table reuse terms. The current church source is linked in the reader; the 1712 Missal and medieval Manuale are historical comparisons.
 
@@ -185,6 +185,7 @@ Keep the historical Ordinary and Canon explicitly labeled. The user selected cur
 | Missale Ambrosianum ([10869665bsb](https://archive.org/details/10869665bsb)) | 1712 | la | scan | Tridentine-era Ambrosian propers | pd |
 | Manuale sive Breviarium iuxta ritum Ambrosianae ecclesiae ([bub_gb_5NAEsu90rB0C](https://archive.org/details/bub_gb_5NAEsu90rB0C)) | 1549 | la | scan | Ambrosian Office | pd |
 | Missale Ambrosianum — Archdiocese of Milan. ([MA1981](https://archive.org/details/MA1981)) | 1981 | la | scan | current use, for collation | permission |
+| Missale Ambrosianum, editio quinta post typica — Only the chapter-and-verse citations are taken (data/ambrosian-1954.json); the text is read in the Douay-Rheims. ([missale-ambrosianum-1954](https://archive.org/details/missale-ambrosianum-1954)) | 1954 | la | scan | lectionary (citations aligned against the Clementine Vulgate); Ambrosian calendar | reference |
 
 Blocked: current Ambrosian Missal and Lectionary: Archdiocese of Milan permission.
 
