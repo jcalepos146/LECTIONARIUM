@@ -664,6 +664,28 @@ const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">
    Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
    Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
    takes the Sunday before it, except the four fixed days. */
+/* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
+   Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
+   without a festival keeps the propers of the Sunday before it. */
+function mercDay(iso){
+  const d=toDate(iso), Y=d.getUTCFullYear(), md=(d.getUTCMonth()+1)*100+d.getUTCDate(), dow=d.getUTCDay();
+  const off=Math.round((d-easterY(Y))/DAY);
+  const FIX={1225:"christmas",1226:"stephen",1227:"john",1228:"innocents",101:"circumcision",106:"epiphany"};
+  const MOV={"-46":"ash","-2":"goodfriday","-1":"eastereve","1":"eastermon","39":"ascension","50":"whitmonday"};
+  if(MOV[off]) return {k:MOV[off],fest:true};
+  if(FIX[md]&&(dow||md===1225||md===101||md===106)) return {k:FIX[md],fest:true};
+  const s=new Date(d-dow*DAY), SY=s.getUTCFullYear(), E=easterY(SY), so=Math.round((s-E)/DAY), A1=adv1Y(SY), smd=(s.getUTCMonth()+1)*100+s.getUTCDate();
+  const r=k=>({k,fest:false,weekday:!!dow});
+  if(s>=A1&&smd<1225) return r("adv"+(Math.round((s-A1)/DAY/7)+1));
+  if(smd>=1225) return r(smd===1225?"christmas":"xmas1");
+  if(smd<106) return r("xmas2");
+  if(so<-63){ const ep=Date.UTC(SY,0,6), first=ep+((7-new Date(ep).getUTCDay())%7||7)*DAY; return r(s<first?"epiphany":"epi"+Math.min(6,Math.round((s-first)/DAY/7)+1)); }
+  const PRE={"-63":"septuagesima","-56":"sexagesima","-49":"quinquagesima","-42":"lent1","-35":"lent2","-28":"lent3","-21":"lent4","-14":"lent5","-7":"palm","0":"easter","7":"easter1","14":"easter2","21":"easter3","28":"easter4","35":"easter5","42":"exaudi","49":"whitsunday","56":"trinity"};
+  if(PRE[so]) return r(PRE[so]);
+  if(so<56) return r("ash");
+  const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
+  return r(N-n<4?"ba"+(N-n+1):"trin"+n);
+}
 function rcaLessonDay(T,iso){
   const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
   const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
@@ -690,8 +712,8 @@ const ORDER_RITES={
   copt:{parts:o=>[["coptic1908"]], optional:["The Preparation of the Altar"], optLabel:"The preparation of the altar left out"},
   arm:{parts:o=>[["armenian1908"]], optional:["The Vesting of the Priest","The Approach to the Altar"], optLabel:"The vesting and the prayers of approach left out"},
   rca:{rcaLessons:true, parts:o=>o.supper==="yes"?[["rca1882-morning",null,"Sermon and Prayer"],["rca1882-supper"],["rca1882-morning","Singing and Benediction"]]:[["rca1882-morning"]], supper:true},
-  rcus:{parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
-  rcusv:{parts:o=>[["rcus1866-evening"]]},
+  rcus:{merc:true, parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
+  rcusv:{merc:true, parts:o=>[["rcus1866-evening"]]},
   rcusp:{parts:o=>[["rcus1866-preparation"]]},
   csbm:{lect:"csb", parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{lect:"csb", parts:o=>[["csb-vespers"]], csbCollect:true}
@@ -755,6 +777,26 @@ async function buildOrders(ctx,opts,rite){
       const [ot,nt]=L.m;
       less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
     }
+    opts={...opts,_less:less};
+  }
+  if(R.merc){   /* the Order of Worship's own Gospel, Epistle and Collect, and its Table of Scripture Lessons for Sundays */
+    const T=await J("data/mercersburg.json"), D=mercDay(ctx.iso), P=T.propers[D.k], p=t=>`<p data-r="cel">${esc(t)}</p>`, less={};
+    const mine=!!window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});   /* a congregation's own selections replace the book's lessons */
+    const head=P?`<p class="cite">${esc(P.t)}${D.weekday&&!D.fest?" · the propers of the Sunday":""}</p>`:"";
+    if(P){
+      const alt=(c,w)=>c?`<p class="note">Or ${w}: ${esc(c)}.</p>`:"";
+      const ge=head+await RB(ctx,"The Gospel",P.g,"k","kj")+alt(P.ga,"this Gospel")+await RB(ctx,"The Epistle",P.e,"k","kj")+alt(P.ea,"this Epistle");
+      if(!mine) less["lessons:The Gospel and Epistle for the day"]=[ge,6];
+      const coll=head+p(P.c.replace(/\s*Amen\.$/,""))+`<p data-r="ppl"><span class="sp">℟.</span> Amen.</p>`;
+      const fest=(P.f||[]).map(t=>p(t.replace(/\s*Amen\.$/,""))+`<p data-r="ppl"><span class="sp">℟.</span> Amen.</p>`).join("");
+      const note=T.notes[D.k]?`<p class="note">${esc(T.notes[D.k])}</p>`:"";
+      less["prayer:The Collect for the Day"]=[coll+(fest&&rite==="rcus"?`<h4 class="sub2">The Festival Prayer</h4><p class="note">On Festival days it takes the place of the first two Collects of the General Prayer.</p>`+fest:"")+note,1.5];
+      less["prayer:The Collect for the Day and the Festival Prayer"]=[coll+(fest?`<h4 class="sub2">The Festival Prayer</h4>`+fest:"")+note,fest?3:1];
+    }
+    const L=T.lessons[D.k];
+    if(mine);
+    else if(L) less["lessons:The Evening Lessons, from the Table of Scripture Lessons"]=[`<p class="cite">${esc(P?P.t:"")} · the Table of Scripture Lessons${D.weekday?" (for the Sunday)":""}</p>`+await RB(ctx,"The First Lesson",L.e[0],"k","kj")+await RB(ctx,"The Second Lesson",L.e[1],"k","kj")+`<p class="note">For the morning the table appoints ${esc(L.m[0])} and ${esc(L.m[1])}, which the Minister may add to the Gospel and Epistle.</p>`,8];
+    else less["lessons:The Evening Lessons, from the Table of Scripture Lessons"]=[cue("The Table of Scripture Lessons appoints lessons for Sundays only: on a festival or weekday the Minister chooses them."),6];
     opts={...opts,_less:less};
   }
   if(R.wesley){   /* the Sunday Service's Collect of the day, proper lessons and proper psalms */
