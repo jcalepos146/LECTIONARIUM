@@ -1,0 +1,650 @@
+# Orders of service (methodist). Each order begins at a line '%%% order <id>' and runs to the next; its markup is
+# described in tools/orders.py. The id is the key in data/orders.json.
+
+%%% order me1908-supper
+# Ritual of the Methodist Episcopal Church (New York: Eaton & Mains, 1908), pp. 41-58: Order for the
+# Administration of the Lord's Supper. Public domain (published in the United States, 1908). The order is
+# Wesley's revision (The Sunday Service, 1784) of the 1662 Prayer Book Communion, as the Methodist Episcopal
+# Church used it in 1908. Transcribed from the Internet Archive scan (ritualofmethodis01meth); OCR proofread
+# by hand, uncertain readings checked against the page images. Markup: see tools/orders.py.
+title: Order for the Administration of the Lord's Supper
+book: Ritual of the Methodist Episcopal Church (1908)
+
+= Offertory Sentences
+¶ [Whenever practicable, let none but the pure, unfermented juice of the grape be used in administering the Lord's Supper.]
+¶ [Let persons who have scruples concerning the receiving of the Sacrament of the Lord's Supper kneeling be permitted to receive it either standing or sitting.]
+¶ [No person shall be admitted to the Lord's Supper among us who is guilty of any practice for which we would exclude a member of our Church.]
+¶ The Elder shall say one or more of these Sentences, during the reading of which the persons appointed for that purpose shall receive the Alms for the Poor:
+Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven. [Matt. v, 16.]
+[or] The other Sentences
+Lay not up for yourselves treasures upon earth, where moth and rust doth corrupt, and where thieves break through and steal: but lay up for yourselves treasures in heaven, where neither moth nor rust doth corrupt, and where thieves do not break through nor steal. [Matt. vi, 19, 20.]
+Whatsoever ye would that men should do to you, do ye even so to them: for this is the law and the prophets. [Matt. vii, 12.]
+Not every one that saith unto me, Lord, Lord, shall enter into the kingdom of heaven; but he that doeth the will of my Father which is in heaven. [Matt. vii, 21.]
+Zaccheus stood, and said unto the Lord; Behold, Lord, the half of my goods I give to the poor; and if I have taken anything from any man by false accusation, I restore him fourfold. [Luke xix, 8.]
+He which soweth sparingly shall reap also sparingly; and he which soweth bountifully shall reap also bountifully. Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver. [2 Cor. ix, 6, 7.]
+As we have therefore opportunity, let us do good unto all men, especially unto them who are of the household of faith. [Gal. vi, 10.]
+Godliness with contentment is great gain; for we brought nothing into this world, and it is certain we can carry nothing out. [1 Tim. vi, 6, 7.]
+Charge them that are rich in this world, that they be not high-minded, nor trust in uncertain riches, but in the living God, who giveth us richly all things to enjoy; that they do good, that they be rich in good works, ready to distribute, willing to communicate; laying up in store for themselves a good foundation against the time to come, that they may lay hold on eternal life. [1 Tim. vi, 17-19.]
+God is not unrighteous to forget your work and labor of love, which ye have showed toward his name, in that ye have ministered to the saints, and do minister. [Heb. vi, 10.]
+To do good and to communicate forget not; for with such sacrifices God is well pleased. [Heb. xiii, 16.]
+Whoso hath this world's good, and seeth his brother have need, and shutteth up his bowels of compassion from him, how dwelleth the love of God in him? [1 John iii, 17.]
+He that hath pity upon the poor lendeth unto the Lord; and that which he hath given will he pay him again. [Prov. xix, 17.]
+Blessed is he that considereth the poor: the Lord will deliver him in time of trouble. [Psalm xli, 1.]
+Thou shalt open thine hand wide unto thy brother, to thy poor. [Deut. xv, 11.]
+[/or]
+@offering
+
+= Invitation and Confession
+¶ After which the Elder shall give the following Invitation, the People standing:
+If any man sin, we have an advocate with the Father, Jesus Christ the righteous: and he is the propitiation for our sins: and not for ours only, but also for the sins of the whole world.
+Wherefore ye that do truly and earnestly repent of your sins, and are in love and charity with your neighbors, and intend to lead a new life, following the commandments of God, and walking from henceforth in his holy ways, draw near with faith, and take this Holy Sacrament to your comfort; and, devoutly kneeling, make your humble confession to Almighty God.
+¶ Then shall this general Confession be made by the Minister in the name of all those who are minded to receive the Holy Communion, both he and all the People devoutly kneeling, and saying:
++ Almighty God, Father of our Lord Jesus Christ, Maker of all things, Judge of all men, we acknowledge and bewail our manifold sins and wickedness, which we from time to time most grievously have committed, by thought, word, and deed, against thy Divine Majesty, provoking most justly thy wrath and indignation against us. We do earnestly repent, and are heartily sorry for these our misdoings; the remembrance of them is grievous unto us. Have mercy upon us, have mercy upon us, most merciful Father; for thy Son, our Lord Jesus Christ's sake, forgive us all that is past; and grant that we may ever hereafter serve and please thee in newness of life, to the honor and glory of thy name, through Jesus Christ our Lord. Amen.
+
+= Pardon, Collect and Humble Access
+¶ Then shall the Elder say:
+Almighty God, our heavenly Father, who of thy great mercy hast promised forgiveness of sins to all them that with hearty repentance and true faith turn unto thee, have mercy upon us; pardon and deliver us from all our sins; confirm and strengthen us in all goodness; and bring us to everlasting life, through Jesus Christ our Lord. Amen.
+## The Collect
+Almighty God, unto whom all hearts are open, all desires known, and from whom no secrets are hid, cleanse the thoughts of our hearts by the inspiration of thy Holy Spirit, that we may perfectly love thee, and worthily magnify thy holy name, through Jesus Christ our Lord. Amen.
+¶ Then shall the Elder say:
+We do not presume to come to this thy table, O merciful Lord, trusting in our own righteousness, but in thy manifold and great mercies. We are not worthy so much as to gather up the crumbs under thy table. But thou art the same Lord, whose property is always to have mercy. Grant us, therefore, gracious Lord, so to eat the flesh of thy dear Son Jesus Christ, and to drink his blood, that we may live and grow thereby; and that, being washed through his most precious blood, we may evermore dwell in him, and he in us. Amen.
+
+= The Prayer of Consecration
+[consecration]
+¶ Then the Elder shall offer the Prayer of Consecration, as followeth:
+Almighty God, our heavenly Father, who of thy tender mercy didst give thine only Son Jesus Christ to suffer death upon the cross for our redemption; who made there, by his oblation of himself once offered, a full, perfect, and sufficient sacrifice, oblation, and satisfaction for the sins of the whole world; and did institute, and in his holy Gospel command us to continue, a perpetual memory of his precious death until his coming again: hear us, O merciful Father, we most humbly beseech thee, and grant that we, receiving these thy creatures of bread and wine, according to thy Son our Saviour Jesus Christ's holy institution, in remembrance of his death and passion, may be partakers of his most blessed body and blood; who, in the same night that he was betrayed, took bread; (1) and when he had given thanks, he broke it, and gave it to his disciples, saying, Take, eat; this is my body which is given for you; do this in remembrance of me. Likewise after supper he took (2) the cup; and when he had given thanks, he gave it to them, saying, Drink ye all of this; for this is my blood of the New Testament, which is shed for you, and for many, for the remission of sins; do this, as oft as ye shall drink it, in remembrance of me. Amen.
+¶ (1) Here the Elder may take the plate of bread in his hand. (2) Here he may take the cup in his hand.
+[/consecration]
+
+= The Communion
+¶ Then shall the Minister receive the Communion in both kinds, and proceed to deliver the same to the other Ministers, if any be present; after which he shall say:
+It is very meet, right, and our bounden duty that we should at all times and in all places give thanks unto thee, O Lord, holy Father, Almighty, Everlasting God.
+Therefore with angels and archangels, and with all the company of heaven, we laud and magnify thy glorious name, evermore praising thee, and saying, Holy, Holy, Holy, Lord God of Hosts, heaven and earth are full of thy glory. Glory be to thee, O Lord most high! Amen.
+¶ The Minister shall then proceed to administer the Communion to the People in order, kneeling, into their uncovered hands; and when he delivereth the Bread, he shall say:
+The body of our Lord Jesus Christ, which was given for thee, preserve thy soul and body unto everlasting life. Take and eat this in remembrance that Christ died for thee; and feed on him in thy heart by faith, with thanksgiving.
+¶ And the Minister that delivereth the Cup shall say:
+The blood of our Lord Jesus Christ, which was shed for thee, preserve thy soul and body unto everlasting life. Drink this in remembrance that Christ's blood was shed for thee, and be thankful.
+@communion
+¶ [If the Consecrated bread or wine shall be all spent before all have communed, the Elder may Consecrate more by repeating the Prayer of Consecration.]
+¶ [When all have communed, the Minister shall return to the Lord's table and place upon it what remaineth of the Consecrated elements, covering the same with a fair linen cloth.]
+
+= The Lord's Prayer and Thanksgiving
+¶ Then shall the Elder say the Lord's Prayer; the People kneeling, and repeating after him every petition:
++ Our Father who art in heaven, hallowed be thy name. Thy kingdom come. Thy will be done in earth, as it is in heaven. Give us this day our daily bread: and forgive us our trespasses, as we forgive those who trespass against us: and lead us not into temptation, but deliver us from evil: for thine is the kingdom, and the power, and the glory, forever. Amen.
+¶ After which shall be said as followeth:
+O Lord our heavenly Father, we thy humble servants desire thy Fatherly goodness mercifully to accept this our sacrifice of praise and thanksgiving; most humbly beseeching thee to grant, that, by the merits and death of thy Son Jesus Christ, and through faith in his blood, we and thy whole Church may obtain forgiveness of our sins, and all other benefits of his passion. And here we offer and present unto thee, O Lord, ourselves, our souls and bodies, to be a reasonable, holy, and lively sacrifice unto thee; humbly beseeching thee that all we who are partakers of this Holy Communion may be filled with thy grace and heavenly benediction. And although we be unworthy, through our manifold sins, to offer unto thee any sacrifice, yet we beseech thee to accept this our bounden duty and service; not weighing our merits, but pardoning our offenses, through Jesus Christ our Lord; by whom, and with whom, in the unity of the Holy Ghost, all honor and glory be unto thee, O Father Almighty, world without end. Amen.
+
+= Gloria in Excelsis and Blessing
+¶ Then shall be said or sung:
++ Glory be to God on high, and on earth peace, good will toward men! We praise thee, we bless thee, we worship thee, we glorify thee, we give thanks to thee for thy great glory, O Lord God, heavenly King, God the Father Almighty!
++ O Lord, the only-begotten Son Jesus Christ: O Lord God, Lamb of God, Son of the Father, that takest away the sins of the world, have mercy upon us. Thou that takest away the sins of the world, have mercy upon us. Thou that takest away the sins of the world, receive our prayer. Thou that sittest at the right hand of God the Father, have mercy upon us. For thou only art holy; thou only art the Lord; thou only, O Christ, with the Holy Ghost, art most high in the glory of God the Father. Amen.
+¶ Then the Elder, if he see it expedient, may put up an extemporary Prayer; and afterward shall let the People depart with this Blessing:
+@prayer: An extemporary Prayer, if the Elder see it expedient
+The peace of God, which passeth all understanding, keep your hearts and minds in the knowledge and love of God, and of his Son Jesus Christ our Lord: and the blessing of God Almighty, the Father, the Son, and the Holy Ghost, be among you, and remain with you always. Amen.
+¶ N. B. — If the Elder be straitened for time in the usual administration of the Holy Communion, he may omit any part of the service except the Invitation, the Confession, and the Prayer of Consecration; and in its administration to the Sick he may omit any part of the service except the Confession, the Prayer of Consecration, and the usual sentences in delivering the Bread and Wine, closing with the Lord's Prayer, extempore supplication, and the Benediction.
+
+%%% order wes1784-baptism
+# John Wesley, The Sunday Service of the Methodists in North America (London, 1784): "The Ministration of Baptism of
+# Infants", pp. 139-143. Public domain (published 1784). Transcribed from the Internet Archive scan (amernorfm00wesl), set
+# against the 1662 office that Wesley abridged and read again from the scan where the two differ. Wesley's changes are kept:
+# no godparents' promises and no "regenerate", the Minister for the Priest, the friends of the child naming it, sprinkling
+# allowed. Spelling is modern. Markup: see tools/orders.py.
+title: The Ministration of Baptism of Infants
+book: The Sunday Service of the Methodists in North America (John Wesley, 1784)
+
+= The Exhortation and Prayers
+¶ The Minister coming to the Font, which is to be filled with pure Water, shall say,
+Dearly beloved, forasmuch as all men are conceived and born in sin, and that our Saviour Christ saith, None can enter into the kingdom of God, except he be regenerate and born anew of water and of the Holy Ghost; I beseech you to call upon God the Father, through our Lord Jesus Christ, that of his bounteous mercy he will grant to this Child that thing which by nature he cannot have; that he may be baptized with water and the Holy Ghost, and received into Christ's holy Church, and be made a lively member of the same.
+¶ Then shall the Minister say,
+Let us pray.
+Almighty and everlasting God, who of thy great mercy didst save Noah and his family in the ark from perishing by water; and also didst safely lead the children of Israel, thy people, through the Red Sea, figuring thereby thy holy Baptism; and by the Baptism of thy well-beloved Son Jesus Christ in the river Jordan, didst sanctify water to the mystical washing away of sin; We beseech thee, for thine infinite mercies, that thou wilt look upon this Child; wash him and sanctify him with the Holy Ghost; that he being delivered from thy wrath, may be received into the ark of Christ's Church; and being stedfast in faith, joyful through hope, and rooted in charity, may so pass the waves of this troublesome world, that finally he may come to the land of everlasting life; there to reign with thee, world without end, through Jesus Christ our Lord.
+- Amen.
+Almighty and immortal God, the aid of all that need, the helper of all that flee to thee for succour, the life of them that believe, and the resurrection of the dead, we call upon thee for this Infant, that he, coming to thy holy Baptism, may receive remission of his sins by spiritual regeneration. Receive him, O Lord, as thou hast promised by thy well-beloved Son, saying, Ask, and ye shall have; seek, and ye shall find; knock, and it shall be opened unto you: So give now unto us that ask; let us that seek find; open the gate unto us that knock; that this Infant may enjoy the everlasting benediction of thy heavenly washing, and may come to the eternal kingdom which thou hast promised by Christ our Lord.
+- Amen.
+
+= The Gospel and Thanksgiving
+¶ Then shall the People stand up, and the Minister shall say,
+Hear the words of the Gospel, written by Saint Mark, in the Tenth Chapter, at the Thirteenth Verse.
+They brought young children to Christ, that he should touch them. And his disciples rebuked those that brought them; but when Jesus saw it he was much displeased, and said unto them, Suffer the little children to come unto me, and forbid them not, for of such is the kingdom of God. Verily, I say unto you, Whosoever shall not receive the kingdom of God as a little child, he shall not enter therein. And he took them up in his arms, put his hands upon them, and blessed them.
+¶ Then shall the Minister say,
+Almighty and everlasting God, heavenly Father, we give thee humble thanks, that thou hast vouchsafed to call us to the knowledge of thy grace, and faith in thee: Increase this knowledge, and confirm this faith in us evermore. Give thy Holy Spirit to this Infant, that he may be born again, and be made an heir of everlasting salvation, through our Lord Jesus Christ, who liveth and reigneth with thee and the Holy Spirit, now and for ever.
+- Amen.
+O merciful God, grant that the old Adam in this Child may be so buried, that the new man may be raised up in him.
+- Amen.
+Grant that all carnal affections may die in him, and that all things belonging to the Spirit may live and grow in him.
+- Amen.
+Grant that he may have power and strength to have victory, and to triumph against the devil, the world, and the flesh.
+- Amen.
+Grant that whosoever is dedicated to thee by our office and ministry, may also be endued with heavenly virtues, and everlastingly rewarded, through thy mercy, O blessed Lord God, who dost live and govern all things, world without end.
+- Amen.
+Almighty everliving God, whose most dearly beloved Son Jesus Christ, for the forgiveness of our sins, did shed out of his most precious side both water and blood; and gave commandment to his disciples, that they should go teach all nations, and baptize them, in the Name of the Father, and of the Son, and of the Holy Ghost: Regard, we beseech thee, the supplications of thy congregation; sanctify this water to the mystical washing away of sin; and grant that this Child, now to be baptized, may receive the fulness of thy grace, and ever remain in the number of thy faithful and elect children, through Jesus Christ our Lord.
+- Amen.
+
+= The Baptism
+¶ Then the Minister shall take the Child into his Hands, and say to the Friends of the Child,
+Name this Child.
+¶ And then naming it after them, he shall dip it in the Water, or sprinkle it therewith, saying,
+I baptize thee, In the Name of the Father, and of the Son, and of the Holy Ghost. Amen.
+¶ Then the Minister shall say,
+We receive this Child into the Congregation of Christ's flock, and sign him with the sign of the Cross; in token that hereafter he shall not be ashamed to confess the faith of Christ crucified, and manfully to fight under his banner against sin, the world and the devil; and to continue Christ's faithful soldier and servant unto his life's end.
+¶ Here the Minister shall make a Cross upon the Child's forehead.
+- Amen.
+
+= Thanksgiving
+¶ Then shall the Minister say,
+Seeing now, dearly beloved brethren, that this Child is grafted into the body of Christ's Church, let us give thanks unto Almighty God for these benefits, and with one accord make our prayers unto him, that this Child may lead the rest of his life according to this beginning.
+¶ Then shall be said, all kneeling,
++ Our Father, who art in heaven, Hallowed be thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven: Give us this day our daily bread; And forgive us our trespasses, as we forgive them that trespass against us; And lead us not into temptation; But deliver us from evil. Amen.
+¶ Then shall the Minister say,
+We yield thee hearty thanks, most merciful Father, that it hath pleased thee to receive this Infant for thine own Child by adoption, and to incorporate him into thy holy Church. And humbly we beseech thee to grant, that he, being dead unto sin, and living unto righteousness, and being buried with Christ in his death, may crucify the old man, and utterly abolish the whole body of sin; and that, as he is made partaker of the death of thy Son, he may also be partaker of his resurrection; so that finally, with the residue of thy holy Church, he may be an inheritor of thine everlasting kingdom, through Christ our Lord.
+- Amen.
+
+%%% order wes1784-burial
+# John Wesley, The Sunday Service of the Methodists in North America (London, 1784): "The Order for the Burial of the
+# Dead", pp. 156-161. Public domain (published 1784). Transcribed from the Internet Archive scan (amernorfm00wesl), set
+# against the 1662 office and read again from the scan where the two differ. Wesley's changes are kept: Psalm 90 alone,
+# in his own revision of it (from his Select Psalms, data/bcp1784-psalter.json), "who" for "which" in the lesson, no words
+# of committal and no prayer of thanksgiving for the departed, and a shortened Collect. Spelling is modern.
+# Markup: see tools/orders.py.
+title: The Order for the Burial of the Dead
+book: The Sunday Service of the Methodists in North America (John Wesley, 1784)
+
+= The Sentences
+¶ The Minister meeting the Corpse, and going before it, shall say,
+I am the resurrection and the life, saith the Lord: he that believeth in me, though he were dead, yet shall he live: and whosoever liveth and believeth in me, shall never die. John xi. 25, 26.
+I know that my Redeemer liveth, and that he shall stand at the latter day upon the earth. And though after my skin, worms destroy this body, yet in my flesh shall I see God: whom I shall see for myself, and mine eyes shall behold, and not another. Job xix. 25, 26, 27.
+We brought nothing into this world, and it is certain we can carry nothing out. The Lord gave, and the Lord hath taken away; blessed be the Name of the Lord. 1 Tim. vi. 7. Job i. 21.
+
+= The Psalm
+¶ Then shall be read, Psal. xc.
++ Lord, thou hast been our refuge: from one generation to another.
++ Before the mountains were brought forth, or ever the earth and the world were made: thou art God from everlasting, and world without end.
++ Thou turnest man to destruction: again thou sayest, Come again, ye children of men.
++ For a thousand years in thy sight are but as yesterday: seeing that is past as a watch in the night.
++ As soon as thou scatterest them they are even as a sleep: and fade away suddenly like the grass.
++ In the morning it is green, and groweth up: but in the evening it is cut down, dried up, and withered.
++ For we consume away in thy displeasure: and are afraid at thy wrathful indignation.
++ Thou hast set our misdeeds before thee: and our secret sins in the light of thy countenance.
++ For when thou art angry all our days are gone: we bring our years to an end, as it were a tale that is told.
++ The days of our age are threescore years and ten; and though men be so strong that they come to fourscore years: yet is their strength then but labour and sorrow; so soon passeth it away, and we are gone.
++ But who regardeth the power of thy wrath: for even according to thy fear, so is thy displeasure.
++ So teach us to number our days: that we may apply our hearts unto wisdom.
++ Turn thee again, O Lord, at the last: and be gracious unto thy servants.
++ O satisfy us with thy mercy, and that soon: so shall we rejoice and be glad all the days of our life.
++ Comfort us again now after the time that thou hast plagued us: and for the years wherein we have suffered adversity.
++ Shew thy servants thy work: and their children thy glory.
++ And the glorious majesty of the Lord our God be upon us: prosper thou the work of our hands upon us, O prosper thou our handy-work.
++ Glory be to the Father, and to the Son, and to the Holy Ghost;
++ As it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The Lesson
+¶ Then shall follow the Lesson taken out of the fifteenth Chapter of the first Epistle of Saint Paul to the Corinthians.
+## 1 Cor. xv. 20.
+Reader. Now is Christ risen from the dead, and become the first-fruits of them that slept. For since by man came death, by man came also the resurrection of the dead. For as in Adam all die, even so in Christ shall all be made alive. But every man in his own order: Christ the firstfruits; afterward they that are Christ's, at his coming. Then cometh the end, when he shall have delivered up the kingdom to God, even the Father; when he shall have put down all rule, and all authority, and power. For he must reign, till he hath put all enemies under his feet. The last enemy that shall be destroyed is death. For he hath put all things under his feet. But when he saith, all things are put under him, it is manifest that he is excepted, who did put all things under him. And when all things shall be subdued unto him, then shall the Son also himself be subject unto him that put all things under him, that God may be all in all. Else what shall they do who are baptized for the dead, if the dead rise not at all? Why are they then baptized for the dead? and why stand we in jeopardy every hour? I protest by your rejoicing, which I have in Christ Jesus our Lord, I die daily. If after the manner of men I have fought with beasts at Ephesus, what advantageth it me, if the dead rise not? Let us eat and drink, for to-morrow we die. Be not deceived: evil communications corrupt good manners. Awake to righteousness, and sin not: for some have not the knowledge of God. I speak this to your shame. But some man will say, How are the dead raised up? and with what body do they come? Thou fool, that which thou sowest is not quickened, except it die. And that which thou sowest, thou sowest not that body that shall be, but bare grain, it may chance of wheat, or of some other grain: But God giveth it a body, as it hath pleased him, and to every seed his own body. All flesh is not the same flesh; but there is one kind of flesh of men, another flesh of beasts, another of fishes, and another of birds. There are also celestial bodies, and bodies terrestrial; but the glory of the celestial is one, and the glory of the terrestrial is another. There is one glory of the sun, and another glory of the moon, and another glory of the stars; for one star differeth from another star in glory. So also is the resurrection of the dead: It is sown in corruption; it is raised in incorruption: It is sown in dishonour; it is raised in glory: It is sown in weakness; it is raised in power: It is sown a natural body; it is raised a spiritual body. There is a natural body, and there is a spiritual body. And so it is written, The first man Adam was made a living soul; the last Adam was made a quickening spirit. Howbeit, that was not first which is spiritual, but that which is natural; and afterward that which is spiritual. The first man is of the earth, earthy: the second man is the Lord from heaven. As is the earthy, such are they also that are earthy: and as is the heavenly, such are they also that are heavenly. And as we have borne the image of the earthy, we shall also bear the image of the heavenly. Now this I say, brethren, that flesh and blood cannot inherit the kingdom of God; neither doth corruption inherit incorruption. Behold, I shew you a mystery: We shall not all sleep, but we shall all be changed, in a moment, in the twinkling of an eye, at the last trump, (for the trumpet shall sound,) and the dead shall be raised incorruptible, and we shall be changed. For this corruptible must put on incorruption, and this mortal must put on immortality. So when this corruptible shall have put on incorruption, and this mortal shall have put on immortality; then shall be brought to pass the saying that is written, Death is swallowed up in victory. O death, where is thy sting? O grave, where is thy victory? The sting of death is sin, and the strength of sin is the law. But thanks be to God, who giveth us the victory through our Lord Jesus Christ. Therefore, my beloved brethren, be ye stedfast, immoveable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord.
+
+= At the Grave
+¶ At the Grave, when the Corpse is laid in the earth, the Minister shall say,
+Man that is born of a woman hath but a short time to live, and is full of misery. He cometh up, and is cut down like a flower; he fleeth as it were a shadow, and never continueth in one stay. In the midst of life we are in death; of whom may we seek for succour, but of thee, O Lord, who for our sins art justly displeased?
+Yet, O Lord God most holy, O Lord most mighty, O holy and most merciful Saviour, deliver us not into the bitter pains of eternal death. Thou knowest, Lord, the secrets of our hearts: shut not thy merciful ears to our prayers; but spare us, Lord most holy, O God most mighty, O holy and merciful Saviour, thou most worthy Judge eternal, suffer us not at our last hour for any pains of death to fall from thee.
+¶ Then shall be said,
+I heard a voice from heaven, saying unto me, Write; From henceforth blessed are the dead who die in the Lord: even so saith the Spirit, for they rest from their labours.
+
+= The Prayers
+¶ Then shall the Minister say,
+Lord, have mercy upon us.
+- Christ, have mercy upon us.
+Lord, have mercy upon us.
++ Our Father, who art in heaven; Hallowed be thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven: Give us this day our daily bread; And forgive us our trespasses, as we forgive them that trespass against us; And lead us not into temptation; But deliver us from evil. Amen.
+## The Collect.
+O Merciful God, the Father of our Lord Jesus Christ, who is the resurrection and the life; in whom whosoever believeth shall live, though he die: and whosoever liveth and believeth in him, shall not die eternally: We meekly beseech thee, O Father, to raise us from the death of sin unto the life of righteousness; that when we shall depart this life, we may rest in him; and at the general resurrection on the last day, may be found acceptable in thy sight, and receive that blessing which thy well-beloved Son shall then pronounce to all that love and fear thee, saying, Come, ye blessed children of my Father, receive the kingdom prepared for you from the beginning of the world. Grant this, we beseech thee, O merciful Father, through Jesus Christ our Mediator and Redeemer.
+- Amen.
+The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Ghost, be with us all evermore.
+- Amen.
+
+%%% order wes1784-evening
+# John Wesley, The Sunday Service of the Methodists in North America (London, 1784): "The Order for Evening Prayer,
+# Every Lord's Day", pp. 14-19. Public domain (published 1784). Transcribed from the Internet Archive scan (amernorfm00wesl)
+# the same way as Morning Prayer (the wes1784-morning order): set against the 1662 Evening Prayer and read again from the
+# scan where the two differ. Wesley's Evening Prayer has the Morning's opening, Cantate Domino and Deus misereatur for
+# canticles, no suffrages, and the prayer for the Supreme Rulers. Spelling is modern. The Psalms are read in order from
+# the Psalter, the lessons from the book's table of proper lessons for Sundays (put in by the site), and the first collect
+# is the Collect of the day (put in by the site). Markup: see tools/orders.py.
+title: The Order for Evening Prayer, Every Lord's Day
+book: The Sunday Service of the Methodists in North America (John Wesley, 1784)
+
+= The Sentences
+¶ At the Beginning of Evening Prayer, the Minister shall read with a loud Voice some one or more of these Sentences of the Scriptures that follow: And then he shall say that which is written after the said Sentences.
+When the wicked man turneth away from his wickedness that he hath committed, and doeth that which is lawful and right, he shall save his soul alive. Ezek. xviii. 27.
+The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise. Psal. li. 17.
+To the Lord our God belong mercies and forgivenesses, though we have rebelled against him: neither have we obeyed the voice of the Lord our God, to walk in his laws which he set before us. Dan. ix. 9, 10.
+I will arise, and go to my father, and will say unto him, Father, I have sinned against heaven and before thee, and am no more worthy to be called thy son. Luke xv. 18, 19.
+Enter not into judgment with thy servant, O Lord; for in thy sight shall no man living be justified. Psal. cxliii. 2.
+
+= Exhortation, Confession and Prayer for Pardon
+Dearly beloved brethren, the Scripture moveth us, in sundry places, to acknowledge and confess our manifold sins and wickedness; and that we should not dissemble nor cloke them before the face of Almighty God, our heavenly Father; but confess them with an humble, lowly, penitent, and obedient heart; to the end that we may obtain forgiveness of the same by his infinite goodness and mercy. Wherefore I pray and beseech you, as many as are here present, to accompany me with a pure heart and humble voice, unto the throne of the heavenly grace, saying after me.
+¶ A general Confession to be said of the whole Congregation, after the Minister; all kneeling.
++ Almighty and most merciful Father, We have erred and strayed from thy ways like lost sheep. We have followed too much the devices and desires of our own hearts. We have offended against thy holy laws. We have left undone those things which we ought to have done; And we have done those things which we ought not to have done; And there is no health in us. But thou, O Lord, have mercy upon us, miserable offenders. Spare thou them, O God, which confess their faults. Restore thou them that are penitent; According to thy promises declared unto mankind in Christ Jesus our Lord. And grant, O most merciful Father, for his sake; That we may hereafter live a godly, righteous, and sober life; To the glory of thy holy Name. Amen.
+¶ Then the Minister shall say,
+O Lord, we beseech thee, absolve thy people from their offences; that, through thy bountiful goodness, we may be delivered from the bands of those sins, which by our frailty we have committed. Grant this, O heavenly Father, for Jesus Christ's sake, our blessed Lord and Saviour.
+- Amen.
+
+= The Lord's Prayer and the Versicles
+¶ Then the Minister shall say the Lord's Prayer; the People also repeating it with him.
++ Our Father which art in heaven, Hallowed be thy Name; Thy kingdom come; Thy will be done in earth, as it is in heaven: Give us this day our daily bread; And forgive us our trespasses, as we forgive them that trespass against us: And lead us not into temptation; But deliver us from evil: For thine is the Kingdom, and the Power, and the Glory, For ever and ever. Amen.
+¶ Then likewise he shall say,
+O Lord, open thou our lips.
+Answer. And our mouth shall shew forth thy praise.
+Minister. O God, make speed to save us.
+Answer. O Lord, make haste to help us.
+¶ Here all standing up, the Minister shall say,
+Glory be to the Father, and to the Son: and to the Holy Ghost;
+Answer. As it was in the beginning, is now, and ever shall be: world without end. Amen.
+Minister. Praise ye the Lord.
+Answer. The Lord's Name be praised.
+
+= The Psalms
+¶ Then shall be said the Psalms in order as they are appointed.
+@psalter: The Psalms appointed
+
+= The First Lesson and Cantate Domino
+¶ Then a Lesson of the Old Testament, as is appointed: And after that the following Psalm:
+@lessons: The First Lesson
++ O sing unto the Lord a new song: for he hath done marvellous things.
++ With his own right hand, and with his holy arm: hath he gotten himself the victory.
++ The Lord declared his salvation: his righteousness hath he openly shewed in the sight of the heathen.
++ He hath remembered his mercy and truth towards the house of Israel: and all the ends of the world have seen the salvation of our God.
++ Shew yourselves joyful unto the Lord, all ye lands: sing, rejoice, and give thanks.
++ Let the sea make a noise, and all that therein is: the round world and they that dwell therein.
++ Let the floods clap their hands, and let the hills be joyful together before the Lord: for he cometh to judge the earth.
++ With righteousness shall he judge the world: and the people with equity.
++ Glory be to the Father, &c.
++ As it was in the beginning, &c.
+
+= The Second Lesson and Deus misereatur
+¶ Then a Lesson of the New Testament, as it is appointed: And after that the following Psalm:
+@lessons: The Second Lesson
++ God be merciful unto us, and bless us: and shew us the light of his countenance, and be merciful unto us.
++ That thy way may be known upon earth: thy saving health among all nations.
++ Let the people praise thee, O God: yea, let all the people praise thee.
++ O let the nations rejoice and be glad: for thou shalt judge the folk righteously, and govern the nations upon earth.
++ Let the people praise thee, O God: yea, let all the people praise thee.
++ Then shall the earth bring forth her increase: and God, even our own God, shall give us his blessing.
++ God shall bless us: and all the ends of the world shall fear him.
++ Glory be to the Father, &c.
++ As it was in the beginning, &c.
+
+= The Creed
+¶ Then shall be said the Apostles' Creed by the Minister and the People, standing.
++ I believe in God the Father Almighty, Maker of Heaven and Earth: And in Jesus Christ his only Son our Lord; Who was conceived by the Holy Ghost; Born of the Virgin Mary; Suffered under Pontius Pilate; Was crucified, dead, and buried; He descended into hell: The third day he rose again from the dead; He ascended into heaven, and sitteth on the right hand of God the Father Almighty; From thence he shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; the Holy Catholic Church; the Communion of Saints; The forgiveness of sins; The resurrection of the body; And the life everlasting. Amen.
+
+= The Prayers
+¶ Then shall the Minister pronounce with a loud Voice,
+The Lord be with you.
+Answer. And with thy spirit.
+Minister. Let us pray.
+Lord, have mercy upon us.
+Answer. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+¶ Then shall follow three Collects; the first of the Day; the second for Peace, the third for Aid against all Perils.
+@prayer: The Collect for the Day
+## The second Collect at Evening Prayer.
+O God, from whom all holy desires, all good counsels, and all just works do proceed; Give unto thy servants that peace which the world cannot give; that both our hearts may be set to obey thy commandments, and also that by thee we being defended from the fear of our enemies, may pass our time in rest and quietness, through the merits of Jesus Christ our Saviour.
+- Amen.
+## The third Collect, for Aid against all Perils.
+Lighten our darkness, we beseech thee, O Lord; and by thy great mercy defend us from all perils and dangers of this night, for the love of thy only Son our Saviour Jesus Christ.
+- Amen.
+## A Prayer for the Supreme Rulers.
+O Lord our heavenly Father, high and mighty, King of kings, Lord of lords, the only Ruler of princes, who dost from thy throne behold all the dwellers upon earth; Most heartily we beseech thee, with thy favour to behold the Supreme Rulers of these United States; and so replenish them with the grace of thy Holy Spirit, that they may incline to thy will, and walk in thy way; through Jesus Christ our Lord.
+- Amen.
+Almighty God, who hast given us grace, at this time, with one accord to make our common supplications unto thee; and dost promise, that when two or three are gathered together in thy Name, thou wilt grant their requests; Fulfil now, O Lord, the desires and petitions of thy servants, as may be most expedient for them; granting us in this world knowledge of thy truth, and in the world to come life everlasting.
+- Amen.
+## 2 Cor. xiii. 14.
+The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Ghost, be with you all evermore.
+- Amen.
+¶ Here endeth the Order of Evening Prayer.
+
+= A Prayer and Thanksgiving for the Lord's Day
+¶ In the book this Prayer and the General Thanksgiving follow the Litany, "to be used every Lord's Day".
+O God, the Creator and Preserver of all mankind, we humbly beseech thee for all sorts and conditions of men, that thou wouldest be pleased to make thy ways known unto them, thy saving health unto all nations. More especially we pray for the good estate of the Catholic Church; that it may be so guided and governed by thy good Spirit, that all who profess and call themselves Christians may be led into the way of truth, and hold the faith in unity of spirit, in the bond of peace, and in righteousness of life. Finally, we commend to thy fatherly goodness, all those who are any ways afflicted or distressed in mind, body, or estate [especially those for whom our prayers are desired]; that it may please thee to comfort and relieve them according to their several necessities; giving them patience under their sufferings, and a happy issue out of all their afflictions: and this we beg for Jesus Christ's sake.
+- Amen.
+¶ The words in brackets are to be said when any desire the prayers of the Congregation.
+## A General Thanksgiving.
+Almighty God, Father of all mercies, we thine unworthy servants do give thee most humble and hearty thanks for all thy goodness and loving-kindness to us and to all men; [particularly to those who desire now to offer up their praises and thanksgivings for thy late mercies vouchsafed unto them.] We bless thee for our creation, preservation, and all the blessings of this life; but above all, for thine inestimable love in the redemption of the world by our Lord Jesus Christ; for the means of grace, and for the hope of glory. And we beseech thee, give us that due sense of all thy mercies, that our hearts may be unfeignedly thankful, and that we may shew forth thy praise not only with our lips, but in our lives, by giving up ourselves to thy service, and by walking before thee in holiness and righteousness all our days, through Jesus Christ our Lord, to whom with thee and the Holy Ghost, be all honour and glory, world without end.
+- Amen.
+¶ The words in brackets are to be said when any that have been prayed for desire to return praise.
+
+%%% order wes1784-litany
+# John Wesley, The Sunday Service of the Methodists in North America (London, 1784): "The Litany, or General
+# Supplication, to be said upon Wednesdays and Fridays", pp. 20-26. Public domain (published 1784). Transcribed from the
+# Internet Archive scan (amernorfm00wesl), set against the 1662 Litany and read again from the scan where the two differ.
+# Wesley's changes are kept: the Supreme Rulers of these United States for the King and royal family, the Ministers of
+# the Gospel for bishops, priests and deacons, the Magistrates for the Lords of the Council, two Agnus Dei petitions, and
+# the Litany ending with the prayer of St Chrysostom and the Grace. Spelling is modern. Markup: see tools/orders.py.
+title: The Litany, or General Supplication
+book: The Sunday Service of the Methodists in North America (John Wesley, 1784)
+
+= The Invocations
+¶ Here followeth the Litany, or General Supplication, to be said upon Wednesdays and Fridays.
+O God the Father of heaven; have mercy upon us miserable sinners.
+- O God the Father of heaven; have mercy upon us miserable sinners.
+O God the Son, Redeemer of the world; have mercy upon us miserable sinners.
+- O God the Son, Redeemer of the world; have mercy upon us miserable sinners.
+O God the Holy Ghost, proceeding from the Father and the Son; have mercy upon us miserable sinners.
+- O God the Holy Ghost, proceeding from the Father and the Son; have mercy upon us miserable sinners.
+O holy, blessed, and glorious Trinity, three persons, and one God; have mercy upon us miserable sinners.
+- O holy, blessed, and glorious Trinity, three persons, and one God; have mercy upon us miserable sinners.
+
+= The Deprecations and Obsecrations
+Remember not, Lord, our offences, nor the offences of our forefathers; neither take thou vengeance of our sins: spare us, good Lord, spare thy people, whom thou hast redeemed with thy most precious blood, and be not angry with us for ever.
+- Spare us, good Lord.
+From all evil and mischief; from sin, from the crafts and assaults of the devil, from thy wrath, and from everlasting damnation,
+- Good Lord, deliver us.
+From all blindness of heart; from pride, vain-glory, and hypocrisy; from envy, hatred, and malice, and all uncharitableness,
+- Good Lord, deliver us.
+From fornication, and all other deadly sin; and from all the deceits of the world, the flesh, and the devil,
+- Good Lord, deliver us.
+From lightning and tempest; from plague, pestilence, and famine; from battle and murder, and from sudden death,
+- Good Lord, deliver us.
+From all sedition, privy conspiracy, and rebellion; from all false doctrine, heresy and schism; from hardness of heart, and contempt of thy word and commandment,
+- Good Lord, deliver us.
+By the mystery of thy holy Incarnation; by thy holy Nativity and Circumcision; by thy Baptism, Fasting, and Temptation,
+- Good Lord, deliver us.
+By thine Agony and bloody Sweat; by thy Cross and Passion; by thy precious Death and Burial; by thy glorious Resurrection and Ascension; and by the coming of the Holy Ghost,
+- Good Lord, deliver us.
+In all time of our tribulation; in all time of our wealth; in the hour of death, and in the day of judgment,
+- Good Lord, deliver us.
+
+= The Intercessions
+We sinners do beseech thee to hear us, O Lord God, and that it may please thee to rule and govern thy holy Church universal in the right way;
+- We beseech thee to hear us, good Lord.
+That it may please thee to keep and strengthen in the true worshipping of thee, in righteousness and holiness of life, thy servants the Supreme Rulers of these United States;
+- We beseech thee to hear us, good Lord.
+That it may please thee to rule their hearts in thy faith, fear, and love, that they may evermore have affiance in thee, and ever seek thy honour and glory;
+- We beseech thee to hear us, good Lord.
+That it may please thee to illuminate all the Ministers of thy Gospel, with true knowledge and understanding of thy Word: that both by their preaching and living they may set it forth, and shew it accordingly;
+- We beseech thee to hear us, good Lord.
+That it may please thee to bless and keep the Magistrates, giving them grace to execute justice, and to maintain truth;
+- We beseech thee to hear us, good Lord.
+That it may please thee to bless and keep all thy people;
+- We beseech thee to hear us, good Lord.
+That it may please thee to give to all nations unity, peace and concord;
+- We beseech thee to hear us, good Lord.
+That it may please thee to give us an heart to love and dread thee, and diligently to live after thy commandments;
+- We beseech thee to hear us, good Lord.
+That it may please thee to give to all thy people increase of grace, to hear meekly thy Word, and to receive it with pure affection, and to bring forth the fruits of the Spirit;
+- We beseech thee to hear us, good Lord.
+That it may please thee to bring into the way of truth all such as have erred, and are deceived;
+- We beseech thee to hear us, good Lord.
+That it may please thee to strengthen such as do stand, and to comfort and help the weak-hearted, and to raise up them that fall, and finally to beat down Satan under our feet;
+- We beseech thee to hear us, good Lord.
+That it may please thee to succour, help, and comfort all that are in danger, necessity, and tribulation;
+- We beseech thee to hear us, good Lord.
+That it may please thee to preserve all that travel by land or by water, all women labouring with child, all sick persons and young children, and to shew thy pity upon all prisoners and captives;
+- We beseech thee to hear us, good Lord.
+That it may please thee to defend, and provide for, the fatherless children, and widows, and all that are desolate and oppressed;
+- We beseech thee to hear us, good Lord.
+That it may please thee to have mercy upon all men;
+- We beseech thee to hear us, good Lord.
+That it may please thee to forgive our enemies, persecutors, and slanderers, and to turn their hearts;
+- We beseech thee to hear us, good Lord.
+That it may please thee to give and preserve to our use the kindly fruits of the earth, so as in due time we may enjoy them;
+- We beseech thee to hear us, good Lord.
+That it may please thee to give us true repentance, to forgive us all our sins, negligences, and ignorances, and to endue us with the grace of thy Holy Spirit, to amend our lives according to thy holy Word;
+- We beseech thee to hear us, good Lord.
+Son of God: we beseech thee to hear us.
+- Son of God: we beseech thee to hear us.
+O Lamb of God, that takest away the sins of the world;
+- Grant us thy peace.
+O Lamb of God, that takest away the sins of the world;
+- Have mercy upon us.
+O Christ, hear us.
+- O Christ, hear us.
+Lord, have mercy upon us.
+- Lord, have mercy upon us.
+Christ, have mercy upon us.
+- Christ, have mercy upon us.
+Lord, have mercy upon us.
+- Lord, have mercy upon us.
+
+= The Lord's Prayer and the Supplication
+¶ Then shall the Minister, and the People with him, say the Lord's Prayer.
++ Our Father, who art in Heaven, Hallowed be thy Name; Thy Kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive them that trespass against us; And lead us not into Temptation, but deliver us from evil. Amen.
+Minister. O Lord, deal not with us after our sins:
+Answer. Neither reward us after our iniquities.
+Let us pray.
+O God, merciful Father, that despisest not the sighing of a contrite heart, nor the desire of such as be sorrowful; Mercifully assist our prayers that we make before thee, in all our troubles and adversities whensoever they oppress us; and graciously hear us, that those evils, which the craft and subtilty of the devil or man worketh against us, be brought to nought, and by the providence of thy goodness be dispersed; that we thy servants, being hurt by no persecutions, may evermore give thanks unto thee in thy holy Church, through Jesus Christ our Lord.
+- O Lord, arise, help us, and deliver us for thy Name's sake.
+O God, we have heard with our ears, and our fathers have declared unto us the noble works that thou didst in their days, and in the old time before them.
+- O Lord, arise, help us, and deliver us for thine honour.
+Glory be to the Father, and to the Son, and to the Holy Ghost.
+Answer. As it was in the beginning, is now, and ever shall be, world without end. Amen.
+From our enemies defend us, O Christ.
+- Graciously look upon our afflictions.
+Pitifully behold the sorrows of our hearts.
+- Mercifully forgive the sins of thy people.
+Favourably with mercy hear our prayers.
+- O Son of David, have mercy upon us.
+Both now and ever vouchsafe to hear us, O Christ.
+- Graciously hear us, O Christ; graciously hear us, O Lord Christ.
+Minister. O Lord, let thy mercy be shewed upon us;
+Answer. As we do put our trust in thee.
+
+= The Concluding Prayers
+Let us pray.
+We humbly beseech thee, O Father, mercifully to look upon our infirmities; and, for the glory of thy Name, turn from us all those evils that we most righteously have deserved; and grant that in all our troubles we may put our whole trust and confidence in thy mercy, and evermore serve thee in holiness and pureness of living, to thy honour and glory, through our only Mediator and Advocate, Jesus Christ our Lord.
+- Amen.
+Almighty God, who hast given us grace at this time with one accord to make our common supplications unto thee, and dost promise that when two or three are gathered together in thy Name, thou wilt grant their requests; fulfil now, O Lord, the desires and petitions of thy servants, as may be most expedient for them: granting us in this world knowledge of thy truth, and in the world to come life everlasting.
+- Amen.
+## 2 Cor. xiii. 14.
+The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Ghost, be with you all evermore.
+- Amen.
+¶ Here endeth the Litany.
+
+%%% order wes1784-matrimony
+# John Wesley, The Sunday Service of the Methodists in North America (London, 1784): "The Form of Solemnization of
+# Matrimony", pp. 149-155. Public domain (published 1784). Transcribed from the Internet Archive scan (amernorfm00wesl), set
+# against the 1662 office and read again from the scan where the two differ. Wesley's changes are kept: no giving away and
+# no ring, the couple plighting their "Faith", no psalm and no homily on the duties of man and wife. Spelling is modern.
+# Markup: see tools/orders.py.
+title: The Form of Solemnization of Matrimony
+book: The Sunday Service of the Methodists in North America (John Wesley, 1784)
+
+= The Banns and the Exhortation
+¶ First the Banns of all that are to be married together, must be published in the Congregation, three several Sundays, in the Time of Divine Service; the Minister saying after the accustomed Manner,
+I publish the Banns of Marriage between M. of ___ and N. of ___. If any of you know cause or just impediment, why these two persons should not be joined together in holy Matrimony, ye are to declare it: This is the first [second, or third] time of asking.
+¶ At the Day and Time appointed for Solemnization of Matrimony, the Persons to be married, standing together, the Man on the Right Hand, and the Woman on the Left, the Minister shall say,
+Dearly beloved, we are gathered together here in the sight of God, and in the face of this Congregation, to join together this Man and this Woman in holy Matrimony; which is an honourable estate, instituted of God in the time of man's innocency, signifying unto us the mystical union that is betwixt Christ and his Church: which holy estate Christ adorned and beautified with his presence, and first miracle that he wrought in Cana of Galilee, and is commended of St. Paul to be honourable among all men; and therefore is not by any to be enterprized, or taken in hand unadvisedly, lightly or wantonly, to satisfy men's carnal lusts and appetites, like brute beasts, that have no understanding; but reverently, discreetly, advisedly, soberly, and in the fear of God; duly considering the causes for which Matrimony was ordained.
+First, It was ordained for the procreation of children, to be brought up in the fear and nurture of the Lord, and to the praise of his holy Name.
+Secondly, It was ordained for a remedy against sin, and to avoid fornication; that such persons as have not the gift of continency, might marry, and keep themselves undefiled members of Christ's body.
+Thirdly, It was ordained for the mutual society, help, and comfort, that the one ought to have of the other, both in prosperity and adversity.
+Into which holy estate these two persons present come now to be joined. Therefore if any man can shew any just cause why they may not lawfully be joined together, let him now speak, or else hereafter for ever hold his peace.
+¶ And also speaking unto the Persons that are to be married, he shall say,
+I require and charge you both (as you will answer at the dreadful day of judgment, when the secrets of all hearts shall be disclosed) that if either of you know any impediment why you may not be lawfully joined together in Matrimony, you do now confess it. For be ye well assured, that so many as are coupled together otherwise than God's Word doth allow, are not joined together by God, neither is their Matrimony lawful.
+
+= The Vows
+¶ If no Impediment be alledged, then shall the Minister say unto the Man,
+M. Wilt thou have this woman to thy wedded wife, to live together after God's ordinance, in the holy estate of Matrimony? Wilt thou love her, comfort her, honour, and keep her, in sickness, and in health; and forsaking all other, keep thee only unto her, so long as you both shall live?
+¶ The Man shall answer,
+Man. I will.
+¶ Then shall the Minister say unto the Woman,
+N. Wilt thou have this Man to thy wedded Husband, to live together after God's ordinance, in the holy estate of Matrimony? Wilt thou obey him, serve him, love, honour, and keep him, in sickness and in health; and forsaking all other, keep thee only unto him, so long as you both shall live?
+¶ The Woman shall answer,
+Woman. I will.
+¶ Then the Minister shall cause the Man with his Right Hand to take the Woman by her Right Hand, and to say after him as followeth:
+Man. I M. take thee N. to be my wedded wife, to have and to hold, from this day forward, for better for worse, for richer for poorer, in sickness and in health, to love and to cherish, till death us do part, according to God's holy ordinance; and thereto I plight thee my Faith.
+¶ Then shall they loose their Hands; and the Woman with her Right Hand taking the Man by his Right Hand, shall likewise say after the Minister:
+Woman. I N. take thee M. to be my wedded Husband, to have and to hold, from this day forward, for better for worse, for richer for poorer, in sickness and in health, to love, cherish, and to obey, till death us do part, according to God's holy ordinance; and thereto I give thee my Faith.
+
+= The Prayer and the Joining of Hands
+¶ Then the Minister shall say,
+Let us pray.
+O Eternal God, Creator and Preserver of all mankind, Giver of all spiritual grace, the Author of everlasting life; Send thy blessing upon these thy servants, this Man and this Woman, whom we bless in thy Name; that as Isaac and Rebecca lived faithfully together, so these persons may surely perform and keep the vow and covenant betwixt them made, and may ever remain in perfect love and peace together, and live according to thy laws, through Jesus Christ our Lord.
+- Amen.
+¶ Then shall the Minister join their Right Hands together, and say,
+Those whom God hath joined together, let no man put asunder.
+¶ Then shall the Minister speak unto the People:
+Forasmuch as M. and N. have consented together in holy wedlock, and have witnessed the same before God and this company, and thereto have pledged their faith either to other, and have declared the same by joining of hands; I pronounce that they are Man and Wife together, In the Name of the Father, and of the Son, and of the Holy Ghost.
+- Amen.
+¶ And the Minister shall add this blessing:
+God the Father, God the Son, God the Holy Ghost, bless, preserve, and keep you; the Lord mercifully with his favour look upon you, and so fill you with all spiritual benediction and grace, that ye may so live together in this life, that in the world to come ye may have life everlasting.
+- Amen.
+
+= The Prayers
+¶ Then the Minister shall say,
+Lord, have mercy upon us.
+Answer. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
++ Our Father, who art in heaven, Hallowed be thy Name; thy kingdom come; Thy will be done on earth, as it is in heaven: Give us this day our daily bread; And forgive us our trespasses, as we forgive them that trespass against us: And lead us not into temptation; but deliver us from evil. Amen.
+Minister. O Lord, save thy servant and thy handmaid.
+Answer. And let them put their trust in thee.
+Minister. O Lord, send them help from thy holy place;
+Answer. And evermore defend them.
+Minister. Be unto them a tower of strength,
+Answer. From the face of their enemy.
+Minister. O Lord, hear our prayer;
+Answer. And let our cry come unto thee.
+Minister. O God of Abraham, God of Isaac, God of Jacob, bless these thy servants, and sow the seed of eternal life in their hearts, that whatsoever in thy holy Word they shall profitably learn, they may in deed fulfil the same. Look, O Lord, mercifully upon them from heaven, and bless them. And as thou didst send thy blessing upon Abraham and Sarah, to their great comfort; so vouchsafe to send thy blessing upon these thy servants; that they obeying thy will, and always being in safety under thy protection, may abide in thy love unto their lives' end, through Jesus Christ our Lord.
+- Amen.
+¶ This Prayer next following shall be omitted, where the Woman is past child-bearing.
+O Merciful Lord and heavenly Father, by whose gracious gift mankind is increased; We beseech thee, assist with thy blessing these two persons, that they may both be fruitful in the procreation of children, and also live together so long in godly love and honesty, that they may see their children christianly and virtuously brought up, to thy praise and honour, through Jesus Christ our Lord.
+- Amen.
+O God, who by thy mighty power hast made all things of nothing, who also (after other things set in order) didst appoint that out of man (created after thine own image and similitude) woman should take her beginning: and knitting them together, didst teach that it should never be lawful to put asunder those whom thou by Matrimony hadst made one; O God, who hast consecrated the state of Matrimony to such an excellent mystery, that in it is signified and represented the spiritual marriage and unity betwixt Christ and his Church; Look mercifully upon these thy servants, that both this man may love his wife, according to thy Word (as Christ did love his spouse the Church, who gave himself for it, loving and cherishing it, even as his own flesh), and also that this woman may be loving and amiable, faithful and obedient to her husband: and in all quietness, sobriety, and peace, be a follower of holy and godly matrons. O Lord, bless them both, and grant them to inherit thy everlasting kingdom, through Jesus Christ our Lord.
+- Amen.
+¶ Then shall the Minister say,
+Almighty God, who at the beginning did create our first parents, Adam and Eve, and did sanctify and join them together in marriage; Pour upon you the riches of his grace, sanctify and bless you, that ye may please him both in body and soul, and live together in holy love unto your lives' end.
+- Amen.
+
+%%% order wes1784-morning
+# John Wesley, The Sunday Service of the Methodists in North America (London, 1784): "The Order for Morning Prayer,
+# Every Lord's Day", pp. 7-14. Public domain (published 1784). Transcribed from the Internet Archive scan (amernorfm00wesl);
+# the OCR reads the long s as f, so every paragraph was set against the 1662 Morning Prayer that Wesley abridged and read
+# again from the scan where the two differ. Wesley's changes are kept: five opening sentences, the shortened exhortation,
+# a prayer for pardon in place of the absolution, no Venite and no suffrages, the prayer for the Supreme Rulers. Spelling is
+# modern (s for the long s). The Psalms are read in order from the Psalter, the lessons from the book's table of proper
+# lessons for Sundays (put in by the site), and the first collect is the Collect of the day (put in by the site).
+# Markup: see tools/orders.py.
+title: The Order for Morning Prayer, Every Lord's Day
+book: The Sunday Service of the Methodists in North America (John Wesley, 1784)
+
+= The Sentences
+¶ At the Beginning of Morning Prayer, the Minister shall read with a loud Voice some one or more of these Sentences of the Scriptures that follow: And then he shall say that which is written after the said Sentences.
+When the wicked man turneth away from his wickedness that he hath committed, and doeth that which is lawful and right, he shall save his soul alive. Ezek. xviii. 27.
+The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise. Psal. li. 17.
+To the Lord our God belong mercies and forgivenesses, though we have rebelled against him: neither have we obeyed the voice of the Lord our God, to walk in his laws which he set before us. Dan. ix. 9, 10.
+I will arise, and go to my father, and will say unto him, Father, I have sinned against Heaven and before thee, and am no more worthy to be called thy son. Luke xv. 18, 19.
+Enter not into judgment with thy servant, O Lord; for in thy sight shall no man living be justified. Psal. cxliii. 2.
+
+= Exhortation, Confession and Prayer for Pardon
+Dearly beloved brethren, the Scripture moveth us, in sundry places, to acknowledge and confess our manifold sins and wickedness; and that we should not dissemble or cloke them before the face of Almighty God, our heavenly Father; but confess them with an humble, lowly, penitent, and obedient heart; to the end that we may obtain forgiveness of the same, by his infinite goodness and mercy. Wherefore I pray and beseech you, as many as are here present, to accompany me with a pure heart and humble voice, unto the throne of the heavenly grace, saying after me.
+¶ A general Confession, to be said by the whole Congregation, after the Minister, all kneeling.
++ Almighty and most merciful Father, We have erred and strayed from thy ways like lost sheep. We have followed too much the devices and desires of our own hearts. We have offended against thy holy laws. We have left undone those things which we ought to have done; And we have done those things which we ought not to have done; And there is no health in us. But thou, O Lord, have mercy upon us, miserable offenders. Spare thou them, O God, which confess their faults. Restore thou them that are penitent; According to thy promises declared unto mankind in Christ Jesus our Lord. And grant, O most merciful Father, for his sake, That we may hereafter live a godly, righteous, and sober life; To the glory of thy holy Name. Amen.
+¶ Then the Minister shall say,
+O Lord, we beseech thee, absolve thy people from their offences; that, through thy bountiful goodness, we may be delivered from the bands of those sins, which by our frailty we have committed. Grant this, O heavenly Father, for Jesus Christ's sake, our blessed Lord and Saviour.
+¶ The People shall answer here, and at the End of all other Prayers.
+- Amen.
+
+= The Lord's Prayer and the Versicles
+¶ Then the Minister shall say the Lord's Prayer; the People also repeating it with him, both here, and wheresoever else it is used in Divine Service.
++ Our Father, who art in Heaven, Hallowed be thy Name; Thy kingdom come; Thy Will be done on Earth, As it is in Heaven: Give us this day our daily bread; And forgive us our trespasses, As we forgive them that trespass against us; And lead us not into temptation; But deliver us from evil: For thine is the Kingdom, and the Power, and the Glory, For ever and ever. Amen.
+¶ Then likewise he shall say,
+O Lord, open thou our lips.
+Answer. And our mouth shall shew forth thy praise.
+Minister. O God, make speed to save us.
+Answer. O Lord, make haste to help us.
+¶ Here all standing up, the Minister shall say,
+Glory be to the Father, and to the Son, and to the Holy Ghost;
+Answer. As it was in the beginning, is now, and ever shall be, world without end. Amen.
+Minister. Praise ye the Lord.
+Answer. The Lord's Name be praised.
+
+= The Psalms
+¶ Then shall follow the Psalms, in order as they are appointed. And at the End of every Psalm, shall be repeated,
+@psalter: The Psalms appointed
++ Glory be to the Father, and to the Son, and to the Holy Ghost;
++ As it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The First Lesson and Te Deum
+¶ Then shall be read distinctly, the First Lesson taken out of the Old Testament, as is appointed in the Table of proper Lessons: He that readeth, so standing and turning himself as he may best be heard of all. And after that, shall be said the following Hymn:
+@lessons: The First Lesson
++ We praise thee, O God: we acknowledge thee to be the Lord.
++ All the earth doth worship thee, the Father everlasting.
++ To thee all Angels cry aloud: the Heavens, and all the powers therein.
++ To thee Cherubin and Seraphin continually do cry,
++ Holy, holy, holy, Lord God of Sabaoth;
++ Heaven and Earth are full of the Majesty of thy Glory.
++ The glorious company of the Apostles praise thee.
++ The goodly fellowship of the Prophets praise thee.
++ The noble army of Martyrs praise thee.
++ The Holy Church throughout all the world doth acknowledge thee;
++ The Father of an infinite Majesty;
++ Thine honourable, true, and only Son;
++ Also the Holy Ghost, the Comforter.
++ Thou art the King of glory, O Christ;
++ Thou art the everlasting Son of the Father.
++ When thou tookest upon thee to deliver man, thou didst not abhor the Virgin's womb.
++ When thou hadst overcome the sharpness of death, thou didst open the kingdom of Heaven to all believers.
++ Thou sittest at the right hand of God, in the glory of the Father.
++ We believe that thou shalt come to be our Judge.
++ We therefore pray thee, help thy servants, whom thou hast redeemed with thy precious blood.
++ Make them to be numbered with thy Saints in glory everlasting.
++ O Lord, save thy people, and bless thine heritage.
++ Govern them, and lift them up for ever.
++ Day by day we magnify thee;
++ And we worship thy name ever, world without end.
++ Vouchsafe, O Lord, to keep us this day without sin.
++ O Lord, have mercy upon us: have mercy upon us.
++ O Lord, let thy mercy lighten upon us, as our trust is in thee.
++ O Lord, in thee have I trusted: let me never be confounded.
+
+= The Second Lesson and Jubilate
+¶ Then shall he read in like manner the Second Lesson taken out of the New Testament: and after that, the following Psalm:
+@lessons: The Second Lesson
++ O be joyful in the Lord, all ye lands: serve the Lord with gladness, and come before his presence with a song.
++ Be ye sure that the Lord he is God; it is he that hath made us, and not we ourselves: we are his people, and the sheep of his pasture.
++ O go your way into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and speak good of his Name.
++ For the Lord is gracious, his mercy is everlasting: and his truth endureth from generation to generation.
++ Glory be to the Father, and to the Son, and to the Holy Ghost;
++ As it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The Creed
+¶ Then shall be said the Apostles' Creed by the Minister and the People, standing.
++ I believe in God the Father Almighty, Maker of Heaven and Earth: And in Jesus Christ his only Son our Lord; Who was conceived by the Holy Ghost; Born of the Virgin Mary; Suffered under Pontius Pilate; Was crucified, dead, and buried; He descended into hell: The third day he rose again from the dead: He ascended into Heaven, And sitteth on the right hand of God, the Father Almighty; From thence he shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; The Holy Catholick Church; The Communion of Saints; The Forgiveness of Sins; The Resurrection of the Body, And the Life everlasting. Amen.
+
+= The Prayers
+¶ And after that, the Minister shall pronounce with a loud Voice,
+The Lord be with you;
+Answer. And with thy spirit.
+Minister. Let us pray.
+Lord, have mercy upon us.
+Answer. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+¶ Then shall follow three Collects; the first of the Day, which shall be the same that is appointed at the Communion; the second for Peace; the third for Grace to live well; all devoutly kneeling.
+@prayer: The Collect for the Day
+## The second Collect, for Peace.
+O God, who art the author of peace, and lover of concord, in knowledge of whom standeth our eternal life, whose service is perfect freedom; Defend us thy humble servants in all assaults of our enemies; that we, surely trusting in thy defence, may not fear the power of any adversaries, through the might of Jesus Christ our Lord.
+- Amen.
+## The third Collect, for Grace.
+O Lord our heavenly Father, Almighty and everlasting God, who hast safely brought us to the beginning of this day; Defend us in the same with thy mighty power; and grant that this day we fall into no sin; neither run into any kind of danger: but that all our doings may be ordered by thy governance, to do always that is righteous in thy sight, through Jesus Christ our Lord.
+- Amen.
+¶ Then these Prayers following are to be read.
+## A Prayer for the Supreme Rulers.
+O Lord our heavenly Father, high and mighty, King of kings, Lord of lords, the only Ruler of princes, who dost from thy throne behold all the dwellers upon earth; Most heartily we beseech thee, with thy favour to behold the Supreme Rulers of these United States, and so replenish them with the grace of thy Holy Spirit, that they may alway incline to thy will, and walk in thy way; through Jesus Christ our Lord.
+- Amen.
+Almighty God, who hast given us grace at this time with one accord, to make our common supplications unto thee, and dost promise that when two or three are gathered together in thy Name, thou wilt grant their requests; Fulfil now, O Lord, the desires and petitions of thy servants, as may be most expedient for them: granting us in this world knowledge of thy truth, and in the world to come life everlasting.
+- Amen.
+## 2 Cor. xiii. 14.
+The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Ghost, be with you all evermore.
+- Amen.
+¶ Here endeth the Order of Morning Prayer.
+
+= A Prayer and Thanksgiving for the Lord's Day
+¶ In the book this Prayer and the General Thanksgiving follow the Litany, "to be used every Lord's Day".
+O God, the Creator and Preserver of all mankind, we humbly beseech thee for all sorts and conditions of men, that thou wouldest be pleased to make thy ways known unto them, thy saving health unto all nations. More especially we pray for the good estate of the Catholic Church; that it may be so guided and governed by thy good Spirit, that all who profess and call themselves Christians may be led into the way of truth, and hold the faith in unity of spirit, in the bond of peace, and in righteousness of life. Finally, we commend to thy fatherly goodness, all those who are any ways afflicted or distressed in mind, body, or estate [especially those for whom our prayers are desired]; that it may please thee to comfort and relieve them according to their several necessities; giving them patience under their sufferings, and a happy issue out of all their afflictions: and this we beg for Jesus Christ's sake.
+- Amen.
+¶ The words in brackets are to be said when any desire the prayers of the Congregation.
+## A General Thanksgiving.
+Almighty God, Father of all mercies, we thine unworthy servants do give thee most humble and hearty thanks for all thy goodness and loving-kindness to us and to all men; [particularly to those who desire now to offer up their praises and thanksgivings for thy late mercies vouchsafed unto them.] We bless thee for our creation, preservation, and all the blessings of this life; but above all, for thine inestimable love in the redemption of the world by our Lord Jesus Christ; for the means of grace, and for the hope of glory. And we beseech thee, give us that due sense of all thy mercies, that our hearts may be unfeignedly thankful, and that we may shew forth thy praise not only with our lips, but in our lives, by giving up ourselves to thy service, and by walking before thee in holiness and righteousness all our days, through Jesus Christ our Lord, to whom with thee and the Holy Ghost, be all honour and glory, world without end.
+- Amen.
+¶ The words in brackets are to be said when any that have been prayed for desire to return praise.

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Build data/orders.json from the hand-proofread orders of service in tools/texts/order-*.txt.
+"""Build data/orders.json from the hand-proofread orders of service in tools/texts/orders-<family>.txt.
 
-Each text file is one order (the file name after "order-" is its id). Markup, one paragraph per line:
+Each bundle holds several orders; an order begins at a line "%%% order <id>" and runs to the next (the id is
+its key in data/orders.json). A lone tools/texts/order-<id>.txt is read as one order too. Markup, one paragraph per line:
     title: ...         the order's title          book: ...   the book it comes from
     = Step             starts a step (a timed section on the site)
     ## Heading         a heading inside a step
@@ -36,10 +37,39 @@ LABELS = {"Minister": ("cel", "℣."), "People": ("ppl", "℟."), "Answer": ("pp
 ROLES = {"cel", "srv", "ppl", "lec", "all"}
 
 
+class _Src:
+    """A named piece of text, so that errors can point at the bundle and the order."""
+    def __init__(self, name, text, first=1):
+        self.name, self.text, self.first = name, text, first
+
+    def read_text(self, encoding="utf-8"):
+        return self.text
+
+
+def sections(path, kind):
+    """Split a bundle into (id, _Src) at its '%%% <kind> <id>' lines."""
+    out, cur, buf, start = [], None, [], 1
+    for n, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
+        m = re.fullmatch(r"%%%%%% %s (\S+)" % kind, line.strip())
+        if m:
+            if cur:
+                out.append((cur, _Src(f"{path.name}[{cur}]", "\n".join(buf), start)))
+            cur, buf, start = m.group(1), [], n + 1
+        elif cur:
+            buf.append(line)
+    if cur:
+        out.append((cur, _Src(f"{path.name}[{cur}]", "\n".join(buf), start)))
+    ids = [k for k, _ in out]
+    if len(ids) != len(set(ids)):
+        raise SystemExit(f"{path.name}: an id appears twice")
+    return out
+
+
 def parse(path):
     order = {"steps": []}
     step, depth, cons = None, 0, False
-    for n, raw in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
+    first = getattr(path, "first", 1)
+    for n, raw in enumerate(path.read_text(encoding="utf-8").split("\n"), first):
         l = raw.strip()
         if not l or l.startswith("#") and not l.startswith("## "):
             continue
@@ -101,7 +131,14 @@ def parse(path):
 
 
 def build():
-    return {p.stem[len("order-"):]: parse(p) for p in sorted((ROOT / "tools" / "texts").glob("order-*.txt"))}
+    T = ROOT / "tools" / "texts"
+    found = {p.stem[len("order-"):]: p for p in T.glob("order-*.txt")}
+    for b in sorted(T.glob("orders-*.txt")):
+        for k, src in sections(b, "order"):
+            if k in found:
+                raise SystemExit(f"order {k} is defined twice")
+            found[k] = src
+    return {k: parse(found[k]) for k in sorted(found)}
 
 
 def main():
