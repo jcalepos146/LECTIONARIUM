@@ -265,7 +265,7 @@ Brightman gives the Coptic and Ethiopic liturgies in English; Bute's Coptic Morn
 | Source | Year | Lang | Format | Fills | Rights |
 |---|---|---|---|---|---|
 | Liturgies Eastern and Western, vol. 1 (F. E. Brightman) ([liturgieseastern01unknuoft](https://archive.org/details/liturgieseastern01unknuoft)) | 1896 | en | scan | Coptic Liturgy of St Mark/Cyril and St Basil; Abyssinian (Ethiopic) Liturgy; Syrian St James; Armenian; Nestorian (East Syrian) Liturgy; Byzantine | pd |
-| The Coptic Morning Service for the Lord's Day (Marquess of Bute) (Liturgy imported: tools/texts/order-coptic1908.txt) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic Sunday Liturgy and morning office | pd |
+| The Coptic Morning Service for the Lord's Day (Marquess of Bute) (Liturgy imported: tools/texts/orders-oriental.txt, coptic1908) ([copticmorningser00coptuoft](https://archive.org/details/copticmorningser00coptuoft)) | 1908 | en | scan | Coptic Sunday Liturgy and morning office | pd |
 | The Divine Liturgy of St Mark the Evangelist (S. C. Malan) — No OCR text on this item; transcribe from the page images. ([divineliturgysa00malagoog](https://archive.org/details/divineliturgysa00malagoog)) | 1872 | en | scan | Coptic liturgy | pd |
 | The Ethiopic Liturgy (S. A. B. Mercer) ([ethiopicliturgyi00mercuoft](https://archive.org/details/ethiopicliturgyi00mercuoft)) | 1915 | en | scan | Ethiopic liturgy and anaphoras | pd |
 | The Anaphoras of the Ethiopic Liturgy — Controlled-lending scan; confirm the 1928 date on the title page. ([anaphorasofethio0000yait](https://archive.org/details/anaphorasofethio0000yait)) | 1928 | en | scan | Ethiopic anaphoras | pd |
@@ -318,7 +318,7 @@ The 1862 English translation was made for Armenian Catholics and is the natural 
 
 | Source | Year | Lang | Format | Fills | Rights |
 |---|---|---|---|---|---|
-| The Divine Liturgy of the Holy Apostolic Church of Armenia, translated by two Armenian priests (imported: tools/texts/order-armenian1908.txt) ([divineliturgyofh00arme](https://archive.org/details/divineliturgyofh00arme)) | 1908 | en | scan | Divine Liturgy | pd |
+| The Divine Liturgy of the Holy Apostolic Church of Armenia, translated by two Armenian priests (imported: tools/texts/orders-oriental.txt, armenian1908) ([divineliturgyofh00arme](https://archive.org/details/divineliturgyofh00arme)) | 1908 | en | scan | Divine Liturgy | pd |
 | The Armenian Liturgy, translated into English ([TheArmenianLiturgy](https://archive.org/details/TheArmenianLiturgy)) | 1862 | en | scan | Divine Liturgy | pd |
 | Liturgy of the Holy Apostolic Church of Armenia (S. C. Malan) ([liturgyholyapos00asdvgoog](https://archive.org/details/liturgyholyapos00asdvgoog)) | 1887 | en | scan | Divine Liturgy | pd |
 | Rituale Armenorum (F. C. Conybeare) ([ritualearmenorum00cony](https://archive.org/details/ritualearmenorum00cony)) | 1905 | en | scan | sacraments; breviary rites; old Armenian lectionary | pd |

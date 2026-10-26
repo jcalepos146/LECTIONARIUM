@@ -96,7 +96,7 @@ function wip(){const all=rites(),guide=all.filter(r=>r.cov==='guide'),order=all.
 const STUDY=[['day','Readings by day','One date, every lectionary side by side'],['compare','Compare the year','Dated readings across the calendars'],['psalter','The Psalter','Psalms of the day, and any psalm in three versions'],['lectionaries','Every lectionary','How the traditions arrange Scripture'],['hybrid','Hybrid proposal','Explore the proposed expanded traditional cycle'],['changes','1955 vs 1962','Compare the older Roman Holy Week and rubrics'],['office','Divine Office','Compare daily offices and their books'],['sources','Sources and coverage','Text coverage, provenance and edition limits']];
 function study(){return `<p class="san-eyebrow">Study</p><h1>Study the liturgy</h1><p class="san-lede">Compare calendars, explore the books, and check the sources.</p><div class="san-grid">${STUDY.map(([id,title,desc])=>tile(id,title,desc,'anglican','','study')).join('')}</div>`;}
 async function home(){
- if(!days){try{const r=await fetch('days.json');if(!r.ok)throw Error();days=await r.json();}catch(e){days={};}}
+ days=await window.LectDays.load();
  const iso=today(),d=days[iso];
  const A=window.LectApp,all=rites(),fave=A.getFave?A.getFave():null;
  const filter=read('lect-today-filter',fave||'all');

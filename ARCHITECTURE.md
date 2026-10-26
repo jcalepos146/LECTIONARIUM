@@ -29,7 +29,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 
 | Path | Contents |
 |---|---|
-| `days.json` | One record per day, 2025-11-30 to 2030-11-30: celebrations and readings for every rite (keys `n` Novus Ordo, `o` Ordinariate, `m` 1962, `p` pre-1955, `h` hybrid, `b` Byzantine) |
+| `days/<year>.json` | One record per day, 2025-11-30 to 2030-11-30, one file per year (2026 also holds Advent 2025), loaded on demand by `LectDays` in `page_script.js`: celebrations and readings for every rite (keys `n` Novus Ordo, `o` Ordinariate, `m` 1962, `p` pre-1955, `h` hybrid, `b` Byzantine) |
 | `bible/dr`, `bible/kj`, `bible/cv` | Douay-Rheims, King James, Coverdale psalter, several books per shard `s<N>.json` (`tools/shard_bible.py`; index in `src/today.js`) |
 | `propers-1962.json`, `propers-pre55.json`, `ordo.json` | Traditional Mass propers and Ordinary, Latin and English |
 | `chant.json`, `hymns.json` | Gregorian chant (GABC) and public-domain hymns |
@@ -50,7 +50,7 @@ python3 src/assemble.py            # writes index.html (the GitHub Pages build)
 
 ## Pipeline (`tools/`)
 
-Offline scripts that produced the data. `office_gen.py` runs the Divinum Officium engine (clone `DivinumOfficium/divinum-officium` into `tools/do/`, perl with `-I tools/perlstub`). `build_days.py` builds `days.json`; `byz_daily.py` ports orthocal's Byzantine lectionary; `bcp_*.py` extract the 1662 texts from a copy of the Prayer Book you supply.
+Offline scripts that produced the data. `office_gen.py` runs the Divinum Officium engine (clone `DivinumOfficium/divinum-officium` into `tools/do/`, perl with `-I tools/perlstub`). `build_days.py` builds `days/<year>.json`; `byz_daily.py` ports orthocal's Byzantine lectionary; `bcp_*.py` extract the 1662 texts from a copy of the Prayer Book you supply.
 
 ## Rules the code follows
 
@@ -105,8 +105,8 @@ Search and Classic view. Classic view removes the skin and the redirect.
 
 `tools/build_traditions.py` validates parent links, guide mappings and URLs, emits
 share stubs and captures original church and tradition artwork using the vellum/penwork from
-`tools/card.html`. `--check` verifies exact stub contents, PNG dimensions and the
-512-file project budget. Book editions inherit family artwork; source claims
+`tools/card.html`, as JPEG. The Publish workflow runs it with `--out _site` at deploy time, so `t/` is not kept in
+the repository. `--check` validates the catalog, the generated source list and the 512-file project budget. Book editions inherit family artwork; source claims
 require human review even if the generator and browser tests pass.
 
 `tests/test_sanctuary.py` covers lazy loading, routes/history, hierarchy, focus,
@@ -136,8 +136,7 @@ notation fails validation.
 
 `office_gen.py rechunk <key> <kilobytes>` consolidates an existing pack without
 renumbering text or row IDs; its output must be validated with `--baseline`
-before replacement. The br55/br62 packs use 4 MB shards to leave room for the
-individual catalog share pages within the 512-file site limit.
+before replacement. The br55/br62 packs use 4 MB shards to stay well within the 512-file site limit.
 
 ## Local participation mode
 
@@ -172,6 +171,15 @@ option, the two-year Office appointments, Coptic Orthodox appointments,
 ordinary Byzantine kathismata and Resurrection Gospels, and the shared
 date-scoped Bible reader. Appointed Prayer Book psalms use the bundled 1979
 Psalter, whose verse numbers differ from the KJV.
+
+Lectionaries that are a table and a calendar go through one shared layer
+(`TABLES` and `fromTable()` in `lectionary.js`). Each table has the same shape,
+`{source, url, cols, days:{key:{t, r:[[col, cite, "dr"?]], as?}}}`, and each
+calendar is a function from a date to the day's keys. The Church of the East
+(`eastsyriac-1894.json`, `esyDay()`) and Milan (`ambrosian-1954.json`, `ambDay()`)
+use it; the Mass, the calendar panel (with its choice of a current church
+calendar) and Readings by day all read through it. A new lectionary of this
+kind is a data file, a calendar function and one `TABLES` entry.
 `tools/texts/bcp1979-lectionary.json` records readable source citations and PDF
 pages; `tools/bcp_lectionary.py` validates and packs the runtime JSON.
 `tools/texts/coptic-lectionary.json` stores 1,827 dates referencing 221 distinct

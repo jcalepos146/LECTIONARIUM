@@ -507,7 +507,14 @@ for Y in (2025, 2026, 2027, 2028, 2029):
         DAYS[iso] = {"n": no, "o": o, "m": tr(m, "m"), "p": tr(p, "p"), "h": hybrid_day(d, m, no), "b": b, "L": L, "nk": cal[d][0],
                      "yr": "I" if d.year % 2 else "II"}
 
-json.dump(DAYS, open("days.json", "w"), ensure_ascii=False, separators=(",", ":"))
+# One file per year (days/2026.json also holds Advent 2025), loaded by window.LectDays in src/page_script.js.
+import os
+os.makedirs("days", exist_ok=True)
+_by = {}
+for _iso in sorted(DAYS):
+    _by.setdefault(min(2030, max(2026, int(_iso[:4]))), {})[_iso] = DAYS[_iso]
+for _y, _v in _by.items():
+    json.dump(_v, open(f"days/{_y}.json", "w"), ensure_ascii=False, separators=(",", ":"))
 print(len(DAYS), "days")
 import collections as C
 empty = C.Counter(); ex = {}

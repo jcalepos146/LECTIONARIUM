@@ -83,7 +83,10 @@ def mass(path, form, feria=False):
 
 if __name__ == "__main__":
     import datetime as dt
-    D = json.load(open("days.json"))
+    import glob
+    D = {}
+    for f in sorted(glob.glob("days/*.json")):
+        D.update(json.load(open(f)))
     paths = {}
     for iso, x in D.items():
         for f, k in (("1962", "m"), ("pre55", "p")):

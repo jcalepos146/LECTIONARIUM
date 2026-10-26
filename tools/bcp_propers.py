@@ -5,7 +5,7 @@ Archbishop Justus pages "Collects, Epistles, and Gospels from the 1549, 1552 and
 page prints the 1549 text, brackets and asterisks the places where a later book differs, and says in the margin which
 books have them. The differences are settled below, one by one, in VARIANTS.
 
-    python3 tools/bcp_propers.py PAGES_DIR     # write tools/texts/bcp-{1549,1552,1559}-propers.json
+    python3 tools/bcp_propers.py PAGES_DIR     # write the 1549, 1552 and 1559 propers into tools/texts/bcp-propers.json
 
 PAGES_DIR holds the downloaded pages (Readings_Advent_1549.htm ... Reading_EasterWeek_1549.htm). The result is
 committed; tools/bcp_early.py builds data/bcp<year>.json from it.
@@ -310,10 +310,12 @@ def build(pages_dir):
 
 def main():
     out = build(sys.argv[1])
+    pf = ROOT / "tools" / "texts" / "bcp-propers.json"
+    P = json.loads(pf.read_text(encoding="utf-8"))
     for book, B in out.items():
-        pf = ROOT / "tools" / "texts" / f"bcp-{book}-propers.json"
-        pf.write_text(json.dumps(B, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        P["propers"][book] = B
         print(book, len(B), "days ->", pf.name)
+    pf.write_text(json.dumps(P, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

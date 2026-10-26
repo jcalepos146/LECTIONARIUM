@@ -409,7 +409,7 @@ function scotPreface(s,iso){
 }
 const PB_PREFACE=(s,iso)=>{ const E=easterY(toDate(iso).getUTCFullYear()), off=Math.round((toDate(iso)-E)/DAY);
   if(s==="christmas") return "Christmas"; if(s==="epiphany") return "Epiphany"; if(off>=0&&off<39) return "Easter"; if(off>=39&&off<49) return "Ascension"; if(off>=49&&off<56) return "Whitsuntide"; if(off===56) return "Trinity Sunday"; return ""; };
-/* Holy Week has no o.bcp in days.json: name its days by their distance from Easter, as the 1662 book heads them. */
+/* Holy Week has no o.bcp in the day table: name its days by their distance from Easter, as the 1662 book heads them. */
 const PB_HOLYWEEK={"-6":"MONDAY BEFORE EASTER","-5":"TUESDAY BEFORE EASTER","-4":"WEDNESDAY BEFORE EASTER","-3":"THURSDAY BEFORE EASTER","-2":"GOOD FRIDAY","-1":"EASTER EVEN"};
 function pbPropers(B,iso,day,days){
   const off=Math.round((toDate(iso)-easterY(toDate(iso).getUTCFullYear()))/DAY);
@@ -439,10 +439,10 @@ const PB_BOOKS={
   bcp59:{file:"data/bcp1559.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments",
     collectAt:/^Then shall folowe the Collect of the day/, epistleAt:/^The Epystle written/, gospelAt:/^The Gospell wrytten/,
     notSaid:["Exhortations of warning","Collects and rubrics"], prefaceHead:p=>({Christmas:"Christmas",Easter:"Easter",Ascension:"Ascencion",Whitsuntide:"Wytsonday","Trinity Sunday":"Trinitie"})[p]||p},
-  bcp37:{file:"data/bcp1637.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", collectBeforeEpistle:true,
+  bcp37:{file:"data/bcp-hc.json", part:"bcp1637", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", collectBeforeEpistle:true,
     collectAt:null, epistleAt:/^Immediately after the Collects/, gospelAt:/^And the Epistle ended, the Gospel/,
     notSaid:["Exhortations of warning","Collects and rubrics"], prefaceHead:p=>({Christmas:"Christmas",Easter:"Easter",Ascension:"Ascension",Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
-  bcp89:{file:"data/bcp1789.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+  bcp89:{file:"data/bcp-hc.json", part:"bcp1789", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
   wes84:{file:"data/bcp1784.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments", prefaceDayOnly:true,
@@ -450,23 +450,23 @@ const PB_BOOKS={
     notSaid:[], prefaceHead:p=>({Whitsuntide:"Whitsunday","Trinity Sunday":"Trinity"})[p]||p},
   /* The Scottish Liturgy (1929): its own seasons of Proper Prefaces (Advent, Lent, Passiontide, Maundy Thursday and
      the Scottish saints' days), picked by date; the 1662 propers stand in for the Scottish Book's own. */
-  bcp29:{file:"data/bcp1929.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
+  bcp29:{file:"data/bcp-hc.json", part:"bcp1929", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law or the Kyrie is said instead)",
     collectAt:/^Let us pray\.$/, epistleAt:/^Then the Presbyter, or some other Presbyter or Deacon, turning to the people, shall read the Epistle/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["General Rubrics","The Order for a Second Consecration","Post-Communions","Collects","Exhortations"], prefaceHead:p=>p, prefaceFn:scotPreface},
-  bcp18:{file:"data/bcp1918.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+  bcp18:{file:"data/bcp-hc.json", part:"bcp1918", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:null, epistleAt:/^Then shall be said the Collect of the day/, gospelAt:/^Then, the people all standing up/, collectBeforeEpistle:true,
     notSaid:["Rubrics before the Communion","Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p},
-  bcp92:{file:"data/bcp1892.json", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
+  bcp92:{file:"data/bcp-hc.json", part:"bcp1892", propersFrom:"data/bcp1662.json", decalogue:"The Ten Commandments", decalogueAbr:"the Ten Commandments (the Summary of the Law is said instead)",
     collectAt:/^Then shall be said the Collect of the Day/, epistleAt:/^The Epistle \[/, gospelAt:/^Glory be to thee, O Lord/,
     notSaid:["Collects and rubrics","Exhortations of warning"], prefaceHead:p=>({Whitsuntide:"Whitsun","Trinity Sunday":"Trinity"})[p]||p}
 };
 const isPB=r=>!!PB_BOOKS[r];
 async function buildPB(ctx,opts,book){
-  const C=PB_BOOKS[book||"bcp28"], B=await J(C.file), iso=ctx.iso, day=ctx.day||{};
+  const C=PB_BOOKS[book||"bcp28"], B=C.part?(await J(C.file))[C.part]:await J(C.file), iso=ctx.iso, day=ctx.day||{};
   /* a book whose own table of collects, epistles and gospels is not on the site takes the 1662 table, which it follows */
   const PBk=C.propersFrom&&!Object.keys(B.propers||{}).length?await J(C.propersFrom):B;
-  let pr=pbPropers(PBk,iso,day,B.fallback?await J("days.json"):null);
-  if(!pr&&PBk!==B){ const days=await J("days.json"), si=lectSun(iso); pr=pbPropers(PBk,si,days[si]||{}); }
+  let pr=pbPropers(PBk,iso,day,B.fallback?await window.LectDays.load(iso):null);
+  if(!pr&&PBk!==B){ const days=await window.LectDays.load(iso), si=lectSun(iso); pr=pbPropers(PBk,si,days[si]||{}); }
   const set=pr?pr.sets[0]:null, same=pr&&pr.same?PBk.propers[pr.same]:null;
   const collect=set&&set.collect.length?set.collect:(same?same.sets[0].collect:[]);
   const AB=opts.abridge||0, out=[];
@@ -650,7 +650,7 @@ window.LectCSB={day:csbDay};
 const lectSun=iso=>{ const d=toDate(iso); return new Date(d-d.getUTCDay()*DAY).toISOString().slice(0,10); };
 const LECT={
   /* the 1662 Prayer Book's Epistle and Gospel of the day (a weekday takes the Sunday's) */
-  async hist(ctx){ const B=await J("data/bcp1662.json"), days=await J("days.json");
+  async hist(ctx){ const B=await J("data/bcp1662.json"), days=await window.LectDays.load(ctx.iso);
     let pr=pbPropers(B,ctx.iso,ctx.day||{}); if(!pr){ const si=lectSun(ctx.iso); pr=pbPropers(B,si,days[si]||{}); }
     if(!pr) return null; const S=pr.sets[0], g=S.gospel||(pr.sets.find(x=>x.gospel)||{}).gospel;
     return {src:`${pr.t} · the Epistle and Gospel of the 1662 Book of Common Prayer`, items:[S.epistle&&{lab:"The Epistle",cite:S.epistle.cite,text:S.epistle.text,slot:/Epistle|Lesson|Scripture|lessons/i},g&&{lab:"The Gospel",cite:g.cite,text:g.text,slot:/Gospel|Lesson|Scripture|lessons/i}].filter(Boolean)}; },
@@ -848,7 +848,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_less:less};
   }
   if(R.wesley){   /* the Sunday Service's Collect of the day, proper lessons and proper psalms */
-    const B=await J("data/bcp1784.json"), days=await J("days.json"), day=ctx.day||{}, iso=ctx.iso;
+    const B=await J("data/bcp1784.json"), days=await window.LectDays.load(ctx.iso), day=ctx.day||{}, iso=ctx.iso;
     const pr=pbPropers(B,iso,day,days), p=t=>`<p data-r="cel">${esc(t)}</p>`;
     const col=pr?(pr.sets[0].collect.length?pr.sets[0].collect:[]):[];
     const coll=col.length?`<p class="cite">${esc(pr.t)}</p>`+col.map(p).join("")+`<p data-r="ppl"><span class="sp">℟.</span> Amen.</p>`:cue("The Collect of the Day, from the Sunday Service.");

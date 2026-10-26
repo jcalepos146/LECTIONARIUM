@@ -1,0 +1,856 @@
+# Orders of service (reformed). Each order begins at a line '%%% order <id>' and runs to the next; its markup is
+# described in tools/orders.py. The id is the key in data/orders.json.
+
+%%% order bcw1906-communion
+# The Book of Common Worship (Presbyterian Church in the U.S.A., Philadelphia, 1906), pp. 34-39:
+# The Order for the Celebration of the Communion or Sacrament of the Lord's Supper. Public domain in the
+# United States (published 1906). Transcribed from the Internet Archive scan (bookofcommonwors00pres): OCR
+# proofread by hand, uncertain readings checked against the page images. Markup as in the bcw1906-morning order.
+title: The Order for the Celebration of the Communion or Sacrament of the Lord's Supper
+book: The Book of Common Worship (Presbyterian Church in the U.S.A., 1906)
+
+= The Invitation
+¶ The Communion, or Supper of the Lord, is to be celebrated frequently; but how often, may be determined by the Minister and Eldership of each congregation, as they may judge most for edification. — Directory for Worship, Chap. ix, § 1.
+¶ It is proper that public notice should be given to the congregation, at least the Lord's Day before the administration of the ordinance, and that, either then or on some day of the week, the people be instructed in its nature, and a due preparation for it; that all may come in a suitable manner to this holy feast. — Directory for Worship, Chap. ix, § 3.
+¶ When the time is come for administration, the Minister shall say,
+Dearly beloved, as we draw near to the Lord's Supper to celebrate the Holy Communion of the Body and Blood of Christ, we are gratefully to remember that our Lord instituted this Sacrament to be observed in His Church unto the end of the world: for the perpetual remembrance of the sacrifice of Himself in His death, the sealing all benefits thereof unto true believers, their spiritual nourishment and growth in Him, their further engagement in and to all duties which they owe unto Him; and to be a bond and pledge of their union with Him and with each other as members of His mystical body.
+Let us consider earnestly our great need of having our comfort and strength so renewed in this our earthly pilgrimage and warfare; and especially how necessary it is that we come unto the Lord's Table with knowledge, faith, repentance, love, and with hearts hungering and thirsting after Christ. Not unto those who live willingly in transgression and offenses, holding fellowship with hatred, malice, or impurity; nor unto those who cherish pride and self-righteousness in their hearts, trusting secretly in their own works and merits, are these benefits of Christ offered. But all that are truly sorry for their sins and would be delivered from the burden of them, all that humbly put their trust in Christ, and desire His grace that they may lead a holy life, are invited and encouraged in His Name to come to this Sacrament. Let us therefore so come that we may find refreshing and rest unto our souls.
+¶ Then let the People stand up and sing
+## A Hymn
+@hymn
+¶ If it be more convenient in any church, this Hymn may be omitted.
+
+= The Words of Institution
+¶ The Table, on which the elements are placed, being decently covered, the bread in convenient dishes, and the wine in cups, and the Communicants orderly and gravely sitting around the Table, (or in their seats before it) in the presence of the Minister, he shall say,
+Beloved in the Lord, attend to the Words of the Institution of the Holy Supper of our Lord Jesus Christ, as they are delivered by the Apostle Paul: "I have received of the Lord that which also I delivered unto you, That the Lord Jesus the same night in which He was betrayed took bread; and when He had given thanks, He brake it, and said, Take, eat: this is My body, which is broken for you: this do in remembrance of Me. After the same manner also He took the cup, when He had supped, saying, This cup is the New Testament in My blood: this do ye, as oft as ye drink it, in remembrance of Me. For as often as ye eat this bread, and drink this cup, ye do show the Lord's death till He come." And now, in His Name, I take these elements
+¶ Here the Minister may lay his hand upon the plate and the cup
+to be set apart by prayer and thanksgiving to the holy use for which He has appointed them.
+
+= Prayer, Sursum corda and Sanctus
+¶ Then the Minister shall say,
+Let us pray.
+¶ If so desired, these Prayers and Thanksgivings may be offered in the form following; the People reverently bowing down:
+O God, who by the blood of Thy dear Son hast consecrated for us a new and a living way into the holiest of all; Cleanse our minds, we beseech Thee, by the inspiration of Thy Holy Spirit, that, drawing near unto Thee with a pure heart and undefiled conscience, we may receive these Thy gifts without sin, and worthily magnify Thy holy Name; through Jesus Christ our Lord. Amen.
+¶ Then the People, still bowing down, shall make these responses:
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Lift up your hearts.
+People. We lift them up unto the Lord.
+Minister. Let us give thanks unto the Lord our God.
+People. It is meet and right so to do.
+¶ Then the Minister, proceeding, shall say,
+It is very meet, right, and our bounden duty, that we should, at all times and in all places, give thanks unto Thee, O Lord, Holy Father, Almighty and Eternal God, for all Thy bounties known and unknown; but chiefly are we bound to praise Thee that Thou hast ransomed us from eternal death, and given us the joyful hope of everlasting life through Jesus Christ Thy Son, whom Thou didst send into the world to suffer death upon the cross for our redemption. Thee, God the Father Everlasting: Thee, Only Begotten Son: Thee, Holy Spirit, the Comforter: Holy, Blessed and Glorious Trinity: we confess and praise with heart and mouth; saying, with angels and archangels, and all the company of Heaven,
+¶ Here let the People, still bowing down, join aloud, singing or saying,
++ Holy, Holy, Holy, Lord God of Hosts; Heaven and earth are full of the majesty of Thy glory. Hosanna in the highest. Blessed is He that cometh in the Name of the Lord. Hosanna in the highest.
+
+= The Prayer of Consecration
+¶ Then the Minister shall proceed, saying,
+Almighty God, the Father of our Lord Jesus Christ, whose once offering up of Himself, by Himself, upon the cross, once for all, we commemorate before Thee; We beseech Thee to accept this our spiritual oblation of all possible praise for the same. And here we offer and present, O Lord, ourselves, our souls and bodies, to be a reasonable, holy, and living sacrifice, acceptable unto Thee through Jesus Christ Thy Son:
+And we most humbly beseech Thee, Father of all mercies and God of all comfort, to vouchsafe Thy gracious presence, and the effectual working of Thy Spirit in us, and so to sanctify these elements both of Bread and Wine, and to bless Thine own Ordinance; that we may receive by faith Christ crucified for us, and so feed upon Him, that He may be one with us and we with Him; that He may live in us, and we in Him who hath loved us, and given Himself for us:
+Even Jesus Christ our Lord; to whom, with Thee and the Holy Ghost, be praise and power, might, majesty, and dominion, both now and evermore. Amen.
+
+= The Breaking of the Bread and the Communion
+¶ The Bread and Wine being thus set apart by Prayer and Thanksgiving, the Minister is to take the Bread, and break it, in view of the People, saying,
+Our Lord Jesus Christ, on the same night in which He was betrayed, having taken Bread, and blessed and broken it, gave it to His disciples; as I, ministering in His Name, give this Bread unto you; saying, Take, eat: this is My Body, which is broken for you; this do in remembrance of Me.
+¶ Then the Minister, who is also himself to communicate, is to give the Bread to the Elders to be distributed.
+¶ After having given the Bread, he shall take the Cup and say,
+After the same manner our Saviour also took the Cup; and having given thanks, as hath been done in His Name, He gave it to His disciples, saying, This Cup is the New Testament in My Blood, which is shed for many for the remission of sins: drink ye all of it.
+¶ Then the Minister, who is also to partake of the Cup, shall give it to the Elders to be administered.
+@communion
+
+= Thanksgiving, Hymn and Benediction
+¶ After all have communicated, the Minister shall say,
+Let us pray.
+Almighty and ever-living God, we most heartily thank Thee for Thy rich mercy and invaluable goodness, vouchsafed to us in this sacred Communion, wherein we have assurance that we are very members of the mystical body of Thy Son, and heirs through hope of Thine everlasting kingdom. And, as we have been made partakers of Christ, so enable us to hold fast that which we have received, that no man may take our crown. Help us, we beseech Thee, to bear about with us continually the dying of the Lord Jesus, that the life also of Jesus may be made manifest in our mortal body; and grant that we may remain alway in the holy fellowship of all faithful people, with whom in the unity of the Spirit, we now make our intercessions unto Thee:
+O Lord, save Thy people and bless Thine inheritance: feed them also, and lift them up for ever. Remember, O Lord, Thy congregation, which Thou hast purchased of old: pour out Thy Spirit as floods upon the dry ground, and refresh Thy waiting heritage. Let Thy priests be clothed with righteousness, and let Thy saints shout for joy. Show Thy mercy also unto them that are afar off, and gather all the lost sheep into Thy fold; for the sake of Jesus Christ our Lord. Amen.
+Most merciful God, we bless Thy holy Name for all Thy servants who have kept the faith, and, having accomplished their warfare, are at rest with Thee. We pray Thee to enable us so to follow their good example, that we with them may finally be partakers of Thy heavenly kingdom, and, at the glorious appearing of our Saviour Jesus Christ, may behold Him with unveiled face, being changed into His likeness; when He shall present us, with all His Church, faultless before the presence of His glory with exceeding joy. Hear us, O heavenly Father, for His sake: to whom, with Thee and the Holy Ghost, be glory for ever and ever. Amen.
+¶ Then the People shall rise and sing
+## A Hymn
+@hymn
+¶ Then, the People reverently bowing down, the Minister shall pronounce
+## The Benediction
+Now the God of peace, that brought again from the dead our Lord Jesus, that great Shepherd of the sheep, through the blood of the everlasting covenant, make you perfect in every good work to do His will, working in you that which is well-pleasing in His sight, through Jesus Christ; to whom be glory for ever and ever. Amen.
+¶ After the Benediction it is fitting that the Communicants remain in silent prayer, beseeching God that none may leave His Table without a blessing.
+
+%%% order bcw1906-morning
+# The Book of Common Worship (Presbyterian Church in the U.S.A., Philadelphia, 1906), pp. 1-9:
+# The Order of Morning Service on the Lord's Day. Public domain in the United States (published 1906).
+# Transcribed from the Internet Archive scan (bookofcommonwors00pres) and proofread by hand against the page
+# images' OCR: drop capitals rebuilt, broken italic rubrics read in context, line-end hyphens joined.
+# Markup (tools/orders.py): "= " starts a step; "## " a heading; "¶ " a rubric; plain lines are said by the
+# Minister; "+ " lines by all; "Minister." and "Answer." label versicles; "[or] summary" ... "[/or]" holds
+# alternatives; "@name" marks a slot the site fills (hymn, psalter, lessons, sermon, offering).
+title: The Order of Morning Service on the Lord's Day
+book: The Book of Common Worship (Presbyterian Church in the U.S.A., 1906)
+
+= The Call to Worship
+## The Call to Worship
+¶ Let the Minister and all the People stand up and sing the following, or some other Hymn or Psalm calling to Worship.
++ Praise God, from whom all blessings flow; Praise Him, all creatures here below; Praise Him above, ye heavenly host: Praise Father, Son, and Holy Ghost. Amen.
+¶ Let the Minister read one of the following Sentences, the People standing.
+¶ If any church so desire the Service may begin with the Sentences.
+Our help is in the Name of the Lord, who made heaven and earth. The Lord is nigh unto all them that call upon Him, to all that call upon Him in truth. He will fulfil the desire of them that fear Him: He also will hear their cry, and will save them. (Psalm cxxiv. 8: cxlv. 18, 19.)
+[or] The other Sentences
+O come, let us worship and bow down: let us kneel before the Lord our maker. Know ye that the Lord He is God: it is He that hath made us, and not we ourselves; we are His people, and the sheep of His pasture. (Psalm xcv. 6: c. 3.)
+Seek ye the Lord while He may be found, call ye upon Him while He is near: Let the wicked forsake his way, and the unrighteous man his thoughts: and let him return unto the Lord, and He will have mercy upon him; and to our God, for He will abundantly pardon. (Isaiah lv. 6, 7.)
+The Lord is merciful and gracious, slow to anger, and plenteous in mercy. He hath not dealt with us after our sins; nor rewarded us according to our iniquities. If we confess our sins, He is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness. (Psalm ciii. 8, 10: 1 St. John i. 9.)
+Seeing that we have a great High Priest, that is passed into the heavens, Jesus the Son of God: Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need. (Hebrews iv. 14, 16.)
+[/or]
+
+= The Invocation
+¶ Then shall the Minister say,
+Let us pray.
+¶ Let the People reverently bow down while the Minister leads them in the Invocation, using if he will one of the following Prayers:
+## The Invocation
+Almighty God, who of Thy great mercy hast gathered us into Thy visible Church; Grant that we may not swerve from the purity of Thy worship; but so honour Thee, both in spirit and in outward form, that Thy Name may be glorified in us, and we may be true members of Thine only-begotten Son, Jesus Christ our Lord. Amen.
+[or] The other prayers of Invocation
+Eternal God, our Maker and our Lord, Giver of all grace, from whom every good prayer cometh, and who pourest Thy Spirit upon all who seek Thee; Deliver us, when we draw nigh to Thee, from coldness of heart and wanderings of mind; that with steadfast thoughts and pure affections we may worship Thee in spirit and in truth; through Jesus Christ our Lord. Amen.
+Lord God of heaven and earth, who hast made the Church Thy dwelling-place, and chosen it as Thy rest for ever, and hast taught us in Thy Word not to forsake the assembling of ourselves together; Regard us in Thy mercy, we beseech Thee, and send Thy Holy Spirit upon us; that our worship may prepare us both to serve Thee now, and to glorify Thee hereafter in Thine eternal kingdom; through Jesus Christ our Lord. Amen.
+O God, who hast promised that in all places where Thou dost record Thy Name, Thou wilt meet with Thy servants to bless them; Fulfil now Thy promise, and make us joyful in Thy house of prayer; that our worship, being offered in the Name of Thy Son and by the guidance of Thy Spirit, may be acceptable unto Thee, and profitable unto ourselves; through our only Mediator and Advocate, Jesus Christ our Lord. Amen.
+Almighty Lord and everlasting God, whom the heaven of heavens cannot contain, much less the temples which our hands have builded, but who art ever nigh unto the humble and contrite; Shed down Thy Holy Spirit, we beseech Thee, on all here assembled; that, being cleansed and illumined by His grace, we may worthily show forth Thy praise, meekly learn Thy Word, render due thanks for Thy mercies, and obtain a gracious answer to our prayers; through the merits of Jesus Christ our Lord. Amen.
+[/or]
+
+= Confession of Sins and Assurance of Pardon
+## The Confession of Sins
+¶ The People may say this Confession with the Minister:
++ Most holy and merciful Father; We acknowledge and confess in Thy Presence: Our sinful nature prone to evil and slothful in good; And all our shortcomings and offenses against Thee. Thou alone knowest how often we have sinned: In wandering from Thy ways; In wasting Thy gifts; In forgetting Thy love. But Thou, O Lord, have pity upon us; Who are ashamed and sorry for all wherein we have displeased Thee. Teach us to hate our errors; Cleanse us from our secret faults; And forgive our sins; For the sake of Thy dear Son our Saviour. And O most holy and loving Father; Send Thy purifying grace into our hearts, we beseech Thee; That we may henceforth live in Thy light and walk in Thy ways; According to the commandments of Jesus Christ our Lord. Amen.
+## The Assurance of Pardon
+¶ To be said by the Minister, the People still bowing down.
+Almighty God, who doth freely pardon all who repent and turn to Him; Now fulfil in every contrite heart the promise of redeeming grace; remitting all our sins, and cleansing us from an evil conscience; through the perfect sacrifice of Christ our Lord; And keep us evermore in the peace and joy of a holy life; that we may love and serve Him always; In the Name of the Father, the Son, and the Holy Ghost. Amen.
+[or] Or this
+God so loved the world, that He gave His only-begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.
+Hear the gracious words of our Lord Jesus Christ unto all that truly repent and turn to Him:
+Come unto Me, all ye that labour and are heavy laden, and I will give you rest.
+Him that cometh to Me I will in no wise cast out.
+The grace of our Lord Jesus Christ be with you all. Amen.
+[/or]
+¶ Then let the Minister and the People, standing, say,
+Minister. Now bless the Lord our God:
+Answer. And praise His glorious Name.
+Minister. O give thanks unto the Lord, for He is good:
+Answer. For His mercy endureth for ever.
+
+= The Psalter
+## The Psalter
+¶ Then let a portion of the Psalter be chanted, or read responsively by the Minister and the People, all standing, and at the end may be said or sung,
+@psalter
++ Glory be to the Father, and to the Son; and to the Holy Ghost; As it was in the beginning, is now, and ever shall be: world without end. Amen.
+
+= The Reading of the Holy Scriptures
+¶ The People being seated shall attend devoutly to
+## The Public Reading of the Holy Scriptures
+¶ Let the Minister read from the Word of God as it is written in the Old and New Testaments, clearly and distinctly, that the People may understand the meaning. If a lesson from each Testament is read, as is most proper and profitable, that from the Old Testament may be followed, in places where there are choirs, by the singing of an Anthem or Response.
+¶ Before each reading let the Minister say, Hear the Holy Scripture as it is written in such a chapter of such a book: and after the reading, The Lord bless to us the reading of His Holy Word.
+¶ If the Old Testament reading be the Ten Commandments, after them the Minister shall read St. Matthew xxii. 37-40, saying before he reads, Hear also the Summary of the Law by our Lord Jesus Christ.
+@lessons
+
+= Hymn of Praise and the Creed
+## A Hymn of Praise
+¶ Here let the People stand up and praise God with the spirit and with the understanding, making melody with their voices as well as with their hearts, unto the Lord. And at the close of the Hymn let them remain standing and join with the Minister in their Confession of Faith.
+@hymn
+## The Creed
++ I believe in God the Father Almighty, Maker of heaven and earth: And in Jesus Christ His only Son, our Lord; Who was conceived by the Holy Ghost, Born of the Virgin Mary, Suffered under Pontius Pilate, Was crucified, dead, and buried; [He descended into hell;*] The third day He rose again from the dead; He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence He shall come to judge the quick and the dead. I believe in the Holy Ghost; The Holy Catholic Church; The Communion of Saints; The Forgiveness of sins; The Resurrection of the body; and the Life everlasting. Amen.
+¶ * Or, He continued in the state of the dead, and under the power of death, until the third day.
+
+= The General Prayer
+¶ Then shall the Minister say,
+Let us pray.
+¶ And the People, reverently bowing down, shall follow in their hearts
+## The General Prayer
+¶ The Minister, leading the People in their Common Prayers, shall come with a heart prepared to offer unto God — Adorations: for His glorious perfection, and for the revelation of Himself in His works, in His Word, and in His Son, Jesus Christ: Thanksgivings: for all mercies of every kind, general and particular, spiritual and temporal, common and special; above all, for Jesus Christ, His unspeakable gift, and the hope of eternal life through Him. Supplications: for the supply of all our needs temporal and spiritual, and for the aid and comfort of the Holy Ghost in all our duties and trials: Intercessions: for the whole world of mankind; remembering especially our country and all who are invested with civil authority; the Church Universal and that with which we are particularly connected; all missionaries and ministers of the Gospel; and all others who are seeking to do good on earth; all poor and sick and sorrowful people, (especially those for whom our prayers are asked;) all little children and the youth assembled in schools and colleges; those who are in the midst of great danger or temptation; and all who are bound to us by ties of kinship or affection:
+¶ In any or all of these Adorations, Thanksgivings, Supplications, and Intercessions, the Minister, if he will, may use any of the Prayers given in this Book, under the title of Treasury of Prayers. Or he may carefully order his thoughts and compose his spirit to utter with propriety the desires and petitions of the People, remembering what is suitable and necessary for them in their Common Worship. At the end of the General Prayer the Minister and People shall say together the Lord's Prayer.
+@prayer
+## The Lord's Prayer
++ Our Father which art in heaven, Hallowed be Thy Name. Thy kingdom come. Thy will be done in earth, As it is in heaven. Give us this day our daily bread. And forgive us our debts, As we forgive our debtors. And lead us not into temptation, But deliver us from evil: For Thine is the kingdom, and the power, and the glory, for ever. Amen.
+
+= The Offering
+## The Offering
+¶ The bringing of offerings for the service of God is to be performed as an Act of Worship. Let the Minister, having made such Announcements as are needful and fitting, then say, Let us make our Offering to Almighty God for (naming the cause). If the choir sing a Canticle or Anthem it should be one proper for the occasion.
+¶ When the gifts are brought to the Table, the Minister shall dedicate them to God with a brief Prayer for His blessing; the church-officers who have gathered the gifts standing, and the congregation bowing down.
+¶ On special occasions the Offering may be made after the Sermon.
+@offering
+## A Prayer of Dedication
+O God, most merciful and gracious, of whose bounty we have all received; We beseech Thee to accept this Offering of Thy people. Remember in Thy love those who have brought it, and those for whom it is given; and so follow it with Thy blessing that it may promote peace and good-will among men, and advance the kingdom of our Lord and Saviour Jesus Christ. Amen.
+
+= Hymn and Sermon
+¶ Then let the People stand up and sing
+## A Hymn
+@hymn
+¶ Then the Minister, taking his text from the Word of God, and remembering that it is his office to instruct men in divine Truth, to hold forth Christ crucified as their Saviour, and to incite them to Christian faith and duty, shall preach
+## The Sermon
+@sermon
+¶ The Sermon being ended, let the People stand up and sing
+## A Hymn
+@hymn
+
+= Closing Prayer and Benediction
+¶ Then shall the Minister say,
+Let us pray.
+¶ Then let the People reverently bow down while the Minister leads them in Prayer, using if he so desire one of the following as
+## The Closing Prayer
+O God, the Protector of all that trust in Thee, without whom nothing is strong, nothing is holy; Increase and multiply upon us Thy mercy, that, Thou being our ruler and guide, we may so pass through things temporal, that we finally lose not the things eternal. Grant this, O heavenly Father, for Jesus Christ's sake, our Lord. Amen.
+[or] The other Closing Prayers
+O Lord, the Author of spiritual life, who hast given unto us the good seed of Thy Word; Grant that we may receive it into honest hearts: and so guard it by Thy grace from the wiles of Satan and the cares of this life, that the faith and hope and love which Thou hast begotten, may be in us the beginning of life eternal; through Jesus Christ our Lord. Amen.
+O God, who hast sounded in our ears Thy divine and saving oracles; Enlighten the souls of us sinners to the full understanding of what has been spoken, that we may be not only hearers of spiritual words, but also doers of good works, following after faith unfeigned, blameless life, and irreproachable conduct; through Jesus Christ our Lord. Amen.
+Most merciful God, we beseech Thee to grant unto us that we may earnestly desire, wisely search out, truly perceive, and perfectly fulfil those things which are well pleasing in Thy sight, to the praise and glory of Thy Name. Amen.
+O God, who art the Author of peace and Lover of concord, in knowledge of whom standeth our eternal life, whose service is perfect freedom; Defend us Thy humble servants in all assaults of our enemies; that we, surely trusting in Thy defense, may not fear the power of any adversaries; through the might of Jesus Christ our Lord. Amen.
+Almighty God, who hast given us grace at this time with one accord to make our common supplications unto Thee: and dost promise that when two or three are gathered together in Thy Name Thou wilt grant their requests; Fulfil now, O Lord, the desires and petitions of Thy servants, as may be most expedient for them; granting us in this world knowledge of Thy truth, and in the world to come life everlasting. Amen.
+[/or]
+¶ The People remaining in the posture of prayer, the Minister shall pronounce
+## The Benediction
+The grace of the Lord Jesus Christ, and the love of God, and the communion of the Holy Ghost, be with you all. Amen.
+[or] Or this
+The peace of God, which passeth all understanding, keep your hearts and minds in the knowledge and love of God, and of His Son Jesus Christ our Lord; and the blessing of God Almighty, the Father, the Son, and the Holy Ghost, be amongst you, and remain with you always. Amen.
+[/or]
+¶ After the Benediction it is fitting that the Minister and People remain in silent prayer, beseeching God that none may leave His House without a blessing.
+¶ Note that the last Hymn may be sung after the Prayer if such be the wish and usage of any church.
+
+%%% order rca1882-morning
+# The Liturgy of the Reformed Church in America, for use in public worship (New York: Board of Publication of
+# the Reformed Church in America, 1882), pp. 11-16: Order of Public Worship, Lord's Day Morning. Public domain
+# (published in the United States, 1882). Transcribed from the Internet Archive scan (liturgyofreform00refo);
+# OCR proofread by hand, uncertain readings checked against the page images. Markup: see tools/orders.py.
+title: Order of Public Worship, Lord's Day Morning
+book: The Liturgy of the Reformed Church in America (1882)
+
+= Invocation
+## I. Invocation
+¶ It is recommended that the Invocation be concluded with the Lord's Prayer, and that the People unite audibly in the Lord's Prayer whenever used, and in the Amen at the close of every prayer in Public Worship.
+@prayer: The Invocation, in the Minister's own words
++ Our Father who art in heaven, Hallowed be Thy Name: Thy kingdom come; Thy will be done in earth, as it is in heaven: Give us this day our daily bread: and forgive us our debts, as we forgive our debtors; And lead us not into temptation, but deliver us from evil: for Thine is the kingdom, and the Power, and the Glory, for ever. Amen.
+
+= Salutation
+## II. Salutation
+Grace be unto you, and peace, from God our Father, and from the Lord Jesus Christ. (1 Cor. i: 3.)
+[or] The other Salutations
+Grace, mercy, and peace, from God the Father, and Christ Jesus our Lord. (2 Tim. i: 2.)
+Grace and peace be multiplied unto you, through the knowledge of God, and of Jesus our Lord. (2 Peter i: 2.)
+May God, Who commanded the light to shine out of darkness, shine in your hearts, to give the light of the knowledge of the glory of God, in the face of Jesus Christ. (2 Cor. iv: 6.)
+[/or]
+
+= The Ten Commandments
+## III. Reading of Scripture
+## 1. The Ten Commandments
+Hear the law of God as it is written in the 20th chapter of the Book of Exodus.
+And God spake all these words, saying, I am the Lord thy God, which have brought thee out of the land of Egypt, out of the house of bondage.
+I. Thou shalt have no other gods before Me.
+II. Thou shalt not make unto thee any graven image, or any likeness of anything that is in heaven above, or that is in the earth beneath, or that is in the water under the earth: thou shalt not bow down thyself to them, nor serve them: for I the Lord thy God am a jealous God, visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate Me; and showing mercy unto thousands of them that love Me, and keep My commandments.
+III. Thou shalt not take the Name of the Lord thy God in vain; for the Lord will not hold him guiltless that taketh His Name in vain.
+IV. Remember the Sabbath day to keep it holy. Six days shalt thou labor, and do all thy work: but the seventh day is the Sabbath of the Lord thy God: in it thou shalt not do any work, thou, nor thy son, nor thy daughter, thy man-servant, nor thy maid-servant, nor thy cattle, nor thy stranger that is within thy gates: for in six days the Lord made heaven and earth, the sea, and all that in them is, and rested the seventh day; wherefore the Lord blessed the Sabbath day, and hallowed it.
+V. Honor thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.
+VI. Thou shalt not kill.
+VII. Thou shalt not commit adultery.
+VIII. Thou shalt not steal.
+IX. Thou shalt not bear false witness against thy neighbor.
+X. Thou shalt not covet thy neighbor's house, thou shalt not covet thy neighbor's wife, nor his man-servant, nor his maid-servant, nor his ox, nor his ass, nor anything that is thy neighbor's.
+Hear also the Summary of the Law by our Lord Jesus Christ, as it is written in the Gospel according to Matthew, xxii: 37-40.
+Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. This is the first and great commandment. And the second is like unto it, Thou shalt love thy neighbor as thyself. On these two commandments hang all the law and the prophets.
+¶ After the reading of the Law a suitable Response may be sung.
+
+= The Scripture Lessons
+## 2. Reading of Scripture Lessons
+¶ If desired, one of the Lessons may consist of a portion from the Psalms, read responsively by the Minister and People.
+@lessons
+¶ After either or both of the Lessons, a Gloria or Chant may be sung.
+
+= Singing and Prayer
+## IV. Singing
+@hymn
+## V. Prayer
+¶ This will ordinarily be free. But if desirable, the Litany, which is a literal translation from the Reformer Bucer's "Reformation of Doctrine and Worship," or any of the Prayers for Special Occasions, which will be found on pages 22-55, may be used.
+@prayer: The Prayer, ordinarily free
+## VI. Singing
+@hymn
+
+= Sermon and Prayer
+## VII. Sermon
+@sermon
+## VIII. Prayer
+@prayer: The Prayer after the Sermon
+## IX. Offerings to the Lord
+¶ The Offerings are sometimes presented either before or after the Hymn preceding the Sermon.
+@offering
+
+= Singing and Benediction
+## X. Singing
+@hymn
+## XI. Benediction
+The grace of the Lord Jesus Christ, and the love of God, and the communion of the Holy Ghost, be with you all. Amen. (2 Cor. xiii: 14.)
+[or] Or this
+Now the God of peace, that brought again from the dead our Lord Jesus, that Great Shepherd of the sheep, through the blood of the everlasting Covenant, make you perfect in every good work to do His will, working in you that which is well pleasing in His sight, through Jesus Christ: to Whom be glory for ever and ever. Amen. (Hebrews xiii: 20, 21.)
+[/or]
+
+%%% order rca1882-supper
+# The Liturgy of the Reformed Church in America (New York, 1882), pp. 73-84: The Office for the Administration
+# of the Lord's Supper, the form of the Synod of Dort (1619) in its American English version. Public domain
+# (published in the United States, 1882). Transcribed from the Internet Archive scan (liturgyofreform00refo);
+# OCR proofread by hand and checked against the page images. In the book the Creed and the Lord's Prayer are
+# set in capitals, to be said by all, and the second half of each verse of Psalm ciii is in italics.
+title: The Office for the Administration of the Lord's Supper
+book: The Liturgy of the Reformed Church in America (1882), the Form of Dort
+
+= The Institution and Self-Examination
+## I.
+¶ Before the administration of the Holy Communion the Minister shall say:
+Beloved in the Lord Jesus Christ, attend to the words of the institution of the Holy Supper of our Lord Jesus Christ, as they are delivered by the holy Apostle Paul, 1 Cor. xi: 23-30.
+"For I have received of the Lord that which also I delivered unto you, That the Lord Jesus, the same night in which He was betrayed, took bread; and when He had given thanks, He brake it, and said, Take, eat: this is My body, which is broken for you: this do in remembrance of Me. After the same manner, also, He took the cup when He had supped, saying, This cup is the new testament in My blood: this do ye, as oft as ye drink it, in remembrance of Me. For as often as ye eat this bread, and drink this cup, ye do show the Lord's death till He come. Wherefore, whosoever shall eat this bread, and drink this cup of the Lord unworthily, shall be guilty of the body and blood of the Lord. But let a man examine himself, and so let him eat of that bread and drink of that cup; for he that eateth and drinketh unworthily, eateth and drinketh damnation* to himself, not discerning the Lord's body."
+¶ * Greek, Κριμα — Dutch, Oordeel. Eng., judgment, condemnation.
+That we may now celebrate the Supper of the Lord to our comfort, it is above all things necessary: I. Rightly to examine ourselves. II. To direct the Supper to that end for which Christ hath ordained and instituted the same, namely, to His remembrance.
+The true examination of ourselves consists of these three parts:
+First. That every one consider by himself his sins and the curse due to him for them, to the end that he may abhor and humble himself before God; considering that the wrath of God against sin is so great, that, rather than it should go unpunished, He hath punished the same in His Beloved Son Jesus Christ, with the bitter and shameful death of the cross.
+Secondly. That every one examine his own heart, whether he doth believe this faithful promise of God, that all his sins are forgiven him only for the sake of the passion and death of Jesus Christ; and that the perfect righteousness of Christ is imputed and freely given him as his own, yea, so perfectly as if he had satisfied in his own person for all his sins, and fulfilled all righteousness.
+Thirdly. That every one examine his own conscience, whether he purposeth henceforth to show true thankfulness to God in his whole life, and to walk uprightly before Him; as also, whether he hath laid aside unfeignedly, all enmity, hatred, and envy, and doth firmly resolve henceforth to walk in true love and peace with his neighbor.
+All those, then, who are thus disposed, God will certainly receive in mercy, and count them worthy partakers of the table of His Son Jesus Christ. On the contrary, those who do not feel this testimony in their hearts, eat and drink judgment to themselves.
+Therefore, we also, according to the command of Christ and the Apostle Paul, admonish all those who are defiled with the following sins, to keep themselves from the table of the Lord, and declare to them that they have no part of the kingdom of Christ: such as all idolaters; all those who invoke deceased saints, angels, or other creatures; all those who worship images; all enchanters, diviners, charmers, and those who confide in such enchantments; all despisers of God and His Word, and of the Holy Sacraments; all blasphemers; all those who are given to raise discord, sects, and mutiny, in church or state; all perjured persons; all those who are disobedient to their parents and superiors; all murderers, contentious persons, and those who live in hatred and envy against their neighbors; all adulterers, whoremongers, drunkards, thieves, usurers, robbers, gamesters, covetous; and all who lead offensive lives.
+All these, while they continue in such sins, shall abstain from this meat, which Christ hath ordained only for the faithful, lest their judgment and condemnation be made the heavier.
+But this is not designed, dearly beloved brethren and sisters in the Lord, to deject the contrite hearts of the faithful, as if none might come to the Supper of the Lord, but those who are without sin. For we do not come to this Supper to testify thereby that we are perfect and righteous in ourselves; but on the contrary, considering that we seek our life out of ourselves, in Jesus Christ, we acknowledge that we lie in the midst of death. Therefore, notwithstanding we feel many infirmities and miseries in ourselves; as namely, that we have not perfect faith, and that we do not give ourselves to serve God with such zeal as we are bound, but have daily to strive with the weakness of our faith, and the evil lusts of our flesh; yet, since we are, by the grace of the Holy Ghost, sorry for these weaknesses, and earnestly desirous to fight against our unbelief, and to live according to all the commandments of God, therefore we rest assured that no sin or infirmity, which still remaineth, against our will, in us, can hinder us from being received of God in mercy, and from being made worthy partakers of this heavenly meat and drink.
+
+= The Remembrance of Christ
+## II.
+Beloved in the Lord Jesus Christ. Let us now also consider to what end the Lord hath instituted His Supper, namely, that we do it in remembrance of Him. Now, after this manner are we to remember Him by it.
+1. That we be confidently persuaded in our hearts, that our Lord Jesus Christ, according to the promises made to our forefathers in the Old Testament, was sent of the Father into the world: that He assumed our flesh and blood: that He bore for us the wrath of God, under which we should have perished everlastingly, from the beginning of His incarnation to the end of His life upon earth: that He fulfilled for us all obedience to the divine law, and righteousness, especially when the weight of our sins and the wrath of God pressed out of Him the bloody sweat in the garden, where He was bound that we might be freed from our sins: that He afterward suffered innumerable reproaches, that we might never be confounded; that He, although innocent, was condemned to death, that we might be acquitted at the judgment-seat of God: yea, that He suffered His blessed body to be nailed on the cross, that He might affix thereon the hand-writing of our sins: that He also took upon Himself the curse due to us, that He might fill us with His blessings: that He humbled Himself unto the deepest reproach and pains of hell, both in body and soul, on the tree of the cross, when He cried out with a loud voice, My God, My God, why hast thou forsaken me? that we might be accepted of God, and never be forsaken of Him: and finally that He confirmed, with His death and shedding of His blood, the new and eternal testament, that covenant of grace and reconciliation, when He said, It is finished.
+2. And, that we might firmly believe that we belong to this Covenant of Grace, the Lord Jesus Christ, in His Last Supper, "took bread, and when He had given thanks, He brake it, and gave it to His disciples, and said, Take, eat, this is My body which is broken for you, this do in remembrance of Me: in like manner also, after supper, He took the cup, gave thanks and said, Drink ye all of it; this cup is the new testament in My blood, which is shed for you and for many, for the remission of sins; this do ye, as often as ye drink it, in remembrance of Me." That is, as often as ye eat of this bread, and drink of this cup, you shall thereby, as by a sure remembrance and pledge, be admonished and assured of this My hearty love and faithfulness toward you: that whereas you should otherwise have suffered eternal death, I have given My body to the death of the cross, and shed My blood for you; and as certainly feed and nourish your hungry and thirsty soul with My crucified body and shed blood to everlasting life, as this bread is broken before your eyes, and this cup is given to you, and you eat and drink the same with your mouth, in remembrance of Me.
+From this institution of the Holy Supper of our Lord Jesus Christ, we see that He directs our faith and trust to His Perfect Sacrifice, once offered on the cross, as to the only ground and foundation of our salvation; wherein He is become to our hungry and thirsty souls, the true meat and drink of life eternal. For by His death He hath taken away the cause of our eternal death and misery, namely, sin; and obtained for us the Quickening Spirit, that we by the same, which dwelleth in Christ as the Head, and in us as His members, might have true communion with Him, and be made partakers of all His blessings, of life eternal, righteousness, and glory.
+Besides, that we, by the same Spirit may also be united as members of one Body, in true brotherly love; as the holy Apostle saith, "For we, being many, are one bread and one body; for we are all partakers of that one bread." For as out of many grains one meal is ground and one bread baked, and out of many berries being pressed together, one wine floweth and mixeth itself together; so shall we all, who by a true faith are ingrafted into Christ, through brotherly love be altogether one body, for the sake of Christ, our Beloved Saviour, who hath so exceedingly loved us; and shall show this, not only in word, but also in very deed toward one another.
+Hereto assist us, the Almighty God and Father of our Lord Jesus Christ, through His Holy Spirit! Amen.
+
+= Prayer, the Lord's Prayer and the Creed
+That we may obtain all this, let us humble ourselves before God, and with true faith implore His grace.
+## Prayer
+O Most Merciful God and Father, we beseech Thee, that Thou wilt be pleased, in this Supper, in which we celebrate the glorious remembrance of the bitter death of Thy Beloved Son Jesus Christ, to work in our hearts through the Holy Spirit, that we may daily, more and more, with true confidence, give ourselves up unto Thy Son Jesus Christ, so that our afflicted and contrite hearts, through the power of the Holy Ghost, may be fed and comforted with His true body and blood; yea, with Him, True God and Man, that Only Heavenly Bread: and that we may no longer live in our sins, but He in us, and we in Him; and thus truly be made partakers of the new and everlasting testament and covenant of grace: that we may not doubt that Thou wilt for ever be our Gracious Father, never more imputing our sins unto us, and providing us, as Thy beloved children and heirs, with all things necessary, as well for the body as the soul. Grant us also Thy grace, that we may take upon us our cross cheerfully, deny ourselves, confess our Saviour, and in all tribulations, with uplifted heads expect our Lord Jesus Christ from heaven, where He will make our mortal bodies like unto His most glorious body, and take us unto Him in eternity.
++ Our Father who art in heaven, Hallowed be Thy Name: Thy kingdom come: Thy will be done in earth as it is in heaven: Give us this day our daily bread: and forgive us our debts, as we forgive our debtors: And lead us not into temptation, but deliver us from evil: For Thine is the kingdom, and the power, and the glory, for ever. Amen.
+Strengthen us also by this Holy Supper in the Catholic undoubted Christian Faith, whereof we make confession with our mouths and hearts, saying:*
++ I believe in God, the Father Almighty, Maker of heaven and earth; And in Jesus Christ His only Son our Lord; who was conceived by the Holy Ghost, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, dead and buried; He descended into hell†; the third day He rose again from the dead; He ascended into heaven; and sitteth at the right hand of God the Father Almighty; from thence He shall come to judge the quick and the dead. I believe in the Holy Ghost; the holy Catholic Church, the communion of saints; the forgiveness of sins; the resurrection of the body; and the life everlasting. Amen.
+¶ * The words "with our mouths and hearts," evidently require the audible confession of these "Articles of the Christian Faith," both by the Minister and the people. And such was the ancient usage. It is recommended that it be restored.
+¶ † Instead of the word Hell may be used the word Hades.
+
+= The Communion
+That we may be now fed with the True Heavenly Bread, Christ Jesus, let us not cleave with our hearts unto the external bread and wine, but lift them up on high in heaven, where Christ Jesus is our Advocate, at the right hand of His Heavenly Father, whither all the Articles of our Faith lead us; not doubting that, through the working of the Holy Ghost, we shall as certainly be fed and refreshed in our souls with His Body and Blood, as we receive the holy bread and wine, in remembrance of Him.
+¶ In breaking and distributing the bread, the Minister shall say:
+The bread which we break, is the communion of the Body of Christ.
+¶ And when he giveth the cup:
+The cup of blessing, which we bless, is the communion of the Blood of Christ.
+¶ During the Communion, a Psalm shall or may be devoutly sung, or some chapter read, in remembrance of the death of Christ, as Isaiah liii, John xiii, xiv, xv, xvi, xvii, xviii, or the like.
+@communion
+
+= Thanksgiving
+## III.
+¶ After the Communion the Minister shall say:
+Beloved in the Lord, since the Lord hath now fed our souls at His table, let us therefore jointly praise His Holy Name, with thanksgiving, and every one say in his heart thus:
+Bless the Lord, O my soul;
+- And all that is within me, bless His Holy Name.
+Bless the Lord, O my soul;
+- And forget not all His benefits.
+Who forgiveth all thine iniquities;
+- Who healeth all thy diseases.
+Who redeemeth thy life from destruction;
+- Who crowneth thee with loving-kindness and tender mercies.
+The Lord is merciful and gracious;
+- Slow to anger, and plenteous in mercy.
+He hath not dealt with us after our sins;
+- Nor rewarded us according to our iniquities.
+For as the heaven is high above the earth;
+- So great is His mercy toward them that fear Him.
+As far as the East is from the West;
+- So far hath He removed our transgressions from us.
+Like as a father pitieth his children;
+- So the Lord pitieth them that fear Him.
+Who hath not spared His Own Son, but delivered Him up for us all, and given us all things with Him. Therefore God commendeth therewith His love toward us, in that while we were yet sinners, Christ died for us; much more then, being now justified by His blood, we shall be saved from wrath through Him. For, if, when we were enemies, we were reconciled to God by the death of His Son; much more, being reconciled, we shall be saved by His life. Therefore shall my mouth and heart show forth the praise of the Lord from this time forth for evermore. Amen.
+¶ Let every one say with an attentive heart:
+O Almighty, Merciful God and Father, we render Thee most humble and hearty thanks, that Thou hast, of Thine infinite mercy, given us Thine Only Begotten Son, for a Mediator and a Sacrifice for our sins, and to be our Meat and Drink unto life eternal; and that Thou givest us lively faith, whereby we are made partakers of these Thy benefits. Thou hast also been pleased, that Thy Beloved Son Jesus Christ should institute and ordain His Holy Supper for the confirmation of the same. Grant, we beseech Thee, O Faithful God and Father, that through the operation of Thy Holy Spirit, the commemoration of the death of our Lord Jesus Christ may tend to the daily increase of our faith, and of our saving fellowship with Him: Through Jesus Christ Thy Son, in whose Name we conclude our prayers, saying:
++ Our Father who art in heaven, Hallowed be Thy Name: Thy kingdom come: Thy will be done in earth as it is in heaven: Give us this day our daily bread: and forgive us our debts, as we forgive our debtors: and lead us not into temptation, but deliver us from evil: For Thine is the kingdom, and the power, and the glory, for ever. Amen.
+
+%%% order rcus1866-communion
+# The Order of Worship for the Reformed Church in the United States (Philadelphia: S. R. Fisher & Co., 1866) [partial edition], public domain.
+# Transcribed from the Internet Archive scan (orderofworshipfo00unknuoft); the OCR was proofread by hand and checked against the later editions
+# (ordwors00refo, 1867; orderofworshipfo00refo; cu31924029475203). Corrected: "some part" and, in the Evening Service, "thou wilt" (as the later editions and the Morning Service read). Markup: see tools/orders.py.
+title: The Holy Communion
+book: Order of Worship, Reformed Church in the United States (Mercersburg, 1866)
+
+= Confession and Absolution
+¶ The Sacrament of the Lord's Supper shall be administered publicly in the Church, in every Congregation, at least twice a year, and if possible oftener.
+¶ Having taken his place at the altar, the Congregation also standing up, the Minister shall say as follows:
+In the name of the Father, and of the Son, and of the Holy Ghost. Amen.
+Dearly beloved in the Lord: If we say that we have no sin, we deceive ourselves, and the truth is not in us; but if we confess our sins, God is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness. Let us therefore humble ourselves before the throne of Almighty God, our heavenly Father, and confess our manifold sins and transgressions with lowly and contrite hearts, that we may obtain forgiveness of the same through the merits of our Lord Jesus Christ.
+¶ Then the Minister and Congregation shall kneel, and repeat the following Confession.
++ Almighty God, our heavenly Father, who dost admit thy people unto such wonderful communion, that partaking of the body and blood of thy dear Son, they should dwell in Him, and He in them; we unworthy sinners, approaching to thy presence, and beholding thy glory, do abhor ourselves, and repent in dust and ashes. We have sinned, we have sinned, we have grievously sinned against so Thee, in thought, in word, and in deed, provoking most justly thy wrath and indignation against us. The remembrance of our transgressions and shortcomings fills us with sorrow and shame. Yet now, O most merciful Father, have mercy upon us; for the sake of Jesus Christ, forgive us all our sins; purify us, by the inspiration of thy Holy Spirit, from all inward uncleanness; enable us heartily to forgive others, as we beseech Thee to forgive us; and grant that we may ever hereafter serve and please Thee in newness of life; to the honor and glory of thy name, through Jesus Christ, our Lord. Amen.
+¶ Then shall the Minister rise, and pronounce to the Congregation, still kneeling, the following Declaration of Pardon.
+Hearken now unto the comforting assurance of the grace of God, promised in the Gospel to all that repent and believe: As I live, saith the Lord God, I have no pleasure in the death of the wicked, but that the wicked turn from his way and live. God so loved the world, that He gave his only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.
+Unto as many of you, therefore, beloved brethren, as truly repent of your sins, and believe in the Lord Jesus Christ, with full purpose of new obedience, I announce and declare, by the authority and in the name of Christ, that your sins are forgiven in heaven, according to his promise in the Gospel, through the perfect merit of Jesus Christ, our Lord.
+¶ Here, and at the end of every Collect and Prayer, the Congregation shall say:
+- Amen.
+
+= Creed and Gloria in Excelsis
+¶ The Congregation shall now rise, and join with the Minister in repeating the Nicene Creed; immediately after which shall be sung, chanted or recited, the Gloria in Excelsis, all in the following order.
++ We believe in one God, the Father Almighty, Maker of heaven and earth, of all things visible and invisible:
++ And in one Lord Jesus Christ, the only begotten Son of God, begotten of the Father before all worlds, God of God, Light of Light, very God of very God; begotten not made; of one substance with the Father, by whom all things were made: who for us men and for our salvation came down from heaven, and was incarnate by the Holy Ghost of the Virgin Mary, and was made man: who was also crucified for us under Pontius Pilate, and suffered, and was buried; and the third day rose again according to the Scriptures; and ascended into heaven, and sitteth at the right hand of the Father; and shall come again with glory to judge the quick and the dead; of whose kingdom there shall be no end.
++ And we believe in the Holy Ghost, the Lord, the Giver of life, who proceedeth from the Father and the Son, who with the Father and the Son together is worshipped and glorified, who spake by the prophets; in one holy catholic and apostolic Church. We confess one baptism for the remission of sins; we look for the resurrection of the dead, and the life of the world to come. Amen.
+Minister. Praise ye the Lord.
+People. The Lord's name be praised.
++ Glory be to God on high, and on earth peace, good will toward men. We praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for thy great glory, O Lord God, heavenly King, God the Father Almighty.
++ O Lord, the only begotten Son, Jesus Christ; O Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy upon us. Thou that takest away the sin of the world, have mercy upon us. Thou that takest away the sin of the world, receive our prayer. Thou that sittest at the right hand of God the Father, have mercy upon us.
++ For Thou only art holy; Thou only art the Lord; Thou only, O Christ, with the Holy Ghost, art most high in the glory of God the Father. Amen.
+
+= Gospel and Epistle
+¶ Then shall the Minister read the proper Gospel and Epistle for the day.
+@lessons: The Gospel and Epistle for the day
+¶ After the reading, the service shall proceed thus, the Congregation rising:
+
+= Collect and Festival Prayer
+Minister. Glory be to the Father, and to the Son, and to the Holy Ghost:
+People. As it was in the beginning, is now, and ever shall be, world without end. Amen.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+@prayer: The Collect for the Day and the Festival Prayer
+¶ Here shall be offered the Collect for the day and the Festival Prayer. A suitable Psalm or Hymn shall then be sung.
+
+= Hymn and Sermon
+¶ After this, the Minister having taken his place in the pulpit, shall proceed to deliver a brief Sermon. Or, instead of this, he may read a lesson of moderate length, taken from the Holy Gospels, on the history of Christ's Passion and Death.
+@hymn
+@sermon
+
+= The Offerings
+¶ Then shall follow a collection of the Offerings of the people, to be devoted to the service of the poor, or to some benevolent purpose; during which the Minister, standing at the altar, shall read some of the following Sentences from the Holy Scriptures.
+@offering
+He which soweth sparingly shall reap also sparingly; and he which soweth bountifully shall reap also bountifully.
+Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver. As it is written, he hath dispersed abroad; he hath given to the poor: his righteousness remaineth forever.
+Charge them that are rich in this world, that they be not high-minded, nor trust in uncertain riches, but in the living God, who giveth us richly all things to enjoy; that they do good, that they be rich in good works, ready to distribute, willing to communicate; laying up in store for themselves a good foundation against the time to come, that they may lay hold on eternal life.
+To do good and to communicate forget not: for with such sacrifices God is well pleased.
+Whoso hath this world's good, and seeth his brother have need, and shutteth up his bowels of compassion from him, how dwelleth the love of God in him?
+He that hath pity upon the poor lendeth unto the Lord; and that which he hath given will He pay him again.
+I have shewed you all things, how that so laboring ye ought to support the weak, and to remember the words of the Lord Jesus, how He said, It is more blessed to give than to receive.
+¶ The collection shall be brought by the Deacons, in a proper vessel provided for the purpose, to the Minister; who shall then reverently place it upon the altar, as an oblation presented unto God.
+
+= The Prayer of Preparation and the Scriptures
+¶ After this, the Minister shall uncover and expose to view the vessels containing the bread and wine for the use of the Holy Sacrament, and proceed as follows:
+Minister. Let us pray.
+Almighty and everlasting God, who by the blood of thy dear Son hast consecrated for us a new and living way into the holiest of all; cleanse our minds, we beseech Thee, by the inspiration of thy Holy Spirit, that we, thy redeemed people, drawing near unto Thee in these holy mysteries, with a true heart and undefiled conscience, in full assurance of faith, may offer unto Thee an acceptable sacrifice in righteousness, and worthily magnify thy great and glorious name; through Jesus Christ, our Lord.
+- Amen.
+¶ Then shall the Minister pronounce, slowly and solemnly, either the whole, or some part, of the following selection of passages from the Holy Scriptures.
+Surely He hath borne our griefs, and carried our sorrows; yet we did esteem Him stricken, smitten of God, and afflicted. But He was wounded for our transgressions, He was bruised for our iniquities: the chastisement of our peace was upon Him; and with his stripes we are healed. All we like sheep have gone astray; we have turned every one to his own way; and the Lord hath laid on Him the iniquity of us all.
+In this was manifested the love of God toward us, because that God sent his only begotten Son into the world, that we might live through Him. Herein is love,. not that we loved God, but that He loved us, and sent his Son to be the propitiation for our sins.
+Abide in Me, and I in you. As the branch cannot bear fruit of itself, except it abide in the vine; no more can ye, except ye abide in Me. I am the vine, ye are the branches: he that abideth in Me, and I in him, the same bringeth forth much fruit: for without Me ye can do nothing.
+I am the living bread which came down from heaven. If any man eat of this bread, he shall live for ever: and the bread which I will give is my flesh, which I will give for the life of the world. The Jews therefore strove among themselves, saying, How can this man give us his flesh to eat? Then Jesus said unto them, Verily, verily, I say unto you, except ye eat the flesh of the Son of man, and drink his blood, ye have no life in you.
+Whoso eateth my flesh, and drinketh my blood, hath eternal life; and I will raise him up at the last day. For my flesh is meat indeed, and my blood is drink indeed. He that eateth my flesh, and drinketh my blood, dwelleth in Me, and I in him. As the living Father hath sent Me, and I live by the Father; so he that eateth Me, even he shall live by Me. This is that bread which came down from heaven: not as your fathers did eat manna, and are dead: he that eateth of this bread shall live for ever.
+
+= Preface and Seraphic Hymn
+¶ Then, the whole Congregation rising, the service shall proceed.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Lift up your hearts.
+People. We lift them up unto the Lord.
+Minister. Let us give thanks unto the Lord our God.
+People. It is meet and right so to do.
+It is -very meet, right, and our bounden duty, that we should at all times, and in all places, give thanks unto Thee, Lord God Almighty, Father, Son, and Holy Ghost.
+Before the mountains were brought forth, or ever Thou hadst formed the earth and the world, even from everlasting to everlasting, Thou art God.
+Thou didst in the beginning create all things for Thyself. By thy word were the heavens made, and all the host of them by the breath of thy mouth. The armies of the invisible world, angels and archangels, thrones, dominions, principalities and powers; the glorious firmament on high, sun, moon, and stars; the earth and the fullness thereof; all are the work of thy hands, and all are upheld by Thee continually in their appointed order and course.
+Thou also at the first didst make man in thine own image, and after thine own likeness, and didst set him over the works of thy hands, endowing him with the excellent gift of righteousness, and forming him for immortality. And when afterwards, through the fraud and malice of Satan, he fell by transgression from that first estate, Thou didst not leave him still to perish utterly in his fall, but wast pleased to raise him up again and to restore him to the joyful hope of everlasting life, by the promise of redemption through Jesus Christ; who, being God of God, very God of very God, dwelling in the bosom of the Father with unspeakable blessedness from all eternity, at last, when the fulness of the time was come, came down from heaven, and became man, for us men and for our salvation.
+For all thy mercies and favors, known to us and unknown, we give Thee thanks. But most of all, we praise Thee, the Father everlasting, for the gift of thine adorable, true, and only Son, our Saviour Jesus Christ, who by his appearing hath abolished death and brought life and immortality to light through the Gospel. We bless Thee for his holy incarnation; for his life on earth; for his precious sufferings and death upon the cross; for his resurrection from the dead; and for his glorious ascension to thy right hand. We bless Thee for the giving of the Holy Ghost; for the institution of the Church; for the means of grace; for the hope of everlasting life; and for the glory which shall be brought unto us at the coming, and in the kingdom, of thy dear Son.
+Thee, mighty God, heavenly King, we magnify and praise. With patriarchs and prophets, apostles and martyrs; with the holy Church throughout all the world; with the heavenly Jerusalem, the joyful assembly and congregation of the first-born on high; with the innumerable company of angels round about thy throne, the heaven of heavens, and all the powers therein; we worship and adore thy glorious name, joining in the song of the Cherubim and Seraphim:
+¶ Here let the people join aloud in the Seraphic Hymn.
++ Holy, Holy, Holy, Lord God of Sabaoth; heaven and earth are full of the majesty of thy glory. Hosanna in the highest! Blessed is he that cometh in the name of the Lord. Hosanna in the highest!
+
+= The Words of the Institution
+¶ Then the Minister shall proceed:
+¶ here he shall take some of the bread into his hand
+The Lord Jesus, the same night in which He was betrayed, took bread; and when He had given thanks, He brake it,
+¶ here he shall break the bread
+and said, Take, eat, this is my body which is broken for you; this do in remembrance of Me.
+After the same manner also,
+¶ here he shall take the cup into his hands
+He took the cup, when He had supped, saying, This cup is the new testament in my blood; this do ye, as often as ye drink it, in remembrance of Me.
+
+= Prayers of Consecration and Intercession
+Let us pray.
+Almighty God, our heavenly Father, send down, we beseech Thee, the powerful benediction of thy Holy Spirit upon these elements of bread and wine, that being set apart now from a common to a sacred and mystical use, they may exhibit and represent to us with true effect the body and blood of thy Son, Jesus Christ; so that in the use of them we may be made, through the power of the Holy Ghost, to partake really and truly of his blessed life, whereby only we can be saved from death, and raised to immortality at the last day
+- Amen.
+And be pleased now, O most merciful Father, graciously to receive at our hands this memorial of the blessed sacrifice of thy Son; in union with which we here offer and present unto Thee, O Lord, the reasonable sacrifice of our own persons; consecrating ourselves, on the altar of the Gospel, in soul and body, property and life, to thy most blessed service and praise. Look upon us through the mediation of our great High Priest. Make us accepted in the Beloved; and let his name be as a pure and holy incense, through which all our worship may come up before Thee, as the odor of a sweet smell, a sacrifice acceptable, well pleasing to God.
+- Amen.
+Remember in mercy, we beseech Thee, thy Church militant throughout the whole earth. Let her ministers be clothed with righteousness, and her priests with salvation. Build up her desolations; restore her disorders; heal her divisions; and grant unto her prosperity, safety, unity and peace.
+- Amen.
+We commend unto Thee especially this particular church and congregation, pastor, elders, deacons, and people, beseeching Thee to accept their piety and faith, and to increase toward them thy heavenly grace, so that they may come behind in no gift, waiting for the coming of our Lord Jesus Christ.
+- Amen.
+We pray for all estates of men in Christian lands; for kings, princes, and governors, and for the people committed to their charge and care; especially for thy servant the President of the United States, and for all the rulers of this land and nation. Make us a righteous people, and give us power to serve Thee in quietness and peace.
+- Amen.
+Vouchsafe unto us, we beseech Thee, favorable weather, that the fruits of the earth may ripen and be gathered in for us in due season; and be pleased of thy great goodness to preserve us from war, pestilence, and famine.
+- Amen.
+Send forth thy light and thy truth unto the ends of the earth; cause the glorious Gospel of thy grace to be proclaimed among all nations; and powerfully incline the hearts of men everywhere, that they may hear and obey the joyful sound.
+- Amen.
+Regard in tender compassion those among thy people, who are called to suffer heavy affliction, or sore temptation and trial of any kind: and be Thou graciously nigh unto them with thy divine help, according to all their need.
+- Amen.
+Especially do we commend unto Thee those departing this life. Let the arms of thy love be round about them in their last hour; defend them against the assaults of the Devil; enable them joyfully to commit their spirits into thy hands; and so receive them to thy rest.
+- Amen.
+O God, the Father of our Lord Jesus Christ, of whom the whole family in heaven and earth is named; we rejoice before Thee in the blessed communion of all thy saints, wherein Thou givest us also to have part. We praise Thee for the holy fellowship of patriarchs and prophets, apostles and martyrs, and the whole glorious company of the redeemed of all ages, who have died in the Lord, and now live with Him for evermore. We give thanks unto Thee for thy great grace and many gifts bestowed on those who have thus gone before us in the way of salvation, and by whom we are now compassed about, in our Christian course, as a cloud of witnesses looking down upon us from the heavenly world. Enable us to follow their faith, that we may enter at death into their joy; and so abide with them in rest and peace, till both they and we shall reach our common consummation of redemption and bliss in the glorious resurrection of the last day.
+- Amen.
+¶ Here let the people join aloud in the Lord's Prayer.
++ Our Father who art in heaven, Hallowed be thy name. Thy kingdom come. Thy will be done in earth, as it is in heaven. Give us this day our daily bread. And forgive us our debts as we forgive our debtors. And lead us not into temptation. But deliver us from evil. For thine is the kingdom, and the power, and the glory, for ever. Amen.
+
+= The Communion
+Minister. The peace of our Lord Jesus Christ be with you all.
+People. Amen.
+¶ Here the Holy Communion shall take place. While a sacramental hymn is sung, the people shall present themselves in front of the altar, reverently and devoutly standing. The officiating Minister shall first receive the Communion in both kinds himself, and administer the same to his assistants; and he shall then proceed with their help to administer it, first to the elders and deacons, and afterward to the people; distributing first the bread and then the cup.
+¶ Giving the bread, the Minister shall say:
+The bread which we break, is the Communion of the body of Christ.
+¶ Giving the cup, the Minister shall say:
+The cup of blessing which we bless, is the Communion of the blood of Christ.
+¶ After the people have communed in both kinds, the Minister shall say:
+May the Holy Communion of the body and blood of our Lord and Saviour Jesus Christ, keep and preserve you, each one, in body, soul, and spirit, unto everlasting life.
+- Amen.
+Depart in peace.
+¶ When all have communed, the Minister shall say:
+Let us pray.
+Almighty and everlasting God, we give Thee most hearty thanks for the great goodness Thou hast shown toward us at this time, in vouchsafing to feed us, through these holy mysteries, with the spiritual food of the most precious body and blood of thy Son, our Saviour Jesus Christ; assuring us thereby, that we are very members incorporate in the mystical body of thy Son, and heirs through hope of thine everlasting kingdom, by the merits of his most blessed death and passion. And we most humbly beseech Thee, O heavenly Father, so to assist us with thy grace, that we may continue in that holy fellowship, and do all such good works as Thou hast prepared for us to walk in; through Jesus Christ, our Lord, to whom, with Thee and the Holy Ghost, be all honor and glory, world without end.
+- Amen.
+
+= Te Deum and Benediction
+¶ Then shall be said or chanted, the Ambrosian Hymn (Te Deum laudamus), as follows:
+Minister. We praise Thee, O God:
+People. We acknowledge Thee to be the Lord.
+Minister. All the earth doth worship Thee, the Father everlasting.
+People. To Thee all angels cry aloud; the heavens and all the powers therein.
+Minister. To Thee cherubim and seraphim continually do cry:
+People. Holy, Holy, Holy, Lord God of Sabaoth.
+Minister. Heaven and earth are full of the majesty of thy glory.
+People. The glorious company of the apostles praise Thee.
+Minister. The goodly fellowship of the prophets praise Thee.
+People. The noble army of martyrs praise Thee.
+Minister. The holy Church, throughout all the world, doth acknowledge Thee.
+People. The Father of an infinite majesty;
+Minister. Thine adorable, true, and only Son;
+People. Also, the Holy Ghost, the Comforter.
+Minister. Thou art the King of glory, O Christ.
+People. Thou art the everlasting Son of the Father,
+Minister. When Thou tookest upon Thee to deliver man, Thou didst humble thyself to be born of a Virgin.
+People. When Thou hadst overcome the sharpness of death, Thou didst open the kingdom of heaven to all believers.
+Minister. Thou sittest at the right hand of God, in the glory of the Father.
+People. We believe that Thou shalt come to be our judge.
+Minister. We therefore pray Thee, help thy servants, whom Thou hast redeemed with thy precious blood.
+People. Make them to be numbered with thy saints in glory everlasting.
+Minister. O Lord, save thy people, and bless thy heritage.
+People. Govern them, and lift them up forever.
+Minister. Day by day we magnify Thee;
+People. And we worship thy name ever, world without end.
+Minister. Vouchsafe, O Lord, to keep us this day without sin.
+People. O Lord, have mercy upon us, have mercy upon us.
+Minister. O Lord, let thy mercy be upon us, as our trust is in Thee.
+People. O Lord, in Thee have I trusted; let me never be confounded.
+¶ After which the Minister shall close the whole service with this Benediction.
+The peace of God, which passeth all understanding, keep your hearts and minds in the knowledge and love of God, and of his Son Jesus Christ, our Lord; and the blessing of God Almighty, the Father, the Son, and the Holy Ghost, be amongst you, and remain with you always.
+- Amen.
+
+%%% order rcus1866-evening
+# The Order of Worship for the Reformed Church in the United States (Philadelphia: S. R. Fisher & Co., 1866) [partial edition], public domain.
+# Transcribed from the Internet Archive scan (orderofworshipfo00unknuoft); the OCR was proofread by hand and checked against the later editions
+# (ordwors00refo, 1867; orderofworshipfo00refo; cu31924029475203). Corrected: "some part" and, in the Evening Service, "thou wilt" (as the later editions and the Morning Service read). Markup: see tools/orders.py.
+title: The Regular Service on the Lord's Day: Evening
+book: Order of Worship, Reformed Church in the United States (Mercersburg, 1866)
+
+= Invocation and Prayer
+¶ Having taken his place at the altar, the Congregation also standing up, the Minister shall say as follows:
+In the name of the Father, and of the Son, and of the Holy Ghost. Amen.
+Let us pray.
+Almighty God, unto whom all hearts are open, all desires known, and from whom no secrets are hid; cleanse the thoughts of our minds, we beseech Thee, by the inspiration of thy Holy Spirit, that, being delivered from every unholy motion of the flesh and spirit, we may perfectly love Thee, with a pure heart and sanctified lips worship Thee, and worthily magnify thy holy name; through Jesus Christ, our Lord.
+¶ Here, and at the end of every Collect and Prayer, the Congregation shall say:
+- Amen.
+
+= Hymn, Creed and Gloria Patri
+¶ A Psalm or Hymn shall now be sung.
+¶ Then shall the Congregation rise, and join with the Minister in repeating the Apostles' Creed; immediately after which shall be chanted or recited, the Gloria Patri; all in the following order.
++ I believe in God the Father Almighty, Maker of heaven and earth:
++ And in Jesus Christ, his only begotten Son, our Lord; who was conceived by the Holy Ghost, born of the Virgin Mary; suffered under Pontius Pilate, was crucified, dead, and buried; He descended into hades; the third day He rose from the dead; He ascended into heaven, and sitteth at the right hand of God the Father Almighty; from thence He shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; the holy catholic Church; the communion of saints; the forgiveness of sins; the resurrection of the body, and the life everlasting. Amen.
+Minister. Praise ye the Lord.
+People. The Lord's name be praised.
+Minister. Glory be to the Father, and to the Son, and to the Holy Ghost:
+People. As it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The Lessons
+¶ Then shall the Minister read the Evening Lessons, as indicated in the Table of Scripture Lessons.
+@lessons: The Evening Lessons, from the Table of Scripture Lessons
+
+= Collect and General Prayer
+¶ After the reading, the service shall proceed thus, the Congregation rising:
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+Minister. Create in us a clean heart, O God:
+People. And renew a right spirit within us.
+Minister. Cast us not away from thy presence:
+People. And take not thy Holy Spirit from us.
+¶ Then shall be offered the Collect for the day, and after this the following General Prayer.
+@prayer: The Collect for the Day
+O God, from whom all holy desires, all good counsels, and all just works do proceed; give unto thy servants that peace which the world cannot give; that our hearts may be set to obey thy commandments, and also that we, being defended from the fear of our enemies, may by thy protection pass our time in peace and quietness; through Jesus Christ, our Lord.
+- Amen.
+O Lord, our heavenly Father, by whose almighty power we have been preserved this day, and to whom the darkness and the light are both alike; by thy great mercy defend us from all perils and dangers of this night; and so refresh our weary nature with the help which our weakness needs, that we may behold the dawn and the day with joyfulness, and be devoted to Thee both in body and soul, for the love of thine only Son, our Saviour Jesus Christ.
+- Amen.
+In goodness art Thou exalted, O Lord, our Father, for ever and ever. We magnify Thee, we praise Thee, we worship Thee, we give thanks unto Thee for thy bountiful providence, for all the blessings of the present life and all the hopes of a better life to come; let the memory of thy goodness, we beseech Thee, fill our hearts with joy and thankfulness unto our life's end; and let no unworthiness of ours provoke Thee to withhold from us any needed good, seeing that all thy blessings come not by our desert, but only through the merit and mediation of Jesus Christ, our Lord.
+- Amen.
+Almighty and everlasting God, who hast promised to, reveal thy glory by Jesus Christ among all nations; remember, we beseech Thee, thy holy Church throughout all the world; unite all who profess and call themselves Christians in the bond of a holy faith as one body, and so replenish them and us with the grace of thy Holy Spirit, that we may bring forth abundantly the fruits of peace and good works; and that, having persevered in the way of godliness to the end, we may, with prophets, apostles, martyrs, confessors and saints of all ages, come into full communion with Thee and with one another in thine eternal and glorious kingdom; through the mediation of our Lord and Saviour, Jesus Christ.
+- Amen.
+O Most powerful Lord God, King of kings, and Lord of lords, who alone ordainest the powers that be; take under thy most gracious government and guidance, we beseech Thee, thy servants, the President of the United States, the Governor of this Commonwealth, and all others in authority; and so enrich them with heavenly wisdom and grace, that they may attain thine everlasting favor, and we lead quiet and peaceable lives, in all godliness and honesty; through Jesus Christ, our Lord.
+- Amen.
+Almighty and most merciful God, who art a seasonable refuge in time of trouble; let the prayers of those who, in tribulation or any sort of extremity, cry unto Thee, reach thy merciful ears, and grant them relief according to their several necessities, giving them patience under their sufferings, and a happy issue out of all their afflictions, for the sake of the suffering and sorrow of thy dear son, our Saviour Jesus Christ.
+- Amen.
+¶ Here may be introduced any special Collect or Collects suitable to the occasion.
+Almighty God, who hast given us grace at this time with one accord to make our common supplications unto Thee, and dost promise that where two or three are gathered together in thy name, thou wilt grant their requests; fulfil now, O Lord, the desires and petitions of thy servants, as may be most expedient for them, granting us in this world knowledge of thy truth, and in the world to come, life everlasting.
+- Amen.
+
+= Hymn and Sermon
+¶ A suitable Psalm or Hymn shall now be sung.
+¶ Then the Minister, having taken his place in the pulpit, shall proceed to deliver the Sermon, or he may expound in course a portion of the Heidelberg Catechism.
+@hymn
+@sermon
+
+= Prayer and the Lord's Prayer
+¶ After the Sermon, the service shall be continued as follows:
+Minister. Let us pray.
+O God, who didst teach the hearts of thy faithful people by sending to them the light of thy Holy Spirit; grant unto us by the same Spirit to have a right understanding of thy saving truth. Visit, we pray Thee, this congregation with thy love and favor; enlighten their minds more and more with the light of the everlasting gospel; graft in their hearts a love of the truth; increase in them true religion; nourish them with all goodness; and of thy great mercy keep them in the same; through Jesus Christ, our Lord.
+- Amen.
+¶ Here let the People join aloud in the Lord's Prayer.
++ Our Father who art in heaven, Hallowed be thy name. Thy kingdom come. Thy will be done in earth, as it is in heaven. Give us this day our daily bread. And forgive us our debts, as we forgive our debtors. And lead us not into temptation. But deliver us from evil. For thine is the kingdom, and the power, and the glory, for ever. Amen.
+
+= Offering and Benediction
+¶ The Deacons shall now collect the Alms of the people; and the Minister may make any necessary Announcements.
+@offering
+¶ Then a Psalm or Hymn shall be sung, ending with a Doxology.
+¶ After which the Minister shall close the whole service with the Apostolic Benediction.
+The grace of the Lord Jesus Christ, and the love of God, and the communion of the Holy Ghost, be with you all. Amen.
+
+%%% order rcus1866-morning
+# The Order of Worship for the Reformed Church in the United States (Philadelphia: S. R. Fisher & Co., 1866) [partial edition], public domain.
+# Transcribed from the Internet Archive scan (orderofworshipfo00unknuoft); the OCR was proofread by hand and checked against the later editions
+# (ordwors00refo, 1867; orderofworshipfo00refo; cu31924029475203). Corrected: "some part" and, in the Evening Service, "thou wilt" (as the later editions and the Morning Service read). Markup: see tools/orders.py.
+title: The Regular Service on the Lord's Day: Morning
+book: Order of Worship, Reformed Church in the United States (Mercersburg, 1866)
+
+= Confession and Absolution
+¶ Having taken his place on the right of the altar, the Congregation also standing up, the Minister shall say as follows:
+In the name of the Father, and of the Son, and of the Holy Ghost. Amen.
+Dearly beloved in the Lord: If we say that we have no sin, we deceive ourselves, and the truth is not in us; but if we confess our sins, God is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness. Let us, therefore, humble ourselves before the throne of Almighty God, our heavenly Father, and confess our manifold sins and transgressions with lowly and contrite hearts, that we may obtain forgiveness of the same through the merits of our Lord Jesus Christ.
+¶ Then the Minister and Congregation shall kneel, and repeat the following Confession.
++ Almighty and most merciful God, our heavenly Father, we cast ourselves down before Thee, under a deep sense of our unworthiness and guilt. We have grievously sinned against Thee, in thought, in word, and in deed. We have come short of thy glory. We have broken thy commandments, and turned aside every one of us from the way of life; and in us there is no soundness nor health. Yet now, O most merciful Father, hear us when we call upon Thee with penitent hearts; and for the sake of thy Son, Jesus Christ, have mercy upon us. Pardon our sins, and grant us thy peace. Take away our guilt. Purify us, by the inspiration of thy Holy Spirit, from all inward uncleanness; and make us able and willing to serve Thee in newness of life to the glory of thy holy name, through Jesus Christ, our Lord. Amen.
+¶ Then shall the Minister rise, and pronounce to the Congregation, still kneeling, the following Declaration of Pardon.
+Hearken now unto the comforting assurance of the grace of God, promised in the Gospel to all that repent and believe: As I live, saith the Lord God, I have no pleasure in the death of the wicked, but that the wicked turn from his way and live. God so loved the world, that He gave his only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.
+Unto as many of you, therefore, beloved brethren, as truly repent of your sins, and believe in the Lord Jesus Christ, with full purpose of new obedience, I announce and declare, by the authority and in the name of Christ, that your sins are forgiven in heaven, according to his promise in the gospel, through the perfect merit of Jesus \Christ, our Lord.
+¶ Here, and at the end of every Collect and Prayer, the Congregation shall say:
+- Amen.
+
+= Creed and Gloria in Excelsis
+¶ The Congregation shall now rise, and join with the Minister in repeating the Apostles' Creed; immediately after which shall be sung, chanted or recited, the Gloria in Excelsis; all in the following order.
++ I believe in God the Father Almighty, Maker of heaven and earth:
++ And in Jesus Christ, his only begotten Son, our Lord; who was conceived by the Holy Ghost, born of the Virgin Mary; suffered under Pontius Pilate, was crucified, dead, and buried; He descended into hades; the third day He rose from the dead; He ascended into heaven, and sitteth at the right hand of God the Father Almighty; from thence He shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; the holy catholic Church; the communion of saints; the forgiveness of sins; the resurrection of the body, and the life everlasting. Amen.
+Minister. Praise ye the Lord.
+People. The Lord's name be praised.
++ Glory be to God on high, and on earth peace, good will toward men. We praise Thee, we bless Thee, we worship Thee, we glorify Thee, we give thanks to Thee for thy great glory, O Lord God, heavenly King, God the Father Almighty.
++ O Lord, the only begotten Son, Jesus Christ; O Lord God, Lamb of God, Son of the Father, that takest away the sin of the world, have mercy upon us. Thou that takest away the sin of the world, have mercy upon us. Thou that takest away the sin of the world, receive our prayer. Thou that sittest at the right hand of God, the Father, have mercy upon us.
++ For thou only art holy; Thou only art the Lord; Thou only, O Christ, with the Holy Ghost, art most high in the "glory of God, the Father. Amen.
+
+= The Lessons
+¶ Then shall the Minister read the proper Gospel and Epistle for the day; adding, so far as he may see fit, other portions of Scripture.
+@lessons: The Gospel and Epistle for the day
+
+= Collect and General Prayer
+¶ After the reading, the service shall proceed thus, the Congregation rising:
+Minister. Glory be to the Father, and to the Son, and to the Holy Ghost:
+People. As it was in the beginning, is now, and ever shall be, world without end. Amen.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+¶ Then shall be offered the Collect for the day, and after this the following General Prayer; except that, on Festival days, the first two Collects of the same shall be omitted and the proper Festival Prayer used in their stead.
+@prayer: The Collect for the Day
+¶ During Lent, or in other seasons of humiliation, the Litany may take the place of the General Prayer.
+[or] The Litany, which in Lent or other seasons of humiliation may take the place of the General Prayer
+Minister. O God the Father in heaven; have mercy upon us.
+People. Have mercy upon us.
+Minister. O God the Son, Redeemer of the world; have mercy upon us.
+People. Have mercy upon us.
+Minister. O God the Holy Ghost, proceeding from the Father and the Son; have mercy upon us.
+People. Have mercy upon us.
+Minister. O holy, blessed, and glorious Trinity, three persons and one God; have mercy upon us.
+People. Have mercy upon us.
+Minister. Remember not, Lord, our offences, nor the offences of our forefathers; neither take Thou vengeance of our sins: spare us, good Lord, spare thy people, whom Thou hast redeemed with thy most precious blood and be not angry with us for ever.
+People. Spare us, good Lord.
+Minister. From all evil and harm; from the power of sin, and the snares of the devil; from thy wrath, and from everlasting damnation;
+People. Good Lord, deliver us.
+Minister. From all blindness of heart; from pride, vainglory, and hypocrisy; from envy, hatred, and malice, and all uncharitableness;
+People. Good Lord, deliver us.
+Minister. From all impure lusts and desires; and from all the deceits of the world, the flesh, and the devil;
+People. Good Lord, deliver us.
+Minister. From lightning, tempest, and earthquake; from plague, pestilence, and famine; from all disasters by land and by water; from battle and murder, and from sudden death;
+People. Good Lord, deliver us.
+Minister. From tumult and riot; from sedition and rebellion; from heresy and schism; from hardness of heart, and contempt of thy word and authority;
+People. Good Lord, deliver us.
+Minister. By the mystery of thy holy incarnation; by thy holy nativity and circumcision; by thy baptism, fasting, and temptation;
+People. Good Lord, deliver us.
+Minister. By thine agony and bloody sweat; by thy cross and passion; by thy precious death and burial; by thy glorious resurrection and ascension; and by the coming of the Holy Ghost;
+People. Good Lord, deliver us.
+Minister. In all time of our tribulation; in all time of our wealth; in the hour of death, and in the day of judgment;
+People. Good Lord, deliver us.
+Minister. We sinners do beseech Thee to hear us, O Lord.
+People. Son of God, we beseech Thee to hear us.
+Minister. That it may please Thee to keep us in all time of temptation and heaviness; to comfort and help all the weak-hearted; to raise up them that fall, and finally to beat down Satan under our feet;
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to succor, help, and comfort all that are in danger, necessity and tribulation;
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to preserve all travellers and strangers, all women in the perils of childbirth, all sick persons, and young children, and to show thy pity upon all prisoners and captives;
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to defend and provide for the fatherless children, and widows, and all that are desolate and oppressed;
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to have mercy upon all men;
+People. We beseech Thee to hear us, O Lord.
+Minister. O Son of God, Redeemer of the world;
+People. Have mercy upon us.
+Minister. O Lamb of God that takest away the sin of the world;
+People. Have mercy upon us.
+Minister. O Lamb of God that takest away the sin of the world;
+People. Grant us thy peace.
+O God, merciful Father, who despisest not the sighing of the contrite, nor rejectest the desire of the sorrowful: be favorable to our prayers which in our afflictions that continually oppress us, we pour out before Thee; and graciously hear them, that those things which the craft of the devil or man worketh against us, may be brought to nought, and by the counsel of thy goodness be dispersed; so that being hurt by no persecutions, we may evermore give thanks unto Thee in thy holy Church, through Jesus Christ, our Lord.
+- Amen.
+O God, from whom all holy desires, all good counsels, and all just works do proceed; give unto thy servants that peace which the world cannot give; that our hearts may be set to obey thy commandments, and also that we, being defended from the fear of our enemies, may by thy protection pass our time in peace and quietness, through Jesus Christ our Lord.
+- Amen.
+[/or]
+Almighty God, Father of all mercies, we, thine unworthy servants, do give Thee most humble and hearty thanks for all thy goodness and loving kindness to us, and to all men. We praise Thee for our creation, preservation, and all the blessings of this life; but above all, for thine inestimable love in the redemption of the world by our Lord Jesus Christ; for the means of grace, and for the hope of glory. And, we beseech Thee, give us such due sense of all thy mercies, that our hearts may be unfeignedly thankful, and that we may show forth thy praise, not only with our lips, but in our lives; by giving up ourselves to thy service, and by walking before Thee in holiness and righteousness all our days; through Jesus Christ, our Lord, to whom, with Thee and the Holy Ghost, be all honor and glory, world without end.
+- Amen.
+God of all power and glory, who hast not appointed us unto wrath, but to obtain salvation by our Lord Jesus Christ, perfect and fulfil in us, we beseech Thee, the work of thy redeeming mercy; that, being delivered more and more from our sins, we may be able to serve Thee in newness of life. Sanctify us in body, soul, and spirit; and guide us evermore in the way of peace. Help us to overcome the world. Beat down Satan under our feet. Give us courage to confess Christ always; and patience to endure in his service unto the end; that having finished our course with joy, we may rest in hope, and attain finally to the resurrection of the just, through the infinite merits of our Saviour Jesus Christ. Amen,
+O Thou God and Father of our Lord Jesus Christ, of whom the whole family in heaven and earth is named, cause thy blessing, we beseech Thee, to rest upon the Church, which He has purchased with his most precious blood. Illuminate her ministers with true knowledge and understanding of thy word. Send down the healthful dew of thy grace upon all her congregations. Deliver her from false doctrine, heresy and schism; and clothe her with the beauty of holiness and peace. Establish and reveal thy glory among all nations. By the tranquil working of thy perpetual providence, confound and destroy all wicked devices formed against thy holy Word, and bring in speedily the full victory of thine everlasting kingdom, through Jesus Christ, our Lord.
+- Amen.
+Almighty God, King of kings and Lord of lords, from whom proceedeth all power and dominion in heaven and on earth, most heartily we beseech Thee to look with favor upon thy servants, the President of the United States, the Governor of this Commonwealth, and all others in authority. Imbue them with the spirit of wisdom, goodness, and truth; and so rule their hearts, and bless their endeavors, that law and order, justice and peace, may everywhere prevail. Preserve us from public calamities; from pestilence and famine; from war, privy conspiracy, and rebellion; but especially from national sins and corruption. Make us strong and great in the fear of God, and in the love of righteousness; so that being blessed of Thee, we may become a blessing to all nations, to the praise of the glory of thy grace through Jesus Christ.
+- Amen.
+O God, the Creator and Preserver of all mankind, we implore thy mercy in behalf of all classes and conditions of men; that it may please Thee to visit them with thy most compassionate help, according to their manifold necessities and wants. Especially do we beseech Thee to show pity upon all widows and orphans; upon all prisoners and captives; upon all sick and dying persons; upon those who are desolate or sore afflicted in any way; and upon all such as are persecuted for righteousness' sake. Enable them to look unto Thee, O most merciful Father, and to call upon thy name, that they may find Thee a present Saviour in their affliction and distress. And let it please Thee to deliver them, and raise them up in due time, giving them patience under all their sufferings, the rich comfort of thy grace here below, and eternal rest with Thee in heaven, through our Lord Jesus Christ.
+- Amen.
+¶ Here may be introduced any special Collect or Collects suitable to the occasion. \^- ^
+Almighty God, who hast given us grace at this time with one accord to make our common supplications unto Thee, and dost promise that where two or three are gathered together in thy name, thou wilt grant their requests; fulfil now, O Lord, the desires and petitions of thy servants, as may be most expedient for them, granting us in this world knowledge of thy truth, and in the world to come, life everlasting.
+- Amen.
+
+= Hymn and Sermon
+¶ A suitable Psalm or Hymn shall now be sung.
+¶ Then the Minister, having taken his place in the pulpit, shall proceed to deliver the Sermon. This should be in harmony with the general order of the Church Year.
+@hymn
+@sermon
+
+= Prayer and the Lord's Prayer
+¶ After the Sermon, the service shall be continued as follows:
+Minister. Let us pray.
+Almighty God, Fountain of all goodness and truth, receive our thanks for the lively oracles of thy grace, which are able to make us wise unto everlasting life; and mercifully grant, we beseech Thee, that the words, which we have heard this day with our outward ears, may through thy blessing be so grafted inwardly in our hearts, that they may bring forth in us the fruit of good living; to the honor and praise of thy name, through Jesus Christ, our Lord.
+- Amen.
+O God, who art the author of peace and lover of concord, in knowledge of whom standeth our eternal life, whose service is perfect freedom; defend us, thy humble servants, in all assaults of our enemies: that we, surely trusting in thy defence, may not fear the power of any adversaries, through the might of our glorious Lord and Saviour, Jesus Christ.
+- Amen.
+¶ Here let the People join aloud in the Lord's Prayer.
++ Our Father who art in heaven, Hallowed be thy name. Thy kingdom come. Thy will be done in earth, as it is in heaven. Give us this day our daily bread. And forgive us our debts, as we forgive our debtors. And lead us not into temptation. But deliver us from evil. For thine is the kingdom, and the power, and the glory, for ever. Amen.
+
+= Offering and Benediction
+¶ The Deacons shall now collect the Alms of the People; and the Minister may make any necessary Announcements.
+@offering
+¶ Then a Psalm or Hymn shall be sung, ending with a Doxology.
+¶ After which the Minister shall close the whole service with the Apostolic Benediction.
+The grace of the Lord Jesus Christ, and the love of God, and the communion of the Holy Ghost, be with you all. Amen.
+
+%%% order rcus1866-preparation
+# The Order of Worship for the Reformed Church in the United States (Philadelphia: S. R. Fisher & Co., 1866) [partial edition], public domain.
+# Transcribed from the Internet Archive scan (orderofworshipfo00unknuoft); the OCR was proofread by hand and checked against the later editions
+# (ordwors00refo, 1867; orderofworshipfo00refo; cu31924029475203). Corrected: "some part" and, in the Evening Service, "thou wilt" (as the later editions and the Morning Service read). Markup: see tools/orders.py.
+title: Preparation for the Holy Communion
+book: Order of Worship, Reformed Church in the United States (Mercersburg, 1866)
+
+= The Law
+¶ Having taken his place at the altar, the Congregation also standing up, the Minister shall say:
+The Lord is in his holy temple: let all the earth keep silence before Him. Amen.
+God spake all these words, saying, I am the Lord thy God, which have brought thee out of the land of Egypt, out of the house of bondage.
+Thou shalt have no other gods before Me.
+Thou shalt not make unto thee any graven image, or any likeness of any thing that is in heaven above, or that is in the earth beneath, or that is in the water under the earth: thou shalt not bow down thyself to them, nor serve them: for I the Lord thy God am a jealous God, visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate Me; and shewing mercy unto thousands of them that love Me, and keep my commandments.
+Thou shalt not take the name of the Lord thy God in vain; for the Lord will not hold him guiltless that taketh his name in vain.
+Remember the sabbath day, to keep it holy. Six days shalt thou labor, and do all thy work: but the seventh day is the sabbath of the Lord thy God: in it thou shalt not do any work, thou, nor thy son, nor thy daughter, thy manservant, nor thy maidservant, nor thy cattle, nor thy stranger that is within thy gates: for in six days the Lord made heaven and earth, the sea, and all that in them is? and rested the seventh day: wherefore the Lord blessed the sabbath day, and hallowed it.
+Honor thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.
+Thou shalt not kill.
+Thou shalt not commit adultery.
+Thou shalt not steal.
+Thou shalt not bear false witness against thy neighbor.
+Thou shalt not covet thy neighbor's house, thou shalt not covet thy neighbor's wife, nor his manservant, nor his maidservant, nor his ox, nor his ass, nor anything that is thy neighbor's.
+People. Lord, have mercy upon us, and incline our hearts to keep all these laws.
+Minister. Hear also what our Lord Jesus Christ saith:
+Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. This is the first and great commandment. And the second is like unto it: Thou shalt love thy neighbor as thyself. On these two commandments hang all the law and the prophets.
+Minister. Let us pray.
+O Lord God, who didst at first deliver thy commandments from the mount which burned with fire, amid blackness, and darkness, and tempest, at which terrible sight even Moses said, I exceedingly fear and quake: we thank Thee that this same law is now published unto us from mount Zion, through the Mediator of a new and better covenant; and we humbly beseech Thee to put these words into our minds, and write them in our hearts, that we may delight in thy law after the inward man, and serve Thee in newness of spirit, through Jesus Christ our Lord; who with Thee and the Holy Ghost liveth and reigneth, ever one God, world without end.
+- Amen.
+
+= The Litany
+¶ Then all shall kneel, and join in the Litany as follows:
+Minister. O God the Father in heaven; have mercy upon us.
+People. Have mercy upon us.
+Minister. O God the Son, Redeemer of the world; have mercy upon us.
+People. Have mercy upon us.
+Minister. O God the Holy Ghost, proceeding from the Father and the Son; have mercy upon us.
+People. Have mercy upon us.
+Minister. O holy, blessed, and glorious Trinity, three persons and one God; have mercy upon us.
+People. Have mercy upon us.
+Minister. Remember not, Lord, our offences, nor the offences of our forefathers; neither take Thou vengeance of our sins: spare us, good Lord, spare thy people, whom Thou hast redeemed with thy most precious blood, and be not angry with us for ever.
+People. Spare us, good Lord.
+Minister. From all evil and harm; from the power of sin, and the snares of the devil; from thy wrath, and from everlasting damnation;
+People. Good Lord, deliver us.
+Minister. From all blindness of heart; from pride, vainglory, and hypocrisy; from envy, hatred, and malice and all uncharitableness;
+People. Good Lord, deliver us.
+Minister. From all impure lusts and desires; and from all the deceits of the world, the flesh, and the devil;
+People. Good Lord, deliver us.
+Minister. From lightning, tempest, and earthquake; from plague, pestilence, and famine; from all disasters by land and by water; from battle and murder, and from sudden death;
+People. Good Lord, deliver us.
+Minister. From tumult and riot; from sedition and rebellion; from heresy and schism; from hardness of heart, and contempt of thy word and authority;
+People. Good Lord, deliver us.
+Minister. By the mystery of thy holy incarnation; by thy holy nativity and circumcision; by thy baptism, fasting, and temptation;
+People. Good Lord, deliver us.
+Minister. By thine agony and bloody sweat; by thy cross and passion; by thy precious death and burial; by thy glorious resurrection and ascension; and by the coming of the Holy Ghost;
+People. Good Lord, deliver us.
+Minister. In all time of our tribulation; in all time of our wealth; in the hour of death, and in the day of judgment;
+People. Good Lord, deliver us.
+Minister. We sinners do beseech Thee to hear us, O Lord.
+People. Son of God, we beseech Thee to hear us.
+Minister. That it may please Thee to keep us in all time of temptation and heaviness; to comfort and help all the weak-hearted; to raise up them that fall, and finally to beat down Satan under our feet;
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to succor, help, and comfort all that are in danger, necessity, and tribulation;
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to preserve all travellers and strangers, all women in the perils of childbirth, all sick persons, and young children, and to show thy pity upon all prisoners and captives.
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to defend and provide for the fatherless children, and widows, and all that are desolate and oppressed;
+People. We beseech Thee to hear us, O Lord.
+Minister. That it may please Thee to have mercy upon all men;
+People. We beseech Thee to hear us, O Lord.
+Minister. O Son of God, Redeemer of the world;
+People. Have mercy upon us.
+Minister. O Lamb of God, that takest away the sin of the world;
+People. Have mercy upon us.
+Minister. O Lamb of God, that takest away the sin of the world;
+People. Grant us thy peace.
+O God, merciful Father, who despisest not the sighing of the contrite, nor rejectest the desire of the sorrowful; be favorable to our prayers which in our afflictions that continually oppress us, we pour out before Thee; and graciously hear them, that those things which the craft of the devil or man worketh against us, may be brought to nought, and by the counsel of thy goodness be dispersed; so that being hurt by no persecutions, we may evermore give thanks unto Thee in thy holy Church, through Jesus Christ, our Lord.
+- Amen.
+O God, from whom all holy desires, all good counsels, and all just works do proceed; give unto thy servants that peace which the world cannot give; that our hearts may be set to obey thy commandments, and also that we, being defended from the fear of our enemies, may by thy protection pass our time in peace and quietness; through Jesus Christ, our Lord.
+- Amen.
+
+= Hymn and Exhortation
+¶ A suitable Psalm or Hymn shall now be sung.
+¶ Then the Minister, having taken his place in the pulpit, shall proceed to deliver a brief Sermon, or Exhortation.
+@hymn
+@sermon
+¶ After the Sermon, the Minister, at the altar, shall address the communicants, and say:
+Beloved in the Lord: Our blessed Saviour Jesus Christ, when He was about to finish the work of our redemption, by making Himself a sacrifice for our sins upon the cross, solemnly instituted the Holy Sacrament of his own body and blood; that it might be the abiding memorial of his precious death; the seal of his perpetual presence in the Church by the Holy Ghost; the mystical exhibition of his one offering of Himself made once, but of force always, to put away sin; the pledge of his undying love to his people; and the bond of his living union and fellowship with them to the end of time.
+The same night, we are told, in which He was betrayed, He took bread; and when He had given thanks, He brake it, and said, Take, eat; this is my body, which is broken for you; this do in remembrance of Me. After the same manner also He took the cup, when He had supped, saying, This cup is the new testament in my blood; this do ye, as oft as ye drink it, in remembrance of Me.
+It has not been without reason, therefore, that the celebration of the Holy Eucharist has ever been regarded by the Church as the inmost sanctuary of the whole Christian worship. We have to do here, not with outward signs only, but with the heavenly realities themselves which these signs represent. Our Lord himself calls the bread his body, and the cup, his blood, or the new testament in his blood. The cup of blessing which we bless, says St. Paul, is it not the communion of the blood of Christ? The bread which we break, is it not the communion of the body of Christ? And it is the same apostle who utters, in another place, the solemn warning: Let a man examine himself, and so let him eat of that bread, and drink of that cup; for he that eateth and drinketh unworthily, eateth and drinketh judgment to himself, not discerning the Lord's body.
+Being of such high and awful character, it is plain that the Lord's Supper can be rightly and safely approached only by those who are of a truly devout and religious mind. These holy mysteries are not for the irreverent, the worldly, or the profane. All who are impenitent and unbelieving, and who refuse to obey the gospel of our Lord Jesus Christ, have no right to partake of this Christian altar. They can do so only at their own peril; for coming to it thus in the spirit of hypocrisy and wickedness, they turn the blessing of the Sacrament into a curse, and that which should be a savor of life unto life is made to be for them only a savor of death unto death. They eat and drink damnation or judgment to themselves; not because they are sinners, but because they are impenitent sinners; not because they are unworthy, but because they eat and drink unworthily, not discerning the Lord's body.
+If any of you who are present, then, know yourselves to be the willing servants of sin, being without repentance and faith, and yielding yourselves to the power of worldly affections and lusts, we solemnly warn and admonish you, that ye presume not, so long as this is your character, to come to the table of the Lord. Do not pretend in this way, to join righteousness with unrighteousness, and light with darkness. Ye cannot drink the cup of the Lord, and the cup of devils; ye cannot be partakers of the Lord's table, and of the table of devils.
+On the other hand, we cordially invite to this table all who are truly grieved and penitent for their sins, who look to the Lord Jesus Christ for righteousness and salvation, who abide in the fellowship of his Church, and who earnestly desire to possess his Spirit and to walk in his steps. To all such the voice of the infinitely compassionate Redeemer himself speaks: Come unto Me, all ye that labor, and are heavy laden, and I will give you rest. Fear not, therefore, as many of you as have this mind, to embrace the joyful and glorious privilege which is here offered for your use. Having, brethren, boldness to enter into the holiest by the blood of Jesus, by a new and living way, which He hath consecrated for us, through the veil, that is to say, his flesh; and having an High Priest over the house of God; let us draw near with a true heart, in full assurance of faith, having our hearts sprinkled from all evil conscience, and our bodies washed with pure water.
+Only ye must take good heed, that your particular preparation for the Sacrament at this time be sincere and whole, according to God's command; so that no let or bar may be found in yourselves to its proper comfort and benefit. See that ye have grace, not only in general habit, but also in present exercise and power. Renew your repentance and faith. Be in perfect charity with all men. Put away from you the leaven of malice and wickedness. Remember earnestly your past offences and shortcomings, that ye may humble yourselves, with true hearty confession, under the mighty hand of Him, who alone has power to exalt you in his own good time. Thus, clothed in the robes of salvation, you will be able to compass God's holy altar with thankfulness and joy, and to share the full benefit of its one offering for sin, while you feed on the sacrifice at the same time as the bread of everlasting life. For in this most comfortable Sacrament of the body and blood of our Saviour Jesus Christ, we have exhibited to us at once, both the forgiveness of sins through his death, and the gift of immortality through his glorious resurrection; according to his own word: Verily, verily, I say unto you, Except ye eat the flesh of the Son of Man, and drink his blood, ye have no life in you. Whoso eateth my flesh, and drinketh my blood, hath eternal life; and I will raise him up at the last day. For my flesh is meat indeed, and my blood is drink indeed. He that eateth my flesh, and drinketh my blood, dwelleth in Me, and I in him. As the living Father hath sent Me, and I live by the Father; so he that eateth Me, even he shall live by Me. This is that bread which came down from heaven: not as your fathers did eat manna, and are dead; he that eateth of this bread shall live for ever.
+Ye then, beloved brethren in the Lord, who have looked earnestly into your own hearts, and who find in yourselves these good dispositions of penitence and faith, with the sincere desire and purpose of forsaking all sin and following after all Christian holiness, approach with me now to the throne of grace, and make your humble confession to Almighty God.
+
+= Confession and Absolution
+¶ All kneeling.
++ Almighty God, Father of our Lord Jesus Christ, Maker of all things, Judge of all men; we cast ourselves down at thy feet, with deep humiliation and heartfelt penitent grief, in view of our manifold sins and great unrighteousness, whereby we have provoked against ourselves most justly thine indignation and wrath. We have sinned against Thee in thought, word, and deed. We have broken thy holy laws. We have come short of thy righteousness and glory, in all our ways. Our lives bear testimony against us, and our own hearts condemn us, as being prone to all evil, and backward to all good. We have abused thy mercies, and made light of thy judgments. We have turned aside from thy covenant; and have not been faithful and diligent, as we ought to have been, in using the helps of thy grace for our eternal salvation. We acknowledge and bewail before Thee, the corruption of our nature, the vanity of our minds, the waywardness of our hearts, the wanderings and apostasies of our whole fallen life. Righteousness belongeth unto thee, O Lord; and unto us only confusion of face. But unto Thee, O Lord our God, belong also mercies and forgivenesses, though we have rebelled against Thee. For thou, Lord, art good, and ready to forgive, and plenteous in mercy unto all them that call upon Thee. Look upon us, therefore, O righteous and holy Father, with an eye of pity and compassion, as we now humble ourselves, with sincere confession, before the throne of thy heavenly grace; and for the sake of thy Son Jesus Christ, speak pardon and peace to our souls. Let thy mercy be upon us, O Lord, according as we hope in Thee. And with the full pardon of our past sins, be pleased also to quicken us, we beseech Thee, in the way of righteousness, and uphold us with thy free Spirit; that we may walk worthy henceforth of the vocation wherewith we are called, and ever hereafter serve and please Thee in newness of life, to the honor and glory of thy holy name, through Jesus Christ, our Lord. Amen.
+¶ Then shall the Minister rise, and pronounce to the Congregation, still kneeling, the following Declaration of Pardon.
+Hearken now unto the comforting assurance of the grace of God, promised in the Gospel to all that repent and believe: As I live, saith the Lord God, I have no pleasure in the death of the wicked, but that the wicked turn from his way and live. God so loved the world, that He gave his only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.
+Unto as many of you, therefore, beloved in the Lord, as have now made confession of your sins unto God with hearty repentance and sincere faith, being resolved to turn from them, and to follow after righteousness and true holiness in time to come, I declare, by the authority of the Gospel, that all your sins are remitted and forgiven, through the perfect satisfaction of the most holy passion and death of our Lord Jesus Christ.
+- Amen.
+
+= Doxology and Benediction
+¶ Then shall the Congregation rise, and join in singing a Doxology; after which the service shall be concluded with this Benediction:
+The God of peace, who brought again from the dead our Lord Jesus, the great Shepherd of the sheep, through the blood of the everlasting covenant, make you perfect in every good work, to do his will, working in you that which is well-pleasing in his sight, through Jesus Christ: to whom be glory for ever and ever.
+- Amen.
+@hymn

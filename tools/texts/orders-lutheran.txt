@@ -1,0 +1,778 @@
+# Orders of service (lutheran). Each order begins at a line '%%% order <id>' and runs to the next; its markup is
+# described in tools/orders.py. The id is the key in data/orders.json.
+
+%%% order csb-baptism
+# Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), public domain
+# in the United States. "Order for the Baptism of Infants", pp. 229-232, with the Alternate Form of Questions. Transcribed from the Internet Archive scan of the 1918 printing (commonserviceb00unknuoft),
+# proofread against the page images; the chant notation and pointing are left out. Markup: see tools/orders.py.
+title: Order for the Baptism of Infants
+book: Common Service Book of the Lutheran Church (1917-19)
+
+= The Invocation and Prayer
+¶ Baptism should be administered at a public Service. When circumstances demand, it may be administered privately, but public announcement thereof shall afterward be made. Parents are urged not to delay the baptism of their children.
+¶ The names of the parents, of the sponsors, and of the child, with the date and place of birth and of baptism, shall be entered in the Record of the Congregation, and a proper certificate issued.
+¶ Only members of the Church shall be accepted as sponsors.
+¶ Baptism may be administered at any of the regular Services or at a specially appointed Service. When administered at The Service, the Order here given may follow the Creed or the General Prayer; when at Vespers, it may follow the Lessons or the Sermon; when at a specially appointed Service, the Order may be preceded by a Hymn.
+¶ The Minister may lay his hand on the head of the child during the repetition of the Lord's Prayer.
+¶ The Minister shall say:
+In the Name of the Father, and of the Son, and of the Holy Ghost.
+- Amen.
+Dearly Beloved: Forasmuch as all men are conceived and born in sin, and our Saviour Jesus Christ hath said, Except a man be born of water and of the Spirit, he cannot enter into the kingdom of God: I beseech you to call upon God the Father, through our Lord Jesus Christ, that of His goodness and mercy He will receive this child, by baptism, into the Church of the Redeemer, and make him a living member of the same.
+Let us pray.
+Almighty and Everlasting God, the Father of our Lord Jesus Christ: We call upon Thee for this child, and beseech Thee to bestow upon him the gift of Thy baptism and Thine everlasting grace by the washing of regeneration. Receive him, O Lord, as Thou hast promised by Thy well-beloved Son, saying: Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you; through the same Jesus Christ, Thy Son, our Lord.
+- Amen.
+
+= The Gospel and the Lord's Prayer
+¶ Then shall the Minister say:
+Hear the Holy Gospel, which saith:
+They brought young children to Him, that He should touch them: and His disciples rebuked those that brought them. But when Jesus saw it, He was much displeased, and said unto them: Suffer the little children to come unto Me, and forbid them not, for of such is the kingdom of God. Verily I say unto you, whosoever shall not receive the kingdom of God as a little child, he shall not enter therein. And He took them up in His arms, put His hands upon them, and blessed them.
+Our Lord Jesus Christ said:
+All power is given unto Me in heaven and in earth. Go ye, therefore, and teach all nations, baptizing them in the Name of the Father, and of the Son, and of the Holy Ghost; teaching them to observe all things whatsoever I have commanded you; and, lo, I am with you alway, even unto the end of the world.
+He that believeth and is baptized shall be saved.
+¶ Then shall all say:
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
+
+= The Renunciation and the Creed
+¶ Then shall the Minister say to those who present the child:
+In obedience to our Lord's command you bring this child for Holy Baptism. I therefore ask you:
+Do you renounce the devil, and all his works, and all his ways?
+Sponsors. Yes, I renounce.
+¶ Then shall the Minister say:
+Let us all confess the Faith into which we have been baptized, and into which this child is now to be baptized.
+¶ Then shall all say the Apostles' Creed.
++ I believe in God the Father Almighty, Maker of heaven and earth. And in Jesus Christ His only Son, our Lord; Who was conceived by the Holy Ghost, Born of the Virgin Mary; Suffered under Pontius Pilate, Was crucified, dead, and buried; He descended into hell; The third day He rose again from the dead; He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence He shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; The holy Christian Church, the Communion of Saints; The Forgiveness of sins; The Resurrection of the body; And the Life everlasting. Amen.
+¶ Then, addressing those who present the child, the Minister shall say:
+Do you present this child to be baptized into this Christian Faith?
+Sponsors. I do.
+Do you promise to instruct him in the Word of God, and to bring him up in the nurture and admonition of the Lord?
+Sponsors. Yes, I promise.
+[or] An Alternate Form of Questions, of ancient origin and wide usage in the Church
+¶ In place of the questions above, the following may be used.
+Since in Christian love you present this child for Holy Baptism, I call upon you to answer in his stead.
+Dost thou renounce the devil, and all his works, and all his ways?
+Sponsors. Yes, I renounce.
+Dost thou believe in God the Father Almighty, Maker of heaven and earth? And in Jesus Christ His only Son, our Lord; Who was conceived by the Holy Ghost, Born of the Virgin Mary; Suffered under Pontius Pilate, Was crucified, dead, and buried; Descended into hell; The third day rose again from the dead; Ascended into heaven, And sitteth on the right hand of God the Father Almighty; Whence He shall come to judge the quick and the dead? And in the Holy Ghost: The holy Christian Church, the Communion of Saints; The Forgiveness of sins; The Resurrection of the body; And the Life everlasting?
+Sponsors. I believe.
+Dost thou desire to be baptized into this Christian Faith?
+Sponsors. I do.
+[/or]
+
+= The Baptism
+¶ The Minister may now ask: How shall this child be named? and shall then baptize him by applying the water three times as he saith:
+N., I baptize thee: In the Name of the Father, and of the Son, and of the Holy Ghost. Amen.
+¶ Then the Minister, laying his hand on the head of the child, shall say:
+Almighty God, the Father of our Lord Jesus Christ, Who hath begotten thee again of water and the Holy Ghost, and hath forgiven thee all thy sin, strengthen thee with His grace unto life everlasting. Amen.
+Peace be with thee.
+
+= The Thanksgiving and Admonition
+¶ Then shall the Minister say:
+Let us pray.
+Almighty and most Merciful God and Father, we thank Thee that Thou dost graciously preserve and extend Thy Church, and that Thou hast granted to this child the new birth in Holy Baptism, and received him as Thy child and heir to Thy kingdom; and we humbly beseech Thee to defend and keep him in this grace, that he may never depart from Thee, but may always live according to Thy will, and finally receive the fullness of Thy promise in Thine eternal kingdom; through Jesus Christ, Thy Son, our Lord, Who liveth and reigneth with Thee and the Holy Ghost, ever One God, world without end.
+- Amen.
+¶ Then shall the Minister say to those who have presented the child:
+I now admonish you who have done so charitable a work to this child in his Baptism, that ye diligently and faithfully teach him the Ten Commandments, the Creed, and the Lord's Prayer; and that, as he grows in years, ye place in his hands the Holy Scriptures, bring him to the Services of God's House; and provide for his instruction in the Christian Faith, that, abiding in the covenant of his Baptism, and in communion with the Church, he may be brought up to lead a godly life until the day of Jesus Christ. Amen.
+¶ Then shall the Minister say:
+The Blessing of Almighty God, the Father, the Son, and the Holy Ghost, be with you alway.
+- Amen.
+
+%%% order csb-burial
+# Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), public domain
+# in the United States. "Order for the Burial of the Dead", pp. 245-254. Transcribed from the Internet Archive scan of the 1918 printing (commonserviceb00unknuoft),
+# proofread against the page images; the chant notation and pointing are left out. Markup: see tools/orders.py.
+title: Order for the Burial of the Dead
+book: Common Service Book of the Lutheran Church (1917-19)
+
+= The Invocation and Kyrie
+¶ The Order for the Burial of the Dead is provided only for the burial of those who depart this life in the Christian Faith.
+¶ This Order may be used in the Church, or at the house, before the burial. When the Service is held in the Church after the burial, only the Order provided for use at the grave shall be used at the Committal.
+¶ The Order of the Church herein provided shall in no case be interrupted by the exercises of secular organizations, and shall close with the Benediction immediately following the final Collect.
+¶ The Service may begin with a Hymn, after which the Minister shall say:
+In the Name of the Father, and of the Son, and of the Holy Ghost.
+- Amen.
+¶ Then shall be said the Kyrie.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+
+= The Psalms
+¶ Then shall be sung or said one or more of the Psalms here following. The Psalm may be preceded and followed by an Antiphon.
+## Psalm 130. De profundis.
++ Antiphon. If Thou, Lord, shouldest mark iniquities, O Lord, who shall stand?
++ Out of the depths have I cried unto Thee, O LORD.
++ LORD, hear my voice: let Thine ears be attentive to the voice of my supplications.
++ If Thou, LORD, shouldest mark iniquities: O LORD, who shall stand?
++ But there is forgiveness with Thee: that Thou mayest be feared.
++ I wait for the LORD, my soul doth wait: and in His Word do I hope.
++ My soul waiteth for the Lord, more than they that watch for the morning: I say, more than they that watch for the morning.
++ Let Israel hope in the LORD, for with the LORD there is mercy: and with Him is plenteous redemption.
++ Glory be to the Father, and to the Son: and to the Holy Ghost;
++ As it was in the beginning, is now, and ever shall be: world without end. Amen.
++ Antiphon. If Thou, Lord, shouldest mark iniquities, O Lord, who shall stand?
+[or] Psalm 23, Dominus regit me, with or instead of Psalm 130
+## Psalm 23. Dominus regit me.
++ Antiphon. Into Thy hands, O Lord, I commit my spirit: Thou hast redeemed me, O Lord, God of truth.
++ The LORD is my Shepherd: I shall not want.
++ He maketh me to lie down in green pastures: He leadeth me beside the still waters.
++ He restoreth my soul: He leadeth me in the paths of righteousness for His Name's sake.
++ Yea, though I walk through the valley of the shadow of death, I will fear no evil: for Thou art with me; Thy rod and Thy staff they comfort me.
++ Thou preparest a table before me in the presence of mine enemies: Thou anointest my head with oil; my cup runneth over.
++ Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever.
++ Glory be to the Father, and to the Son: and to the Holy Ghost;
++ As it was in the beginning, is now, and ever shall be: world without end. Amen.
++ Antiphon. Into Thy hands, O Lord, I commit my spirit: Thou hast redeemed me, O Lord, God of truth.
+[/or]
+¶ Psalm 90, set for chanting, and its proper Antiphon are given in the book after this Order.
+
+= The Lesson and Responsory
+¶ Then shall be read one or more of the following Lessons of Holy Scripture: 1 Thess. 4: 13-18. 1 Cor. 15: 12-26, 35-58. John 11: 21-27. John 14: 1-6. John 5: 19-29. Rom. 8: 31-39. 1 Peter 1: 3-9. 2 Cor. 5: 1-10. Rev. 7: 9-17. Rev. 21: 3-7. Luke 7: 11-17. Matt. 9: 18, 19, 23-26. Mark 10: 13-16.
+## 1 Thessalonians 4: 13-18.
+Reader. But I would not have you to be ignorant, brethren, concerning them which are asleep, that ye sorrow not, even as others which have no hope. For if we believe that Jesus died and rose again, even so them also which sleep in Jesus will God bring with him. For this we say unto you by the word of the Lord, that we which are alive and remain unto the coming of the Lord shall not prevent them which are asleep. For the Lord himself shall descend from heaven with a shout, with the voice of the archangel, and with the trump of God: and the dead in Christ shall rise first: Then we which are alive and remain shall be caught up together with them in the clouds, to meet the Lord in the air: and so shall we ever be with the Lord. Wherefore comfort one another with these words.
+¶ Then may be sung a Responsory, or a Hymn, or a suitable Anthem.
+## The Responsory. Si bona suscepimus.
++ Shall we receive good at the hand of the Lord, and shall we not receive evil? The Lord gave, and the Lord hath taken away. Blessed be the Name of the Lord.
++ The Lord gave, and the Lord hath taken away.
+¶ Then may follow a Sermon or an Address.
+@sermon
+¶ Then may a Hymn be sung.
+@hymn
+
+= The Canticle
+¶ Then may the Canticle be sung and with it an Antiphon.
+## Nunc Dimittis.
++ Antiphon. O how glorious is that kingdom wherein all the saints do rejoice with Christ. They are clothed with white robes, and follow the Lamb whithersoever He goeth.
++ Lord, now lettest Thou Thy servant depart in peace: according to Thy word;
++ For mine eyes have seen Thy salvation: which Thou hast prepared before the face of all people.
++ A light to lighten the Gentiles: and the glory of Thy people Israel.
++ Glory be to the Father, and to the Son: and to the Holy Ghost;
++ As it was in the beginning, is now, and ever shall be: world without end. Amen.
++ Antiphon. O how glorious is that kingdom wherein all the saints do rejoice with Christ. They are clothed with white robes, and follow the Lamb whithersoever He goeth.
+
+= The Prayer
+¶ Then shall the Congregation rise and the following Prayers, or other Prayers, shall be said:
+Minister. O God, the Father in heaven:
+People. Have mercy upon us.
+Minister. O God, the Son, Redeemer of the world:
+People. Have mercy upon us.
+Minister. O God, the Holy Ghost, the Comforter:
+People. Grant us Thy peace.
+¶ Then shall all say:
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
+¶ Then may the Minister say one or more of the following Collects.
+Almighty God, Who by the death of Thy Son hast destroyed sin and death, and by His resurrection hast restored innocence and everlasting life, in order that we might be delivered from the dominion of the devil, and our mortal bodies be raised up from the dead: Grant that with our whole heart we may confidently believe this, and, finally, with all Thy saints, share in the joyful resurrection of the just; through the same Jesus Christ, Thy Son, our Lord.
+- Amen.
+O God, our Heavenly Father, Who hast taught us by Thy holy Apostle not to sorrow overmuch for them that sleep in Jesus: Mercifully grant, that after this life, we, with all Thy saints, may be received into everlasting joy; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+Almighty God, with Whom do live the spirits of those who depart hence in the Lord, and with Whom the souls of the faithful, after they are delivered from the burden of the flesh, are in joy and felicity: We give Thee hearty thanks for Thy grace bestowed upon Thy servants, who, having finished their course in faith, do now rest from their labors; and we beseech Thee, that we, with all who have departed in the true faith of Thy holy Name, may have our perfect consummation and bliss, both in body and soul, in Thy eternal glory; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+Almighty and most Merciful God, Who hast appointed us to endure sufferings and death with our Lord Jesus Christ, before we enter with Him into eternal glory: Grant us grace at all times to subject ourselves to Thy holy will, and to continue steadfast in the true faith unto the end of our lives, and at all times to find peace and joy in the blessed hope of the resurrection of the dead, and of the glory of the world to come; through the same Jesus Christ, Thy Son, our Lord.
+- Amen.
+Almighty and Everlasting God, the Consolation of the sorrowful, and the Strength of the weak: May the prayers of them that in any tribulation or distress cry unto Thee, graciously come before Thee, so that in all their necessities they may mark and receive Thy manifold help and comfort; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+[or] At the burial of a child
+Almighty God, the Father of our Lord Jesus Christ, within Whose arms little children were welcomed, and from Whose lips fell the gracious words that theirs is the Kingdom of Heaven: Help us steadfastly to believe that this child, whom Thou didst receive in holy baptism, hath now been raised above the sorrows and temptations of this present world, to be kept by Thee unto everlasting life, and to share with all, who by Thy mercy serve Thee here, in the joyful resurrection of the just, and the bliss of the heavenly inheritance; through the same Jesus Christ, Thy Son, our Lord.
+- Amen.
+[/or]
+¶ Special Prayers or Supplications may here be said, after which shall follow this Collect:
+O Lord Jesus Christ, Who wilt come again to judge the quick and the dead, and call forth all who sleep in the graves, either to the resurrection of life or the resurrection of condemnation: We beseech Thee to be gracious to us, and to raise us up to life everlasting, that we may be and abide with Thee for ever; Who livest and reignest with the Father and the Holy Ghost, ever One God, world without end.
+- Amen.
+¶ Then shall the Minister say:
+The Grace of our Lord Jesus Christ, and the Love of God, and the Communion of the Holy Ghost be with you all.
+- Amen.
+
+= The Service at the Grave
+¶ When the body has been committed to the grave, the Minister may say:
+I heard a voice from heaven, saying unto me, Write, Blessed are the dead which die in the Lord from henceforth: Yea, saith the Spirit, that they may rest from their labours.
+I am the resurrection and the life, saith the Lord; he that believeth in Me, though he were dead, yet shall he live; and whosoever liveth and believeth in Me, shall never die.
+If the Spirit of Him that raised up Jesus from the dead dwell in you, He that raised up Christ from the dead, shall also quicken your mortal bodies by His Spirit that dwelleth in you.
+[or] If the foregoing has not been used
+In the midst of life we are in death. Of whom may we seek for succor, but of Thee, O Lord, Who for our sins art justly displeased? Yet, O Lord God most holy, O Lord most mighty, O holy and most merciful Saviour: Suffer us not, at our last hour, for any pains of death, to fall from Thee.
+[/or]
+¶ Then shall the Minister say:
+Forasmuch as it hath pleased Almighty God of His great mercy, to take unto Himself the soul of our brother; we therefore commit his body to the ground; earth to earth, ashes to ashes, dust to dust; in sure and certain hope of the resurrection to eternal life through our Lord Jesus Christ; Who shall change our vile body, that it may be fashioned like unto His glorious body, according to the working, whereby He is able even to subdue all things unto Himself.
+¶ Then may a Hymn be sung.
+¶ Then may the Minister say one or both of the following Collects:
+Almighty God, Who by the death of Thy Son, Jesus Christ, hast destroyed death, and, by His rest in the tomb, hast sanctified the graves of Thy saints, and by His glorious resurrection, hast brought life and immortality to light, so that all who die in Him abide in peace and hope: Receive, we beseech Thee, our unfeigned thanks for the victory over death and the grave which He hath obtained for us and for all who sleep in Him; and keep us, who are still in the body, in everlasting fellowship with all that wait for Thee on earth, and with all around Thee in heaven, in union with Him, Who is the Resurrection and the Life, even Jesus Christ, Thy Son, our Lord.
+- Amen.
+O Lord Jesus Christ, Who by Thy death didst take away the sting of death: Grant unto us Thy servants so to follow in faith where Thou hast led the way, that we may at length fall peacefully asleep in Thee, and awake after Thy likeness; through Thy mercy, O our Lord, Who livest and reignest with the Father and the Holy Ghost, ever One God, world without end.
+- Amen.
+## The Benediction
+The Grace of our Lord Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+- Amen.
+[or] Or this Benediction
+Now the God of Peace, that brought again from the dead our Lord Jesus, the great Shepherd of the sheep, through the blood of the everlasting covenant, make you perfect in every good work to do His will; working in you that which is well pleasing in His sight, through Jesus Christ, to Whom be glory for ever and ever.
+- Amen.
+[/or]
+
+%%% order csb-litany
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), General Prayers, pp. 236-241,
+# public domain in the United States. Transcribed from the Internet Archive scan of the 1919 text edition (commo00unit), checked against the 1917
+# text edition and the 1918 music edition. Versicles are the Minister's, responses the Congregation's. Markup: see tools/orders.py.
+title: The Litany
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Litany
+¶ The Litany may be used at The Service on Sundays, except on Festivals or when there is a Communion.
+¶ It may be used at Matins and Vespers, except on Festivals; the ancient Litany Days being Wednesday and Friday.
+¶ It may be used alone on Days of Humiliation and Prayer, or as a Penitential Office, or at specially appointed times.
+¶ When said at The Service, it shall be used instead of the Form of General Prayer there appointed, and be followed by a Hymn and the Benediction.
+¶ When said at Matins or Vespers, it shall immediately follow the Canticle, and after it shall be said the Benedicamus and the Benediction.
+¶ When used as a special Office, the Order shall be: The Minister shall say: In the Name of the Father, and of the Son, and of the Holy Ghost. Amen. Then shall be said one or more of the Psalms with the Gloria Patri. A brief Lesson with the Response, and a Hymn may follow. Then shall the Litany be said, and after the last Collect shall follow this Benediction: The Blessing of Almighty God, the Father, the Son, and the Holy Ghost, be with you all. Amen.
+¶ The Responses shall be sung or said by the Congregation.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. O Christ, hear us.
+People. O Christ, hear us.
+Minister. O God, the Father in heaven:
+People. Have mercy upon us.
+Minister. O God the Son, Redeemer of the world:
+People. Have mercy upon us.
+Minister. O God, the Holy Ghost:
+People. Have mercy upon us.
+Minister. Be gracious unto us.
+People. Spare us, good Lord.
+Minister. Be gracious unto us.
+People. Help us, good Lord.
+Minister. From all sin; From all error; From all evil:
+People. Good Lord, deliver us.
+Minister. From the crafts and assaults of the devil; From sudden and evil death; From pestilence and famine; From war and bloodshed; From sedition and rebellion; From lightning and tempest; From all calamity by fire and water; And from everlasting death:
+People. Good Lord, deliver us.
+Minister. By the mystery of Thy holy Incarnation; By Thy holy Nativity; By Thy Baptism, Fasting, and Temptation; By Thine Agony and Bloody Sweat; By Thy Cross and Passion; By Thy precious Death and Burial; By Thy glorious Resurrection and Ascension; And by the coming of the Holy Ghost, the Comforter:
+People. Help us, good Lord.
+Minister. In all time of our tribulation; In all time of our prosperity; In the hour of death; And in the day of judgment:
+People. Help us, good Lord.
+Minister. We poor sinners do beseech Thee;
+People. To hear us, O Lord God.
+Minister. And to rule and govern Thy holy Christian Church; To preserve all pastors and ministers of Thy Church in the true knowledge and understanding of Thy Word, and in holiness of life; To put an end to all schisms and causes of offence; To bring into the way of truth all such as have erred, and are deceived; To beat down Satan under our feet; To send faithful laborers into Thy harvest; To accompany Thy Word with Thy Spirit and grace; To raise up them that fall, and to strengthen such as do stand; And to comfort and help the weak-hearted and the distressed:
+People. We beseech Thee to hear us, good Lord.
+Minister. To give to all nations peace and concord; To preserve our country from discord and contention; To give to our nation perpetual victory over all its enemies; To direct and defend our President, and all in authority; And to bless and keep our magistrates, and all our people:
+People. We beseech Thee to hear us, good Lord.
+Minister. To behold and succor all who are in danger, necessity, and tribulation; To protect all who travel by land or water; To preserve all women in the perils of childbirth; To strengthen and keep all sick persons and young children; To set free all who are innocently imprisoned; To defend and provide for all fatherless children and widows; And to have mercy upon all men:
+People. We beseech Thee to hear us, good Lord.
+Minister. To forgive our enemies, persecutors, and slanderers, and to turn their hearts; To give and preserve to our use the fruits of the earth; And graciously to hear our prayers:
+People. We beseech Thee to hear us, good Lord.
+Minister. O Lord Jesus Christ, Son of God;
+People. We beseech Thee to hear us.
+Minister. O Lamb of God, that takest away the sin of the world;
+People. Have mercy upon us.
+Minister. O Lamb of God, that takest away the sin of the world;
+People. Have mercy upon us.
+Minister. O Lamb of God, that takest away the sin of the world;
+People. Grant us Thy peace.
+Minister. O Christ, hear us.
+People. O Christ, hear us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us. Amen.
+¶ Then shall the Minister, and the Congregation with him, say the Lord's Prayer.
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
+¶ Then may the Minister say the Collect for the Day, except when The Litany is used at The Service. Then may be said one or more of the Litany Collects here following.
+@prayer: The Collect for the Day
+[or] The Litany Collects
+Minister. O Lord, deal not with us after our sins.
+People. Neither reward us according to our iniquities.
+Almighty God, our Heavenly Father, Who desirest not the death of a sinner, but rather that he should turn from his evil way and live: We beseech Thee graciously to turn from us those punishments which we by our sins have deserved, and to grant us grace ever hereafter to serve Thee in holiness and pureness of living; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+Minister. Help us, O God of our salvation, for the glory of Thy Name.
+People. Deliver us, and purge away our sins, for Thy Name's sake.
+Almighty and Everlasting God, Who by Thy Holy Spirit dost govern and sanctify the whole Christian Church: Hear our prayers for all members of the same, and mercifully grant, that by Thy grace they may serve Thee in true faith; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+Minister. O Lord, deal not with us after our sins.
+People. Neither reward us according to our iniquities.
+O God, Merciful Father, Who despisest not the sighing of a contrite heart, nor the desire of such as are sorrowful: Mercifully assist our prayers which we make before Thee in all our troubles and adversities, whensoever they oppress us; and graciously hear us, that those evils which the craft and subtilty of the devil or man worketh against us, may, by Thy good providence, be brought to naught; that we Thy servants, being hurt by no persecutions, may evermore give thanks unto Thee in Thy holy Church; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+Minister. O Lord, enter not into judgment with Thy servant.
+People. For in Thy sight shall no man living be justified.
+Almighty God, Who knowest us to be set in the midst of so many and great dangers, that by reason of the frailty of our nature we cannot always stand upright: Grant us such strength and protection, as may support us in all dangers, and carry us through all temptations; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+Minister. Call upon Me in the day of trouble.
+People. I will deliver thee, and thou shalt glorify Me.
+Spare us, O Lord, and mercifully forgive us our sins, and though by our continual transgressions we have merited Thy punishments, be gracious unto us, and grant that all those evils which we have deserved, may be turned from us, and overruled to our everlasting good; through Jesus Christ, Thy Son, our Lord.
+- Amen.
+Minister. The Lord will give strength unto His people.
+People. The Lord will bless His people with peace.
+O God, from Whom all holy desires, all good counsels, and all just works do proceed: Give unto Thy servants that peace, which the world cannot give; that our hearts may be set to obey Thy commandments, and also that by Thee, we, being defended from the fear of our enemies, may pass our time in rest and quietness; through the merits of Jesus Christ our Saviour, Who liveth and reigneth with Thee and the Holy Ghost, ever One God, world without end.
+- Amen.
+[/or]
+
+%%% order csb-matins
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), pp. 29-39,
+# public domain in the United States. Typed edition (acollectionofprayers.com) proofread against the Internet Archive scans
+# (commo00unit, commonserviceboo00phil); corrected: "Hallowed be Thy Name"; the Magnificat verse "imagination of their hearts"; the closing colon of the
+# Gloria Patri at the Nunc Dimittis. The Introit, Collect and Lessons of the day are not in the Order: see the Common Service rite. Markup: see tools/orders.py.
+title: Matins
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Versicles
+¶ The Versicles with the Gloria Patri shall be sung or said, the Congregation standing until the end of the Venite.
+¶ The Hallelujah shall be omitted in Lent.
+O Lord, open Thou my lips.
+People. And my mouth shall show forth Thy praise.
+Minister. Make haste, O God, to deliver me.
+People. Make haste to help me, O Lord.
+Minister. Glory be to the Father, and to the Son, and to the Holy Ghost:
+People. As it was in the beginning, is now, and ever shall be, world without end. Amen. Hallelujah.
+¶ Then may follow the Invitatory with the Venite.
+
+= The Invitatory and Venite
+Minister. O come, let us worship the Lord.
+People. For He is our Maker.
+## Venite Exultemus
++ O come, let us sing unto the Lord: let us make a joyful noise to the Rock of our salvation.
++ Let us come before His presence with thanksgiving: and make a joyful noise unto Him with psalms.
++ For the Lord is a great God: and a great King above all gods.
++ In His hand are the deep places of the earth: the strength of the hills is His also.
++ The sea is His, and He made it: and His hands formed the dry land.
++ O come, let us worship and bow down: let us kneel before the Lord our Maker.
++ For He is our God: and we are the people of His pasture, and the sheep of His hand.
++ Glory be to the Father, and to the Son, and to the Holy Ghost:
++ As it was in the beginning, is now, and ever shall be, world without end. Amen.
+¶ Then shall be sung the Hymn.
+
+= The Hymn
+@hymn
+¶ Then, all standing, shall be sung or said one or more Psalms.
+
+= The Psalm
+@psalter: A portion of the Psalter, chanted or read responsively
+¶ At the end of each Psalm the Congregation shall sing or say the Gloria Patri.
+## Gloria Patri
++ Glory be to the Father, and to the Son, and to the Holy Ghost: as it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The Lesson
+@lessons: The lessons from the Old and New Testaments, chosen by the Minister
+¶ The Scripture Lessons shall then be read. After each Lesson shall be sung or said the Response.
+Minister. O Lord, have mercy upon us.
+People. Thanks be to God.
+¶ After the Lesson a Responsory or a Hymn may be sung.
+¶ A brief Sermon may then follow.
+
+= The Canticle
+¶ The Congregation shall rise and sing or say the Canticle.
+## Te Deum Laudamus
++ We praise Thee, O God: we acknowledge Thee to be the Lord.
++ All the earth doth worship Thee: the Father everlasting.
++ To Thee all Angels cry aloud: the heavens, and all the powers therein.
++ To Thee Cherubim and Seraphim: continually do cry,
++ Holy, Holy, Holy: Lord God of Sabaoth;
++ Heaven and earth are full of the Majesty: of Thy Glory.
++ The glorious company of the Apostles: praise Thee.
++ The goodly fellowship of the Prophets: praise Thee.
++ The noble army of Martyrs: praise Thee.
++ The holy Church throughout all the world: doth acknowledge Thee;
++ The Father: of an infinite Majesty;
++ Thine adorable, true: and only Son;
++ Also the Holy Ghost: the Comforter.
++ Thou art the King of Glory: O Christ.
++ Thou art the everlasting Son: of the Father.
++ When Thou tookest upon Thee to deliver man: Thou didst humble Thyself to be born of a Virgin.
++ When Thou hadst overcome the sharpness of death: Thou didst open the kingdom of heaven to all believers.
++ Thou sittest at the right hand of God: in the glory of the Father.
++ We believe that Thou shalt come: to be our Judge.
++ We therefore pray Thee, help Thy servants: whom Thou hast redeemed with Thy precious blood.
++ Make them to be numbered with Thy saints: in glory everlasting.
++ O Lord, save Thy people: and bless Thine heritage.
++ Govern them: and lift them up for ever.
++ Day by day: we magnify Thee;
++ And we worship Thy Name: ever, world without end.
++ Vouchsafe, O Lord: to keep us this day without sin.
++ O Lord, have mercy upon us: have mercy upon us.
++ O Lord, let Thy mercy be upon us: as our trust is in Thee.
++ O Lord, in Thee have I trusted: let me never be confounded.
+## Benedictus
++ Blessed be the Lord God of Israel: for He hath visited and redeemed His people;
++ And hath raised up a horn of salvation for us: in the house of His servant David;
++ As He spake by the mouth of His holy prophets: which have been since the world began:
++ That we should be saved from our enemies: and from the hand of all that hate us;
++ To perform the mercy promised to our fathers: and to remember His holy covenant;
++ The oath which He sware to our father Abraham: that He would grant unto us;
++ That we, being delivered out of the hand of our enemies: might serve Him without fear.
++ In holiness and righteousness before Him: all the days of our life.
++ And thou, child, shalt be called the prophet of the Highest: for thou shalt go before the face of the Lord to prepare His ways;
++ To give knowledge of salvation unto His people: by the remission of their sins,
++ Through the tender mercy of our God: whereby the Dayspring from on high hath visited us;
++ To give light to them that sit in darkness and in the shadow of death: to guide our feet into the way of peace.
++ Glory be to the Father, and to the Son, and to the Holy Ghost:
++ As it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The Prayer
+¶ Then shall be said the Prayers.
+¶ The Minister shall say:
+Lord, have mercy upon us.
+¶ The Congregation shall sing or say:
+- Lord, have mercy upon us.
+- Christ, have mercy upon us.
+- Lord, have mercy upon us.
+¶ Then shall all say the Lord's Prayer.
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
+¶ Then may be sung or said:
+Minister. The Lord be with you.
+People. And with thy spirit.
+¶ The Minister shall say:
+Let us pray.
+¶ Then shall be said the Collect for the Day.
+## The Collect for the Day
+@prayer: The Collect for the Day
+¶ Other Collects may then be said, and after them this Collect for Grace, with which a Versicle may be used.
+Minister. Let my mouth be filled with Thy praise.
+People. And with Thy honor all the day.
+## Collect for Grace
+O Lord, our Heavenly Father, Almighty and Everlasting God, Who hast safely brought us to the beginning of this day: Defend us in the same with Thy mighty power; and grant that this day we fall into no sin, neither run into any kind of danger; but that all our doings, being ordered by Thy governance, may be righteous in Thy sight; through Jesus Christ, Thy Son, our Lord, Who liveth and reigneth with Thee and the Holy Ghost, ever One God, world without end.
+People. Amen.
+¶ Then may be sung or said the Benedicamus.
+Minister. Bless we the Lord.
+People. Thanks be to God.
+¶ Then shall the Minister say the Benediction.
+The Grace of our Lord + Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+People. Amen.
+
+%%% order csb-matrimony
+# Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), public domain
+# in the United States. "Order for Marriage", pp. 265-268. Transcribed from the Internet Archive scan of the 1918 printing (commonserviceb00unknuoft),
+# proofread against the page images; the chant notation and pointing are left out. Markup: see tools/orders.py.
+title: Order for Marriage
+book: Common Service Book of the Lutheran Church (1917-19)
+
+= The Banns and the Address
+¶ Before solemnizing a Marriage, the Minister shall diligently inquire: First, as to whether the union contemplated be in accordance with the Word of God; Second, whether it be in accordance with the Laws of the State. No Marriage shall be solemnized unless the Minister be convinced that God's blessing may properly be asked upon it.
+¶ The Minister may publish the Banns in the church, one or more Sundays before the day appointed for the Marriage, saying:
+N. N. and N. N. purpose to enter into the holy estate of Matrimony, according to God's ordinance. They desire that prayer be made for them, that they may enter into this union in the Name of the Lord, and be prospered in it. If any one can show just cause why they may not be joined together, I exhort him to make known such objection before the day of marriage.
+¶ When a Marriage is solemnized in the church, a Hymn may be sung, and Psalm 67 or Psalm 128 may be sung or said, ending with the Gloria Patri.
+¶ When a Marriage is solemnized in the home, the rubrics pertaining to the Chancel and the Altar shall be disregarded.
+¶ The Persons to be married having presented themselves at the entrance to the Chancel, the Man to the right of the Woman, the Minister shall say:
+In the Name of the Father, and of the Son, and of the Holy Ghost.
+- Amen.
+Dearly Beloved: Forasmuch as Marriage is a holy estate, ordained of God, and to be held in honor by all, it becometh those who enter therein to weigh, with reverent minds, what the Word of God teacheth concerning it:
+The Lord God said, It is not good that the man should be alone; I will make him an help meet for him.
+Our Lord Jesus Christ said: Have ye not read that He which made them at the beginning, made them male and female, and said, For this cause shall a man leave father and mother, and shall cleave to his wife; and they twain shall be one flesh? Wherefore, they are no more twain, but one flesh. What therefore God hath joined together, let not man put asunder.
+The Apostle Paul, speaking by the Holy Spirit, saith: Husbands, love your wives, even as Christ also loved the Church, and gave Himself for it. Wives, submit yourselves unto your own husbands, as unto the Lord.
+And although, by reason of sin, many a cross hath been laid thereon, nevertheless our gracious Father in heaven doth not forsake His children in an estate so holy and acceptable to Him, but is ever present with His abundant blessing.
+Into this holy estate, this Man and this Woman come now to be united. If any one, therefore, can show just cause why they may not be lawfully joined together, let him now speak, or else forever hold his peace.
+
+= The Vows
+¶ Then shall the Minister say to the Man:
+N., wilt thou have this Woman to thy wedded wife, to live together after God's ordinance in the holy estate of Matrimony? Wilt thou love her, comfort her, honor and keep her in sickness and in health, and, forsaking all others, keep thee only unto her, so long as ye both shall live?
+¶ The Man shall say:
+Man. I will.
+¶ Then shall the Minister say to the Woman:
+N., wilt thou have this Man to thy wedded husband, to live together after God's ordinance in the holy estate of Matrimony? Wilt thou love him, comfort him, honor and keep him in sickness and in health, and, forsaking all others, keep thee only unto him, so long as ye both shall live?
+¶ The Woman shall say:
+Woman. I will.
+¶ If the Woman be Given in Marriage, the Minister shall now receive her at the hands of her father (or guardian or any friend), the Woman placing her right hand in the hand of the Minister. Then shall the Minister place the right hand of the Woman in the right hand of the Man. Then shall they loose their hands.
+¶ Then shall the Minister precede the Man and the Woman to the Altar. The Man shall take the right hand of the Woman and say after the Minister:
+Man. I, N., take thee, N., to my wedded Wife, and plight thee my troth, till death us do part.
+¶ Then shall the Woman, in like manner, say after the Minister:
+Woman. I, N., take thee, N., to my wedded Husband, and plight thee my troth, till death us do part.
+
+= The Ring and the Pronouncement
+¶ If the wedding Ring be used, the Minister shall now receive it and give it to the Man to put on the fourth finger of the Woman's left hand.
+¶ Then shall the Man say, or if two rings be used, the Man and the Woman, in turn, shall say, after the Minister:
+Man. Receive this Ring as a token of wedded love and troth.
+¶ Then shall the Minister say:
+Join your right hands.
+¶ Then shall the Minister lay his right hand upon their hands and say:
+Forasmuch as N. and N. have consented together in holy wedlock, and have declared the same before God and in the presence of this company, I pronounce them Man and Wife, In the Name of the Father, and of the Son, and of the Holy Ghost. Amen.
+What God hath joined together, let not man put asunder.
+¶ Then may they kneel and the Minister may bless them, saying:
+The Lord God, Who created our first parents and sanctified their union in Marriage: Sanctify and bless you, that ye may please Him both in body and soul, and live together in holy love until life's end.
+- Amen.
+
+= The Prayer and Benediction
+¶ Then shall the Minister say:
+Let us pray.
+Almighty and most Merciful God, Who hast now united this man and this woman in the holy estate of Matrimony: Grant them grace to live therein according to Thy Holy Word; strengthen them in constant fidelity and true affection toward each other; sustain and defend them amidst all trials and temptations; and help them so to pass through this world in faith toward Thee, in communion with Thy Holy Church, and in loving service one of the other, that they may enjoy forever Thy heavenly benediction; through Jesus Christ, Thy Son, our Lord, Who liveth and reigneth with Thee and the Holy Ghost, ever One God, world without end.
+- Amen.
+¶ Then shall all say:
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
+¶ Then shall the Minister say the Benediction:
+The Lord bless you, and keep you. The Lord make His face shine upon you, and be gracious unto you. The Lord lift up His countenance upon you, and give you peace.
+- Amen.
+
+%%% order csb-suffrages-evening
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), General Prayers, pp. 247-249,
+# public domain in the United States. Transcribed from the Internet Archive scan of the 1919 text edition (commo00unit), checked against the 1917
+# text edition and the 1918 music edition. Versicles are the Minister's, responses the Congregation's. Markup: see tools/orders.py.
+title: The Evening Suffrages
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Evening Suffrages
+¶ The Evening Suffrages may be said at Vespers, or in the Evening Prayer of the Household, or alone as a brief Evening Office.
+¶ When said at Vespers, the Evening Suffrages shall immediately follow the Canticle.
+¶ When used as a special Evening Office, the Evening Suffrages shall begin: In the Name of the Father, and of the Son, and of the Holy Ghost. Amen. After the Creed shall follow a Psalm, a brief Lesson with the Response and a Hymn; and after the Benedicamus shall be said this Benediction: The Blessing of Almighty God, the Father, the Son, and the Holy Ghost, be with you all. Amen.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+¶ Then shall all say the Lord's Prayer:
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
++ I believe in God the Father Almighty, Maker of heaven and earth.
++ And in Jesus Christ His only Son, our Lord; Who was conceived by the Holy Ghost, Born of the Virgin Mary; Suffered under Pontius Pilate, Was crucified, dead, and buried; He descended into hell; The third day He rose again from the dead; He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence He shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; The holy Christian Church, the Communion of Saints; The Forgiveness of sins; The Resurrection of the body; And the Life everlasting. Amen.
+¶ When the Evening Suffrages are used as a Special Office, here shall follow the Psalm, the Lesson, and the Hymn.
+@psalter
+@lessons: A brief Lesson, with the Response
+@hymn
+¶ Then shall the Minister say:
+Minister. Blessed art Thou, O Lord God of our fathers:
+People. And greatly to be praised and glorified, for ever.
+Minister. Bless we the Father, and the Son, and the Holy Ghost:
+People. We praise and magnify Him for ever.
+Minister. Blessed art Thou, O Lord, in the firmament of heaven:
+People. And greatly to be praised, and glorified, and highly exalted for ever.
+Minister. The Almighty and Merciful Lord, bless and preserve us.
+People. Amen.
+Minister. Vouchsafe, O Lord, this night:
+People. To keep us without sin.
+Minister. O Lord, have mercy upon us.
+People. Have mercy upon us.
+Minister. O Lord, let Thy mercy be upon us:
+People. As our trust is in Thee.
+Minister. Hear my prayer, O Lord:
+People. And let my cry come unto Thee.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+¶ Then shall be said the Collect for the Day, and any other suitable Collects; after which may be said the Prayer here following.
+@prayer: The Collect for the Day
+We give thanks unto Thee, Heavenly Father, through Jesus Christ, Thy dear Son, that Thou hast this day so graciously protected us, and we beseech Thee to forgive us all our sins, and the wrong which we have done, and by Thy great mercy defend us from all the perils and dangers of this night. Into Thy hands we commend our bodies and souls, and all that is ours. Let Thy holy angel have charge concerning us, that the wicked one have no power over us.
+- Amen.
+¶ Then may be sung or said the Benedicamus.
+Minister. Bless we the Lord.
+People. Thanks be to God.
+¶ Then shall be said the Benediction.
+The Grace of our Lord Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+- Amen.
+
+%%% order csb-suffrages-morning
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), General Prayers, pp. 244-246,
+# public domain in the United States. Transcribed from the Internet Archive scan of the 1919 text edition (commo00unit), checked against the 1917
+# text edition and the 1918 music edition. Versicles are the Minister's, responses the Congregation's. Markup: see tools/orders.py.
+title: The Morning Suffrages
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Morning Suffrages
+¶ The Morning Suffrages may be said at Matins, or in the Morning Prayer of the Household, or alone as a brief Morning Office.
+¶ When said at Matins, the Morning Suffrages shall immediately follow the Canticle.
+¶ When used as a special Morning Office, the Morning Suffrages shall begin: In the Name of the Father, and of the Son, and of the Holy Ghost. Amen. After the Creed shall follow a Psalm, a brief Lesson with the Response and a Hymn; and after the Benedicamus shall be said this Benediction: The Blessing of Almighty God, the Father, the Son, and the Holy Ghost, be with you all. Amen.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+¶ Then shall all say the Lord's Prayer and the Apostles' Creed:
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
++ I believe in God the Father Almighty, Maker of heaven and earth.
++ And in Jesus Christ His only Son, our Lord; Who was conceived by the Holy Ghost, Born of the Virgin Mary; Suffered under Pontius Pilate, Was crucified, dead, and buried; He descended into hell; The third day He rose again from the dead; He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence He shall come to judge the quick and the dead.
++ I believe in the Holy Ghost; The holy Christian Church, the Communion of Saints; The Forgiveness of sins; The Resurrection of the body; And the Life everlasting. Amen.
+¶ When the Morning Suffrages are used as a Special Office, here shall follow the Psalm, the Lesson, and the Hymn.
+@psalter
+@lessons: A brief Lesson, with the Response
+@hymn
+¶ Then shall the Minister say:
+Minister. Unto Thee have I cried, O Lord:
+People. And in the morning shall my prayer prevent Thee.
+Minister. Let my mouth be filled with Thy praise:
+People. And with Thy honor all the day.
+Minister. O Lord, hide Thy face from my sins:
+People. And blot out all mine iniquities.
+Minister. Create in me a clean heart, O God:
+People. And renew a right spirit within me.
+Minister. Cast me not away from Thy presence:
+People. And take not Thy Holy Spirit from me.
+Minister. Restore unto me the joy of Thy salvation:
+People. And uphold me with Thy free Spirit.
+Minister. Vouchsafe, O Lord, this day:
+People. To keep us without sin.
+Minister. Have mercy upon us, O Lord:
+People. Have mercy upon us.
+Minister. O Lord, let Thy mercy be upon us:
+People. As our trust is in Thee.
+Minister. Hear my prayer, O Lord:
+People. And let my cry come unto Thee.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+¶ Then shall be said the Collect for the Day, and any other suitable Collects; after which may be said the Prayer here following.
+@prayer: The Collect for the Day
+We give thanks unto Thee, Heavenly Father, through Jesus Christ, Thy dear Son, that Thou hast protected us through the night from all danger and harm; and we beseech Thee to preserve and keep us, this day also, from all sin and evil; that in all our thoughts, words and deeds, we may serve and please Thee. Into Thy hands we commend our bodies and souls, and all that is ours. Let Thy holy angel have charge concerning us, that the wicked one have no power over us.
+- Amen.
+¶ Then may be sung or said the Benedicamus.
+Minister. Bless we the Lord.
+People. Thanks be to God.
+¶ Then shall be said the Benediction.
+The Grace of our Lord Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+- Amen.
+
+%%% order csb-suffrages
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), General Prayers, pp. 242-244,
+# public domain in the United States. Transcribed from the Internet Archive scan of the 1919 text edition (commo00unit), checked against the 1917
+# text edition and the 1918 music edition. Versicles are the Minister's, responses the Congregation's. Markup: see tools/orders.py.
+title: The Suffrages
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Suffrages
+¶ The Suffrages may be used at Matins or Vespers in the same manner as the Litany. (See Litany Rubrics.)
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
+Minister. Christ, have mercy upon us.
+People. Christ, have mercy upon us.
+Minister. Lord, have mercy upon us.
+People. Lord, have mercy upon us.
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation;
+People. But deliver us from evil.
+Minister. I said, O Lord, be merciful unto me;
+People. Heal my soul; for I have sinned against Thee.
+Minister. Return, O Lord, how long?
+People. And let it repent Thee concerning Thy servants.
+Minister. Let Thy mercy, O Lord, be upon us;
+People. According as we hope in Thee.
+Minister. Let Thy priests be clothed with righteousness;
+People. And let Thy saints shout for joy.
+Minister. O Lord, save our rulers;
+People. Let the King hear us when we call.
+Minister. Save Thy people, and bless Thine inheritance;
+People. Feed them also, and lift them up for ever.
+Minister. Remember Thy congregation;
+People. Which Thou hast purchased of old.
+Minister. Peace be within thy walls;
+People. And prosperity within thy palaces.
+Minister. Let us pray for our absent brethren;
+People. O Thou, our God, save Thy servants that trust in Thee.
+Minister. Let us pray for the broken-hearted and the captives;
+People. Redeem Israel, O God, out of all his troubles.
+Minister. Send them help from the Sanctuary;
+People. And strengthen them out of Zion.
+Minister. Hear my prayer, O Lord;
+People. And let my cry come unto Thee.
+¶ At Matins may then be said responsively the Psalm (130), De profundis; and at Vespers may be said the Psalm (51), Miserere mei.
+¶ Then shall be said:
+Minister. Turn us again, O God of hosts;
+People. Cause Thy face to shine and we shall be saved.
+Minister. Arise, O Christ, for our help;
+People. And redeem us, for Thy mercy's sake.
+Minister. Hear my prayer, O Lord;
+People. And let my cry come unto Thee.
+Minister. The Lord be with you.
+People. And with thy spirit.
+Minister. Let us pray.
+¶ Then shall the Minister say the Collect for the Day, after which he may say any other suitable Collects, ending with this Collect for Peace.
+@prayer: The Collect for the Day
+Minister. Give peace in our days, O Lord:
+People. Because there is none other that fighteth for us, except Thou, our God.
+Minister. O Lord, let there be peace in Thy strength:
+People. And abundance in Thy towers.
+Minister. Let us pray.
+O God, from Whom all holy desires, all good counsels, and all just works do proceed: Give unto Thy servants that peace, which the world cannot give; that our hearts may be set to obey Thy commandments, and also that by Thee, we, being defended from the fear of our enemies, may pass our time in rest and quietness; through the merits of Jesus Christ our Saviour, Who liveth and reigneth with Thee and the Holy Ghost, ever One God, world without end.
+- Amen.
+¶ Then may be sung or said the Benedicamus.
+Minister. Bless we the Lord.
+People. Thanks be to God.
+¶ Then shall be said the Benediction.
+The Grace of our Lord Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+- Amen.
+
+%%% order csb-vespers
+# The Common Service Book of the Lutheran Church (Philadelphia: United Lutheran Church in America, 1917-1919), pp. 40-46,
+# public domain in the United States. Typed edition (acollectionofprayers.com) proofread against the Internet Archive scans
+# (commo00unit, commonserviceboo00phil); corrected: "Hallowed be Thy Name"; the Magnificat verse "imagination of their hearts"; the closing colon of the
+# Gloria Patri at the Nunc Dimittis. The Introit, Collect and Lessons of the day are not in the Order: see the Common Service rite. Markup: see tools/orders.py.
+title: Vespers
+book: The Common Service Book of the Lutheran Church (1917-1919)
+
+= The Versicles
+¶ The Versicles with the Gloria Patri shall be sung or said, the Congregation standing until the end of the Psalm.
+¶ The Hallelujah shall be omitted in Lent.
+O Lord, open Thou my lips.
+People. And my mouth shall show forth Thy praise.
+Minister. Make haste, O God, to deliver me.
+People. Make haste to help me, O Lord.
+Minister. Glory be to the Father, and to the Son, and to the Holy Ghost:
+People. As it was in the beginning, is now, and ever shall be, world without end. Amen. Hallelujah.
+¶ Then shall be sung or said one or more Psalms.
+
+= The Psalm
+@psalter: A portion of the Psalter, chanted or read responsively
+¶ At the end of each Psalm the Congregation shall sing or say the Gloria Patri.
+## Gloria Patri
++ Glory be to the Father, and to the Son, and to the Holy Ghost: as it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The Lesson
+@lessons: The lessons from the Old and New Testaments, chosen by the Minister
+¶ The Scripture Lessons shall then be read. After each Lesson shall be sung or said the Response.
+Minister. O Lord, have mercy upon us.
+People. Thanks be to God.
+¶ After the Lesson a Responsory or a Hymn may be sung.
+¶ A Sermon may then follow.
+¶ The Offering may then be received and placed upon the Altar.
+¶ Then shall be sung the Hymn.
+
+= The Hymn
+@hymn
+¶ The Congregation shall rise and sing or say the Canticle.
+¶ A Versicle shall be used with the Canticle.
+Minister. Let my prayer be set before Thee as incense.
+People. And the lifting up of my hands as the evening sacrifice.
+
+= The Canticle
+## Magnificat
++ My soul doth magnify the Lord: and my spirit hath rejoiced in God my Saviour.
++ For He hath regarded: the low estate of His handmaiden.
++ For behold, from henceforth: all generations shall call me blessed.
++ For He that is mighty hath done to me great things: and holy is His Name.
++ And His mercy is on them that fear Him: from generation to generation.
++ He hath showed strength with His arm: He hath scattered the proud in the imagination of their hearts.
++ He hath put down the mighty from their seats: and exalted them of low degree.
++ He hath filled the hungry with good things: and the rich He hath sent empty away.
++ He hath holpen His servant Israel, in remembrance of His mercy: as He spake to our fathers, to Abraham, and to his seed for ever.
++ Glory be to the Father, and to the Son, and to the Holy Ghost:
++ As it was in the beginning, is now, and ever shall be, world without end. Amen.
+## Nunc Dimittis
++ LORD, now lettest Thou Thy servant depart in peace: according to Thy word;
++ For mine eyes have seen Thy salvation: which Thou hast prepared before the face of all people;
++ A light to lighten the Gentiles: and the glory of Thy people Israel.
++ Glory be to the Father, and to the Son, and to the Holy Ghost:
++ As it was in the beginning, is now, and ever shall be, world without end. Amen.
+
+= The Prayer
+¶ Then shall be said the Prayers.
+¶ The Minister shall say:
+Lord, have mercy upon us.
+¶ The Congregation shall sing or say:
+- Lord, have mercy upon us.
+- Christ, have mercy upon us.
+- Lord, have mercy upon us.
+¶ Then shall all say the Lord's Prayer.
++ Our Father, Who art in heaven; Hallowed be Thy Name; Thy kingdom come; Thy will be done on earth, as it is in heaven; Give us this day our daily bread; And forgive us our trespasses, as we forgive those who trespass against us; And lead us not into temptation; But deliver us from evil; For Thine is the kingdom, and the power, and the glory, for ever and ever. Amen.
+¶ Then may be sung or said:
+Minister. The Lord be with you.
+People. And with thy spirit.
+¶ The Minister shall say:
+Let us pray.
+¶ Then shall be said the Collect for the Day.
+## The Collect for the Day
+@prayer: The Collect for the Day
+¶ Other Collects may then be said, and after them this Collect for Peace, with which a Versicle may be used.
+Minister. The Lord will give strength unto His people.
+People. The Lord will bless His people with peace.
+## Collect for Peace
+O God, from Whom all holy desires, all good counsels, and all just works do proceed: Give unto Thy servants that peace which the world cannot give; that our hearts may be set to obey Thy commandments, and also that by Thee, we, being defended from the fear of our enemies, may pass our time in rest and quietness; through the merits of Jesus Christ our Saviour, Who liveth and reigneth with Thee, and the Holy Ghost, ever One God, world without end.
+People. Amen.
+¶ Then may be sung or said the Benedicamus.
+Minister. Bless we the Lord.
+People. Thanks be to God.
+¶ Then shall the Minister say the Benediction.
+The Grace of our Lord + Jesus Christ, and the Love of God, and the Communion of the Holy Ghost, be with you all.
+People. Amen.
