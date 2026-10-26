@@ -158,6 +158,9 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 :root:not([data-theme="light"]) .b-apostle{color:#B79AE0}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.88rem;margin:6px 0 4px}
 .src li{margin-bottom:6px}
+#offline-badge{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:10050;margin:0;max-width:min(92vw,560px);padding:6px 14px;border-radius:999px;background:var(--ink,#222);color:var(--paper,#fff);font-size:.82rem;line-height:1.35;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+#offline-badge[hidden]{display:none}
+.offline-use{margin-top:32px}.offline-use summary{cursor:pointer;color:var(--muted)}.offline-list{list-style:none;padding:0;margin:8px 0}.offline-list li{margin:6px 0}.offline-list button{min-width:5.5em;margin-right:6px;font:inherit;font-size:.9em;padding:3px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--leaf);color:var(--ink);cursor:pointer}
 footer{margin-top:40px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--rule);padding-top:12px}
 @media (prefers-reduced-motion:no-preference){ .row{transition:background .15s} .row:hover{background:color-mix(in srgb, var(--leaf) 60%, transparent)} }
 

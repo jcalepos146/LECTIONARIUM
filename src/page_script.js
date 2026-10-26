@@ -28,21 +28,48 @@ window.LectLoad=(()=>{
  return {service};
 })();
 /* Offline use (sw.js). The worker caches the page and whatever is opened; save() fetches every calendar year, data
-   file and Bible ahead of time. Browsers under automation (the tests) register it only when asked to. */
+   file and Bible ahead of time, and save(fn, key) one Office pack (breviary/<key>/). Browsers under automation (the
+   tests) register it only when asked to. A badge shows while the browser is offline, saying what is kept. */
 window.LectOffline=(()=>{
  const ok="serviceWorker" in navigator&&window.isSecureContext&&/^https?:$/.test(location.protocol);
  let wantTest=false; try{ wantTest=localStorage.getItem("lect-sw")==="1"; }catch(e){}
  const ready=ok&&(!navigator.webdriver||wantTest)?navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).catch(()=>null):Promise.resolve(null);
- let savedKey="lect-offline-saved";
- const saved=()=>{ try{ return localStorage.getItem(savedKey); }catch(e){ return null; } };
- async function save(onProgress){
+ const PACKS=/*OFFLINE-PACKS*/{};   /* key: megabytes */
+ const PACK_NAMES={br62:"1962 Breviary",br55:"Pre-1955 Breviary",mon:"Monastic Office",op:"Dominican Office"};
+ const keyOf=pack=>"lect-offline-saved"+(pack?":"+pack:"");
+ const saved=pack=>{ try{ return localStorage.getItem(keyOf(pack)); }catch(e){ return null; } };
+ const listeners=new Set(), changed=()=>{ listeners.forEach(f=>{ try{ f(); }catch(e){} }); badge(); };
+ async function save(onProgress,pack){
   const reg=await ready; const sw=reg&&(reg.active||navigator.serviceWorker.controller);
   if(!sw) throw new Error("This browser cannot keep the site for offline use.");
   return new Promise(res=>{ const ch=new MessageChannel();
-   ch.port1.onmessage=e=>{ onProgress&&onProgress(e.data); if(e.data.finished){ try{ localStorage.setItem(savedKey,new Date().toISOString().slice(0,10)); }catch(err){} res(e.data); } };
-   sw.postMessage({type:"save"},[ch.port2]); });
+   ch.port1.onmessage=e=>{ onProgress&&onProgress(e.data); if(e.data.finished){ if(!e.data.failed){ try{ localStorage.setItem(keyOf(pack),new Date().toISOString().slice(0,10)); }catch(err){} } changed(); res(e.data); } };
+   sw.postMessage({type:"save",pack:pack||null},[ch.port2]); });
  }
- return {supported:ok, ready, save, saved};
+ const packs=()=>Object.keys(PACKS).map(k=>({key:k,name:PACK_NAMES[k]||k,mb:PACKS[k],saved:saved(k)}));
+ /* What is kept, in a sentence: for the badge and the settings. */
+ function summary(){
+  const s=saved(), P=packs().filter(p=>p.saved).map(p=>p.name);
+  return s?`Saved ${s}: every calendar, lectionary and Bible${P.length?", and the "+P.join(", "):""}.`:"Only the services and readings you have already opened are kept.";
+ }
+ function badge(){
+  let el=document.getElementById("offline-badge");
+  if(navigator.onLine!==false){ if(el) el.hidden=true; return; }
+  if(!el){ el=document.createElement("p"); el.id="offline-badge"; el.setAttribute("role","status"); document.body.appendChild(el); }
+  el.hidden=false; el.innerHTML=`<b>Offline</b> · ${summary().replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}`;
+ }
+ window.addEventListener("online",badge); window.addEventListener("offline",badge);
+ const start=()=>{ badge(); const d=document.getElementById("offline-use"); if(d) d.addEventListener("toggle",()=>{ if(d.open) panel(d.querySelector(".offline-panel")); }); };
+ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",start); else start();
+ /* The footer's "Offline use" panel: the main save and one button per Office pack. */
+ function panel(el){
+  if(!ok){ el.innerHTML='<p class="note">This browser cannot keep the site for offline use.</p>'; return; }
+  const row=(pack,label)=>`<li><button type="button" data-offline="${pack||""}">${saved(pack)?"Update":"Save"}</button> ${label}${saved(pack)?` · saved ${saved(pack)}`:""}</li>`;
+  el.innerHTML=`<p class="note">${summary()}</p><ul class="offline-list">${row("","Calendars, lectionaries, data and Bibles (about 24 MB)")}${packs().map(p=>row(p.key,`${p.name} (about ${p.mb} MB)`)).join("")}</ul>`;
+  el.querySelectorAll("button[data-offline]").forEach(b=>b.addEventListener("click",()=>{ const pack=b.dataset.offline||null; b.disabled=true;
+   save(p=>{ b.textContent=`${p.done} of ${p.total}`; },pack).then(p=>{ if(p.failed){ b.disabled=false; b.textContent="Try again"; b.title=`${p.failed} files could not be fetched`; } else panel(el); }).catch(err=>{ b.disabled=false; b.textContent=err.message; }); }));
+ }
+ return {supported:ok, ready, save, saved, packs, summary, panel, onChange:f=>listeners.add(f)};
 })();
 /* The day table (tools/build_days.py) is split by year into days/<year>.json; days/2026.json also holds
    Advent 2025. LectDays.load(iso) fetches the year of a date (and, in January or December, the year beside it,
