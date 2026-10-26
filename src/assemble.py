@@ -8,14 +8,14 @@ import sys, os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://jcalepos146.github.io/LECTIONARIUM/"
 REPO = "https://github.com/jcalepos146/LECTIONARIUM"
-SERVICE = ("music.js", "mass.js")   # the service builders: loaded on demand (window.LectLoad) in the published site
+SERVICE = ("music.js", "mass.js", "office.js", "tools.js")   # the service builders, the Office and the session tools: loaded on demand (window.LectLoad) in the published site
 def service_js():
     return "\n".join(open(f).read().rstrip("\n") for f in SERVICE) + "\n"
 def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False, split=False):
     d1='<script type="application/json" id="lect-data">'+open("pagedata.json").read().strip()+'</script>'
     d2='<script type="application/json" id="lect-extra">'+open("extradata.json").read().strip()+'</script>'
     parts=[open(head).read().rstrip("\n").replace("</style>", open("sanctuary.css").read()+"\n</style>"), open("page_body.html").read().rstrip("\n").replace('<section id="tradition-sources" aria-label="Tradition directory sources"></section>', '<section id="tradition-sources" aria-label="Tradition directory sources">'+open("tradition_sources.html").read()+"</section>"), d1, d2]
-    files=("page_script.js","music.js","participation.js","lectionary.js",mass)+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"compareday.js","psalter.js","sanctuary.js")
+    files=("page_script.js","music.js","participation.js","lectionary.js",mass,"office.js")+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"compareday.js","psalter.js","sanctuary.js")
     for f in files:
         if split and f in SERVICE:
             continue
