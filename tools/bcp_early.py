@@ -54,12 +54,17 @@ def main():
     changed = []
     for year, ps in EXTRA["psalter"].items():   # a book's own Psalter (Wesley's Select Psalms), served in a file of its own
         out["bcp" + year + "-psalter"] = ps
-    for name, d in out.items():
+    # Books with no table of propers of their own (they cite the 1662 table) share one file, data/bcp-hc.json.
+    shared = {n: d for n, d in out.items() if "hc" in d and not d["propers"]}
+    files = {n: d for n, d in out.items() if n not in shared}
+    files["bcp-hc"] = shared
+    for name, d in files.items():
         js = json.dumps(d, ensure_ascii=False, separators=(",", ":"))
         f = ROOT / "data" / (name + ".json")
         if "--check" in sys.argv:
             assert f.exists() and f.read_text(encoding="utf-8") == js, f"data/{name}.json is out of date: run python3 tools/bcp_early.py"
-            assert name.endswith("-psalter") or (d["hc"] and all(s["items"] for s in d["hc"])), name
+            for b in (d.values() if name == "bcp-hc" else [d]):
+                assert name.endswith("-psalter") or (b["hc"] and all(s["items"] for s in b["hc"])), name
         else:
             f.write_text(js, encoding="utf-8"); changed.append(name)
     print(("ok: " if "--check" in sys.argv else "wrote ") + ", ".join(f"{n} ({len(d['hc'])} steps, {len(d['propers'])} days)" if "hc" in d else f"{n} ({len(d['psalter'])} days)" for n, d in out.items()))
