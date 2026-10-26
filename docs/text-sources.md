@@ -36,7 +36,7 @@ Reviewed 2026-10-21. Families are taken in this order: Catholic, Anglican, Easte
 | 11 | [zaire-use](#zaire-use) | none | 0 | 0 | Missel romain pour les diocèses du Zaïre: permission from the Episcopal Conference of the Democratic Republic of the Congo |
 | 12 | [alexandrian-catholic](#alexandrian-catholic) | The Coptic Liturgy of St Basil in full, from Bute's English of 1882/1908 (rite copt); the shared reader offers a Coptic Orthodox citation snapshot and a separate Catholic/local profile requiring its own appointments | 5 | 0 | Agpeya in public-domain English: not located; Coptic Catholic calendar and appointment verification remain; the Orthodox snapshot does not establish Catholic appointments |
 | 13 | [west-syriac-catholic](#west-syriac-catholic) | none | 4 | 0 | Shehimo in public-domain English: not located |
-| 14 | [east-syriac-catholic](#east-syriac-catholic) | The Liturgy of Adai and Mari in full, from the Assyrian Mission's English of 1893 (rite adai); Chaldean differences noted | 5 | 0 | Syro-Malabar Raza (1986) and current Chaldean books: permission |
+| 14 | [east-syriac-catholic](#east-syriac-catholic) | The Liturgy of Adai and Mari in full, from the Assyrian Mission's English of 1893 (rite adai); Chaldean differences noted The Liturgy's lessons for the year from Maclean's East Syrian Daily Offices (1894), on the Gregorian calendar. | 5 | 0 | Syro-Malabar Raza (1986) and current Chaldean books: permission |
 | 15 | [armenian-catholic](#armenian-catholic) | The Divine Liturgy in full, from the London 1908 English translation by two Armenian priests (rite arm) | 4 | 0 | Armenian Book of Hours in public-domain English: not located |
 | 16 | [anglican-prayer-books](#anglican-prayer-books) | US 1928 and US 1979 in full (Holy Communion or Eucharist with the collect of the day; the daily offices); England 1662 Holy Communion with the collect, epistle and gospel; 1662 Office inside the Ordinariate; Holy Communion in full with the Introit, collect, epistle and gospel of the day from the Prayer Books of 1549, 1552 and 1559, and in full (the day's collect, epistle and gospel cited) from those of 1637, 1789 and 1892; the current 1979 two-year Office lessons and appointed 1979 Psalter are included, with an explicit original Eucharistic-table option and a link to the current Episcopal RCL | 21 | 0 | Canada 1962, Ireland 2004, South Africa 1954, India 1960 supplement: in copyright; current books with free downloads are under anglican-current-books |
 | 17 | [anglo-catholic-missals](#anglo-catholic-missals) | none | 1 | 0 | English Missal 1912 first edition: not located on the Internet Archive |
@@ -291,9 +291,9 @@ Blocked: Shehimo in public-domain English: not located.
 
 ### 14. east-syriac-catholic
 
-Catalog: `east-syriac-catholic`, `catholic-chaldean`, `catholic-syro-malabar` · rite `new` · Qurbana and Office · now **The Liturgy of Adai and Mari in full, from the Assyrian Mission's English of 1893 (rite adai); Chaldean differences noted**
+Catalog: `east-syriac-catholic`, `catholic-chaldean`, `catholic-syro-malabar` · rite `new` · Qurbana and Office · now **The Liturgy of Adai and Mari in full, from the Assyrian Mission's English of 1893 (rite adai); Chaldean differences noted The Liturgy's lessons for the year from Maclean's East Syrian Daily Offices (1894), on the Gregorian calendar.**
 
-Missing: Chaldean and Syro-Malabar forms of the Qurbana; anaphoras of Theodore and Nestorius; daily office; lectionary.
+Missing: Chaldean and Syro-Malabar forms of the Qurbana; anaphoras of Theodore and Nestorius; daily office; current Assyrian, Ancient Church of the East and Chaldean lectionary revisions.
 
 This tradition is the best served: Maclean (1894) translates the daily offices with their lectionary, and the 1893 English Liturgy of Addai and Mari covers the Qurbana.
 

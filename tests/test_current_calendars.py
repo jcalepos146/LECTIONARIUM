@@ -91,8 +91,9 @@ class CurrentCalendarTests(unittest.TestCase):
         self.open()
         rows=self.page.evaluate("async()=>Promise.all(['arm','adai','a','z','rcusv'].map(rite=>LectCalendar.appointments({type:'mass',rite,iso:'2026-10-25'})))")
         self.assertIn('Armenian Apostolic',rows[0]['src']);self.assertIn('Armenian Catholic',rows[0]['note'])
-        self.assertIn('Assyrian Church',rows[1]['src']);self.assertIn('2026',rows[1]['note'])
+        # The Church of the East reads Maclean's lectionary (1894) on the Gregorian calendar; a local calendar can be chosen.
+        self.assertIn('Maclean',rows[1]['src']);self.assertIn('Assyrian Church of the East',rows[1]['note']);self.assertTrue(rows[1]['items'])
         self.assertIn('current Ambrosian',rows[2]['src']);self.assertIn('not yet imported',rows[2]['note'])
         self.assertIn('not a complete daily reading table',rows[3]['note'])
-        self.assertIn('No fixed daily lectionary',rows[4]['note'])
-        self.assertTrue(all(not r['items'] for r in rows))
+        self.assertIn('Directory of Worship',rows[4]['note'])
+        self.assertTrue(all(not r['items'] for i,r in enumerate(rows) if i!=1))

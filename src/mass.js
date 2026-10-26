@@ -660,10 +660,6 @@ async function lectItems(ctx,L){ const out=[];
   return out; }
 const lectHead=L=>L?`<p class="cite">${esc(L.src)}</p>${L.note?`<p class="note">${esc(L.note)}</p>`:""}`:"";
 
-/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
-   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
-   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
-   takes the Sunday before it, except the four fixed days. */
 /* The Mercersburg Order of Worship's church year: its festivals, then the Sundays (Advent, after Christmas and the
    Epiphany, the pre-Lenten and Lenten Sundays, Easter, after Trinity and the four Sundays before Advent). A weekday
    without a festival keeps the propers of the Sunday before it. */
@@ -686,6 +682,10 @@ function mercDay(iso){
   const n=(so-56)/7, N=Math.round((A1-E)/DAY/7)-9;   /* the Sundays after Trinity in this year */
   return r(N-n<4?"ba"+(N-n+1):"trin"+n);
 }
+/* The Order of Scripture Lessons in the Reformed Church in America Liturgy (1882): four Sundays before Christmas,
+   Christmas, the Circumcision and up to eight Sundays after Christmas; nine Sundays before Easter, Good Friday, Easter, five
+   Sundays after and Ascension Day; the Sunday before Pentecost, Pentecost and up to twenty-eight Sundays after. A weekday
+   takes the Sunday before it, except the four fixed days. */
 function rcaLessonDay(T,iso){
   const N=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth","twenty-first","twenty-second","twenty-third","twenty-fourth","twenty-fifth","twenty-sixth","twenty-seventh","twenty-eighth"];
   const pick=(a,t)=>a?{t,m:a[0],e:a[1]}:null;
@@ -715,6 +715,9 @@ const ORDER_RITES={
   rcus:{merc:true, parts:o=>o.supper==="yes"?[["rcus1866-communion"]]:[["rcus1866-morning"]], supper:true},
   rcusv:{merc:true, parts:o=>[["rcus1866-evening"]]},
   rcusp:{parts:o=>[["rcus1866-preparation"]]},
+  bcp62bap:{parts:o=>[["bcp1662-baptism"]]},
+  bcp62mat:{parts:o=>[["bcp1662-matrimony"]]},
+  bcp62bur:{parts:o=>[["bcp1662-burial"]]},
   csbm:{lect:"csb", parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{lect:"csb", parts:o=>[["csb-vespers"]], csbCollect:true}
 };
@@ -834,7 +837,7 @@ async function buildOrders(ctx,opts,rite){
     opts={...opts,_coll:coll,_less:less};
   }
   { const local=window.LectCalendar.custom({...ctx,type:"mass",hour:opts.hour||ctx.hour});
-    const L=local||(rite==="copt"?await window.LectCalendar.appointments({...ctx,type:"mass"}):/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
+    const L=local||(/^(copt|adai)$/.test(rite)?await window.LectCalendar.appointments({...ctx,type:"mass"}):/^byz[vm]$/.test(rite)?window.LectCalendar.byzantine(ctx,rite):R.lect&&LECT[R.lect]?await LECT[R.lect](ctx,opts):null);
     if(L)opts={...opts,_lect:{L,items:await lectItems(ctx,L),headed:false}};
   }
   for(const [id,from,upto] of R.parts(opts)){
@@ -1477,7 +1480,8 @@ async function render(el, ctx){
   const isOffice=!!ctx.office, rite=isOffice?"office-"+ctx.office.rite:ctx.rite, store=isOffice?rite+"-"+ctx.office.hour:rite;
   const following=!!ctx.liveOpts;
   let opts=following?{...loadOpts(store),...clone(ctx.liveOpts)}:loadOpts(store);
-  const noun=isOffice?"hour":/^(b|copt|arm|adai)$/.test(rite)?"Liturgy":/^(n|o|m|p|h|d|a|z)$/.test(rite)?"Mass":/^(csbm|csbv|csbs|csbsm|csbse|byzv|byzm|byzh|byzc|wes84o|rcusv|csbl|rcusp)$/.test(rite)?"office":"service";
+  const OCC=/(bap|mat|bur)$/.test(rite);
+  const noun=isOffice?"hour":OCC?"service":/^(b|copt|arm|adai)$/.test(rite)?"Liturgy":/^(n|o|m|p|h|d|a|z)$/.test(rite)?"Mass":/^(csbm|csbv|csbs|csbsm|csbse|byzv|byzm|byzh|byzc|wes84o|rcusv|csbl|rcusp)$/.test(rite)?"office":"service";
   const build=async(o)=>{ USED=new Set(); ROLE="cel";
     if(isOffice) return buildOffice(ctx,o);
     if(rite==="m") return buildTrad(ctx,"1962",o);
@@ -1530,7 +1534,7 @@ async function render(el, ctx){
     /* Phones open on the service itself: the settings and the timeline fold away (and keep whatever the reader chose). */
     const wide=matchMedia("(min-width:701px)").matches, was=k=>{ const d=el.querySelector("details."+k); return d?d.open:wide; };
     const sOpen=was("msettings"), rOpen=was("mrun");
-    el.innerHTML=`<details class="msettings"${sOpen?" open":""}><summary>Settings<span class="msum"> · ${isOffice?"length and music":following?"live session":"length, music and participation"}</span></summary>${(isOffice?"":window.LectParticipation.controls(rite))+ctl}</details><div class="mtotal" aria-live="polite">Building the ${noun}…</div><div class="mbody"></div>`;
+    el.innerHTML=`<details class="msettings"${sOpen?" open":""}><summary>Settings<span class="msum"> · ${isOffice||OCC?"length and music":following?"live session":"length, music and participation"}</span></summary>${(isOffice||OCC?"":window.LectParticipation.controls(rite))+ctl}</details><div class="mtotal" aria-live="polite">Building the ${noun}…</div><div class="mbody"></div>`;
     let F;
     try{ F=await fit(opts); }
     catch(e){ F={parts:[sec(`Could not build the ${noun}`,0,cue("Some of the data for this day failed to load. Try again, or choose another day."))],tot:0,full:0,cuts:[],adds:[],tgt:0,o:opts}; console.error(e); }
@@ -1543,7 +1547,7 @@ async function render(el, ctx){
     el.querySelector(".mbody").innerHTML=parts.map((p,i)=>p.html.replace('<section class="mpart','<section id="mp-'+i+'" data-i="'+i+'" class="mpart')).join("");
     if(window.LectTexts) window.LectTexts.decorate(el.querySelector(".mbody"),ctx,()=>draw());
     window.LectParticipation.annotate(el,isOffice);
-    if(!isOffice&&!following) window.LectParticipation.ask();
+    if(!isOffice&&!OCC&&!following) window.LectParticipation.ask();
     const modeSelect=el.querySelector("#participation-mode");
     if(modeSelect)modeSelect.addEventListener("change",()=>window.LectParticipation.setMode(modeSelect.value));
     if(window.LectTools) window.LectTools.mount(el,{parts:parts.map(p=>({title:p.title,min:p.min})),starts,total:at,ctx,opts:clone(opts),noun,isOffice,rite:ctx.rite,following,
@@ -1578,4 +1582,5 @@ function officeControls(opts,chant){
     </div>${chant?`<label class="ck"><input type="checkbox" data-o="chant"${opts.chant?" checked":""}> Chant: antiphons and psalms in Gregorian chant (Latin), with notation and playback</label>`:""}<p class="note">Times are estimates for saying the hour at a steady pace; sung or choir recitation takes longer.</p></div>`;
 }
 window.LectMass={render};
+window.LectReformed={rca:rcaLessonDay, merc:mercDay};
 })();

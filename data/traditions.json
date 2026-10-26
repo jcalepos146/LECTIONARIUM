@@ -3344,6 +3344,24 @@
         "rite": "bcp62",
         "hour": null,
         "label": "Holy Communion"
+      },
+      {
+        "type": "mass",
+        "rite": "bcp62bap",
+        "hour": null,
+        "label": "Publick Baptism of Infants"
+      },
+      {
+        "type": "mass",
+        "rite": "bcp62mat",
+        "hour": null,
+        "label": "Solemnization of Matrimony"
+      },
+      {
+        "type": "mass",
+        "rite": "bcp62bur",
+        "hour": null,
+        "label": "Burial of the Dead"
       }
     ],
     "pd_texts_available": [

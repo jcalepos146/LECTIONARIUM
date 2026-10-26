@@ -348,7 +348,7 @@ document.querySelectorAll("#filterSeg button").forEach(b=>b.addEventListener("cl
   state.f=b.dataset.f; render(); }));
 let qt; $("#q").addEventListener("input",e=>{ clearTimeout(qt); qt=setTimeout(()=>{ state.q=e.target.value; render(); },120); });
 
-const TABS=["today","compare","lectionaries","hybrid","changes","office","sources"];
+const TABS=["today","day","compare","lectionaries","hybrid","changes","office","psalter","sources"];
 function show(id){ if(id.startsWith("/")) return; if(!TABS.includes(id)) id="today";
   TABS.forEach(t=>{ document.getElementById(t).hidden = t!==id; document.getElementById("tab-"+t).setAttribute("aria-selected", t===id?"true":"false"); });
   try{ history.replaceState(null,"","#"+id); }catch(e){}
