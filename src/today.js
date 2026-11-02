@@ -57,6 +57,9 @@ const MASS_RITES=[
   {id:"wes84bur",name:"Burial of the Dead (Wesley's Sunday Service, 1784)",d:"Methodist · Wesley's order, with Psalm 90 in his own revision",tr:"kj",ord:1},
   {id:"csbbap",name:"Baptism of Infants (Common Service Book)",d:"Lutheran · the Order for the Baptism of Infants of 1917-19, with the alternate form of questions",tr:"kj",ord:1},
   {id:"csbmat",name:"Marriage (Common Service Book)",d:"Lutheran · the Order for Marriage of 1917-19",tr:"kj",ord:1},
+  {id:"coro61",name:"The Coronation of a King (England, 1661)",d:"Church of England · the coronation of Charles II with every prayer of the account in full: the oath, anointing, crowning, enthroning and Communion, and if wanted the crowning of a queen consort in the form of 1685",tr:"kj",ord:1},
+  {id:"coro94",name:"The Coronation of a King (France, 1594)",d:"Catholic · the anointing and coronation of Henry IV at Chartres, in an English account of 1594 that names each Latin prayer of the order of Reims",tr:"dr",ord:1},
+  {id:"coro51",name:"The Coronation of a King (Scotland, 1651)",d:"Reformed · Charles II crowned by the Kirk at Scone: the covenants, the oath, the crowning without anointing, and Robert Douglas's sermon",tr:"kj",ord:1},
   {id:"csbbur",name:"Burial of the Dead (Common Service Book)",d:"Lutheran · the Order for the Burial of the Dead of 1917-19, with the Service at the Grave",tr:"kj",ord:1},
   {id:"bcp79",name:"Holy Eucharist (1979 Prayer Book)",d:"Episcopal Church · Rites One and Two, Prayers A to D, with the collect of the day",tr:"kj",ord:1},
 ];
@@ -89,6 +92,7 @@ function riteKind(type,id){
   if(/bap$/.test(id)) return "Baptism";
   if(/mat$/.test(id)) return "Matrimony";
   if(/bur$/.test(id)) return "Burial";
+  if(/^coro/.test(id)) return "Coronation";
   if(/^(n|o|m|p|h|d|a|z)$/.test(id)) return "Mass";
   if(/^(b|copt|arm)$/.test(id)) return "Divine Liturgy";
   if(id==="adai") return "Holy Qurbana";
@@ -98,7 +102,7 @@ function riteKind(type,id){
   return "Holy Communion";
 }
 /* The tradition each rite belongs to, for the tradition-first questions, the day names and the Sanctuary emblems. */
-const FAMILY={wes84bap:"methodist",wes84mat:"methodist",wes84bur:"methodist",csbbap:"lutheran",csbmat:"lutheran",csbbur:"lutheran",wes84:"methodist",wes84o:"methodist",me08:"methodist",rca:"reformed",rcus:"reformed",rcusv:"reformed",rcusp:"reformed",pres:"reformed",
+const FAMILY={coro61:"anglican",coro51:"reformed",wes84bap:"methodist",wes84mat:"methodist",wes84bur:"methodist",csbbap:"lutheran",csbmat:"lutheran",csbbur:"lutheran",wes84:"methodist",wes84o:"methodist",me08:"methodist",rca:"reformed",rcus:"reformed",rcusv:"reformed",rcusp:"reformed",pres:"reformed",
   csb:"lutheran",csbm:"lutheran",csbv:"lutheran",csbl:"lutheran",csbs:"lutheran",csbsm:"lutheran",csbse:"lutheran",
   bcp62:"anglican",bcp62bap:"anglican",bcp62mat:"anglican",bcp62bur:"anglican",bcp28:"anglican",bcp49:"anglican",bcp52:"anglican",bcp59:"anglican",bcp37:"anglican",bcp89:"anglican",bcp92:"anglican",bcp18:"anglican",bcp29:"anglican",bcp79:"anglican",dwdo:"catholic",
   b:"eastern-orthodox",byz:"eastern-orthodox",byzv:"eastern-orthodox",byzm:"eastern-orthodox",byzh:"eastern-orthodox",byzc:"eastern-orthodox",adai:"oriental",copt:"oriental",arm:"oriental"};
@@ -164,7 +168,7 @@ function suggestHour(rite){
 }
 
 /* ---------------------------------------------------------------- state */
-const S={type:null,rite:null,hour:null,date:null,view:"ask"};
+const S={type:null,rite:null,hour:null,date:null,wi:null,votive:"",votiveIso:null,view:"ask"};
 function loadPrefs(){ try{ const p=JSON.parse(localStorage.getItem("lect-pray")||"null"); if(p){ S.type=p.type; S.rite=p.rite; S.hour=p.hour; } }catch(e){} }
 function savePrefs(){ try{ localStorage.setItem("lect-pray",JSON.stringify({type:S.type,rite:S.rite,hour:S.hour})); }catch(e){} }
 const todayISO=window.LitDate.today;
@@ -208,7 +212,7 @@ function coverage(type,rite,hour){
     if(rite==="csbm") return ["full","Matins from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csbv") return ["full","Vespers from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csb") return ["full","The Service of the Common Service Book (1917-19) is printed in full, with the Introit, Collect, Epistle, Gradual and Gospel of the day. The hymns are not included."];
-    if(OCCASIONAL[rite]) return ["full",OCCASIONAL[rite].cov];
+    if(OCCASIONAL[rite]) return [OCCASIONAL[rite].level||"full",OCCASIONAL[rite].cov];
     if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="bcp49") return ["full","The Supper of the Lord and the Holy Communion in the first Prayer Book of Edward VI (1549) is printed in full, in the spelling of the book, with the Introit, Collect, Epistle and Gospel of the day."];
     if(rite==="bcp52") return ["full","The Order for the Administration of the Lordes Supper in the second Prayer Book of Edward VI (1552) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
@@ -234,6 +238,10 @@ const covBadge=c=>c?`<span class="cov cov-${c[0]}">${COV_LABEL[c[0]]}</span>`:""
 /* Occasional services: baptism, marriage and burial, from books already on the site. They keep no calendar: the date
    only fills in the Collect or psalm where a book appoints one. */
 const OCCASIONAL={
+  /* the coronations (data/orders.json: coronation-1661 with coronation-1685-consort, coronation-1594, coronation-1651) */
+  coro61:{level:"guide",title:"The Coronation of a King",sub:"Westminster Abbey, 23 April 1661 · the coronation of Charles II, after Ashmole and Sandford",cov:"Every prayer of the coronation of Charles II is printed from the account of 1761 \"with the prayers at full length\": the recognition, the oath, Veni Creator, the anointing, the investing, the crowning, the ring and sceptres, Te Deum, the enthroning and homage, the Epistle and Gospel, and the Communion. The account names but does not print the Litany, Veni Creator, Te Deum, the Creed and the consecration, which are the Prayer Book's. The crowning of a queen consort, in the form of 1685, can be added under Customize timing.",foot:"The Entire Ceremonies of the Coronations of His Majesty King Charles II. and of her Majesty Queen Mary, Consort to James II. As published by those learned heralds Ashmole and Sandford (London, 1761), public domain; text from the Text Creation Partnership's keyboarding (ECCO-TCP), distributed by the Oxford Text Archive under CC BY-SA 3.0. Words illegible in that copy are supplied in brackets. The names in the prayers are Charles and Mary: put your own sovereign's in their place."},
+  coro94:{level:"order",title:"The Anointing and Coronation of a King",sub:"Chartres, 27 February 1594 · Henry IV of France and Navarre",cov:"The order of the French coronation as it was done for Henry IV, from an English account printed in 1594: every ceremony in order, with each prayer, antiphon and responsory of the order of Reims named by its Latin opening words. The full Latin forms are in the Pontifical and are not printed here.",foot:"The Order of Ceremonies observed in the annointing and Coronation of the most Christian King of France & Navarre, Henry the IIII., translated by E. A. (London: John Windet, 1594), public domain, in the spelling of 1594; text from the Text Creation Partnership's keyboarding (EEBO-TCP, CC0)."},
+  coro51:{level:"guide",title:"The Coronation of a King",sub:"Scone, 1 January 1651 · Charles II crowned by the Kirk of Scotland",cov:"The Form and Order of the coronation at Scone is printed in full, in the spelling of 1651: the renewing of the covenants, the presentation to the people, the coronation oath, the sword, the crowning (there is no anointing), the sceptre and throne, the exhortations, the homage and the blessing, with Robert Douglas's sermon folded away. The National Covenant and the Solemn League and Covenant were read but are not printed in the book.",foot:"The Forme and Order of the Coronation of Charles the Second (Aberdeen: James Brown, 1651), public domain; text from the Text Creation Partnership's keyboarding (EEBO-TCP, CC0). Letters illegible in that copy are supplied in brackets."},
   bcp62bap:{title:"Publick Baptism of Infants",sub:"The Book of Common Prayer (1662)",cov:"The Ministration of Publick Baptism of Infants from the 1662 Prayer Book is printed in full, with the 1662 rubrics.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread, with the 1662 rubrics restored from a London printing of 1800 where current printings revise them. Crown copyright in the United Kingdom; public domain elsewhere."},
   bcp62mat:{title:"The Solemnization of Matrimony",sub:"The Book of Common Prayer (1662)",cov:"The Form of Solemnization of Matrimony from the 1662 Prayer Book is printed in full, with both psalms and the duties of man and wife.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread, with the 1662 rubrics on the Banns and the Sermon restored from a London printing of 1800. Crown copyright in the United Kingdom; public domain elsewhere."},
   wes84bap:{title:"The Ministration of Baptism of Infants",sub:"Wesley's Sunday Service (1784)",cov:"Wesley's Ministration of Baptism of Infants is printed in full.",foot:"John Wesley, The Sunday Service of the Methodists in North America (London, 1784), public domain, transcribed from the Internet Archive scan and set against the 1662 office Wesley abridged; his changes are kept."},
@@ -245,7 +253,7 @@ const OCCASIONAL={
   bcp62bur:{title:"The Burial of the Dead",sub:"The Book of Common Prayer (1662)",cov:"The Order for the Burial of the Dead from the 1662 Prayer Book is printed in full, with Psalms 39 and 90 and the lesson from 1 Corinthians 15.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread against the Coverdale psalter and the King James Bible. Crown copyright in the United Kingdom; public domain elsewhere."}
 };
 /* every service of one tradition, the Eucharist first, then the offices, the Litany and the preparation */
-const KIND_ORDER=k=>k==="Daily office"?1:k==="Litany"?2:k==="Preparation"?3:/^(Baptism|Matrimony|Burial)$/.test(k)?4:0;
+const KIND_ORDER=k=>k==="Daily office"?1:k==="Litany"?2:k==="Preparation"?3:/^(Baptism|Matrimony|Burial|Coronation)$/.test(k)?4:0;
 function famRites(f){
   return [...MASS_RITES.map(r=>({type:"mass",...r})),...OFFICE_RITES.map(r=>({type:"office",...r}))].filter(r=>familyOf(r.id)===f)
     .map((r,i)=>({...r,i,k:riteKind(r.type,r.id)})).sort((a,b)=>KIND_ORDER(a.k)-KIND_ORDER(b.k)||a.i-b.i);
@@ -276,6 +284,7 @@ function renderAsk(){
       ${ready?`<li class="step"><h3><span class="sn">${S.type==="office"||S.type==="mass"?4:3}</span>For which day?</h3>
         <div class="dayrow"><input type="date" id="dayPick" value="${S.date||todayISO()}" min="2025-11-30" max="2030-11-30" aria-label="Date">
         <button type="button" class="ghost" data-day="0">Today</button><button type="button" class="ghost" data-day="1">Tomorrow</button><button type="button" class="ghost" data-day="sun">Next Sunday</button></div>
+        ${worldRow()}<div id="worldPanel"></div>
         <button type="button" class="go" id="goBtn">Open the ${S.type==="office"?"hour":riteKind("mass",S.rite)==="Mass"?"Mass":"service"}</button></li>`:""}
     </ol>`;
   $("#ask").querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{
@@ -296,10 +305,32 @@ function renderAsk(){
     let iso=todayISO(); const v=b.dataset.day;
     if(v==="1") iso=addDays(iso,1);
     if(v==="sun"){ const w=toDate(iso).getUTCDay(); iso=addDays(iso,(7-w)%7||7); }
-    S.date=iso; if(dp) dp.value=iso; open();
+    S.date=iso; S.wi=null; if(dp) dp.value=iso; open();
   }));
-  const go=$("#goBtn"); if(go) go.addEventListener("click",()=>{ S.date=(dp&&dp.value)||todayISO(); open(); });
+  const go=$("#goBtn"); if(go) go.addEventListener("click",()=>{ S.date=(dp&&dp.value)||todayISO(); S.wi=null; open(); });
+  const wp=$("#worldPanel"); if(wp&&window.LectWorld) window.LectWorld.panel(wp,{names:litName,onSave:()=>renderAsk()});
+  $("#ask").querySelectorAll("[data-wday]").forEach(b=>b.addEventListener("click",()=>{
+    const W=window.LectWorld, c=W.load(), v=b.dataset.wday; let i=W.today(c).index;
+    if(v==="next") i+=1;
+    if(v==="pick"){ const y=+$("#wYear").value, d=+$("#wDay").value; if(Number.isFinite(y)&&Number.isFinite(d)) i=W.indexOf(c,y,d); }
+    openWorld(i);
+  }));
+  const wy=$("#wYear"); if(wy) wy.addEventListener("change",()=>{ const W=window.LectWorld, c=W.load(), sel=$("#wDay"), keep=+sel.value; sel.innerHTML=worldDays(c,+wy.value||c.firstYear,keep); });
 }
+/* ---------------------------------------------------------------- the world calendar (worldcal.js)
+   When a world calendar is on, a world day can be opened: S.wi is its number and S.date the church-year date it
+   stands for; the day arrows then step through world days. */
+function worldDays(c,year,sel){ const W=window.LectWorld; let h=""; for(let d=0;d<c.yearLen;d++){ const i=W.indexOf(c,year,d); h+=`<option value="${d}"${d===sel?" selected":""}>${esc(W.label(c,i).replace(/,[^,]*$/,""))}</option>`; } return h; }
+function worldRow(){
+  const W=window.LectWorld; if(!W) return ""; const c=W.load(); if(!c.on) return "";
+  const t=W.today(c), iso=W.liturgical(c,t.index);
+  return `<div class="dayrow worldrow"><span class="wlabel">${esc(c.name||"World calendar")}: <b>${esc(W.label(c,t.index))}</b> · the liturgy of ${esc(longDate(iso))}</span>
+    <button type="button" class="ghost" data-wday="today">Today in the world</button><button type="button" class="ghost" data-wday="next">The next world day</button></div>
+    <div class="dayrow worldrow"><label>World year <input type="number" id="wYear" value="${t.year}"></label><label>Day <select id="wDay">${worldDays(c,t.year,t.doy)}</select></label><button type="button" class="ghost" data-wday="pick">Open that day</button></div>`;
+}
+function openWorld(i){ const W=window.LectWorld, c=W.load(); S.wi=i; S.date=W.liturgical(c,i); open(); }
+/* the name of a liturgical date in the chosen rite's calendar, or its tradition's */
+async function litName(iso){ await window.LectDays.load(iso); const N=dayNames(iso,DAYS[iso]); const x=N.find(n=>n.rite===S.rite)||N.find(n=>n.fam===S.fam)||N[0]; return x?x.name:""; }
 function open(){ savePrefs();
   if(S.type==="mass"&&S.len){ try{ const k="lect-mass-"+S.rite; const o=JSON.parse(localStorage.getItem(k)||"null")||{};
     if(S.len==="timed") localStorage.setItem(k,JSON.stringify({...o,target:S.mins||20}));
@@ -522,7 +553,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp18:"kj",bcp29:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={coro61:"kj",coro51:"kj",coro94:"dr",n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp18:"kj",bcp29:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;
@@ -533,9 +564,9 @@ async function renderSession(){
   const crumbs=rname.toLowerCase().startsWith(rk.toLowerCase())?[rname]:[rk,rname];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
   await window.LectDays.load(iso);
-  const day=DAYS[iso];
+  const day=DAYS[iso], W=worldNow();
   let head=`<div class="sesbar"><button type="button" class="ghost" id="backAsk">← Change</button><span class="crumbs">${crumbs.map(esc).join(" › ")}</span>
-    <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous day">‹</button><span class="dlabel">${esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next day">›</button></span></div>`;
+    <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous ${W?"world ":""}day">‹</button><span class="dlabel">${W?`<span class="wday">${esc(W.label)}</span> <span class="wlit">${esc(longDate(iso))}</span>`:esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next ${W?"world ":""}day">›</button></span></div>`;
   { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<details class="covline"${matchMedia("(min-width:701px)").matches?" open":""}><summary>${covBadge(c)}<span class="covabout">About this text</span></summary>${esc(c[1])}</details>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
@@ -686,6 +717,16 @@ async function renderSession(){
     officeData=await officeBody(iso, day);
     body=officeData.h+`<h3 class="ordhead">${esc(officeData.hourName)}</h3><div id="massGuide"></div>`;
   }
+  if(S.votiveIso!==iso) S.votive="";   /* a votive Mass is chosen for one day */
+  const VL=S.type==="mass"&&day&&window.LectVotive&&window.LectVotive.has(S.rite)?await window.LectVotive.list(S.rite).catch(()=>[]):[];
+  const VO=VL.find(v=>v.id===S.votive)||null; if(!VO) S.votive="";
+  if(VL.length){
+    const of=(/<h2 class="dayname">([\s\S]*?)<\/h2>/.exec(body)||[])[1]||"";
+    if(VO){ const high=(S.rite!=="bcp79")&&(toDate(iso).getUTCDay()===0||/\bI{1,2}\.? classis|classis I{1,2}\b/.test(((S.rite==="p"?day.p:day.m)||{}).s||""));
+      body=body.replace(/<h2 class="dayname">[\s\S]*?<\/h2>(<p class="daysub">[\s\S]*?<\/p>)?/,`<h2 class="dayname">${esc(VO.name)}</h2><p class="daysub">${S.rite==="bcp79"?"Various Occasions":esc(VO.la)} · in place of ${of}</p><p class="callout">${S.rite==="bcp79"?"The collect, proper preface and lessons of this occasion take the place of the day's; the rest of the service is the Holy Eucharist as on any day.":`A votive Mass, for ${esc(VO.use.charAt(0).toLowerCase()+VO.use.slice(1))}: its propers take the place of the day's. The Gloria and Creed follow Divinum Officium's file for this Mass.${high?" On Sundays and on feasts of the first and second class the rubrics do not permit this votive Mass except by special leave; it is shown for study or for an occasion that has that leave.":""} The commemorations of the day are not added here.`}</p>`); }
+    const opt=VL.map(v=>`<option value="${esc(v.id)}"${v.id===S.votive?" selected":""}>${esc(v.name)}${v.use&&S.rite==="bcp79"?` · ${esc(v.use)}`:""}</option>`).join("");
+    body=body.replace('<div id="massGuide">',`<div class="votive"><label for="votiveSel">${S.rite==="bcp79"?"Propers":"Mass"}</label><select id="votiveSel"><option value="">Of the day${of?`: ${of}`:""}</option><optgroup label="${S.rite==="bcp79"?"Various Occasions":"Votive Masses"}">${opt}</optgroup></select></div><div id="massGuide">`);
+  }
   body=body.replace('<div id="massGuide">','<div id="lessonCalendar"></div><div id="massGuide">');
   $("#session").innerHTML=head+`<article class="sesbody${S.type==="mass"?" wide":""}">${body}</article>`;
   const mg=document.getElementById("massGuide");
@@ -693,13 +734,16 @@ async function renderSession(){
     try{ const k="lect-mass-"+S.rite; const o=JSON.parse(localStorage.getItem(k)||"null"); if(o&&o.__apply){ delete o.__apply; localStorage.setItem(k,JSON.stringify(o)); window.__lectApplyPreset=o.preset; } }catch(e){}
     const liveOpts=window.LectTools&&window.LectTools.liveOpts?window.LectTools.liveOpts():null;
     if(officeData) window.LectMass.render(mg,{iso,day,rite:S.rite,hour:S.hour,office:{rite:S.rite,hour:S.hour,steps:officeData.steps,alt:officeData.alt||null},readingBlock,liveOpts});
-    else window.LectMass.render(mg,{iso,day,rite:S.rite,hour:null,tr:RITE_TR[S.rite],readingBlock,liveOpts});
+    else window.LectMass.render(mg,{iso,day,rite:S.rite,hour:null,tr:RITE_TR[S.rite],readingBlock,liveOpts,votive:S.votive||""});
   }
   $("#backAsk").addEventListener("click",()=>{ S.view="ask"; render(); });
-  $("#prevDay").addEventListener("click",()=>{ S.date=addDays(iso,-1); render(); });
-  $("#nextDay").addEventListener("click",()=>{ S.date=addDays(iso,1); render(); });
+  const vs=$("#votiveSel"); if(vs) vs.addEventListener("change",()=>{ S.votive=vs.value; S.votiveIso=iso; render(); });
+  $("#prevDay").addEventListener("click",()=>{ if(W){ openWorld(S.wi-1); return; } S.date=addDays(iso,-1); render(); });
+  $("#nextDay").addEventListener("click",()=>{ if(W){ openWorld(S.wi+1); return; } S.date=addDays(iso,1); render(); });
 }
 
+/* the world day this session stands for, while it still maps to the session's date */
+function worldNow(){ const Wd=window.LectWorld; if(S.wi==null||!Wd) return null; const c=Wd.load(); if(!c.on||Wd.liturgical(c,S.wi)!==S.date){ S.wi=null; return null; } return {label:Wd.label(c,S.wi)}; }
 async function officeBody(iso, day){
   await window.LectLoad.service();
   return window.LectOffice.body(iso, day, {S, hoursFor, readingBlock, bcpPsalms, byzTone, eothinon, lothPsalms, psalterWeek, EOTHINA});
@@ -768,10 +812,12 @@ window.LectApp={
     .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,kind:riteKind(r.type,r.id),cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
   /* An hour this rite does not have (a stale link, a bookmark from another rite) opens its first hour instead. */
-  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session";
+  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.wi=Number.isInteger(d.wi)?d.wi:null; S.view="session";
+    const v=(d.opts&&typeof d.opts.votive==="string"?d.opts.votive:d.votive)||""; S.votive=v.slice(0,12); S.votiveIso=d.iso;
     if(S.type==="office"){ const H=hoursFor(S.rite)||[]; if(!H.some(h=>h[0]===S.hour)) S.hour=(H[0]||[])[0]||null; }
     render(); },
-  current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
+  current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date, wi:S.wi==null?null:S.wi, votive:S.votive||""}; },
+  openWorld
 };
 /* Sources, home and WIP all use the same coverage policy. */
 const covBody=document.getElementById('coverage-body');

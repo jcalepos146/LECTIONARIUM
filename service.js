@@ -359,7 +359,7 @@ function loadOpts(rite){ let o=null; try{ o=JSON.parse(localStorage.getItem("lec
   if(ap&&PRESETS[ap]) o={...o,...JSON.parse(JSON.stringify(PRESETS[ap])),preset:ap};
   if(!o.hymns) o.hymns=base.hymns;
   return o; }
-function saveOpts(rite,o){ try{ localStorage.setItem("lect-mass-"+rite,JSON.stringify(o)); }catch(e){} }
+function saveOpts(rite,o){ try{ const {votive,...keep}=o; localStorage.setItem("lect-mass-"+rite,JSON.stringify(keep)); }catch(e){} }   /* a votive Mass is chosen for one day, not kept */
 
 /* ---------------------------------------------------------------- roles
    Every spoken line carries data-r: cel (celebrant / officiant), srv (server, deacon), lec (lector, reader),
@@ -479,11 +479,14 @@ function ordinaryChant(C, mass, part){ const ids=(C.kyriale[mass]||{}).ids||{}; 
 async function buildTrad(ctx, form, opts){
   const {iso, day} = ctx;
   const [O,C,H,PR]=await Promise.all([J("ordo.json"),J("chant.json"),J("hymns.json"),J(form==="pre55"?"propers-pre55.json":"propers-1962.json")]);
-  const tday = form==="pre55"?day.p:day.m;
+  /* a votive Mass (data/votive-trad.json, tools/votive_trad.py) takes the place of the propers of the day */
+  const VM=opts.votive?((await J("data/votive-trad.json")).masses||{})[opts.votive]:null;
+  const dayOf = form==="pre55"?day.p:day.m;
+  const tday = VM?{path:VM.path,t:VM.la,s:"",feria:false}:dayOf;
   const key=`${form}|${tday.path}|${tday.feria?1:0}`;
-  const P=PR.map[key]!=null?PR.data[PR.map[key]]:null;
-  if(!P) return [sec("Propers unavailable",0,cue("The propers for this day could not be found."))];
-  const CM=C.map[key]||{};
+  const P=VM?VM[form==="pre55"?"pre55":"1962"]:PR.map[key]!=null?PR.data[PR.map[key]]:null;
+  if(!P) return [sec("Propers unavailable",0,cue(opts.votive?"This votive Mass could not be found.":"The propers for this day could not be found."))];
+  const CM=VM?{}:C.map[key]||{};
   const PRAY={la:O.Latin.prayers,en:O.English.prayers};
   const lang=opts.lang||"both";
   const sung=opts.ordinary==="sung", chantProp=opts.propers==="chant";
@@ -494,7 +497,9 @@ async function buildTrad(ctx, form, opts){
   const paschal=PASCHAL(iso);
   const glr=P.glr!=null?P.glr:(P.gloria?1:0);
   const gloria = !defunct && (tday.feria ? paschal : (glr===1 || (glr===0 && (sun || /^Sancti\//.test(tday.path) || /Tempora\/Pasc/.test(tday.path)))));
-  const hyb=ctx.rite==="h"?day.h:null;
+  const hyb=ctx.rite==="h"&&!VM?day.h:null;
+  /* from Septuagesima to Holy Saturday a votive Mass takes its Tract in place of the Gradual, as Divinum Officium does */
+  const quad=(()=>{ const o=fromEaster(iso); return o>=-63&&o<0; })();
   const AB=opts.abridge||0;
   const hybWeekday=hyb&&/weekday/i.test(hyb.s||"");
   const out=[];
@@ -588,7 +593,7 @@ async function buildTrad(ctx, form, opts){
             else { const p=propBlock("Lectio"); r.html+=p.html; r.sec+=p.sec; }
           }
           else if(ph==="graduale"){
-            let gk = paschal&&part("GradualeP")?"GradualeP": (tday.feria&&s==="advent"&&part("GradualeF")?"GradualeF":"Graduale");
+            let gk = paschal&&part("GradualeP")?"GradualeP": VM&&quad&&part("Tractus")?"Tractus": (tday.feria&&s==="advent"&&part("GradualeF")?"GradualeF":"Graduale");
             if(AB>=2){ r={html:abr(`the ${part("Tractus")&&!paschal?"Gradual and Tract":"Gradual and Alleluia"}${part("Sequentia")?", Sequence":""}`),sec:0}; }
             else { r=propBlock(gk,"Gradual",gk);
             if(part("Sequentia")&&AB<1){ const q2=propBlock("Sequentia","Sequence","Sequentia"); r.html+=`<h4 class="sub2">Sequence</h4>`+q2.html; r.sec+=q2.sec; }
@@ -1002,6 +1007,13 @@ const ORDER_RITES={
   csbbap:{parts:o=>[["csb-baptism"]]},
   csbmat:{parts:o=>[["csb-matrimony"]]},
   csbbur:{parts:o=>[["csb-burial"]]},
+  /* the coronations: proper lessons go to their slots; a queen consort is crowned after the king's homage */
+  coro61:{parts:o=>o.consort==="yes"?[["coronation-1661",null,"The Enthroning and the Homage"],["coronation-1685-consort",null,"The Anthem for the Queen"],["coronation-1661","The Anthem, Epistle and Gospel"]]:[["coronation-1661"]],
+    proper:{"lessons:The Epistle":["The Epistle","1 Pet 2:11-17"],"gospel:The Gospel":["The Gospel","Matt 22:15-22"]},
+    optional:["The Proceeding to the Abbey","The King's Champion"], optLabel:"The procession to the Abbey and the King's Champion left out",
+    sel:{key:"consort",label:"A queen consort",opts:[["no","Not crowned"],["yes","Crowned after the King (the form of 1685)"]]}},
+  coro94:{parts:o=>[["coronation-1594"]], optional:["The Eve"], optLabel:"The eve of the coronation left out"},
+  coro51:{parts:o=>[["coronation-1651"]], proper:{"psalter:The Twentieth Psalm":["Psalm 20","Ps 20"]}, optional:["The King Brought to the Kirk"], optLabel:"The procession to the Kirk left out"},
   csbm:{lect:"csb", parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{lect:"csb", parts:o=>[["csb-vespers"]], csbCollect:true}
 };
@@ -1065,6 +1077,11 @@ async function buildOrders(ctx,opts,rite){
       less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
     }
     opts={...opts,_less:less};
+  }
+  if(R.proper){   /* readings an order appoints for itself */
+    const less={};
+    for(const [k,[lab,cite]] of Object.entries(R.proper)) less[k]=[await RB(ctx,lab,cite,"k","kj"),/^Ps /.test(cite)?1.5:3];
+    opts={...opts,_less:{...(opts._less||{}),...less}};
   }
   if(R.byzFeast){   /* Hapgood's hymns of the Sunday tone and of the Great Feasts; Great Vespers is the vigil of the next day */
     const D=await J("data/byz-liturgy.json"), V=R.byzFeast==="v", less={};
@@ -1229,16 +1246,21 @@ const pbWords=its=>its.filter(i=>i[0]==="v").map(i=>i[1]).join(" ").split(/\s+/)
 async function buildPB79(ctx,opts){
   const B=await J("data/bcp1979.json"), iso=ctx.iso, sun=toDate(iso).getUTCDay()===0;
   const key=opts.p79||"II-A", rite=key.startsWith("I-")?"1":"2", form=rite==="1"?"t":"c";
-  const C=B.collects[form], day=pb79Day(iso,C), col=C[day.title]||C[day.season];
-  const pre=pb79Preface(B.prefaces[rite]||{}, col&&col.preface, sun, iso);
+  const C=B.collects[form], day=pb79Day(iso,C), dayCol=C[day.title]||C[day.season];
+  /* a votive Mass from the Various Occasions (data/bcp1979-occasions.json): its collect, preface and lessons */
+  const occ=opts.votive?((await J("data/bcp1979-occasions.json")).occasions||[]).find(o=>o.id===opts.votive):null;
+  let col=dayCol, colTitle=day.title;
+  if(occ){ const c0=C[occ.collect]||B.collects.c[occ.collect]; col=c0&&occ.form?{...c0,text:pb79Form(c0.text,occ.form)}:c0; colTitle=occ.collect.replace(/^\d+\.\s*/,"")+(occ.form?` (${occ.form})`:"")+(c0&&!C[occ.collect]?" · in contemporary language: Rite One has no traditional form of this collect":""); }
+  const seasonPref=pb79Preface(B.prefaces[rite]||{}, dayCol&&dayCol.preface, sun, iso);
+  const pre=occ&&/^Preface of the Season/.test((col&&col.preface)||"")?seasonPref:pb79Preface(B.prefaces[rite]||{}, col&&col.preface, sun, iso);
   const pop=(opts.pop79||"I");
-  const lessons=window.LectCalendar.custom({...ctx,type:"mass"})||await window.LectCalendar.appointments({...ctx,type:"mass"});
+  const lessons=occ?pb79Occasion(occ,ctx):window.LectCalendar.custom({...ctx,type:"mass"})||await window.LectCalendar.appointments({...ctx,type:"mass"});
   const lessonHTML=await window.LectCalendar.html(ctx,{...lessons,items:[...lessons.items.slice(0,1),...(lessons.psalms||[]).map(cite=>({lab:"Psalm",cite,tr:"bcp79"})),...lessons.items.slice(1)]});
   const out=[];
   for(const st of B["he"+rite]){
     let secs=pbWords(st.items)/2.4, extra=0;
     const fill=name=>{
-      if(name==="collect"){ if(!col) return cue("The Collect of the Day, from the Prayer Book."); extra+=pbWords(col.text.map(t=>["v",t]))/2.4; return `<p class="cite">${esc(day.title)}</p>`+col.text.map(t=>`<p data-r="cel">${esc(t)}</p>`).join(""); }
+      if(name==="collect"){ if(!col) return cue("The Collect of the Day, from the Prayer Book."); extra+=pbWords(col.text.map(t=>["v",t]))/2.4; return `<p class="cite">${esc(colTitle)}</p>`+col.text.map(t=>/^(I|II|III)\. /.test(t)?`<p class="rub">${esc(t)}</p>`:`<p data-r="cel">${esc(t)}</p>`).join("")+(occ&&col.notes?col.notes.filter(n=>!/^or this$/i.test(n)).map(n=>`<p class="rub">${esc(n)}</p>`).join(""):""); }
       if(name==="lessons"){ extra+=readSecs(lessonHTML,300); return lessonHTML; }
       if(name==="sermon"){ if(!(opts.homily>0)) return ""; extra+=opts.homily*60; return `<div class="homily" data-r="cel"><span class="lbl">Sermon</span> ≈ ${opts.homily} min</div>`; }
       if(name==="pop"){ const f=B.pop.find(x=>x.t==="Form "+pop); if(!f) return ""; extra+=pbWords(f.items)/2.4; return `<h4 class="sub2">Prayers of the People: Form ${esc(pop)}</h4>`+pb79Items(f.items,()=>""); }
@@ -1251,6 +1273,17 @@ async function buildPB79(ctx,opts){
     out.push(sec(st.t,(secs+extra)/60,`<div class="txt one">${html}</div>`));
   }
   return out;
+}
+/* one form (I, II, III) of a collect printed with several: its heading and the lines up to the next heading */
+function pb79Form(text,form){ const out=[]; let on=false; for(const t of text){ const h=/^(I|II|III)\. /.exec(t); if(h) on=h[1]===form; if(on) out.push(t); } return out.length?out:text; }
+/* the lessons of a Various Occasion: the first of each set of alternatives is read, the others named */
+function pb79Occasion(occ,ctx){
+  const L=occ.lessons, src="The Book of Common Prayer (1979), Various Occasions";
+  if(!L){ const mine=window.LectCalendar.custom({...ctx,type:"mass"});
+    return {src,note:"The lessons for this occasion (pp. 927–931 of the Prayer Book) are not loaded here: read them from your Prayer Book, or enter their citations in the lectionary calendar above."+(mine?" Your saved citations for this date follow.":""),items:mine?mine.items:[]}; }
+  const alt=[["ot","Old Testament"],["ps","Psalm"],["ep","Epistle"],["gs","Gospel"]].filter(([k])=>(L[k]||[]).length>1).map(([k,n])=>`${n}: or ${L[k].slice(1).join(", or ")}`);
+  return {src,note:"The lessons appointed for this occasion."+(alt.length?" Alternatives: "+alt.join("; ")+".":""),
+    items:[{lab:"Old Testament",cite:L.ot[0],tr:"kj"},{lab:"Psalm",cite:L.ps[0],tr:"bcp79"},{lab:"Epistle",cite:L.ep[0],tr:"kj"},{lab:"Gospel",cite:L.gs[0],tr:"kj"}]};
 }
 window.LectPB79={day:pb79Day, items:pb79Items};
 
@@ -1812,7 +1845,8 @@ async function render(el, ctx){
   const isOffice=!!ctx.office, rite=isOffice?"office-"+ctx.office.rite:ctx.rite, store=isOffice?rite+"-"+ctx.office.hour:rite;
   const following=!!ctx.liveOpts;
   let opts=following?{...loadOpts(store),...clone(ctx.liveOpts)}:loadOpts(store);
-  const OCC=/(bap|mat|bur)$/.test(rite);
+  if(!isOffice&&!following) opts.votive=ctx.votive||"";   /* the session's votive Mass (votive.js); a follower takes the host's */
+  const OCC=/(bap|mat|bur)$/.test(rite)||/^coro/.test(rite);
   const noun=isOffice?"hour":OCC?"service":/^(b|copt|arm|adai)$/.test(rite)?"Liturgy":/^(n|o|m|p|h|d|a|z)$/.test(rite)?"Mass":/^(csbm|csbv|csbs|csbsm|csbse|byzv|byzm|byzh|byzc|wes84o|rcusv|csbl|rcusp)$/.test(rite)?"office":"service";
   const build=async(o)=>{ USED=new Set(); ROLE="cel";
     if(isOffice) return buildOffice(ctx,o);

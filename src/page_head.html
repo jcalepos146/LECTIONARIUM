@@ -176,6 +176,35 @@ footer{margin-top:40px;color:var(--muted);font-size:.86rem;border-top:1px solid 
 .choice .ct{font-family:var(--f-display);font-weight:700;font-size:1.08rem}
 .choice .cd{font-size:.88rem;color:var(--muted)}
 .dayrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+/* world calendar (worldcal.js) */
+.worldrow label{display:flex;align-items:center;gap:6px}
+.worldrow input[type=number],.worldrow select,.wc-form input,.wc-form select,.wc-form textarea{font:inherit;background:var(--leaf);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:6px 8px;max-width:100%;box-sizing:border-box}
+.worldrow input[type=number]{width:6.5em}
+.wlabel{flex:1 1 100%}
+details.worldcal{margin:6px 0 14px;padding:10px 14px;background:var(--leaf);border:1px solid var(--rule);border-radius:8px}
+details.worldcal>summary{cursor:pointer;font-weight:600}
+.wc-form fieldset{border:1px solid var(--rule);border-radius:8px;margin:12px 0;padding:8px 12px 12px;min-width:0}
+.wc-form legend{font-family:var(--f-sc);letter-spacing:.04em;color:var(--rubric);padding:0 4px}
+.wc-form label{display:block;margin:8px 0}
+.wc-form [hidden]{display:none!important}
+.wc-form label>select{display:block;width:100%;margin-top:3px}
+.wc-form textarea,.wc-form input[name=weekdays],.wc-form input[name=dates],.wc-form input[name=name]{width:100%}
+.wc-form label.ck{display:flex;gap:8px;align-items:flex-start}
+.wc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0 14px}
+.wc-grid input,.wc-grid select{display:block;width:100%;margin-top:3px}
+.wc-wts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:0 12px}
+.wc-wt input{width:5em;margin-left:4px}
+.wc-pins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0 12px}
+.wc-pins label.ck{margin:4px 0}
+.wc-more{margin:10px 0}.wc-more>summary{cursor:pointer;color:var(--rubric)}
+.wc-scroll{overflow-x:auto;max-height:28rem;overflow-y:auto;border:1px solid var(--rule);border-radius:6px}
+.wc-tab{border-collapse:collapse;width:100%;font-size:.9rem}
+.wc-tab th,.wc-tab td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.wc-tab thead th{position:sticky;top:0;background:var(--leaf)}
+.dlabel .wday{font-weight:600}.dlabel .wlit{display:block;font-size:.85rem;font-weight:400;color:var(--muted)}
+/* votive Masses */
+.votive{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:10px 0 0}
+.votive select{font:inherit;background:var(--leaf);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:6px 8px;max-width:100%}
 input[type=date],#psNum{font:inherit;background:var(--leaf);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:7px 10px}
 .ghost{font:inherit;background:none;border:1px solid var(--rule);color:var(--ink);border-radius:6px;padding:6px 11px;cursor:pointer}
 .ghost:hover{border-color:var(--rubric);color:var(--rubric)}

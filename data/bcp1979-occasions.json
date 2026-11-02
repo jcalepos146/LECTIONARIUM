@@ -1,0 +1,41 @@
+{
+ "source": {
+  "title": "The Book of Common Prayer (1979), Various Occasions: collects pp. 199-210 and 251-261, lessons pp. 927-931",
+  "url": "https://justus.anglican.org/resources/bcp/lectionary.pdf",
+  "check": "https://www.lectionarypage.net/",
+  "note": "The collects and the proper prefaces are read from data/bcp1979.json. The lessons were taken from the Prayer Book's lectionary (Society of Archbishop Justus transcription) and kept only where The Lectionary Page prints the same citations for the occasion; the rest are null and the service says the lessons are not loaded. Only the first of alternative lessons is read; the others are named.",
+  "checked": "2026-11-02"
+ },
+ "occasions": [
+  {"id": "1", "collect": "1. Of the Holy Trinity", "lessons": {"ot": ["Exod 3:11-15"], "ps": ["29"], "ep": ["Rom 11:33-36"], "gs": ["Matt 28:18-20"]}},
+  {"id": "2", "collect": "2. Of the Holy Spirit", "lessons": {"ot": ["Isa 61:1-3"], "ps": ["139:1-17", "139:1-9"], "ep": ["1 Cor 12:4-14"], "gs": ["Luke 11:9-13"]}},
+  {"id": "3", "collect": "3. Of the Holy Angels", "lessons": null},
+  {"id": "4", "collect": "4. Of the Incarnation", "lessons": {"ot": ["Isa 11:1-10", "Gen 17:1-8"], "ps": ["111", "132:11-19"], "ep": ["1 John 4:1-11", "1 Tim 3:14-16"], "gs": ["Luke 1:26-38", "Luke 11:27-28"]}},
+  {"id": "5", "collect": "5. Of the Holy Eucharist", "lessons": {"ot": ["Deut 8:2-3"], "ps": ["34", "116:10-17"], "ep": ["Rev 19:1-2a,4-9", "1 Cor 10:1-4,16-17", "1 Cor 11:23-29"], "gs": ["John 6:47-58"]}},
+  {"id": "6", "collect": "6. Of the Holy Cross", "lessons": {"ot": ["Isa 52:13-15; 53:10-12"], "ps": ["40:1-11", "40:5-11"], "ep": ["1 Cor 1:18-24"], "gs": ["John 12:23-33"]}},
+  {"id": "7", "collect": "7. For all Baptized Christians", "lessons": {"ot": ["Jer 17:7-8", "Ezek 36:24-28"], "ps": ["16:5-11"], "ep": ["Rom 6:3-11"], "gs": ["Mark 10:35-45"]}},
+  {"id": "8", "collect": "8. For the Departed", "lessons": null},
+  {"id": "9", "collect": "9. Of the Reign of Christ", "lessons": {"ot": ["Dan 7:9-14"], "ps": ["93", "Canticle 18"], "ep": ["Col 1:11-20"], "gs": ["John 18:33-37"]}},
+  {"id": "10", "collect": "10. At Baptism", "lessons": null},
+  {"id": "11", "collect": "11. At Confirmation", "lessons": null},
+  {"id": "12", "collect": "12. On the Anniversary of the Dedication of a Church", "lessons": {"ot": ["1 Kgs 8:22-30", "Gen 28:10-17"], "ps": ["84", "84:1-6"], "ep": ["1 Pet 2:1-5,9-10"], "gs": ["Matt 21:12-16"]}},
+  {"id": "13", "collect": "13. For a Church Convention", "lessons": null},
+  {"id": "14", "collect": "14. For the Unity of the Church", "lessons": {"ot": ["Isa 35:1-10"], "ps": ["122"], "ep": ["Eph 4:1-6"], "gs": ["John 17:6a,15-23"]}},
+  {"id": "15.1", "collect": "15. For the Ministry (Ember Days)", "form": "I", "lessons": {"ot": ["Num 11:16-17,24-29"], "ps": ["99", "27:1-9"], "ep": ["1 Cor 3:5-11"], "gs": ["John 4:31-38"]}},
+  {"id": "15.2", "collect": "15. For the Ministry (Ember Days)", "form": "II", "lessons": {"ot": ["1 Sam 3:1-10"], "ps": ["63:1-8"], "ep": ["Eph 4:11-16"], "gs": ["Matt 9:35-38"]}},
+  {"id": "15.3", "collect": "15. For the Ministry (Ember Days)", "form": "III", "lessons": {"ot": ["Exod 19:3-8"], "ps": ["15"], "ep": ["1 Pet 4:7-11"], "gs": ["Matt 16:24-27"]}},
+  {"id": "16.1", "collect": "16. For the Mission of the Church", "form": "I", "lessons": {"ot": ["Isa 2:2-4"], "ps": ["96", "96:1-7"], "ep": ["Eph 2:13-22"], "gs": ["Luke 10:1-9"]}},
+  {"id": "16.2", "collect": "16. For the Mission of the Church", "form": "II", "lessons": {"ot": ["Isa 49:5-13"], "ps": ["67"], "ep": ["Eph 3:1-12"], "gs": ["Matt 28:16-20"]}},
+  {"id": "17", "collect": "17. For the Nation", "lessons": {"ot": ["Isa 26:1-8"], "ps": ["47"], "ep": ["Rom 13:1-10"], "gs": ["Mark 12:13-17"]}},
+  {"id": "18", "collect": "18. For Peace", "lessons": {"ot": ["Mic 4:1-5"], "ps": ["85:7-13"], "ep": ["Eph 2:13-18", "Col 3:12-15"], "gs": ["John 16:23-33", "Matt 5:43-48"]}},
+  {"id": "19.1", "collect": "19. For Rogation Days", "form": "I", "lessons": null},
+  {"id": "19.2", "collect": "19. For Rogation Days", "form": "II", "lessons": {"ot": ["Sir 38:27-32"], "ps": ["107:1-9"], "ep": ["1 Cor 3:10-14"], "gs": ["Matt 6:19-24"]}},
+  {"id": "19.3", "collect": "19. For Rogation Days", "form": "III", "lessons": null},
+  {"id": "20", "collect": "20. For the Sick", "lessons": {"ot": ["2 Kgs 20:1-5"], "ps": ["13", "86:1-7"], "ep": ["Jas 5:13-16"], "gs": ["Mark 2:1-12"]}},
+  {"id": "21", "collect": "21. For Social Justice", "lessons": {"ot": ["Isa 42:1-7"], "ps": ["72", "72:1-4,12-14"], "ep": ["Jas 2:5-9,12-17"], "gs": ["Matt 10:32-42"]}},
+  {"id": "22", "collect": "22. For Social Service", "lessons": {"ot": ["Zech 8:3-12,16-17"], "ps": ["146", "22:22-27"], "ep": ["1 Pet 4:7-11"], "gs": ["Mark 10:42-52"]}},
+  {"id": "23", "collect": "23. For Education", "lessons": {"ot": ["Deut 6:4-9,20-25"], "ps": ["78:1-7"], "ep": ["2 Tim 3:14-4:5"], "gs": ["Matt 11:25-30"]}},
+  {"id": "24", "collect": "24. For Vocation in Daily Work", "lessons": {"ot": ["Eccl 3:1,9-13"], "ps": ["8"], "ep": ["1 Pet 2:11-17"], "gs": ["Matt 6:19-24"]}},
+  {"id": "25", "collect": "25. For Labor Day", "lessons": {"ot": ["Sir 38:27-32"], "ps": ["107:1-9", "90:1-2,16-17"], "ep": ["1 Cor 3:10-14"], "gs": ["Matt 6:19-24"]}}
+ ]
+}
