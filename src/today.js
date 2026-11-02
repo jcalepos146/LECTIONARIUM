@@ -164,7 +164,7 @@ function suggestHour(rite){
 }
 
 /* ---------------------------------------------------------------- state */
-const S={type:null,rite:null,hour:null,date:null,view:"ask"};
+const S={type:null,rite:null,hour:null,date:null,wi:null,votive:"",votiveIso:null,view:"ask"};
 function loadPrefs(){ try{ const p=JSON.parse(localStorage.getItem("lect-pray")||"null"); if(p){ S.type=p.type; S.rite=p.rite; S.hour=p.hour; } }catch(e){} }
 function savePrefs(){ try{ localStorage.setItem("lect-pray",JSON.stringify({type:S.type,rite:S.rite,hour:S.hour})); }catch(e){} }
 const todayISO=window.LitDate.today;
@@ -276,6 +276,7 @@ function renderAsk(){
       ${ready?`<li class="step"><h3><span class="sn">${S.type==="office"||S.type==="mass"?4:3}</span>For which day?</h3>
         <div class="dayrow"><input type="date" id="dayPick" value="${S.date||todayISO()}" min="2025-11-30" max="2030-11-30" aria-label="Date">
         <button type="button" class="ghost" data-day="0">Today</button><button type="button" class="ghost" data-day="1">Tomorrow</button><button type="button" class="ghost" data-day="sun">Next Sunday</button></div>
+        ${worldRow()}<div id="worldPanel"></div>
         <button type="button" class="go" id="goBtn">Open the ${S.type==="office"?"hour":riteKind("mass",S.rite)==="Mass"?"Mass":"service"}</button></li>`:""}
     </ol>`;
   $("#ask").querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{
@@ -296,10 +297,32 @@ function renderAsk(){
     let iso=todayISO(); const v=b.dataset.day;
     if(v==="1") iso=addDays(iso,1);
     if(v==="sun"){ const w=toDate(iso).getUTCDay(); iso=addDays(iso,(7-w)%7||7); }
-    S.date=iso; if(dp) dp.value=iso; open();
+    S.date=iso; S.wi=null; if(dp) dp.value=iso; open();
   }));
-  const go=$("#goBtn"); if(go) go.addEventListener("click",()=>{ S.date=(dp&&dp.value)||todayISO(); open(); });
+  const go=$("#goBtn"); if(go) go.addEventListener("click",()=>{ S.date=(dp&&dp.value)||todayISO(); S.wi=null; open(); });
+  const wp=$("#worldPanel"); if(wp&&window.LectWorld) window.LectWorld.panel(wp,{names:litName,onSave:()=>renderAsk()});
+  $("#ask").querySelectorAll("[data-wday]").forEach(b=>b.addEventListener("click",()=>{
+    const W=window.LectWorld, c=W.load(), v=b.dataset.wday; let i=W.today(c).index;
+    if(v==="next") i+=1;
+    if(v==="pick"){ const y=+$("#wYear").value, d=+$("#wDay").value; if(Number.isFinite(y)&&Number.isFinite(d)) i=W.indexOf(c,y,d); }
+    openWorld(i);
+  }));
+  const wy=$("#wYear"); if(wy) wy.addEventListener("change",()=>{ const W=window.LectWorld, c=W.load(), sel=$("#wDay"), keep=+sel.value; sel.innerHTML=worldDays(c,+wy.value||c.firstYear,keep); });
 }
+/* ---------------------------------------------------------------- the world calendar (worldcal.js)
+   When a world calendar is on, a world day can be opened: S.wi is its number and S.date the church-year date it
+   stands for; the day arrows then step through world days. */
+function worldDays(c,year,sel){ const W=window.LectWorld; let h=""; for(let d=0;d<c.yearLen;d++){ const i=W.indexOf(c,year,d); h+=`<option value="${d}"${d===sel?" selected":""}>${esc(W.label(c,i).replace(/,[^,]*$/,""))}</option>`; } return h; }
+function worldRow(){
+  const W=window.LectWorld; if(!W) return ""; const c=W.load(); if(!c.on) return "";
+  const t=W.today(c), iso=W.liturgical(c,t.index);
+  return `<div class="dayrow worldrow"><span class="wlabel">${esc(c.name||"World calendar")}: <b>${esc(W.label(c,t.index))}</b> · the liturgy of ${esc(longDate(iso))}</span>
+    <button type="button" class="ghost" data-wday="today">Today in the world</button><button type="button" class="ghost" data-wday="next">The next world day</button></div>
+    <div class="dayrow worldrow"><label>World year <input type="number" id="wYear" value="${t.year}"></label><label>Day <select id="wDay">${worldDays(c,t.year,t.doy)}</select></label><button type="button" class="ghost" data-wday="pick">Open that day</button></div>`;
+}
+function openWorld(i){ const W=window.LectWorld, c=W.load(); S.wi=i; S.date=W.liturgical(c,i); open(); }
+/* the name of a liturgical date in the chosen rite's calendar, or its tradition's */
+async function litName(iso){ await window.LectDays.load(iso); const N=dayNames(iso,DAYS[iso]); const x=N.find(n=>n.rite===S.rite)||N.find(n=>n.fam===S.fam)||N[0]; return x?x.name:""; }
 function open(){ savePrefs();
   if(S.type==="mass"&&S.len){ try{ const k="lect-mass-"+S.rite; const o=JSON.parse(localStorage.getItem(k)||"null")||{};
     if(S.len==="timed") localStorage.setItem(k,JSON.stringify({...o,target:S.mins||20}));
@@ -533,9 +556,9 @@ async function renderSession(){
   const crumbs=rname.toLowerCase().startsWith(rk.toLowerCase())?[rname]:[rk,rname];
   if(S.type==="office") crumbs.push(hoursFor(S.rite).find(h=>h[0]===S.hour)[1]);
   await window.LectDays.load(iso);
-  const day=DAYS[iso];
+  const day=DAYS[iso], W=worldNow();
   let head=`<div class="sesbar"><button type="button" class="ghost" id="backAsk">← Change</button><span class="crumbs">${crumbs.map(esc).join(" › ")}</span>
-    <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous day">‹</button><span class="dlabel">${esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next day">›</button></span></div>`;
+    <span class="daynav"><button type="button" class="ghost" id="prevDay" aria-label="Previous ${W?"world ":""}day">‹</button><span class="dlabel">${W?`<span class="wday">${esc(W.label)}</span> <span class="wlit">${esc(longDate(iso))}</span>`:esc(longDate(iso))}</span><button type="button" class="ghost" id="nextDay" aria-label="Next ${W?"world ":""}day">›</button></span></div>`;
   { const c=coverage(S.type,S.rite,S.hour); if(c) head+=`<details class="covline"${matchMedia("(min-width:701px)").matches?" open":""}><summary>${covBadge(c)}<span class="covabout">About this text</span></summary>${esc(c[1])}</details>`; }
   let body="", officeData=null;
   if(!day){ body=`<p class="empty">This page covers 30 November 2025 to 30 November 2030. Choose a date in that range.</p>`; }
@@ -686,6 +709,16 @@ async function renderSession(){
     officeData=await officeBody(iso, day);
     body=officeData.h+`<h3 class="ordhead">${esc(officeData.hourName)}</h3><div id="massGuide"></div>`;
   }
+  if(S.votiveIso!==iso) S.votive="";   /* a votive Mass is chosen for one day */
+  const VL=S.type==="mass"&&day&&window.LectVotive&&window.LectVotive.has(S.rite)?await window.LectVotive.list(S.rite).catch(()=>[]):[];
+  const VO=VL.find(v=>v.id===S.votive)||null; if(!VO) S.votive="";
+  if(VL.length){
+    const of=(/<h2 class="dayname">([\s\S]*?)<\/h2>/.exec(body)||[])[1]||"";
+    if(VO){ const high=(S.rite!=="bcp79")&&(toDate(iso).getUTCDay()===0||/\bI{1,2}\.? classis|classis I{1,2}\b/.test(((S.rite==="p"?day.p:day.m)||{}).s||""));
+      body=body.replace(/<h2 class="dayname">[\s\S]*?<\/h2>(<p class="daysub">[\s\S]*?<\/p>)?/,`<h2 class="dayname">${esc(VO.name)}</h2><p class="daysub">${S.rite==="bcp79"?"Various Occasions":esc(VO.la)} · in place of ${of}</p><p class="callout">${S.rite==="bcp79"?"The collect, proper preface and lessons of this occasion take the place of the day's; the rest of the service is the Holy Eucharist as on any day.":`A votive Mass, for ${esc(VO.use.charAt(0).toLowerCase()+VO.use.slice(1))}: its propers take the place of the day's. The Gloria and Creed follow Divinum Officium's file for this Mass.${high?" On Sundays and on feasts of the first and second class the rubrics do not permit this votive Mass except by special leave; it is shown for study or for an occasion that has that leave.":""} The commemorations of the day are not added here.`}</p>`); }
+    const opt=VL.map(v=>`<option value="${esc(v.id)}"${v.id===S.votive?" selected":""}>${esc(v.name)}${v.use&&S.rite==="bcp79"?` · ${esc(v.use)}`:""}</option>`).join("");
+    body=body.replace('<div id="massGuide">',`<div class="votive"><label for="votiveSel">${S.rite==="bcp79"?"Propers":"Mass"}</label><select id="votiveSel"><option value="">Of the day${of?`: ${of}`:""}</option><optgroup label="${S.rite==="bcp79"?"Various Occasions":"Votive Masses"}">${opt}</optgroup></select></div><div id="massGuide">`);
+  }
   body=body.replace('<div id="massGuide">','<div id="lessonCalendar"></div><div id="massGuide">');
   $("#session").innerHTML=head+`<article class="sesbody${S.type==="mass"?" wide":""}">${body}</article>`;
   const mg=document.getElementById("massGuide");
@@ -693,13 +726,16 @@ async function renderSession(){
     try{ const k="lect-mass-"+S.rite; const o=JSON.parse(localStorage.getItem(k)||"null"); if(o&&o.__apply){ delete o.__apply; localStorage.setItem(k,JSON.stringify(o)); window.__lectApplyPreset=o.preset; } }catch(e){}
     const liveOpts=window.LectTools&&window.LectTools.liveOpts?window.LectTools.liveOpts():null;
     if(officeData) window.LectMass.render(mg,{iso,day,rite:S.rite,hour:S.hour,office:{rite:S.rite,hour:S.hour,steps:officeData.steps,alt:officeData.alt||null},readingBlock,liveOpts});
-    else window.LectMass.render(mg,{iso,day,rite:S.rite,hour:null,tr:RITE_TR[S.rite],readingBlock,liveOpts});
+    else window.LectMass.render(mg,{iso,day,rite:S.rite,hour:null,tr:RITE_TR[S.rite],readingBlock,liveOpts,votive:S.votive||""});
   }
   $("#backAsk").addEventListener("click",()=>{ S.view="ask"; render(); });
-  $("#prevDay").addEventListener("click",()=>{ S.date=addDays(iso,-1); render(); });
-  $("#nextDay").addEventListener("click",()=>{ S.date=addDays(iso,1); render(); });
+  const vs=$("#votiveSel"); if(vs) vs.addEventListener("change",()=>{ S.votive=vs.value; S.votiveIso=iso; render(); });
+  $("#prevDay").addEventListener("click",()=>{ if(W){ openWorld(S.wi-1); return; } S.date=addDays(iso,-1); render(); });
+  $("#nextDay").addEventListener("click",()=>{ if(W){ openWorld(S.wi+1); return; } S.date=addDays(iso,1); render(); });
 }
 
+/* the world day this session stands for, while it still maps to the session's date */
+function worldNow(){ const Wd=window.LectWorld; if(S.wi==null||!Wd) return null; const c=Wd.load(); if(!c.on||Wd.liturgical(c,S.wi)!==S.date){ S.wi=null; return null; } return {label:Wd.label(c,S.wi)}; }
 async function officeBody(iso, day){
   await window.LectLoad.service();
   return window.LectOffice.body(iso, day, {S, hoursFor, readingBlock, bcpPsalms, byzTone, eothinon, lothPsalms, psalterWeek, EOTHINA});
@@ -768,10 +804,12 @@ window.LectApp={
     .map(r=>{ const c=coverage(r.type,r.id,r.hour); return {type:r.type,rite:r.id,hour:r.hour,name:r.name,d:r.d,kind:riteKind(r.type,r.id),cov:c?c[0]:"guide",covLabel:COV_LABEL[c?c[0]:"guide"],note:c?c[1]:""}; }); },
   /* open the session a live host is running */
   /* An hour this rite does not have (a stale link, a bookmark from another rite) opens its first hour instead. */
-  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.view="session";
+  follow(d){ S.type=d.type; S.rite=d.rite; S.hour=d.hour||null; S.date=d.iso; S.wi=Number.isInteger(d.wi)?d.wi:null; S.view="session";
+    const v=(d.opts&&typeof d.opts.votive==="string"?d.opts.votive:d.votive)||""; S.votive=v.slice(0,12); S.votiveIso=d.iso;
     if(S.type==="office"){ const H=hoursFor(S.rite)||[]; if(!H.some(h=>h[0]===S.hour)) S.hour=(H[0]||[])[0]||null; }
     render(); },
-  current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date}; }
+  current(){ return {type:S.type, rite:S.rite, hour:S.hour||null, iso:S.date, wi:S.wi==null?null:S.wi, votive:S.votive||""}; },
+  openWorld
 };
 /* Sources, home and WIP all use the same coverage policy. */
 const covBody=document.getElementById('coverage-body');
