@@ -12,6 +12,7 @@ its key in data/orders.json). A lone tools/texts/order-<id>.txt is read as one o
     - text             said by the People
     Minister. / People. / Answer. text                versicles and responses (shown as ℣. and ℟.)
     Priest. / Presbyter. / Deacon. / Choir. / Clergy. / Reader. / All. / Bishop. / Man. / Woman. / Godparents. / Sponsors. / Candidate. text   a speaker, named
+    Archbishop. / King. / Queen. / Herald. / Chancellor. / Constable. / Peers. text   the speakers of the coronation orders
     {srv} text         a role without a label: cel (celebrant), srv (deacon, server), lec, ppl, all
     [or] Summary       alternatives, shown folded under Summary, until [/or]
     [consecration]     the words of consecration (institution narrative, epiclesis), until [/consecration]:
@@ -33,7 +34,9 @@ SLOTS = {"hymn", "psalter", "lessons", "sermon", "offering", "prayer", "communio
 LABELS = {"Minister": ("cel", "℣."), "People": ("ppl", "℟."), "Answer": ("ppl", "℟."),
           "Priest": ("cel", "Priest."), "Presbyter": ("cel", "Presbyter."), "Deacon": ("srv", "Deacon."), "Choir": ("ppl", "Choir."), "Clergy": ("cel srv", "Clergy."),
           "Reader": ("lec", "Reader."), "All": ("all", "All."), "Bishop": ("cel", "Bishop."),
-          "Man": ("ppl", "The Man."), "Woman": ("ppl", "The Woman."), "Godparents": ("ppl", "Godparents."), "Sponsors": ("ppl", "Sponsors."), "Candidate": ("ppl", "Candidate.")}
+          "Man": ("ppl", "The Man."), "Woman": ("ppl", "The Woman."), "Godparents": ("ppl", "Godparents."), "Sponsors": ("ppl", "Sponsors."), "Candidate": ("ppl", "Candidate."),
+          "Archbishop": ("cel", "Archbishop."), "King": ("ppl", "The King."), "Queen": ("ppl", "The Queen."), "Herald": ("lec", "Herald."),
+          "Chancellor": ("srv", "The Chancellor."), "Constable": ("srv", "The Constable."), "Peers": ("ppl", "Peers.")}
 ROLES = {"cel", "srv", "ppl", "lec", "all"}
 
 

@@ -57,6 +57,9 @@ const MASS_RITES=[
   {id:"wes84bur",name:"Burial of the Dead (Wesley's Sunday Service, 1784)",d:"Methodist · Wesley's order, with Psalm 90 in his own revision",tr:"kj",ord:1},
   {id:"csbbap",name:"Baptism of Infants (Common Service Book)",d:"Lutheran · the Order for the Baptism of Infants of 1917-19, with the alternate form of questions",tr:"kj",ord:1},
   {id:"csbmat",name:"Marriage (Common Service Book)",d:"Lutheran · the Order for Marriage of 1917-19",tr:"kj",ord:1},
+  {id:"coro61",name:"The Coronation of a King (England, 1661)",d:"Church of England · the coronation of Charles II with every prayer of the account in full: the oath, anointing, crowning, enthroning and Communion, and if wanted the crowning of a queen consort in the form of 1685",tr:"kj",ord:1},
+  {id:"coro94",name:"The Coronation of a King (France, 1594)",d:"Catholic · the anointing and coronation of Henry IV at Chartres, in an English account of 1594 that names each Latin prayer of the order of Reims",tr:"dr",ord:1},
+  {id:"coro51",name:"The Coronation of a King (Scotland, 1651)",d:"Reformed · Charles II crowned by the Kirk at Scone: the covenants, the oath, the crowning without anointing, and Robert Douglas's sermon",tr:"kj",ord:1},
   {id:"csbbur",name:"Burial of the Dead (Common Service Book)",d:"Lutheran · the Order for the Burial of the Dead of 1917-19, with the Service at the Grave",tr:"kj",ord:1},
   {id:"bcp79",name:"Holy Eucharist (1979 Prayer Book)",d:"Episcopal Church · Rites One and Two, Prayers A to D, with the collect of the day",tr:"kj",ord:1},
 ];
@@ -89,6 +92,7 @@ function riteKind(type,id){
   if(/bap$/.test(id)) return "Baptism";
   if(/mat$/.test(id)) return "Matrimony";
   if(/bur$/.test(id)) return "Burial";
+  if(/^coro/.test(id)) return "Coronation";
   if(/^(n|o|m|p|h|d|a|z)$/.test(id)) return "Mass";
   if(/^(b|copt|arm)$/.test(id)) return "Divine Liturgy";
   if(id==="adai") return "Holy Qurbana";
@@ -98,7 +102,7 @@ function riteKind(type,id){
   return "Holy Communion";
 }
 /* The tradition each rite belongs to, for the tradition-first questions, the day names and the Sanctuary emblems. */
-const FAMILY={wes84bap:"methodist",wes84mat:"methodist",wes84bur:"methodist",csbbap:"lutheran",csbmat:"lutheran",csbbur:"lutheran",wes84:"methodist",wes84o:"methodist",me08:"methodist",rca:"reformed",rcus:"reformed",rcusv:"reformed",rcusp:"reformed",pres:"reformed",
+const FAMILY={coro61:"anglican",coro51:"reformed",wes84bap:"methodist",wes84mat:"methodist",wes84bur:"methodist",csbbap:"lutheran",csbmat:"lutheran",csbbur:"lutheran",wes84:"methodist",wes84o:"methodist",me08:"methodist",rca:"reformed",rcus:"reformed",rcusv:"reformed",rcusp:"reformed",pres:"reformed",
   csb:"lutheran",csbm:"lutheran",csbv:"lutheran",csbl:"lutheran",csbs:"lutheran",csbsm:"lutheran",csbse:"lutheran",
   bcp62:"anglican",bcp62bap:"anglican",bcp62mat:"anglican",bcp62bur:"anglican",bcp28:"anglican",bcp49:"anglican",bcp52:"anglican",bcp59:"anglican",bcp37:"anglican",bcp89:"anglican",bcp92:"anglican",bcp18:"anglican",bcp29:"anglican",bcp79:"anglican",dwdo:"catholic",
   b:"eastern-orthodox",byz:"eastern-orthodox",byzv:"eastern-orthodox",byzm:"eastern-orthodox",byzh:"eastern-orthodox",byzc:"eastern-orthodox",adai:"oriental",copt:"oriental",arm:"oriental"};
@@ -208,7 +212,7 @@ function coverage(type,rite,hour){
     if(rite==="csbm") return ["full","Matins from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csbv") return ["full","Vespers from the Common Service Book (1917-19) is printed in full, with the collect of the day. The hymn, the psalms and the lessons are chosen by the minister, as the book directs."];
     if(rite==="csb") return ["full","The Service of the Common Service Book (1917-19) is printed in full, with the Introit, Collect, Epistle, Gradual and Gospel of the day. The hymns are not included."];
-    if(OCCASIONAL[rite]) return ["full",OCCASIONAL[rite].cov];
+    if(OCCASIONAL[rite]) return [OCCASIONAL[rite].level||"full",OCCASIONAL[rite].cov];
     if(rite==="bcp62") return ["full","The 1662 Order for the Administration of the Lord's Supper is printed in full, with the collect, epistle and gospel of the day as the Prayer Book gives them."];
     if(rite==="bcp49") return ["full","The Supper of the Lord and the Holy Communion in the first Prayer Book of Edward VI (1549) is printed in full, in the spelling of the book, with the Introit, Collect, Epistle and Gospel of the day."];
     if(rite==="bcp52") return ["full","The Order for the Administration of the Lordes Supper in the second Prayer Book of Edward VI (1552) is printed in full, in the spelling of the book, with the Collect, Epistle and Gospel of the day."];
@@ -234,6 +238,10 @@ const covBadge=c=>c?`<span class="cov cov-${c[0]}">${COV_LABEL[c[0]]}</span>`:""
 /* Occasional services: baptism, marriage and burial, from books already on the site. They keep no calendar: the date
    only fills in the Collect or psalm where a book appoints one. */
 const OCCASIONAL={
+  /* the coronations (data/orders.json: coronation-1661 with coronation-1685-consort, coronation-1594, coronation-1651) */
+  coro61:{level:"guide",title:"The Coronation of a King",sub:"Westminster Abbey, 23 April 1661 · the coronation of Charles II, after Ashmole and Sandford",cov:"Every prayer of the coronation of Charles II is printed from the account of 1761 \"with the prayers at full length\": the recognition, the oath, Veni Creator, the anointing, the investing, the crowning, the ring and sceptres, Te Deum, the enthroning and homage, the Epistle and Gospel, and the Communion. The account names but does not print the Litany, Veni Creator, Te Deum, the Creed and the consecration, which are the Prayer Book's. The crowning of a queen consort, in the form of 1685, can be added under Customize timing.",foot:"The Entire Ceremonies of the Coronations of His Majesty King Charles II. and of her Majesty Queen Mary, Consort to James II. As published by those learned heralds Ashmole and Sandford (London, 1761), public domain; text from the Text Creation Partnership's keyboarding (ECCO-TCP), distributed by the Oxford Text Archive under CC BY-SA 3.0. Words illegible in that copy are supplied in brackets. The names in the prayers are Charles and Mary: put your own sovereign's in their place."},
+  coro94:{level:"order",title:"The Anointing and Coronation of a King",sub:"Chartres, 27 February 1594 · Henry IV of France and Navarre",cov:"The order of the French coronation as it was done for Henry IV, from an English account printed in 1594: every ceremony in order, with each prayer, antiphon and responsory of the order of Reims named by its Latin opening words. The full Latin forms are in the Pontifical and are not printed here.",foot:"The Order of Ceremonies observed in the annointing and Coronation of the most Christian King of France & Navarre, Henry the IIII., translated by E. A. (London: John Windet, 1594), public domain, in the spelling of 1594; text from the Text Creation Partnership's keyboarding (EEBO-TCP, CC0)."},
+  coro51:{level:"guide",title:"The Coronation of a King",sub:"Scone, 1 January 1651 · Charles II crowned by the Kirk of Scotland",cov:"The Form and Order of the coronation at Scone is printed in full, in the spelling of 1651: the renewing of the covenants, the presentation to the people, the coronation oath, the sword, the crowning (there is no anointing), the sceptre and throne, the exhortations, the homage and the blessing, with Robert Douglas's sermon folded away. The National Covenant and the Solemn League and Covenant were read but are not printed in the book.",foot:"The Forme and Order of the Coronation of Charles the Second (Aberdeen: James Brown, 1651), public domain; text from the Text Creation Partnership's keyboarding (EEBO-TCP, CC0). Letters illegible in that copy are supplied in brackets."},
   bcp62bap:{title:"Publick Baptism of Infants",sub:"The Book of Common Prayer (1662)",cov:"The Ministration of Publick Baptism of Infants from the 1662 Prayer Book is printed in full, with the 1662 rubrics.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread, with the 1662 rubrics restored from a London printing of 1800 where current printings revise them. Crown copyright in the United Kingdom; public domain elsewhere."},
   bcp62mat:{title:"The Solemnization of Matrimony",sub:"The Book of Common Prayer (1662)",cov:"The Form of Solemnization of Matrimony from the 1662 Prayer Book is printed in full, with both psalms and the duties of man and wife.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread, with the 1662 rubrics on the Banns and the Sermon restored from a London printing of 1800. Crown copyright in the United Kingdom; public domain elsewhere."},
   wes84bap:{title:"The Ministration of Baptism of Infants",sub:"Wesley's Sunday Service (1784)",cov:"Wesley's Ministration of Baptism of Infants is printed in full.",foot:"John Wesley, The Sunday Service of the Methodists in North America (London, 1784), public domain, transcribed from the Internet Archive scan and set against the 1662 office Wesley abridged; his changes are kept."},
@@ -245,7 +253,7 @@ const OCCASIONAL={
   bcp62bur:{title:"The Burial of the Dead",sub:"The Book of Common Prayer (1662)",cov:"The Order for the Burial of the Dead from the 1662 Prayer Book is printed in full, with Psalms 39 and 90 and the lesson from 1 Corinthians 15.",foot:"The Book of Common Prayer (1662), from Lynda M. Howell's transcription, proofread against the Coverdale psalter and the King James Bible. Crown copyright in the United Kingdom; public domain elsewhere."}
 };
 /* every service of one tradition, the Eucharist first, then the offices, the Litany and the preparation */
-const KIND_ORDER=k=>k==="Daily office"?1:k==="Litany"?2:k==="Preparation"?3:/^(Baptism|Matrimony|Burial)$/.test(k)?4:0;
+const KIND_ORDER=k=>k==="Daily office"?1:k==="Litany"?2:k==="Preparation"?3:/^(Baptism|Matrimony|Burial|Coronation)$/.test(k)?4:0;
 function famRites(f){
   return [...MASS_RITES.map(r=>({type:"mass",...r})),...OFFICE_RITES.map(r=>({type:"office",...r}))].filter(r=>familyOf(r.id)===f)
     .map((r,i)=>({...r,i,k:riteKind(r.type,r.id)})).sort((a,b)=>KIND_ORDER(a.k)-KIND_ORDER(b.k)||a.i-b.i);
@@ -545,7 +553,7 @@ async function readingBlock(lab,cit,num,tr,added){
   const alt=parseCit(cit).alt;
   return `<section class="reading${added?" added":""}"><header><span class="rl">${esc(lab)}${added?" · hybrid addition":""}</span><span class="rc">${esc(cit.split(" or ")[0])}</span></header>${alt?`<p class="note">Or: ${esc(alt.replace(/^or\s+/,""))}</p>`:""}<div class="rtext">${body}</div></section>`;
 }
-const RITE_TR={n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp18:"kj",bcp29:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
+const RITE_TR={coro61:"kj",coro51:"kj",coro94:"dr",n:"dr",o:"kj",m:"dr",p:"dr",h:"dr",b:"dr",d:"dr",a:"dr",z:"dr",bcp28:"kj",bcp62:"kj",bcp49:"kj",bcp52:"kj",bcp59:"kj",bcp37:"kj",bcp89:"kj",wes84:"kj",wes84o:"kj",bcp92:"kj",bcp18:"kj",bcp29:"kj",bcp79:"kj",csb:"kj",csbm:"kj",csbv:"kj",pres:"kj",rca:"kj",csbse:"kj",byzc:"kj",byzv:"kj",byzm:"kj",byzh:"kj",csbsm:"kj",csbs:"kj",csbl:"kj",rcus:"kj",rcusv:"kj",rcusp:"kj",me08:"kj",arm:"kj",copt:"kj",adai:"kj"};
 const ORD_ONLY=r=>!!(MASS_RITES.find(x=>x.id===r)||{}).ord;
 async function renderSession(){
   await daysReady;

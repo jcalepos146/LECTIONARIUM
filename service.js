@@ -1007,6 +1007,13 @@ const ORDER_RITES={
   csbbap:{parts:o=>[["csb-baptism"]]},
   csbmat:{parts:o=>[["csb-matrimony"]]},
   csbbur:{parts:o=>[["csb-burial"]]},
+  /* the coronations: proper lessons go to their slots; a queen consort is crowned after the king's homage */
+  coro61:{parts:o=>o.consort==="yes"?[["coronation-1661",null,"The Enthroning and the Homage"],["coronation-1685-consort",null,"The Anthem for the Queen"],["coronation-1661","The Anthem, Epistle and Gospel"]]:[["coronation-1661"]],
+    proper:{"lessons:The Epistle":["The Epistle","1 Pet 2:11-17"],"gospel:The Gospel":["The Gospel","Matt 22:15-22"]},
+    optional:["The Proceeding to the Abbey","The King's Champion"], optLabel:"The procession to the Abbey and the King's Champion left out",
+    sel:{key:"consort",label:"A queen consort",opts:[["no","Not crowned"],["yes","Crowned after the King (the form of 1685)"]]}},
+  coro94:{parts:o=>[["coronation-1594"]], optional:["The Eve"], optLabel:"The eve of the coronation left out"},
+  coro51:{parts:o=>[["coronation-1651"]], proper:{"psalter:The Twentieth Psalm":["Psalm 20","Ps 20"]}, optional:["The King Brought to the Kirk"], optLabel:"The procession to the Kirk left out"},
   csbm:{lect:"csb", parts:o=>[["csb-matins"]], csbCollect:true},
   csbv:{lect:"csb", parts:o=>[["csb-vespers"]], csbCollect:true}
 };
@@ -1070,6 +1077,11 @@ async function buildOrders(ctx,opts,rite){
       less["lessons:"]=[`<p class="cite">${esc(L.t)} · the Order of Scripture Lessons (1882)</p>`+await RB(ctx,"The Lesson from the Old Testament",ot,"k","kj")+await RB(ctx,"The Lesson from the New Testament",nt,"k","kj")+`<p class="note">For the evening service the table appoints ${esc(L.e[0])} and ${esc(L.e[1])}.</p>`,9];
     }
     opts={...opts,_less:less};
+  }
+  if(R.proper){   /* readings an order appoints for itself */
+    const less={};
+    for(const [k,[lab,cite]] of Object.entries(R.proper)) less[k]=[await RB(ctx,lab,cite,"k","kj"),/^Ps /.test(cite)?1.5:3];
+    opts={...opts,_less:{...(opts._less||{}),...less}};
   }
   if(R.byzFeast){   /* Hapgood's hymns of the Sunday tone and of the Great Feasts; Great Vespers is the vigil of the next day */
     const D=await J("data/byz-liturgy.json"), V=R.byzFeast==="v", less={};
@@ -1834,7 +1846,7 @@ async function render(el, ctx){
   const following=!!ctx.liveOpts;
   let opts=following?{...loadOpts(store),...clone(ctx.liveOpts)}:loadOpts(store);
   if(!isOffice&&!following) opts.votive=ctx.votive||"";   /* the session's votive Mass (votive.js); a follower takes the host's */
-  const OCC=/(bap|mat|bur)$/.test(rite);
+  const OCC=/(bap|mat|bur)$/.test(rite)||/^coro/.test(rite);
   const noun=isOffice?"hour":OCC?"service":/^(b|copt|arm|adai)$/.test(rite)?"Liturgy":/^(n|o|m|p|h|d|a|z)$/.test(rite)?"Mass":/^(csbm|csbv|csbs|csbsm|csbse|byzv|byzm|byzh|byzc|wes84o|rcusv|csbl|rcusp)$/.test(rite)?"office":"service";
   const build=async(o)=>{ USED=new Set(); ROLE="cel";
     if(isOffice) return buildOffice(ctx,o);
