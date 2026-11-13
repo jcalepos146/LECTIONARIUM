@@ -222,6 +222,8 @@ def main():
             else:
                 s[f]["text"] = text
         propers[k] = {"t": d["t"], "sets": [s] + d["sets"][1:], "notes": d.get("notes", [])}
+        if d.get("same"):
+            propers[k]["same"] = d["same"]  # retain the Sunday collect on Holy Week weekdays
     for k, f, old, new in OVERRIDE:
         paras = propers[k]["sets"][0]["collect"] if f == "collect" else propers[k]["sets"][0][f]["text"]
         hit = [n for n, t in enumerate(paras) if old in t]

@@ -266,3 +266,30 @@ Bible texts. Current church sources are linked for Armenian, Assyrian, Ambrosian
 and Hispano-Mozarabic calendars; their full automatic tables remain unfinished.
 The current RCUS profile accepts the congregation’s selections without imposing
 a fixed calendar. See [calendar provenance and remaining work](docs/lectionaries.md).
+
+### Devotional completions
+
+Every entry on `#/wip` links to a complete devotional companion. These combine
+the existing public-domain King James Bible with original prayers and reflections,
+using eight family profiles and seven selectable Scripture pairs. They are
+personal prayer resources, not newly discovered historical service texts,
+authorized rites, Eucharistic orders, or computed lectionaries.
+
+- `src/companions.js` renders the companions, text download, print view and
+  expandable alternatives below eligible unfilled prayer cues.
+- `data/devotional-companions.json` holds the original profiles and Scripture
+  selections. Scripture integrity tests compare every verse with `bible/kj`.
+- `#/companion/<catalog-id>/<0-6>` opens a directory companion;
+  `#/companion/rite-<type>-<rite>/<0-6>` opens a guide companion. Omit the final
+  index to select by the device's current weekday (Sunday starts at zero).
+- Existing historical guides retain their own coverage and source notes.
+  Personal saved texts take priority over devotional alternatives. The
+  alternatives do not supply Eucharistic Prayers, consecration texts, missing
+  calendar appointments, or declarations of absolution. They do not enter the
+  timed service, shared live-session content, or the personal-text export.
+- The offline save pack includes the companion JSON automatically through the
+  existing `data/*.json` build manifest.
+
+Run `python3 src/assemble.py` after source changes and
+`python3 -m unittest discover -s tests -p test_companions.py -v` for the companion
+acceptance and Scripture-integrity checks.

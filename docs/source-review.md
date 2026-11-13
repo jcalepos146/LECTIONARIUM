@@ -107,3 +107,34 @@ Exact historical catalog records now also identify the 1562 Genevan psalter,
 1650 Scottish metrical psalter and Westminster Directory’s 1644–45 printing.
 The Dort entry distinguishes a later 1856 English liturgy from the original
 1619 Dutch forms; modern English translations remain separately uncleared.
+
+Completion review, 13 November 2026:
+
+- Canada 1918 and Scotland 1929 already carry their own 90-day tables in
+  `tools/texts/bcp-propers.json` and the generated data files. Their coverage
+  notes and guide footers now identify those tables instead of the 1662
+  substitute. Scottish occasional and common propers outside the bundled
+  table remain an explicit limitation.
+- The Canadian importer discarded the `same` reference when copying a day
+  with no new collect. Retaining that reference restores the Palm Sunday
+  collect on Monday through Thursday before Easter, using the Canadian
+  wording. The Canadian 1918 scan's opening rubric for the Collects,
+  Epistles and Gospels says the Sunday's appointments serve
+  the week unless otherwise ordered:
+  https://justus.anglican.org/resources/bcp/Canada/Canada1918.pdf .
+- This review fixes rendering and provenance; it does not certify a fresh
+  word-by-word transcription of either entire book.
+
+Devotional additions, 13 November 2026:
+
+At the user's request to mix historical material with original completions,
+each WIP entry now has a complete personal devotional companion. The eight
+family profiles, intercessions, reflections, hymn and cue alternatives are
+original compositions. They make no claim to be an official church text or a
+transcription of a missing book. Each original section and alternative is
+labeled. The fourteen Scripture passages (seven psalms and seven readings)
+come from the project's existing King James Bible and are checked verse by
+verse by `tests/test_companions.py`. The selections form an editorial cycle,
+not a historical lectionary. Source notices remain in downloads and print.
+No additional modern service-book translation was imported. The historical
+source plan and its remaining gaps are retained as such.

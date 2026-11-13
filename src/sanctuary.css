@@ -92,3 +92,28 @@ body:not(.in-session) .san-guide-help{display:none}
  .sesbar{border:0;padding:0} .sesbar .crumbs,.sesbar .dlabel{font-size:10pt}
  .dayname{font-size:20pt}
 }
+
+/* Devotional companions keep the source distinction visible on screen and on paper. */
+.devotional-companion{max-width:850px;margin:0 auto}
+.companion-notice{padding:18px 22px;border-left:3px solid var(--san-gold);background:var(--san-panel)}
+.companion-actions,.companion-cycle{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.companion-actions button,.companion-cycle button{background:var(--san-panel);border:1px solid var(--san-gold);padding:8px 14px;border-radius:3px}
+.companion-cycle button[aria-current]{background:var(--san-gold);color:var(--san-bg)!important}
+.companion-section{margin:36px 0;padding-top:22px;border-top:1px solid var(--san-gold)}
+.companion-section h2{margin-bottom:6px}
+.companion-source{font-size:.78em;color:var(--san-muted);margin:0 0 18px}
+.companion-provenance{font-size:.85em;margin-top:40px;border-top:1px solid var(--san-gold);padding-top:24px}
+.devotional-alternative{border-left:3px solid var(--gold);padding:10px 18px;margin:14px 0}
+.devotional-alternative summary{cursor:pointer;color:var(--gold)}
+@media print{
+ body.companion-print{overflow:visible!important;background:white!important}
+ body.companion-print>.wrap,body.companion-print>#san-bar{display:none!important}
+ body.companion-print #sanctuary{display:block!important;position:static!important;overflow:visible!important;height:auto!important;max-height:none!important;background:white!important;color:black!important;font-size:12pt!important}
+ body.companion-print .san-toolbar,body.companion-print .san-prompts,body.companion-print .companion-actions,body.companion-print .companion-cycle{display:none!important}
+ body.companion-print .san-content{padding:0!important}
+ body.companion-print #sanctuary h2,body.companion-print #sanctuary a,body.companion-print .companion-source{color:black!important}
+ body.companion-print .companion-section{break-inside:avoid}
+ body.companion-print .companion-notice{background:white;border-color:black}
+}
+
+@media print{body.companion-print .companion-provenance{display:block!important}}
