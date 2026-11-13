@@ -70,6 +70,7 @@ function decorate(body, ctx, redrawFn){
     cueEl.appendChild(btn);
     if(cur){ filled++; const d=document.createElement("div"); d.className="mytext"; d.innerHTML=`<span class="mt-lbl">From your book${cur.day?" · this day":""}</span>`+toHTML(cur.t,cur.r||"all"); cueEl.after(d); }
   });
+  window.LectCompanions?.decorate(body,ctx);
   if(n){ const total=Object.keys(db).length; const bar=document.createElement("div"); bar.className="mt-bar";
     bar.innerHTML=`<span><b>Your texts</b> · ${filled} of ${n} cues here filled from your book · ${total} saved in all</span>
       <button type="button" class="tbtn ghost" data-a="exp">Export</button><label class="tbtn ghost mt-imp">Import<input type="file" accept=".json,application/json" hidden></label>

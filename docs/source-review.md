@@ -124,3 +124,17 @@ Completion review, 13 November 2026:
   https://justus.anglican.org/resources/bcp/Canada/Canada1918.pdf .
 - This review fixes rendering and provenance; it does not certify a fresh
   word-by-word transcription of either entire book.
+
+Devotional additions, 13 November 2026:
+
+At the user's request to mix historical material with original completions,
+each WIP entry now has a complete personal devotional companion. The eight
+family profiles, intercessions, reflections, hymn and cue alternatives are
+original compositions. They make no claim to be an official church text or a
+transcription of a missing book. Each original section and alternative is
+labeled. The fourteen Scripture passages (seven psalms and seven readings)
+come from the project's existing King James Bible and are checked verse by
+verse by `tests/test_companions.py`. The selections form an editorial cycle,
+not a historical lectionary. Source notices remain in downloads and print.
+No additional modern service-book translation was imported. The historical
+source plan and its remaining gaps are retained as such.

@@ -1,0 +1,587 @@
+{
+  "version": 1,
+  "scriptureSource": {
+    "title": "King James Version, bundled public-domain text",
+    "url": "https://github.com/jcalepos146/LECTIONARIUM/tree/main/bible/kj"
+  },
+  "originalSource": "Original devotional compositions prepared for Lectionarium, November 2026. These are not historical transcriptions or authorized liturgical texts.",
+  "profiles": {
+    "catholic": {
+      "theme": "Prayer and the works of mercy",
+      "opening": "God of holiness and compassion, gather our scattered hearts into the love of Christ. Teach us to receive your gifts with gratitude and to offer our daily work for our neighbours.",
+      "confession": "Merciful Father, we have neglected the good before us and passed by those who needed our care. Receive our repentance; strengthen us to make amends and to begin again.",
+      "intercessions": "For the Church, that worship may bear fruit in holiness; for those entrusted with public service, that they may protect the vulnerable; for the sick and those who care for them.",
+      "sending": "As we go, let our prayer become patient service, our gratitude become generosity, and our faith become a welcome for those who are alone."
+    },
+    "eastern-orthodox": {
+      "theme": "Light, mercy and peace",
+      "opening": "Holy God, Father, Son and Holy Spirit, illumine our hearts with the light of your mercy. Still the noise within us, and teach us to pray with attention and love.",
+      "confession": "Lord Jesus Christ, look with compassion on our pride, our anger and our forgetfulness of others. Give us tears of repentance, courage for reconciliation, and a heart made gentle by your mercy.",
+      "intercessions": "For peace among the churches and peoples; for those displaced by war; for monastics, households and all who seek to pray; for those whose suffering is hidden.",
+      "sending": "Let the light we have sought in prayer be seen in the kindness of our lives. Guard our hearts from contempt, and guide our steps in peace."
+    },
+    "oriental": {
+      "theme": "The Word among us",
+      "opening": "Lord Jesus Christ, Word of God who shared our human life, draw near to us in our weakness. Unite our prayer with the love you showed to the hungry, the grieving and the forgotten.",
+      "confession": "Compassionate Lord, we confess the hardness of our hearts and the harm our indifference has done. Renew in us your tenderness, and lead us from empty words to faithful deeds.",
+      "intercessions": "For ancient Christian communities and their neighbours; for refugees and those separated from family; for every language in which your praise is offered; for the hungry and the bereaved.",
+      "sending": "Christ our hope, remain with us in our labour and our rest. Make our homes places of mercy, and our communities places where strangers find friendship."
+    },
+    "anglican": {
+      "theme": "Scripture, common prayer and daily life",
+      "opening": "God of all our days, gather us through the reading of Scripture and the offering of prayer; that, attending to your voice, we may learn to love what is good and to serve with willing hearts; through Jesus Christ our Lord.",
+      "confession": "God of mercy, we have spoken without love, judged without understanding, and left undone the kindness within our reach. Forgive us, renew our hope, and guide us into a more faithful way.",
+      "intercessions": "For the unity of the Church in truth and love; for those who teach and those who learn; for our towns and neighbourhoods; for all who ask our prayers and all who have no one to pray for them.",
+      "sending": "God of steadfast love, keep us faithful in the ordinary tasks of this day; that in our homes, our work and our encounters we may make room for your peace; through Jesus Christ our Lord."
+    },
+    "lutheran": {
+      "theme": "Grace received and shared",
+      "opening": "Gracious God, we come with empty hands, trusting your promise of mercy in Jesus Christ. Open our ears to your Word, and free us to serve our neighbours without fear.",
+      "confession": "Faithful God, we have tried to justify ourselves and have failed to love our neighbours as ourselves. We entrust our sin and sorrow to your mercy. Give us faith to receive your kindness and strength to repair the wrong we have done.",
+      "intercessions": "For the preaching of the Gospel and the care of souls; for workers and those seeking work; for families under strain; for all burdened by guilt, loneliness or fear.",
+      "sending": "Send us into our callings with confidence in your grace. Let our freedom become service and our gratitude become a blessing to those we meet."
+    },
+    "reformed": {
+      "theme": "Hearing the Word and answering in faith",
+      "opening": "Sovereign and gracious God, quiet our self-importance before your truth. By your Spirit open our understanding, so that hearing your Word may lead us to obedient and generous lives.",
+      "confession": "Righteous God, we confess that we have preferred our own advantage to the good of our neighbours. We have hidden our failures and excused our neglect. Have mercy on us through Jesus Christ, and turn us toward truth and justice.",
+      "intercessions": "For churches to be reformed in faithfulness and charity; for honest government and just courts; for those exploited in their work; for households facing scarcity and communities seeking reconciliation.",
+      "sending": "God of covenant faithfulness, sustain us in the promises we have made. Give us integrity in private and public life, and make us ready to serve where you have placed us."
+    },
+    "methodist": {
+      "theme": "Grace that becomes active love",
+      "opening": "God of renewing grace, awaken our love for you and for all whom you have made. Warm our hearts, discipline our habits, and join our prayer to practical care for our neighbours.",
+      "confession": "Patient God, we have heard the call to love and have delayed our answer. We have grown comfortable with the suffering of others. Forgive our reluctance, renew our purpose, and lead us in the way of Jesus.",
+      "intercessions": "For communities of prayer and mutual encouragement; for those recovering from addiction; for those denied education or healthcare; for all who work to relieve poverty and heal divisions.",
+      "sending": "God of generous love, send us to do the good that is within our power today. Give us companions in faith, perseverance in service, and joy that makes room for others."
+    },
+    "old-catholic": {
+      "theme": "Communion, conscience and service",
+      "opening": "God of communion, gather us in the love of Christ. Help us to listen with humility, to seek truth together, and to cherish the dignity of every person entrusted to our care.",
+      "confession": "Merciful God, we confess the divisions we have deepened and the voices we have refused to hear. Give us courage to acknowledge our failures, patience for honest conversation, and generosity for reconciliation.",
+      "intercessions": "For the churches in their search for unity; for bishops, ministers and lay people sharing responsibility; for freedom of conscience and the protection of human dignity; for those who feel excluded or unheard.",
+      "sending": "God of peace, accompany us beyond this time of prayer. Make us faithful in conscience, gentle in disagreement, and steadfast in the service of our neighbours."
+    }
+  },
+  "cycle": [
+    {
+      "theme": "Rest and trust",
+      "psalm": {
+        "cite": "Ps 23:1-6",
+        "verses": [
+          {
+            "n": 1,
+            "text": "The Lord is my shepherd; I shall not want."
+          },
+          {
+            "n": 2,
+            "text": "He maketh me to lie down in green pastures: he leadeth me beside the still waters."
+          },
+          {
+            "n": 3,
+            "text": "He restoreth my soul: he leadeth me in the paths of righteousness for his name’s sake."
+          },
+          {
+            "n": 4,
+            "text": "Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me."
+          },
+          {
+            "n": 5,
+            "text": "Thou preparest a table before me in the presence of mine enemies: thou anointest my head with oil; my cup runneth over."
+          },
+          {
+            "n": 6,
+            "text": "Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the Lord for ever."
+          }
+        ]
+      },
+      "reading": {
+        "cite": "Matt 11:28-30",
+        "verses": [
+          {
+            "n": 28,
+            "text": "Come unto me, all ye that labour and are heavy laden, and I will give you rest."
+          },
+          {
+            "n": 29,
+            "text": "Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls."
+          },
+          {
+            "n": 30,
+            "text": "For my yoke is easy, and my burden is light."
+          }
+        ]
+      }
+    },
+    {
+      "theme": "Mercy in action",
+      "psalm": {
+        "cite": "Ps 103:1-5",
+        "verses": [
+          {
+            "n": 1,
+            "text": "Bless the Lord, O my soul: and all that is within me, bless his holy name."
+          },
+          {
+            "n": 2,
+            "text": "Bless the Lord, O my soul, and forget not all his benefits:"
+          },
+          {
+            "n": 3,
+            "text": "Who forgiveth all thine iniquities; who healeth all thy diseases;"
+          },
+          {
+            "n": 4,
+            "text": "Who redeemeth thy life from destruction; who crowneth thee with lovingkindness and tender mercies;"
+          },
+          {
+            "n": 5,
+            "text": "Who satisfieth thy mouth with good things; so that thy youth is renewed like the eagle’s."
+          }
+        ]
+      },
+      "reading": {
+        "cite": "Luke 10:30-37",
+        "verses": [
+          {
+            "n": 30,
+            "text": "And Jesus answering said, A certain man went down from Jerusalem to Jericho, and fell among thieves, which stripped him of his raiment, and wounded him, and departed, leaving him half dead."
+          },
+          {
+            "n": 31,
+            "text": "And by chance there came down a certain priest that way: and when he saw him, he passed by on the other side."
+          },
+          {
+            "n": 32,
+            "text": "And likewise a Levite, when he was at the place, came and looked on him, and passed by on the other side."
+          },
+          {
+            "n": 33,
+            "text": "But a certain Samaritan, as he journeyed, came where he was: and when he saw him, he had compassion on him,"
+          },
+          {
+            "n": 34,
+            "text": "And went to him, and bound up his wounds, pouring in oil and wine, and set him on his own beast, and brought him to an inn, and took care of him."
+          },
+          {
+            "n": 35,
+            "text": "And on the morrow when he departed, he took out two pence, and gave them to the host, and said unto him, Take care of him; and whatsoever thou spendest more, when I come again, I will repay thee."
+          },
+          {
+            "n": 36,
+            "text": "Which now of these three, thinkest thou, was neighbour unto him that fell among the thieves?"
+          },
+          {
+            "n": 37,
+            "text": "And he said, He that shewed mercy on him. Then said Jesus unto him, Go, and do thou likewise."
+          }
+        ]
+      }
+    },
+    {
+      "theme": "Peace and reconciliation",
+      "psalm": {
+        "cite": "Ps 133:1-3",
+        "verses": [
+          {
+            "n": 1,
+            "text": "Behold, how good and how pleasant it is for brethren to dwell together in unity!"
+          },
+          {
+            "n": 2,
+            "text": "It is like the precious ointment upon the head, that ran down upon the beard, even Aaron’s beard: that went down to the skirts of his garments;"
+          },
+          {
+            "n": 3,
+            "text": "As the dew of Hermon, and as the dew that descended upon the mountains of Zion: for there the Lord commanded the blessing, even life for evermore."
+          }
+        ]
+      },
+      "reading": {
+        "cite": "Matt 5:1-12",
+        "verses": [
+          {
+            "n": 1,
+            "text": "And seeing the multitudes, he went up into a mountain: and when he was set, his disciples came unto him:"
+          },
+          {
+            "n": 2,
+            "text": "And he opened his mouth, and taught them, saying,"
+          },
+          {
+            "n": 3,
+            "text": "Blessed are the poor in spirit: for theirs is the kingdom of heaven."
+          },
+          {
+            "n": 4,
+            "text": "Blessed are they that mourn: for they shall be comforted."
+          },
+          {
+            "n": 5,
+            "text": "Blessed are the meek: for they shall inherit the earth."
+          },
+          {
+            "n": 6,
+            "text": "Blessed are they which do hunger and thirst after righteousness: for they shall be filled."
+          },
+          {
+            "n": 7,
+            "text": "Blessed are the merciful: for they shall obtain mercy."
+          },
+          {
+            "n": 8,
+            "text": "Blessed are the pure in heart: for they shall see God."
+          },
+          {
+            "n": 9,
+            "text": "Blessed are the peacemakers: for they shall be called the children of God."
+          },
+          {
+            "n": 10,
+            "text": "Blessed are they which are persecuted for righteousness’ sake: for theirs is the kingdom of heaven."
+          },
+          {
+            "n": 11,
+            "text": "Blessed are ye, when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for my sake."
+          },
+          {
+            "n": 12,
+            "text": "Rejoice, and be exceeding glad: for great is your reward in heaven: for so persecuted they the prophets which were before you."
+          }
+        ]
+      }
+    },
+    {
+      "theme": "Hope in hardship",
+      "psalm": {
+        "cite": "Ps 130:1-8",
+        "verses": [
+          {
+            "n": 1,
+            "text": "Out of the depths have I cried unto thee, O Lord."
+          },
+          {
+            "n": 2,
+            "text": "Lord, hear my voice: let thine ears be attentive to the voice of my supplications."
+          },
+          {
+            "n": 3,
+            "text": "If thou, Lord, shouldest mark iniquities, O Lord, who shall stand?"
+          },
+          {
+            "n": 4,
+            "text": "But there is forgiveness with thee, that thou mayest be feared."
+          },
+          {
+            "n": 5,
+            "text": "I wait for the Lord, my soul doth wait, and in his word do I hope."
+          },
+          {
+            "n": 6,
+            "text": "My soul waiteth for the Lord more than they that watch for the morning: I say, more than they that watch for the morning."
+          },
+          {
+            "n": 7,
+            "text": "Let Israel hope in the Lord: for with the Lord there is mercy, and with him is plenteous redemption."
+          },
+          {
+            "n": 8,
+            "text": "And he shall redeem Israel from all his iniquities."
+          }
+        ]
+      },
+      "reading": {
+        "cite": "Rom 8:31-39",
+        "verses": [
+          {
+            "n": 31,
+            "text": "What shall we then say to these things? If God be for us, who can be against us?"
+          },
+          {
+            "n": 32,
+            "text": "He that spared not his own Son, but delivered him up for us all, how shall he not with him also freely give us all things?"
+          },
+          {
+            "n": 33,
+            "text": "Who shall lay any thing to the charge of God’s elect? It is God that justifieth."
+          },
+          {
+            "n": 34,
+            "text": "Who is he that condemneth? It is Christ that died, yea rather, that is risen again, who is even at the right hand of God, who also maketh intercession for us."
+          },
+          {
+            "n": 35,
+            "text": "Who shall separate us from the love of Christ? shall tribulation, or distress, or persecution, or famine, or nakedness, or peril, or sword?"
+          },
+          {
+            "n": 36,
+            "text": "As it is written, For thy sake we are killed all the day long; we are accounted as sheep for the slaughter."
+          },
+          {
+            "n": 37,
+            "text": "Nay, in all these things we are more than conquerors through him that loved us."
+          },
+          {
+            "n": 38,
+            "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come,"
+          },
+          {
+            "n": 39,
+            "text": "Nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord."
+          }
+        ]
+      }
+    },
+    {
+      "theme": "Love of neighbour",
+      "psalm": {
+        "cite": "Ps 100:1-5",
+        "verses": [
+          {
+            "n": 1,
+            "text": "Make a joyful noise unto the Lord, all ye lands."
+          },
+          {
+            "n": 2,
+            "text": "Serve the Lord with gladness: come before his presence with singing."
+          },
+          {
+            "n": 3,
+            "text": "Know ye that the Lord he is God: it is he that hath made us, and not we ourselves; we are his people, and the sheep of his pasture."
+          },
+          {
+            "n": 4,
+            "text": "Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name."
+          },
+          {
+            "n": 5,
+            "text": "For the Lord is good; his mercy is everlasting; and his truth endureth to all generations."
+          }
+        ]
+      },
+      "reading": {
+        "cite": "1Cor 13:1-13",
+        "verses": [
+          {
+            "n": 1,
+            "text": "Though I speak with the tongues of men and of angels, and have not charity, I am become as sounding brass, or a tinkling cymbal."
+          },
+          {
+            "n": 2,
+            "text": "And though I have the gift of prophecy, and understand all mysteries, and all knowledge; and though I have all faith, so that I could remove mountains, and have not charity, I am nothing."
+          },
+          {
+            "n": 3,
+            "text": "And though I bestow all my goods to feed the poor, and though I give my body to be burned, and have not charity, it profiteth me nothing."
+          },
+          {
+            "n": 4,
+            "text": "Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up,"
+          },
+          {
+            "n": 5,
+            "text": "Doth not behave itself unseemly, seeketh not her own, is not easily provoked, thinketh no evil;"
+          },
+          {
+            "n": 6,
+            "text": "Rejoiceth not in iniquity, but rejoiceth in the truth;"
+          },
+          {
+            "n": 7,
+            "text": "Beareth all things, believeth all things, hopeth all things, endureth all things."
+          },
+          {
+            "n": 8,
+            "text": "Charity never faileth: but whether there be prophecies, they shall fail; whether there be tongues, they shall cease; whether there be knowledge, it shall vanish away."
+          },
+          {
+            "n": 9,
+            "text": "For we know in part, and we prophesy in part."
+          },
+          {
+            "n": 10,
+            "text": "But when that which is perfect is come, then that which is in part shall be done away."
+          },
+          {
+            "n": 11,
+            "text": "When I was a child, I spake as a child, I understood as a child, I thought as a child: but when I became a man, I put away childish things."
+          },
+          {
+            "n": 12,
+            "text": "For now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known."
+          },
+          {
+            "n": 13,
+            "text": "And now abideth faith, hope, charity, these three; but the greatest of these is charity."
+          }
+        ]
+      }
+    },
+    {
+      "theme": "Thanksgiving",
+      "psalm": {
+        "cite": "Ps 121:1-8",
+        "verses": [
+          {
+            "n": 1,
+            "text": "I will lift up mine eyes unto the hills, from whence cometh my help."
+          },
+          {
+            "n": 2,
+            "text": "My help cometh from the Lord, which made heaven and earth."
+          },
+          {
+            "n": 3,
+            "text": "He will not suffer thy foot to be moved: he that keepeth thee will not slumber."
+          },
+          {
+            "n": 4,
+            "text": "Behold, he that keepeth Israel shall neither slumber nor sleep."
+          },
+          {
+            "n": 5,
+            "text": "The Lord is thy keeper: the Lord is thy shade upon thy right hand."
+          },
+          {
+            "n": 6,
+            "text": "The sun shall not smite thee by day, nor the moon by night."
+          },
+          {
+            "n": 7,
+            "text": "The Lord shall preserve thee from all evil: he shall preserve thy soul."
+          },
+          {
+            "n": 8,
+            "text": "The Lord shall preserve thy going out and thy coming in from this time forth, and even for evermore."
+          }
+        ]
+      },
+      "reading": {
+        "cite": "Phil 4:4-9",
+        "verses": [
+          {
+            "n": 4,
+            "text": "Rejoice in the Lord alway: and again I say, Rejoice."
+          },
+          {
+            "n": 5,
+            "text": "Let your moderation be known unto all men. The Lord is at hand."
+          },
+          {
+            "n": 6,
+            "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God."
+          },
+          {
+            "n": 7,
+            "text": "And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."
+          },
+          {
+            "n": 8,
+            "text": "Finally, brethren, whatsoever things are true, whatsoever things are honest, whatsoever things are just, whatsoever things are pure, whatsoever things are lovely, whatsoever things are of good report; if there be any virtue, and if there be any praise, think on these things."
+          },
+          {
+            "n": 9,
+            "text": "Those things, which ye have both learned, and received, and heard, and seen in me, do: and the God of peace shall be with you."
+          }
+        ]
+      }
+    },
+    {
+      "theme": "Light and renewal",
+      "psalm": {
+        "cite": "Ps 67:1-7",
+        "verses": [
+          {
+            "n": 1,
+            "text": "God be merciful unto us, and bless us; and cause his face to shine upon us; Selah."
+          },
+          {
+            "n": 2,
+            "text": "That thy way may be known upon earth, thy saving health among all nations."
+          },
+          {
+            "n": 3,
+            "text": "Let the people praise thee, O God; let all the people praise thee."
+          },
+          {
+            "n": 4,
+            "text": "O let the nations be glad and sing for joy: for thou shalt judge the people righteously, and govern the nations upon earth. Selah."
+          },
+          {
+            "n": 5,
+            "text": "Let the people praise thee, O God; let all the people praise thee."
+          },
+          {
+            "n": 6,
+            "text": "Then shall the earth yield her increase; and God, even our own God, shall bless us."
+          },
+          {
+            "n": 7,
+            "text": "God shall bless us; and all the ends of the earth shall fear him."
+          }
+        ]
+      },
+      "reading": {
+        "cite": "John 1:1-14",
+        "verses": [
+          {
+            "n": 1,
+            "text": "In the beginning was the Word, and the Word was with God, and the Word was God."
+          },
+          {
+            "n": 2,
+            "text": "The same was in the beginning with God."
+          },
+          {
+            "n": 3,
+            "text": "All things were made by him; and without him was not any thing made that was made."
+          },
+          {
+            "n": 4,
+            "text": "In him was life; and the life was the light of men."
+          },
+          {
+            "n": 5,
+            "text": "And the light shineth in darkness; and the darkness comprehended it not."
+          },
+          {
+            "n": 6,
+            "text": "There was a man sent from God, whose name was John."
+          },
+          {
+            "n": 7,
+            "text": "The same came for a witness, to bear witness of the Light, that all men through him might believe."
+          },
+          {
+            "n": 8,
+            "text": "He was not that Light, but was sent to bear witness of that Light."
+          },
+          {
+            "n": 9,
+            "text": "That was the true Light, which lighteth every man that cometh into the world."
+          },
+          {
+            "n": 10,
+            "text": "He was in the world, and the world was made by him, and the world knew him not."
+          },
+          {
+            "n": 11,
+            "text": "He came unto his own, and his own received him not."
+          },
+          {
+            "n": 12,
+            "text": "But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name:"
+          },
+          {
+            "n": 13,
+            "text": "Which were born, not of blood, nor of the will of the flesh, nor of the will of man, but of God."
+          },
+          {
+            "n": 14,
+            "text": "And the Word was made flesh, and dwelt among us, (and we beheld his glory, the glory as of the only begotten of the Father,) full of grace and truth."
+          }
+        ]
+      }
+    }
+  ]
+}

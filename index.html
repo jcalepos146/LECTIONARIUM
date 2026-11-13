@@ -639,6 +639,31 @@ body:not(.in-session) .san-guide-help{display:none}
  .dayname{font-size:20pt}
 }
 
+/* Devotional companions keep the source distinction visible on screen and on paper. */
+.devotional-companion{max-width:850px;margin:0 auto}
+.companion-notice{padding:18px 22px;border-left:3px solid var(--san-gold);background:var(--san-panel)}
+.companion-actions,.companion-cycle{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.companion-actions button,.companion-cycle button{background:var(--san-panel);border:1px solid var(--san-gold);padding:8px 14px;border-radius:3px}
+.companion-cycle button[aria-current]{background:var(--san-gold);color:var(--san-bg)!important}
+.companion-section{margin:36px 0;padding-top:22px;border-top:1px solid var(--san-gold)}
+.companion-section h2{margin-bottom:6px}
+.companion-source{font-size:.78em;color:var(--san-muted);margin:0 0 18px}
+.companion-provenance{font-size:.85em;margin-top:40px;border-top:1px solid var(--san-gold);padding-top:24px}
+.devotional-alternative{border-left:3px solid var(--gold);padding:10px 18px;margin:14px 0}
+.devotional-alternative summary{cursor:pointer;color:var(--gold)}
+@media print{
+ body.companion-print{overflow:visible!important;background:white!important}
+ body.companion-print>.wrap,body.companion-print>#san-bar{display:none!important}
+ body.companion-print #sanctuary{display:block!important;position:static!important;overflow:visible!important;height:auto!important;max-height:none!important;background:white!important;color:black!important;font-size:12pt!important}
+ body.companion-print .san-toolbar,body.companion-print .san-prompts,body.companion-print .companion-actions,body.companion-print .companion-cycle{display:none!important}
+ body.companion-print .san-content{padding:0!important}
+ body.companion-print #sanctuary h2,body.companion-print #sanctuary a,body.companion-print .companion-source{color:black!important}
+ body.companion-print .companion-section{break-inside:avoid}
+ body.companion-print .companion-notice{background:white;border-color:black}
+}
+
+@media print{body.companion-print .companion-provenance{display:block!important}}
+
 </style>
 </head>
 <body>
@@ -2328,6 +2353,64 @@ window.LectP2P={
 })();
 </script>
 <script>
+/* Complete devotional alternatives. Historical service coverage is deliberately unchanged. */
+(function(){
+'use strict';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let pending;
+function load(){return pending||(pending=fetch('data/devotional-companions.json').then(r=>{if(!r.ok)throw Error('Companion texts unavailable');return r.json();}).catch(e=>{pending=null;throw e;}));}
+const family=ctx=>{const r=ctx.office?.rite||ctx.rite;return /^(b|byz|byzv|byzm|byzh|byzc)$/.test(r)?'eastern-orthodox':/^(arm|copt|adai)$/.test(r)?'oriental':/^(bcp)/.test(r)?'anglican':/^csb/.test(r)?'lutheran':/^(rcus|rcusv|rcusp|rca|pres)$/.test(r)?'reformed':/^(wes|me08)/.test(r)?'methodist':'catholic';};
+const p=s=>`<p>${esc(s)}</p>`;
+const section=(title,body,source='Original devotional text')=>`<section class="companion-section"><h2>${esc(title)}</h2><p class="companion-source">${esc(source)}</p>${body}</section>`;
+function scripture(r){return `<p class="cite">${esc(r.cite)} · King James Version</p>`+r.verses.map(v=>`<p><sup>${v.n}</sup> ${esc(v.text)}</p>`).join('');}
+function prayers(P,C){return [
+ section('Gathering',p(P.opening)+p('We offer this time to God, remembering those who cannot find a quiet place or a moment of rest. Amen.')),
+ section('Confession and turning again',p(P.confession)+p('In silence, name a wrong to repair and a kindness to begin.')),
+ section('Psalm',scripture(C.psalm),'Historical text · selected for this companion, not an appointed psalm'),
+ section('Scripture',scripture(C.reading),'Historical text · selected for this companion, not a lectionary appointment'),
+ section('Reflection and response',p(`Today we reflect on ${C.theme.toLowerCase()}. Which word in the reading asks for our attention? Who might need the mercy, courage or generosity it describes?`)+p('Keep a little silence. Then name one concrete act of love for today.')+p('God of truth and mercy, let what we have heard take root in what we do. Amen.')),
+ section('Intercession',p(P.intercessions)+p('For those we have named and those we have forgotten, for our enemies as well as our friends: give help, healing and peace. Make us ready to take our part in answering these prayers. Amen.')),
+ section('Thanksgiving',p('God of life, we thank you for the gifts we did not earn: the earth that sustains us, the people who have cared for us, and the mercy we have received in Jesus Christ. Receive our gratitude, and teach us to share freely what has been entrusted to us. Amen.')),
+ section('Sending',p(P.sending)+p('Keep us in the love of the Father, in the grace of Jesus Christ, and in the fellowship of the Holy Spirit, today and always. Amen.'))
+ ].join('');}
+async function page(entry,key,index){const D=await load(),i=index===undefined?new Date(window.LitDate.today()+'T12:00:00Z').getUTCDay():Number(index);
+ if(!Number.isInteger(i)||i<0||i>6)return '<h1>Companion not found</h1><p>Choose a companion from Works in progress.</p>';
+ const P=D.profiles[entry.family]||D.profiles.catholic,C=D.cycle[i];
+ return `<article class="devotional-companion"><p class="san-eyebrow">Completed devotional companion · Scripture and original prayer</p><h1>${esc(entry.title)}</h1><p class="san-lede">${esc(P.theme)} · about 10–15 minutes</p><p class="companion-notice">An original prayer companion inspired by this tradition. It is not this church’s official service, a reconstruction of its missing book, or a celebration of the Eucharist. Scripture is from the public-domain King James Version; all other prayers and reflections below are original compositions.</p>${entry.note?`<details><summary>Historical guide coverage</summary>${p(entry.note)}</details>`:''}
+ <div class="companion-actions">${entry.launch?`<button data-launch="${esc(entry.launch)}">Open historical guide</button>`:''}<button data-route="${esc(entry.back)}">${entry.launch?'Back to works in progress':'Explore this tradition'}</button><button data-companion-export>Download text</button><button data-companion-print>Print</button></div>
+ <nav class="companion-cycle" aria-label="Seven companion readings">${D.cycle.map((c,j)=>`<button data-route="#/companion/${esc(key)}/${j}"${i===j?' aria-current="true"':''}>${esc(c.theme)}</button>`).join('')}</nav>
+ <h2 class="companion-theme">${esc(C.theme)}</h2>${prayers(P,C)}
+ <footer class="companion-provenance"><h2>Sources and authorship</h2><p><a href="${esc(D.scriptureSource.url)}">${esc(D.scriptureSource.title)}</a>. References and verse numbers are printed with each passage. The seven selections are an editorial devotional cycle, not a church calendar.</p>${p(D.originalSource)}<p>Family themes describe the inspiration for these compositions, not an endorsement by any church. The historical guide and its source notices remain separate.</p></footer></article>`;
+}
+function supplement(text,P){
+ if(/Eucharistic|consecration|Anaphora|Canon\b|words of institution|priest.only|not appointed|No .*appointed/i.test(text))return null;
+ if(/Intercession|[Ll]itan|commemoration/.test(text))return P.intercessions+' For all in need of mercy and peace, hear our prayer. Amen.';
+ if(/Collect|concluding prayer|Post.?Communion|Prayer after|Prayer over/i.test(text))return P.opening+' Receive our gratitude and guide us in the love of Jesus Christ. Amen.';
+ if(/Antiphon|stichera|troparion|kontakion|Apolytikion|Responsory|Prokeimenon/i.test(text))return 'God of mercy, gather us in peace.\n\nLet our hearts attend to your Word, and our lives bear the fruit of love.';
+ if(/Hymn/i.test(text))return 'Light of Christ, within us shine;\nTeach our hearts your love divine.\nWhere the wounded wait for care,\nSend us, Lord, your peace to share.\n\nIn our labour, in our rest,\nMay the lonely find a guest.\nWith the gifts your hands bestow,\nLet our thankful service grow. Amen.';
+ if(/Preface|thanksgiving/i.test(text))return 'God of every good gift, we thank you for creation, for the hope made known in Jesus Christ, and for the Spirit who strengthens us to love. Join our praise with all who seek your peace, and make our gratitude fruitful in service. Amen.';
+ if(/[Bb]lessing|[Dd]ismissal/.test(text))return P.sending+' Amen.';
+ return null;
+}
+async function decorate(body,ctx){const token=Symbol();body.__companion=token;
+ const cues=[...body.querySelectorAll('.cue:not(.veiled):not([data-priest-only])')];if(!cues.length)return;
+ try{const D=await load();if(body.__companion!==token||!body.isConnected)return;const P=D.profiles[family(ctx)];let n=0;
+ cues.forEach(c=>{if(c.closest('[data-priest-only]'))return;if(c.nextElementSibling?.classList.contains('mytext')||c.nextElementSibling?.classList.contains('mt-edit'))return;
+ const copy=c.cloneNode(true);copy.querySelectorAll('button').forEach(b=>b.remove());const t=supplement(copy.textContent,P);if(!t)return;n++;
+ const d=document.createElement('details');d.className='devotional-alternative';d.innerHTML='<summary>Devotional alternative · original text</summary><p class="note">For personal prayer. This is a newly composed alternative, not the named book’s text or its appointed proper.</p>'+t.split('\n\n').map(x=>'<p>'+esc(x).replace(/\n/g,'<br>')+'</p>').join('');c.after(d);
+ });
+ if(n){const note=document.createElement('p');note.className='note companion-guide-note';note.textContent=`${n} original devotional alternatives are available below the unfilled prayer cues. Open an alternative to read it; the historical guide and its coverage labels are unchanged.`;body.prepend(note);}
+ }catch(e){/* The source guide remains usable if the optional companion pack cannot load. */}
+}
+window.addEventListener('beforeprint',()=>{if(document.body.classList.contains('san-open')&&document.querySelector('#sanctuary .devotional-companion'))document.body.classList.add('companion-print');});
+window.addEventListener('afterprint',()=>document.body.classList.remove('companion-print'));
+document.addEventListener('click',e=>{if(e.target.closest('[data-companion-print]')){window.print();}
+ if(e.target.closest('[data-companion-export]')){const article=e.target.closest('.devotional-companion'),text=[...article.querySelectorAll('h1,h2,p,summary')].map(n=>n.innerText).join('\n\n');const a=document.createElement('a'),url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));a.href=url;a.download='lectionarium-devotional-companion.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+});
+window.LectCompanions={load,page,decorate};
+})();
+</script>
+<script>
 /* ================================================================ YOUR TEXTS
    Where a text is copyrighted the guide prints a cue ("Collect of the day: Heritage Missal"). Here the
    user can type or paste that text from their own book once; it is kept in this browser only and shown
@@ -2400,6 +2483,7 @@ function decorate(body, ctx, redrawFn){
     cueEl.appendChild(btn);
     if(cur){ filled++; const d=document.createElement("div"); d.className="mytext"; d.innerHTML=`<span class="mt-lbl">From your book${cur.day?" · this day":""}</span>`+toHTML(cur.t,cur.r||"all"); cueEl.after(d); }
   });
+  window.LectCompanions?.decorate(body,ctx);
   if(n){ const total=Object.keys(db).length; const bar=document.createElement("div"); bar.className="mt-bar";
     bar.innerHTML=`<span><b>Your texts</b> · ${filled} of ${n} cues here filled from your book · ${total} saved in all</span>
       <button type="button" class="tbtn ghost" data-a="exp">Export</button><label class="tbtn ghost mt-imp">Import<input type="file" accept=".json,application/json" hidden></label>
@@ -3461,7 +3545,7 @@ let prefs=read('lect-sanctuary-prefs',{size:1,theme:'night',sound:false});
 let homePref=read('lect-home','sanctuary')==='classic'?'classic':'sanctuary';
 let recent=read('lect-sanctuary-recent',[]);if(!Array.isArray(recent))recent=[];
 const root=document.createElement('section');root.id='sanctuary';root.hidden=true;root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Sanctuary mode');document.body.append(root);
-const isRoute=h=>/^#\/(sanctuary|study|wip|t(?:\/|$)|search(?:\/|$))/.test(h);
+const isRoute=h=>/^#\/(sanctuary|study|wip|companion(?:\/|$)|t(?:\/|$)|search(?:\/|$))/.test(h);
 returnHash=isRoute(location.hash)?'#today':location.hash||'#today';
 const glyphs={keyboard:'↑ ↓ ← → Move · Enter Select · Esc Back · / Search · S Exit',gamepad:'✚ / Left stick Move · A Select · B Back · Y Search · Start Menu',touch:'Tap a tile to explore · Back to return',mouse:'Click a tile to explore · Back to return'};
 function prompts(){const p=root.querySelector('.san-prompts');if(p)p.textContent=glyphs[input];}
@@ -3493,7 +3577,7 @@ function nodeTile(n,subtitle){return tile('#/t/'+n.id,n.name,subtitle??nodeSub(n
 function shelf(title,tiles,empty=''){return `<section class="san-shelf"><h2>${esc(title)}</h2>${tiles?`<div class="san-row" aria-label="${esc(title)}">${tiles}</div>`:`<p class="san-muted">${esc(empty)}</p>`}</section>`;}
 function parentOf(n){return n&&n.parent?catalog.find(x=>x.id===n.parent):null;}
 function go(hash){if(location.hash===hash)render();else location.hash=hash;}
-function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='search'||bits[0]==='wip'||bits[0]==='study')go('#/sanctuary');else close();}
+function back(){if(menu){menu=false;render();return;}const bits=location.hash.slice(2).split('/');if(bits[0]==='t'){const n=catalog?.find(x=>x.id===bits.at(-1));const parent=parentOf(n);go(parent?'#/t/'+parent.id:'#/sanctuary');}else if(bits[0]==='companion')go('#/wip');else if(bits[0]==='search'||bits[0]==='wip'||bits[0]==='study')go('#/sanctuary');else close();}
 function close(hash=returnHash){go(isRoute(hash)?'#today':hash||'#today');}
 function enter(){if(open)return;open=true;returnFocus=document.activeElement;returnScroll=window.scrollY;document.querySelector('.wrap').inert=true;document.body.classList.add('san-open');root.hidden=false;applyPrefs();startPolling();}
 function leave(){if(!open)return;open=false;++routeSerial;root.hidden=true;document.querySelector('.wrap').inert=false;document.body.classList.remove('san-open');cancelAnimationFrame(gameFrame);gameFrame=0;startPolling();menu=false;requestAnimationFrame(()=>{window.scrollTo(0,returnScroll);returnFocus?.focus({preventScroll:true});});}
@@ -3535,13 +3619,14 @@ const nice=iso=>{try{return window.LectApp.longDate(iso);}catch(e){return iso;}}
 function completeList(list){const order=['catholic','eastern-orthodox','oriental','anglican','lutheran','reformed','methodist'];const fam=r=>RITE_FAMILY[r.rite]||'catholic';
  return order.filter(f=>list.some(r=>fam(r)===f)).map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f])}</h3><ul class="san-wip san-complete">${list.filter(r=>fam(r)===f).map(r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button><p>${esc(r.kind+' · '+r.d)}</p></li>`).join('')}</ul>`).join('');}
 function wip(){const all=rites(),guide=all.filter(r=>r.cov==='guide'),order=all.filter(r=>r.cov==='order');
- const row=r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button> <span class="san-chip">${esc(r.covLabel)}</span><p>${esc(r.note)}</p></li>`;
+ const row=r=>`<li><button class="san-wip-open" data-launch="${esc(r.type+'|'+r.rite+'|'+(r.hour||''))}">${esc(r.name)}</button> <span class="san-chip">${esc(r.covLabel)}</span><p>${esc(r.note)}</p><p><button class="san-wip-open" data-route="#/companion/rite-${esc(r.type)}-${esc(r.rite)}">Read completed devotional companion</button></p></li>`;
  const none=catalog.filter(n=>!n.supported.length&&!catalog.some(c=>c.parent===n.id));
  const fams=[...new Set(none.map(n=>n.family))];
- return `<p class="san-eyebrow">Work in progress</p><h1>Not yet complete</h1><p class="san-lede">These rites can be prayed here, but part of their text still comes from your own book, because it is not yet on the site or is still under copyright. Each note says what is missing.</p>
+ return `<p class="san-eyebrow">Work in progress</p><h1>Not yet complete</h1><p class="san-lede">These rites can be prayed here, but part of their text still comes from your own book, because it is not yet on the site or is still under copyright. Each note says what is missing from the historical guide. Every entry below also has a complete devotional companion: public-domain Scripture with clearly labeled original prayers, for personal prayer while historical work continues.</p>
+ <section class="san-coming"><h2>Completed devotional companions · ${guide.length+order.length+none.length}</h2><p>Choose “Read completed devotional companion” beside any entry. Each companion includes gathering, confession, a psalm, Scripture, reflection, intercession, thanksgiving and sending, with seven selectable readings, text download and printing.</p></section>
  <section class="san-shelf"><h2>Guided text · ${guide.length}</h2><ul class="san-wip">${guide.map(row).join('')}</ul></section>
  <section class="san-shelf"><h2>Order and readings · ${order.length}</h2><ul class="san-wip">${order.map(row).join('')}</ul></section>
- <section class="san-shelf"><h2>Churches and books with no service yet · ${none.length}</h2>${fams.map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f]||f)}</h3><div class="san-grid">${none.filter(n=>n.family===f).map(n=>nodeTile(n)).join('')}</div>`).join('')}</section>`;}
+ <section class="san-shelf"><h2>Churches and books with no service yet · ${none.length}</h2>${fams.map(f=>`<h3 class="san-wip-fam">${esc(FAMILY_NAME[f]||f)}</h3><div class="san-grid">${none.filter(n=>n.family===f).map(n=>`<div>${nodeTile(n)}<button class="san-wip-open" data-route="#/companion/${esc(n.id)}">Read completed devotional companion</button></div>`).join('')}</div>`).join('')}</section>`;}
 const STUDY=[['day','Readings by day','One date, every lectionary side by side'],['compare','Compare the year','Dated readings across the calendars'],['psalter','The Psalter','Psalms of the day, and any psalm in three versions'],['lectionaries','Every lectionary','How the traditions arrange Scripture'],['hybrid','Hybrid proposal','Explore the proposed expanded traditional cycle'],['changes','1955 vs 1962','Compare the older Roman Holy Week and rubrics'],['office','Divine Office','Compare daily offices and their books'],['sources','Sources and coverage','Text coverage, provenance and edition limits']];
 function study(){return `<p class="san-eyebrow">Study</p><h1>Study the liturgy</h1><p class="san-lede">Compare calendars, explore the books, and check the sources.</p><div class="san-grid">${STUDY.map(([id,title,desc])=>tile(id,title,desc,'anglican','','study')).join('')}</div>`;}
 async function home(){
@@ -3580,7 +3665,7 @@ function detail(n){const children=catalog.filter(x=>x.parent===n.id),parent=pare
  return `<p class="san-eyebrow">${esc(n.kind)}${parent?' · '+esc(parent.name):''}</p><div class="san-hero"><div>${emblem(n.family)}</div><section><h1>${esc(n.name)}</h1><p class="san-lede">${esc(n.self_description)}</p></section></div>
  <dl class="san-facts"><div><dt>Calendar</dt><dd>${esc(calendarOf(n))}${noteOf(n)?`<p>${esc(noteOf(n))}</p>`:''}</dd></div><div><dt>Lectionary</dt><dd>${esc(n.lectionary)}</dd></div>${booksOf(n).length?`<div><dt>Books</dt><dd>${booksOf(n).map(b=>`<p><a href="${esc(b.source)}" target="_blank" rel="noopener">${esc(b.title)}${b.year?' · '+b.year:''}</a> <span class="san-chip">${esc(STATUS[b.status]||b.status)}</span><small>${esc(b.rights_note)}</small></p>`).join('')}${n.books.length?'':`<p class="san-muted">The books of ${esc(parentOf(n)?.name||'this tradition')}.</p>`}</dd></div>`:''}</dl>
  ${children.length?shelf('Churches, uses and books',children.map(c=>nodeTile(c)).join('')):''}
- ${n.supported.length?shelf('Pray now',n.supported.map((s,i)=>tile(n.id+':'+i,s.label,`${s.type==='office'?hourName(s):kindOf(s)} · today`,n.family,coverage(s),'pray')).join('')):!children.length?`<section class="san-coming"><h2>Coming later</h2><p>No service guide is mapped to this entry yet.</p>${(()=>{const rel=rites().filter(r=>RITE_FAMILY[r.rite]===n.family);return rel.length?`<p>Meanwhile, the ${esc(FAMILY_NAME[n.family]||'')} books this site does print:</p><div class="san-row">${rel.slice(0,8).map(r=>riteTile(r)).join('')}</div>`:'';})()}<p>${esc(n.pd_texts_available.join(' · ')||'An edition with verified public-domain or open-licence texts, a sourced calendar and a lectionary would make a guide possible.')}</p></section>`:''}
+ ${n.supported.length?shelf('Pray now',n.supported.map((s,i)=>tile(n.id+':'+i,s.label,`${s.type==='office'?hourName(s):kindOf(s)} · today`,n.family,coverage(s),'pray')).join('')):!children.length?`<section class="san-coming"><h2>Coming later</h2><p>No historical service guide is mapped to this entry yet. A complete original devotional companion is available for personal prayer.</p><button class="san-wip-open" data-route="#/companion/${esc(n.id)}">Read completed devotional companion</button>${(()=>{const rel=rites().filter(r=>RITE_FAMILY[r.rite]===n.family);return rel.length?`<p>Meanwhile, the ${esc(FAMILY_NAME[n.family]||'')} books this site does print:</p><div class="san-row">${rel.slice(0,8).map(r=>riteTile(r)).join('')}</div>`:'';})()}<p>${esc(n.pd_texts_available.join(' · ')||'An edition with verified public-domain or open-licence texts, a sourced calendar and a lectionary would make a guide possible.')}</p></section>`:''}
  <details><summary>Sources and rights review</summary><p>${esc(n.source_review)}</p><ul>${n.sources.map(u=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul></details>`;
 }
 function results(q){const words=q.toLocaleLowerCase().split(/\s+/).filter(Boolean);return catalog.filter(n=>words.every(w=>[n.name,...n.also_called,...n.regions,...n.books.map(b=>b.title)].join(' ').toLocaleLowerCase().includes(w)));}
@@ -3595,7 +3680,7 @@ async function render(){
  const shell=body=>`<header class="san-toolbar">${atHome?'':'<button data-action="back" aria-label="Back">←<span class="san-long"> Back</span></button>'}<button data-route="#/sanctuary"${atHome?' aria-current="page"':''}>Sanctuary</button><button data-route="#/search" aria-label="Search">Search<span class="san-long"> /</span></button><button data-action="menu" aria-label="Open menu">Menu</button><button data-action="exit" aria-label="Switch to the classic view"><span class="san-long">Classic view</span><span class="san-short">Classic</span></button></header><main class="san-content">${body}</main><footer class="san-prompts" aria-live="polite">${glyphs[input]}</footer>`;
  root.innerHTML=shell('<p role="status">Opening the library…</p>');
  try{await load();if(serial!==routeSerial)return;let body;
-  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/study')body=study();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
+  if(menu)body=menuHTML();else if(hash==='#/search')body=search();else if(hash==='#/study')body=study();else if(hash==='#/sanctuary')body=await home();else if(hash==='#/wip')body=wip();else if(hash.startsWith('#/companion/')){const [,key,index,...extra]=hash.slice(2).split('/');const r=rites().find(r=>'rite-'+r.type+'-'+r.rite===key),n=catalog.find(n=>n.id===key);const entry=r?{title:r.name,family:RITE_FAMILY[r.rite]||'catholic',note:r.note,launch:r.type+'|'+r.rite+'|'+(r.hour||''),back:'#/wip'}:n?{title:n.name,family:n.family,back:'#/t/'+n.id}:null;body=entry&&!extra.length?await window.LectCompanions.page(entry,key,index):'<h1>Companion not found</h1><p>Choose a companion from Works in progress.</p>';}else {const bits=hash.slice(2).split('/');const n=catalog.find(x=>x.id===bits.at(-1));if(n&&bits.length<=3&&(bits.length===2||n.parent===bits[1]))body=detail(n);else body='<h1>Entry not found</h1><p>Use Search to find a church or book.</p>';}
   if(serial!==routeSerial)return;saveFocus();root.innerHTML=shell(body);applyPrefs();if(hash==='#/search'&&!menu)updateSearch('');
   const saved=focusByRoute.get(hash);const el=saved&&controls().find(e=>focusKey(e)===saved);
   if(!saved)root.scrollTop=0;
