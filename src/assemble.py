@@ -15,7 +15,7 @@ def build(head="page_head.html", mass="mass.js", today="today.js", p2p=False, sp
     d1='<script type="application/json" id="lect-data">'+open("pagedata.json").read().strip()+'</script>'
     d2='<script type="application/json" id="lect-extra">'+open("extradata.json").read().strip()+'</script>'
     parts=[open(head).read().rstrip("\n").replace("</style>", open("sanctuary.css").read()+"\n</style>"), open("page_body.html").read().rstrip("\n").replace('<section id="tradition-sources" aria-label="Tradition directory sources"></section>', '<section id="tradition-sources" aria-label="Tradition directory sources">'+open("tradition_sources.html").read()+"</section>"), d1, d2]
-    files=("page_script.js","worldcal.js","votive.js","music.js","participation.js","lectionary.js",mass,"office.js")+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"compareday.js","psalter.js","sanctuary.js")
+    files=("page_script.js","worldcal.js","votive.js","music.js","participation.js","lectionary.js",mass,"office.js")+(("p2p.js",) if p2p else ())+("tools.js","mytexts.js",today,"ceremony.js","compareday.js","psalter.js","sanctuary.js")
     for f in files:
         if split and f in SERVICE:
             continue

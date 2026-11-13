@@ -55,6 +55,7 @@ function loadOpts(rite){ let o=null; try{ o=JSON.parse(localStorage.getItem("lec
   const base={preset:"sung",...JSON.parse(JSON.stringify(PRESETS.sung)),lang:"both",choice:{},mass:"",credo:"III",target:0,veil:true};
   if(!o||!o.hymns) o={...base,...(o||{})};
   if(ap&&PRESETS[ap]) o={...o,...JSON.parse(JSON.stringify(PRESETS[ap])),preset:ap};
+  if(window.__lectApplyTarget!=null){ o.target=window.__lectApplyTarget; delete window.__lectApplyTarget; }
   if(!o.hymns) o.hymns=base.hymns;
   return o; }
 function saveOpts(rite,o){ try{ const {votive,...keep}=o; localStorage.setItem("lect-mass-"+rite,JSON.stringify(keep)); }catch(e){} }   /* a votive Mass is chosen for one day, not kept */
